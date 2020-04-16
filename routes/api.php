@@ -31,3 +31,13 @@ $api->version('v2', function ($api) {
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+$api->version(['v1','v2'], function ($api) {
+    $api->group(['prefix' => 'games'], function ($api) {
+        $api->post('/', 'App\Http\Controllers\GameController@store');
+        $api->get('/{id}', 'App\Http\Controllers\GameController@show');
+        $api->get('/', 'App\Http\Controllers\GameController@index');
+        $api->delete('/{id}', 'App\Http\Controllers\GameController@destroy');
+        $api->put('/{id}', 'App\Http\Controllers\GameController@update');
+    });
+});
