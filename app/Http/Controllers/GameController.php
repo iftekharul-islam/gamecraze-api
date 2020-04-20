@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Transformers\GameTransformer;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -10,12 +12,13 @@ class GameController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $games = Game::all();
-        return response()->json(compact('games'), 200);
+        return $this->response->collection($games, new GameTransformer());
     }
 
     /**
@@ -42,6 +45,8 @@ class GameController extends Controller
         $game->genre = $request->genre;
         $game->game_type = $request->game_type;
         $game->release_date = $request->release_date;
+        $game->no_of_players = $request->no_of_players;
+        $game->user_id = $request->user_id;
 
         $game->save();
     }
@@ -56,7 +61,7 @@ class GameController extends Controller
     public function show(Request $request, Game $game)
     {
         $game = Game::findOrFail($request->id);
-        return response()->json(compact('game'), 200);
+        return $this->response->item($game, new GameTransformer);
     }
 
     /**
@@ -84,6 +89,8 @@ class GameController extends Controller
         $game->genre = $request->genre;
         $game->game_type = $request->game_type;
         $game->release_date = $request->release_date;
+        $game->no_of_players = $request->no_of_players;
+        $game->user_id = $request->user_id;
 
         $game->save();
     }
