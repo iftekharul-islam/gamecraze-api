@@ -1,5 +1,9 @@
 <?php
 
+use Dingo\Api\Facade\API;
+use Dingo\Api\Facade\Route;
+use Laravel\Passport\PassportServiceProvider;
+
 return [
 
     /*
@@ -178,6 +182,12 @@ return [
         //dingo api
         Dingo\Api\Provider\LaravelServiceProvider::class,
 
+        //spatie laravel-permission
+        Spatie\Permission\PermissionServiceProvider::class,
+
+        //passport
+        Laravel\Passport\PassportServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +239,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'DingoApi' => Dingo\Api\Facade\API::class,
+        'DingoRoute' => Dingo\Api\Facade\Route::class,
 
     ],
 
