@@ -15,22 +15,18 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->date('release_date');
-            $table->integer('no_of_players');
-            $table->integer('status')->default(0);
-            $table->longText('description');
-            $table->decimal('rating', 2, 1)->default(0.0);
-            $table->integer('rent_sell_exchange')->default(0);
-            $table->decimal('price', 8, 2);
-            $table->string('publisher');
-            $table->string('series');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('name');
+            $table->longText('description');
+            $table->integer('team_type');
+            $table->decimal('rating', 2, 1)->default(0.0);
+            $table->string('publisher');
+            $table->date('release_date');
+            $table->string('series');
+            $table->string('platform');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Http\Requests\GameCreateRequest;
 use App\Transformers\GameTransformer;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Image;
 use Illuminate\Support\Facades\Response;
@@ -68,9 +69,11 @@ class GameController extends Controller
             {
                 $randomName = Str::random();
                 $imageName = $randomName.'.'.$image->getClientOriginalExtension();
-                $image->move(public_path().'/images/', $imageName);
+                $imagePath = $image->move(public_path().'/images/', $imageName);;
+
                 $asset = new Asset();
                 $asset->name = $imageName;
+                $asset->url = $imagePath;
                 $asset->game_id = $game->id;
                 $asset->save();
             }
