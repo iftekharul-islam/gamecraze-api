@@ -40,6 +40,23 @@ $api->version('v1', function ($api) {
         $api->post('user-role/{user_id}/{role_id}','App\Http\Controllers\API\UserController@userhasRole');
         $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
     });
+
+    $api->get('games/{id}', 'App\Http\Controllers\GameController@show');
+    $api->get('games/', 'App\Http\Controllers\GameController@index');
+
+    $api->group(['middleware' => 'auth:api'], function ($api) {
+        $api->group(['middleware' => 'role:admin'], function ($api) {
+            $api->post('games/', 'App\Http\Controllers\GameController@store');
+            $api->delete('games/{id}', 'App\Http\Controllers\GameController@destroy');
+            $api->put('games/{id}', 'App\Http\Controllers\GameController@update');
+        });
+
+        $api->post('exchanges/', 'App\Http\Controllers\PostController@store');
+        $api->get('exchanges/{id}', 'App\Http\Controllers\PostController@show');
+        $api->get('exchanges/', 'App\Http\Controllers\PostController@index');
+        $api->delete('exchanges/{id}', 'App\Http\Controllers\PostController@destroy');
+        $api->put('exchanges/{id}', 'App\Http\Controllers\PostController@update');
+    });
 });
 
 $api->version('v2', function ($api) {
@@ -53,12 +70,3 @@ $api->version('v2', function ($api) {
 //    return $request->user();
 //});
 
-$api->version(['v1','v2'], function ($api) {
-    $api->group(['prefix' => 'games'], function ($api) {
-        $api->post('/', 'App\Http\Controllers\GameController@store');
-        $api->get('/{id}', 'App\Http\Controllers\GameController@show');
-        $api->get('/', 'App\Http\Controllers\GameController@index');
-        $api->delete('/{id}', 'App\Http\Controllers\GameController@destroy');
-        $api->put('/{id}', 'App\Http\Controllers\GameController@update');
-    });
-});

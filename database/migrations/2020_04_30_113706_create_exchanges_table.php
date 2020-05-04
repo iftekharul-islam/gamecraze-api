@@ -15,7 +15,7 @@ class CreateExchangesTable extends Migration
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('borrower_id');
+            $table->unsignedBigInteger('borrower_id')->nullable();
             $table->foreign('borrower_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('lender_id');
             $table->foreign('lender_id')->references('id')->on('users')->onDelete('cascade');
@@ -24,7 +24,7 @@ class CreateExchangesTable extends Migration
             $table->integer('no_of_days');
             $table->string('condition');
             $table->decimal('disk_health');
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

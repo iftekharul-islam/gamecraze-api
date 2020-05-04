@@ -10,8 +10,6 @@ use League\Fractal\TransformerAbstract;
 
 class GameTransformer extends TransformerAbstract
 {
-    protected $availableIncludes=['user'];
-
     public function transform(Game $game)
     {
         // specify what elements are going to be visible to the API
@@ -19,15 +17,14 @@ class GameTransformer extends TransformerAbstract
             'id' => $game->id,
             'name' => $game->name,
             'genre' => $game->genre,
-            'game_type' => $game->game_type,
+            'categories' => $game->category,
             'release_date' => $game->release_date,
-            'no_of_players' => $game->no_of_players,
-            'owner_id' => $game->user_id,
-            'approve_status' => $game->approve_status,
+            'team_type' => $game->team_type,
+            'description' => $game->description,
+            'rating' => $game->rating,
+            'publisher' => $game->publisher,
+            'series' => $game->series,
+            'platform' => $game->platform
         ];
-    }
-
-    public function includeUser(Game $game) {
-        return $this->item($game->user, new UserTransformer());
     }
 }
