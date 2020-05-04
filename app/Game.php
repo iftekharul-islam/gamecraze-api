@@ -9,11 +9,6 @@ class Game extends Model
 {
     use Taggable;
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function genre()
     {
         return $this->belongsTo(Genre::class);
@@ -26,5 +21,9 @@ class Game extends Model
 
     public function assets(){
         return $this->hasMany(Asset::class);
+    }
+
+    public function exchanges() {
+        return $this->hasMany(Exchange::class);
     }
 }

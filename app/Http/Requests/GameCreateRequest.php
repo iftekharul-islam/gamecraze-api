@@ -25,10 +25,7 @@ class GameCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'tags' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'images' => 'required|max:5000',
+
         ];
     }
 }
