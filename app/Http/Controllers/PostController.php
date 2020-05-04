@@ -54,7 +54,8 @@ class PostController extends BaseController
     public function destroy(Request $request)
     {
         $exchange = Exchange::findOrFail($request->id);
-        if (Auth::user()->id == $exchange->lender_id) {
+        $roles = Auth::user()->getRoleNames();
+        if (Auth::user()->id == $exchange->lender_id or $roles->contains('admin')) {
             $exchange->delete();
         }
         else {
