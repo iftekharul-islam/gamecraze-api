@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Asset;
 use App\Game;
+use App\Http\Controllers\BaseController;
 use App\Http\Requests\GameCreateRequest;
 use App\Transformers\GameTransformer;
 use http\Client\Curl\User;
@@ -13,7 +14,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Image;
 use Illuminate\Support\Facades\Response;
 
-class GameController extends Controller
+class GameController extends BaseController
 {
     /**
      * Display a listing of the resource.
