@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Exchange;
+use App\Http\Controllers\BaseController;
 use App\Transformers\ExchangeTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

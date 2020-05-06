@@ -20,6 +20,7 @@ class AddColumnToUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('interest')->nullable();
             $table->string('image')->nullable();
+            $table->decimal('wallet')->default(0);
             $table->integer('status')->default(0);
         });
     }
@@ -38,6 +39,7 @@ class AddColumnToUsersTable extends Migration
             $table->dropColumn('address');
             $table->dropColumn('interest');
             $table->dropColumn('image');
+            $table->dropColumn('wallet');
             $table->dropColumn('status');
         });
     }
