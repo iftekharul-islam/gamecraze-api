@@ -8,7 +8,10 @@ use App\Http\Requests\UserLoginRequest;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
+use App\Notifications\RequestEmail;
+use App\User;
 use Illuminate\Http\Request;
+
 
 
 class AuthController extends BaseController
@@ -46,6 +49,20 @@ class AuthController extends BaseController
         return response()->json([
             'token' => $token->accessToken
         ]);
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required'
+        ]);
+
+        if( Auth::attempt(['email'=>$request->email, 'password'=>$request->password]) ) {
+            $user = Auth::user();
+
+            $token = $user->createToken($user->email.'-'.now());
+            $user->notify(new RequestEmail());
+            return response()->json([
+                'token' => $token->accessToken
+            ]);
+        }
     }
 
     public function logout(Request $request)

@@ -42,4 +42,9 @@ class User extends Authenticatable
     public function exchanges() {
         return $this->hasMany(Exchange::class);
     }
+
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }
