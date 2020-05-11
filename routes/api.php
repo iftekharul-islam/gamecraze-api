@@ -31,8 +31,8 @@
         $api->get('categories/', 'App\Http\Controllers\API\CategoryController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
-            $api->get('users', 'App\Http\Controllers\API\UserController@show');
-            $api->get('user/details', 'App\Http\Controllers\API\UserController@index');
+            $api->get('users', 'App\Http\Controllers\API\UserController@index');
+            $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->post('user/edit/{id}', 'App\Http\Controllers\API\AuthController@edit');
             $api->delete('user/destory/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
@@ -72,6 +72,9 @@
             $api->put('exchanges/{id}', 'App\Http\Controllers\API\PostController@update');
 
             $api->post('requests/', 'App\Http\Controllers\API\UserRequestController@store');
+            $api->get('requests/', 'App\Http\Controllers\API\UserRequestController@index');
+            $api->get('requests/{id}', 'App\Http\Controllers\API\UserRequestController@show');
+            $api->delete('requests/{id}', 'App\Http\Controllers\API\UserRequestController@destroy');
         });
     });
 

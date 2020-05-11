@@ -4,64 +4,45 @@ namespace App\Http\Controllers\API;
 
 use App\Exchange;
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
+use App\Repositories\PostRepository;
 use App\Transformers\ExchangeTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends BaseController
 {
+    private $postRepository;
+    public function __construct(PostRepository $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
+
     public function index() {
-        $exchanges = Exchange::all();
+        $exchanges = $this->postRepository->all();
         return $this->response->collection($exchanges, new ExchangeTransformer);
     }
 
     public function show(Request $request) {
-        $exchange = Exchange::findOrFail($request->id);
+        $exchange = $this->postRepository->findById($request->id);
         return $this->response->item($exchange, new ExchangeTransformer);
     }
 
-    public function store(Request $request) {
-        $user = Auth::user();
-        $exchange = new Exchange();
-
-        $exchange->lender_id = $user->id;
-        $exchange->game_id = $request->game_id;
-        $exchange->no_of_days = $request->no_of_days;
-        $exchange->condition = $request->condition;
-        $exchange->disk_health = $request->disk_health;
-        $exchange->save();
-
-        return response()->json('Exchange data added successfully.');
+    public function store(PostCreateRequest $request) {
+        $exchange = $this->postRepository->create($request);
+        return response()->json(compact('exchange'), 200);
     }
 
-    public function update(Request $request)
+    public function update(PostUpdateRequest $request)
     {
-        $exchange = Exchange::findOrFail($request->id);
-        if (Auth::user()->id == $exchange->lender_id) {
-            $exchange->game_id = $request->game_id;
-            $exchange->no_of_days = $request->no_of_days;
-            $exchange->condition = $request->condition;
-            $exchange->disk_health = $request->disk_health;
-
-            $exchange->save();
-        }
-        else
-        {
-            return response()->json('You can not update this post');
-        }
-
+        $exchange = $this->postRepository->update($request);
+        return response()->json(compact('exchange'), 200);
     }
 
     public function destroy(Request $request)
     {
-        $exchange = Exchange::findOrFail($request->id);
-        $roles = Auth::user()->getRoleNames();
-        if (Auth::user()->id == $exchange->lender_id or $roles->contains('admin')) {
-            $exchange->delete();
-        }
-        else {
-            return response()->json('You can not delete this post');
-        }
-
+        $exchange = $this->postRepository->delete($request->id);
+        return response()->json(compact('exchange'), 200);
     }
 }

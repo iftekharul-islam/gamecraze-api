@@ -2,38 +2,43 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Category;
+
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends BaseController
 {
+    private $categoryRepository;
+    public function __construct(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function index() {
-        $categories = Category::all();
+        $categories = $this->categoryRepository->all();
         return response()->json(compact('categories'), 200);
     }
 
     public function show(Request $request) {
-        $category = Category::findOrFail($request->id);
+        $category = $this->categoryRepository->findById($request->id);
         return response()->json(compact('category'), 200);
     }
 
-    public function store(Request $request) {
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->save();
+    public function store(CategoryCreateRequest $request) {
+        $category = $this->categoryRepository->create($request);
+        return response()->json(compact('category'), 200);
     }
 
-    public function update(Request $request) {
-        $category = Category::findOrFail($request->id);
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->save();
+    public function update(CategoryUpdateRequest $request) {
+        $category = $this->categoryRepository->update($request);
+        return response()->json(compact('category'), 200);
     }
 
     public function destroy(Request $request) {
-        $category = Category::findOrFail($request->id);
-        $category->delete();
+        $this->categoryRepository->delete($request->id);
+
     }
 }

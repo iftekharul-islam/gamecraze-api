@@ -4,87 +4,67 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\BaseController;
-use App\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class UserController extends BaseController
 {
+    private $userRepository;
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function index()
     {
-        $user = User::find(auth()->user()->id);
-
-        if($user) {
-            return response()->json($user);
-        }
-
-        return response()->json(['message' => 'User not found!'], 404);
+        $users = $this->userRepository->all();
+        return response()->json($users);
     }
 
     public function show()
     {
-        $user = User::all();
-
+        $user = $this->userRepository->findById();
         return response()->json($user);
     }
 
     public function createRole(Request $request)
     {
-        $role = Role::create([
-        'name' => $request->name,
-        ]);
+        $this->userRepository->createRole($request);
         return response()->json(['message' => 'Role Successfully saved!']);
     }
-    public function showRole(Request $request)
-        {
-            $role = Role::all();
-            return response()->json($role);
-        }
+    public function showRole()
+    {
+        $roles = $this->userRepository->showRole();
+        return response()->json($roles);
+    }
 
     public function createPermission(Request $request)
     {
-        $role = Permission::create([
-            'name' => $request->name,
-        ]);
+        $this->userRepository->createPermission($request);
         return response()->json(['message' => 'Permission Successfully saved!']);
     }
 
-    public function showPermission(Request $request)
+    public function showPermission()
     {
-        $role = Permission::all();
-        return response()->json($role);
+        $permissions = $this->userRepository->showPermission();
+        return response()->json($permissions);
     }
 
-    public function rolehasPermission($role_id,$per_id)
+    public function rolehasPermission($role_id, $per_id)
     {
-        $permission = Permission::findById($per_id);
-        $role = Role::findById($role_id);
-
-        $role->givePermissionTo($permission);
-
+        $this->userRepository->rolehasPermission($role_id, $per_id);
         return response()->json('this role get the permission successfully');
     }
 
     public function userhasRole($user_id, $role_id)
     {
-
-        $role = Role::findById($role_id);
-        $user = User::find($user_id);
-
-        $user->assignRole($role);
-
+        $this->userRepository->userhasRole($user_id, $role_id);
         return response()->json('User get the Role successfully');
     }
 
     public function userhasPermission($user_id, $per_id)
     {
-
-        $permission = Permission::findById($per_id);
-        $user = User::find($user_id);
-
-        $user->givePermissionTo($permission);
-
+        $this->userRepository->userhasPermission($user_id, $per_id);
         return response()->json('User get the Permission successfully');
     }
 }

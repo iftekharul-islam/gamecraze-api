@@ -3,14 +3,30 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserLoginRequest;
+use App\Repositories\UserRepository;
+use App\Services\UserLoginService;
+use App\Services\UserLogoutService;
 use App\Notifications\RequestEmail;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 
 class AuthController extends BaseController
 {
+    private $userRepository;
+    private $loginService;
+    private $logoutService;
+
+    public function __construct(UserRepository $userRepository, UserLoginService $loginService, UserLogoutService $logoutService)
+    {
+        $this->userRepository = $userRepository;
+        $this->loginService = $loginService;
+        $this->logoutService = $logoutService;
+    }
+
     protected function generateAccessToken($user)
     {
         $token = $user->createToken($user->email.'-'.now());
@@ -19,26 +35,20 @@ class AuthController extends BaseController
     }
 
 
-    public function register(Request $request)
+    public function register(UserCreateRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
+        $user = $this->userRepository->create($request);
 
         return response()->json($user);
     }
 
-    public function login(Request $request)
+    public function login(UserLoginRequest $request)
     {
+        $token = $this->loginService->login($request);
+
+        return response()->json([
+            'token' => $token->accessToken
+        ]);
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'password' => 'required'
@@ -57,28 +67,19 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        auth()->user()->tokens->each(function ($token, $key) {
-            $token->delete();
-        });
+        $this->logoutService->logout();
         return response()->json("Logged out successfully", 200);
     }
 
-    public function edit(Request $request,$userId)
+    public function edit(Request $request, $userId)
     {
-        $user = User::find($userId);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
-
+        $this->userRepository->update($request, $userId);
         return response()->json('User successfuly edited');
     }
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
+        $this->userRepository->delete($id);
         return response()->json("User Deleted successfully");
     }
 
