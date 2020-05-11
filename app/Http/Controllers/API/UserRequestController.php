@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Notifications\RequestEmail;
 use App\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,10 @@ class UserRequestController extends BaseController
         $user_request->management_id = $request->management_id;
         $user_request->delivery_address = $request->delivery_address;
         $user_request->save();
+
+        $user_request->user_id->notify(new RequestEmail());
+
+        return response()->json("Request sent successfully", 200);
     }
 
     public function update(Request $request) {

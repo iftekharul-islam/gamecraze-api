@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Notifications\RequestEmail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends BaseController
 {
@@ -46,7 +48,7 @@ class AuthController extends BaseController
             $user = Auth::user();
 
             $token = $user->createToken($user->email.'-'.now());
-
+            $user->notify(new RequestEmail());
             return response()->json([
                 'token' => $token->accessToken
             ]);
