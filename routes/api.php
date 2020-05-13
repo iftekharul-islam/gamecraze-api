@@ -75,6 +75,8 @@
             $api->get('requests/', 'App\Http\Controllers\API\UserRequestController@index');
             $api->get('requests/{id}', 'App\Http\Controllers\API\UserRequestController@show');
             $api->delete('requests/{id}', 'App\Http\Controllers\API\UserRequestController@destroy');
+
+            $api->post('requests/accept', 'App\Http\Controllers\API\AcceptRequestController@acceptRequest');
         });
     });
 
