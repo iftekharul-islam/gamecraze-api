@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Asset;
-use App\Game;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\GameCreateRequest;
-use App\Repositories\AssetRepository;
 use App\Repositories\GameRepository;
 use App\Services\AssetService;
 use App\Transformers\GameTransformer;
-use http\Client\Curl\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Intervention\Image\Image;
-use Illuminate\Support\Facades\Response;
 
 class GameController extends BaseController
 {
@@ -38,7 +30,7 @@ class GameController extends BaseController
     {
         $game = $this->gameRepository->create($request);
         $this->assetService->create($request, $game->id);
-        return $_FILES['images'];
+        return $game;
     }
 
     public function show(Request $request)

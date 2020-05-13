@@ -1,0 +1,3593 @@
+// google fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+// variables
+@import "variables.scss";
+// media queries
+@import "mediaQueries.scss";
+// bootstrap
+
+@mixin roboto {
+  font-family: 'Roboto', sans-serif;
+}
+@mixin roboto-con {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+@mixin transition-3 {
+  transition: all .3s ease-in;
+}
+@mixin padding-1 {
+  padding-left: 1rem;
+ padding-top: .5rem;
+}
+@mixin margin-1 {
+  margin-right: 1rem;
+ margin-top: .5rem;
+}
+@mixin after-before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transform: scale3d(0, 0, 1);
+  transition: transform .3s ease-out 0s;
+  background: rgba(255, 255, 255, .1);
+  content: '';
+  pointer-events: none;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  // smooth scroll
+  html {
+    scroll-behavior: smooth;
+  }
+  html, body {
+    height: 100%;
+  }
+  a {
+    text-decoration: none !important;
+  }
+  .w-90 {
+    width: 90%;
+  }
+  // back to top
+  .back-to-top {
+    position: fixed;
+    right: 1%;
+    bottom: -7.5%;
+    height: 15px;
+    width: 40px;
+    padding: 3px 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color: transparent;
+    opacity: 0.5;
+    z-index: 3;
+    visibility: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.25s ease-in-out;
+    background-color: #858585;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: thin dotted;
+    }
+  }
+
+  .back-to-top::before,
+  .back-to-top::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top: 0;
+  }
+
+  .back-to-top::before {
+    top: -20px;
+    z-index: 4;
+    border-bottom: 20px solid #858585;
+  }
+
+  .back-to-top::after {
+    bottom: 0;
+    z-index: 5;
+    border-bottom: 20px solid #505050;
+  }
+
+  .back-to-top:hover,
+  .back-to-top:focus {
+    height: 40px;
+    color: #212223;
+  }
+
+  .show-back-to-top {
+    display: block;
+    bottom: 1.25%;
+    visibility: visible;
+  }
+
+  // navbar
+  nav {
+    background: $top-nav;
+    .nav-width {
+      width: 85%;
+      .navbar-brand {
+      }
+      .menu-list {
+        .menu-list-top {
+          li {
+            margin-top: 1.5rem;
+            position: relative;
+            form {
+              .input-group {
+
+                .sign-in-btn {
+                  background: $menu-active;
+                  border-color: $menu-active;
+                  border-radius: 20px;
+                  font-weight: 700;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                 @include transition-3;
+                  box-shadow: none;
+
+                  &:hover {
+                    background: $yellow-btn-hover;
+                    border-color: $yellow-btn-hover;
+                  }
+                  &:active {
+                    box-shadow:  0px 0px 3px 2px #fff !important;
+                  }
+                }
+                .input-group-append {
+                  border-radius: 20px;
+                  .menu-search-input {
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    background: $search;
+                    border-color: $search;
+                    color: $white-clr !important;
+                    padding-left: 20px;
+                    @include transition-3;
+                    &::placeholder {
+                      color: $white-clr !important;
+                    }
+                    &:focus {
+                      // box-shadow:  0px 0px 3px 2px  $white-clr; !important;
+                      background: transparent;
+                      border: 1px solid $white-clr;
+                      &::placeholder {
+                        color: $rented-menu-hvr !important;
+                      }
+                    }
+                  }
+                  .menu-search-icon {
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                     border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    background: $menu-active;
+                    border-color: $menu-active;
+                    width: 20%;
+                    @include transition-3;
+                    i {
+                      color: $white-clr;
+                      font-size: 18px;
+                    }
+                    &:focus {
+                      box-shadow: none !important;
+                    }
+                    &:hover {
+                      background: $yellow-btn-hover;
+                      border-color: $yellow-btn-hover;
+                    }
+                  }
+
+                }
+              }
+            }
+            a {
+              color: $white-clr;
+              @include roboto;
+              font-weight: 600;
+              font-size: 15px;
+              @include transition-3;
+              &:hover {
+                color: $menu-active;
+              }
+              &:focus {
+                color: $menu-active;
+              }
+              &.dropdown-toggle {
+               &:after {
+                 display:none;
+               }
+               i {
+                margin-top: 8px;
+                position: absolute;
+                margin-left: 3px;
+              }
+              }
+            }
+            .dropdown-menu {
+              background: $white-clr;
+              padding: 0;
+              width: 100% !important;
+              border-radius: 0;
+              top:104%;
+              &:after {
+                content: "";
+                border-bottom: 16px solid $white-clr;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+                position: absolute;
+                top: -16px;
+                right: 14px;
+
+              }
+              a {
+                color: $black-clr;
+                border-bottom: 1px solid $exchange-bg;
+                &:last-child {
+                  border: none;
+                }
+                &:hover {
+                  background: $black-clr;
+                  color: $menu-active;
+                }
+              }
+            }
+
+          }
+        }
+        .menu-list-bottom {
+          li {
+           > a {
+              color: $white-clr;
+              margin-top: 1.5rem;
+              position: relative;
+              font-weight: 700;
+              @include roboto;
+              font-size:20px;
+              letter-spacing: 1px;
+              @include transition-3;
+              &:hover {
+                color: $menu-active;
+              }
+              &.active {
+                color:$menu-active !important;
+                &:after {
+                  content: '';
+                  position: absolute;
+                  height: 4px;
+                  bottom: -8px;
+                  margin: 0 auto;
+                  left: 0;
+                  right: 0;
+                 width: 70%;
+                 background:$menu-active;
+                }
+              }
+              &.dropdown-toggle {
+                &:after {
+                  display:none;
+                }
+               }
+              //  &:focus {
+              //   color: $white-clr;
+              // }
+              i {
+                margin-top: 11px;
+                position: absolute;
+                margin-left: 3px;
+              }
+            }
+            .dropdown-menu {
+              background: $white-clr;
+              padding: 0;
+              width:100% !important;
+              border-radius: 0;
+              top:104%;
+              a {
+                color: $black-clr;
+                border-bottom: 1px solid $exchange-bg;
+                &:last-child {
+                  border: none;
+                }
+                &:hover {
+                  background: $black-clr;
+                  color:$menu-active;
+                }
+              }
+              &:after {
+                content: "";
+                border-bottom: 16px solid $white-clr;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+                position: absolute;
+                top: -16px;
+                right: 14px;
+              }
+            }
+          }
+        }
+        // jedi menu style
+        &.jedi-menu {
+          .menu-list-top {
+            li {
+              &.cart-item {
+                margin-left: 2rem;
+                .cart {
+                  a {
+                    i {
+                      font-size: 50px;
+                      color: $menu-active;
+                    }
+                    .count {
+                      position: absolute;
+                      height: 25px;
+                      width: 25px;
+                      background-color: $cart-badge;
+                      border-radius: 500px;
+                      font-size: 14px;
+                      display: inline-flex;
+                      justify-content: center;
+                      align-items: center;
+                      top: 0px;
+                      right: 0px;
+                      color: $menu-active;
+                      transform: translate(50%, -50%);
+                      z-index: 1;
+                    }
+                  }
+
+                }
+              }
+              form {
+                button {
+                  color: $black-clr;
+                  i {
+                    color:$black-clr !important;
+                  }
+                }
+              }
+            }
+          }
+          .menu-list-bottom {
+            li {
+              a {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // hunter section
+  .hunter-section {
+    .bx-wrapper {
+      box-shadow: none;
+      border: none;
+      margin-bottom: 0;
+      &:hover {
+        .bx-controls {
+          opacity: 1;
+        }
+      }
+      .bx-controls {
+        opacity: .3;
+        @include transition-3;
+        .bx-controls-direction {
+
+          .bx-prev {
+             background: url(public/img/icon/controls.png) no-repeat 0 -32px;
+
+
+          }
+          .bx-next {
+            background: url(public/img/icon/controls.png) no-repeat -43px -32px;
+
+          }
+        }
+      }
+      a {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  // New release
+  .new-release {
+    padding-bottom: 5rem;
+    background: $release-bg;
+    .release-width {
+      width: 85%;
+      .release-header {
+        margin-bottom: 30px;
+        h2 {
+          color:$white-clr;
+          @include roboto-con;
+          text-transform: uppercase;
+          font-weight: 700;
+          padding-left: 10px;
+
+        }
+      }
+      .owl-carousel-one {
+        margin-top: 1.5rem;
+        position: relative;
+        .owl-nav {
+          position: absolute;
+          top: -77px;
+          right: 8px;
+          button {
+            &.owl-prev {
+              margin-right: 1.5rem;
+            }
+            &:focus {
+              border: none !important;
+              box-shadow:none !important;
+              outline: none;
+            }
+            &:hover {
+              background: none;
+              color: $black-clr;
+            }
+          }
+          &.disabled {
+            display: block;
+          }
+        }
+       .item {
+         padding: 10px;
+        .card {
+          height: 460px;
+          border: none !important;
+          border-radius: 13px !important;
+          @include transition-3;
+         position: relative;
+          .card-img-top {
+            height: 200px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          }
+          .card-body {
+            position: relative;
+            background: $card-1;
+            .game-name {
+
+              color: $white-clr;
+              text-transform: uppercase;
+              font-size: 23px;
+              @include roboto;
+              span {
+                position: relative;
+                &:after {
+                  content: "TM";
+                  position: absolute;
+                  top: 0;
+                  font-size: 12px;
+                  left: -4px;
+
+                }
+              }
+            }
+            .card-text {
+              color: $white-clr;
+              @include roboto;
+              font-size: 16px;
+            }
+          }
+          .more-read {
+            background: $card-1;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            justify-content: flex-end;
+            a {
+              color:$menu-active;
+              display: flex;
+              align-items: center;
+              @include roboto;
+              font-weight: 700;
+              @include transition-3;
+              span {
+                font-size:20px;
+              }
+              &:hover {
+                color: $yellow-btn-hover;
+              }
+            }
+          }
+          &::before,
+          &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 260px;
+            left: 0;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            transform: scale3d(0, 0, 1);
+            transition: transform .3s ease-out 0s;
+            background: rgba(255, 255, 255, .1);
+            content: '';
+            pointer-events: none;
+          }
+
+          &::before {
+            transform-origin: left top;
+          }
+
+          &::after {
+            transform-origin: right bottom;
+          }
+
+          &:hover,
+          &:focus {
+            &::before,
+            &::after {
+              transform: scale3d(1, 1, 1);
+            }
+          }
+          &:hover {
+            box-shadow: 0px 0px 5px 2px rgba(194,217,24,1);
+          }
+        }
+       }
+      }
+    }
+  }
+  // Exchange section
+  .exchange-section {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    background: linear-gradient(rgba(217, 41, 41, 0.55), rgba(167, 30, 30, 0.58)), url(public/img/dark.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .exchange-width {
+      width: 85%;
+      .card {
+        margin-right: 20px;
+        @include transition-3;
+        &.exchange {
+        border: none;
+        border-radius: 10px;
+        height: 350px;
+        background: $exchange-bg;
+        img {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          height: 350px;
+        }
+        .card-body {
+          height: 100%;
+
+          h2 {
+            margin-bottom: 0;
+            color: $exchange;
+            &.card-title {
+              margin-top: 1rem;
+              font-size: 2.6rem;
+              font-weight: 300;
+              margin-bottom: -15px;
+            }
+            &.your-cd {
+              font-size: 2.6rem;
+              font-weight: 300;
+              margin-top: -15px;
+              margin-right: 10px;
+            }
+          }
+          h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0;
+            color: $exchange;
+          }
+          .excng-btn {
+            button {
+              background: $menu-active;
+              border-color: $menu-active;
+              border-radius: 23px;
+              padding: 10px 20px;
+              font-weight: 700;
+              font-size: 22px;
+              letter-spacing: 1px;
+              @include roboto-con;
+              @include transition-3;
+              &:hover {
+                background: $yellow-btn-hover;
+              }
+            }
+          }
+
+        }
+      }
+        &.rent {
+          border: none;
+          border-radius: 10px;
+          height: 350px;
+          background: $rent-bg;
+          img {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            height: 350px;
+          }
+          .card-body {
+            height: 100%;
+
+            h2 {
+              margin-bottom: 0;
+              color: $white-clr;
+              text-align: center;
+
+              &.card-title {
+                margin-top: 1rem;
+                font-size: 2.6rem;
+                font-weight: 300;
+                @include roboto-con;
+                margin-bottom: -15px;
+              }
+              &.your-cd {
+                font-size: 2.6rem;
+                font-weight: 300;
+                @include roboto-con;
+                margin-top: -15px;
+              }
+            }
+            h1 {
+              font-size: 4.5rem;
+              margin-bottom: 0;
+              color: $white-clr;
+              text-align: center;
+              @include roboto-con;
+              span {
+                font-size: 3.6rem;
+                font-weight: 500;
+                @include roboto-con;
+                margin-right: 4px;
+              }
+            }
+            .rent-btn {
+              button {
+                background: $menu-active;
+                border-color: $menu-active;
+                border-radius: 23px;
+                padding: 10px 40px;
+                font-weight: 700;
+                font-size: 22px;
+                letter-spacing: 1px;
+                @include roboto-con;
+                @include transition-3;
+                &:hover {
+                  background: $yellow-btn-hover;
+                }
+              }
+            }
+
+          }
+        }
+        // card Hover effect
+        &::before,
+        &::after {
+          @include after-before;
+        }
+
+        &::before {
+          transform-origin: left top;
+        }
+
+        &::after {
+          transform-origin: right bottom;
+        }
+
+        &:hover,
+        &:focus {
+          &::before,
+          &::after {
+            transform: scale3d(1, 1, 1);
+
+          }
+        }
+        &:hover {
+          box-shadow: 0px 0px 5px 2px rgba(194,217,24,1);
+        }
+      }
+    }
+  }
+  // Best selling
+  .best-selling {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    background: $release-bg;
+    .selling-width {
+      width: 85%;
+      .release-header {
+        margin-bottom: 30px;
+        h2 {
+          color:$white-clr;
+          @include roboto-con;
+          text-transform: uppercase;
+          font-weight: 700;
+
+        }
+      }
+      .owl-carousel-two {
+        margin-top: 1.5rem;
+        position: relative;
+        .owl-nav {
+          position: absolute;
+          top: -77px;
+          right: 8px;
+          button {
+            color: $white-clr;
+            &.owl-prev {
+              margin-right: 1.5rem;
+            }
+            &:focus {
+              border: none !important;
+              box-shadow: none !important;
+              outline: none;
+            }
+            &:hover {
+              background: none;
+              color: $black-clr;
+            }
+          }
+          &.disabled {
+            display: block;
+          }
+        }
+        .item {
+          padding: 10px;
+          .card {
+
+            border: none;
+            border-radius: 10px;
+            height: 500px;
+            @include transition-3;
+            a {
+              height: 100%;
+              img {
+                border-radius: 10px;
+                height: 100% !important;
+              }
+            }
+            &::before,
+            &::after {
+             @include after-before;
+            }
+
+            &::before {
+              transform-origin: left top;
+            }
+
+            &::after {
+              transform-origin: right bottom;
+            }
+
+            &:hover,
+            &:focus {
+              &::before,
+              &::after {
+                transform: scale3d(1, 1, 1);
+              }
+            }
+            &:hover {
+              box-shadow: 0px 0px 5px 2px rgba(194,217,24,1);
+            }
+          }
+        }
+      }
+    }
+  }
+  // up coming
+  .up-coming {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background:  linear-gradient( rgba(255, 0, 0, 0.45), rgba(255, 0, 0, 0.45)),url(public/img/up-bg.png);
+    .up-coming-width {
+      width: 85%;
+      .upcoming-header {
+        margin-bottom: 30px;
+        h2 {
+          color:$white-clr;
+          @include roboto-con;
+          text-transform: uppercase;
+          font-weight: 700;
+
+        }
+      }
+      .owl-carousel-three {
+        margin-top: 1.5rem;
+        position: relative;
+        .owl-nav {
+          position: absolute;
+          top: -77px;
+          right: 8px;
+          button {
+            color: $white-clr;
+            &.owl-prev {
+              margin-right: 1.5rem;
+            }
+            &:focus {
+              border: none !important;
+              box-shadow: none !important;
+              outline: none;
+            }
+            &:hover {
+              background: none;
+              color: $black-clr;
+            }
+          }
+          &.disabled {
+            display: block;
+          }
+        }
+       .item {
+         padding: 10px;
+        .card {
+
+          border: none;
+          border-radius: 10px;
+          transition: all .5s ease-in;
+         a { height: 100%;
+          img {
+            border-radius: 10px;
+            height: 100%;
+          }
+         }
+          &::before,
+          &::after {
+            @include after-before;
+          }
+
+          &::before {
+            transform-origin: left top;
+          }
+
+          &::after {
+            transform-origin: right bottom;
+          }
+
+          &:hover,
+          &:focus {
+            &::before,
+            &::after {
+              transform: scale3d(1, 1, 1);
+            }
+          }
+          &:hover {
+            box-shadow: 0px 0px 5px 2px rgba(194,217,24,1);
+          }
+        }
+       }
+      }
+    }
+  }
+  // more rented
+  .more-rented {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: $release-bg;
+    .rented-width {
+      width: 85%;
+      .rented-header {
+        margin-bottom: 30px;
+        h2 {
+          color:$white-clr;
+          @include roboto-con;
+          text-transform: uppercase;
+          font-weight: 700;
+
+        }
+      }
+      .owl-carousel-four {
+        margin-top: 1.5rem;
+        position: relative;
+        padding-bottom: 4rem;
+        .owl-nav {
+          position: absolute;
+          top: -77px;
+          right: 8px;
+          button {
+            color: $white-clr;
+            &.owl-prev {
+              margin-right: 1.5rem;
+            }
+            &:focus {
+              border: none !important;
+              box-shadow: none !important;
+              outline: none;
+            }
+            &:hover {
+              background: none;
+              color: $black-clr;
+            }
+          }
+          &.disabled {
+            display: block;
+          }
+        }
+        .item {
+          padding: 10px;
+          .card {
+
+            border: none;
+            border-radius: 10px;
+            background:$card-1;
+            .card-img-top {
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
+            }
+            .card-body {
+              position: relative;
+              .game-name {
+                color: $white-clr;
+                text-transform: uppercase;
+                font-size: 20px;
+                @include roboto-con;
+                span {
+                  position: absolute;
+                  top: 21px;
+                  font-size: 12px;
+                  right: 53%;
+                }
+              }
+              .card-text {
+                color: $game-des;
+                @include roboto;
+                font-size: 16px;
+              }
+            }
+            .view-more-btn {
+              a {
+                background:$rented-btn-bg !important;
+                border-color: $rented-btn-bg;
+                border-radius: 15px;
+                color:$menu-active;
+                @include roboto;
+                font-weight: 700;
+                @include transition-3;
+                &:hover {
+                  background: $menu-active !important;
+                  border-color:$menu-active;
+                  color:$white-clr;
+                }
+              }
+            }
+            &::before,
+            &::after {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 132px;
+              left: 0;
+              border-top-right-radius: 10px;
+              border-top-left-radius: 10px;
+              transform: scale3d(0, 0, 1);
+              transition: transform .3s ease-out 0s;
+              background: rgba(193, 122, 135, 0.16);
+              content: '';
+              pointer-events: none;
+            }
+
+            &::before {
+              transform-origin: left top;
+            }
+
+            &::after {
+              transform-origin: right bottom;
+            }
+
+            &:hover,
+            &:focus {
+              &::before,
+              &::after {
+                transform: scale3d(1, 1, 1);
+              }
+            }
+            &:hover {
+              box-shadow: 0px 0px 5px 2px rgba(194,217,24,1);
+            }
+          }
+        }
+      }
+    }
+    .border {
+      border: 0.094rem solid $long-border !important;
+    }
+    // rented menu
+    .rented-menu-width {
+      width: 85%;
+      .menu-1 {
+        .rented-menu-part-1 {
+          list-style: none;
+          li {
+            margin-bottom: 5px;
+            a {
+              text-decoration: none;
+              color: $white-clr;
+              font-weight: 500;
+              @include transition-3;
+              &:hover {
+                color: $rented-menu-hvr;
+              }
+            }
+          }
+        }
+      }
+      .menu-2 {
+        .rented-menu-part-2 {
+          list-style: none;
+          li {
+            margin-bottom: 5px;
+            a {
+              text-decoration: none;
+              color: $white-clr;
+              font-weight: 500;
+              @include transition-3;
+              &:hover {
+                color: $rented-menu-hvr;
+              }
+            }
+          }
+        }
+      }
+      .social {
+        h6 {
+          color: $white-clr;
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+        .social-icon {
+          margin-bottom: 2rem;
+         i {
+          background: $white-clr;
+          border-radius: 50%;
+          height: 40px;
+          width: 40px;
+          font-size: 25px;
+          margin-right:10px;
+          cursor: pointer;
+          &.facebook {
+            padding-left: 12px;
+            padding-top: 10px;
+            @include transition-3;
+            &:hover {
+              background: $facebook;
+              color:$white-clr;
+            }
+          }
+          &.youtube {
+            padding-top: 8px;
+            padding-left: 6px;
+            @include transition-3;
+            &:hover {
+              background: $youtube;
+              color:$white-clr;
+            }
+          }
+          &.twitter {
+            padding: 8px;
+            @include transition-3;
+            &:hover {
+              background: $twitter;
+              color:$white-clr;
+            }
+          }
+         }
+        }
+      }
+      .contact-us {
+        h6 {
+          color: $white-clr;
+        }
+        address {
+          color: $white-clr;
+        }
+    }
+    }
+  }
+  // footer
+  footer {
+    background: $footer;
+    border-top: 3px solid $footer-border;
+    padding: 20px 0;
+    .footer-width {
+      width: 85%;
+      p {
+        color:$white-clr;
+        margin-bottom: 0 !important;
+        margin-left: 3rem;
+        font-weight: 500;
+        span {
+          border-left: 2px solid $white-clr;
+          /* margin-top: 3px; */
+          margin-right: 10px;
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  // jedi fallen page
+  // item details section
+  .item-details {
+  padding-top:2rem;
+  padding-bottom: 3rem;
+  background: $item-bg;
+
+   .item-details-width {
+     width: 85%;
+     .item-slide {
+      display: flex;
+    }
+
+    .thumbnails {
+      display: flex;
+      flex-direction: column;
+      line-height: 0;
+      background:$thumbnail-bg;
+      width: 100px;
+      margin-right: 2rem;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+      list-style: none;
+
+      .thumbnail-active {
+        a {
+          display: block;
+          outline: 1px solid $white-clr;
+          padding: 4px;
+          opacity: .5;
+          @include transition-3;
+          &:hover {
+            opacity: 1;
+          }
+          &.active {
+            opacity: 1;
+            padding: 5px;
+          }
+          img {
+            width: 70px;
+            height: 60px;
+            object-fit: cover;
+            object-position: top;
+          }
+        }
+      }
+
+    }
+
+    .slides {
+      overflow: hidden;
+      height: 500px;
+      list-style: none;
+
+      li {
+      height: 500px;
+        position: absolute;
+        z-index: 1;
+        img {
+          height: 100%;
+          width: 97%;
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+
+
+    }
+
+    .slides li:target {
+      z-index: 3;
+      -webkit-animation: slide 1s 1;
+    }
+
+    .slides li:not(:target) {
+      -webkit-animation: hidden 1s 1;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0%);
+      }
+    }
+
+    @keyframes hidden {
+      0% {
+        z-index: 2;
+      }
+      100% {
+        z-index: 2;
+      }
+    }
+    .item-btn {
+      a {
+
+        background: $menu-active;
+        padding: 12px 0px;
+        border-color: $menu-active;
+        border-radius: 20px;
+        width: 140px;
+        @include transition-3;
+        font-size: 18px;
+        font-weight: 500;
+        margin-left: 27px;
+        &.rent {
+          background: $rent-btn;
+          border-color: $rent-btn;
+          color: $black-clr;
+          &:hover {
+            background: $menu-active;
+            border-color: $menu-active;
+          }
+        }
+        &.exchange {
+          background: $thumbnail-bg;
+          border-color: $thumbnail-bg;
+          &:hover {
+            background: $exchange-hvr;
+            border-color: $exchange-hvr;
+          }
+        }
+        &.buy-now {
+          color: $black-clr;
+          &:hover {
+            background:$yellow-btn-hover;
+          border-color:$yellow-btn-hover;
+          }
+        }
+      }
+    }
+    .item-description {
+      .back-to-home {
+        p {
+          color: $description-clr;
+          a {
+            color:$description-clr;
+          }
+        }
+      }
+      .card {
+        background: $thumbnail-bg;
+        color: $white-clr;
+        padding-bottom: .2rem;
+        border-radius: 10px;
+        .price {
+          color: $menu-active;
+          span {
+
+            border-right: 1px solid #5b5e5f;
+            font-size: 20px;
+            margin-right: 10px;
+            margin-left: 5px;
+
+          }
+        }
+        .part-left {
+          h4 {
+            font-size: 20px;
+            @include roboto-con;
+          }
+        }
+        .part-right {
+          margin-left:-3rem;
+          h6 {
+            color: $description-clr;
+            font-weight: 400;
+            @include roboto-con;
+            font-size: 19px;
+            &.seller-name {
+              color: $menu-active;
+              .badge {
+                font-size: 14px;
+                color: $menu-active;
+                background: $item-bg;
+                border-radius: 20px;
+                padding: 3px 8px;
+                span {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+   }
+  }
+  // games main details section
+  .games-main-details {
+    background: $release-bg;
+    height: 120px;
+    .games-main-details-width {
+      width:85%;
+      .nav-pills {
+        padding-top:1rem;
+        .nav-item {
+          margin-right: 3rem;
+          .nav-link {
+            color:$white-clr;
+            position: relative;
+            font-size: 20px;
+            &.active {
+              background: none;
+              color: $menu-active;
+              font-weight: 600;
+              &:after {
+                content: '';
+                position: absolute;
+                height: 4px;
+                bottom: -8px;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+               width: 70%;
+               background:$menu-active;
+              }
+            }
+          }
+        }
+      }
+      .border {
+        border-color: #0b001a !important;
+      }
+    }
+  }
+  // item tab
+  .item-tab {
+    .over-view {
+      background: $release-bg;
+      .item-tab-width {
+        width:85%;
+
+        .title-1 {
+          color: $white-clr;
+          h2 {
+            position: relative;
+            @include roboto-con;
+            font-weight: 700;
+            span {
+              font-size: 10px;
+              position: absolute;
+              top: 7px;
+              margin-left: 2px;
+              font-weight: 700;
+            }
+          }
+          p {
+            color: $description-clr;
+            font-size: 20px;
+            @include roboto-con;
+          }
+        }
+        .title-img {
+          text-align: right;
+          img {
+            width:600px;
+          }
+        }
+        .scr-vdo {
+          margin-bottom: 3rem;
+          h5 {
+            color:$description-clr;
+          }
+          h2 {
+            color: $white-clr;
+          }
+        }
+        .video-1 {
+          iframe {
+            width: 100%;
+            height: 500px;
+          }
+        }
+        .video-2 {
+          iframe {
+            width: 100%;
+            height: 500px;
+          }
+        }
+        .action-part {
+          width: 70%;
+          margin: auto;
+          img {
+            width:100%;
+          }
+        }
+      }
+    }
+    // specification
+    .specification {
+      background: $release-bg;
+      .specification-width {
+        width: 85%;
+        .specifications {
+          h3 {
+            color:$description-clr;
+          }
+          .general-titles {
+            color:$white-clr;
+          }
+          .general-titles-details {
+            color:$description-clr;
+          }
+          .border {
+            border-color :$des-brd !important;
+          }
+        }
+      }
+    }
+    // question
+    .question {
+      background: $release-bg;
+      .question-width {
+        width: 85%;
+        .questions {
+          .input-group {
+            .input-group-append {
+              width:100%;
+              .question-search-input {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                background: $search;
+                border-color: $search;
+                color: $white-clr !important;
+                padding-left: 20px;
+                @include transition-3;
+                &::placeholder {
+                  color: $white-clr !important;
+                }
+                &:focus {
+                  // box-shadow:  0px 0px 3px 2px  $white-clr; !important;
+                  background: transparent;
+                  border: 1px solid $white-clr;
+                  &::placeholder {
+                    color: $rented-menu-hvr !important;
+                  }
+                }
+              }
+              .question-search-icon {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                 border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                background: $menu-active;
+                border-color: $menu-active;
+                width: 10%;
+                @include transition-3;
+                i {
+                  color: $black-clr;
+                  font-size: 18px;
+                }
+                &:focus {
+                  box-shadow: none !important;
+                }
+                &:hover {
+                  background: $yellow-btn-hover;
+                  border-color: $yellow-btn-hover;
+                }
+              }
+            }
+          }
+         .main-question {
+               article {
+                   overflow: hidden;
+                  display: block;
+                  display: none;
+
+                 table {
+                   tr {
+                     td {
+                       color: $white-clr;
+                       &.qus-1 {
+                        color:$menu-active;
+                      }
+                      &.ans-1 {
+                        color:$description-clr;
+                      }
+                      &.date {
+                        color:$description-clr;
+                      }
+                     }
+                   }
+                 }
+                 .border {
+                   margin-bottom: 2rem;
+                 }
+               }
+               .see-more {
+                display: block;
+                margin-top: -50px;
+                margin-left: 7rem;
+                color: $menu-active;
+                position: absolute;
+
+
+
+                .arrow-down {
+                  position: relative;
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    top: 5px;
+                    right: -30px;
+                    z-index: 11;
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    border-top: 1px solid #fff;
+                    border-left: 1px solid #fff;
+                    transform: rotate(-134deg);
+                  }
+                }
+              }
+              .seeless {
+                display: block;
+                margin-top: -10px;
+                margin-left: 7rem;
+                color: $menu-active;
+                .arrow-up {
+                  position: relative;
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    top: 11px;
+                    right: -30px;
+                    z-index: 11;
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    border-top: 1px solid #fff;
+                    border-left: 1px solid #fff;
+                    transform: rotate(46deg);
+                  }
+                }
+              }
+         }
+         .loadmore {
+          margin: auto;
+          background: $footer;
+          width: 48%;
+          padding: 10px;
+          text-align: center;
+          border-radius: 20px;
+          margin-top: 2rem;
+          a {
+            color: $white-clr;
+          }
+         }
+        }
+      }
+    }
+  }
+
+// Media queries --->
+
+
+// max 1800px
+@include for-desktop-large-device-only {
+  // new-release
+  .new-release {
+    .card {
+      .card-body {
+        .game-name {
+          span {
+
+          }
+        }
+      }
+    }
+  }
+  // Exchange
+  .exchange-section {
+    .exchange-width {
+      .card {
+        margin-right: 0 !important;
+        &.exchange {
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 4rem;
+              text-align: center;
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 70px !important;
+            }
+            .excng-btn button {
+              font-size: 25px !important;
+            }
+          }
+        }
+        &.rent {
+          height: initial !important;
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 4rem;
+              text-align: center;
+              span {
+                font-size: 3rem;
+              }
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 10px !important;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  // jedi page
+  // menu
+  .jedi-menu {
+    .menu-list-top {
+      li {
+        form {
+         .input-group {
+           margin-left: 14px;
+           .input-group-append {
+            width:66%;
+          }
+          .sign-in-btn {
+            margin-left: 10px !important;
+          }
+         }
+        }
+        a {
+          font-size: 13px !important;
+        }
+      }
+    }
+  }
+  // item-btn
+  .item-btn {
+    a {
+      padding: 8px 0 !important;
+      width: 120px !important;
+      margin-left: 45px;
+    }
+  }
+
+
+}
+// max 1600px
+@include for-desktop-up-device-only {
+  // nav
+nav {
+padding: 0 !important;
+.nav-width {
+  width: 100%;
+  .navbar-brand {
+    @include padding-1;
+    margin-right: 0 !important;
+    // padding-left:0 !important;
+    img {
+      width: 150px;
+    }
+  }
+  .menu-list {
+
+     .menu-list-top {
+       padding-left: 2rem;
+       padding-bottom: .5rem;
+       padding-top: 1rem;
+       li {
+         margin-top: 0;
+        &.search {
+          // margin:0 !important;
+         form {
+           .input-group {
+             .input-group-append {
+               margin-right: 10px;
+               margin-bottom: 10px;
+               button {
+                &.menu-search-icon {
+                 margin-top: 0 !important;
+                }
+               }
+             }
+             .sign-in-btn {
+               margin-left: 0 !important;
+               margin-bottom: 10px;
+             }
+           }
+         }
+        }
+        a {
+          font-size: 15px;
+        }
+       }
+     }
+     .menu-list-bottom {
+
+       padding-left: 2rem;
+       padding-bottom: .5rem;
+       li {
+         margin-top: 0;
+         a {
+           display: inline-block;
+           margin-top: 0;
+           &::after {
+             width: 100%;
+             bottom: 0;
+           }
+         }
+       }
+     }
+   }
+}
+}
+// new-release
+.new-release {
+  .release-width {
+    width: 100%;
+    .release-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-one {
+      .item {
+        .card {
+          margin-right: 0 !important;
+          .card-body {
+            .game-name {
+              font-size: 18px;
+              position: relative!important;
+            }
+            .card-text {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+  // Exchange
+  .exchange-section {
+    .exchange-width {
+      width: 100%;
+      .card {
+        margin-right: 0 !important;
+        &.exchange {
+          height: initial !important;
+          img {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 4rem;
+              text-align: center;
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 35px !important;
+            }
+            .excng-btn button {
+              font-size: 25px !important;
+            }
+          }
+        }
+        &.rent {
+          height: initial !important;
+          img {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+          }
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 4rem;
+              text-align: center;
+              span {
+                font-size: 3rem;
+              }
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 10px !important;
+              text-align: center;
+            }
+            .rent-btn button {
+              font-size: 25px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+      // best selling
+ .best-selling {
+  .selling-width {
+    width: 100%;
+    .release-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-two {
+      .item {
+        .card {
+          margin-right: 0 !important;
+          height: 400px;
+          img {
+            height: 400px;
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+   // up coming
+   .up-coming {
+    .up-coming-width {
+      width: 100%;
+      .upcoming-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+      .owl-carousel-three {
+        .item {
+          .card {
+            margin-right: 0 !important;
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+            right: 8px !important;
+          button {
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+   // rented
+ .more-rented {
+  .rented-width {
+    width:100%;
+    .rented-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-four {
+      padding-bottom: 2rem;
+      .item {
+        .card {
+          margin-right: 0 !important;
+          .card-body {
+            .game-name {
+              font-size: 19px !important;
+            }
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+  .rented-menu-width {
+    width:100%;
+    .menu-1 {
+      .rented-menu-part-1 {
+
+        margin-bottom: 0;
+        li {
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .menu-2 {
+      .rented-menu-part-2 {
+
+        li {
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .contact {
+      margin-left: 3rem;
+      .social {
+        h6 {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+}
+// max 1400px
+@include for-desktop-device-only {
+  // nav
+nav {
+padding: 0 !important;
+.nav-width {
+  width: 100%;
+  .navbar-brand {
+    @include padding-1;
+    margin-right: 0 !important;
+    // padding-left:0 !important;
+    img {
+      width: 150px;
+    }
+  }
+  .menu-list {
+
+     .menu-list-top {
+       padding-left: 2rem;
+       padding-bottom: .5rem;
+       padding-top: 1rem;
+       li {
+         margin-top: 0;
+        &.search {
+          // margin:0 !important;
+         form {
+           .input-group {
+             .input-group-append {
+               margin-right: 10px;
+               margin-bottom: 10px;
+               button {
+                &.menu-search-icon {
+                 margin-top: 0 !important;
+                }
+               }
+             }
+             .sign-in-btn {
+               margin-left: 0 !important;
+               margin-bottom: 10px;
+             }
+           }
+         }
+        }
+        a {
+          font-size: 12px !important;
+        }
+       }
+     }
+     .menu-list-bottom {
+
+       padding-left: 2rem;
+       padding-bottom: .5rem;
+       li {
+         margin-top: 0;
+         a {
+           display: inline-block;
+           margin-top: 0;
+           &::after {
+             width: 100%;
+             bottom: 0;
+           }
+         }
+       }
+     }
+   }
+}
+}
+// new-release
+.new-release {
+  .release-width {
+    width: 100%;
+    .release-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-one {
+      .item {
+        .card {
+          margin-right: 0 !important;
+          .card-body {
+            .game-name {
+              font-size: 18px;
+              position: relative!important;
+            }
+            .card-text {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+  // Exchange
+  .exchange-section {
+    .exchange-width {
+      width: 100%;
+      .card {
+        margin-right: 0 !important;
+        &.exchange {
+          height: initial !important;
+          img {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+             &.exchange-1 {
+              font-size: 3.5rem;
+              text-align: center;
+             }
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 25px !important;
+            }
+            .excng-btn button {
+              font-size: 25px !important;
+            }
+          }
+        }
+        &.rent {
+          height: initial !important;
+          img {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+          }
+          .card-body {
+            .card-title {
+              font-size: 2rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+             &.rent-1 {
+              font-size: 3.5rem;
+              text-align: center;
+              span {
+                font-size: 2rem;
+              }
+             }
+            }
+            .your-cd {
+              font-size: 2rem !important;
+              margin-top: -5px !important;
+              margin-right: 10px !important;
+              text-align: center;
+            }
+            .rent-btn button {
+              font-size: 25px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+      // best selling
+ .best-selling {
+  .selling-width {
+    width: 100%;
+    .release-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-two {
+      .item {
+        .card {
+          margin-right: 0 !important;
+          height: 400px;
+          img {
+            height: 400px;
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+   // up coming
+   .up-coming {
+    .up-coming-width {
+      width: 100%;
+      .upcoming-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+      .owl-carousel-three {
+        .item {
+          .card {
+            margin-right: 0 !important;
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+            right: 8px !important;
+          button {
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+   // rented
+ .more-rented {
+  .rented-width {
+    width:100%;
+    .rented-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    .owl-carousel-four {
+      padding-bottom: 2rem;
+      .item {
+        .card {
+          margin-right: 0 !important;
+          .card-body {
+            .game-name {
+              font-size: 19px !important;
+            }
+          }
+        }
+      }
+      .owl-nav {
+          top: -70px !important;
+          right: 8px !important;
+        button {
+          img {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+  .rented-menu-width {
+    width:100%;
+    .menu-1 {
+      .rented-menu-part-1 {
+
+        margin-bottom: 0;
+        li {
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .menu-2 {
+      .rented-menu-part-2 {
+
+        li {
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .contact {
+      margin-left: 3rem;
+      .social {
+        h6 {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+}
+// max 1200px
+@include for-large-device-only {
+  // nav
+ nav {
+  padding: 0 !important;
+  .nav-width {
+    width: 100%;
+    .navbar-brand {
+      @include padding-1;
+      // padding-left:0 !important;
+      img {
+        width: 100px;
+      }
+    }
+    button {
+      &.navbar-toggler{
+        border-color: $white-clr !important;
+        @include margin-1;
+        // margin-right: 0 !important;
+        .navbar-toggler-icon {
+          background-image: url("public/img/menu-icon/menu-icon.png") !important;
+      }
+
+      }
+    }
+    .navbar-collapse {
+      border-top: 1px solid $white-clr;
+      margin-top: .5rem;
+      .menu-list {
+       display: flex;
+       background: $menu-small-bg-1;
+        .menu-list-top {
+          padding-left: 2rem;
+          padding-bottom: .5rem;
+          width: 50%;
+          li {
+            margin-top: 0;
+           &.search {
+             margin:0 !important;
+            form {
+              .input-group {
+                .input-group-append {
+                  margin-right: 10px;
+                  margin-bottom: 10px;
+                  button {
+                   &.menu-search-icon {
+                    margin-top: 0 !important;
+                   }
+                  }
+                }
+                .sign-in-btn {
+                  margin-left: 0 !important;
+                  margin-bottom: 10px;
+                }
+              }
+            }
+           }
+           a {
+             font-size: 16px !important;
+           }
+           .dropdown-menu {
+             width: 52% !important;
+            &:after {
+              display: none;
+            }
+          }
+          }
+        }
+        .menu-list-bottom {
+         width: 50%;
+          padding-left: 12rem;
+          padding-bottom: 1rem;
+          li {
+            margin-top: 0;
+            a {
+              display: inline-block;
+              margin-top: 0;
+              &::after {
+                width: 100%;
+                bottom: 0;
+              }
+
+            }
+            .dropdown-menu {
+              &:after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  // new-release
+  .new-release {
+    .release-width {
+      width: 100%;
+      .release-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+      .owl-carousel-one {
+        .item {
+          .card {
+            margin-right: 0 !important;
+            .card-body {
+              .game-name {
+                font-size: 18px;
+                position: relative!important;
+              }
+              .card-text {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+            right: 8px !important;
+          button {
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+    // Exchange
+    .exchange-section {
+      .exchange-width {
+        width: 100%;
+        .card {
+          margin-right: 0 !important;
+          &.exchange {
+            height: initial !important;
+            img {
+              border-top-right-radius: 0px;
+              border-bottom-right-radius: 0px;
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+            }
+            .card-body {
+              .card-title {
+                font-size: 1.6rem !important;
+                margin-bottom: 0px !important;
+                text-align: center;
+              }
+              h1 {
+                &.exchange-1 {
+                 font-size: 2.7rem;
+                }
+              }
+              .your-cd {
+                font-size: 1.6rem !important;
+                margin-top: 0px !important;
+               text-align: center !important;
+              }
+              .excng-btn button {
+                font-size: 25px !important;
+              }
+            }
+          }
+          &.rent {
+            height: initial !important;
+            img {
+              border-top-right-radius: 0px;
+              border-bottom-right-radius: 0px;
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+
+            }
+            .card-body {
+              .card-title {
+                font-size: 1.6rem !important;
+                margin-bottom: 0px !important;
+                text-align: center !important;
+              }
+              h1 {
+                &.rent-1 {
+                  font-size: 2.7rem ;
+                text-align: center;
+                span {
+                  font-size: 2.2rem !important;
+                }
+                }
+              }
+              .your-cd {
+                font-size: 1.6rem !important;
+                margin-top: 0px !important;
+                margin-right: 10px !important;
+                text-align: center;
+              }
+              .rent-btn button {
+                font-size: 25px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+        // best selling
+   .best-selling {
+    .selling-width {
+      width: 100%;
+      .release-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+      .owl-carousel-two {
+        .item {
+          .card {
+            margin-right: 0 !important;
+            height: 400px;
+            img {
+              height: 400px;
+            }
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+            right: 8px !important;
+          button {
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+     // up coming
+     .up-coming {
+      .up-coming-width {
+        width: 100%;
+        .upcoming-header {
+          h2 {
+            font-size: 1.8rem;
+          }
+        }
+        .owl-carousel-three {
+          .item {
+            .card {
+              margin-right: 0 !important;
+            }
+          }
+          .owl-nav {
+              top: -70px !important;
+              right: 8px !important;
+            button {
+              img {
+                width: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+     // rented
+   .more-rented {
+    .rented-width {
+      width:100%;
+      .rented-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+      .owl-carousel-four {
+        padding-bottom: 2rem;
+        .item {
+          .card {
+            margin-right: 0 !important;
+            .card-body {
+              .game-name {
+                font-size: 19px !important;
+              }
+            }
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+            right: 8px !important;
+          button {
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+    .rented-menu-width {
+      width:100%;
+      .menu-1 {
+        .rented-menu-part-1 {
+
+          margin-bottom: 0;
+          li {
+            a {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .menu-2 {
+        .rented-menu-part-2 {
+
+          li {
+            a {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .contact {
+        margin-left: 3rem;
+        .social {
+          h6 {
+            font-size: 20px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+// max 992px
+@include for-medium-device-only {
+  // nav
+nav {
+ padding: 0 !important;
+ .nav-width {
+   width: 100%;
+   .navbar-brand {
+     @include padding-1;
+     // padding-left:0 !important;
+     img {
+       width: 100px;
+     }
+   }
+   button {
+     &.navbar-toggler{
+       border-color: $white-clr !important;
+       @include margin-1;
+       // margin-right: 0 !important;
+       .navbar-toggler-icon {
+         background-image: url("public/img/menu-icon/menu-icon.png") !important;
+     }
+
+     }
+   }
+   .navbar-collapse {
+     border-top: 1px solid $white-clr;
+     margin-top: .5rem;
+     .menu-list {
+      display: flex;
+      justify-content: space-between;
+      background: $menu-small-bg-1;
+       .menu-list-top {
+
+         padding-left: 2rem;
+         padding-bottom: .5rem;
+         li {
+           margin-top: 0;
+          &.search {
+            margin:0 !important;
+           form {
+             .input-group {
+               .input-group-append {
+                 margin-right: 10px;
+                 margin-bottom: 10px;
+                 button {
+                  &.menu-search-icon {
+                   margin-top: 0 !important;
+                  }
+                 }
+               }
+               .sign-in-btn {
+                 margin-left: 0 !important;
+                 margin-bottom: 10px;
+               }
+             }
+           }
+          }
+          a {
+            font-size: 16px !important;
+          }
+          .dropdown-menu {
+            width: 70% !important;
+          }
+         }
+       }
+       .menu-list-bottom {
+
+         padding-left: 8rem;
+         padding-bottom: 1rem;
+         li {
+           margin-top: 0;
+           a {
+             display: inline-block;
+             margin-top: 0;
+             &::after {
+               width: 100%;
+               bottom: 0;
+             }
+           }
+         }
+       }
+     }
+   }
+ }
+}
+ // new-release
+ .new-release {
+   .release-width {
+     width: 100%;
+     .release-header {
+       h2 {
+         font-size: 1.8rem;
+       }
+     }
+     .owl-carousel-one {
+       .item {
+         .card {
+           margin-right: 0 !important;
+           .card-body {
+             .game-name {
+               font-size: 18px;
+               position: relative!important;
+             }
+             .card-text {
+               font-size: 15px;
+             }
+           }
+         }
+       }
+       .owl-nav {
+           top: -70px !important;
+           right: 8px !important;
+         button {
+           img {
+             width: 25px;
+           }
+         }
+       }
+     }
+   }
+ }
+   // Exchange
+   .exchange-section {
+     .exchange-width {
+       width: 100%;
+       .card {
+         margin-right: 0 !important;
+         &.exchange {
+           height: initial !important;
+           img {
+             border-top-right-radius: 10px !important;
+             border-bottom-right-radius: 0;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 0 !important;
+           }
+           .card-body {
+             .card-title {
+               font-size: 1.6rem !important;
+               margin-bottom: -5px !important;
+               text-align: center !important;
+             }
+             h1 {
+              &.exchange-1 {
+               font-size: 3.5rem;
+               text-align: center;
+              }
+             }
+             .your-cd {
+               font-size: 1.6rem !important;
+               margin-top: -5px !important;
+               margin-right: 10px !important;
+               text-align: center !important;
+             }
+             .excng-btn button {
+               font-size: 25px !important;
+             }
+           }
+         }
+         &.rent {
+           height: initial !important;
+           img {
+             border-top-right-radius: 10px !important;
+             border-bottom-right-radius: 0;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 0 !important;
+
+           }
+           .card-body {
+             .card-title {
+               font-size: 1.6rem !important;
+               margin-bottom: -5px !important;
+               text-align: center;
+             }
+             h1 {
+               &.rent-1 {
+                 font-size: 3.5rem ;
+               text-align: center;
+               span {
+                 font-size: 2.6rem;
+               }
+               }
+             }
+             .your-cd {
+               font-size: 1.6rem !important;
+               margin-top: -5px !important;
+               margin-right: 10px !important;
+               text-align: center;
+             }
+             .rent-btn button {
+               font-size: 25px !important;
+             }
+           }
+         }
+       }
+     }
+   }
+     // best selling
+  .best-selling {
+   .selling-width {
+     width: 100%;
+     .release-header {
+       h2 {
+         font-size: 1.8rem;
+       }
+     }
+     .owl-carousel-two {
+       .item {
+         .card {
+           margin-right: 0 !important;
+           height: 400px;
+           img {
+             height: 400px;
+           }
+         }
+       }
+       .owl-nav {
+           top: -70px !important;
+           right: 8px !important;
+         button {
+           img {
+             width: 25px;
+           }
+         }
+       }
+     }
+   }
+ }
+  // up coming
+  .up-coming {
+   .up-coming-width {
+     width: 100%;
+     .upcoming-header {
+       h2 {
+         font-size: 1.8rem;
+       }
+     }
+     .owl-carousel-three {
+       .item {
+         .card {
+           margin-right: 0 !important;
+         }
+       }
+       .owl-nav {
+           top: -70px !important;
+           right: 8px !important;
+         button {
+           img {
+             width: 25px;
+           }
+         }
+       }
+     }
+   }
+ }
+ // rented
+  .more-rented {
+       .rented-width {
+         width:100%;
+         .rented-header {
+           h2 {
+             font-size: 1.8rem;
+           }
+         }
+         .owl-carousel-four {
+           padding-bottom: 2rem;
+           .item {
+             .card {
+               margin-right: 0 !important;
+               .card-body {
+                 .game-name {
+                   font-size: 19px !important;
+                 }
+               }
+             }
+           }
+           .owl-nav {
+               top: -70px !important;
+               right: 8px !important;
+             button {
+               img {
+                 width: 25px;
+               }
+             }
+           }
+         }
+       }
+       .rented-menu-width {
+         width:100%;
+         .menu-1 {
+           .rented-menu-part-1 {
+
+             margin-bottom: 0;
+             li {
+               a {
+                 font-size: 16px;
+               }
+             }
+           }
+         }
+         .menu-2 {
+           .rented-menu-part-2 {
+
+             li {
+               a {
+                 font-size: 16px;
+               }
+             }
+           }
+         }
+        .contact {
+          margin-left: 0 !important;
+         .social {
+           h6 {
+             font-size: 20px;
+             margin-top: 10px;
+             font-weight: 600;
+           }
+         }
+        }
+       }
+     }
+           // footer
+ footer {
+   .footer-width {
+     width: 100%;
+     p {
+       font-size: .9rem;
+       text-align: center !important;
+       span {
+         font-size: 13px;
+       }
+     }
+   }
+ }
+}
+// max 768px
+@include for-small-device-only {
+  // nav
+  nav {
+   padding: 0 !important;
+   .nav-width {
+     width: 100%;
+     .navbar-brand {
+       @include padding-1;
+       padding-left: 2rem !important;
+       img {
+         width: 100px;
+       }
+     }
+     button {
+       &.navbar-toggler{
+         border-color: $white-clr !important;
+         @include margin-1;
+         margin-right: 2rem !important;
+         .navbar-toggler-icon {
+           background-image: url("public/img/menu-icon/menu-icon.png") !important;
+       }
+
+       }
+     }
+     .navbar-collapse {
+       border-top: 1px solid $white-clr;
+       margin-top: .5rem;
+       .menu-list {
+         background: $menu-small-bg-1;
+         .menu-list-top {
+          width: 50%;
+           padding-left: 2rem;
+           padding-bottom: .5rem;
+           li {
+             margin-top: 0;
+            &.search {
+              margin:0 !important;
+             form {
+               .input-group {
+                 .input-group-append {
+                   margin-right: 10px;
+                   margin-bottom: 10px;
+                   button {
+                    &.menu-search-icon {
+                     margin-top: 0 !important;
+                    }
+                   }
+                 }
+                 .sign-in-btn {
+                   margin-left: 0 !important;
+                   margin-bottom: 10px;
+                 }
+               }
+             }
+            }
+            a {
+              font-size: 16px !important;
+            }
+            .dropdown-menu {
+              width:100% !important;
+            }
+           }
+         }
+         .menu-list-bottom {
+          width: 50%;
+           padding-left: 2rem;
+           padding-bottom: 1rem;
+           li {
+             margin-top: 0;
+             a {
+               display: inline-block;
+               margin-top: 0;
+               &::after {
+                 width: 100%;
+                 bottom: 0;
+               }
+             }
+             .dropdown-menu {
+               width:100%;
+             }
+           }
+         }
+       }
+     }
+   }
+ }
+   // new-release
+   .new-release {
+     .release-width {
+       width: 100%;
+       .release-header {
+         h2 {
+           font-size: 1.8rem;
+         }
+       }
+       .owl-carousel-one {
+         .item {
+           .card {
+             margin-right: 0 !important;
+             .card-body {
+               .game-name {
+                 font-size: 18px;
+                 position: relative!important;
+               }
+               .card-text {
+                 font-size: 15px;
+               }
+             }
+           }
+         }
+         .owl-nav {
+             top: -70px !important;
+             right: 8px !important;
+           button {
+             img {
+               width: 25px;
+             }
+           }
+         }
+       }
+     }
+   }
+    // Exchange
+    .exchange-section {
+     .exchange-width {
+       width: 100%;
+       .card {
+         margin-right: 0 !important;
+         &.exchange {
+           height: initial !important;
+           img {
+             border-top-right-radius: 10px;
+             border-bottom-right-radius: 0;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 0;
+             height: initial !important;
+             height: 300px !important;
+           }
+           .card-body {
+             .card-title {
+               font-size: 1.6rem !important;
+               margin-bottom: -5px !important;
+               text-align: center;
+             }
+             h1 {
+               font-size: 2.5rem !important ;
+               text-align: center;
+             }
+             .your-cd {
+               font-size: 1.6rem !important;
+               margin-top: -5px !important;
+               margin-right: 0 !important;
+               text-align: center !important;
+             }
+             .excng-btn button {
+               font-size: 30px !important;
+             }
+           }
+         }
+         &.rent {
+           height: initial !important;
+           img {
+             border-top-right-radius: 10px;
+             border-bottom-right-radius: 0;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 0;
+             height: 300px !important;
+           }
+           .card-body {
+             .card-title {
+               font-size: 1.6rem !important;
+               margin-bottom: -5px !important;
+               text-align: center;
+             }
+             h1 {
+              font-size: 2.5rem !important ;
+               text-align: center;
+               span {
+                 font-size: 2.8rem !important;
+               }
+             }
+             .your-cd {
+               font-size: 1.6rem !important;
+               margin-top: -5px !important;
+               margin-right: 0 !important;
+               text-align: center;
+             }
+             .rent-btn button {
+               font-size: 30px !important;
+             }
+           }
+         }
+       }
+     }
+   }
+    // best selling
+    .best-selling {
+     .selling-width {
+       width: 100%;
+       .release-header {
+         h2 {
+           font-size: 1.8rem;
+         }
+       }
+       .owl-carousel-two {
+         .item {
+           .card {
+             margin-right: 0 !important;
+             height: 400px;
+             img {
+               height: 400px;
+             }
+           }
+         }
+         .owl-nav {
+             top: -70px !important;
+             right: 8px !important;
+           button {
+             img {
+               width: 25px;
+             }
+           }
+         }
+       }
+     }
+   }
+    // up coming
+    .up-coming {
+     .up-coming-width {
+       width: 100%;
+       .upcoming-header {
+         h2 {
+           font-size: 1.8rem;
+         }
+       }
+       .owl-carousel-three {
+         .item {
+           .card {
+             margin-right: 0 !important;
+           }
+         }
+         .owl-nav {
+             top: -70px !important;
+             right: 8px !important;
+           button {
+             img {
+               width: 25px;
+             }
+           }
+         }
+       }
+     }
+   }
+     // rented
+     .more-rented {
+       .rented-width {
+         width:100%;
+         .rented-header {
+           h2 {
+             font-size: 1.8rem;
+           }
+         }
+         .owl-carousel-four {
+           padding-bottom: 2rem;
+           .item {
+             .card {
+               margin-right: 0 !important;
+             }
+           }
+           .owl-nav {
+               top: -70px !important;
+               right: 8px !important;
+             button {
+               img {
+                 width: 25px;
+               }
+             }
+           }
+         }
+       }
+       .rented-menu-width {
+         width:100%;
+         .menu-1 {
+           .rented-menu-part-1 {
+
+             margin-bottom: 0;
+             li {
+               a {
+                 font-size: 12px !important;
+               }
+             }
+           }
+         }
+         .menu-2 {
+           .rented-menu-part-2 {
+
+             li {
+               a {
+                 font-size: 12px !important;
+               }
+             }
+           }
+         }
+         .social {
+           h6 {
+             font-size: 20px;
+             margin-top: 10px;
+           }
+         }
+       }
+     }
+       // footer
+   footer {
+     .footer-width {
+       width: 100%;
+       p {
+         font-size: .8rem;
+         text-align: center !important;
+         span {
+           font-size: 10px;
+         }
+       }
+     }
+   }
+ }
+// max 575px
+@include for-phone-only {
+  // nav
+  nav {
+    padding: 0 !important;
+    .nav-width {
+      width: 100%;
+      .navbar-brand {
+        @include padding-1;
+        img {
+          width: 100px;
+        }
+      }
+      button {
+        &.navbar-toggler{
+          border-color: $white-clr !important;
+          @include margin-1;
+          .navbar-toggler-icon {
+            background-image: url("public/img/menu-icon/menu-icon.png") !important;
+        }
+
+        }
+      }
+      .navbar-collapse {
+        border-top: 1px solid $white-clr;
+        margin-top: .5rem;
+        .menu-list {
+         flex-direction: column;
+          .menu-list-top {
+            background: $menu-small-bg-1;
+            padding-left: 1rem;
+            padding-bottom: .5rem;
+            width: 100%;
+            li {
+              margin-top: 0;
+             &.search {
+               margin:0 !important;
+              form {
+                .input-group {
+                  .input-group-append {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    button {
+                     &.menu-search-icon {
+                      margin-top: 0 !important;
+                     }
+                    }
+                  }
+                  .sign-in-btn {
+                    margin-left: 0 !important;
+                    margin-bottom: 10px;
+                  }
+                }
+              }
+             }
+             a {
+               font-size: 15px !important;
+             }
+            }
+          }
+          .menu-list-bottom {
+            background: $menu-small-bg-1;
+            border-top: 1px solid $white-clr;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+            width: 100%;
+            li {
+              margin-top: 0;
+              a {
+                display: inline-block;
+                margin-top: 0;
+                &::after {
+                  width: 100%;
+                  bottom: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // new-release
+  .new-release {
+    .release-width {
+      width: 100%;
+      .release-header {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      .owl-carousel-one {
+        .item {
+          .card {
+            margin-right: 0 !important;
+            .card-body {
+              .game-name {
+                font-size: 18px;
+                position: relative!important;
+              }
+              .card-text {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+          button {
+            img {
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // Exchange
+  .exchange-section {
+    .exchange-width {
+      width: 100%;
+      .card {
+        margin-right: 0 !important;
+        &.exchange {
+          height: initial !important;
+          img {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 0;
+            height: initial !important;
+          }
+          .card-body {
+            .card-title {
+              font-size: 1.6rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 3rem !important;
+              text-align: center;
+            }
+            .your-cd {
+              font-size: 1.6rem !important;
+              margin-top: -5px !important;
+              margin-right: 0 !important;
+              text-align: center !important;
+            }
+          }
+        }
+        &.rent {
+          height: initial !important;
+          img {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 0;
+            height: initial !important;
+          }
+          .card-body {
+            .card-title {
+              font-size: 1.6rem !important;
+              margin-bottom: -5px !important;
+              text-align: center;
+            }
+            h1 {
+              font-size: 3rem !important;
+              text-align: center;
+              span {
+                font-size: 2.6rem;
+              }
+            }
+            .your-cd {
+              font-size: 1.6rem !important;
+              margin-top: -5px !important;
+              margin-right: 0 !important;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  // best selling
+  .best-selling {
+    .selling-width {
+      width: 100%;
+      .release-header {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      .owl-carousel-two {
+        .item {
+          .card {
+            margin-right: 0 !important;
+            height: 500px;
+            img {
+              height: 100%;
+            }
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+          button {
+            img {
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // up coming
+  .up-coming {
+    .up-coming-width {
+      width: 100%;
+      .upcoming-header {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      .owl-carousel-three {
+        .item {
+          .card {
+            margin-right: 0 !important;
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+          button {
+            img {
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // rented
+  .more-rented {
+    .rented-width {
+      width:100%;
+      .rented-header {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      .owl-carousel-four {
+        padding-bottom: 2rem;
+        .item {
+          .card {
+            margin-right: 0 !important;
+          }
+        }
+        .owl-nav {
+            top: -70px !important;
+          button {
+            img {
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+    .rented-menu-width {
+      width:100%;
+      .menu-1 {
+        .rented-menu-part-1 {
+          border-bottom: 1px solid $small-border;
+          margin-bottom: 0;
+          li {
+            a {
+              font-size: 15px !important;
+            }
+          }
+        }
+      }
+      .menu-2 {
+        .rented-menu-part-2 {
+          border-bottom: 1px solid $small-border;
+          li {
+            a {
+              font-size: 15px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  // footer
+  footer {
+    .footer-width {
+      width: 100%;
+      p {
+        font-size: .8rem;
+        span {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
