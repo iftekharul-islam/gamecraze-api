@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\AssetRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AssetService {
@@ -20,9 +21,10 @@ class AssetService {
             {
                 $randomName = Str::random();
                 $imageName = $randomName.'.'.$image->getClientOriginalExtension();
-                $imagePath = $image->move(public_path().'/images/', $imageName);;
+                $image->storeAs('games', $imageName);
+//                $imagePath = Storage::disk('public')->put('games', $imageName);
 
-                $this->assetRepository->create($imageName, $imagePath, $game_id);
+                $this->assetRepository->create($imageName, $game_id);
             }
         }
         return;

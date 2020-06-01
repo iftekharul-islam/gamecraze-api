@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Game;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\GameCreateRequest;
 use App\Repositories\GameRepository;
@@ -48,5 +49,10 @@ class GameController extends BaseController
     public function destroy(Request $request)
     {
         $this->gameRepository->delete($request->id);
+    }
+
+    public function latestGames() {
+//        return Game::latest('release_date')->paginate(2);
+        return Game::with('assets')->latest('release_date')->paginate(5);
     }
 }

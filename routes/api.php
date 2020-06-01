@@ -23,6 +23,7 @@
 
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
+        $api->get('games/latest', 'App\Http\Controllers\API\GameController@latestGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');

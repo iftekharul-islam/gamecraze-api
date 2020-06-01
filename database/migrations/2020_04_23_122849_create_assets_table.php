@@ -16,7 +16,7 @@ class CreateAssetsTable extends Migration
         Schema::create('assets', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->unsignedBigInteger('game_id');
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->timestamps();

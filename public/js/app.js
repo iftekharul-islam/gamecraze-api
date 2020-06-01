@@ -1899,6 +1899,789 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Footer.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GameDetails.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GameDetails.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
@@ -37562,6 +38345,2397 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", { staticClass: "more-rented" }, [
+        _c("div", { staticClass: "border w-100" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "container-fluid rented-menu-width mt-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-6 col-lg-4" }, [
+              _c("div", { staticClass: "menu-1" }, [
+                _c("ul", { staticClass: "rented-menu-part-1" }, [
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Store")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Categories/Genres")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Platforms")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Lend/Borrow/Exchange")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Form/Discussion")
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4" }, [
+              _c("div", { staticClass: "menu-2" }, [
+                _c("ul", { staticClass: "rented-menu-part-2" }, [
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Game shops")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Top buyer/sellers")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v(" Trailer/Gameplay/Walkthrough(YouTube/Twitch)")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Latest News")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", {}, [
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Supports")])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-12 col-lg-4" }, [
+              _c("div", { staticClass: "contact" }, [
+                _c("div", { staticClass: "social" }, [
+                  _c("h6", [_vm._v("Follow Us :")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "social-icon " }, [
+                    _c("i", { staticClass: "fab fa-facebook-f facebook" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fab fa-youtube youtube" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fab fa-twitter twitter" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "contact-us" }, [
+                  _c("h6", [_vm._v("Contact Us :")]),
+                  _vm._v(" "),
+                  _c("address", [
+                    _vm._v(
+                      "\n                                Cell : +8801700000000 "
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                                e-mail : contact@surokkha.com.bd\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", {}, [
+        _c("div", { staticClass: "container-fluid footer-width" }, [
+          _c("p", [
+            _vm._v("© 2020 @ Gamerz "),
+            _c("span"),
+            _vm._v(" Devloped by:Augnitive")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", { staticClass: "item-details" }, [
+        _c("div", { staticClass: "container-fluid item-details-width" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-5" }, [
+              _c("div", { staticClass: "item-slide" }, [
+                _c("ul", { staticClass: "thumbnails", attrs: { id: "two" } }, [
+                  _c("li", { staticClass: "thumbnail-active" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "thumbnail-active-action",
+                        attrs: { href: "#slide1" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: {
+                            src: "img/selling/jedi/jedi1.png",
+                            alt: "jedi fallen"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "thumbnail-active" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "thumbnail-active-action",
+                        attrs: { href: "#slide2" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: {
+                            src: "img/selling/jedi/jedi2.png",
+                            alt: "jedi fallen"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "thumbnail-active" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "thumbnail-active-action",
+                        attrs: { href: "#slide4" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: {
+                            src: "img/selling/jedi/jedi4.png",
+                            alt: "jedi fallen"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "thumbnail-active" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "thumbnail-active-action",
+                        attrs: { href: "#slide5" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: {
+                            src: "img/selling/jedi/jedi5.png",
+                            alt: "jedi fallen"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "thumbnail-active" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "thumbnail-active-action",
+                        attrs: { href: "#slide3" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: {
+                            src: "img/selling/jedi/jedi3.png",
+                            alt: "jedi fallen"
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("ul", { staticClass: "slides" }, [
+                  _c("li", { attrs: { id: "slide1" } }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "img/selling/jedi/jedi1.png",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { attrs: { id: "slide2" } }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "img/selling/jedi/jedi2.png",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { attrs: { id: "slide3" } }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "img/selling/jedi/jedi3.png",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { attrs: { id: "slide4" } }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "img/selling/jedi/jedi4.png",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { attrs: { id: "slide5" } }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "img/selling/jedi/jedi5.png",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-10 offset-md-2" }, [
+                  _c("div", { staticClass: "item-btn" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-success buy-now cart-btn",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Buy Now")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-success rent",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Rent")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-success exchange",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Exchange")]
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-7" }, [
+              _c("div", { staticClass: "item-description" }, [
+                _c("div", { staticClass: "back-to-home" }, [
+                  _c("p", [
+                    _c("a", { attrs: { href: "game.html" } }, [_vm._v("Home")]),
+                    _vm._v(" > Best Selling > JEDI")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card w-100" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v("Star Wars Jedi: Fallen Order-PlayStation 4 ")
+                    ]),
+                    _vm._v(" "),
+                    _c("h5", { staticClass: "pb-5 price" }, [
+                      _vm._v("Buy: TK.5000 "),
+                      _c("span"),
+                      _vm._v(" Rent: TK.500")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-3" }, [
+                        _c("div", { staticClass: "part-left" }, [
+                          _c("h4", [_vm._v("Highlights :")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-9 pb-5" }, [
+                        _c("div", { staticClass: "part-right" }, [
+                          _c("h6", [_vm._v("Platforms: PS4")]),
+                          _vm._v(" "),
+                          _c("h6", [_vm._v("Genre: ACTION")]),
+                          _vm._v(" "),
+                          _c("h6", [_vm._v("Edition: Standard Edition")]),
+                          _vm._v(" "),
+                          _c("h6", [_vm._v("Game Modes: Single-Player")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-3" }, [
+                        _c("div", { staticClass: "part-left" }, [
+                          _c("h4", [_vm._v("Important Note :")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-9 pb-5" }, [
+                        _c("div", { staticClass: "part-right" }, [
+                          _c("h6", [
+                            _vm._v(
+                              "Rated PEGI 16, this game features depiction of violence or sexual activity which look the same as would be expected in real life.It also features the use of tobacco,alcohol or illigal drugs, and the extreme usage of bad language. "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-3" }, [
+                        _c("div", { staticClass: "part-left" }, [
+                          _c("h4", [_vm._v("Seller :")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-9 pb-5" }, [
+                        _c("div", { staticClass: "part-right" }, [
+                          _c("h6", { staticClass: "seller-name" }, [
+                            _vm._v("Khaled Hossain "),
+                            _c("span", { staticClass: "badge badge-primary" }, [
+                              _vm._v("4"),
+                              _c("span", { staticClass: "material-icons" }, [
+                                _vm._v("grade ")
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "games-main-details" }, [
+        _c("div", { staticClass: "container-fluid games-main-details-width" }, [
+          _c(
+            "ul",
+            {
+              staticClass: "nav nav-pills mb-2",
+              attrs: { id: "pills-tab", role: "tablist" }
+            },
+            [
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link ",
+                    attrs: {
+                      id: "pills-specifications-tab",
+                      "data-toggle": "pill",
+                      href: "#pills-specifications",
+                      role: "tab",
+                      "aria-controls": "pills-specification",
+                      "aria-selected": "true"
+                    }
+                  },
+                  [_vm._v("Specifications")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link ",
+                    attrs: {
+                      id: "pills-overview-tab",
+                      "data-toggle": "pill",
+                      href: "#pills-overview",
+                      role: "tab",
+                      "aria-controls": "pills-overview",
+                      "aria-selected": "false"
+                    }
+                  },
+                  [_vm._v("Over view")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link active",
+                    attrs: {
+                      id: "pills-question-tab",
+                      "data-toggle": "pill",
+                      href: "#pills-question",
+                      role: "tab",
+                      "aria-controls": "pills-question",
+                      "aria-selected": "false"
+                    }
+                  },
+                  [_vm._v("Question")]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "border" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "item-tab" }, [
+        _c(
+          "div",
+          { staticClass: "tab-content ", attrs: { id: "pills-tabContent" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade  ",
+                attrs: {
+                  id: "pills-specifications",
+                  role: "tabpanel",
+                  "aria-labelledby": "pills-specifications-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "specification" }, [
+                  _c(
+                    "div",
+                    { staticClass: "container-fluid specification-width" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "specifications" }, [
+                            _c("h3", [_vm._v("General")]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "border mb-3" }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-md-4" }, [
+                                _c("div", { staticClass: "general-titles" }, [
+                                  _c("h5", [_vm._v("Title Name")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Platform")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Edition")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Type")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Genre")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Game Modes")]),
+                                  _vm._v(" "),
+                                  _c("h5", [_vm._v("Publisher")])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-8" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "general-titles-details" },
+                                  [
+                                    _c("h5", [
+                                      _vm._v("STAR WARS JEDI FALLEN ORDER PS4")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("PS4")]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("Standard Edition")]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("Full Game")]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("Action")]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("Single-player")]),
+                                    _vm._v(" "),
+                                    _c("h5", [_vm._v("Electronic Arts")])
+                                  ]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("h3", { staticClass: "mt-2" }, [
+                              _vm._v("Ratings")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "border mb-3" }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-md-4" }, [
+                                _c("div", { staticClass: "general-titles" }, [
+                                  _c("h5", [_vm._v("PEGI")])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-8" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "general-titles-details" },
+                                  [_c("h5", [_vm._v("16")])]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("h3", { staticClass: "mt-2" }, [
+                              _vm._v("More Details")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "border mb-3" }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-md-4" }, [
+                                _c("div", { staticClass: "general-titles" }, [
+                                  _c("h5", [_vm._v("Generic Name")])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-8" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "general-titles-details" },
+                                  [_c("h5", [_vm._v("Physical Games")])]
+                                )
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" })
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade ",
+                attrs: {
+                  id: "pills-overview",
+                  role: "tabpanel",
+                  "aria-labelledby": "pills-overview-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "overview-main-photo" }, [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    attrs: {
+                      src: "img/selling/jedi/jed.png",
+                      alt: "jedi fallen order"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "over-view" }, [
+                  _c(
+                    "div",
+                    { staticClass: "container-fluid item-tab-width overview" },
+                    [
+                      _c("div", { staticClass: "row pt-5" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "title-1" }, [
+                            _c("h2", [
+                              _vm._v("STAR WARS jedi: Fallen Order "),
+                              _c("span", [_vm._v("TM")])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                "A galaxy-spanning adventure in STAR WARS jedi: Fallen Order, a 3rd person action-adventure title from Respawn Entertainment. An abandoned Padawan must complete his training, devlop new powerful Force abilities, and master the art of the lightsaber-all while staying one step ahead of the Empire."
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("p", [_vm._v("Release Date: Out Now")]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v("Devloper: Respawn Entertainment ")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v("Genre: Action/Adventure")]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v("Publisher: Electronic Arts")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "title-img" }, [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: {
+                                src: "img/selling/jedi/jedii.png",
+                                alt: "jedi fallen order"
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row pt-5" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "scr-vdo" }, [
+                            _c("h5", [_vm._v("SCREENSHOTS & VIDEOS ")]),
+                            _vm._v(" "),
+                            _c("h2", [
+                              _vm._v(
+                                "See STAR WARS Jedi: Fallen Order in Action "
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "video-1" }, [
+                            _c("iframe", {
+                              attrs: {
+                                src:
+                                  "https://www.youtube.com/embed/xIl2z5wwjdA",
+                                frameborder: "0",
+                                allowfullscreen: "",
+                                "ng-show": "showvideo"
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "video-2" }, [
+                            _c("iframe", {
+                              attrs: {
+                                src:
+                                  "https://www.youtube.com/embed/nfcAHfDuNzw",
+                                frameborder: "0",
+                                allowfullscreen: "",
+                                "ng-show": "showvideo"
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row mt-5" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "action-part" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "img/selling/jedi/jediseat.jpg" }
+                              },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: "img/selling/jedi/jediseat.jpg",
+                                    alt: "jedi fallen order"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row mt-5" }, [
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "img/selling/jedi/jj.png" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "img/selling/jedi/jj.png",
+                                        alt: "jedi fallen order"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "img/selling/jedi/jjj.png" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "img/selling/jedi/jjj.png",
+                                        alt: "jedi fallen order"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade show active",
+                attrs: {
+                  id: "pills-question",
+                  role: "tabpanel",
+                  "aria-labelledby": "pills-question-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "question" }, [
+                  _c("div", { staticClass: "container-fluid question-width" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("div", { staticClass: "questions" }, [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c("div", { staticClass: "input-group-append" }, [
+                              _c("input", {
+                                staticClass:
+                                  "form-control question-search-input",
+                                attrs: {
+                                  type: "search",
+                                  placeholder:
+                                    "Have a Question? Search for the Answer.."
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-secondary question-search-icon",
+                                  attrs: { type: "button" }
+                                },
+                                [_c("i", { staticClass: "fa fa-search " })]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "main-question loadMore mt-5" },
+                            [
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "article",
+                                { staticClass: "question-part-1 item" },
+                                [
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    { staticClass: "table table-borderless " },
+                                    [
+                                      _c("tbody", [
+                                        _c("tr", [
+                                          _c("td", { staticClass: "qus" }, [
+                                            _vm._v("Question")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "qus-1" }, [
+                                            _vm._v(
+                                              "Can i get an edition ea on the front? I'll play plenty more."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td", { staticClass: "ans" }, [
+                                            _vm._v("Answer")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "ans-1" }, [
+                                            _vm._v(
+                                              "I sure EA will sell you that version but you will have to pay for a microtransaction."
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", { staticClass: "date" }, [
+                                            _vm._v("By NB on November 4, 2019")
+                                          ])
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass: "border w-100 mt-5"
+                                  })
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "loadmore" }, [
+                            _c("a", { attrs: { href: "#", id: "loadMore" } }, [
+                              _vm._v("See more answered questions (130)")
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home.vue?vue&type=template&id=f2b6376c& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", { staticClass: "hunter-section" }, [
+        _c("div", { staticClass: "slider" }, [
+          _c("div", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  "data-u": "image",
+                  src: "img/slider/hunter.jpg",
+                  alt: "hunter"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  "data-u": "image",
+                  src: "img/slider/god-war.png",
+                  alt: "god war"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  "data-u": "image",
+                  src: "img/slider/blood.png",
+                  alt: "bloodborn"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  "data-u": "image",
+                  src: "img/slider/the.png",
+                  alt: "the witcher3"
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "new-release pt-5" }, [
+        _c("div", { staticClass: "container-fluid release-width" }, [
+          _c("div", { staticClass: "release-header" }, [
+            _c("h2", [_vm._v("New Release")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "owl-carousel-one owl-carousel owl-theme" },
+            [
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/release/codevein.jpg",
+                        alt: "Code vein"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h4", { staticClass: "mb-3 game-name" }, [
+                      _vm._v("Code Vein")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "In the not too distant future, a mysterious disaster has brought collapse to the world as we know it. Towering skyscrapers once symbols of prosperity, are now lifeless graves of humanity's past pierced by the Thorns of judgment."
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "more-read text-right pb-3 pr-2" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("View More "),
+                      _c("span", { staticClass: "material-icons" }, [
+                        _vm._v("arrow_forward_ios")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/release/monkey.jpg",
+                        alt: "monkey king hero is back"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h4", { staticClass: "mb-3 game-name" }, [
+                      _vm._v("Monkey King Hero Is Back")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "In the not too distant future, a mysterious disaster has brought collapse to the world as we know it."
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "more-read text-right pb-3 pr-2" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("View More "),
+                      _c("span", { staticClass: "material-icons" }, [
+                        _vm._v("arrow_forward_ios")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "img/release/fifa.jpg", alt: "fifa20" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h4", { staticClass: "mb-3 game-name" }, [
+                      _vm._v("EA Sports "),
+                      _c("span", { staticClass: "badge" }, [_vm._v(" ")]),
+                      _vm._v("  FIFA 20")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "The world's Game comes to life on Playstation 4, as FIFA returns for a new season with improved on and off the ball mechanics to elevate every moment on the pitch."
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "more-read text-right pb-3 pr-2" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("View More "),
+                      _c("span", { staticClass: "material-icons" }, [
+                        _vm._v("arrow_forward_ios")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/release/call.jpg",
+                        alt: "call of duty"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h4", { staticClass: "mb-3 game-name" }, [
+                      _vm._v("Call of Duty")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "Call of Duty: Mordern Warfare engulfs fans in an incredibly raw,gritty,provocative narrative that brings unrivaled intensity and shines a light on the changing nature of modern war."
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "more-read text-right pb-3 pr-2" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("View More "),
+                      _c("span", { staticClass: "material-icons" }, [
+                        _vm._v("arrow_forward_ios")
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "exchange-section" }, [
+        _c("div", { staticClass: "container-fluid exchange-width" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("div", { staticClass: "card mb-3 exchange" }, [
+                _c("div", { staticClass: "row no-gutters" }, [
+                  _c("div", { staticClass: "col-lg-5" }, [
+                    _c("img", {
+                      staticClass: "card-img",
+                      attrs: {
+                        src: "img/exchange/watch-dog.jpeg",
+                        alt: "watch dog "
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-7" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h2", { staticClass: "card-title" }, [
+                        _vm._v("Would You Like to")
+                      ]),
+                      _vm._v(" "),
+                      _c("h1", { staticClass: "exchange-1" }, [
+                        _vm._v("EXCHANGE")
+                      ]),
+                      _vm._v(" "),
+                      _c("h2", { staticClass: "text-right your-cd" }, [
+                        _vm._v("Your CD")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-center excng-btn" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success text-center mt-5",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Exchange")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("div", { staticClass: "card mb-3 rent" }, [
+                _c("div", { staticClass: "row no-gutters" }, [
+                  _c("div", { staticClass: "col-lg-5" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("img", {
+                        staticClass: "card-img",
+                        attrs: {
+                          src: "img/exchange/jedi.png",
+                          alt: "jedi fallen order "
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-7" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h2", { staticClass: "card-title" }, [
+                        _vm._v("Do you want ")
+                      ]),
+                      _vm._v(" "),
+                      _c("h1", { staticClass: "rent-1" }, [
+                        _c("span", [_vm._v("to")]),
+                        _vm._v("RENT")
+                      ]),
+                      _vm._v(" "),
+                      _c("h2", { staticClass: "your-cd" }, [_vm._v("Your CD")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-center rent-btn" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success text-center mt-5",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Rent")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "best-selling" }, [
+        _c("div", { staticClass: "container-fluid selling-width" }, [
+          _c("div", { staticClass: "release-header" }, [
+            _c("h2", [_vm._v("Best Selling")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "owl-carousel-two owl-carousel owl-theme" },
+            [
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "img/selling/doom.jpg", alt: "doom" }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#", target: "_blank" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/selling/jedi-fallen.jpg",
+                        alt: "jedi fallen"
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/selling/red-death.jpg",
+                        alt: "red death"
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/selling/res.jpg",
+                        alt: "residential evil"
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "up-coming" }, [
+        _c("div", { staticClass: "container-fluid up-coming-width" }, [
+          _c("div", { staticClass: "upcoming-header" }, [
+            _c("h2", [_vm._v("UP Coming")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "owl-carousel-three owl-carousel owl-theme" },
+            [
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "img/upcoming/nioh.png", alt: "nioh2" }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/upcoming/ironman.png",
+                        alt: "iron-man 2"
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "img/upcoming/biomutant.png",
+                        alt: "biomutant"
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "more-rented" }, [
+        _c("div", { staticClass: "container-fluid rented-width" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm" }, [
+              _c("div", { staticClass: "rented-header" }, [
+                _c("h2", [_vm._v("More Rented")])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "owl-carousel-four owl-carousel owl-theme" },
+                [
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: { src: "img/rented/wwe.png", alt: "wwe" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("wwe 2k20")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src: "img/rented/dark-soul.png",
+                          alt: "dark soul"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("Dark Souls III")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: { src: "img/rented/empire.png", alt: "empire" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("Empire of Sin")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: { src: "img/rented/fallout.png", alt: "fallout" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("Fallout 76")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: { src: "img/rented/grid.png", alt: "greed" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("GreedFall")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "item" }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: { src: "img//rented/max.png", alt: "max" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h4",
+                          { staticClass: "mb-2 game-name text-center" },
+                          [_vm._v("Titanfall 2")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "view-more-btn text-center pb-4" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View More")]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
@@ -38162,6 +41336,2937 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-router/dist/vue-router.esm.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-router/dist/vue-router.esm.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*!
+  * vue-router v3.1.6
+  * (c) 2020 Evan You
+  * @license MIT
+  */
+/*  */
+
+function assert (condition, message) {
+  if (!condition) {
+    throw new Error(("[vue-router] " + message))
+  }
+}
+
+function warn (condition, message) {
+  if ( true && !condition) {
+    typeof console !== 'undefined' && console.warn(("[vue-router] " + message));
+  }
+}
+
+function isError (err) {
+  return Object.prototype.toString.call(err).indexOf('Error') > -1
+}
+
+function isExtendedError (constructor, err) {
+  return (
+    err instanceof constructor ||
+    // _name is to support IE9 too
+    (err && (err.name === constructor.name || err._name === constructor._name))
+  )
+}
+
+function extend (a, b) {
+  for (var key in b) {
+    a[key] = b[key];
+  }
+  return a
+}
+
+var View = {
+  name: 'RouterView',
+  functional: true,
+  props: {
+    name: {
+      type: String,
+      default: 'default'
+    }
+  },
+  render: function render (_, ref) {
+    var props = ref.props;
+    var children = ref.children;
+    var parent = ref.parent;
+    var data = ref.data;
+
+    // used by devtools to display a router-view badge
+    data.routerView = true;
+
+    // directly use parent context's createElement() function
+    // so that components rendered by router-view can resolve named slots
+    var h = parent.$createElement;
+    var name = props.name;
+    var route = parent.$route;
+    var cache = parent._routerViewCache || (parent._routerViewCache = {});
+
+    // determine current view depth, also check to see if the tree
+    // has been toggled inactive but kept-alive.
+    var depth = 0;
+    var inactive = false;
+    while (parent && parent._routerRoot !== parent) {
+      var vnodeData = parent.$vnode ? parent.$vnode.data : {};
+      if (vnodeData.routerView) {
+        depth++;
+      }
+      if (vnodeData.keepAlive && parent._directInactive && parent._inactive) {
+        inactive = true;
+      }
+      parent = parent.$parent;
+    }
+    data.routerViewDepth = depth;
+
+    // render previous view if the tree is inactive and kept-alive
+    if (inactive) {
+      var cachedData = cache[name];
+      var cachedComponent = cachedData && cachedData.component;
+      if (cachedComponent) {
+        // #2301
+        // pass props
+        if (cachedData.configProps) {
+          fillPropsinData(cachedComponent, data, cachedData.route, cachedData.configProps);
+        }
+        return h(cachedComponent, data, children)
+      } else {
+        // render previous empty view
+        return h()
+      }
+    }
+
+    var matched = route.matched[depth];
+    var component = matched && matched.components[name];
+
+    // render empty node if no matched route or no config component
+    if (!matched || !component) {
+      cache[name] = null;
+      return h()
+    }
+
+    // cache component
+    cache[name] = { component: component };
+
+    // attach instance registration hook
+    // this will be called in the instance's injected lifecycle hooks
+    data.registerRouteInstance = function (vm, val) {
+      // val could be undefined for unregistration
+      var current = matched.instances[name];
+      if (
+        (val && current !== vm) ||
+        (!val && current === vm)
+      ) {
+        matched.instances[name] = val;
+      }
+    }
+
+    // also register instance in prepatch hook
+    // in case the same component instance is reused across different routes
+    ;(data.hook || (data.hook = {})).prepatch = function (_, vnode) {
+      matched.instances[name] = vnode.componentInstance;
+    };
+
+    // register instance in init hook
+    // in case kept-alive component be actived when routes changed
+    data.hook.init = function (vnode) {
+      if (vnode.data.keepAlive &&
+        vnode.componentInstance &&
+        vnode.componentInstance !== matched.instances[name]
+      ) {
+        matched.instances[name] = vnode.componentInstance;
+      }
+    };
+
+    var configProps = matched.props && matched.props[name];
+    // save route and configProps in cachce
+    if (configProps) {
+      extend(cache[name], {
+        route: route,
+        configProps: configProps
+      });
+      fillPropsinData(component, data, route, configProps);
+    }
+
+    return h(component, data, children)
+  }
+};
+
+function fillPropsinData (component, data, route, configProps) {
+  // resolve props
+  var propsToPass = data.props = resolveProps(route, configProps);
+  if (propsToPass) {
+    // clone to prevent mutation
+    propsToPass = data.props = extend({}, propsToPass);
+    // pass non-declared props as attrs
+    var attrs = data.attrs = data.attrs || {};
+    for (var key in propsToPass) {
+      if (!component.props || !(key in component.props)) {
+        attrs[key] = propsToPass[key];
+        delete propsToPass[key];
+      }
+    }
+  }
+}
+
+function resolveProps (route, config) {
+  switch (typeof config) {
+    case 'undefined':
+      return
+    case 'object':
+      return config
+    case 'function':
+      return config(route)
+    case 'boolean':
+      return config ? route.params : undefined
+    default:
+      if (true) {
+        warn(
+          false,
+          "props in \"" + (route.path) + "\" is a " + (typeof config) + ", " +
+          "expecting an object, function or boolean."
+        );
+      }
+  }
+}
+
+/*  */
+
+var encodeReserveRE = /[!'()*]/g;
+var encodeReserveReplacer = function (c) { return '%' + c.charCodeAt(0).toString(16); };
+var commaRE = /%2C/g;
+
+// fixed encodeURIComponent which is more conformant to RFC3986:
+// - escapes [!'()*]
+// - preserve commas
+var encode = function (str) { return encodeURIComponent(str)
+  .replace(encodeReserveRE, encodeReserveReplacer)
+  .replace(commaRE, ','); };
+
+var decode = decodeURIComponent;
+
+function resolveQuery (
+  query,
+  extraQuery,
+  _parseQuery
+) {
+  if ( extraQuery === void 0 ) extraQuery = {};
+
+  var parse = _parseQuery || parseQuery;
+  var parsedQuery;
+  try {
+    parsedQuery = parse(query || '');
+  } catch (e) {
+     true && warn(false, e.message);
+    parsedQuery = {};
+  }
+  for (var key in extraQuery) {
+    parsedQuery[key] = extraQuery[key];
+  }
+  return parsedQuery
+}
+
+function parseQuery (query) {
+  var res = {};
+
+  query = query.trim().replace(/^(\?|#|&)/, '');
+
+  if (!query) {
+    return res
+  }
+
+  query.split('&').forEach(function (param) {
+    var parts = param.replace(/\+/g, ' ').split('=');
+    var key = decode(parts.shift());
+    var val = parts.length > 0
+      ? decode(parts.join('='))
+      : null;
+
+    if (res[key] === undefined) {
+      res[key] = val;
+    } else if (Array.isArray(res[key])) {
+      res[key].push(val);
+    } else {
+      res[key] = [res[key], val];
+    }
+  });
+
+  return res
+}
+
+function stringifyQuery (obj) {
+  var res = obj ? Object.keys(obj).map(function (key) {
+    var val = obj[key];
+
+    if (val === undefined) {
+      return ''
+    }
+
+    if (val === null) {
+      return encode(key)
+    }
+
+    if (Array.isArray(val)) {
+      var result = [];
+      val.forEach(function (val2) {
+        if (val2 === undefined) {
+          return
+        }
+        if (val2 === null) {
+          result.push(encode(key));
+        } else {
+          result.push(encode(key) + '=' + encode(val2));
+        }
+      });
+      return result.join('&')
+    }
+
+    return encode(key) + '=' + encode(val)
+  }).filter(function (x) { return x.length > 0; }).join('&') : null;
+  return res ? ("?" + res) : ''
+}
+
+/*  */
+
+var trailingSlashRE = /\/?$/;
+
+function createRoute (
+  record,
+  location,
+  redirectedFrom,
+  router
+) {
+  var stringifyQuery = router && router.options.stringifyQuery;
+
+  var query = location.query || {};
+  try {
+    query = clone(query);
+  } catch (e) {}
+
+  var route = {
+    name: location.name || (record && record.name),
+    meta: (record && record.meta) || {},
+    path: location.path || '/',
+    hash: location.hash || '',
+    query: query,
+    params: location.params || {},
+    fullPath: getFullPath(location, stringifyQuery),
+    matched: record ? formatMatch(record) : []
+  };
+  if (redirectedFrom) {
+    route.redirectedFrom = getFullPath(redirectedFrom, stringifyQuery);
+  }
+  return Object.freeze(route)
+}
+
+function clone (value) {
+  if (Array.isArray(value)) {
+    return value.map(clone)
+  } else if (value && typeof value === 'object') {
+    var res = {};
+    for (var key in value) {
+      res[key] = clone(value[key]);
+    }
+    return res
+  } else {
+    return value
+  }
+}
+
+// the starting route that represents the initial state
+var START = createRoute(null, {
+  path: '/'
+});
+
+function formatMatch (record) {
+  var res = [];
+  while (record) {
+    res.unshift(record);
+    record = record.parent;
+  }
+  return res
+}
+
+function getFullPath (
+  ref,
+  _stringifyQuery
+) {
+  var path = ref.path;
+  var query = ref.query; if ( query === void 0 ) query = {};
+  var hash = ref.hash; if ( hash === void 0 ) hash = '';
+
+  var stringify = _stringifyQuery || stringifyQuery;
+  return (path || '/') + stringify(query) + hash
+}
+
+function isSameRoute (a, b) {
+  if (b === START) {
+    return a === b
+  } else if (!b) {
+    return false
+  } else if (a.path && b.path) {
+    return (
+      a.path.replace(trailingSlashRE, '') === b.path.replace(trailingSlashRE, '') &&
+      a.hash === b.hash &&
+      isObjectEqual(a.query, b.query)
+    )
+  } else if (a.name && b.name) {
+    return (
+      a.name === b.name &&
+      a.hash === b.hash &&
+      isObjectEqual(a.query, b.query) &&
+      isObjectEqual(a.params, b.params)
+    )
+  } else {
+    return false
+  }
+}
+
+function isObjectEqual (a, b) {
+  if ( a === void 0 ) a = {};
+  if ( b === void 0 ) b = {};
+
+  // handle null value #1566
+  if (!a || !b) { return a === b }
+  var aKeys = Object.keys(a);
+  var bKeys = Object.keys(b);
+  if (aKeys.length !== bKeys.length) {
+    return false
+  }
+  return aKeys.every(function (key) {
+    var aVal = a[key];
+    var bVal = b[key];
+    // check nested equality
+    if (typeof aVal === 'object' && typeof bVal === 'object') {
+      return isObjectEqual(aVal, bVal)
+    }
+    return String(aVal) === String(bVal)
+  })
+}
+
+function isIncludedRoute (current, target) {
+  return (
+    current.path.replace(trailingSlashRE, '/').indexOf(
+      target.path.replace(trailingSlashRE, '/')
+    ) === 0 &&
+    (!target.hash || current.hash === target.hash) &&
+    queryIncludes(current.query, target.query)
+  )
+}
+
+function queryIncludes (current, target) {
+  for (var key in target) {
+    if (!(key in current)) {
+      return false
+    }
+  }
+  return true
+}
+
+/*  */
+
+function resolvePath (
+  relative,
+  base,
+  append
+) {
+  var firstChar = relative.charAt(0);
+  if (firstChar === '/') {
+    return relative
+  }
+
+  if (firstChar === '?' || firstChar === '#') {
+    return base + relative
+  }
+
+  var stack = base.split('/');
+
+  // remove trailing segment if:
+  // - not appending
+  // - appending to trailing slash (last segment is empty)
+  if (!append || !stack[stack.length - 1]) {
+    stack.pop();
+  }
+
+  // resolve relative path
+  var segments = relative.replace(/^\//, '').split('/');
+  for (var i = 0; i < segments.length; i++) {
+    var segment = segments[i];
+    if (segment === '..') {
+      stack.pop();
+    } else if (segment !== '.') {
+      stack.push(segment);
+    }
+  }
+
+  // ensure leading slash
+  if (stack[0] !== '') {
+    stack.unshift('');
+  }
+
+  return stack.join('/')
+}
+
+function parsePath (path) {
+  var hash = '';
+  var query = '';
+
+  var hashIndex = path.indexOf('#');
+  if (hashIndex >= 0) {
+    hash = path.slice(hashIndex);
+    path = path.slice(0, hashIndex);
+  }
+
+  var queryIndex = path.indexOf('?');
+  if (queryIndex >= 0) {
+    query = path.slice(queryIndex + 1);
+    path = path.slice(0, queryIndex);
+  }
+
+  return {
+    path: path,
+    query: query,
+    hash: hash
+  }
+}
+
+function cleanPath (path) {
+  return path.replace(/\/\//g, '/')
+}
+
+var isarray = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+/**
+ * Expose `pathToRegexp`.
+ */
+var pathToRegexp_1 = pathToRegexp;
+var parse_1 = parse;
+var compile_1 = compile;
+var tokensToFunction_1 = tokensToFunction;
+var tokensToRegExp_1 = tokensToRegExp;
+
+/**
+ * The main path matching regexp utility.
+ *
+ * @type {RegExp}
+ */
+var PATH_REGEXP = new RegExp([
+  // Match escaped characters that would otherwise appear in future matches.
+  // This allows the user to escape special characters that won't transform.
+  '(\\\\.)',
+  // Match Express-style parameters and un-named parameters with a prefix
+  // and optional suffixes. Matches appear as:
+  //
+  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+  '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
+].join('|'), 'g');
+
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {string}  str
+ * @param  {Object=} options
+ * @return {!Array}
+ */
+function parse (str, options) {
+  var tokens = [];
+  var key = 0;
+  var index = 0;
+  var path = '';
+  var defaultDelimiter = options && options.delimiter || '/';
+  var res;
+
+  while ((res = PATH_REGEXP.exec(str)) != null) {
+    var m = res[0];
+    var escaped = res[1];
+    var offset = res.index;
+    path += str.slice(index, offset);
+    index = offset + m.length;
+
+    // Ignore already escaped sequences.
+    if (escaped) {
+      path += escaped[1];
+      continue
+    }
+
+    var next = str[index];
+    var prefix = res[2];
+    var name = res[3];
+    var capture = res[4];
+    var group = res[5];
+    var modifier = res[6];
+    var asterisk = res[7];
+
+    // Push the current path onto the tokens.
+    if (path) {
+      tokens.push(path);
+      path = '';
+    }
+
+    var partial = prefix != null && next != null && next !== prefix;
+    var repeat = modifier === '+' || modifier === '*';
+    var optional = modifier === '?' || modifier === '*';
+    var delimiter = res[2] || defaultDelimiter;
+    var pattern = capture || group;
+
+    tokens.push({
+      name: name || key++,
+      prefix: prefix || '',
+      delimiter: delimiter,
+      optional: optional,
+      repeat: repeat,
+      partial: partial,
+      asterisk: !!asterisk,
+      pattern: pattern ? escapeGroup(pattern) : (asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?')
+    });
+  }
+
+  // Match any characters still remaining.
+  if (index < str.length) {
+    path += str.substr(index);
+  }
+
+  // If the path exists, push it onto the end.
+  if (path) {
+    tokens.push(path);
+  }
+
+  return tokens
+}
+
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {string}             str
+ * @param  {Object=}            options
+ * @return {!function(Object=, Object=)}
+ */
+function compile (str, options) {
+  return tokensToFunction(parse(str, options))
+}
+
+/**
+ * Prettier encoding of URI path segments.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeURIComponentPretty (str) {
+  return encodeURI(str).replace(/[\/?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeAsterisk (str) {
+  return encodeURI(str).replace(/[?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Expose a method for transforming tokens into the path function.
+ */
+function tokensToFunction (tokens) {
+  // Compile all the tokens into regexps.
+  var matches = new Array(tokens.length);
+
+  // Compile all the patterns before compilation.
+  for (var i = 0; i < tokens.length; i++) {
+    if (typeof tokens[i] === 'object') {
+      matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$');
+    }
+  }
+
+  return function (obj, opts) {
+    var path = '';
+    var data = obj || {};
+    var options = opts || {};
+    var encode = options.pretty ? encodeURIComponentPretty : encodeURIComponent;
+
+    for (var i = 0; i < tokens.length; i++) {
+      var token = tokens[i];
+
+      if (typeof token === 'string') {
+        path += token;
+
+        continue
+      }
+
+      var value = data[token.name];
+      var segment;
+
+      if (value == null) {
+        if (token.optional) {
+          // Prepend partial segment prefixes.
+          if (token.partial) {
+            path += token.prefix;
+          }
+
+          continue
+        } else {
+          throw new TypeError('Expected "' + token.name + '" to be defined')
+        }
+      }
+
+      if (isarray(value)) {
+        if (!token.repeat) {
+          throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`')
+        }
+
+        if (value.length === 0) {
+          if (token.optional) {
+            continue
+          } else {
+            throw new TypeError('Expected "' + token.name + '" to not be empty')
+          }
+        }
+
+        for (var j = 0; j < value.length; j++) {
+          segment = encode(value[j]);
+
+          if (!matches[i].test(segment)) {
+            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`')
+          }
+
+          path += (j === 0 ? token.prefix : token.delimiter) + segment;
+        }
+
+        continue
+      }
+
+      segment = token.asterisk ? encodeAsterisk(value) : encode(value);
+
+      if (!matches[i].test(segment)) {
+        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+      }
+
+      path += token.prefix + segment;
+    }
+
+    return path
+  }
+}
+
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {string} str
+ * @return {string}
+ */
+function escapeString (str) {
+  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
+}
+
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {string} group
+ * @return {string}
+ */
+function escapeGroup (group) {
+  return group.replace(/([=!:$\/()])/g, '\\$1')
+}
+
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {!RegExp} re
+ * @param  {Array}   keys
+ * @return {!RegExp}
+ */
+function attachKeys (re, keys) {
+  re.keys = keys;
+  return re
+}
+
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {string}
+ */
+function flags (options) {
+  return options.sensitive ? '' : 'i'
+}
+
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {!RegExp} path
+ * @param  {!Array}  keys
+ * @return {!RegExp}
+ */
+function regexpToRegexp (path, keys) {
+  // Use a negative lookahead to match only capturing groups.
+  var groups = path.source.match(/\((?!\?)/g);
+
+  if (groups) {
+    for (var i = 0; i < groups.length; i++) {
+      keys.push({
+        name: i,
+        prefix: null,
+        delimiter: null,
+        optional: false,
+        repeat: false,
+        partial: false,
+        asterisk: false,
+        pattern: null
+      });
+    }
+  }
+
+  return attachKeys(path, keys)
+}
+
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {!Array}  path
+ * @param  {Array}   keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function arrayToRegexp (path, keys, options) {
+  var parts = [];
+
+  for (var i = 0; i < path.length; i++) {
+    parts.push(pathToRegexp(path[i], keys, options).source);
+  }
+
+  var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options));
+
+  return attachKeys(regexp, keys)
+}
+
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {string}  path
+ * @param  {!Array}  keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function stringToRegexp (path, keys, options) {
+  return tokensToRegExp(parse(path, options), keys, options)
+}
+
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {!Array}          tokens
+ * @param  {(Array|Object)=} keys
+ * @param  {Object=}         options
+ * @return {!RegExp}
+ */
+function tokensToRegExp (tokens, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options);
+    keys = [];
+  }
+
+  options = options || {};
+
+  var strict = options.strict;
+  var end = options.end !== false;
+  var route = '';
+
+  // Iterate over the tokens and create our regexp string.
+  for (var i = 0; i < tokens.length; i++) {
+    var token = tokens[i];
+
+    if (typeof token === 'string') {
+      route += escapeString(token);
+    } else {
+      var prefix = escapeString(token.prefix);
+      var capture = '(?:' + token.pattern + ')';
+
+      keys.push(token);
+
+      if (token.repeat) {
+        capture += '(?:' + prefix + capture + ')*';
+      }
+
+      if (token.optional) {
+        if (!token.partial) {
+          capture = '(?:' + prefix + '(' + capture + '))?';
+        } else {
+          capture = prefix + '(' + capture + ')?';
+        }
+      } else {
+        capture = prefix + '(' + capture + ')';
+      }
+
+      route += capture;
+    }
+  }
+
+  var delimiter = escapeString(options.delimiter || '/');
+  var endsWithDelimiter = route.slice(-delimiter.length) === delimiter;
+
+  // In non-strict mode we allow a slash at the end of match. If the path to
+  // match already ends with a slash, we remove it for consistency. The slash
+  // is valid at the end of a path match, not in the middle. This is important
+  // in non-ending mode, where "/test/" shouldn't match "/test//route".
+  if (!strict) {
+    route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?';
+  }
+
+  if (end) {
+    route += '$';
+  } else {
+    // In non-ending mode, we need the capturing groups to match as much as
+    // possible by using a positive lookahead to the end or next path segment.
+    route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)';
+  }
+
+  return attachKeys(new RegExp('^' + route, flags(options)), keys)
+}
+
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(string|RegExp|Array)} path
+ * @param  {(Array|Object)=}       keys
+ * @param  {Object=}               options
+ * @return {!RegExp}
+ */
+function pathToRegexp (path, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options);
+    keys = [];
+  }
+
+  options = options || {};
+
+  if (path instanceof RegExp) {
+    return regexpToRegexp(path, /** @type {!Array} */ (keys))
+  }
+
+  if (isarray(path)) {
+    return arrayToRegexp(/** @type {!Array} */ (path), /** @type {!Array} */ (keys), options)
+  }
+
+  return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
+}
+pathToRegexp_1.parse = parse_1;
+pathToRegexp_1.compile = compile_1;
+pathToRegexp_1.tokensToFunction = tokensToFunction_1;
+pathToRegexp_1.tokensToRegExp = tokensToRegExp_1;
+
+/*  */
+
+// $flow-disable-line
+var regexpCompileCache = Object.create(null);
+
+function fillParams (
+  path,
+  params,
+  routeMsg
+) {
+  params = params || {};
+  try {
+    var filler =
+      regexpCompileCache[path] ||
+      (regexpCompileCache[path] = pathToRegexp_1.compile(path));
+
+    // Fix #2505 resolving asterisk routes { name: 'not-found', params: { pathMatch: '/not-found' }}
+    // and fix #3106 so that you can work with location descriptor object having params.pathMatch equal to empty string
+    if (typeof params.pathMatch === 'string') { params[0] = params.pathMatch; }
+
+    return filler(params, { pretty: true })
+  } catch (e) {
+    if (true) {
+      // Fix #3072 no warn if `pathMatch` is string
+      warn(typeof params.pathMatch === 'string', ("missing param for " + routeMsg + ": " + (e.message)));
+    }
+    return ''
+  } finally {
+    // delete the 0 if it was added
+    delete params[0];
+  }
+}
+
+/*  */
+
+function normalizeLocation (
+  raw,
+  current,
+  append,
+  router
+) {
+  var next = typeof raw === 'string' ? { path: raw } : raw;
+  // named target
+  if (next._normalized) {
+    return next
+  } else if (next.name) {
+    next = extend({}, raw);
+    var params = next.params;
+    if (params && typeof params === 'object') {
+      next.params = extend({}, params);
+    }
+    return next
+  }
+
+  // relative params
+  if (!next.path && next.params && current) {
+    next = extend({}, next);
+    next._normalized = true;
+    var params$1 = extend(extend({}, current.params), next.params);
+    if (current.name) {
+      next.name = current.name;
+      next.params = params$1;
+    } else if (current.matched.length) {
+      var rawPath = current.matched[current.matched.length - 1].path;
+      next.path = fillParams(rawPath, params$1, ("path " + (current.path)));
+    } else if (true) {
+      warn(false, "relative params navigation requires a current route.");
+    }
+    return next
+  }
+
+  var parsedPath = parsePath(next.path || '');
+  var basePath = (current && current.path) || '/';
+  var path = parsedPath.path
+    ? resolvePath(parsedPath.path, basePath, append || next.append)
+    : basePath;
+
+  var query = resolveQuery(
+    parsedPath.query,
+    next.query,
+    router && router.options.parseQuery
+  );
+
+  var hash = next.hash || parsedPath.hash;
+  if (hash && hash.charAt(0) !== '#') {
+    hash = "#" + hash;
+  }
+
+  return {
+    _normalized: true,
+    path: path,
+    query: query,
+    hash: hash
+  }
+}
+
+/*  */
+
+// work around weird flow bug
+var toTypes = [String, Object];
+var eventTypes = [String, Array];
+
+var noop = function () {};
+
+var Link = {
+  name: 'RouterLink',
+  props: {
+    to: {
+      type: toTypes,
+      required: true
+    },
+    tag: {
+      type: String,
+      default: 'a'
+    },
+    exact: Boolean,
+    append: Boolean,
+    replace: Boolean,
+    activeClass: String,
+    exactActiveClass: String,
+    event: {
+      type: eventTypes,
+      default: 'click'
+    }
+  },
+  render: function render (h) {
+    var this$1 = this;
+
+    var router = this.$router;
+    var current = this.$route;
+    var ref = router.resolve(
+      this.to,
+      current,
+      this.append
+    );
+    var location = ref.location;
+    var route = ref.route;
+    var href = ref.href;
+
+    var classes = {};
+    var globalActiveClass = router.options.linkActiveClass;
+    var globalExactActiveClass = router.options.linkExactActiveClass;
+    // Support global empty active class
+    var activeClassFallback =
+      globalActiveClass == null ? 'router-link-active' : globalActiveClass;
+    var exactActiveClassFallback =
+      globalExactActiveClass == null
+        ? 'router-link-exact-active'
+        : globalExactActiveClass;
+    var activeClass =
+      this.activeClass == null ? activeClassFallback : this.activeClass;
+    var exactActiveClass =
+      this.exactActiveClass == null
+        ? exactActiveClassFallback
+        : this.exactActiveClass;
+
+    var compareTarget = route.redirectedFrom
+      ? createRoute(null, normalizeLocation(route.redirectedFrom), null, router)
+      : route;
+
+    classes[exactActiveClass] = isSameRoute(current, compareTarget);
+    classes[activeClass] = this.exact
+      ? classes[exactActiveClass]
+      : isIncludedRoute(current, compareTarget);
+
+    var handler = function (e) {
+      if (guardEvent(e)) {
+        if (this$1.replace) {
+          router.replace(location, noop);
+        } else {
+          router.push(location, noop);
+        }
+      }
+    };
+
+    var on = { click: guardEvent };
+    if (Array.isArray(this.event)) {
+      this.event.forEach(function (e) {
+        on[e] = handler;
+      });
+    } else {
+      on[this.event] = handler;
+    }
+
+    var data = { class: classes };
+
+    var scopedSlot =
+      !this.$scopedSlots.$hasNormal &&
+      this.$scopedSlots.default &&
+      this.$scopedSlots.default({
+        href: href,
+        route: route,
+        navigate: handler,
+        isActive: classes[activeClass],
+        isExactActive: classes[exactActiveClass]
+      });
+
+    if (scopedSlot) {
+      if (scopedSlot.length === 1) {
+        return scopedSlot[0]
+      } else if (scopedSlot.length > 1 || !scopedSlot.length) {
+        if (true) {
+          warn(
+            false,
+            ("RouterLink with to=\"" + (this.to) + "\" is trying to use a scoped slot but it didn't provide exactly one child. Wrapping the content with a span element.")
+          );
+        }
+        return scopedSlot.length === 0 ? h() : h('span', {}, scopedSlot)
+      }
+    }
+
+    if (this.tag === 'a') {
+      data.on = on;
+      data.attrs = { href: href };
+    } else {
+      // find the first <a> child and apply listener and href
+      var a = findAnchor(this.$slots.default);
+      if (a) {
+        // in case the <a> is a static node
+        a.isStatic = false;
+        var aData = (a.data = extend({}, a.data));
+        aData.on = aData.on || {};
+        // transform existing events in both objects into arrays so we can push later
+        for (var event in aData.on) {
+          var handler$1 = aData.on[event];
+          if (event in on) {
+            aData.on[event] = Array.isArray(handler$1) ? handler$1 : [handler$1];
+          }
+        }
+        // append new listeners for router-link
+        for (var event$1 in on) {
+          if (event$1 in aData.on) {
+            // on[event] is always a function
+            aData.on[event$1].push(on[event$1]);
+          } else {
+            aData.on[event$1] = handler;
+          }
+        }
+
+        var aAttrs = (a.data.attrs = extend({}, a.data.attrs));
+        aAttrs.href = href;
+      } else {
+        // doesn't have <a> child, apply listener to self
+        data.on = on;
+      }
+    }
+
+    return h(this.tag, data, this.$slots.default)
+  }
+};
+
+function guardEvent (e) {
+  // don't redirect with control keys
+  if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) { return }
+  // don't redirect when preventDefault called
+  if (e.defaultPrevented) { return }
+  // don't redirect on right click
+  if (e.button !== undefined && e.button !== 0) { return }
+  // don't redirect if `target="_blank"`
+  if (e.currentTarget && e.currentTarget.getAttribute) {
+    var target = e.currentTarget.getAttribute('target');
+    if (/\b_blank\b/i.test(target)) { return }
+  }
+  // this may be a Weex event which doesn't have this method
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  return true
+}
+
+function findAnchor (children) {
+  if (children) {
+    var child;
+    for (var i = 0; i < children.length; i++) {
+      child = children[i];
+      if (child.tag === 'a') {
+        return child
+      }
+      if (child.children && (child = findAnchor(child.children))) {
+        return child
+      }
+    }
+  }
+}
+
+var _Vue;
+
+function install (Vue) {
+  if (install.installed && _Vue === Vue) { return }
+  install.installed = true;
+
+  _Vue = Vue;
+
+  var isDef = function (v) { return v !== undefined; };
+
+  var registerInstance = function (vm, callVal) {
+    var i = vm.$options._parentVnode;
+    if (isDef(i) && isDef(i = i.data) && isDef(i = i.registerRouteInstance)) {
+      i(vm, callVal);
+    }
+  };
+
+  Vue.mixin({
+    beforeCreate: function beforeCreate () {
+      if (isDef(this.$options.router)) {
+        this._routerRoot = this;
+        this._router = this.$options.router;
+        this._router.init(this);
+        Vue.util.defineReactive(this, '_route', this._router.history.current);
+      } else {
+        this._routerRoot = (this.$parent && this.$parent._routerRoot) || this;
+      }
+      registerInstance(this, this);
+    },
+    destroyed: function destroyed () {
+      registerInstance(this);
+    }
+  });
+
+  Object.defineProperty(Vue.prototype, '$router', {
+    get: function get () { return this._routerRoot._router }
+  });
+
+  Object.defineProperty(Vue.prototype, '$route', {
+    get: function get () { return this._routerRoot._route }
+  });
+
+  Vue.component('RouterView', View);
+  Vue.component('RouterLink', Link);
+
+  var strats = Vue.config.optionMergeStrategies;
+  // use the same hook merging strategy for route hooks
+  strats.beforeRouteEnter = strats.beforeRouteLeave = strats.beforeRouteUpdate = strats.created;
+}
+
+/*  */
+
+var inBrowser = typeof window !== 'undefined';
+
+/*  */
+
+function createRouteMap (
+  routes,
+  oldPathList,
+  oldPathMap,
+  oldNameMap
+) {
+  // the path list is used to control path matching priority
+  var pathList = oldPathList || [];
+  // $flow-disable-line
+  var pathMap = oldPathMap || Object.create(null);
+  // $flow-disable-line
+  var nameMap = oldNameMap || Object.create(null);
+
+  routes.forEach(function (route) {
+    addRouteRecord(pathList, pathMap, nameMap, route);
+  });
+
+  // ensure wildcard routes are always at the end
+  for (var i = 0, l = pathList.length; i < l; i++) {
+    if (pathList[i] === '*') {
+      pathList.push(pathList.splice(i, 1)[0]);
+      l--;
+      i--;
+    }
+  }
+
+  if (true) {
+    // warn if routes do not include leading slashes
+    var found = pathList
+    // check for missing leading slash
+      .filter(function (path) { return path && path.charAt(0) !== '*' && path.charAt(0) !== '/'; });
+
+    if (found.length > 0) {
+      var pathNames = found.map(function (path) { return ("- " + path); }).join('\n');
+      warn(false, ("Non-nested routes must include a leading slash character. Fix the following routes: \n" + pathNames));
+    }
+  }
+
+  return {
+    pathList: pathList,
+    pathMap: pathMap,
+    nameMap: nameMap
+  }
+}
+
+function addRouteRecord (
+  pathList,
+  pathMap,
+  nameMap,
+  route,
+  parent,
+  matchAs
+) {
+  var path = route.path;
+  var name = route.name;
+  if (true) {
+    assert(path != null, "\"path\" is required in a route configuration.");
+    assert(
+      typeof route.component !== 'string',
+      "route config \"component\" for path: " + (String(
+        path || name
+      )) + " cannot be a " + "string id. Use an actual component instead."
+    );
+  }
+
+  var pathToRegexpOptions =
+    route.pathToRegexpOptions || {};
+  var normalizedPath = normalizePath(path, parent, pathToRegexpOptions.strict);
+
+  if (typeof route.caseSensitive === 'boolean') {
+    pathToRegexpOptions.sensitive = route.caseSensitive;
+  }
+
+  var record = {
+    path: normalizedPath,
+    regex: compileRouteRegex(normalizedPath, pathToRegexpOptions),
+    components: route.components || { default: route.component },
+    instances: {},
+    name: name,
+    parent: parent,
+    matchAs: matchAs,
+    redirect: route.redirect,
+    beforeEnter: route.beforeEnter,
+    meta: route.meta || {},
+    props:
+      route.props == null
+        ? {}
+        : route.components
+          ? route.props
+          : { default: route.props }
+  };
+
+  if (route.children) {
+    // Warn if route is named, does not redirect and has a default child route.
+    // If users navigate to this route by name, the default child will
+    // not be rendered (GH Issue #629)
+    if (true) {
+      if (
+        route.name &&
+        !route.redirect &&
+        route.children.some(function (child) { return /^\/?$/.test(child.path); })
+      ) {
+        warn(
+          false,
+          "Named Route '" + (route.name) + "' has a default child route. " +
+            "When navigating to this named route (:to=\"{name: '" + (route.name) + "'\"), " +
+            "the default child route will not be rendered. Remove the name from " +
+            "this route and use the name of the default child route for named " +
+            "links instead."
+        );
+      }
+    }
+    route.children.forEach(function (child) {
+      var childMatchAs = matchAs
+        ? cleanPath((matchAs + "/" + (child.path)))
+        : undefined;
+      addRouteRecord(pathList, pathMap, nameMap, child, record, childMatchAs);
+    });
+  }
+
+  if (!pathMap[record.path]) {
+    pathList.push(record.path);
+    pathMap[record.path] = record;
+  }
+
+  if (route.alias !== undefined) {
+    var aliases = Array.isArray(route.alias) ? route.alias : [route.alias];
+    for (var i = 0; i < aliases.length; ++i) {
+      var alias = aliases[i];
+      if ( true && alias === path) {
+        warn(
+          false,
+          ("Found an alias with the same value as the path: \"" + path + "\". You have to remove that alias. It will be ignored in development.")
+        );
+        // skip in dev to make it work
+        continue
+      }
+
+      var aliasRoute = {
+        path: alias,
+        children: route.children
+      };
+      addRouteRecord(
+        pathList,
+        pathMap,
+        nameMap,
+        aliasRoute,
+        parent,
+        record.path || '/' // matchAs
+      );
+    }
+  }
+
+  if (name) {
+    if (!nameMap[name]) {
+      nameMap[name] = record;
+    } else if ( true && !matchAs) {
+      warn(
+        false,
+        "Duplicate named routes definition: " +
+          "{ name: \"" + name + "\", path: \"" + (record.path) + "\" }"
+      );
+    }
+  }
+}
+
+function compileRouteRegex (
+  path,
+  pathToRegexpOptions
+) {
+  var regex = pathToRegexp_1(path, [], pathToRegexpOptions);
+  if (true) {
+    var keys = Object.create(null);
+    regex.keys.forEach(function (key) {
+      warn(
+        !keys[key.name],
+        ("Duplicate param keys in route with path: \"" + path + "\"")
+      );
+      keys[key.name] = true;
+    });
+  }
+  return regex
+}
+
+function normalizePath (
+  path,
+  parent,
+  strict
+) {
+  if (!strict) { path = path.replace(/\/$/, ''); }
+  if (path[0] === '/') { return path }
+  if (parent == null) { return path }
+  return cleanPath(((parent.path) + "/" + path))
+}
+
+/*  */
+
+
+
+function createMatcher (
+  routes,
+  router
+) {
+  var ref = createRouteMap(routes);
+  var pathList = ref.pathList;
+  var pathMap = ref.pathMap;
+  var nameMap = ref.nameMap;
+
+  function addRoutes (routes) {
+    createRouteMap(routes, pathList, pathMap, nameMap);
+  }
+
+  function match (
+    raw,
+    currentRoute,
+    redirectedFrom
+  ) {
+    var location = normalizeLocation(raw, currentRoute, false, router);
+    var name = location.name;
+
+    if (name) {
+      var record = nameMap[name];
+      if (true) {
+        warn(record, ("Route with name '" + name + "' does not exist"));
+      }
+      if (!record) { return _createRoute(null, location) }
+      var paramNames = record.regex.keys
+        .filter(function (key) { return !key.optional; })
+        .map(function (key) { return key.name; });
+
+      if (typeof location.params !== 'object') {
+        location.params = {};
+      }
+
+      if (currentRoute && typeof currentRoute.params === 'object') {
+        for (var key in currentRoute.params) {
+          if (!(key in location.params) && paramNames.indexOf(key) > -1) {
+            location.params[key] = currentRoute.params[key];
+          }
+        }
+      }
+
+      location.path = fillParams(record.path, location.params, ("named route \"" + name + "\""));
+      return _createRoute(record, location, redirectedFrom)
+    } else if (location.path) {
+      location.params = {};
+      for (var i = 0; i < pathList.length; i++) {
+        var path = pathList[i];
+        var record$1 = pathMap[path];
+        if (matchRoute(record$1.regex, location.path, location.params)) {
+          return _createRoute(record$1, location, redirectedFrom)
+        }
+      }
+    }
+    // no match
+    return _createRoute(null, location)
+  }
+
+  function redirect (
+    record,
+    location
+  ) {
+    var originalRedirect = record.redirect;
+    var redirect = typeof originalRedirect === 'function'
+      ? originalRedirect(createRoute(record, location, null, router))
+      : originalRedirect;
+
+    if (typeof redirect === 'string') {
+      redirect = { path: redirect };
+    }
+
+    if (!redirect || typeof redirect !== 'object') {
+      if (true) {
+        warn(
+          false, ("invalid redirect option: " + (JSON.stringify(redirect)))
+        );
+      }
+      return _createRoute(null, location)
+    }
+
+    var re = redirect;
+    var name = re.name;
+    var path = re.path;
+    var query = location.query;
+    var hash = location.hash;
+    var params = location.params;
+    query = re.hasOwnProperty('query') ? re.query : query;
+    hash = re.hasOwnProperty('hash') ? re.hash : hash;
+    params = re.hasOwnProperty('params') ? re.params : params;
+
+    if (name) {
+      // resolved named direct
+      var targetRecord = nameMap[name];
+      if (true) {
+        assert(targetRecord, ("redirect failed: named route \"" + name + "\" not found."));
+      }
+      return match({
+        _normalized: true,
+        name: name,
+        query: query,
+        hash: hash,
+        params: params
+      }, undefined, location)
+    } else if (path) {
+      // 1. resolve relative redirect
+      var rawPath = resolveRecordPath(path, record);
+      // 2. resolve params
+      var resolvedPath = fillParams(rawPath, params, ("redirect route with path \"" + rawPath + "\""));
+      // 3. rematch with existing query and hash
+      return match({
+        _normalized: true,
+        path: resolvedPath,
+        query: query,
+        hash: hash
+      }, undefined, location)
+    } else {
+      if (true) {
+        warn(false, ("invalid redirect option: " + (JSON.stringify(redirect))));
+      }
+      return _createRoute(null, location)
+    }
+  }
+
+  function alias (
+    record,
+    location,
+    matchAs
+  ) {
+    var aliasedPath = fillParams(matchAs, location.params, ("aliased route with path \"" + matchAs + "\""));
+    var aliasedMatch = match({
+      _normalized: true,
+      path: aliasedPath
+    });
+    if (aliasedMatch) {
+      var matched = aliasedMatch.matched;
+      var aliasedRecord = matched[matched.length - 1];
+      location.params = aliasedMatch.params;
+      return _createRoute(aliasedRecord, location)
+    }
+    return _createRoute(null, location)
+  }
+
+  function _createRoute (
+    record,
+    location,
+    redirectedFrom
+  ) {
+    if (record && record.redirect) {
+      return redirect(record, redirectedFrom || location)
+    }
+    if (record && record.matchAs) {
+      return alias(record, location, record.matchAs)
+    }
+    return createRoute(record, location, redirectedFrom, router)
+  }
+
+  return {
+    match: match,
+    addRoutes: addRoutes
+  }
+}
+
+function matchRoute (
+  regex,
+  path,
+  params
+) {
+  var m = path.match(regex);
+
+  if (!m) {
+    return false
+  } else if (!params) {
+    return true
+  }
+
+  for (var i = 1, len = m.length; i < len; ++i) {
+    var key = regex.keys[i - 1];
+    var val = typeof m[i] === 'string' ? decodeURIComponent(m[i]) : m[i];
+    if (key) {
+      // Fix #1994: using * with props: true generates a param named 0
+      params[key.name || 'pathMatch'] = val;
+    }
+  }
+
+  return true
+}
+
+function resolveRecordPath (path, record) {
+  return resolvePath(path, record.parent ? record.parent.path : '/', true)
+}
+
+/*  */
+
+// use User Timing api (if present) for more accurate key precision
+var Time =
+  inBrowser && window.performance && window.performance.now
+    ? window.performance
+    : Date;
+
+function genStateKey () {
+  return Time.now().toFixed(3)
+}
+
+var _key = genStateKey();
+
+function getStateKey () {
+  return _key
+}
+
+function setStateKey (key) {
+  return (_key = key)
+}
+
+/*  */
+
+var positionStore = Object.create(null);
+
+function setupScroll () {
+  // Fix for #1585 for Firefox
+  // Fix for #2195 Add optional third attribute to workaround a bug in safari https://bugs.webkit.org/show_bug.cgi?id=182678
+  // Fix for #2774 Support for apps loaded from Windows file shares not mapped to network drives: replaced location.origin with
+  // window.location.protocol + '//' + window.location.host
+  // location.host contains the port and location.hostname doesn't
+  var protocolAndPath = window.location.protocol + '//' + window.location.host;
+  var absolutePath = window.location.href.replace(protocolAndPath, '');
+  // preserve existing history state as it could be overriden by the user
+  var stateCopy = extend({}, window.history.state);
+  stateCopy.key = getStateKey();
+  window.history.replaceState(stateCopy, '', absolutePath);
+  window.addEventListener('popstate', function (e) {
+    saveScrollPosition();
+    if (e.state && e.state.key) {
+      setStateKey(e.state.key);
+    }
+  });
+}
+
+function handleScroll (
+  router,
+  to,
+  from,
+  isPop
+) {
+  if (!router.app) {
+    return
+  }
+
+  var behavior = router.options.scrollBehavior;
+  if (!behavior) {
+    return
+  }
+
+  if (true) {
+    assert(typeof behavior === 'function', "scrollBehavior must be a function");
+  }
+
+  // wait until re-render finishes before scrolling
+  router.app.$nextTick(function () {
+    var position = getScrollPosition();
+    var shouldScroll = behavior.call(
+      router,
+      to,
+      from,
+      isPop ? position : null
+    );
+
+    if (!shouldScroll) {
+      return
+    }
+
+    if (typeof shouldScroll.then === 'function') {
+      shouldScroll
+        .then(function (shouldScroll) {
+          scrollToPosition((shouldScroll), position);
+        })
+        .catch(function (err) {
+          if (true) {
+            assert(false, err.toString());
+          }
+        });
+    } else {
+      scrollToPosition(shouldScroll, position);
+    }
+  });
+}
+
+function saveScrollPosition () {
+  var key = getStateKey();
+  if (key) {
+    positionStore[key] = {
+      x: window.pageXOffset,
+      y: window.pageYOffset
+    };
+  }
+}
+
+function getScrollPosition () {
+  var key = getStateKey();
+  if (key) {
+    return positionStore[key]
+  }
+}
+
+function getElementPosition (el, offset) {
+  var docEl = document.documentElement;
+  var docRect = docEl.getBoundingClientRect();
+  var elRect = el.getBoundingClientRect();
+  return {
+    x: elRect.left - docRect.left - offset.x,
+    y: elRect.top - docRect.top - offset.y
+  }
+}
+
+function isValidPosition (obj) {
+  return isNumber(obj.x) || isNumber(obj.y)
+}
+
+function normalizePosition (obj) {
+  return {
+    x: isNumber(obj.x) ? obj.x : window.pageXOffset,
+    y: isNumber(obj.y) ? obj.y : window.pageYOffset
+  }
+}
+
+function normalizeOffset (obj) {
+  return {
+    x: isNumber(obj.x) ? obj.x : 0,
+    y: isNumber(obj.y) ? obj.y : 0
+  }
+}
+
+function isNumber (v) {
+  return typeof v === 'number'
+}
+
+var hashStartsWithNumberRE = /^#\d/;
+
+function scrollToPosition (shouldScroll, position) {
+  var isObject = typeof shouldScroll === 'object';
+  if (isObject && typeof shouldScroll.selector === 'string') {
+    // getElementById would still fail if the selector contains a more complicated query like #main[data-attr]
+    // but at the same time, it doesn't make much sense to select an element with an id and an extra selector
+    var el = hashStartsWithNumberRE.test(shouldScroll.selector) // $flow-disable-line
+      ? document.getElementById(shouldScroll.selector.slice(1)) // $flow-disable-line
+      : document.querySelector(shouldScroll.selector);
+
+    if (el) {
+      var offset =
+        shouldScroll.offset && typeof shouldScroll.offset === 'object'
+          ? shouldScroll.offset
+          : {};
+      offset = normalizeOffset(offset);
+      position = getElementPosition(el, offset);
+    } else if (isValidPosition(shouldScroll)) {
+      position = normalizePosition(shouldScroll);
+    }
+  } else if (isObject && isValidPosition(shouldScroll)) {
+    position = normalizePosition(shouldScroll);
+  }
+
+  if (position) {
+    window.scrollTo(position.x, position.y);
+  }
+}
+
+/*  */
+
+var supportsPushState =
+  inBrowser &&
+  (function () {
+    var ua = window.navigator.userAgent;
+
+    if (
+      (ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) &&
+      ua.indexOf('Mobile Safari') !== -1 &&
+      ua.indexOf('Chrome') === -1 &&
+      ua.indexOf('Windows Phone') === -1
+    ) {
+      return false
+    }
+
+    return window.history && 'pushState' in window.history
+  })();
+
+function pushState (url, replace) {
+  saveScrollPosition();
+  // try...catch the pushState call to get around Safari
+  // DOM Exception 18 where it limits to 100 pushState calls
+  var history = window.history;
+  try {
+    if (replace) {
+      // preserve existing history state as it could be overriden by the user
+      var stateCopy = extend({}, history.state);
+      stateCopy.key = getStateKey();
+      history.replaceState(stateCopy, '', url);
+    } else {
+      history.pushState({ key: setStateKey(genStateKey()) }, '', url);
+    }
+  } catch (e) {
+    window.location[replace ? 'replace' : 'assign'](url);
+  }
+}
+
+function replaceState (url) {
+  pushState(url, true);
+}
+
+/*  */
+
+function runQueue (queue, fn, cb) {
+  var step = function (index) {
+    if (index >= queue.length) {
+      cb();
+    } else {
+      if (queue[index]) {
+        fn(queue[index], function () {
+          step(index + 1);
+        });
+      } else {
+        step(index + 1);
+      }
+    }
+  };
+  step(0);
+}
+
+/*  */
+
+function resolveAsyncComponents (matched) {
+  return function (to, from, next) {
+    var hasAsync = false;
+    var pending = 0;
+    var error = null;
+
+    flatMapComponents(matched, function (def, _, match, key) {
+      // if it's a function and doesn't have cid attached,
+      // assume it's an async component resolve function.
+      // we are not using Vue's default async resolving mechanism because
+      // we want to halt the navigation until the incoming component has been
+      // resolved.
+      if (typeof def === 'function' && def.cid === undefined) {
+        hasAsync = true;
+        pending++;
+
+        var resolve = once(function (resolvedDef) {
+          if (isESModule(resolvedDef)) {
+            resolvedDef = resolvedDef.default;
+          }
+          // save resolved on async factory in case it's used elsewhere
+          def.resolved = typeof resolvedDef === 'function'
+            ? resolvedDef
+            : _Vue.extend(resolvedDef);
+          match.components[key] = resolvedDef;
+          pending--;
+          if (pending <= 0) {
+            next();
+          }
+        });
+
+        var reject = once(function (reason) {
+          var msg = "Failed to resolve async component " + key + ": " + reason;
+           true && warn(false, msg);
+          if (!error) {
+            error = isError(reason)
+              ? reason
+              : new Error(msg);
+            next(error);
+          }
+        });
+
+        var res;
+        try {
+          res = def(resolve, reject);
+        } catch (e) {
+          reject(e);
+        }
+        if (res) {
+          if (typeof res.then === 'function') {
+            res.then(resolve, reject);
+          } else {
+            // new syntax in Vue 2.3
+            var comp = res.component;
+            if (comp && typeof comp.then === 'function') {
+              comp.then(resolve, reject);
+            }
+          }
+        }
+      }
+    });
+
+    if (!hasAsync) { next(); }
+  }
+}
+
+function flatMapComponents (
+  matched,
+  fn
+) {
+  return flatten(matched.map(function (m) {
+    return Object.keys(m.components).map(function (key) { return fn(
+      m.components[key],
+      m.instances[key],
+      m, key
+    ); })
+  }))
+}
+
+function flatten (arr) {
+  return Array.prototype.concat.apply([], arr)
+}
+
+var hasSymbol =
+  typeof Symbol === 'function' &&
+  typeof Symbol.toStringTag === 'symbol';
+
+function isESModule (obj) {
+  return obj.__esModule || (hasSymbol && obj[Symbol.toStringTag] === 'Module')
+}
+
+// in Webpack 2, require.ensure now also returns a Promise
+// so the resolve/reject functions may get called an extra time
+// if the user uses an arrow function shorthand that happens to
+// return that Promise.
+function once (fn) {
+  var called = false;
+  return function () {
+    var args = [], len = arguments.length;
+    while ( len-- ) args[ len ] = arguments[ len ];
+
+    if (called) { return }
+    called = true;
+    return fn.apply(this, args)
+  }
+}
+
+var NavigationDuplicated = /*@__PURE__*/(function (Error) {
+  function NavigationDuplicated (normalizedLocation) {
+    Error.call(this);
+    this.name = this._name = 'NavigationDuplicated';
+    // passing the message to super() doesn't seem to work in the transpiled version
+    this.message = "Navigating to current location (\"" + (normalizedLocation.fullPath) + "\") is not allowed";
+    // add a stack property so services like Sentry can correctly display it
+    Object.defineProperty(this, 'stack', {
+      value: new Error().stack,
+      writable: true,
+      configurable: true
+    });
+    // we could also have used
+    // Error.captureStackTrace(this, this.constructor)
+    // but it only exists on node and chrome
+  }
+
+  if ( Error ) NavigationDuplicated.__proto__ = Error;
+  NavigationDuplicated.prototype = Object.create( Error && Error.prototype );
+  NavigationDuplicated.prototype.constructor = NavigationDuplicated;
+
+  return NavigationDuplicated;
+}(Error));
+
+// support IE9
+NavigationDuplicated._name = 'NavigationDuplicated';
+
+/*  */
+
+var History = function History (router, base) {
+  this.router = router;
+  this.base = normalizeBase(base);
+  // start with a route object that stands for "nowhere"
+  this.current = START;
+  this.pending = null;
+  this.ready = false;
+  this.readyCbs = [];
+  this.readyErrorCbs = [];
+  this.errorCbs = [];
+};
+
+History.prototype.listen = function listen (cb) {
+  this.cb = cb;
+};
+
+History.prototype.onReady = function onReady (cb, errorCb) {
+  if (this.ready) {
+    cb();
+  } else {
+    this.readyCbs.push(cb);
+    if (errorCb) {
+      this.readyErrorCbs.push(errorCb);
+    }
+  }
+};
+
+History.prototype.onError = function onError (errorCb) {
+  this.errorCbs.push(errorCb);
+};
+
+History.prototype.transitionTo = function transitionTo (
+  location,
+  onComplete,
+  onAbort
+) {
+    var this$1 = this;
+
+  var route = this.router.match(location, this.current);
+  this.confirmTransition(
+    route,
+    function () {
+      this$1.updateRoute(route);
+      onComplete && onComplete(route);
+      this$1.ensureURL();
+
+      // fire ready cbs once
+      if (!this$1.ready) {
+        this$1.ready = true;
+        this$1.readyCbs.forEach(function (cb) {
+          cb(route);
+        });
+      }
+    },
+    function (err) {
+      if (onAbort) {
+        onAbort(err);
+      }
+      if (err && !this$1.ready) {
+        this$1.ready = true;
+        this$1.readyErrorCbs.forEach(function (cb) {
+          cb(err);
+        });
+      }
+    }
+  );
+};
+
+History.prototype.confirmTransition = function confirmTransition (route, onComplete, onAbort) {
+    var this$1 = this;
+
+  var current = this.current;
+  var abort = function (err) {
+    // after merging https://github.com/vuejs/vue-router/pull/2771 we
+    // When the user navigates through history through back/forward buttons
+    // we do not want to throw the error. We only throw it if directly calling
+    // push/replace. That's why it's not included in isError
+    if (!isExtendedError(NavigationDuplicated, err) && isError(err)) {
+      if (this$1.errorCbs.length) {
+        this$1.errorCbs.forEach(function (cb) {
+          cb(err);
+        });
+      } else {
+        warn(false, 'uncaught error during route navigation:');
+        console.error(err);
+      }
+    }
+    onAbort && onAbort(err);
+  };
+  if (
+    isSameRoute(route, current) &&
+    // in the case the route map has been dynamically appended to
+    route.matched.length === current.matched.length
+  ) {
+    this.ensureURL();
+    return abort(new NavigationDuplicated(route))
+  }
+
+  var ref = resolveQueue(
+    this.current.matched,
+    route.matched
+  );
+    var updated = ref.updated;
+    var deactivated = ref.deactivated;
+    var activated = ref.activated;
+
+  var queue = [].concat(
+    // in-component leave guards
+    extractLeaveGuards(deactivated),
+    // global before hooks
+    this.router.beforeHooks,
+    // in-component update hooks
+    extractUpdateHooks(updated),
+    // in-config enter guards
+    activated.map(function (m) { return m.beforeEnter; }),
+    // async components
+    resolveAsyncComponents(activated)
+  );
+
+  this.pending = route;
+  var iterator = function (hook, next) {
+    if (this$1.pending !== route) {
+      return abort()
+    }
+    try {
+      hook(route, current, function (to) {
+        if (to === false || isError(to)) {
+          // next(false) -> abort navigation, ensure current URL
+          this$1.ensureURL(true);
+          abort(to);
+        } else if (
+          typeof to === 'string' ||
+          (typeof to === 'object' &&
+            (typeof to.path === 'string' || typeof to.name === 'string'))
+        ) {
+          // next('/') or next({ path: '/' }) -> redirect
+          abort();
+          if (typeof to === 'object' && to.replace) {
+            this$1.replace(to);
+          } else {
+            this$1.push(to);
+          }
+        } else {
+          // confirm transition and pass on the value
+          next(to);
+        }
+      });
+    } catch (e) {
+      abort(e);
+    }
+  };
+
+  runQueue(queue, iterator, function () {
+    var postEnterCbs = [];
+    var isValid = function () { return this$1.current === route; };
+    // wait until async components are resolved before
+    // extracting in-component enter guards
+    var enterGuards = extractEnterGuards(activated, postEnterCbs, isValid);
+    var queue = enterGuards.concat(this$1.router.resolveHooks);
+    runQueue(queue, iterator, function () {
+      if (this$1.pending !== route) {
+        return abort()
+      }
+      this$1.pending = null;
+      onComplete(route);
+      if (this$1.router.app) {
+        this$1.router.app.$nextTick(function () {
+          postEnterCbs.forEach(function (cb) {
+            cb();
+          });
+        });
+      }
+    });
+  });
+};
+
+History.prototype.updateRoute = function updateRoute (route) {
+  var prev = this.current;
+  this.current = route;
+  this.cb && this.cb(route);
+  this.router.afterHooks.forEach(function (hook) {
+    hook && hook(route, prev);
+  });
+};
+
+function normalizeBase (base) {
+  if (!base) {
+    if (inBrowser) {
+      // respect <base> tag
+      var baseEl = document.querySelector('base');
+      base = (baseEl && baseEl.getAttribute('href')) || '/';
+      // strip full URL origin
+      base = base.replace(/^https?:\/\/[^\/]+/, '');
+    } else {
+      base = '/';
+    }
+  }
+  // make sure there's the starting slash
+  if (base.charAt(0) !== '/') {
+    base = '/' + base;
+  }
+  // remove trailing slash
+  return base.replace(/\/$/, '')
+}
+
+function resolveQueue (
+  current,
+  next
+) {
+  var i;
+  var max = Math.max(current.length, next.length);
+  for (i = 0; i < max; i++) {
+    if (current[i] !== next[i]) {
+      break
+    }
+  }
+  return {
+    updated: next.slice(0, i),
+    activated: next.slice(i),
+    deactivated: current.slice(i)
+  }
+}
+
+function extractGuards (
+  records,
+  name,
+  bind,
+  reverse
+) {
+  var guards = flatMapComponents(records, function (def, instance, match, key) {
+    var guard = extractGuard(def, name);
+    if (guard) {
+      return Array.isArray(guard)
+        ? guard.map(function (guard) { return bind(guard, instance, match, key); })
+        : bind(guard, instance, match, key)
+    }
+  });
+  return flatten(reverse ? guards.reverse() : guards)
+}
+
+function extractGuard (
+  def,
+  key
+) {
+  if (typeof def !== 'function') {
+    // extend now so that global mixins are applied.
+    def = _Vue.extend(def);
+  }
+  return def.options[key]
+}
+
+function extractLeaveGuards (deactivated) {
+  return extractGuards(deactivated, 'beforeRouteLeave', bindGuard, true)
+}
+
+function extractUpdateHooks (updated) {
+  return extractGuards(updated, 'beforeRouteUpdate', bindGuard)
+}
+
+function bindGuard (guard, instance) {
+  if (instance) {
+    return function boundRouteGuard () {
+      return guard.apply(instance, arguments)
+    }
+  }
+}
+
+function extractEnterGuards (
+  activated,
+  cbs,
+  isValid
+) {
+  return extractGuards(
+    activated,
+    'beforeRouteEnter',
+    function (guard, _, match, key) {
+      return bindEnterGuard(guard, match, key, cbs, isValid)
+    }
+  )
+}
+
+function bindEnterGuard (
+  guard,
+  match,
+  key,
+  cbs,
+  isValid
+) {
+  return function routeEnterGuard (to, from, next) {
+    return guard(to, from, function (cb) {
+      if (typeof cb === 'function') {
+        cbs.push(function () {
+          // #750
+          // if a router-view is wrapped with an out-in transition,
+          // the instance may not have been registered at this time.
+          // we will need to poll for registration until current route
+          // is no longer valid.
+          poll(cb, match.instances, key, isValid);
+        });
+      }
+      next(cb);
+    })
+  }
+}
+
+function poll (
+  cb, // somehow flow cannot infer this is a function
+  instances,
+  key,
+  isValid
+) {
+  if (
+    instances[key] &&
+    !instances[key]._isBeingDestroyed // do not reuse being destroyed instance
+  ) {
+    cb(instances[key]);
+  } else if (isValid()) {
+    setTimeout(function () {
+      poll(cb, instances, key, isValid);
+    }, 16);
+  }
+}
+
+/*  */
+
+var HTML5History = /*@__PURE__*/(function (History) {
+  function HTML5History (router, base) {
+    var this$1 = this;
+
+    History.call(this, router, base);
+
+    var expectScroll = router.options.scrollBehavior;
+    var supportsScroll = supportsPushState && expectScroll;
+
+    if (supportsScroll) {
+      setupScroll();
+    }
+
+    var initLocation = getLocation(this.base);
+    window.addEventListener('popstate', function (e) {
+      var current = this$1.current;
+
+      // Avoiding first `popstate` event dispatched in some browsers but first
+      // history route not updated since async guard at the same time.
+      var location = getLocation(this$1.base);
+      if (this$1.current === START && location === initLocation) {
+        return
+      }
+
+      this$1.transitionTo(location, function (route) {
+        if (supportsScroll) {
+          handleScroll(router, route, current, true);
+        }
+      });
+    });
+  }
+
+  if ( History ) HTML5History.__proto__ = History;
+  HTML5History.prototype = Object.create( History && History.prototype );
+  HTML5History.prototype.constructor = HTML5History;
+
+  HTML5History.prototype.go = function go (n) {
+    window.history.go(n);
+  };
+
+  HTML5History.prototype.push = function push (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    var ref = this;
+    var fromRoute = ref.current;
+    this.transitionTo(location, function (route) {
+      pushState(cleanPath(this$1.base + route.fullPath));
+      handleScroll(this$1.router, route, fromRoute, false);
+      onComplete && onComplete(route);
+    }, onAbort);
+  };
+
+  HTML5History.prototype.replace = function replace (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    var ref = this;
+    var fromRoute = ref.current;
+    this.transitionTo(location, function (route) {
+      replaceState(cleanPath(this$1.base + route.fullPath));
+      handleScroll(this$1.router, route, fromRoute, false);
+      onComplete && onComplete(route);
+    }, onAbort);
+  };
+
+  HTML5History.prototype.ensureURL = function ensureURL (push) {
+    if (getLocation(this.base) !== this.current.fullPath) {
+      var current = cleanPath(this.base + this.current.fullPath);
+      push ? pushState(current) : replaceState(current);
+    }
+  };
+
+  HTML5History.prototype.getCurrentLocation = function getCurrentLocation () {
+    return getLocation(this.base)
+  };
+
+  return HTML5History;
+}(History));
+
+function getLocation (base) {
+  var path = decodeURI(window.location.pathname);
+  if (base && path.indexOf(base) === 0) {
+    path = path.slice(base.length);
+  }
+  return (path || '/') + window.location.search + window.location.hash
+}
+
+/*  */
+
+var HashHistory = /*@__PURE__*/(function (History) {
+  function HashHistory (router, base, fallback) {
+    History.call(this, router, base);
+    // check history fallback deeplinking
+    if (fallback && checkFallback(this.base)) {
+      return
+    }
+    ensureSlash();
+  }
+
+  if ( History ) HashHistory.__proto__ = History;
+  HashHistory.prototype = Object.create( History && History.prototype );
+  HashHistory.prototype.constructor = HashHistory;
+
+  // this is delayed until the app mounts
+  // to avoid the hashchange listener being fired too early
+  HashHistory.prototype.setupListeners = function setupListeners () {
+    var this$1 = this;
+
+    var router = this.router;
+    var expectScroll = router.options.scrollBehavior;
+    var supportsScroll = supportsPushState && expectScroll;
+
+    if (supportsScroll) {
+      setupScroll();
+    }
+
+    window.addEventListener(
+      supportsPushState ? 'popstate' : 'hashchange',
+      function () {
+        var current = this$1.current;
+        if (!ensureSlash()) {
+          return
+        }
+        this$1.transitionTo(getHash(), function (route) {
+          if (supportsScroll) {
+            handleScroll(this$1.router, route, current, true);
+          }
+          if (!supportsPushState) {
+            replaceHash(route.fullPath);
+          }
+        });
+      }
+    );
+  };
+
+  HashHistory.prototype.push = function push (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    var ref = this;
+    var fromRoute = ref.current;
+    this.transitionTo(
+      location,
+      function (route) {
+        pushHash(route.fullPath);
+        handleScroll(this$1.router, route, fromRoute, false);
+        onComplete && onComplete(route);
+      },
+      onAbort
+    );
+  };
+
+  HashHistory.prototype.replace = function replace (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    var ref = this;
+    var fromRoute = ref.current;
+    this.transitionTo(
+      location,
+      function (route) {
+        replaceHash(route.fullPath);
+        handleScroll(this$1.router, route, fromRoute, false);
+        onComplete && onComplete(route);
+      },
+      onAbort
+    );
+  };
+
+  HashHistory.prototype.go = function go (n) {
+    window.history.go(n);
+  };
+
+  HashHistory.prototype.ensureURL = function ensureURL (push) {
+    var current = this.current.fullPath;
+    if (getHash() !== current) {
+      push ? pushHash(current) : replaceHash(current);
+    }
+  };
+
+  HashHistory.prototype.getCurrentLocation = function getCurrentLocation () {
+    return getHash()
+  };
+
+  return HashHistory;
+}(History));
+
+function checkFallback (base) {
+  var location = getLocation(base);
+  if (!/^\/#/.test(location)) {
+    window.location.replace(cleanPath(base + '/#' + location));
+    return true
+  }
+}
+
+function ensureSlash () {
+  var path = getHash();
+  if (path.charAt(0) === '/') {
+    return true
+  }
+  replaceHash('/' + path);
+  return false
+}
+
+function getHash () {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var index = href.indexOf('#');
+  // empty path
+  if (index < 0) { return '' }
+
+  href = href.slice(index + 1);
+  // decode the hash but not the search or hash
+  // as search(query) is already decoded
+  // https://github.com/vuejs/vue-router/issues/2708
+  var searchIndex = href.indexOf('?');
+  if (searchIndex < 0) {
+    var hashIndex = href.indexOf('#');
+    if (hashIndex > -1) {
+      href = decodeURI(href.slice(0, hashIndex)) + href.slice(hashIndex);
+    } else { href = decodeURI(href); }
+  } else {
+    href = decodeURI(href.slice(0, searchIndex)) + href.slice(searchIndex);
+  }
+
+  return href
+}
+
+function getUrl (path) {
+  var href = window.location.href;
+  var i = href.indexOf('#');
+  var base = i >= 0 ? href.slice(0, i) : href;
+  return (base + "#" + path)
+}
+
+function pushHash (path) {
+  if (supportsPushState) {
+    pushState(getUrl(path));
+  } else {
+    window.location.hash = path;
+  }
+}
+
+function replaceHash (path) {
+  if (supportsPushState) {
+    replaceState(getUrl(path));
+  } else {
+    window.location.replace(getUrl(path));
+  }
+}
+
+/*  */
+
+var AbstractHistory = /*@__PURE__*/(function (History) {
+  function AbstractHistory (router, base) {
+    History.call(this, router, base);
+    this.stack = [];
+    this.index = -1;
+  }
+
+  if ( History ) AbstractHistory.__proto__ = History;
+  AbstractHistory.prototype = Object.create( History && History.prototype );
+  AbstractHistory.prototype.constructor = AbstractHistory;
+
+  AbstractHistory.prototype.push = function push (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    this.transitionTo(
+      location,
+      function (route) {
+        this$1.stack = this$1.stack.slice(0, this$1.index + 1).concat(route);
+        this$1.index++;
+        onComplete && onComplete(route);
+      },
+      onAbort
+    );
+  };
+
+  AbstractHistory.prototype.replace = function replace (location, onComplete, onAbort) {
+    var this$1 = this;
+
+    this.transitionTo(
+      location,
+      function (route) {
+        this$1.stack = this$1.stack.slice(0, this$1.index).concat(route);
+        onComplete && onComplete(route);
+      },
+      onAbort
+    );
+  };
+
+  AbstractHistory.prototype.go = function go (n) {
+    var this$1 = this;
+
+    var targetIndex = this.index + n;
+    if (targetIndex < 0 || targetIndex >= this.stack.length) {
+      return
+    }
+    var route = this.stack[targetIndex];
+    this.confirmTransition(
+      route,
+      function () {
+        this$1.index = targetIndex;
+        this$1.updateRoute(route);
+      },
+      function (err) {
+        if (isExtendedError(NavigationDuplicated, err)) {
+          this$1.index = targetIndex;
+        }
+      }
+    );
+  };
+
+  AbstractHistory.prototype.getCurrentLocation = function getCurrentLocation () {
+    var current = this.stack[this.stack.length - 1];
+    return current ? current.fullPath : '/'
+  };
+
+  AbstractHistory.prototype.ensureURL = function ensureURL () {
+    // noop
+  };
+
+  return AbstractHistory;
+}(History));
+
+/*  */
+
+
+
+var VueRouter = function VueRouter (options) {
+  if ( options === void 0 ) options = {};
+
+  this.app = null;
+  this.apps = [];
+  this.options = options;
+  this.beforeHooks = [];
+  this.resolveHooks = [];
+  this.afterHooks = [];
+  this.matcher = createMatcher(options.routes || [], this);
+
+  var mode = options.mode || 'hash';
+  this.fallback = mode === 'history' && !supportsPushState && options.fallback !== false;
+  if (this.fallback) {
+    mode = 'hash';
+  }
+  if (!inBrowser) {
+    mode = 'abstract';
+  }
+  this.mode = mode;
+
+  switch (mode) {
+    case 'history':
+      this.history = new HTML5History(this, options.base);
+      break
+    case 'hash':
+      this.history = new HashHistory(this, options.base, this.fallback);
+      break
+    case 'abstract':
+      this.history = new AbstractHistory(this, options.base);
+      break
+    default:
+      if (true) {
+        assert(false, ("invalid mode: " + mode));
+      }
+  }
+};
+
+var prototypeAccessors = { currentRoute: { configurable: true } };
+
+VueRouter.prototype.match = function match (
+  raw,
+  current,
+  redirectedFrom
+) {
+  return this.matcher.match(raw, current, redirectedFrom)
+};
+
+prototypeAccessors.currentRoute.get = function () {
+  return this.history && this.history.current
+};
+
+VueRouter.prototype.init = function init (app /* Vue component instance */) {
+    var this$1 = this;
+
+   true && assert(
+    install.installed,
+    "not installed. Make sure to call `Vue.use(VueRouter)` " +
+    "before creating root instance."
+  );
+
+  this.apps.push(app);
+
+  // set up app destroyed handler
+  // https://github.com/vuejs/vue-router/issues/2639
+  app.$once('hook:destroyed', function () {
+    // clean out app from this.apps array once destroyed
+    var index = this$1.apps.indexOf(app);
+    if (index > -1) { this$1.apps.splice(index, 1); }
+    // ensure we still have a main app or null if no apps
+    // we do not release the router so it can be reused
+    if (this$1.app === app) { this$1.app = this$1.apps[0] || null; }
+  });
+
+  // main app previously initialized
+  // return as we don't need to set up new history listener
+  if (this.app) {
+    return
+  }
+
+  this.app = app;
+
+  var history = this.history;
+
+  if (history instanceof HTML5History) {
+    history.transitionTo(history.getCurrentLocation());
+  } else if (history instanceof HashHistory) {
+    var setupHashListener = function () {
+      history.setupListeners();
+    };
+    history.transitionTo(
+      history.getCurrentLocation(),
+      setupHashListener,
+      setupHashListener
+    );
+  }
+
+  history.listen(function (route) {
+    this$1.apps.forEach(function (app) {
+      app._route = route;
+    });
+  });
+};
+
+VueRouter.prototype.beforeEach = function beforeEach (fn) {
+  return registerHook(this.beforeHooks, fn)
+};
+
+VueRouter.prototype.beforeResolve = function beforeResolve (fn) {
+  return registerHook(this.resolveHooks, fn)
+};
+
+VueRouter.prototype.afterEach = function afterEach (fn) {
+  return registerHook(this.afterHooks, fn)
+};
+
+VueRouter.prototype.onReady = function onReady (cb, errorCb) {
+  this.history.onReady(cb, errorCb);
+};
+
+VueRouter.prototype.onError = function onError (errorCb) {
+  this.history.onError(errorCb);
+};
+
+VueRouter.prototype.push = function push (location, onComplete, onAbort) {
+    var this$1 = this;
+
+  // $flow-disable-line
+  if (!onComplete && !onAbort && typeof Promise !== 'undefined') {
+    return new Promise(function (resolve, reject) {
+      this$1.history.push(location, resolve, reject);
+    })
+  } else {
+    this.history.push(location, onComplete, onAbort);
+  }
+};
+
+VueRouter.prototype.replace = function replace (location, onComplete, onAbort) {
+    var this$1 = this;
+
+  // $flow-disable-line
+  if (!onComplete && !onAbort && typeof Promise !== 'undefined') {
+    return new Promise(function (resolve, reject) {
+      this$1.history.replace(location, resolve, reject);
+    })
+  } else {
+    this.history.replace(location, onComplete, onAbort);
+  }
+};
+
+VueRouter.prototype.go = function go (n) {
+  this.history.go(n);
+};
+
+VueRouter.prototype.back = function back () {
+  this.go(-1);
+};
+
+VueRouter.prototype.forward = function forward () {
+  this.go(1);
+};
+
+VueRouter.prototype.getMatchedComponents = function getMatchedComponents (to) {
+  var route = to
+    ? to.matched
+      ? to
+      : this.resolve(to).route
+    : this.currentRoute;
+  if (!route) {
+    return []
+  }
+  return [].concat.apply([], route.matched.map(function (m) {
+    return Object.keys(m.components).map(function (key) {
+      return m.components[key]
+    })
+  }))
+};
+
+VueRouter.prototype.resolve = function resolve (
+  to,
+  current,
+  append
+) {
+  current = current || this.history.current;
+  var location = normalizeLocation(
+    to,
+    current,
+    append,
+    this
+  );
+  var route = this.match(location, current);
+  var fullPath = route.redirectedFrom || route.fullPath;
+  var base = this.history.base;
+  var href = createHref(base, fullPath, this.mode);
+  return {
+    location: location,
+    route: route,
+    href: href,
+    // for backwards compat
+    normalizedTo: location,
+    resolved: route
+  }
+};
+
+VueRouter.prototype.addRoutes = function addRoutes (routes) {
+  this.matcher.addRoutes(routes);
+  if (this.history.current !== START) {
+    this.history.transitionTo(this.history.getCurrentLocation());
+  }
+};
+
+Object.defineProperties( VueRouter.prototype, prototypeAccessors );
+
+function registerHook (list, fn) {
+  list.push(fn);
+  return function () {
+    var i = list.indexOf(fn);
+    if (i > -1) { list.splice(i, 1); }
+  }
+}
+
+function createHref (base, fullPath, mode) {
+  var path = mode === 'hash' ? '#' + fullPath : fullPath;
+  return base ? cleanPath(base + '/' + path) : path
+}
+
+VueRouter.install = install;
+VueRouter.version = '3.1.6';
+
+if (inBrowser && window.Vue) {
+  window.Vue.use(VueRouter);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (VueRouter);
 
 
 /***/ }),
@@ -50220,15 +56325,25 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _router_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router/routes */ "./resources/js/router/routes.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./owl/owl.carousel.min */ "./resources/js/owl/owl.carousel.min.js");
+
+__webpack_require__(/*! ./bx/jquery.bxslider */ "./resources/js/bx/jquery.bxslider.js");
+
+__webpack_require__(/*! ./main */ "./resources/js/main.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -50241,7 +56356,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: 'history',
+  routes: _router_routes__WEBPACK_IMPORTED_MODULE_1__["routes"]
+});
 Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
+Vue.component('footer-section', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50249,7 +56372,8 @@ Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./re
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  router: router
 });
 
 /***/ }),
@@ -50296,6 +56420,2110 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/bx/jquery.bxslider.js":
+/*!********************************************!*\
+  !*** ./resources/js/bx/jquery.bxslider.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * bxSlider v4.2.12
+ * Copyright 2013-2015 Steven Wanderski
+ * Written while drinking Belgian ales and listening to jazz
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+;
+
+(function ($) {
+  var defaults = {
+    // GENERAL
+    mode: 'horizontal',
+    slideSelector: '',
+    infiniteLoop: true,
+    hideControlOnEnd: false,
+    speed: 500,
+    easing: null,
+    slideMargin: 0,
+    startSlide: 0,
+    randomStart: false,
+    captions: false,
+    ticker: false,
+    tickerHover: false,
+    adaptiveHeight: false,
+    adaptiveHeightSpeed: 500,
+    video: false,
+    useCSS: true,
+    preloadImages: 'visible',
+    responsive: true,
+    slideZIndex: 50,
+    wrapperClass: 'bx-wrapper',
+    // TOUCH
+    touchEnabled: true,
+    swipeThreshold: 50,
+    oneToOneTouch: true,
+    preventDefaultSwipeX: true,
+    preventDefaultSwipeY: false,
+    // ACCESSIBILITY
+    ariaLive: true,
+    ariaHidden: true,
+    // KEYBOARD
+    keyboardEnabled: false,
+    // PAGER
+    pager: true,
+    pagerType: 'full',
+    pagerShortSeparator: ' / ',
+    pagerSelector: null,
+    buildPager: null,
+    pagerCustom: null,
+    // CONTROLS
+    controls: true,
+    nextText: 'Next',
+    prevText: 'Prev',
+    nextSelector: null,
+    prevSelector: null,
+    autoControls: false,
+    startText: 'Start',
+    stopText: 'Stop',
+    autoControlsCombine: false,
+    autoControlsSelector: null,
+    // AUTO
+    auto: false,
+    pause: 4000,
+    autoStart: true,
+    autoDirection: 'next',
+    stopAutoOnClick: false,
+    autoHover: false,
+    autoDelay: 0,
+    autoSlideForOnePage: false,
+    // CAROUSEL
+    minSlides: 1,
+    maxSlides: 1,
+    moveSlides: 0,
+    slideWidth: 0,
+    shrinkItems: false,
+    // CALLBACKS
+    onSliderLoad: function onSliderLoad() {
+      return true;
+    },
+    onSlideBefore: function onSlideBefore() {
+      return true;
+    },
+    onSlideAfter: function onSlideAfter() {
+      return true;
+    },
+    onSlideNext: function onSlideNext() {
+      return true;
+    },
+    onSlidePrev: function onSlidePrev() {
+      return true;
+    },
+    onSliderResize: function onSliderResize() {
+      return true;
+    }
+  };
+
+  $.fn.bxSlider = function (options) {
+    if (this.length === 0) {
+      return this;
+    } // support multiple elements
+
+
+    if (this.length > 1) {
+      this.each(function () {
+        $(this).bxSlider(options);
+      });
+      return this;
+    } // create a namespace to be used throughout the plugin
+
+
+    var slider = {},
+        // set a reference to our slider element
+    el = this,
+        // get the original window dimens (thanks a lot IE)
+    windowWidth = $(window).width(),
+        windowHeight = $(window).height(); // Return if slider is already initialized
+
+    if ($(el).data('bxSlider')) {
+      return;
+    }
+    /**
+     * ===================================================================================
+     * = PRIVATE FUNCTIONS
+     * ===================================================================================
+     */
+
+    /**
+     * Initializes namespace settings to be used throughout plugin
+     */
+
+
+    var init = function init() {
+      // Return if slider is already initialized
+      if ($(el).data('bxSlider')) {
+        return;
+      } // merge user-supplied options with the defaults
+
+
+      slider.settings = $.extend({}, defaults, options); // parse slideWidth setting
+
+      slider.settings.slideWidth = parseInt(slider.settings.slideWidth); // store the original children
+
+      slider.children = el.children(slider.settings.slideSelector); // check if actual number of slides is less than minSlides / maxSlides
+
+      if (slider.children.length < slider.settings.minSlides) {
+        slider.settings.minSlides = slider.children.length;
+      }
+
+      if (slider.children.length < slider.settings.maxSlides) {
+        slider.settings.maxSlides = slider.children.length;
+      } // if random start, set the startSlide setting to random number
+
+
+      if (slider.settings.randomStart) {
+        slider.settings.startSlide = Math.floor(Math.random() * slider.children.length);
+      } // store active slide information
+
+
+      slider.active = {
+        index: slider.settings.startSlide
+      }; // store if the slider is in carousel mode (displaying / moving multiple slides)
+
+      slider.carousel = slider.settings.minSlides > 1 || slider.settings.maxSlides > 1 ? true : false; // if carousel, force preloadImages = 'all'
+
+      if (slider.carousel) {
+        slider.settings.preloadImages = 'all';
+      } // calculate the min / max width thresholds based on min / max number of slides
+      // used to setup and update carousel slides dimensions
+
+
+      slider.minThreshold = slider.settings.minSlides * slider.settings.slideWidth + (slider.settings.minSlides - 1) * slider.settings.slideMargin;
+      slider.maxThreshold = slider.settings.maxSlides * slider.settings.slideWidth + (slider.settings.maxSlides - 1) * slider.settings.slideMargin; // store the current state of the slider (if currently animating, working is true)
+
+      slider.working = false; // initialize the controls object
+
+      slider.controls = {}; // initialize an auto interval
+
+      slider.interval = null; // determine which property to use for transitions
+
+      slider.animProp = slider.settings.mode === 'vertical' ? 'top' : 'left'; // determine if hardware acceleration can be used
+
+      slider.usingCSS = slider.settings.useCSS && slider.settings.mode !== 'fade' && function () {
+        // create our test div element
+        var div = document.createElement('div'),
+            // css transition properties
+        props = ['WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']; // test for each property
+
+        for (var i = 0; i < props.length; i++) {
+          if (div.style[props[i]] !== undefined) {
+            slider.cssPrefix = props[i].replace('Perspective', '').toLowerCase();
+            slider.animProp = '-' + slider.cssPrefix + '-transform';
+            return true;
+          }
+        }
+
+        return false;
+      }(); // if vertical mode always make maxSlides and minSlides equal
+
+
+      if (slider.settings.mode === 'vertical') {
+        slider.settings.maxSlides = slider.settings.minSlides;
+      } // save original style data
+
+
+      el.data('origStyle', el.attr('style'));
+      el.children(slider.settings.slideSelector).each(function () {
+        $(this).data('origStyle', $(this).attr('style'));
+      }); // perform all DOM / CSS modifications
+
+      setup();
+    };
+    /**
+     * Performs all DOM and CSS modifications
+     */
+
+
+    var setup = function setup() {
+      var preloadSelector = slider.children.eq(slider.settings.startSlide); // set the default preload selector (visible)
+      // wrap el in a wrapper
+
+      el.wrap('<div class="' + slider.settings.wrapperClass + '"><div class="bx-viewport"></div></div>'); // store a namespace reference to .bx-viewport
+
+      slider.viewport = el.parent(); // add aria-live if the setting is enabled and ticker mode is disabled
+
+      if (slider.settings.ariaLive && !slider.settings.ticker) {
+        slider.viewport.attr('aria-live', 'polite');
+      } // add a loading div to display while images are loading
+
+
+      slider.loader = $('<div class="bx-loading" />');
+      slider.viewport.prepend(slider.loader); // set el to a massive width, to hold any needed slides
+      // also strip any margin and padding from el
+
+      el.css({
+        width: slider.settings.mode === 'horizontal' ? slider.children.length * 1000 + 215 + '%' : 'auto',
+        position: 'relative'
+      }); // if using CSS, add the easing property
+
+      if (slider.usingCSS && slider.settings.easing) {
+        el.css('-' + slider.cssPrefix + '-transition-timing-function', slider.settings.easing); // if not using CSS and no easing value was supplied, use the default JS animation easing (swing)
+      } else if (!slider.settings.easing) {
+        slider.settings.easing = 'swing';
+      } // make modifications to the viewport (.bx-viewport)
+
+
+      slider.viewport.css({
+        width: '100%',
+        overflow: 'hidden',
+        position: 'relative'
+      });
+      slider.viewport.parent().css({
+        maxWidth: getViewportMaxWidth()
+      }); // apply css to all slider children
+
+      slider.children.css({
+        "float": slider.settings.mode === 'horizontal' ? 'left' : 'none',
+        listStyle: 'none',
+        position: 'relative'
+      }); // apply the calculated width after the float is applied to prevent scrollbar interference
+
+      slider.children.css('width', getSlideWidth()); // if slideMargin is supplied, add the css
+
+      if (slider.settings.mode === 'horizontal' && slider.settings.slideMargin > 0) {
+        slider.children.css('marginRight', slider.settings.slideMargin);
+      }
+
+      if (slider.settings.mode === 'vertical' && slider.settings.slideMargin > 0) {
+        slider.children.css('marginBottom', slider.settings.slideMargin);
+      } // if "fade" mode, add positioning and z-index CSS
+
+
+      if (slider.settings.mode === 'fade') {
+        slider.children.css({
+          position: 'absolute',
+          zIndex: 0,
+          display: 'none'
+        }); // prepare the z-index on the showing element
+
+        slider.children.eq(slider.settings.startSlide).css({
+          zIndex: slider.settings.slideZIndex,
+          display: 'block'
+        });
+      } // create an element to contain all slider controls (pager, start / stop, etc)
+
+
+      slider.controls.el = $('<div class="bx-controls" />'); // if captions are requested, add them
+
+      if (slider.settings.captions) {
+        appendCaptions();
+      } // check if startSlide is last slide
+
+
+      slider.active.last = slider.settings.startSlide === getPagerQty() - 1; // if video is true, set up the fitVids plugin
+
+      if (slider.settings.video) {
+        el.fitVids();
+      }
+
+      if (slider.settings.preloadImages === 'all' || slider.settings.ticker) {
+        preloadSelector = slider.children;
+      } // only check for control addition if not in "ticker" mode
+
+
+      if (!slider.settings.ticker) {
+        // if controls are requested, add them
+        if (slider.settings.controls) {
+          appendControls();
+        } // if auto is true, and auto controls are requested, add them
+
+
+        if (slider.settings.auto && slider.settings.autoControls) {
+          appendControlsAuto();
+        } // if pager is requested, add it
+
+
+        if (slider.settings.pager) {
+          appendPager();
+        } // if any control option is requested, add the controls wrapper
+
+
+        if (slider.settings.controls || slider.settings.autoControls || slider.settings.pager) {
+          slider.viewport.after(slider.controls.el);
+        } // if ticker mode, do not allow a pager
+
+      } else {
+        slider.settings.pager = false;
+      }
+
+      loadElements(preloadSelector, start);
+    };
+
+    var loadElements = function loadElements(selector, callback) {
+      var total = selector.find('img:not([src=""]), iframe').length,
+          count = 0;
+
+      if (total === 0) {
+        callback();
+        return;
+      }
+
+      selector.find('img:not([src=""]), iframe').each(function () {
+        $(this).one('load error', function () {
+          if (++count === total) {
+            callback();
+          }
+        }).each(function () {
+          if (this.complete) {
+            $(this).trigger('load');
+          }
+        });
+      });
+    };
+    /**
+     * Start the slider
+     */
+
+
+    var start = function start() {
+      // if infinite loop, prepare additional slides
+      if (slider.settings.infiniteLoop && slider.settings.mode !== 'fade' && !slider.settings.ticker) {
+        var slice = slider.settings.mode === 'vertical' ? slider.settings.minSlides : slider.settings.maxSlides,
+            sliceAppend = slider.children.slice(0, slice).clone(true).addClass('bx-clone'),
+            slicePrepend = slider.children.slice(-slice).clone(true).addClass('bx-clone');
+
+        if (slider.settings.ariaHidden) {
+          sliceAppend.attr('aria-hidden', true);
+          slicePrepend.attr('aria-hidden', true);
+        }
+
+        el.append(sliceAppend).prepend(slicePrepend);
+      } // remove the loading DOM element
+
+
+      slider.loader.remove(); // set the left / top position of "el"
+
+      setSlidePosition(); // if "vertical" mode, always use adaptiveHeight to prevent odd behavior
+
+      if (slider.settings.mode === 'vertical') {
+        slider.settings.adaptiveHeight = true;
+      } // set the viewport height
+
+
+      slider.viewport.height(getViewportHeight()); // make sure everything is positioned just right (same as a window resize)
+
+      el.redrawSlider(); // onSliderLoad callback
+
+      slider.settings.onSliderLoad.call(el, slider.active.index); // slider has been fully initialized
+
+      slider.initialized = true; // bind the resize call to the window
+
+      if (slider.settings.responsive) {
+        $(window).bind('resize', resizeWindow);
+      } // if auto is true and has more than 1 page, start the show
+
+
+      if (slider.settings.auto && slider.settings.autoStart && (getPagerQty() > 1 || slider.settings.autoSlideForOnePage)) {
+        initAuto();
+      } // if ticker is true, start the ticker
+
+
+      if (slider.settings.ticker) {
+        initTicker();
+      } // if pager is requested, make the appropriate pager link active
+
+
+      if (slider.settings.pager) {
+        updatePagerActive(slider.settings.startSlide);
+      } // check for any updates to the controls (like hideControlOnEnd updates)
+
+
+      if (slider.settings.controls) {
+        updateDirectionControls();
+      } // if touchEnabled is true, setup the touch events
+
+
+      if (slider.settings.touchEnabled && !slider.settings.ticker) {
+        initTouch();
+      } // if keyboardEnabled is true, setup the keyboard events
+
+
+      if (slider.settings.keyboardEnabled && !slider.settings.ticker) {
+        $(document).keydown(keyPress);
+      }
+    };
+    /**
+     * Returns the calculated height of the viewport, used to determine either adaptiveHeight or the maxHeight value
+     */
+
+
+    var getViewportHeight = function getViewportHeight() {
+      var height = 0; // first determine which children (slides) should be used in our height calculation
+
+      var children = $(); // if mode is not "vertical" and adaptiveHeight is false, include all children
+
+      if (slider.settings.mode !== 'vertical' && !slider.settings.adaptiveHeight) {
+        children = slider.children;
+      } else {
+        // if not carousel, return the single active child
+        if (!slider.carousel) {
+          children = slider.children.eq(slider.active.index); // if carousel, return a slice of children
+        } else {
+          // get the individual slide index
+          var currentIndex = slider.settings.moveSlides === 1 ? slider.active.index : slider.active.index * getMoveBy(); // add the current slide to the children
+
+          children = slider.children.eq(currentIndex); // cycle through the remaining "showing" slides
+
+          for (i = 1; i <= slider.settings.maxSlides - 1; i++) {
+            // if looped back to the start
+            if (currentIndex + i >= slider.children.length) {
+              children = children.add(slider.children.eq(i - 1));
+            } else {
+              children = children.add(slider.children.eq(currentIndex + i));
+            }
+          }
+        }
+      } // if "vertical" mode, calculate the sum of the heights of the children
+
+
+      if (slider.settings.mode === 'vertical') {
+        children.each(function (index) {
+          height += $(this).outerHeight();
+        }); // add user-supplied margins
+
+        if (slider.settings.slideMargin > 0) {
+          height += slider.settings.slideMargin * (slider.settings.minSlides - 1);
+        } // if not "vertical" mode, calculate the max height of the children
+
+      } else {
+        height = Math.max.apply(Math, children.map(function () {
+          return $(this).outerHeight(false);
+        }).get());
+      }
+
+      if (slider.viewport.css('box-sizing') === 'border-box') {
+        height += parseFloat(slider.viewport.css('padding-top')) + parseFloat(slider.viewport.css('padding-bottom')) + parseFloat(slider.viewport.css('border-top-width')) + parseFloat(slider.viewport.css('border-bottom-width'));
+      } else if (slider.viewport.css('box-sizing') === 'padding-box') {
+        height += parseFloat(slider.viewport.css('padding-top')) + parseFloat(slider.viewport.css('padding-bottom'));
+      }
+
+      return height;
+    };
+    /**
+     * Returns the calculated width to be used for the outer wrapper / viewport
+     */
+
+
+    var getViewportMaxWidth = function getViewportMaxWidth() {
+      var width = '100%';
+
+      if (slider.settings.slideWidth > 0) {
+        if (slider.settings.mode === 'horizontal') {
+          width = slider.settings.maxSlides * slider.settings.slideWidth + (slider.settings.maxSlides - 1) * slider.settings.slideMargin;
+        } else {
+          width = slider.settings.slideWidth;
+        }
+      }
+
+      return width;
+    };
+    /**
+     * Returns the calculated width to be applied to each slide
+     */
+
+
+    var getSlideWidth = function getSlideWidth() {
+      var newElWidth = slider.settings.slideWidth,
+          // start with any user-supplied slide width
+      wrapWidth = slider.viewport.width(); // get the current viewport width
+      // if slide width was not supplied, or is larger than the viewport use the viewport width
+
+      if (slider.settings.slideWidth === 0 || slider.settings.slideWidth > wrapWidth && !slider.carousel || slider.settings.mode === 'vertical') {
+        newElWidth = wrapWidth; // if carousel, use the thresholds to determine the width
+      } else if (slider.settings.maxSlides > 1 && slider.settings.mode === 'horizontal') {
+        if (wrapWidth > slider.maxThreshold) {
+          return newElWidth;
+        } else if (wrapWidth < slider.minThreshold) {
+          newElWidth = (wrapWidth - slider.settings.slideMargin * (slider.settings.minSlides - 1)) / slider.settings.minSlides;
+        } else if (slider.settings.shrinkItems) {
+          newElWidth = Math.floor((wrapWidth + slider.settings.slideMargin) / Math.ceil((wrapWidth + slider.settings.slideMargin) / (newElWidth + slider.settings.slideMargin)) - slider.settings.slideMargin);
+        }
+      }
+
+      return newElWidth;
+    };
+    /**
+     * Returns the number of slides currently visible in the viewport (includes partially visible slides)
+     */
+
+
+    var getNumberSlidesShowing = function getNumberSlidesShowing() {
+      var slidesShowing = 1,
+          childWidth = null;
+
+      if (slider.settings.mode === 'horizontal' && slider.settings.slideWidth > 0) {
+        // if viewport is smaller than minThreshold, return minSlides
+        if (slider.viewport.width() < slider.minThreshold) {
+          slidesShowing = slider.settings.minSlides; // if viewport is larger than maxThreshold, return maxSlides
+        } else if (slider.viewport.width() > slider.maxThreshold) {
+          slidesShowing = slider.settings.maxSlides; // if viewport is between min / max thresholds, divide viewport width by first child width
+        } else {
+          childWidth = slider.children.first().width() + slider.settings.slideMargin;
+          slidesShowing = Math.floor((slider.viewport.width() + slider.settings.slideMargin) / childWidth);
+        } // if "vertical" mode, slides showing will always be minSlides
+
+      } else if (slider.settings.mode === 'vertical') {
+        slidesShowing = slider.settings.minSlides;
+      }
+
+      return slidesShowing;
+    };
+    /**
+     * Returns the number of pages (one full viewport of slides is one "page")
+     */
+
+
+    var getPagerQty = function getPagerQty() {
+      var pagerQty = 0,
+          breakPoint = 0,
+          counter = 0; // if moveSlides is specified by the user
+
+      if (slider.settings.moveSlides > 0) {
+        if (slider.settings.infiniteLoop) {
+          pagerQty = Math.ceil(slider.children.length / getMoveBy());
+        } else {
+          // when breakpoint goes above children length, counter is the number of pages
+          while (breakPoint < slider.children.length) {
+            ++pagerQty;
+            breakPoint = counter + getNumberSlidesShowing();
+            counter += slider.settings.moveSlides <= getNumberSlidesShowing() ? slider.settings.moveSlides : getNumberSlidesShowing();
+          }
+        } // if moveSlides is 0 (auto) divide children length by sides showing, then round up
+
+      } else {
+        pagerQty = Math.ceil(slider.children.length / getNumberSlidesShowing());
+      }
+
+      return pagerQty;
+    };
+    /**
+     * Returns the number of individual slides by which to shift the slider
+     */
+
+
+    var getMoveBy = function getMoveBy() {
+      // if moveSlides was set by the user and moveSlides is less than number of slides showing
+      if (slider.settings.moveSlides > 0 && slider.settings.moveSlides <= getNumberSlidesShowing()) {
+        return slider.settings.moveSlides;
+      } // if moveSlides is 0 (auto)
+
+
+      return getNumberSlidesShowing();
+    };
+    /**
+     * Sets the slider's (el) left or top position
+     */
+
+
+    var setSlidePosition = function setSlidePosition() {
+      var position, lastChild, lastShowingIndex; // if last slide, not infinite loop, and number of children is larger than specified maxSlides
+
+      if (slider.children.length > slider.settings.maxSlides && slider.active.last && !slider.settings.infiniteLoop) {
+        if (slider.settings.mode === 'horizontal') {
+          // get the last child's position
+          lastChild = slider.children.last();
+          position = lastChild.position(); // set the left position
+
+          setPositionProperty(-(position.left - (slider.viewport.width() - lastChild.outerWidth())), 'reset', 0);
+        } else if (slider.settings.mode === 'vertical') {
+          // get the last showing index's position
+          lastShowingIndex = slider.children.length - slider.settings.minSlides;
+          position = slider.children.eq(lastShowingIndex).position(); // set the top position
+
+          setPositionProperty(-position.top, 'reset', 0);
+        } // if not last slide
+
+      } else {
+        // get the position of the first showing slide
+        position = slider.children.eq(slider.active.index * getMoveBy()).position(); // check for last slide
+
+        if (slider.active.index === getPagerQty() - 1) {
+          slider.active.last = true;
+        } // set the respective position
+
+
+        if (position !== undefined) {
+          if (slider.settings.mode === 'horizontal') {
+            setPositionProperty(-position.left, 'reset', 0);
+          } else if (slider.settings.mode === 'vertical') {
+            setPositionProperty(-position.top, 'reset', 0);
+          }
+        }
+      }
+    };
+    /**
+     * Sets the el's animating property position (which in turn will sometimes animate el).
+     * If using CSS, sets the transform property. If not using CSS, sets the top / left property.
+     *
+     * @param value (int)
+     *  - the animating property's value
+     *
+     * @param type (string) 'slide', 'reset', 'ticker'
+     *  - the type of instance for which the function is being
+     *
+     * @param duration (int)
+     *  - the amount of time (in ms) the transition should occupy
+     *
+     * @param params (array) optional
+     *  - an optional parameter containing any variables that need to be passed in
+     */
+
+
+    var setPositionProperty = function setPositionProperty(value, type, duration, params) {
+      var animateObj, propValue; // use CSS transform
+
+      if (slider.usingCSS) {
+        // determine the translate3d value
+        propValue = slider.settings.mode === 'vertical' ? 'translate3d(0, ' + value + 'px, 0)' : 'translate3d(' + value + 'px, 0, 0)'; // add the CSS transition-duration
+
+        el.css('-' + slider.cssPrefix + '-transition-duration', duration / 1000 + 's');
+
+        if (type === 'slide') {
+          // set the property value
+          el.css(slider.animProp, propValue);
+
+          if (duration !== 0) {
+            // bind a callback method - executes when CSS transition completes
+            el.bind('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function (e) {
+              //make sure it's the correct one
+              if (!$(e.target).is(el)) {
+                return;
+              } // unbind the callback
+
+
+              el.unbind('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd');
+              updateAfterSlideTransition();
+            });
+          } else {
+            //duration = 0
+            updateAfterSlideTransition();
+          }
+        } else if (type === 'reset') {
+          el.css(slider.animProp, propValue);
+        } else if (type === 'ticker') {
+          // make the transition use 'linear'
+          el.css('-' + slider.cssPrefix + '-transition-timing-function', 'linear');
+          el.css(slider.animProp, propValue);
+
+          if (duration !== 0) {
+            el.bind('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function (e) {
+              //make sure it's the correct one
+              if (!$(e.target).is(el)) {
+                return;
+              } // unbind the callback
+
+
+              el.unbind('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd'); // reset the position
+
+              setPositionProperty(params.resetValue, 'reset', 0); // start the loop again
+
+              tickerLoop();
+            });
+          } else {
+            //duration = 0
+            setPositionProperty(params.resetValue, 'reset', 0);
+            tickerLoop();
+          }
+        } // use JS animate
+
+      } else {
+        animateObj = {};
+        animateObj[slider.animProp] = value;
+
+        if (type === 'slide') {
+          el.animate(animateObj, duration, slider.settings.easing, function () {
+            updateAfterSlideTransition();
+          });
+        } else if (type === 'reset') {
+          el.css(slider.animProp, value);
+        } else if (type === 'ticker') {
+          el.animate(animateObj, duration, 'linear', function () {
+            setPositionProperty(params.resetValue, 'reset', 0); // run the recursive loop after animation
+
+            tickerLoop();
+          });
+        }
+      }
+    };
+    /**
+     * Populates the pager with proper amount of pages
+     */
+
+
+    var populatePager = function populatePager() {
+      var pagerHtml = '',
+          linkContent = '',
+          pagerQty = getPagerQty(); // loop through each pager item
+
+      for (var i = 0; i < pagerQty; i++) {
+        linkContent = ''; // if a buildPager function is supplied, use it to get pager link value, else use index + 1
+
+        if (slider.settings.buildPager && $.isFunction(slider.settings.buildPager) || slider.settings.pagerCustom) {
+          linkContent = slider.settings.buildPager(i);
+          slider.pagerEl.addClass('bx-custom-pager');
+        } else {
+          linkContent = i + 1;
+          slider.pagerEl.addClass('bx-default-pager');
+        } // var linkContent = slider.settings.buildPager && $.isFunction(slider.settings.buildPager) ? slider.settings.buildPager(i) : i + 1;
+        // add the markup to the string
+
+
+        pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
+      } // populate the pager element with pager links
+
+
+      slider.pagerEl.html(pagerHtml);
+    };
+    /**
+     * Appends the pager to the controls element
+     */
+
+
+    var appendPager = function appendPager() {
+      if (!slider.settings.pagerCustom) {
+        // create the pager DOM element
+        slider.pagerEl = $('<div class="bx-pager" />'); // if a pager selector was supplied, populate it with the pager
+
+        if (slider.settings.pagerSelector) {
+          $(slider.settings.pagerSelector).html(slider.pagerEl); // if no pager selector was supplied, add it after the wrapper
+        } else {
+          slider.controls.el.addClass('bx-has-pager').append(slider.pagerEl);
+        } // populate the pager
+
+
+        populatePager();
+      } else {
+        slider.pagerEl = $(slider.settings.pagerCustom);
+      } // assign the pager click binding
+
+
+      slider.pagerEl.on('click touchend', 'a', clickPagerBind);
+    };
+    /**
+     * Appends prev / next controls to the controls element
+     */
+
+
+    var appendControls = function appendControls() {
+      slider.controls.next = $('<a class="bx-next" href="">' + slider.settings.nextText + '</a>');
+      slider.controls.prev = $('<a class="bx-prev" href="">' + slider.settings.prevText + '</a>'); // bind click actions to the controls
+
+      slider.controls.next.bind('click touchend', clickNextBind);
+      slider.controls.prev.bind('click touchend', clickPrevBind); // if nextSelector was supplied, populate it
+
+      if (slider.settings.nextSelector) {
+        $(slider.settings.nextSelector).append(slider.controls.next);
+      } // if prevSelector was supplied, populate it
+
+
+      if (slider.settings.prevSelector) {
+        $(slider.settings.prevSelector).append(slider.controls.prev);
+      } // if no custom selectors were supplied
+
+
+      if (!slider.settings.nextSelector && !slider.settings.prevSelector) {
+        // add the controls to the DOM
+        slider.controls.directionEl = $('<div class="bx-controls-direction" />'); // add the control elements to the directionEl
+
+        slider.controls.directionEl.append(slider.controls.prev).append(slider.controls.next); // slider.viewport.append(slider.controls.directionEl);
+
+        slider.controls.el.addClass('bx-has-controls-direction').append(slider.controls.directionEl);
+      }
+    };
+    /**
+     * Appends start / stop auto controls to the controls element
+     */
+
+
+    var appendControlsAuto = function appendControlsAuto() {
+      slider.controls.start = $('<div class="bx-controls-auto-item"><a class="bx-start" href="">' + slider.settings.startText + '</a></div>');
+      slider.controls.stop = $('<div class="bx-controls-auto-item"><a class="bx-stop" href="">' + slider.settings.stopText + '</a></div>'); // add the controls to the DOM
+
+      slider.controls.autoEl = $('<div class="bx-controls-auto" />'); // bind click actions to the controls
+
+      slider.controls.autoEl.on('click', '.bx-start', clickStartBind);
+      slider.controls.autoEl.on('click', '.bx-stop', clickStopBind); // if autoControlsCombine, insert only the "start" control
+
+      if (slider.settings.autoControlsCombine) {
+        slider.controls.autoEl.append(slider.controls.start); // if autoControlsCombine is false, insert both controls
+      } else {
+        slider.controls.autoEl.append(slider.controls.start).append(slider.controls.stop);
+      } // if auto controls selector was supplied, populate it with the controls
+
+
+      if (slider.settings.autoControlsSelector) {
+        $(slider.settings.autoControlsSelector).html(slider.controls.autoEl); // if auto controls selector was not supplied, add it after the wrapper
+      } else {
+        slider.controls.el.addClass('bx-has-controls-auto').append(slider.controls.autoEl);
+      } // update the auto controls
+
+
+      updateAutoControls(slider.settings.autoStart ? 'stop' : 'start');
+    };
+    /**
+     * Appends image captions to the DOM
+     */
+
+
+    var appendCaptions = function appendCaptions() {
+      // cycle through each child
+      slider.children.each(function (index) {
+        // get the image title attribute
+        var title = $(this).find('img:first').attr('title'); // append the caption
+
+        if (title !== undefined && ('' + title).length) {
+          $(this).append('<div class="bx-caption"><span>' + title + '</span></div>');
+        }
+      });
+    };
+    /**
+     * Click next binding
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var clickNextBind = function clickNextBind(e) {
+      e.preventDefault();
+
+      if (slider.controls.el.hasClass('disabled')) {
+        return;
+      } // if auto show is running, stop it
+
+
+      if (slider.settings.auto && slider.settings.stopAutoOnClick) {
+        el.stopAuto();
+      }
+
+      el.goToNextSlide();
+    };
+    /**
+     * Click prev binding
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var clickPrevBind = function clickPrevBind(e) {
+      e.preventDefault();
+
+      if (slider.controls.el.hasClass('disabled')) {
+        return;
+      } // if auto show is running, stop it
+
+
+      if (slider.settings.auto && slider.settings.stopAutoOnClick) {
+        el.stopAuto();
+      }
+
+      el.goToPrevSlide();
+    };
+    /**
+     * Click start binding
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var clickStartBind = function clickStartBind(e) {
+      el.startAuto();
+      e.preventDefault();
+    };
+    /**
+     * Click stop binding
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var clickStopBind = function clickStopBind(e) {
+      el.stopAuto();
+      e.preventDefault();
+    };
+    /**
+     * Click pager binding
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var clickPagerBind = function clickPagerBind(e) {
+      var pagerLink, pagerIndex;
+      e.preventDefault();
+
+      if (slider.controls.el.hasClass('disabled')) {
+        return;
+      } // if auto show is running, stop it
+
+
+      if (slider.settings.auto && slider.settings.stopAutoOnClick) {
+        el.stopAuto();
+      }
+
+      pagerLink = $(e.currentTarget);
+
+      if (pagerLink.attr('data-slide-index') !== undefined) {
+        pagerIndex = parseInt(pagerLink.attr('data-slide-index')); // if clicked pager link is not active, continue with the goToSlide call
+
+        if (pagerIndex !== slider.active.index) {
+          el.goToSlide(pagerIndex);
+        }
+      }
+    };
+    /**
+     * Updates the pager links with an active class
+     *
+     * @param slideIndex (int)
+     *  - index of slide to make active
+     */
+
+
+    var updatePagerActive = function updatePagerActive(slideIndex) {
+      // if "short" pager type
+      var len = slider.children.length; // nb of children
+
+      if (slider.settings.pagerType === 'short') {
+        if (slider.settings.maxSlides > 1) {
+          len = Math.ceil(slider.children.length / slider.settings.maxSlides);
+        }
+
+        slider.pagerEl.html(slideIndex + 1 + slider.settings.pagerShortSeparator + len);
+        return;
+      } // remove all pager active classes
+
+
+      slider.pagerEl.find('a').removeClass('active'); // apply the active class for all pagers
+
+      slider.pagerEl.each(function (i, el) {
+        $(el).find('a').eq(slideIndex).addClass('active');
+      });
+    };
+    /**
+     * Performs needed actions after a slide transition
+     */
+
+
+    var updateAfterSlideTransition = function updateAfterSlideTransition() {
+      // if infinite loop is true
+      if (slider.settings.infiniteLoop) {
+        var position = ''; // first slide
+
+        if (slider.active.index === 0) {
+          // set the new position
+          position = slider.children.eq(0).position(); // carousel, last slide
+        } else if (slider.active.index === getPagerQty() - 1 && slider.carousel) {
+          position = slider.children.eq((getPagerQty() - 1) * getMoveBy()).position(); // last slide
+        } else if (slider.active.index === slider.children.length - 1) {
+          position = slider.children.eq(slider.children.length - 1).position();
+        }
+
+        if (position) {
+          if (slider.settings.mode === 'horizontal') {
+            setPositionProperty(-position.left, 'reset', 0);
+          } else if (slider.settings.mode === 'vertical') {
+            setPositionProperty(-position.top, 'reset', 0);
+          }
+        }
+      } // declare that the transition is complete
+
+
+      slider.working = false; // onSlideAfter callback
+
+      slider.settings.onSlideAfter.call(el, slider.children.eq(slider.active.index), slider.oldIndex, slider.active.index);
+    };
+    /**
+     * Updates the auto controls state (either active, or combined switch)
+     *
+     * @param state (string) "start", "stop"
+     *  - the new state of the auto show
+     */
+
+
+    var updateAutoControls = function updateAutoControls(state) {
+      // if autoControlsCombine is true, replace the current control with the new state
+      if (slider.settings.autoControlsCombine) {
+        slider.controls.autoEl.html(slider.controls[state]); // if autoControlsCombine is false, apply the "active" class to the appropriate control
+      } else {
+        slider.controls.autoEl.find('a').removeClass('active');
+        slider.controls.autoEl.find('a:not(.bx-' + state + ')').addClass('active');
+      }
+    };
+    /**
+     * Updates the direction controls (checks if either should be hidden)
+     */
+
+
+    var updateDirectionControls = function updateDirectionControls() {
+      if (getPagerQty() === 1) {
+        slider.controls.prev.addClass('disabled');
+        slider.controls.next.addClass('disabled');
+      } else if (!slider.settings.infiniteLoop && slider.settings.hideControlOnEnd) {
+        // if first slide
+        if (slider.active.index === 0) {
+          slider.controls.prev.addClass('disabled');
+          slider.controls.next.removeClass('disabled'); // if last slide
+        } else if (slider.active.index === getPagerQty() - 1) {
+          slider.controls.next.addClass('disabled');
+          slider.controls.prev.removeClass('disabled'); // if any slide in the middle
+        } else {
+          slider.controls.prev.removeClass('disabled');
+          slider.controls.next.removeClass('disabled');
+        }
+      }
+    };
+    /**
+     * Initializes the auto process
+     */
+
+
+    var initAuto = function initAuto() {
+      // if autoDelay was supplied, launch the auto show using a setTimeout() call
+      if (slider.settings.autoDelay > 0) {
+        var timeout = setTimeout(el.startAuto, slider.settings.autoDelay); // if autoDelay was not supplied, start the auto show normally
+      } else {
+        el.startAuto(); //add focus and blur events to ensure its running if timeout gets paused
+
+        $(window).focus(function () {
+          el.startAuto();
+        }).blur(function () {
+          el.stopAuto();
+        });
+      } // if autoHover is requested
+
+
+      if (slider.settings.autoHover) {
+        // on el hover
+        el.hover(function () {
+          // if the auto show is currently playing (has an active interval)
+          if (slider.interval) {
+            // stop the auto show and pass true argument which will prevent control update
+            el.stopAuto(true); // create a new autoPaused value which will be used by the relative "mouseout" event
+
+            slider.autoPaused = true;
+          }
+        }, function () {
+          // if the autoPaused value was created be the prior "mouseover" event
+          if (slider.autoPaused) {
+            // start the auto show and pass true argument which will prevent control update
+            el.startAuto(true); // reset the autoPaused value
+
+            slider.autoPaused = null;
+          }
+        });
+      }
+    };
+    /**
+     * Initializes the ticker process
+     */
+
+
+    var initTicker = function initTicker() {
+      var startPosition = 0,
+          position,
+          transform,
+          value,
+          idx,
+          ratio,
+          property,
+          newSpeed,
+          totalDimens; // if autoDirection is "next", append a clone of the entire slider
+
+      if (slider.settings.autoDirection === 'next') {
+        el.append(slider.children.clone().addClass('bx-clone')); // if autoDirection is "prev", prepend a clone of the entire slider, and set the left position
+      } else {
+        el.prepend(slider.children.clone().addClass('bx-clone'));
+        position = slider.children.first().position();
+        startPosition = slider.settings.mode === 'horizontal' ? -position.left : -position.top;
+      }
+
+      setPositionProperty(startPosition, 'reset', 0); // do not allow controls in ticker mode
+
+      slider.settings.pager = false;
+      slider.settings.controls = false;
+      slider.settings.autoControls = false; // if autoHover is requested
+
+      if (slider.settings.tickerHover) {
+        if (slider.usingCSS) {
+          idx = slider.settings.mode === 'horizontal' ? 4 : 5;
+          slider.viewport.hover(function () {
+            transform = el.css('-' + slider.cssPrefix + '-transform');
+            value = parseFloat(transform.split(',')[idx]);
+            setPositionProperty(value, 'reset', 0);
+          }, function () {
+            totalDimens = 0;
+            slider.children.each(function (index) {
+              totalDimens += slider.settings.mode === 'horizontal' ? $(this).outerWidth(true) : $(this).outerHeight(true);
+            }); // calculate the speed ratio (used to determine the new speed to finish the paused animation)
+
+            ratio = slider.settings.speed / totalDimens; // determine which property to use
+
+            property = slider.settings.mode === 'horizontal' ? 'left' : 'top'; // calculate the new speed
+
+            newSpeed = ratio * (totalDimens - Math.abs(parseInt(value)));
+            tickerLoop(newSpeed);
+          });
+        } else {
+          // on el hover
+          slider.viewport.hover(function () {
+            el.stop();
+          }, function () {
+            // calculate the total width of children (used to calculate the speed ratio)
+            totalDimens = 0;
+            slider.children.each(function (index) {
+              totalDimens += slider.settings.mode === 'horizontal' ? $(this).outerWidth(true) : $(this).outerHeight(true);
+            }); // calculate the speed ratio (used to determine the new speed to finish the paused animation)
+
+            ratio = slider.settings.speed / totalDimens; // determine which property to use
+
+            property = slider.settings.mode === 'horizontal' ? 'left' : 'top'; // calculate the new speed
+
+            newSpeed = ratio * (totalDimens - Math.abs(parseInt(el.css(property))));
+            tickerLoop(newSpeed);
+          });
+        }
+      } // start the ticker loop
+
+
+      tickerLoop();
+    };
+    /**
+     * Runs a continuous loop, news ticker-style
+     */
+
+
+    var tickerLoop = function tickerLoop(resumeSpeed) {
+      var speed = resumeSpeed ? resumeSpeed : slider.settings.speed,
+          position = {
+        left: 0,
+        top: 0
+      },
+          reset = {
+        left: 0,
+        top: 0
+      },
+          animateProperty,
+          resetValue,
+          params; // if "next" animate left position to last child, then reset left to 0
+
+      if (slider.settings.autoDirection === 'next') {
+        position = el.find('.bx-clone').first().position(); // if "prev" animate left position to 0, then reset left to first non-clone child
+      } else {
+        reset = slider.children.first().position();
+      }
+
+      animateProperty = slider.settings.mode === 'horizontal' ? -position.left : -position.top;
+      resetValue = slider.settings.mode === 'horizontal' ? -reset.left : -reset.top;
+      params = {
+        resetValue: resetValue
+      };
+      setPositionProperty(animateProperty, 'ticker', speed, params);
+    };
+    /**
+     * Check if el is on screen
+     */
+
+
+    var isOnScreen = function isOnScreen(el) {
+      var win = $(window),
+          viewport = {
+        top: win.scrollTop(),
+        left: win.scrollLeft()
+      },
+          bounds = el.offset();
+      viewport.right = viewport.left + win.width();
+      viewport.bottom = viewport.top + win.height();
+      bounds.right = bounds.left + el.outerWidth();
+      bounds.bottom = bounds.top + el.outerHeight();
+      return !(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom);
+    };
+    /**
+     * Initializes keyboard events
+     */
+
+
+    var keyPress = function keyPress(e) {
+      var activeElementTag = document.activeElement.tagName.toLowerCase(),
+          tagFilters = 'input|textarea',
+          p = new RegExp(activeElementTag, ['i']),
+          result = p.exec(tagFilters);
+
+      if (result == null && isOnScreen(el)) {
+        if (e.keyCode === 39) {
+          clickNextBind(e);
+          return false;
+        } else if (e.keyCode === 37) {
+          clickPrevBind(e);
+          return false;
+        }
+      }
+    };
+    /**
+     * Initializes touch events
+     */
+
+
+    var initTouch = function initTouch() {
+      // initialize object to contain all touch values
+      slider.touch = {
+        start: {
+          x: 0,
+          y: 0
+        },
+        end: {
+          x: 0,
+          y: 0
+        }
+      };
+      slider.viewport.bind('touchstart MSPointerDown pointerdown', onTouchStart); //for browsers that have implemented pointer events and fire a click after
+      //every pointerup regardless of whether pointerup is on same screen location as pointerdown or not
+
+      slider.viewport.on('click', '.bxslider a', function (e) {
+        if (slider.viewport.hasClass('click-disabled')) {
+          e.preventDefault();
+          slider.viewport.removeClass('click-disabled');
+        }
+      });
+    };
+    /**
+     * Event handler for "touchstart"
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var onTouchStart = function onTouchStart(e) {
+      //disable slider controls while user is interacting with slides to avoid slider freeze that happens on touch devices when a slide swipe happens immediately after interacting with slider controls
+      slider.controls.el.addClass('disabled');
+
+      if (slider.working) {
+        e.preventDefault();
+        slider.controls.el.removeClass('disabled');
+      } else {
+        // record the original position when touch starts
+        slider.touch.originalPos = el.position();
+        var orig = e.originalEvent,
+            touchPoints = typeof orig.changedTouches !== 'undefined' ? orig.changedTouches : [orig]; // record the starting touch x, y coordinates
+
+        slider.touch.start.x = touchPoints[0].pageX;
+        slider.touch.start.y = touchPoints[0].pageY;
+
+        if (slider.viewport.get(0).setPointerCapture) {
+          slider.pointerId = orig.pointerId;
+          slider.viewport.get(0).setPointerCapture(slider.pointerId);
+        } // bind a "touchmove" event to the viewport
+
+
+        slider.viewport.bind('touchmove MSPointerMove pointermove', onTouchMove); // bind a "touchend" event to the viewport
+
+        slider.viewport.bind('touchend MSPointerUp pointerup', onTouchEnd);
+        slider.viewport.bind('MSPointerCancel pointercancel', onPointerCancel);
+      }
+    };
+    /**
+     * Cancel Pointer for Windows Phone
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var onPointerCancel = function onPointerCancel(e) {
+      /* onPointerCancel handler is needed to deal with situations when a touchend
+      doesn't fire after a touchstart (this happens on windows phones only) */
+      setPositionProperty(slider.touch.originalPos.left, 'reset', 0); //remove handlers
+
+      slider.controls.el.removeClass('disabled');
+      slider.viewport.unbind('MSPointerCancel pointercancel', onPointerCancel);
+      slider.viewport.unbind('touchmove MSPointerMove pointermove', onTouchMove);
+      slider.viewport.unbind('touchend MSPointerUp pointerup', onTouchEnd);
+
+      if (slider.viewport.get(0).releasePointerCapture) {
+        slider.viewport.get(0).releasePointerCapture(slider.pointerId);
+      }
+    };
+    /**
+     * Event handler for "touchmove"
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var onTouchMove = function onTouchMove(e) {
+      var orig = e.originalEvent,
+          touchPoints = typeof orig.changedTouches !== 'undefined' ? orig.changedTouches : [orig],
+          // if scrolling on y axis, do not prevent default
+      xMovement = Math.abs(touchPoints[0].pageX - slider.touch.start.x),
+          yMovement = Math.abs(touchPoints[0].pageY - slider.touch.start.y),
+          value = 0,
+          change = 0; // x axis swipe
+
+      if (xMovement * 3 > yMovement && slider.settings.preventDefaultSwipeX) {
+        e.preventDefault(); // y axis swipe
+      } else if (yMovement * 3 > xMovement && slider.settings.preventDefaultSwipeY) {
+        e.preventDefault();
+      }
+
+      if (slider.settings.mode !== 'fade' && slider.settings.oneToOneTouch) {
+        // if horizontal, drag along x axis
+        if (slider.settings.mode === 'horizontal') {
+          change = touchPoints[0].pageX - slider.touch.start.x;
+          value = slider.touch.originalPos.left + change; // if vertical, drag along y axis
+        } else {
+          change = touchPoints[0].pageY - slider.touch.start.y;
+          value = slider.touch.originalPos.top + change;
+        }
+
+        setPositionProperty(value, 'reset', 0);
+      }
+    };
+    /**
+     * Event handler for "touchend"
+     *
+     * @param e (event)
+     *  - DOM event object
+     */
+
+
+    var onTouchEnd = function onTouchEnd(e) {
+      slider.viewport.unbind('touchmove MSPointerMove pointermove', onTouchMove); //enable slider controls as soon as user stops interacing with slides
+
+      slider.controls.el.removeClass('disabled');
+      var orig = e.originalEvent,
+          touchPoints = typeof orig.changedTouches !== 'undefined' ? orig.changedTouches : [orig],
+          value = 0,
+          distance = 0; // record end x, y positions
+
+      slider.touch.end.x = touchPoints[0].pageX;
+      slider.touch.end.y = touchPoints[0].pageY; // if fade mode, check if absolute x distance clears the threshold
+
+      if (slider.settings.mode === 'fade') {
+        distance = Math.abs(slider.touch.start.x - slider.touch.end.x);
+
+        if (distance >= slider.settings.swipeThreshold) {
+          if (slider.touch.start.x > slider.touch.end.x) {
+            el.goToNextSlide();
+          } else {
+            el.goToPrevSlide();
+          }
+
+          el.stopAuto();
+        } // not fade mode
+
+      } else {
+        // calculate distance and el's animate property
+        if (slider.settings.mode === 'horizontal') {
+          distance = slider.touch.end.x - slider.touch.start.x;
+          value = slider.touch.originalPos.left;
+        } else {
+          distance = slider.touch.end.y - slider.touch.start.y;
+          value = slider.touch.originalPos.top;
+        } // if not infinite loop and first / last slide, do not attempt a slide transition
+
+
+        if (!slider.settings.infiniteLoop && (slider.active.index === 0 && distance > 0 || slider.active.last && distance < 0)) {
+          setPositionProperty(value, 'reset', 200);
+        } else {
+          // check if distance clears threshold
+          if (Math.abs(distance) >= slider.settings.swipeThreshold) {
+            if (distance < 0) {
+              el.goToNextSlide();
+            } else {
+              el.goToPrevSlide();
+            }
+
+            el.stopAuto();
+          } else {
+            // el.animate(property, 200);
+            setPositionProperty(value, 'reset', 200);
+          }
+        }
+      }
+
+      slider.viewport.unbind('touchend MSPointerUp pointerup', onTouchEnd);
+
+      if (slider.viewport.get(0).releasePointerCapture) {
+        slider.viewport.get(0).releasePointerCapture(slider.pointerId);
+      }
+    };
+    /**
+     * Window resize event callback
+     */
+
+
+    var resizeWindow = function resizeWindow(e) {
+      // don't do anything if slider isn't initialized.
+      if (!slider.initialized) {
+        return;
+      } // Delay if slider working.
+
+
+      if (slider.working) {
+        window.setTimeout(resizeWindow, 10);
+      } else {
+        // get the new window dimens (again, thank you IE)
+        var windowWidthNew = $(window).width(),
+            windowHeightNew = $(window).height(); // make sure that it is a true window resize
+        // *we must check this because our dinosaur friend IE fires a window resize event when certain DOM elements
+        // are resized. Can you just die already?*
+
+        if (windowWidth !== windowWidthNew || windowHeight !== windowHeightNew) {
+          // set the new window dimens
+          windowWidth = windowWidthNew;
+          windowHeight = windowHeightNew; // update all dynamic elements
+
+          el.redrawSlider(); // Call user resize handler
+
+          slider.settings.onSliderResize.call(el, slider.active.index);
+        }
+      }
+    };
+    /**
+     * Adds an aria-hidden=true attribute to each element
+     *
+     * @param startVisibleIndex (int)
+     *  - the first visible element's index
+     */
+
+
+    var applyAriaHiddenAttributes = function applyAriaHiddenAttributes(startVisibleIndex) {
+      var numberOfSlidesShowing = getNumberSlidesShowing(); // only apply attributes if the setting is enabled and not in ticker mode
+
+      if (slider.settings.ariaHidden && !slider.settings.ticker) {
+        // add aria-hidden=true to all elements
+        slider.children.attr('aria-hidden', 'true'); // get the visible elements and change to aria-hidden=false
+
+        slider.children.slice(startVisibleIndex, startVisibleIndex + numberOfSlidesShowing).attr('aria-hidden', 'false');
+      }
+    };
+    /**
+     * Returns index according to present page range
+     *
+     * @param slideOndex (int)
+     *  - the desired slide index
+     */
+
+
+    var setSlideIndex = function setSlideIndex(slideIndex) {
+      if (slideIndex < 0) {
+        if (slider.settings.infiniteLoop) {
+          return getPagerQty() - 1;
+        } else {
+          //we don't go to undefined slides
+          return slider.active.index;
+        } // if slideIndex is greater than children length, set active index to 0 (this happens during infinite loop)
+
+      } else if (slideIndex >= getPagerQty()) {
+        if (slider.settings.infiniteLoop) {
+          return 0;
+        } else {
+          //we don't move to undefined pages
+          return slider.active.index;
+        } // set active index to requested slide
+
+      } else {
+        return slideIndex;
+      }
+    };
+    /**
+     * ===================================================================================
+     * = PUBLIC FUNCTIONS
+     * ===================================================================================
+     */
+
+    /**
+     * Performs slide transition to the specified slide
+     *
+     * @param slideIndex (int)
+     *  - the destination slide's index (zero-based)
+     *
+     * @param direction (string)
+     *  - INTERNAL USE ONLY - the direction of travel ("prev" / "next")
+     */
+
+
+    el.goToSlide = function (slideIndex, direction) {
+      // onSlideBefore, onSlideNext, onSlidePrev callbacks
+      // Allow transition canceling based on returned value
+      var performTransition = true,
+          moveBy = 0,
+          position = {
+        left: 0,
+        top: 0
+      },
+          lastChild = null,
+          lastShowingIndex,
+          eq,
+          value,
+          requestEl; // store the old index
+
+      slider.oldIndex = slider.active.index; //set new index
+
+      slider.active.index = setSlideIndex(slideIndex); // if plugin is currently in motion, ignore request
+
+      if (slider.working || slider.active.index === slider.oldIndex) {
+        return;
+      } // declare that plugin is in motion
+
+
+      slider.working = true;
+      performTransition = slider.settings.onSlideBefore.call(el, slider.children.eq(slider.active.index), slider.oldIndex, slider.active.index); // If transitions canceled, reset and return
+
+      if (typeof performTransition !== 'undefined' && !performTransition) {
+        slider.active.index = slider.oldIndex; // restore old index
+
+        slider.working = false; // is not in motion
+
+        return;
+      }
+
+      if (direction === 'next') {
+        // Prevent canceling in future functions or lack there-of from negating previous commands to cancel
+        if (!slider.settings.onSlideNext.call(el, slider.children.eq(slider.active.index), slider.oldIndex, slider.active.index)) {
+          performTransition = false;
+        }
+      } else if (direction === 'prev') {
+        // Prevent canceling in future functions or lack there-of from negating previous commands to cancel
+        if (!slider.settings.onSlidePrev.call(el, slider.children.eq(slider.active.index), slider.oldIndex, slider.active.index)) {
+          performTransition = false;
+        }
+      } // check if last slide
+
+
+      slider.active.last = slider.active.index >= getPagerQty() - 1; // update the pager with active class
+
+      if (slider.settings.pager || slider.settings.pagerCustom) {
+        updatePagerActive(slider.active.index);
+      } // // check for direction control update
+
+
+      if (slider.settings.controls) {
+        updateDirectionControls();
+      } // if slider is set to mode: "fade"
+
+
+      if (slider.settings.mode === 'fade') {
+        // if adaptiveHeight is true and next height is different from current height, animate to the new height
+        if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
+          slider.viewport.animate({
+            height: getViewportHeight()
+          }, slider.settings.adaptiveHeightSpeed);
+        } // fade out the visible child and reset its z-index value
+
+
+        slider.children.filter(':visible').fadeOut(slider.settings.speed).css({
+          zIndex: 0
+        }); // fade in the newly requested slide
+
+        slider.children.eq(slider.active.index).css('zIndex', slider.settings.slideZIndex + 1).fadeIn(slider.settings.speed, function () {
+          $(this).css('zIndex', slider.settings.slideZIndex);
+          updateAfterSlideTransition();
+        }); // slider mode is not "fade"
+      } else {
+        // if adaptiveHeight is true and next height is different from current height, animate to the new height
+        if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
+          slider.viewport.animate({
+            height: getViewportHeight()
+          }, slider.settings.adaptiveHeightSpeed);
+        } // if carousel and not infinite loop
+
+
+        if (!slider.settings.infiniteLoop && slider.carousel && slider.active.last) {
+          if (slider.settings.mode === 'horizontal') {
+            // get the last child position
+            lastChild = slider.children.eq(slider.children.length - 1);
+            position = lastChild.position(); // calculate the position of the last slide
+
+            moveBy = slider.viewport.width() - lastChild.outerWidth();
+          } else {
+            // get last showing index position
+            lastShowingIndex = slider.children.length - slider.settings.minSlides;
+            position = slider.children.eq(lastShowingIndex).position();
+          } // horizontal carousel, going previous while on first slide (infiniteLoop mode)
+
+        } else if (slider.carousel && slider.active.last && direction === 'prev') {
+          // get the last child position
+          eq = slider.settings.moveSlides === 1 ? slider.settings.maxSlides - getMoveBy() : (getPagerQty() - 1) * getMoveBy() - (slider.children.length - slider.settings.maxSlides);
+          lastChild = el.children('.bx-clone').eq(eq);
+          position = lastChild.position(); // if infinite loop and "Next" is clicked on the last slide
+        } else if (direction === 'next' && slider.active.index === 0) {
+          // get the last clone position
+          position = el.find('> .bx-clone').eq(slider.settings.maxSlides).position();
+          slider.active.last = false; // normal non-zero requests
+        } else if (slideIndex >= 0) {
+          //parseInt is applied to allow floats for slides/page
+          requestEl = slideIndex * parseInt(getMoveBy());
+          position = slider.children.eq(requestEl).position();
+        }
+        /* If the position doesn't exist
+         * (e.g. if you destroy the slider on a next click),
+         * it doesn't throw an error.
+         */
+
+
+        if (typeof position !== 'undefined') {
+          value = slider.settings.mode === 'horizontal' ? -(position.left - moveBy) : -position.top; // plugin values to be animated
+
+          setPositionProperty(value, 'slide', slider.settings.speed);
+        } else {
+          slider.working = false;
+        }
+      }
+
+      if (slider.settings.ariaHidden) {
+        applyAriaHiddenAttributes(slider.active.index * getMoveBy());
+      }
+    };
+    /**
+     * Transitions to the next slide in the show
+     */
+
+
+    el.goToNextSlide = function () {
+      // if infiniteLoop is false and last page is showing, disregard call
+      if (!slider.settings.infiniteLoop && slider.active.last) {
+        return;
+      }
+
+      var pagerIndex = parseInt(slider.active.index) + 1;
+      el.goToSlide(pagerIndex, 'next');
+    };
+    /**
+     * Transitions to the prev slide in the show
+     */
+
+
+    el.goToPrevSlide = function () {
+      // if infiniteLoop is false and last page is showing, disregard call
+      if (!slider.settings.infiniteLoop && slider.active.index === 0) {
+        return;
+      }
+
+      var pagerIndex = parseInt(slider.active.index) - 1;
+      el.goToSlide(pagerIndex, 'prev');
+    };
+    /**
+     * Starts the auto show
+     *
+     * @param preventControlUpdate (boolean)
+     *  - if true, auto controls state will not be updated
+     */
+
+
+    el.startAuto = function (preventControlUpdate) {
+      // if an interval already exists, disregard call
+      if (slider.interval) {
+        return;
+      } // create an interval
+
+
+      slider.interval = setInterval(function () {
+        if (slider.settings.autoDirection === 'next') {
+          el.goToNextSlide();
+        } else {
+          el.goToPrevSlide();
+        }
+      }, slider.settings.pause); // if auto controls are displayed and preventControlUpdate is not true
+
+      if (slider.settings.autoControls && preventControlUpdate !== true) {
+        updateAutoControls('stop');
+      }
+    };
+    /**
+     * Stops the auto show
+     *
+     * @param preventControlUpdate (boolean)
+     *  - if true, auto controls state will not be updated
+     */
+
+
+    el.stopAuto = function (preventControlUpdate) {
+      // if no interval exists, disregard call
+      if (!slider.interval) {
+        return;
+      } // clear the interval
+
+
+      clearInterval(slider.interval);
+      slider.interval = null; // if auto controls are displayed and preventControlUpdate is not true
+
+      if (slider.settings.autoControls && preventControlUpdate !== true) {
+        updateAutoControls('start');
+      }
+    };
+    /**
+     * Returns current slide index (zero-based)
+     */
+
+
+    el.getCurrentSlide = function () {
+      return slider.active.index;
+    };
+    /**
+     * Returns current slide element
+     */
+
+
+    el.getCurrentSlideElement = function () {
+      return slider.children.eq(slider.active.index);
+    };
+    /**
+     * Returns a slide element
+     * @param index (int)
+     *  - The index (zero-based) of the element you want returned.
+     */
+
+
+    el.getSlideElement = function (index) {
+      return slider.children.eq(index);
+    };
+    /**
+     * Returns number of slides in show
+     */
+
+
+    el.getSlideCount = function () {
+      return slider.children.length;
+    };
+    /**
+     * Return slider.working variable
+     */
+
+
+    el.isWorking = function () {
+      return slider.working;
+    };
+    /**
+     * Update all dynamic slider elements
+     */
+
+
+    el.redrawSlider = function () {
+      // resize all children in ratio to new screen size
+      slider.children.add(el.find('.bx-clone')).outerWidth(getSlideWidth()); // adjust the height
+
+      slider.viewport.css('height', getViewportHeight()); // update the slide position
+
+      if (!slider.settings.ticker) {
+        setSlidePosition();
+      } // if active.last was true before the screen resize, we want
+      // to keep it last no matter what screen size we end on
+
+
+      if (slider.active.last) {
+        slider.active.index = getPagerQty() - 1;
+      } // if the active index (page) no longer exists due to the resize, simply set the index as last
+
+
+      if (slider.active.index >= getPagerQty()) {
+        slider.active.last = true;
+      } // if a pager is being displayed and a custom pager is not being used, update it
+
+
+      if (slider.settings.pager && !slider.settings.pagerCustom) {
+        populatePager();
+        updatePagerActive(slider.active.index);
+      }
+
+      if (slider.settings.ariaHidden) {
+        applyAriaHiddenAttributes(slider.active.index * getMoveBy());
+      }
+    };
+    /**
+     * Destroy the current instance of the slider (revert everything back to original state)
+     */
+
+
+    el.destroySlider = function () {
+      // don't do anything if slider has already been destroyed
+      if (!slider.initialized) {
+        return;
+      }
+
+      slider.initialized = false;
+      $('.bx-clone', this).remove();
+      slider.children.each(function () {
+        if ($(this).data('origStyle') !== undefined) {
+          $(this).attr('style', $(this).data('origStyle'));
+        } else {
+          $(this).removeAttr('style');
+        }
+      });
+
+      if ($(this).data('origStyle') !== undefined) {
+        this.attr('style', $(this).data('origStyle'));
+      } else {
+        $(this).removeAttr('style');
+      }
+
+      $(this).unwrap().unwrap();
+
+      if (slider.controls.el) {
+        slider.controls.el.remove();
+      }
+
+      if (slider.controls.next) {
+        slider.controls.next.remove();
+      }
+
+      if (slider.controls.prev) {
+        slider.controls.prev.remove();
+      }
+
+      if (slider.pagerEl && slider.settings.controls && !slider.settings.pagerCustom) {
+        slider.pagerEl.remove();
+      }
+
+      $('.bx-caption', this).remove();
+
+      if (slider.controls.autoEl) {
+        slider.controls.autoEl.remove();
+      }
+
+      clearInterval(slider.interval);
+
+      if (slider.settings.responsive) {
+        $(window).unbind('resize', resizeWindow);
+      }
+
+      if (slider.settings.keyboardEnabled) {
+        $(document).unbind('keydown', keyPress);
+      } //remove self reference in data
+
+
+      $(this).removeData('bxSlider');
+    };
+    /**
+     * Reload the slider (revert all DOM changes, and re-initialize)
+     */
+
+
+    el.reloadSlider = function (settings) {
+      if (settings !== undefined) {
+        options = settings;
+      }
+
+      el.destroySlider();
+      init(); //store reference to self in order to access public functions later
+
+      $(el).data('bxSlider', this);
+    };
+
+    init();
+    $(el).data('bxSlider', this); // returns the current jQuery object
+
+    return this;
+  };
+})(jQuery);
+
+/***/ }),
+
+/***/ "./resources/js/components/Footer.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Footer.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue?vue&type=template&id=61a7c374& */ "./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&");
+/* harmony import */ var _Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer.vue?vue&type=script&lang=js& */ "./resources/js/components/Footer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Footer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Footer.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Footer.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Footer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Footer.vue?vue&type=template&id=61a7c374& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Footer.vue?vue&type=template&id=61a7c374& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_61a7c374___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/GameDetails.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/GameDetails.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GameDetails.vue?vue&type=template&id=280fccd5& */ "./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5&");
+/* harmony import */ var _GameDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameDetails.vue?vue&type=script&lang=js& */ "./resources/js/components/GameDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GameDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/GameDetails.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/GameDetails.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/GameDetails.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GameDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./GameDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GameDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GameDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./GameDetails.vue?vue&type=template&id=280fccd5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GameDetails.vue?vue&type=template&id=280fccd5&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GameDetails_vue_vue_type_template_id_280fccd5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Home.vue":
+/*!******************************************!*\
+  !*** ./resources/js/components/Home.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f2b6376c& */ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Home.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Home.vue?vue&type=template&id=f2b6376c& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=template&id=f2b6376c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -50365,6 +58593,1448 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// back to top
+$(document).ready(function () {
+  // Check distance to top and display back-to-top.
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 800) {
+      $('.back-to-top').addClass('show-back-to-top');
+    } else {
+      $('.back-to-top').removeClass('show-back-to-top');
+    }
+  }); // Click event to scroll to top.
+
+  $('.back-to-top').click(function () {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  }); // read more js
+
+  $('article').readmore({
+    speed: 75,
+    lessLink: '<a href="#" class="seeless">Less answer <span class="arrow-up"></span></a>',
+    moreLink: '<a href="#" class="see-more">See more answer (8) <span class="arrow-down"></span></a>',
+    collapsedHeight: 200
+  });
+  $("article").slice(0, 3).show();
+  $(".loadmore").click(function (e) {
+    e.preventDefault();
+    $("article:hidden").slice(0, 3).fadeIn("slow");
+
+    if ($("article:hidden").length == 0) {
+      $(".loadmore").fadeOut("slow");
+    }
+  });
+}); // menu active
+
+$(document).ready(function () {
+  $('.menu-list-bottom .for-active a').click(function () {
+    $('.for-active a').removeClass("active");
+    $(this).addClass("active");
+  }); // thumbnail active
+  // $('.thumbnails li:second a').click(function(){
+  //     $('li:second a').removeClass("active");
+  //     $(this).addClass("active");
+  // });
+
+  $('.thumbnails li a').click(function () {
+    $('.thumbnails li a').removeClass("active");
+    $(this).addClass("active");
+  }); // owl carousel
+
+  $('.owl-carousel-one').owlCarousel({
+    loop: true,
+    margin: 10,
+    autoplay: false,
+    nav: true,
+    navText: ['<img src="../img/icon/left-arrow.png">', '<img src="../img/icon/right-arrow.png">'],
+    dots: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      575: {
+        items: 2
+      },
+      768: {
+        items: 2
+      },
+      992: {
+        items: 3
+      },
+      1200: {
+        items: 3,
+        nav: true
+      },
+      1400: {
+        items: 4,
+        nav: true
+      }
+    }
+  }); // carosel 2
+
+  $('.owl-carousel-two').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    autoplay: true,
+    navText: ['<img src="../img/icon/left-arrow.png">', '<img src="../img/icon/right-arrow.png">'],
+    dots: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      575: {
+        items: 2
+      },
+      768: {
+        items: 3
+      },
+      992: {
+        items: 4,
+        nav: true
+      },
+      1200: {
+        items: 4,
+        nav: true
+      },
+      1400: {
+        items: 4,
+        nav: true
+      }
+    }
+  }); // carosel 3
+
+  $('.owl-carousel-three').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    autoplay: true,
+    navText: ['<img src="../img/icon/left-arrow.png">', '<img src="../img/icon/right-arrow.png">'],
+    dots: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      575: {
+        items: 2
+      },
+      768: {
+        items: 3,
+        nav: true
+      },
+      992: {
+        items: 3,
+        nav: true
+      },
+      1200: {
+        items: 3,
+        nav: true
+      },
+      1400: {
+        items: 3,
+        nav: true
+      }
+    }
+  }); // carosel 4
+
+  $('.owl-carousel-four').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    autoplay: true,
+    navText: ['<img src="../img/icon/left-arrow.png">', '<img src="../img/icon/right-arrow.png">'],
+    dots: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      575: {
+        items: 2
+      },
+      768: {
+        items: 4,
+        nav: true
+      },
+      992: {
+        items: 5,
+        nav: true
+      },
+      1200: {
+        items: 5,
+        nav: true
+      },
+      1400: {
+        items: 6,
+        nav: true
+      }
+    }
+  }); // dropdown animation
+
+  $('.dropdown').on('show.bs.dropdown', function (e) {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+  });
+  $('.dropdown').on('hide.bs.dropdown', function (e) {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+  });
+}); // bx slider
+
+$(document).ready(function () {
+  $('.slider').bxSlider({
+    auto: true,
+    pager: false
+  });
+}); //   item details 
+// cart count
+
+$(document).ready(function () {
+  var cartCountValue = 0;
+  var cartCount = $('.cart .count');
+  $(cartCount).text(cartCountValue);
+  $('.cart-btn').on('click', function () {
+    var cartBtn = this;
+    var cartCountPosition = $(cartCount).offset();
+    var btnPosition = $(this).offset();
+    var leftPos = cartCountPosition.left < btnPosition.left ? btnPosition.left - (btnPosition.left - cartCountPosition.left) : cartCountPosition.left;
+    var topPos = cartCountPosition.top < btnPosition.top ? cartCountPosition.top : cartCountPosition.top;
+    $(cartBtn).append("<span class='count'>1</span>");
+    $(cartBtn).find(".count").each(function (i, count) {
+      $(count).offset({
+        left: leftPos,
+        top: topPos
+      }).animate({
+        opacity: 0
+      }, 100, function () {
+        $(this).remove();
+        cartCountValue++;
+        $(cartCount).text(cartCountValue);
+      });
+    });
+  });
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+}); // read more
+
+$(function () {
+  $('.example').expandable({
+    'height': 160,
+    'more': 'See More Answers (8)',
+    'less': 'Less Answer',
+    'no_less': false,
+    'animation_duration': 500,
+    expand_responsive: 768
+  });
+}); // tooltip
+// $(document).ready(function(){
+//   $('[data-toggle="tooltip"]').tooltip();   
+// });
+
+/***/ }),
+
+/***/ "./resources/js/owl/owl.carousel.min.js":
+/*!**********************************************!*\
+  !*** ./resources/js/owl/owl.carousel.min.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+!function (a, b, c, d) {
+  function e(b, c) {
+    this.settings = null, this.options = a.extend({}, e.Defaults, c), this.$element = a(b), this._handlers = {}, this._plugins = {}, this._supress = {}, this._current = null, this._speed = null, this._coordinates = [], this._breakpoint = null, this._width = null, this._items = [], this._clones = [], this._mergers = [], this._widths = [], this._invalidated = {}, this._pipe = [], this._drag = {
+      time: null,
+      target: null,
+      pointer: null,
+      stage: {
+        start: null,
+        current: null
+      },
+      direction: null
+    }, this._states = {
+      current: {},
+      tags: {
+        initializing: ["busy"],
+        animating: ["busy"],
+        dragging: ["interacting"]
+      }
+    }, a.each(["onResize", "onThrottledResize"], a.proxy(function (b, c) {
+      this._handlers[c] = a.proxy(this[c], this);
+    }, this)), a.each(e.Plugins, a.proxy(function (a, b) {
+      this._plugins[a.charAt(0).toLowerCase() + a.slice(1)] = new b(this);
+    }, this)), a.each(e.Workers, a.proxy(function (b, c) {
+      this._pipe.push({
+        filter: c.filter,
+        run: a.proxy(c.run, this)
+      });
+    }, this)), this.setup(), this.initialize();
+  }
+
+  e.Defaults = {
+    items: 3,
+    loop: !1,
+    center: !1,
+    rewind: !1,
+    checkVisibility: !0,
+    mouseDrag: !0,
+    touchDrag: !0,
+    pullDrag: !0,
+    freeDrag: !1,
+    margin: 0,
+    stagePadding: 0,
+    merge: !1,
+    mergeFit: !0,
+    autoWidth: !1,
+    startPosition: 0,
+    rtl: !1,
+    smartSpeed: 250,
+    fluidSpeed: !1,
+    dragEndSpeed: !1,
+    responsive: {},
+    responsiveRefreshRate: 200,
+    responsiveBaseElement: b,
+    fallbackEasing: "swing",
+    slideTransition: "",
+    info: !1,
+    nestedItemSelector: !1,
+    itemElement: "div",
+    stageElement: "div",
+    refreshClass: "owl-refresh",
+    loadedClass: "owl-loaded",
+    loadingClass: "owl-loading",
+    rtlClass: "owl-rtl",
+    responsiveClass: "owl-responsive",
+    dragClass: "owl-drag",
+    itemClass: "owl-item",
+    stageClass: "owl-stage",
+    stageOuterClass: "owl-stage-outer",
+    grabClass: "owl-grab"
+  }, e.Width = {
+    Default: "default",
+    Inner: "inner",
+    Outer: "outer"
+  }, e.Type = {
+    Event: "event",
+    State: "state"
+  }, e.Plugins = {}, e.Workers = [{
+    filter: ["width", "settings"],
+    run: function run() {
+      this._width = this.$element.width();
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run(a) {
+      a.current = this._items && this._items[this.relative(this._current)];
+    }
+  }, {
+    filter: ["items", "settings"],
+    run: function run() {
+      this.$stage.children(".cloned").remove();
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run(a) {
+      var b = this.settings.margin || "",
+          c = !this.settings.autoWidth,
+          d = this.settings.rtl,
+          e = {
+        width: "auto",
+        "margin-left": d ? b : "",
+        "margin-right": d ? "" : b
+      };
+      !c && this.$stage.children().css(e), a.css = e;
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run(a) {
+      var b = (this.width() / this.settings.items).toFixed(3) - this.settings.margin,
+          c = null,
+          d = this._items.length,
+          e = !this.settings.autoWidth,
+          f = [];
+
+      for (a.items = {
+        merge: !1,
+        width: b
+      }; d--;) {
+        c = this._mergers[d], c = this.settings.mergeFit && Math.min(c, this.settings.items) || c, a.items.merge = c > 1 || a.items.merge, f[d] = e ? b * c : this._items[d].width();
+      }
+
+      this._widths = f;
+    }
+  }, {
+    filter: ["items", "settings"],
+    run: function run() {
+      var b = [],
+          c = this._items,
+          d = this.settings,
+          e = Math.max(2 * d.items, 4),
+          f = 2 * Math.ceil(c.length / 2),
+          g = d.loop && c.length ? d.rewind ? e : Math.max(e, f) : 0,
+          h = "",
+          i = "";
+
+      for (g /= 2; g > 0;) {
+        b.push(this.normalize(b.length / 2, !0)), h += c[b[b.length - 1]][0].outerHTML, b.push(this.normalize(c.length - 1 - (b.length - 1) / 2, !0)), i = c[b[b.length - 1]][0].outerHTML + i, g -= 1;
+      }
+
+      this._clones = b, a(h).addClass("cloned").appendTo(this.$stage), a(i).addClass("cloned").prependTo(this.$stage);
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run() {
+      for (var a = this.settings.rtl ? 1 : -1, b = this._clones.length + this._items.length, c = -1, d = 0, e = 0, f = []; ++c < b;) {
+        d = f[c - 1] || 0, e = this._widths[this.relative(c)] + this.settings.margin, f.push(d + e * a);
+      }
+
+      this._coordinates = f;
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run() {
+      var a = this.settings.stagePadding,
+          b = this._coordinates,
+          c = {
+        width: Math.ceil(Math.abs(b[b.length - 1])) + 2 * a,
+        "padding-left": a || "",
+        "padding-right": a || ""
+      };
+      this.$stage.css(c);
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run(a) {
+      var b = this._coordinates.length,
+          c = !this.settings.autoWidth,
+          d = this.$stage.children();
+      if (c && a.items.merge) for (; b--;) {
+        a.css.width = this._widths[this.relative(b)], d.eq(b).css(a.css);
+      } else c && (a.css.width = a.items.width, d.css(a.css));
+    }
+  }, {
+    filter: ["items"],
+    run: function run() {
+      this._coordinates.length < 1 && this.$stage.removeAttr("style");
+    }
+  }, {
+    filter: ["width", "items", "settings"],
+    run: function run(a) {
+      a.current = a.current ? this.$stage.children().index(a.current) : 0, a.current = Math.max(this.minimum(), Math.min(this.maximum(), a.current)), this.reset(a.current);
+    }
+  }, {
+    filter: ["position"],
+    run: function run() {
+      this.animate(this.coordinates(this._current));
+    }
+  }, {
+    filter: ["width", "position", "items", "settings"],
+    run: function run() {
+      var a,
+          b,
+          c,
+          d,
+          e = this.settings.rtl ? 1 : -1,
+          f = 2 * this.settings.stagePadding,
+          g = this.coordinates(this.current()) + f,
+          h = g + this.width() * e,
+          i = [];
+
+      for (c = 0, d = this._coordinates.length; c < d; c++) {
+        a = this._coordinates[c - 1] || 0, b = Math.abs(this._coordinates[c]) + f * e, (this.op(a, "<=", g) && this.op(a, ">", h) || this.op(b, "<", g) && this.op(b, ">", h)) && i.push(c);
+      }
+
+      this.$stage.children(".active").removeClass("active"), this.$stage.children(":eq(" + i.join("), :eq(") + ")").addClass("active"), this.$stage.children(".center").removeClass("center"), this.settings.center && this.$stage.children().eq(this.current()).addClass("center");
+    }
+  }], e.prototype.initializeStage = function () {
+    this.$stage = this.$element.find("." + this.settings.stageClass), this.$stage.length || (this.$element.addClass(this.options.loadingClass), this.$stage = a("<" + this.settings.stageElement + ">", {
+      "class": this.settings.stageClass
+    }).wrap(a("<div/>", {
+      "class": this.settings.stageOuterClass
+    })), this.$element.append(this.$stage.parent()));
+  }, e.prototype.initializeItems = function () {
+    var b = this.$element.find(".owl-item");
+    if (b.length) return this._items = b.get().map(function (b) {
+      return a(b);
+    }), this._mergers = this._items.map(function () {
+      return 1;
+    }), void this.refresh();
+    this.replace(this.$element.children().not(this.$stage.parent())), this.isVisible() ? this.refresh() : this.invalidate("width"), this.$element.removeClass(this.options.loadingClass).addClass(this.options.loadedClass);
+  }, e.prototype.initialize = function () {
+    if (this.enter("initializing"), this.trigger("initialize"), this.$element.toggleClass(this.settings.rtlClass, this.settings.rtl), this.settings.autoWidth && !this.is("pre-loading")) {
+      var a, b, c;
+      a = this.$element.find("img"), b = this.settings.nestedItemSelector ? "." + this.settings.nestedItemSelector : d, c = this.$element.children(b).width(), a.length && c <= 0 && this.preloadAutoWidthImages(a);
+    }
+
+    this.initializeStage(), this.initializeItems(), this.registerEventHandlers(), this.leave("initializing"), this.trigger("initialized");
+  }, e.prototype.isVisible = function () {
+    return !this.settings.checkVisibility || this.$element.is(":visible");
+  }, e.prototype.setup = function () {
+    var b = this.viewport(),
+        c = this.options.responsive,
+        d = -1,
+        e = null;
+    c ? (a.each(c, function (a) {
+      a <= b && a > d && (d = Number(a));
+    }), e = a.extend({}, this.options, c[d]), "function" == typeof e.stagePadding && (e.stagePadding = e.stagePadding()), delete e.responsive, e.responsiveClass && this.$element.attr("class", this.$element.attr("class").replace(new RegExp("(" + this.options.responsiveClass + "-)\\S+\\s", "g"), "$1" + d))) : e = a.extend({}, this.options), this.trigger("change", {
+      property: {
+        name: "settings",
+        value: e
+      }
+    }), this._breakpoint = d, this.settings = e, this.invalidate("settings"), this.trigger("changed", {
+      property: {
+        name: "settings",
+        value: this.settings
+      }
+    });
+  }, e.prototype.optionsLogic = function () {
+    this.settings.autoWidth && (this.settings.stagePadding = !1, this.settings.merge = !1);
+  }, e.prototype.prepare = function (b) {
+    var c = this.trigger("prepare", {
+      content: b
+    });
+    return c.data || (c.data = a("<" + this.settings.itemElement + "/>").addClass(this.options.itemClass).append(b)), this.trigger("prepared", {
+      content: c.data
+    }), c.data;
+  }, e.prototype.update = function () {
+    for (var b = 0, c = this._pipe.length, d = a.proxy(function (a) {
+      return this[a];
+    }, this._invalidated), e = {}; b < c;) {
+      (this._invalidated.all || a.grep(this._pipe[b].filter, d).length > 0) && this._pipe[b].run(e), b++;
+    }
+
+    this._invalidated = {}, !this.is("valid") && this.enter("valid");
+  }, e.prototype.width = function (a) {
+    switch (a = a || e.Width.Default) {
+      case e.Width.Inner:
+      case e.Width.Outer:
+        return this._width;
+
+      default:
+        return this._width - 2 * this.settings.stagePadding + this.settings.margin;
+    }
+  }, e.prototype.refresh = function () {
+    this.enter("refreshing"), this.trigger("refresh"), this.setup(), this.optionsLogic(), this.$element.addClass(this.options.refreshClass), this.update(), this.$element.removeClass(this.options.refreshClass), this.leave("refreshing"), this.trigger("refreshed");
+  }, e.prototype.onThrottledResize = function () {
+    b.clearTimeout(this.resizeTimer), this.resizeTimer = b.setTimeout(this._handlers.onResize, this.settings.responsiveRefreshRate);
+  }, e.prototype.onResize = function () {
+    return !!this._items.length && this._width !== this.$element.width() && !!this.isVisible() && (this.enter("resizing"), this.trigger("resize").isDefaultPrevented() ? (this.leave("resizing"), !1) : (this.invalidate("width"), this.refresh(), this.leave("resizing"), void this.trigger("resized")));
+  }, e.prototype.registerEventHandlers = function () {
+    a.support.transition && this.$stage.on(a.support.transition.end + ".owl.core", a.proxy(this.onTransitionEnd, this)), !1 !== this.settings.responsive && this.on(b, "resize", this._handlers.onThrottledResize), this.settings.mouseDrag && (this.$element.addClass(this.options.dragClass), this.$stage.on("mousedown.owl.core", a.proxy(this.onDragStart, this)), this.$stage.on("dragstart.owl.core selectstart.owl.core", function () {
+      return !1;
+    })), this.settings.touchDrag && (this.$stage.on("touchstart.owl.core", a.proxy(this.onDragStart, this)), this.$stage.on("touchcancel.owl.core", a.proxy(this.onDragEnd, this)));
+  }, e.prototype.onDragStart = function (b) {
+    var d = null;
+    3 !== b.which && (a.support.transform ? (d = this.$stage.css("transform").replace(/.*\(|\)| /g, "").split(","), d = {
+      x: d[16 === d.length ? 12 : 4],
+      y: d[16 === d.length ? 13 : 5]
+    }) : (d = this.$stage.position(), d = {
+      x: this.settings.rtl ? d.left + this.$stage.width() - this.width() + this.settings.margin : d.left,
+      y: d.top
+    }), this.is("animating") && (a.support.transform ? this.animate(d.x) : this.$stage.stop(), this.invalidate("position")), this.$element.toggleClass(this.options.grabClass, "mousedown" === b.type), this.speed(0), this._drag.time = new Date().getTime(), this._drag.target = a(b.target), this._drag.stage.start = d, this._drag.stage.current = d, this._drag.pointer = this.pointer(b), a(c).on("mouseup.owl.core touchend.owl.core", a.proxy(this.onDragEnd, this)), a(c).one("mousemove.owl.core touchmove.owl.core", a.proxy(function (b) {
+      var d = this.difference(this._drag.pointer, this.pointer(b));
+      a(c).on("mousemove.owl.core touchmove.owl.core", a.proxy(this.onDragMove, this)), Math.abs(d.x) < Math.abs(d.y) && this.is("valid") || (b.preventDefault(), this.enter("dragging"), this.trigger("drag"));
+    }, this)));
+  }, e.prototype.onDragMove = function (a) {
+    var b = null,
+        c = null,
+        d = null,
+        e = this.difference(this._drag.pointer, this.pointer(a)),
+        f = this.difference(this._drag.stage.start, e);
+    this.is("dragging") && (a.preventDefault(), this.settings.loop ? (b = this.coordinates(this.minimum()), c = this.coordinates(this.maximum() + 1) - b, f.x = ((f.x - b) % c + c) % c + b) : (b = this.settings.rtl ? this.coordinates(this.maximum()) : this.coordinates(this.minimum()), c = this.settings.rtl ? this.coordinates(this.minimum()) : this.coordinates(this.maximum()), d = this.settings.pullDrag ? -1 * e.x / 5 : 0, f.x = Math.max(Math.min(f.x, b + d), c + d)), this._drag.stage.current = f, this.animate(f.x));
+  }, e.prototype.onDragEnd = function (b) {
+    var d = this.difference(this._drag.pointer, this.pointer(b)),
+        e = this._drag.stage.current,
+        f = d.x > 0 ^ this.settings.rtl ? "left" : "right";
+    a(c).off(".owl.core"), this.$element.removeClass(this.options.grabClass), (0 !== d.x && this.is("dragging") || !this.is("valid")) && (this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed), this.current(this.closest(e.x, 0 !== d.x ? f : this._drag.direction)), this.invalidate("position"), this.update(), this._drag.direction = f, (Math.abs(d.x) > 3 || new Date().getTime() - this._drag.time > 300) && this._drag.target.one("click.owl.core", function () {
+      return !1;
+    })), this.is("dragging") && (this.leave("dragging"), this.trigger("dragged"));
+  }, e.prototype.closest = function (b, c) {
+    var e = -1,
+        f = 30,
+        g = this.width(),
+        h = this.coordinates();
+    return this.settings.freeDrag || a.each(h, a.proxy(function (a, i) {
+      return "left" === c && b > i - f && b < i + f ? e = a : "right" === c && b > i - g - f && b < i - g + f ? e = a + 1 : this.op(b, "<", i) && this.op(b, ">", h[a + 1] !== d ? h[a + 1] : i - g) && (e = "left" === c ? a + 1 : a), -1 === e;
+    }, this)), this.settings.loop || (this.op(b, ">", h[this.minimum()]) ? e = b = this.minimum() : this.op(b, "<", h[this.maximum()]) && (e = b = this.maximum())), e;
+  }, e.prototype.animate = function (b) {
+    var c = this.speed() > 0;
+    this.is("animating") && this.onTransitionEnd(), c && (this.enter("animating"), this.trigger("translate")), a.support.transform3d && a.support.transition ? this.$stage.css({
+      transform: "translate3d(" + b + "px,0px,0px)",
+      transition: this.speed() / 1e3 + "s" + (this.settings.slideTransition ? " " + this.settings.slideTransition : "")
+    }) : c ? this.$stage.animate({
+      left: b + "px"
+    }, this.speed(), this.settings.fallbackEasing, a.proxy(this.onTransitionEnd, this)) : this.$stage.css({
+      left: b + "px"
+    });
+  }, e.prototype.is = function (a) {
+    return this._states.current[a] && this._states.current[a] > 0;
+  }, e.prototype.current = function (a) {
+    if (a === d) return this._current;
+    if (0 === this._items.length) return d;
+
+    if (a = this.normalize(a), this._current !== a) {
+      var b = this.trigger("change", {
+        property: {
+          name: "position",
+          value: a
+        }
+      });
+      b.data !== d && (a = this.normalize(b.data)), this._current = a, this.invalidate("position"), this.trigger("changed", {
+        property: {
+          name: "position",
+          value: this._current
+        }
+      });
+    }
+
+    return this._current;
+  }, e.prototype.invalidate = function (b) {
+    return "string" === a.type(b) && (this._invalidated[b] = !0, this.is("valid") && this.leave("valid")), a.map(this._invalidated, function (a, b) {
+      return b;
+    });
+  }, e.prototype.reset = function (a) {
+    (a = this.normalize(a)) !== d && (this._speed = 0, this._current = a, this.suppress(["translate", "translated"]), this.animate(this.coordinates(a)), this.release(["translate", "translated"]));
+  }, e.prototype.normalize = function (a, b) {
+    var c = this._items.length,
+        e = b ? 0 : this._clones.length;
+    return !this.isNumeric(a) || c < 1 ? a = d : (a < 0 || a >= c + e) && (a = ((a - e / 2) % c + c) % c + e / 2), a;
+  }, e.prototype.relative = function (a) {
+    return a -= this._clones.length / 2, this.normalize(a, !0);
+  }, e.prototype.maximum = function (a) {
+    var b,
+        c,
+        d,
+        e = this.settings,
+        f = this._coordinates.length;
+    if (e.loop) f = this._clones.length / 2 + this._items.length - 1;else if (e.autoWidth || e.merge) {
+      if (b = this._items.length) for (c = this._items[--b].width(), d = this.$element.width(); b-- && !((c += this._items[b].width() + this.settings.margin) > d);) {
+        ;
+      }
+      f = b + 1;
+    } else f = e.center ? this._items.length - 1 : this._items.length - e.items;
+    return a && (f -= this._clones.length / 2), Math.max(f, 0);
+  }, e.prototype.minimum = function (a) {
+    return a ? 0 : this._clones.length / 2;
+  }, e.prototype.items = function (a) {
+    return a === d ? this._items.slice() : (a = this.normalize(a, !0), this._items[a]);
+  }, e.prototype.mergers = function (a) {
+    return a === d ? this._mergers.slice() : (a = this.normalize(a, !0), this._mergers[a]);
+  }, e.prototype.clones = function (b) {
+    var c = this._clones.length / 2,
+        e = c + this._items.length,
+        f = function f(a) {
+      return a % 2 == 0 ? e + a / 2 : c - (a + 1) / 2;
+    };
+
+    return b === d ? a.map(this._clones, function (a, b) {
+      return f(b);
+    }) : a.map(this._clones, function (a, c) {
+      return a === b ? f(c) : null;
+    });
+  }, e.prototype.speed = function (a) {
+    return a !== d && (this._speed = a), this._speed;
+  }, e.prototype.coordinates = function (b) {
+    var c,
+        e = 1,
+        f = b - 1;
+    return b === d ? a.map(this._coordinates, a.proxy(function (a, b) {
+      return this.coordinates(b);
+    }, this)) : (this.settings.center ? (this.settings.rtl && (e = -1, f = b + 1), c = this._coordinates[b], c += (this.width() - c + (this._coordinates[f] || 0)) / 2 * e) : c = this._coordinates[f] || 0, c = Math.ceil(c));
+  }, e.prototype.duration = function (a, b, c) {
+    return 0 === c ? 0 : Math.min(Math.max(Math.abs(b - a), 1), 6) * Math.abs(c || this.settings.smartSpeed);
+  }, e.prototype.to = function (a, b) {
+    var c = this.current(),
+        d = null,
+        e = a - this.relative(c),
+        f = (e > 0) - (e < 0),
+        g = this._items.length,
+        h = this.minimum(),
+        i = this.maximum();
+    this.settings.loop ? (!this.settings.rewind && Math.abs(e) > g / 2 && (e += -1 * f * g), a = c + e, (d = ((a - h) % g + g) % g + h) !== a && d - e <= i && d - e > 0 && (c = d - e, a = d, this.reset(c))) : this.settings.rewind ? (i += 1, a = (a % i + i) % i) : a = Math.max(h, Math.min(i, a)), this.speed(this.duration(c, a, b)), this.current(a), this.isVisible() && this.update();
+  }, e.prototype.next = function (a) {
+    a = a || !1, this.to(this.relative(this.current()) + 1, a);
+  }, e.prototype.prev = function (a) {
+    a = a || !1, this.to(this.relative(this.current()) - 1, a);
+  }, e.prototype.onTransitionEnd = function (a) {
+    if (a !== d && (a.stopPropagation(), (a.target || a.srcElement || a.originalTarget) !== this.$stage.get(0))) return !1;
+    this.leave("animating"), this.trigger("translated");
+  }, e.prototype.viewport = function () {
+    var d;
+    return this.options.responsiveBaseElement !== b ? d = a(this.options.responsiveBaseElement).width() : b.innerWidth ? d = b.innerWidth : c.documentElement && c.documentElement.clientWidth ? d = c.documentElement.clientWidth : console.warn("Can not detect viewport width."), d;
+  }, e.prototype.replace = function (b) {
+    this.$stage.empty(), this._items = [], b && (b = b instanceof jQuery ? b : a(b)), this.settings.nestedItemSelector && (b = b.find("." + this.settings.nestedItemSelector)), b.filter(function () {
+      return 1 === this.nodeType;
+    }).each(a.proxy(function (a, b) {
+      b = this.prepare(b), this.$stage.append(b), this._items.push(b), this._mergers.push(1 * b.find("[data-merge]").addBack("[data-merge]").attr("data-merge") || 1);
+    }, this)), this.reset(this.isNumeric(this.settings.startPosition) ? this.settings.startPosition : 0), this.invalidate("items");
+  }, e.prototype.add = function (b, c) {
+    var e = this.relative(this._current);
+    c = c === d ? this._items.length : this.normalize(c, !0), b = b instanceof jQuery ? b : a(b), this.trigger("add", {
+      content: b,
+      position: c
+    }), b = this.prepare(b), 0 === this._items.length || c === this._items.length ? (0 === this._items.length && this.$stage.append(b), 0 !== this._items.length && this._items[c - 1].after(b), this._items.push(b), this._mergers.push(1 * b.find("[data-merge]").addBack("[data-merge]").attr("data-merge") || 1)) : (this._items[c].before(b), this._items.splice(c, 0, b), this._mergers.splice(c, 0, 1 * b.find("[data-merge]").addBack("[data-merge]").attr("data-merge") || 1)), this._items[e] && this.reset(this._items[e].index()), this.invalidate("items"), this.trigger("added", {
+      content: b,
+      position: c
+    });
+  }, e.prototype.remove = function (a) {
+    (a = this.normalize(a, !0)) !== d && (this.trigger("remove", {
+      content: this._items[a],
+      position: a
+    }), this._items[a].remove(), this._items.splice(a, 1), this._mergers.splice(a, 1), this.invalidate("items"), this.trigger("removed", {
+      content: null,
+      position: a
+    }));
+  }, e.prototype.preloadAutoWidthImages = function (b) {
+    b.each(a.proxy(function (b, c) {
+      this.enter("pre-loading"), c = a(c), a(new Image()).one("load", a.proxy(function (a) {
+        c.attr("src", a.target.src), c.css("opacity", 1), this.leave("pre-loading"), !this.is("pre-loading") && !this.is("initializing") && this.refresh();
+      }, this)).attr("src", c.attr("src") || c.attr("data-src") || c.attr("data-src-retina"));
+    }, this));
+  }, e.prototype.destroy = function () {
+    this.$element.off(".owl.core"), this.$stage.off(".owl.core"), a(c).off(".owl.core"), !1 !== this.settings.responsive && (b.clearTimeout(this.resizeTimer), this.off(b, "resize", this._handlers.onThrottledResize));
+
+    for (var d in this._plugins) {
+      this._plugins[d].destroy();
+    }
+
+    this.$stage.children(".cloned").remove(), this.$stage.unwrap(), this.$stage.children().contents().unwrap(), this.$stage.children().unwrap(), this.$stage.remove(), this.$element.removeClass(this.options.refreshClass).removeClass(this.options.loadingClass).removeClass(this.options.loadedClass).removeClass(this.options.rtlClass).removeClass(this.options.dragClass).removeClass(this.options.grabClass).attr("class", this.$element.attr("class").replace(new RegExp(this.options.responsiveClass + "-\\S+\\s", "g"), "")).removeData("owl.carousel");
+  }, e.prototype.op = function (a, b, c) {
+    var d = this.settings.rtl;
+
+    switch (b) {
+      case "<":
+        return d ? a > c : a < c;
+
+      case ">":
+        return d ? a < c : a > c;
+
+      case ">=":
+        return d ? a <= c : a >= c;
+
+      case "<=":
+        return d ? a >= c : a <= c;
+    }
+  }, e.prototype.on = function (a, b, c, d) {
+    a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent && a.attachEvent("on" + b, c);
+  }, e.prototype.off = function (a, b, c, d) {
+    a.removeEventListener ? a.removeEventListener(b, c, d) : a.detachEvent && a.detachEvent("on" + b, c);
+  }, e.prototype.trigger = function (b, c, d, f, g) {
+    var h = {
+      item: {
+        count: this._items.length,
+        index: this.current()
+      }
+    },
+        i = a.camelCase(a.grep(["on", b, d], function (a) {
+      return a;
+    }).join("-").toLowerCase()),
+        j = a.Event([b, "owl", d || "carousel"].join(".").toLowerCase(), a.extend({
+      relatedTarget: this
+    }, h, c));
+    return this._supress[b] || (a.each(this._plugins, function (a, b) {
+      b.onTrigger && b.onTrigger(j);
+    }), this.register({
+      type: e.Type.Event,
+      name: b
+    }), this.$element.trigger(j), this.settings && "function" == typeof this.settings[i] && this.settings[i].call(this, j)), j;
+  }, e.prototype.enter = function (b) {
+    a.each([b].concat(this._states.tags[b] || []), a.proxy(function (a, b) {
+      this._states.current[b] === d && (this._states.current[b] = 0), this._states.current[b]++;
+    }, this));
+  }, e.prototype.leave = function (b) {
+    a.each([b].concat(this._states.tags[b] || []), a.proxy(function (a, b) {
+      this._states.current[b]--;
+    }, this));
+  }, e.prototype.register = function (b) {
+    if (b.type === e.Type.Event) {
+      if (a.event.special[b.name] || (a.event.special[b.name] = {}), !a.event.special[b.name].owl) {
+        var c = a.event.special[b.name]._default;
+        a.event.special[b.name]._default = function (a) {
+          return !c || !c.apply || a.namespace && -1 !== a.namespace.indexOf("owl") ? a.namespace && a.namespace.indexOf("owl") > -1 : c.apply(this, arguments);
+        }, a.event.special[b.name].owl = !0;
+      }
+    } else b.type === e.Type.State && (this._states.tags[b.name] ? this._states.tags[b.name] = this._states.tags[b.name].concat(b.tags) : this._states.tags[b.name] = b.tags, this._states.tags[b.name] = a.grep(this._states.tags[b.name], a.proxy(function (c, d) {
+      return a.inArray(c, this._states.tags[b.name]) === d;
+    }, this)));
+  }, e.prototype.suppress = function (b) {
+    a.each(b, a.proxy(function (a, b) {
+      this._supress[b] = !0;
+    }, this));
+  }, e.prototype.release = function (b) {
+    a.each(b, a.proxy(function (a, b) {
+      delete this._supress[b];
+    }, this));
+  }, e.prototype.pointer = function (a) {
+    var c = {
+      x: null,
+      y: null
+    };
+    return a = a.originalEvent || a || b.event, a = a.touches && a.touches.length ? a.touches[0] : a.changedTouches && a.changedTouches.length ? a.changedTouches[0] : a, a.pageX ? (c.x = a.pageX, c.y = a.pageY) : (c.x = a.clientX, c.y = a.clientY), c;
+  }, e.prototype.isNumeric = function (a) {
+    return !isNaN(parseFloat(a));
+  }, e.prototype.difference = function (a, b) {
+    return {
+      x: a.x - b.x,
+      y: a.y - b.y
+    };
+  }, a.fn.owlCarousel = function (b) {
+    var c = Array.prototype.slice.call(arguments, 1);
+    return this.each(function () {
+      var d = a(this),
+          f = d.data("owl.carousel");
+      f || (f = new e(this, "object" == _typeof(b) && b), d.data("owl.carousel", f), a.each(["next", "prev", "to", "destroy", "refresh", "replace", "add", "remove"], function (b, c) {
+        f.register({
+          type: e.Type.Event,
+          name: c
+        }), f.$element.on(c + ".owl.carousel.core", a.proxy(function (a) {
+          a.namespace && a.relatedTarget !== this && (this.suppress([c]), f[c].apply(this, [].slice.call(arguments, 1)), this.release([c]));
+        }, f));
+      })), "string" == typeof b && "_" !== b.charAt(0) && f[b].apply(f, c);
+    });
+  }, a.fn.owlCarousel.Constructor = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(b) {
+    this._core = b, this._interval = null, this._visible = null, this._handlers = {
+      "initialized.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.autoRefresh && this.watch();
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this._core.$element.on(this._handlers);
+  };
+
+  e.Defaults = {
+    autoRefresh: !0,
+    autoRefreshInterval: 500
+  }, e.prototype.watch = function () {
+    this._interval || (this._visible = this._core.isVisible(), this._interval = b.setInterval(a.proxy(this.refresh, this), this._core.settings.autoRefreshInterval));
+  }, e.prototype.refresh = function () {
+    this._core.isVisible() !== this._visible && (this._visible = !this._visible, this._core.$element.toggleClass("owl-hidden", !this._visible), this._visible && this._core.invalidate("width") && this._core.refresh());
+  }, e.prototype.destroy = function () {
+    var a, c;
+    b.clearInterval(this._interval);
+
+    for (a in this._handlers) {
+      this._core.$element.off(a, this._handlers[a]);
+    }
+
+    for (c in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[c] && (this[c] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.AutoRefresh = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(b) {
+    this._core = b, this._loaded = [], this._handlers = {
+      "initialized.owl.carousel change.owl.carousel resized.owl.carousel": a.proxy(function (b) {
+        if (b.namespace && this._core.settings && this._core.settings.lazyLoad && (b.property && "position" == b.property.name || "initialized" == b.type)) {
+          var c = this._core.settings,
+              e = c.center && Math.ceil(c.items / 2) || c.items,
+              f = c.center && -1 * e || 0,
+              g = (b.property && b.property.value !== d ? b.property.value : this._core.current()) + f,
+              h = this._core.clones().length,
+              i = a.proxy(function (a, b) {
+            this.load(b);
+          }, this);
+
+          for (c.lazyLoadEager > 0 && (e += c.lazyLoadEager, c.loop && (g -= c.lazyLoadEager, e++)); f++ < e;) {
+            this.load(h / 2 + this._core.relative(g)), h && a.each(this._core.clones(this._core.relative(g)), i), g++;
+          }
+        }
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this._core.$element.on(this._handlers);
+  };
+
+  e.Defaults = {
+    lazyLoad: !1,
+    lazyLoadEager: 0
+  }, e.prototype.load = function (c) {
+    var d = this._core.$stage.children().eq(c),
+        e = d && d.find(".owl-lazy");
+
+    !e || a.inArray(d.get(0), this._loaded) > -1 || (e.each(a.proxy(function (c, d) {
+      var e,
+          f = a(d),
+          g = b.devicePixelRatio > 1 && f.attr("data-src-retina") || f.attr("data-src") || f.attr("data-srcset");
+      this._core.trigger("load", {
+        element: f,
+        url: g
+      }, "lazy"), f.is("img") ? f.one("load.owl.lazy", a.proxy(function () {
+        f.css("opacity", 1), this._core.trigger("loaded", {
+          element: f,
+          url: g
+        }, "lazy");
+      }, this)).attr("src", g) : f.is("source") ? f.one("load.owl.lazy", a.proxy(function () {
+        this._core.trigger("loaded", {
+          element: f,
+          url: g
+        }, "lazy");
+      }, this)).attr("srcset", g) : (e = new Image(), e.onload = a.proxy(function () {
+        f.css({
+          "background-image": 'url("' + g + '")',
+          opacity: "1"
+        }), this._core.trigger("loaded", {
+          element: f,
+          url: g
+        }, "lazy");
+      }, this), e.src = g);
+    }, this)), this._loaded.push(d.get(0)));
+  }, e.prototype.destroy = function () {
+    var a, b;
+
+    for (a in this.handlers) {
+      this._core.$element.off(a, this.handlers[a]);
+    }
+
+    for (b in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[b] && (this[b] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.Lazy = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(c) {
+    this._core = c, this._previousHeight = null, this._handlers = {
+      "initialized.owl.carousel refreshed.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.autoHeight && this.update();
+      }, this),
+      "changed.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.autoHeight && "position" === a.property.name && this.update();
+      }, this),
+      "loaded.owl.lazy": a.proxy(function (a) {
+        a.namespace && this._core.settings.autoHeight && a.element.closest("." + this._core.settings.itemClass).index() === this._core.current() && this.update();
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this._core.$element.on(this._handlers), this._intervalId = null;
+    var d = this;
+    a(b).on("load", function () {
+      d._core.settings.autoHeight && d.update();
+    }), a(b).resize(function () {
+      d._core.settings.autoHeight && (null != d._intervalId && clearTimeout(d._intervalId), d._intervalId = setTimeout(function () {
+        d.update();
+      }, 250));
+    });
+  };
+
+  e.Defaults = {
+    autoHeight: !1,
+    autoHeightClass: "owl-height"
+  }, e.prototype.update = function () {
+    var b = this._core._current,
+        c = b + this._core.settings.items,
+        d = this._core.settings.lazyLoad,
+        e = this._core.$stage.children().toArray().slice(b, c),
+        f = [],
+        g = 0;
+
+    a.each(e, function (b, c) {
+      f.push(a(c).height());
+    }), g = Math.max.apply(null, f), g <= 1 && d && this._previousHeight && (g = this._previousHeight), this._previousHeight = g, this._core.$stage.parent().height(g).addClass(this._core.settings.autoHeightClass);
+  }, e.prototype.destroy = function () {
+    var a, b;
+
+    for (a in this._handlers) {
+      this._core.$element.off(a, this._handlers[a]);
+    }
+
+    for (b in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[b] && (this[b] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.AutoHeight = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(b) {
+    this._core = b, this._videos = {}, this._playing = null, this._handlers = {
+      "initialized.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.register({
+          type: "state",
+          name: "playing",
+          tags: ["interacting"]
+        });
+      }, this),
+      "resize.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.video && this.isInFullScreen() && a.preventDefault();
+      }, this),
+      "refreshed.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.is("resizing") && this._core.$stage.find(".cloned .owl-video-frame").remove();
+      }, this),
+      "changed.owl.carousel": a.proxy(function (a) {
+        a.namespace && "position" === a.property.name && this._playing && this.stop();
+      }, this),
+      "prepared.owl.carousel": a.proxy(function (b) {
+        if (b.namespace) {
+          var c = a(b.content).find(".owl-video");
+          c.length && (c.css("display", "none"), this.fetch(c, a(b.content)));
+        }
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this._core.$element.on(this._handlers), this._core.$element.on("click.owl.video", ".owl-video-play-icon", a.proxy(function (a) {
+      this.play(a);
+    }, this));
+  };
+
+  e.Defaults = {
+    video: !1,
+    videoHeight: !1,
+    videoWidth: !1
+  }, e.prototype.fetch = function (a, b) {
+    var c = function () {
+      return a.attr("data-vimeo-id") ? "vimeo" : a.attr("data-vzaar-id") ? "vzaar" : "youtube";
+    }(),
+        d = a.attr("data-vimeo-id") || a.attr("data-youtube-id") || a.attr("data-vzaar-id"),
+        e = a.attr("data-width") || this._core.settings.videoWidth,
+        f = a.attr("data-height") || this._core.settings.videoHeight,
+        g = a.attr("href");
+
+    if (!g) throw new Error("Missing video URL.");
+    if (d = g.match(/(http:|https:|)\/\/(player.|www.|app.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com|be\-nocookie\.com)|vzaar\.com)\/(video\/|videos\/|embed\/|channels\/.+\/|groups\/.+\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/), d[3].indexOf("youtu") > -1) c = "youtube";else if (d[3].indexOf("vimeo") > -1) c = "vimeo";else {
+      if (!(d[3].indexOf("vzaar") > -1)) throw new Error("Video URL not supported.");
+      c = "vzaar";
+    }
+    d = d[6], this._videos[g] = {
+      type: c,
+      id: d,
+      width: e,
+      height: f
+    }, b.attr("data-video", g), this.thumbnail(a, this._videos[g]);
+  }, e.prototype.thumbnail = function (b, c) {
+    var d,
+        e,
+        f,
+        g = c.width && c.height ? "width:" + c.width + "px;height:" + c.height + "px;" : "",
+        h = b.find("img"),
+        i = "src",
+        j = "",
+        k = this._core.settings,
+        l = function l(c) {
+      e = '<div class="owl-video-play-icon"></div>', d = k.lazyLoad ? a("<div/>", {
+        "class": "owl-video-tn " + j,
+        srcType: c
+      }) : a("<div/>", {
+        "class": "owl-video-tn",
+        style: "opacity:1;background-image:url(" + c + ")"
+      }), b.after(d), b.after(e);
+    };
+
+    if (b.wrap(a("<div/>", {
+      "class": "owl-video-wrapper",
+      style: g
+    })), this._core.settings.lazyLoad && (i = "data-src", j = "owl-lazy"), h.length) return l(h.attr(i)), h.remove(), !1;
+    "youtube" === c.type ? (f = "//img.youtube.com/vi/" + c.id + "/hqdefault.jpg", l(f)) : "vimeo" === c.type ? a.ajax({
+      type: "GET",
+      url: "//vimeo.com/api/v2/video/" + c.id + ".json",
+      jsonp: "callback",
+      dataType: "jsonp",
+      success: function success(a) {
+        f = a[0].thumbnail_large, l(f);
+      }
+    }) : "vzaar" === c.type && a.ajax({
+      type: "GET",
+      url: "//vzaar.com/api/videos/" + c.id + ".json",
+      jsonp: "callback",
+      dataType: "jsonp",
+      success: function success(a) {
+        f = a.framegrab_url, l(f);
+      }
+    });
+  }, e.prototype.stop = function () {
+    this._core.trigger("stop", null, "video"), this._playing.find(".owl-video-frame").remove(), this._playing.removeClass("owl-video-playing"), this._playing = null, this._core.leave("playing"), this._core.trigger("stopped", null, "video");
+  }, e.prototype.play = function (b) {
+    var c,
+        d = a(b.target),
+        e = d.closest("." + this._core.settings.itemClass),
+        f = this._videos[e.attr("data-video")],
+        g = f.width || "100%",
+        h = f.height || this._core.$stage.height();
+
+    this._playing || (this._core.enter("playing"), this._core.trigger("play", null, "video"), e = this._core.items(this._core.relative(e.index())), this._core.reset(e.index()), c = a('<iframe frameborder="0" allowfullscreen mozallowfullscreen webkitAllowFullScreen ></iframe>'), c.attr("height", h), c.attr("width", g), "youtube" === f.type ? c.attr("src", "//www.youtube.com/embed/" + f.id + "?autoplay=1&rel=0&v=" + f.id) : "vimeo" === f.type ? c.attr("src", "//player.vimeo.com/video/" + f.id + "?autoplay=1") : "vzaar" === f.type && c.attr("src", "//view.vzaar.com/" + f.id + "/player?autoplay=true"), a(c).wrap('<div class="owl-video-frame" />').insertAfter(e.find(".owl-video")), this._playing = e.addClass("owl-video-playing"));
+  }, e.prototype.isInFullScreen = function () {
+    var b = c.fullscreenElement || c.mozFullScreenElement || c.webkitFullscreenElement;
+    return b && a(b).parent().hasClass("owl-video-frame");
+  }, e.prototype.destroy = function () {
+    var a, b;
+
+    this._core.$element.off("click.owl.video");
+
+    for (a in this._handlers) {
+      this._core.$element.off(a, this._handlers[a]);
+    }
+
+    for (b in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[b] && (this[b] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.Video = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(b) {
+    this.core = b, this.core.options = a.extend({}, e.Defaults, this.core.options), this.swapping = !0, this.previous = d, this.next = d, this.handlers = {
+      "change.owl.carousel": a.proxy(function (a) {
+        a.namespace && "position" == a.property.name && (this.previous = this.core.current(), this.next = a.property.value);
+      }, this),
+      "drag.owl.carousel dragged.owl.carousel translated.owl.carousel": a.proxy(function (a) {
+        a.namespace && (this.swapping = "translated" == a.type);
+      }, this),
+      "translate.owl.carousel": a.proxy(function (a) {
+        a.namespace && this.swapping && (this.core.options.animateOut || this.core.options.animateIn) && this.swap();
+      }, this)
+    }, this.core.$element.on(this.handlers);
+  };
+
+  e.Defaults = {
+    animateOut: !1,
+    animateIn: !1
+  }, e.prototype.swap = function () {
+    if (1 === this.core.settings.items && a.support.animation && a.support.transition) {
+      this.core.speed(0);
+      var b,
+          c = a.proxy(this.clear, this),
+          d = this.core.$stage.children().eq(this.previous),
+          e = this.core.$stage.children().eq(this.next),
+          f = this.core.settings.animateIn,
+          g = this.core.settings.animateOut;
+      this.core.current() !== this.previous && (g && (b = this.core.coordinates(this.previous) - this.core.coordinates(this.next), d.one(a.support.animation.end, c).css({
+        left: b + "px"
+      }).addClass("animated owl-animated-out").addClass(g)), f && e.one(a.support.animation.end, c).addClass("animated owl-animated-in").addClass(f));
+    }
+  }, e.prototype.clear = function (b) {
+    a(b.target).css({
+      left: ""
+    }).removeClass("animated owl-animated-out owl-animated-in").removeClass(this.core.settings.animateIn).removeClass(this.core.settings.animateOut), this.core.onTransitionEnd();
+  }, e.prototype.destroy = function () {
+    var a, b;
+
+    for (a in this.handlers) {
+      this.core.$element.off(a, this.handlers[a]);
+    }
+
+    for (b in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[b] && (this[b] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.Animate = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  var e = function e(b) {
+    this._core = b, this._call = null, this._time = 0, this._timeout = 0, this._paused = !0, this._handlers = {
+      "changed.owl.carousel": a.proxy(function (a) {
+        a.namespace && "settings" === a.property.name ? this._core.settings.autoplay ? this.play() : this.stop() : a.namespace && "position" === a.property.name && this._paused && (this._time = 0);
+      }, this),
+      "initialized.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.autoplay && this.play();
+      }, this),
+      "play.owl.autoplay": a.proxy(function (a, b, c) {
+        a.namespace && this.play(b, c);
+      }, this),
+      "stop.owl.autoplay": a.proxy(function (a) {
+        a.namespace && this.stop();
+      }, this),
+      "mouseover.owl.autoplay": a.proxy(function () {
+        this._core.settings.autoplayHoverPause && this._core.is("rotating") && this.pause();
+      }, this),
+      "mouseleave.owl.autoplay": a.proxy(function () {
+        this._core.settings.autoplayHoverPause && this._core.is("rotating") && this.play();
+      }, this),
+      "touchstart.owl.core": a.proxy(function () {
+        this._core.settings.autoplayHoverPause && this._core.is("rotating") && this.pause();
+      }, this),
+      "touchend.owl.core": a.proxy(function () {
+        this._core.settings.autoplayHoverPause && this.play();
+      }, this)
+    }, this._core.$element.on(this._handlers), this._core.options = a.extend({}, e.Defaults, this._core.options);
+  };
+
+  e.Defaults = {
+    autoplay: !1,
+    autoplayTimeout: 5e3,
+    autoplayHoverPause: !1,
+    autoplaySpeed: !1
+  }, e.prototype._next = function (d) {
+    this._call = b.setTimeout(a.proxy(this._next, this, d), this._timeout * (Math.round(this.read() / this._timeout) + 1) - this.read()), this._core.is("interacting") || c.hidden || this._core.next(d || this._core.settings.autoplaySpeed);
+  }, e.prototype.read = function () {
+    return new Date().getTime() - this._time;
+  }, e.prototype.play = function (c, d) {
+    var e;
+    this._core.is("rotating") || this._core.enter("rotating"), c = c || this._core.settings.autoplayTimeout, e = Math.min(this._time % (this._timeout || c), c), this._paused ? (this._time = this.read(), this._paused = !1) : b.clearTimeout(this._call), this._time += this.read() % c - e, this._timeout = c, this._call = b.setTimeout(a.proxy(this._next, this, d), c - e);
+  }, e.prototype.stop = function () {
+    this._core.is("rotating") && (this._time = 0, this._paused = !0, b.clearTimeout(this._call), this._core.leave("rotating"));
+  }, e.prototype.pause = function () {
+    this._core.is("rotating") && !this._paused && (this._time = this.read(), this._paused = !0, b.clearTimeout(this._call));
+  }, e.prototype.destroy = function () {
+    var a, b;
+    this.stop();
+
+    for (a in this._handlers) {
+      this._core.$element.off(a, this._handlers[a]);
+    }
+
+    for (b in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[b] && (this[b] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.autoplay = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  "use strict";
+
+  var e = function e(b) {
+    this._core = b, this._initialized = !1, this._pages = [], this._controls = {}, this._templates = [], this.$element = this._core.$element, this._overrides = {
+      next: this._core.next,
+      prev: this._core.prev,
+      to: this._core.to
+    }, this._handlers = {
+      "prepared.owl.carousel": a.proxy(function (b) {
+        b.namespace && this._core.settings.dotsData && this._templates.push('<div class="' + this._core.settings.dotClass + '">' + a(b.content).find("[data-dot]").addBack("[data-dot]").attr("data-dot") + "</div>");
+      }, this),
+      "added.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.dotsData && this._templates.splice(a.position, 0, this._templates.pop());
+      }, this),
+      "remove.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._core.settings.dotsData && this._templates.splice(a.position, 1);
+      }, this),
+      "changed.owl.carousel": a.proxy(function (a) {
+        a.namespace && "position" == a.property.name && this.draw();
+      }, this),
+      "initialized.owl.carousel": a.proxy(function (a) {
+        a.namespace && !this._initialized && (this._core.trigger("initialize", null, "navigation"), this.initialize(), this.update(), this.draw(), this._initialized = !0, this._core.trigger("initialized", null, "navigation"));
+      }, this),
+      "refreshed.owl.carousel": a.proxy(function (a) {
+        a.namespace && this._initialized && (this._core.trigger("refresh", null, "navigation"), this.update(), this.draw(), this._core.trigger("refreshed", null, "navigation"));
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this.$element.on(this._handlers);
+  };
+
+  e.Defaults = {
+    nav: !1,
+    navText: ['<span aria-label="Previous">&#x2039;</span>', '<span aria-label="Next">&#x203a;</span>'],
+    navSpeed: !1,
+    navElement: 'button type="button" role="presentation"',
+    navContainer: !1,
+    navContainerClass: "owl-nav",
+    navClass: ["owl-prev", "owl-next"],
+    slideBy: 1,
+    dotClass: "owl-dot",
+    dotsClass: "owl-dots",
+    dots: !0,
+    dotsEach: !1,
+    dotsData: !1,
+    dotsSpeed: !1,
+    dotsContainer: !1
+  }, e.prototype.initialize = function () {
+    var b,
+        c = this._core.settings;
+    this._controls.$relative = (c.navContainer ? a(c.navContainer) : a("<div>").addClass(c.navContainerClass).appendTo(this.$element)).addClass("disabled"), this._controls.$previous = a("<" + c.navElement + ">").addClass(c.navClass[0]).html(c.navText[0]).prependTo(this._controls.$relative).on("click", a.proxy(function (a) {
+      this.prev(c.navSpeed);
+    }, this)), this._controls.$next = a("<" + c.navElement + ">").addClass(c.navClass[1]).html(c.navText[1]).appendTo(this._controls.$relative).on("click", a.proxy(function (a) {
+      this.next(c.navSpeed);
+    }, this)), c.dotsData || (this._templates = [a('<button role="button">').addClass(c.dotClass).append(a("<span>")).prop("outerHTML")]), this._controls.$absolute = (c.dotsContainer ? a(c.dotsContainer) : a("<div>").addClass(c.dotsClass).appendTo(this.$element)).addClass("disabled"), this._controls.$absolute.on("click", "button", a.proxy(function (b) {
+      var d = a(b.target).parent().is(this._controls.$absolute) ? a(b.target).index() : a(b.target).parent().index();
+      b.preventDefault(), this.to(d, c.dotsSpeed);
+    }, this));
+
+    for (b in this._overrides) {
+      this._core[b] = a.proxy(this[b], this);
+    }
+  }, e.prototype.destroy = function () {
+    var a, b, c, d, e;
+    e = this._core.settings;
+
+    for (a in this._handlers) {
+      this.$element.off(a, this._handlers[a]);
+    }
+
+    for (b in this._controls) {
+      "$relative" === b && e.navContainer ? this._controls[b].html("") : this._controls[b].remove();
+    }
+
+    for (d in this.overides) {
+      this._core[d] = this._overrides[d];
+    }
+
+    for (c in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[c] && (this[c] = null);
+    }
+  }, e.prototype.update = function () {
+    var a,
+        b,
+        c,
+        d = this._core.clones().length / 2,
+        e = d + this._core.items().length,
+        f = this._core.maximum(!0),
+        g = this._core.settings,
+        h = g.center || g.autoWidth || g.dotsData ? 1 : g.dotsEach || g.items;
+
+    if ("page" !== g.slideBy && (g.slideBy = Math.min(g.slideBy, g.items)), g.dots || "page" == g.slideBy) for (this._pages = [], a = d, b = 0, c = 0; a < e; a++) {
+      if (b >= h || 0 === b) {
+        if (this._pages.push({
+          start: Math.min(f, a - d),
+          end: a - d + h - 1
+        }), Math.min(f, a - d) === f) break;
+        b = 0, ++c;
+      }
+
+      b += this._core.mergers(this._core.relative(a));
+    }
+  }, e.prototype.draw = function () {
+    var b,
+        c = this._core.settings,
+        d = this._core.items().length <= c.items,
+        e = this._core.relative(this._core.current()),
+        f = c.loop || c.rewind;
+
+    this._controls.$relative.toggleClass("disabled", !c.nav || d), c.nav && (this._controls.$previous.toggleClass("disabled", !f && e <= this._core.minimum(!0)), this._controls.$next.toggleClass("disabled", !f && e >= this._core.maximum(!0))), this._controls.$absolute.toggleClass("disabled", !c.dots || d), c.dots && (b = this._pages.length - this._controls.$absolute.children().length, c.dotsData && 0 !== b ? this._controls.$absolute.html(this._templates.join("")) : b > 0 ? this._controls.$absolute.append(new Array(b + 1).join(this._templates[0])) : b < 0 && this._controls.$absolute.children().slice(b).remove(), this._controls.$absolute.find(".active").removeClass("active"), this._controls.$absolute.children().eq(a.inArray(this.current(), this._pages)).addClass("active"));
+  }, e.prototype.onTrigger = function (b) {
+    var c = this._core.settings;
+    b.page = {
+      index: a.inArray(this.current(), this._pages),
+      count: this._pages.length,
+      size: c && (c.center || c.autoWidth || c.dotsData ? 1 : c.dotsEach || c.items)
+    };
+  }, e.prototype.current = function () {
+    var b = this._core.relative(this._core.current());
+
+    return a.grep(this._pages, a.proxy(function (a, c) {
+      return a.start <= b && a.end >= b;
+    }, this)).pop();
+  }, e.prototype.getPosition = function (b) {
+    var c,
+        d,
+        e = this._core.settings;
+    return "page" == e.slideBy ? (c = a.inArray(this.current(), this._pages), d = this._pages.length, b ? ++c : --c, c = this._pages[(c % d + d) % d].start) : (c = this._core.relative(this._core.current()), d = this._core.items().length, b ? c += e.slideBy : c -= e.slideBy), c;
+  }, e.prototype.next = function (b) {
+    a.proxy(this._overrides.to, this._core)(this.getPosition(!0), b);
+  }, e.prototype.prev = function (b) {
+    a.proxy(this._overrides.to, this._core)(this.getPosition(!1), b);
+  }, e.prototype.to = function (b, c, d) {
+    var e;
+    !d && this._pages.length ? (e = this._pages.length, a.proxy(this._overrides.to, this._core)(this._pages[(b % e + e) % e].start, c)) : a.proxy(this._overrides.to, this._core)(b, c);
+  }, a.fn.owlCarousel.Constructor.Plugins.Navigation = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  "use strict";
+
+  var e = function e(c) {
+    this._core = c, this._hashes = {}, this.$element = this._core.$element, this._handlers = {
+      "initialized.owl.carousel": a.proxy(function (c) {
+        c.namespace && "URLHash" === this._core.settings.startPosition && a(b).trigger("hashchange.owl.navigation");
+      }, this),
+      "prepared.owl.carousel": a.proxy(function (b) {
+        if (b.namespace) {
+          var c = a(b.content).find("[data-hash]").addBack("[data-hash]").attr("data-hash");
+          if (!c) return;
+          this._hashes[c] = b.content;
+        }
+      }, this),
+      "changed.owl.carousel": a.proxy(function (c) {
+        if (c.namespace && "position" === c.property.name) {
+          var d = this._core.items(this._core.relative(this._core.current())),
+              e = a.map(this._hashes, function (a, b) {
+            return a === d ? b : null;
+          }).join();
+
+          if (!e || b.location.hash.slice(1) === e) return;
+          b.location.hash = e;
+        }
+      }, this)
+    }, this._core.options = a.extend({}, e.Defaults, this._core.options), this.$element.on(this._handlers), a(b).on("hashchange.owl.navigation", a.proxy(function (a) {
+      var c = b.location.hash.substring(1),
+          e = this._core.$stage.children(),
+          f = this._hashes[c] && e.index(this._hashes[c]);
+
+      f !== d && f !== this._core.current() && this._core.to(this._core.relative(f), !1, !0);
+    }, this));
+  };
+
+  e.Defaults = {
+    URLhashListener: !1
+  }, e.prototype.destroy = function () {
+    var c, d;
+    a(b).off("hashchange.owl.navigation");
+
+    for (c in this._handlers) {
+      this._core.$element.off(c, this._handlers[c]);
+    }
+
+    for (d in Object.getOwnPropertyNames(this)) {
+      "function" != typeof this[d] && (this[d] = null);
+    }
+  }, a.fn.owlCarousel.Constructor.Plugins.Hash = e;
+}(window.Zepto || window.jQuery, window, document), function (a, b, c, d) {
+  function e(b, c) {
+    var e = !1,
+        f = b.charAt(0).toUpperCase() + b.slice(1);
+    return a.each((b + " " + h.join(f + " ") + f).split(" "), function (a, b) {
+      if (g[b] !== d) return e = !c || b, !1;
+    }), e;
+  }
+
+  function f(a) {
+    return e(a, !0);
+  }
+
+  var g = a("<support>").get(0).style,
+      h = "Webkit Moz O ms".split(" "),
+      i = {
+    transition: {
+      end: {
+        WebkitTransition: "webkitTransitionEnd",
+        MozTransition: "transitionend",
+        OTransition: "oTransitionEnd",
+        transition: "transitionend"
+      }
+    },
+    animation: {
+      end: {
+        WebkitAnimation: "webkitAnimationEnd",
+        MozAnimation: "animationend",
+        OAnimation: "oAnimationEnd",
+        animation: "animationend"
+      }
+    }
+  },
+      j = {
+    csstransforms: function csstransforms() {
+      return !!e("transform");
+    },
+    csstransforms3d: function csstransforms3d() {
+      return !!e("perspective");
+    },
+    csstransitions: function csstransitions() {
+      return !!e("transition");
+    },
+    cssanimations: function cssanimations() {
+      return !!e("animation");
+    }
+  };
+  j.csstransitions() && (a.support.transition = new String(f("transition")), a.support.transition.end = i.transition.end[a.support.transition]), j.cssanimations() && (a.support.animation = new String(f("animation")), a.support.animation.end = i.animation.end[a.support.animation]), j.csstransforms() && (a.support.transform = new String(f("transform")), a.support.transform3d = j.csstransforms3d());
+}(window.Zepto || window.jQuery, window, document);
+
+/***/ }),
+
+/***/ "./resources/js/router/routes.js":
+/*!***************************************!*\
+  !*** ./resources/js/router/routes.js ***!
+  \***************************************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Home */ "./resources/js/components/Home.vue");
+/* harmony import */ var _components_GameDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/GameDetails */ "./resources/js/components/GameDetails.vue");
+
+
+var routes = [{
+  path: '',
+  component: _components_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: '/game-details',
+  component: _components_GameDetails__WEBPACK_IMPORTED_MODULE_1__["default"]
+}];
 
 /***/ }),
 

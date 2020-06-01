@@ -9,10 +9,10 @@
         <!-- google icon -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Owl Stylesheets -->
-{{--        <link rel="stylesheet" href="{{asset('scss/owl/owl.carousel.min.css')}}">--}}
-{{--        <link rel="stylesheet" href="{{asset('scss/owl/owl.theme.default.min.css')}}">--}}
-{{--        <!-- bx slider -->--}}
-{{--        <link rel="stylesheet" href="{{asset('scss/bxslider/jquery.bxslider.css')}}">--}}
+        <link rel="stylesheet" href="{{asset('css/owl/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/owl/owl.theme.default.min.css')}}">
+        <!-- bx slider -->
+        <link rel="stylesheet" href="{{asset('css/bxslider/jquery.bxslider.css')}}">
         <!-- title icon -->
         <link rel="icon" href="{{ asset('img/title/title.png') }}" type="image/x-icon">
         <!-- custom style -->
@@ -25,6 +25,8 @@
     <body>
     <div id="app">
         <navbar></navbar>
+        <router-view></router-view>
+        <footer-section></footer-section>
     </div>
 
     <!-- jquery -->
