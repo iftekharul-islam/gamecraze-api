@@ -5,6 +5,9 @@
  */
 
 require('./bootstrap');
+require('./owl/owl.carousel.min');
+require('./bx/jquery.bxslider');
+require('./main');
 
 window.Vue = require('vue');
 
@@ -19,7 +22,17 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
+import { routes } from './router/routes'
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
+
 Vue.component('navbar', require('./components/Navbar.vue').default);
+Vue.component('footer-section', require('./components/Footer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +42,5 @@ Vue.component('navbar', require('./components/Navbar.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router
 });

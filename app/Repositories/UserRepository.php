@@ -2,10 +2,12 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\UserCreateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class UserRepository {
     public function all() {
@@ -17,11 +19,33 @@ class UserRepository {
     }
 
     public function create(Request $request) {
-        return User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->phone_number = $request->phone_number;
+        $user->gender = $request->gender;
+        $user->birth_date = $request->birth_date;
+        $user->address = $request->address;
+        $user->interest = $request->interest;
+
+        if(isset($request->image))
+        {
+            $exploded = explode(',', $request->image);
+            $decoded = base64_decode($exploded[1]);
+            $ageinExploded = explode(';', $exploded[0]);
+            $type = explode('/', $ageinExploded[0]);
+            $extension = $type[1];
+            $randomName = Str::random();
+            $imageName = $randomName.'.'.$extension;
+
+            $path = public_path().'/'.$imageName;
+            file_put_contents($path, $decoded);
+            $user->image = $path;
+        }
+        $user->save();
+
+        return response()->json(compact('user'), 201);
     }
 
     public function update(Request$request, $userId) {
