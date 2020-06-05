@@ -16,15 +16,15 @@ class GameTransformer extends TransformerAbstract
         return [
             'id' => $game->id,
             'name' => $game->name,
-            'genre' => $game->genre,
-            'categories' => $game->category,
-            'release_date' => $game->release_date,
-            'team_type' => $game->team_type,
+            'genres' => $game->genres,
+            'assets' => $game->assets,
+            'platforms' => $game->platforms,
+            'release_date' => $game->released,
+            'game_mode' => $game->game_mode,
             'description' => $game->description,
             'rating' => $game->rating,
             'publisher' => $game->publisher,
-            'series' => $game->series,
-            'platform' => $game->platform
         ];
     }
+
 }

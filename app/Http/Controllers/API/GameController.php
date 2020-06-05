@@ -37,7 +37,7 @@ class GameController extends BaseController
     public function show(Request $request)
     {
         $game = $this->gameRepository->findById($request->id);
-        return $this->response->item($game, new GameTransformer);
+        return $this->response->item($game, new GameTransformer());
     }
 
     public function update(Request $request)
@@ -53,6 +53,19 @@ class GameController extends BaseController
 
     public function latestGames() {
 //        return Game::latest('release_date')->paginate(2);
-        return Game::with('assets')->latest('release_date')->paginate(5);
+        $games = Game::latest('released')->take(5)->get();
+        return $this->response->collection($games, new GameTransformer());
+    }
+
+    public function search(Request $request) {
+        $gameName = $request->name;
+        if ($gameName != '') {
+            $games = $this->gameRepository->search($gameName);
+            return $this->response->collection($games, new GameTransformer());
+        }
+        else {
+            return response()->json('Empty');
+        }
+
     }
 }

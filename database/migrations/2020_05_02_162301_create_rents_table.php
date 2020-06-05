@@ -23,7 +23,9 @@ class CreateRentsTable extends Migration
             $table->integer('no_of_days');
             $table->string('condition');
             $table->decimal('disk_health');
-            $table->integer('status');
+            $table->unsignedBigInteger('rented_user_id')->nullable();
+            $table->foreign('rented_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

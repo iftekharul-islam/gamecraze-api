@@ -9,14 +9,9 @@ class Game extends Model
 {
     use Taggable;
 
-    public function genre()
+    public function genres()
     {
-        return $this->belongsTo(Genre::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Genre::class);
     }
 
     public function assets(){
@@ -25,5 +20,11 @@ class Game extends Model
 
     public function exchanges() {
         return $this->hasMany(Exchange::class);
+    }
+    public function rents() {
+        return $this->hasMany(Rent::class);
+    }
+    public function platforms() {
+        return $this->belongsToMany(Platform::class)->withPivot(['requirements','released_at']);
     }
 }

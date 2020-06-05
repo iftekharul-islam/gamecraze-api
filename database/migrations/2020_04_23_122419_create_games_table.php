@@ -15,18 +15,12 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name');
             $table->longText('description');
-            $table->integer('team_type');
+            $table->string('game_mode');
             $table->decimal('rating', 2, 1)->default(0.0);
             $table->string('publisher');
-            $table->date('release_date');
-            $table->string('series');
-            $table->string('platform');
+            $table->date('released');
             $table->timestamps();
         });
     }
