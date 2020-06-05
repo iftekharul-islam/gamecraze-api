@@ -30,6 +30,9 @@
         $api->get('genres/', 'App\Http\Controllers\API\GenreController@index');
         $api->get('categories/{id}', 'App\Http\Controllers\API\CategoryController@show');
         $api->get('categories/', 'App\Http\Controllers\API\CategoryController@index');
+        $api->get('search/{name}', 'App\Http\Controllers\API\GameController@search');
+        $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
+        $api->get('rents', 'App\Http\Controllers\API\RentController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             $api->get('users', 'App\Http\Controllers\API\UserController@index');

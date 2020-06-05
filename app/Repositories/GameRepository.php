@@ -16,16 +16,12 @@ class GameRepository {
 
     public function create(Request $request) {
         $game = new Game();
-        $game->genre_id = $request->genre_id;
-        $game->category_id = $request->category_id;
         $game->name = $request->name;
-        $game->team_type = $request->team_type;
+        $game->game_mode = $request->game_mode;
         $game->description = $request->description;
-        $game->release_date = $request->release_date;
+        $game->released = $request->release_date;
         $game->rating = $request->rating;
         $game->publisher = $request->publisher;
-        $game->series = $request->series;
-        $game->platform = $request->platform;
 
         $game->save();
 
@@ -39,16 +35,12 @@ class GameRepository {
 
     public function update(Request $request) {
         $game = Game::findOrFail($request->id);
-        $game->genre_id = $request->genre_id;
-        $game->category_id = $request->category_id;
         $game->name = $request->name;
-        $game->team_type = $request->team_type;
+        $game->game_mode = $request->game_mode;
         $game->description = $request->description;
-        $game->release_date = $request->release_date;
+        $game->released = $request->release_date;
         $game->rating = $request->rating;
         $game->publisher = $request->publisher;
-        $game->series = $request->series;
-        $game->platform = $request->platform;
         $game->save();
 
         return $game;
@@ -58,5 +50,9 @@ class GameRepository {
         $category = Game::findOrFail($id);
         $category->delete();
         return;
+    }
+
+    public function search($gameName) {
+        return Game::where('name','like','%'.$gameName.'%')->orderBy('id','desc')->get();
     }
 }

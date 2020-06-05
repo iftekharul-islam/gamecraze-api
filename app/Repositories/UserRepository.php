@@ -39,13 +39,13 @@ class UserRepository {
             $randomName = Str::random();
             $imageName = $randomName.'.'.$extension;
 
-            $path = public_path().'/'.$imageName;
+            $path = storage_path().'/app/public/users'.$imageName;
             file_put_contents($path, $decoded);
             $user->image = $path;
         }
         $user->save();
 
-        return response()->json(compact('user'), 201);
+        return response()->json($user, 201);
     }
 
     public function update(Request$request, $userId) {
