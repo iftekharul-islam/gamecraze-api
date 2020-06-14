@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 // We need to reference the Items Model
-use App\Exchange;
+use App\Models\Exchange;
 
 // Dingo includes Fractal to help with transformations
 use League\Fractal\TransformerAbstract;

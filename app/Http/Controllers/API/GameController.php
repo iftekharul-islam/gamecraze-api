@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Game;
+use App\Http\Requests\GameUpdateRequest;
+use App\Models\Game;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\GameCreateRequest;
 use App\Repositories\GameRepository;
@@ -31,41 +32,28 @@ class GameController extends BaseController
     {
         $game = $this->gameRepository->create($request);
         $this->assetService->create($request, $game->id);
-        return $game;
-    }
-
-    public function show(Request $request)
-    {
-        $game = $this->gameRepository->findById($request->id);
         return $this->response->item($game, new GameTransformer());
     }
 
-    public function update(Request $request)
+    public function show($id)
     {
-        $game = $this->gameRepository->update($request);
-        return $this->response->item($game, new GameTransformer);
+        $game = $this->gameRepository->findById($id);
+        return $this->response->item($game, new GameTransformer());
     }
 
-    public function destroy(Request $request)
+    public function update(GameUpdateRequest $request)
     {
-        $this->gameRepository->delete($request->id);
+        $game = $this->gameRepository->update($request);
+        return $this->response->item($game, new GameTransformer());
+    }
+
+    public function destroy($id)
+    {
+        $this->gameRepository->delete($id);
     }
 
     public function latestGames() {
-//        return Game::latest('release_date')->paginate(2);
         $games = Game::latest('released')->take(5)->get();
         return $this->response->collection($games, new GameTransformer());
-    }
-
-    public function search(Request $request) {
-        $gameName = $request->name;
-        if ($gameName != '') {
-            $games = $this->gameRepository->search($gameName);
-            return $this->response->collection($games, new GameTransformer());
-        }
-        else {
-            return response()->json('Empty');
-        }
-
     }
 }

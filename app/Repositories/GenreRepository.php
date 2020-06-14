@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Genre;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class GenreRepository {
     public function all() {
@@ -17,7 +18,7 @@ class GenreRepository {
     public function create(Request $request) {
         $genre = new Genre();
         $genre->name = $request->name;
-        $genre->slug = $request->slug;
+        $genre->slug = Str::slug($request->name);
         $genre->save();
 
         return $genre;
@@ -26,7 +27,7 @@ class GenreRepository {
     public function update(Request $request) {
         $genre = Genre::findOrFail($request->id);
         $genre->name = $request->name;
-        $genre->slug = $request->slug;
+        $genre->slug = Str::slug($request->name);
         $genre->save();
 
         return $genre;

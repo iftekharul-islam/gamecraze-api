@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Management;
+use App\Models\Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

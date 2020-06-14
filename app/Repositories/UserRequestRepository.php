@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\UserRequest;
+use App\Models\UserRequest;
 use Illuminate\Http\Request;
 
 class UserRequestRepository {

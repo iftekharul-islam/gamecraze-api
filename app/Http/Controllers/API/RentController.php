@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
-use App\Rent;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
 class RentController extends BaseController

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Exchange;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\TransactionCreateRequest;
 use App\Repositories\TransactionRepository;
-use App\TransactionHistory;
+use App\Models\TransactionHistory;
 use Illuminate\Http\Request;
 
 class TransactionController extends BaseController
 {
     private $transactionRepository;
+
     public function __construct(TransactionRepository $transactionRepository)
     {
         $this->transactionRepository = $transactionRepository;

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Exchange;
+use App\Models\Exchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
