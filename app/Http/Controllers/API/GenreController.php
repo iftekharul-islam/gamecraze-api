@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Genre;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\GenreCreateRequest;
 use App\Http\Requests\GenreUpdateRequest;
 use App\Repositories\GenreRepository;
-use Illuminate\Http\Request;
+use App\Transformers\GenreTransformer;
 
 class GenreController extends BaseController
 {
@@ -19,25 +18,25 @@ class GenreController extends BaseController
 
     public function index() {
         $genres = $this->genreRepository->all();
-        return response()->json(compact('genres'), 200);
+        return $this->response->collection($genres, new GenreTransformer());
     }
 
-    public function show(Request $request) {
-        $genre = $this->genreRepository->findById($request->id);
-        return response()->json(compact('genre'), 200);
+    public function show($id) {
+        $genre = $this->genreRepository->findById($id);
+        return $this->response->item($genre, new GenreTransformer());
     }
 
     public function store(GenreCreateRequest $request) {
         $genre = $this->genreRepository->create($request);
-        return response()->json(compact('genre'), 200);
+        return $this->response->item($genre, new GenreTransformer());
     }
 
     public function update(GenreUpdateRequest $request) {
         $genre = $this->genreRepository->update($request);
-        return response()->json(compact('genre'), 200);
+        return $this->response->item($genre, new GenreTransformer());
     }
 
-    public function destroy(Request $request) {
-        $this->genreRepository->delete($request->id);
+    public function destroy($id) {
+        $this->genreRepository->delete($id);
     }
 }

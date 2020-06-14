@@ -188,6 +188,9 @@ return [
         //passport
         Laravel\Passport\PassportServiceProvider::class,
 
+        //image
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -241,6 +244,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DingoApi' => Dingo\Api\Facade\API::class,
         'DingoRoute' => Dingo\Api\Facade\Route::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

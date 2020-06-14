@@ -24,7 +24,12 @@ class GameCreateRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'name' => 'required',
+            'description' => 'required',
+            'game_mode' => 'required',
+            'release_date' => 'required',
+            'rating' => 'required',
+            'publisher' => 'required'
         ];
     }
 }

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\PermissionCreateRequest;
+use App\Http\Requests\RoleCreateRequest;
 use App\Repositories\UserRepository;
+use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 
 class UserController extends BaseController
@@ -18,16 +21,16 @@ class UserController extends BaseController
     public function index()
     {
         $users = $this->userRepository->all();
-        return response()->json($users);
+        return $this->response->collection($users, new UserTransformer());
     }
 
     public function show()
     {
         $user = $this->userRepository->findById();
-        return response()->json($user);
+        return $this->response->item($user, new UserTransformer());
     }
 
-    public function createRole(Request $request)
+    public function createRole(RoleCreateRequest $request)
     {
         $this->userRepository->createRole($request);
         return response()->json(['message' => 'Role Successfully saved!']);
@@ -38,7 +41,7 @@ class UserController extends BaseController
         return response()->json($roles);
     }
 
-    public function createPermission(Request $request)
+    public function createPermission(PermissionCreateRequest $request)
     {
         $this->userRepository->createPermission($request);
         return response()->json(['message' => 'Permission Successfully saved!']);
@@ -66,5 +69,9 @@ class UserController extends BaseController
     {
         $this->userRepository->userhasPermission($user_id, $per_id);
         return response()->json('User get the Permission successfully');
+    }
+
+    public function profile() {
+        return auth('api')->user();
     }
 }

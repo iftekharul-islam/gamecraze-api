@@ -28,11 +28,12 @@
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');
         $api->get('genres/', 'App\Http\Controllers\API\GenreController@index');
-        $api->get('categories/{id}', 'App\Http\Controllers\API\CategoryController@show');
-        $api->get('categories/', 'App\Http\Controllers\API\CategoryController@index');
-        $api->get('search/{name}', 'App\Http\Controllers\API\GameController@search');
+        $api->get('search/{name}', 'App\Http\Controllers\API\SearchController@search');
+        $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
         $api->get('rents', 'App\Http\Controllers\API\RentController@index');
+        $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
+        $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
@@ -59,15 +60,15 @@
                 $api->delete('genres/{id}', 'App\Http\Controllers\API\GenreController@destroy');
                 $api->put('genres/{id}', 'App\Http\Controllers\API\GenreController@update');
 
-                $api->post('categories/', 'App\Http\Controllers\API\CategoryController@store');
-                $api->delete('categories/{id}', 'App\Http\Controllers\API\CategoryController@destroy');
-                $api->put('categories/{id}', 'App\Http\Controllers\API\CategoryController@update');
-
                 $api->get('managements/{id}', 'App\Http\Controllers\API\ManagementController@show');
                 $api->get('managements/', 'App\Http\Controllers\API\ManagementController@index');
                 $api->post('managements/', 'App\Http\Controllers\API\ManagementController@store');
                 $api->delete('managements/{id}', 'App\Http\Controllers\API\ManagementController@destroy');
                 $api->put('managements/{id}', 'App\Http\Controllers\API\ManagementController@update');
+
+                $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
+                $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
+                $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
             });
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
             $api->get('exchanges/{id}', 'App\Http\Controllers\API\PostController@show');

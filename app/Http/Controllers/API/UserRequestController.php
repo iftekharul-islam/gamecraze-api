@@ -25,7 +25,7 @@ class UserRequestController extends BaseController
         return response()->json(compact('user_request'), 200);
     }
 
-    public function store(Request $request) {
+    public function store(UserRequestCreateRequest $request) {
         $user_request = $this->requestRepository->create($request);
         $user_request->user_id->notify(new RequestEmail());
 

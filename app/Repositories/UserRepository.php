@@ -3,11 +3,12 @@
 namespace App\Repositories;
 
 use App\Http\Requests\UserCreateRequest;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
+
 
 class UserRepository {
     public function all() {
@@ -31,17 +32,10 @@ class UserRepository {
 
         if(isset($request->image))
         {
-            $exploded = explode(',', $request->image);
-            $decoded = base64_decode($exploded[1]);
-            $ageinExploded = explode(';', $exploded[0]);
-            $type = explode('/', $ageinExploded[0]);
-            $extension = $type[1];
-            $randomName = Str::random();
-            $imageName = $randomName.'.'.$extension;
-
-            $path = storage_path().'/app/public/users'.$imageName;
-            file_put_contents($path, $decoded);
-            $user->image = $path;
+            $image = $request->image;
+            $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            \Image::make($image)->save(storage_path('app/public/users/').$name);
+            $user->image = $name;
         }
         $user->save();
 

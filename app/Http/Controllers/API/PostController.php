@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Exchange;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
@@ -24,8 +23,8 @@ class PostController extends BaseController
         return $this->response->collection($exchanges, new ExchangeTransformer);
     }
 
-    public function show(Request $request) {
-        $exchange = $this->postRepository->findById($request->id);
+    public function show($id) {
+        $exchange = $this->postRepository->findById($id);
         return $this->response->item($exchange, new ExchangeTransformer);
     }
 
@@ -40,9 +39,9 @@ class PostController extends BaseController
         return response()->json(compact('exchange'), 200);
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $exchange = $this->postRepository->delete($request->id);
+        $exchange = $this->postRepository->delete($id);
         return response()->json(compact('exchange'), 200);
     }
 }

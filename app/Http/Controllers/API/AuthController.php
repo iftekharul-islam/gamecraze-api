@@ -5,11 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
-use App\Notifications\RequestEmail;
-use App\User;
 use Illuminate\Http\Request;
 
 
@@ -49,20 +48,6 @@ class AuthController extends BaseController
         return response()->json([
             'token' => $token->accessToken
         ]);
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required'
-        ]);
-
-        if( Auth::attempt(['email'=>$request->email, 'password'=>$request->password]) ) {
-            $user = Auth::user();
-
-            $token = $user->createToken($user->email.'-'.now());
-            $user->notify(new RequestEmail());
-            return response()->json([
-                'token' => $token->accessToken
-            ]);
-        }
     }
 
     public function logout(Request $request)
@@ -71,7 +56,7 @@ class AuthController extends BaseController
         return response()->json("Logged out successfully", 200);
     }
 
-    public function edit(Request $request, $userId)
+    public function edit(UserUpdateRequest $request, $userId)
     {
         $this->userRepository->update($request, $userId);
         return response()->json('User successfuly edited');

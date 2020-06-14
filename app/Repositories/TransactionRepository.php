@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\TransactionHistory;
+use App\Models\TransactionHistory;
 use Illuminate\Http\Request;
 
 class TransactionRepository {

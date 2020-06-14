@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Asset;
+use App\Models\Asset;
 
 class AssetRepository {
     public function create($imageName, $game_id) {

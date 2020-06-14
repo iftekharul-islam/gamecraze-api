@@ -2,39 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Category;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryRepository {
-    public function all() {
-        return Category::all();
-    }
-
-    public function findById($id) {
-        return Category::findOrFail($id);
-    }
-
-    public function create(Request $request) {
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->save();
-
-        return $category;
-    }
-
-    public function update(Request $request) {
-        $category = Category::findOrFail($request->id);
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->save();
-
-        return $category;
-    }
-
-    public function delete($id) {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return;
+    public function index($genreName) {
+        $slug = Str::slug($genreName);
+        return Genre::where('slug', $slug)->get();
     }
 }
