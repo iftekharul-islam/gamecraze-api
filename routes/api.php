@@ -32,6 +32,7 @@
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
         $api->get('rents', 'App\Http\Controllers\API\RentController@index');
+        $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
         $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
 

@@ -42,6 +42,9 @@ class User extends Authenticatable
     public function exchanges() {
         return $this->hasMany(Exchange::class);
     }
+    public function rents() {
+        return $this->hasMany(Rent::class);
+    }
 
     public function routeNotificationForSlack($notification)
     {
