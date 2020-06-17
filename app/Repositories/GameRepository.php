@@ -19,7 +19,7 @@ class GameRepository {
         $game->name = $request->name;
         $game->game_mode = $request->game_mode;
         $game->description = $request->description;
-        $game->released = $request->release_date;
+        $game->released = $request->released;
         $game->rating = $request->rating;
         $game->publisher = $request->publisher;
 

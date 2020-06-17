@@ -73,7 +73,7 @@
             });
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
             $api->get('exchanges/{id}', 'App\Http\Controllers\API\PostController@show');
-            $api->get('exchanges/', 'App\Http\Controllers\API\PostController@index');
+//            $api->get('exchanges/', 'App\Http\Controllers\API\PostController@index');
             $api->delete('exchanges/{id}', 'App\Http\Controllers\API\PostController@destroy');
             $api->put('exchanges/{id}', 'App\Http\Controllers\API\PostController@update');
 
