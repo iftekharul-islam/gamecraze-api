@@ -50,6 +50,7 @@ class GameController extends BaseController
     public function destroy($id)
     {
         $this->gameRepository->delete($id);
+        return 1;
     }
 
     public function latestGames() {
