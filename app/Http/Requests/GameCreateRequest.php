@@ -27,7 +27,7 @@ class GameCreateRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'game_mode' => 'required',
-            'release_date' => 'required',
+            'released' => 'required',
             'rating' => 'required',
             'publisher' => 'required'
         ];

@@ -43,11 +43,7 @@ class AuthController extends BaseController
 
     public function login(UserLoginRequest $request)
     {
-        $token = $this->loginService->login($request);
-
-        return response()->json([
-            'token' => $token->accessToken
-        ]);
+        return $this->loginService->login($request);
     }
 
     public function logout(Request $request)
