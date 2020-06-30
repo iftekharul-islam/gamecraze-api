@@ -15,11 +15,17 @@ class RentTransformer extends TransformerAbstract
     {
         // specify what elements are going to be visible to the API
         return [
-            'id' => $rent->id,
-            'price' => $rent->price,
-            'no_of_days' => $rent->no_of_days,
-            'condition' => $rent->condition,
-            'disk health' => $rent->disk_health,
+            'user_id' => $rent->id,
+            'game_id' =>  $rent->game_id,
+            'max_number_of_week' =>  $rent->max_week,
+            'availability from date' =>  $rent->availability,
+            'platform_id' =>  $rent->platform_id,
+            'earning_amount' =>  $rent->earning_amount,
+            'disk_condition_id' =>  $rent->disk_condition_id,
+            'cover_image' =>  $rent->cover_image,
+            'disk_image' =>  $rent->disk_image,
+            'rented_user_id' =>  $rent->disk_condition_id,
+            'status' => $rent->status,
         ];
     }
 
