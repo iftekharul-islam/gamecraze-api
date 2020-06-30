@@ -67,9 +67,9 @@
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
 
             $api->group(['middleware' => 'role:admin'], function ($api) {
-//                $api->post('games/', 'App\Http\Controllers\API\GameController@store');
-//                $api->delete('games/{id}', 'App\Http\Controllers\API\GameController@destroy');
-//                $api->put('games/{id}', 'App\Http\Controllers\API\GameController@update');
+                $api->post('games/', 'App\Http\Controllers\API\GameController@store');
+                $api->delete('games/{id}', 'App\Http\Controllers\API\GameController@destroy');
+                $api->put('games/{id}', 'App\Http\Controllers\API\GameController@update');
 
                 $api->post('genres/', 'App\Http\Controllers\API\GenreController@store');
                 $api->delete('genres/{id}', 'App\Http\Controllers\API\GenreController@destroy');
