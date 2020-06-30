@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Rent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RentRepository {
     public function all() {
@@ -11,35 +12,65 @@ class RentRepository {
     }
 
     public function store(Request $request, $disk_image, $cover_image) {
-        return $rent = Rent::create([
-            'user_id' => auth()->user()->id,
-            'game_id' =>  $request->game_id,
-            'max_week' =>  $request->max_week,
-            'availability' =>  $request->availability,
-            'platform_id' =>  $request->platform_id,
-            'earning_amount' =>  $request->earning_amount,
-            'disk_condition_id' =>  $request->disk_condition_id,
-            'cover_image' =>  $request->$disk_image ? 'storage/' . $disk_image : '',
-            'disk_image' =>  $request->$cover_image ? 'storage/' . $cover_image : '',
-            'rented_user_id' =>  $request->disk_condition_id,
-            'status' => $request->status,
+//        return $disk_image;
+        $rent = $request->only([
+            'game_id', 'max_week', 'availability', 'platform_id', 'earning_amount',
+            'disk_condition_id', 'rented_user_id', 'status'
         ]);
+        $rent['user_id'] = auth()->user()->id;
+        $rent['cover_image'] =  $cover_image ;
+        $rent['disk_image'] =   $disk_image ;
+
+        return Rent::create($rent);
     }
 
-    public function update($request) {
-        $rent = Rent::findOrFail($request->id);
-        $rent->game_id = $request->game_id;
-        $rent->max_week = $request->max_week;
-        $rent->availability = $request->availability;
-        $rent->platform_id = $request->platform_id;
-        $rent->earning_amount = $request->earning_amount;
-        $rent->cover_image = $request->cover_image;
-        $rent->disk_image = $request->disk_image;
-        $rent->rented_user_id = $request->rented_user_id;
-        $rent->status = $request->status;
-        $rent->save();
+    public function show($id) {
+        return Rent::findOrFail($id);
+    }
 
+    public function update($rent, $request) {
+
+        $rent_data = $request->only([
+          'game_id', 'max_week', 'availability', 'platform_id', 'earning_amount',
+          'disk_condition_id', 'rented_user_id', 'status', 'cover_image', 'disk_image'
+        ]);
+
+        if (isset($rent_data['cover_image'])){
+            $rent->cover_image = Storage::disk('public')->put('rent-image/' , $request->file('cover_image'));
+        }
+        if (isset($rent_data['disk_image'])){
+            $rent->cover_image = Storage::disk('public')->put('rent-image/' , $request->file('disk_image'));
+        }
+        if (isset($rent_data['game_id'])) {
+            $rent->game_id= $rent_data['game_id'];
+        }
+        if (isset($rent_data['max_week'])) {
+            $rent->max_week= $rent_data['max_week'];
+        }
+        if (isset($rent_data['availability'])) {
+            $rent->availability= $rent_data['availability'];
+        }
+        if (isset($rent_data['platform_id'])) {
+            $rent->platform_id= $rent_data['platform_id'];
+        }
+        if (isset($rent_data['earning_amount'])) {
+            $rent->earning_amount= $rent_data['earning_amount'];
+        }
+
+        if (isset($rent_data['disk_condition_id'])) {
+            $rent->disk_condition_id= $rent_data['disk_condition_id'];
+        }
+
+        if (isset($rent_data['rented_user_id'])) {
+            $rent->rented_user_id= $rent_data['rented_user_id'];
+        }
+        if (isset($rent_data['status'])) {
+            $rent->status= $rent_data['status'];
+        }
+
+        $rent->save();
         return $rent;
+
     }
 
     public function delete($id) {

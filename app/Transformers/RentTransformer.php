@@ -18,7 +18,7 @@ class RentTransformer extends TransformerAbstract
             'user_id' => $rent->id,
             'game_id' =>  $rent->game_id,
             'max_number_of_week' =>  $rent->max_week,
-            'availability from date' =>  $rent->availability,
+            'availability_from_date' =>  $rent->availability,
             'platform_id' =>  $rent->platform_id,
             'earning_amount' =>  $rent->earning_amount,
             'disk_condition_id' =>  $rent->disk_condition_id,

@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\DiskConditionCreateRequest;
+use App\Http\Requests\DiskConditionUpdateRequest;
 use App\Models\DiskCondition;
 use App\Repositories\DiskConditionRepository;
-use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
+use App\Transformers\DiskConditionTransformer;
 
 class DiskConditionController extends BaseController
 {
+    /**
+     * @var DiskConditionRepository
+     */
     private $diskconditonRepository;
 
     public function __construct(DiskConditionRepository $diskconditonRepository)
@@ -22,8 +27,8 @@ class DiskConditionController extends BaseController
      */
     public function index()
     {
-        $disk_condition = $this->diskconditonRepository->all();
-        return response()->json(compact('disk_condition'), 200);
+        $diskData = $this->diskconditonRepository->all();
+        return $this->response->collection($diskData, new DiskConditionTransformer());
     }
 
     /**
@@ -32,10 +37,10 @@ class DiskConditionController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiskConditionCreateRequest $request)
     {
-        $disk_condition = $this->diskconditonRepository->store($request);
-        return response()->json(compact('disk_condition'), 200);
+        $diskData = $this->diskconditonRepository->store($request);
+        return $this->response->item($diskData, new DiskConditionTransformer());
     }
 
     /**
@@ -46,8 +51,8 @@ class DiskConditionController extends BaseController
      */
     public function show(DiskCondition $diskCondition, $id)
     {
-        $disk_condition = $this->diskconditonRepository->show($id);
-        return response()->json(compact('disk_condition'), 200);
+        $diskData = $this->diskconditonRepository->show($id);
+        return $this->response->item($diskData, new DiskConditionTransformer());
     }
 
     /**
@@ -57,10 +62,10 @@ class DiskConditionController extends BaseController
      * @param  \App\DiskCondition  $diskCondition
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DiskCondition $diskCondition, $id)
+    public function update(DiskConditionUpdateRequest $request, DiskCondition $diskCondition)
     {
-        $disk_condition = $this->diskconditonRepository->update($request);
-        return response()->json(compact('disk_condition'), 200);
+        $diskData = $this->diskconditonRepository->update($request);
+        return $this->response->item($diskData, new DiskConditionTransformer());
     }
 
     /**

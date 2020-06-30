@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\RentCreateRequest;
+use App\Http\Requests\RentUpdateRequest;
 use App\Models\Rent;
 use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
@@ -11,7 +13,15 @@ use Illuminate\Support\Facades\Storage;
 
 class RentController extends BaseController
 {
+    /**
+     * @var RentRepository
+     */
     private $rentRepository;
+
+    /**
+     * RentController constructor.
+     * @param RentRepository $rentRepository
+     */
     public function __construct(RentRepository $rentRepository)
     {
         $this->rentRepository = $rentRepository;
@@ -33,44 +43,41 @@ class RentController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RentCreateRequest $request)
     {
-        $cover_image = $request->hasFile('cover_image') ? Storage::disk('public')->put('cover-' . \Auth::user()->school_id . '/' . date('Y'), $request->file('cover_image')) : null;
-        $disk_image = $request->hasFile('disk_image') ? Storage::disk('public')->put('disk-' . \Auth::user()->school_id . '/' . date('Y'), $request->file('disk_image')) : null;
-        $rent = $this->rentRepository->store($request,$cover_image,$disk_image);
-        return response()->json(compact('rent'), 200);
+        $cover_image = $request->hasFile('cover_image') ? Storage::disk('public')->put('rent-image/' , $request->file('cover_image')) : null;
+        $disk_image = $request->hasFile('disk_image') ? Storage::disk('public')->put('rent-image/' , $request->file('disk_image')) : null;
+        $rent = $this->rentRepository->store($request, $cover_image, $disk_image);
+        return $this->response->item($rent, new RentTransformer());
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\DiskCondition  $diskCondition
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        $rent = Rent::findOrFail($id);
-        return response()->json(compact('rent'), 200);
+        $rent = $this->rentRepository->show($id);
+        return $this->response->item($rent, new RentTransformer());
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DiskCondition  $diskCondition
-     * @return \Illuminate\Http\Response
+     * @param RentUpdateRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request)
+    public function update(RentUpdateRequest $request)
     {
-        $rent = $this->rentRepository->update($request);
-        return response()->json(compact('rent'), 200);
+        $rent = Rent::find($request->id);
+        if ($rent){
+            $rents = $this->rentRepository->update($rent,$request);
+            return $this->response->item($rents, new RentTransformer());
+        }
+        return response()->json('ID not found');
     }
 
     /**
-     * Remove the specified resource from storage.$
-     *
-     * @param  \App\DiskCondition  $diskCondition
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
