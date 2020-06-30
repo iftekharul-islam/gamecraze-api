@@ -31,7 +31,7 @@
         $api->get('search/{name}', 'App\Http\Controllers\API\SearchController@search');
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
-        $api->get('rents', 'App\Http\Controllers\API\RentController@index');
+
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
         $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
@@ -42,6 +42,20 @@
             $api->post('user/edit/{id}', 'App\Http\Controllers\API\AuthController@edit');
             $api->delete('user/destory/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
+
+            //Disk Conditions Crud
+            $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
+            $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
+            $api->post('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@store');
+            $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
+            $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
+
+            //For rent purpose
+            $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
+            $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
+            $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
+            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+            $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
 
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
             $api->get('user/role/show','App\Http\Controllers\API\UserController@showRole');
@@ -70,6 +84,7 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
+
             });
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
             $api->get('exchanges/{id}', 'App\Http\Controllers\API\PostController@show');
