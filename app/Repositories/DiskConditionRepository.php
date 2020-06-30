@@ -21,7 +21,7 @@ class DiskConditionRepository
      */
     public function store($request) {
         $disk_condition = $request->only(['name', 'description', 'status']);
-//        $disk_condition[''] = auth()->user()->id;
+        $disk_condition['author_id'] = auth()->user()->id;
         return DiskCondition::create($disk_condition);
     }
 
@@ -37,8 +37,7 @@ class DiskConditionRepository
      * @param $request
      * @return mixed
      */
-    public function update($request) {
-        $disk_condition = DiskCondition::find($request->id);
+    public function update($disk_condition, $request) {
         $disk_data = $request->only(['name', 'description', 'status']);
 
         if (isset($disk_data['name'])) {
@@ -50,11 +49,8 @@ class DiskConditionRepository
         if (isset($disk_data['status'])) {
             $disk_condition->status = $disk_data['status'];
         }
-
-        if ($disk_condition) {
-            $disk_condition->save();
-            return $disk_condition;
-        }
+        $disk_condition->save();
+        return $disk_condition;
     }
 
     /**

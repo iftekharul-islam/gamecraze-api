@@ -10,7 +10,7 @@ class DiskCondition extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'status'
+        'author_id', 'name', 'description', 'status'
     ];
 
 }

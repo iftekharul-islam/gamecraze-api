@@ -15,6 +15,7 @@ class CreateDiskConditionsTable extends Migration
     {
         Schema::create('disk_conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('author_id');
             $table->string('name');
             $table->longText('description');
             $table->boolean('status')->default(0);
