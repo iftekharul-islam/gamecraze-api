@@ -39,10 +39,12 @@
         // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
-        // Rents
-        $api->get('rents', 'App\Http\Controllers\API\RentController@index');
+      
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
+
+        $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
+
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
@@ -53,6 +55,21 @@
             $api->delete('user/destory/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             // Users Role & Permission
+
+            //Disk Conditions Crud
+            $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
+            $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
+            $api->post('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@store');
+            $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
+            $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
+
+            //For rent purpose
+            $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
+            $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
+            $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
+            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+            $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
+
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
             $api->get('user/role/show','App\Http\Controllers\API\UserController@showRole');
             $api->post('user/permission/create','App\Http\Controllers\API\UserController@createPermission');
@@ -84,6 +101,7 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
+
             });
 
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
