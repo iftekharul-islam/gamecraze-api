@@ -27,14 +27,17 @@ class GameRepository {
 
         $game->save();
 
-        $tags = explode(',', $request->tags);
-        $game->tag($tags);
+        if ($request->has('tags')) {
+	        $tags = explode(',', $request->tags);
+	        $game->tag($tags);
+        }
+        
 
-        $genres_id = Genre::whereIn('name', $request->genres)->get(['id']);
-        $game->genres()->attach($genres_id);
-
-        $platforms_id = Platform::whereIn('name', $request->platforms)->get(['id']);
-        $game->platforms()->attach($platforms_id);
+//        $genres_id = Genre::whereIn('name', $request->genres)->get(['id']);
+//        $game->genres()->attach($genres_id);
+//
+//        $platforms_id = Platform::whereIn('name', $request->platforms)->get(['id']);
+//        $game->platforms()->attach($platforms_id);
         return $game;
     }
 
@@ -52,9 +55,13 @@ class GameRepository {
     }
 
     public function delete($id) {
-        $category = Game::findOrFail($id);
-        $category->delete();
-        return;
+        $category = Game::find($id);
+        
+        if ($category) {
+	        return $category->delete();
+        }
+        
+        return 0;
     }
 
     public function search($gameName) {

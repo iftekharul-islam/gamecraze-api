@@ -9,6 +9,7 @@ use App\Http\Requests\GameCreateRequest;
 use App\Repositories\GameRepository;
 use App\Services\AssetService;
 use App\Transformers\GameTransformer;
+use Dingo\Api\Exception\DeleteResourceFailedException;
 use Illuminate\Http\Request;
 
 class GameController extends BaseController
@@ -27,11 +28,16 @@ class GameController extends BaseController
         $games = $this->gameRepository->all();
         return $this->response->collection($games, new GameTransformer());
     }
-
+	
+	/**
+	 * @param GameCreateRequest $request
+	 *
+	 * @return \Dingo\Api\Http\Response
+	 */
     public function store(GameCreateRequest $request)
     {
         $game = $this->gameRepository->create($request);
-        $this->assetService->create($request, $game->id);
+//        $this->assetService->create($request, $game->id);
         return $this->response->item($game, new GameTransformer());
     }
 
@@ -49,8 +55,16 @@ class GameController extends BaseController
 
     public function destroy($id)
     {
-        $this->gameRepository->delete($id);
-        return 1;
+        $status = $this->gameRepository->delete($id);
+        
+        if ($status == 0) {
+            throw new DeleteResourceFailedException();
+        }
+        
+        return $this->response->array([
+            "status_code" => 200,
+            "message" => "Resource has been deleted."
+        ]);
     }
 
     public function latestGames() {

@@ -16,12 +16,42 @@ class OneTimePasswordController extends BaseController
     {
         $this->otpRepository = $otpRepository;
     }
-
+	
+	/**
+	 * @param OtpCreateRequest $request
+	 */
     public function sendOtp(OtpCreateRequest $request) {
-        $this->otpRepository->create($request);
+        $code = $this->otpRepository->create($request);
+	
+	
+	    return $this->response->array([
+	    	'error' => false,
+		    'otp' => $code
+	    ]);
     }
-
+	
+	/**
+	 * @param VerifyOtpRequest $request
+	 *
+	 * @return int
+	 */
     public function verifyOtp(VerifyOtpRequest $request) {
-        return $this->otpRepository->verifyOtp($request);
+    	
+        $response = $this->otpRepository->verifyOtp($request);
+        
+        if ($response === false) {
+	        return $this->response->array([
+		        'error' => true,
+		        'message' => "There is an error"
+	        ]);
+        }
+	
+	    return $this->response->array([
+		    'error' => false,
+		    'access_token' => $response
+	    ]);
+        
+	
+	    
     }
 }

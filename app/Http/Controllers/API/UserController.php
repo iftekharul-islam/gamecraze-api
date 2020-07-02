@@ -62,7 +62,7 @@ class UserController extends BaseController
     public function userhasRole($user_id, $role_id)
     {
         $this->userRepository->userhasRole($user_id, $role_id);
-        return response()->json('User get the Role successfully');
+        return response()->json('Role has been assigned to the user.');
     }
 
     public function userhasPermission($user_id, $per_id)
