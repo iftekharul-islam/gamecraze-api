@@ -9,13 +9,27 @@ use App\Models\User;
 
 class UserLoginService {
     public function login(Request $request) {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $user = Auth::user();
-            $token = $user->createToken($user->email .'-'. now());
-            return $token->accessToken;
+        if ($request->has('phone_number')) {
+            $user = User::where('phone_number', $request->input('phone_number'))->first();
+            if ($user) {
+                $token = $user->createToken($user->phone_number .'-'. now());
+                return $token->accessToken;
+            }
+            else {
+                return 0;
+            }
         }
         else {
-            return 0;
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+                $user = Auth::user();
+                $token = $user->createToken($user->email .'-'. now());
+                return $token->accessToken;
+            }
+            else {
+                return 0;
+            }
         }
+
+
     }
 }

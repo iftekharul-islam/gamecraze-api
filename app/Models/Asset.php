@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
+    protected $fillable = ['game_id', 'name'];
     public function game() {
         return $this->belongsTo(Game::class);
     }
