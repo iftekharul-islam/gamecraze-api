@@ -18,6 +18,9 @@ class Game extends Model
         return $this->hasMany(Asset::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function exchanges() {
         return $this->hasMany(Exchange::class);
     }
@@ -25,6 +28,6 @@ class Game extends Model
         return $this->hasMany(Rent::class);
     }
     public function platforms() {
-        return $this->belongsToMany(Platform::class)->withPivot(['requirements','released_at']);
+        return $this->belongsToMany(Platform::class);
     }
 }

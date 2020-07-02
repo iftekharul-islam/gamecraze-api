@@ -10,7 +10,9 @@ use League\Fractal\TransformerAbstract;
 
 class GameTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['genres','assets','platforms'];
+    protected $availableIncludes = [
+        'genres', 'assets', 'platforms'
+    ];
     public function transform(Game $game)
     {
         // specify what elements are going to be visible to the API

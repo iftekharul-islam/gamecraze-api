@@ -10,7 +10,5 @@ class AssetRepository {
         $asset->name = $imageName;
         $asset->game_id = $game_id;
         $asset->save();
-
-        return;
     }
 }

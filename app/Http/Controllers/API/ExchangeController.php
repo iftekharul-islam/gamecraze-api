@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Repositories\ExchangeRepository;
 use App\Transformers\ExchangeTransformer;
-use Illuminate\Http\Request;
 
 class ExchangeController extends BaseController
 {
@@ -14,8 +13,8 @@ class ExchangeController extends BaseController
     {
         $this->exchangeRepository = $exchangeRepository;
     }
-    public function index() {
-        $exchanges = $this->exchangeRepository->all();
+    public function getActiveExchange() {
+        $exchanges = $this->exchangeRepository->getActiveExchange();
         return $this->response->collection($exchanges, new ExchangeTransformer());
     }
 }

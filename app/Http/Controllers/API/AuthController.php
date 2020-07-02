@@ -52,10 +52,10 @@ class AuthController extends BaseController
         return response()->json("Logged out successfully", 200);
     }
 
-    public function edit(UserUpdateRequest $request, $userId)
+    public function update(UserUpdateRequest $request)
     {
-        $this->userRepository->update($request, $userId);
-        return response()->json('User successfuly edited');
+        $user = $this->userRepository->update($request);
+        return response()->json($user);
     }
 
     public function destroy($id)

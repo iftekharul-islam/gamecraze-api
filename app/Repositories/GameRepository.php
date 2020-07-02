@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Game;
+use App\Models\Genre;
+use App\Models\Platform;
 use Illuminate\Http\Request;
 
 class GameRepository {
@@ -28,8 +30,11 @@ class GameRepository {
         $tags = explode(',', $request->tags);
         $game->tag($tags);
 
+        $genres_id = Genre::whereIn('name', $request->genres)->get(['id']);
+        $game->genres()->attach($genres_id);
 
-
+        $platforms_id = Platform::whereIn('name', $request->platforms)->get(['id']);
+        $game->platforms()->attach($platforms_id);
         return $game;
     }
 

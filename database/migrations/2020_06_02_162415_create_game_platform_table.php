@@ -18,8 +18,6 @@ class CreateGamePlatformTable extends Migration
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->unsignedBigInteger('platform_id');
             $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
-            $table->longText('requirements');
-            $table->date('released_at');
             $table->timestamps();
         });
     }

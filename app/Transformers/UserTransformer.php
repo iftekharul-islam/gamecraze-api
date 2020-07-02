@@ -10,6 +10,7 @@ use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {
+//    protected $defaultIncludes = ['roles'];
     public function transform(User $user)
     {
         // specify what elements are going to be visible to the API
@@ -20,7 +21,9 @@ class UserTransformer extends TransformerAbstract
             'phone_number' => $user->phone_number,
             'gender' => $user->gender,
             'birth_date' => $user->birth_date,
-            'address' => $user->address
+            'address' => $user->address,
+            'roles' => $user->roles
         ];
     }
+
 }

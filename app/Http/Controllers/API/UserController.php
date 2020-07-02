@@ -72,6 +72,7 @@ class UserController extends BaseController
     }
 
     public function profile() {
-        return auth('api')->user();
+        $user = auth('api')->user();
+        return $this->response->item($user, new UserTransformer());
     }
 }

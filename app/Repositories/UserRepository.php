@@ -20,36 +20,25 @@ class UserRepository {
     }
 
     public function create(Request $request) {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->phone_number = $request->phone_number;
-        $user->gender = $request->gender;
-        $user->birth_date = $request->birth_date;
-        $user->address = $request->address;
-        $user->interest = $request->interest;
-
-        if(isset($request->image))
-        {
-            $image = $request->image;
-            $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-            \Image::make($image)->save(storage_path('app/public/users/').$name);
-            $user->image = $name;
-        }
-        $user->save();
+        $user = User::create($request->all());
 
         return response()->json($user, 201);
     }
 
-    public function update(Request$request, $userId) {
-        $user = User::findOrFail($userId);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+    public function update(Request$request) {
+        $userData = $request->all();
+        $user = User::where('phone_number', $userData['phone_number'])->first();
+
+        if (isset($userData['email'])) {
+            $user->email = $userData['email'];
+        }
+        if (isset($userData['password'])) {
+            $user->password = bcrypt($userData['password']);
+        }
+
         $user->save();
 
-        return;
+        return $user;
     }
 
     public function delete($id) {

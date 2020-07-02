@@ -21,28 +21,38 @@
             return ['Fruits' => 'Delicious and healthy!!!'];
         });
 
+        // Login & Register
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
+        // OTP
+        $api->post('sendOtp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
+        $api->post('verifyOtp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
+        // Games
         $api->get('games/latest', 'App\Http\Controllers\API\GameController@latestGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
+        // Genres
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');
         $api->get('genres/', 'App\Http\Controllers\API\GenreController@index');
+        // Search
         $api->get('search/{name}', 'App\Http\Controllers\API\SearchController@search');
+        // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
+        // Rents
         $api->get('rents', 'App\Http\Controllers\API\RentController@index');
-        $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
+        // Exchanges
+        $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
-        $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
+            // Users
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
-            $api->post('user/edit/{id}', 'App\Http\Controllers\API\AuthController@edit');
+            $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->delete('user/destory/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
-
+            // Users Role & Permission
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
             $api->get('user/role/show','App\Http\Controllers\API\UserController@showRole');
             $api->post('user/permission/create','App\Http\Controllers\API\UserController@createPermission');
@@ -51,26 +61,31 @@
             $api->post('role-permission/{role_id}/{per_id}','App\Http\Controllers\API\UserController@rolehasPermission');
             $api->post('user-role/{user_id}/{role_id}','App\Http\Controllers\API\UserController@userhasRole');
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
+            //User Profile
+            $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
 
+            // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
+                // Games
                 $api->post('games/', 'App\Http\Controllers\API\GameController@store');
                 $api->delete('games/{id}', 'App\Http\Controllers\API\GameController@destroy');
                 $api->put('games/{id}', 'App\Http\Controllers\API\GameController@update');
-
+                // Genres
                 $api->post('genres/', 'App\Http\Controllers\API\GenreController@store');
                 $api->delete('genres/{id}', 'App\Http\Controllers\API\GenreController@destroy');
                 $api->put('genres/{id}', 'App\Http\Controllers\API\GenreController@update');
-
+                // Managements
                 $api->get('managements/{id}', 'App\Http\Controllers\API\ManagementController@show');
                 $api->get('managements/', 'App\Http\Controllers\API\ManagementController@index');
                 $api->post('managements/', 'App\Http\Controllers\API\ManagementController@store');
                 $api->delete('managements/{id}', 'App\Http\Controllers\API\ManagementController@destroy');
                 $api->put('managements/{id}', 'App\Http\Controllers\API\ManagementController@update');
-
+                // Platforms
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
             });
+
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
             $api->get('exchanges/{id}', 'App\Http\Controllers\API\PostController@show');
 //            $api->get('exchanges/', 'App\Http\Controllers\API\PostController@index');
