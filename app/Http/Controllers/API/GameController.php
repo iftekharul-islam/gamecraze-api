@@ -10,6 +10,8 @@ use App\Repositories\GameRepository;
 use App\Services\AssetService;
 use App\Transformers\GameTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 
 class GameController extends BaseController
@@ -51,7 +53,9 @@ class GameController extends BaseController
     public function store(GameCreateRequest $request)
     {
         $game = $this->gameRepository->create($request);
-//        $this->assetService->create($request, $game->id);
+        if (!$game) {
+            throw new StoreResourceFailedException();
+        }
         return $this->response->item($game, new GameTransformer());
     }
 
@@ -69,9 +73,12 @@ class GameController extends BaseController
      * @param GameUpdateRequest $request
      * @return \Dingo\Api\Http\Response
      */
-    public function update(GameUpdateRequest $request)
+    public function update(Request $request, $id)
     {
-        $game = $this->gameRepository->update($request);
+        $game = $this->gameRepository->update($request, $id);
+        if ($game === 0) {
+            throw new UpdateResourceFailedException();
+        }
         return $this->response->item($game, new GameTransformer());
     }
 

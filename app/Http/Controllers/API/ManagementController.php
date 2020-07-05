@@ -6,7 +6,11 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\ManagementCreateRequest;
 use App\Http\Requests\ManagementUpdateRequest;
 use App\Repositories\ManagementRepository;
+use App\Transformers\ManagementTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ManagementController extends BaseController
@@ -26,38 +30,45 @@ class ManagementController extends BaseController
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      */
     public function index() {
         $managements = $this->managementRepository->all();
-        return response()->json(compact('managements'), 200);
+        return $this->response->collection($managements, new ManagementTransformer());
     }
 
     /**
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      */
     public function show($id) {
         $management = $this->managementRepository->findById($id);
-        return response()->json(compact('management'), 200);
+        return $this->response->item($management, new ManagementTransformer());
     }
 
     /**
      * @param ManagementCreateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      */
     public function store(ManagementCreateRequest $request) {
         $management = $this->managementRepository->create($request);
-        return response()->json(compact('management'), 200);
+        if (!$management) {
+            throw new StoreResourceFailedException();
+        }
+        return $this->response->item($management, new ManagementTransformer());
     }
 
     /**
-     * @param ManagementUpdateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @param $id
+     * @return \Dingo\Api\Http\Response|string
      */
-    public function update(ManagementUpdateRequest $request) {
+    public function update(Request $request) {
         $management = $this->managementRepository->update($request);
-        return response()->json(compact('management'), 200);
+        if (!$management) {
+            throw new UpdateResourceFailedException();
+        }
+        return $this->response->item($management, new ManagementTransformer());
     }
 
     /**

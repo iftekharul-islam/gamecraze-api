@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Cviebrock\EloquentTaggable\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Game extends Model
 {
-    use Taggable;
+    use Taggable, SoftDeletes;
+
+    protected $fillable = [
+        'name', 'author_id', 'author_id', 'game_mode', 'description', 'released', 'rating', 'publisher'
+    ];
+
 
     public function genres()
     {

@@ -24,7 +24,12 @@ class GameUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+            'game_mode' => 'required',
+            'released' => '',
+            'rating' => 'required',
+            'publisher' => 'required'
         ];
     }
 }

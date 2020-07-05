@@ -24,7 +24,7 @@ class GenreUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'string|min:3'
         ];
     }
 }

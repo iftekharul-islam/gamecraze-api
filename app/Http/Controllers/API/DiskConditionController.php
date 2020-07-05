@@ -63,13 +63,12 @@ class DiskConditionController extends BaseController
      */
     public function update(DiskConditionUpdateRequest $request, DiskCondition $diskCondition)
     {
-        $disk_condition = DiskCondition::find($request->id);
-        if ($disk_condition){
-            $diskData = $this->diskConditionRepository->update($disk_condition, $request);
+            $diskData = $this->diskConditionRepository->update($request);
+            if ($diskData == 0)
+            {
+                throw new UpdateResourceFailedException();
+            }
             return $this->response->item($diskData, new DiskConditionTransformer());
-        }
-
-        throw new UpdateResourceFailedException();
     }
 
     /**
