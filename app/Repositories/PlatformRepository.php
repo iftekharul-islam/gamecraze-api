@@ -34,8 +34,12 @@ class PlatformRepository {
     }
 
     public function delete($id) {
-        $platform = Platform::findOrFail($id);
-        $platform->delete();
-        return;
+        $platform = Platform::find($id);
+
+        if ($platform) {
+            return $platform->delete();
+        }
+
+        return 0;
     }
 }

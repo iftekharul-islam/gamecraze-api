@@ -55,10 +55,14 @@ class DiskConditionRepository
 
     /**
      * @param $id
+     * @return int
      */
     public function delete($id) {
-        $disk_condition = DiskCondition::findOrFail($id);
-        $disk_condition->delete();
+        $disk_condition = DiskCondition::find($id);
+        if ($disk_condition) {
+            return $disk_condition->delete();
+        }
+        return 0;
     }
 
 }

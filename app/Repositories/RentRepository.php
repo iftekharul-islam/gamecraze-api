@@ -42,11 +42,11 @@ class RentRepository {
 
     public function update($request) {
 	    $rent = Rent::find($request->id);
-	    
+
 	    if (!$rent) {
 	    	return false;
 	    }
-	    
+
         $rent_data = $request->only([
           'game_id', 'max_week', 'availability', 'platform_id', 'earning_amount',
           'disk_condition_id', 'rented_user_id', 'status', 'cover_image', 'disk_image'
@@ -91,7 +91,10 @@ class RentRepository {
     }
 
     public function delete($id) {
-        $rent = Rent::findOrFail($id);
-        return $rent->delete();
+        $rent = Rent::find($id);
+        if ($rent) {
+            return $rent->delete();
+        }
+        return 0;
     }
 }
