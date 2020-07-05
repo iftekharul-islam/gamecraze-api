@@ -45,9 +45,7 @@ class RentController extends BaseController
      */
     public function store(RentCreateRequest $request)
     {
-        $cover_image = $request->hasFile('cover_image') ? Storage::disk('public')->put('rent-image/' , $request->file('cover_image')) : null;
-        $disk_image = $request->hasFile('disk_image') ? Storage::disk('public')->put('rent-image/' , $request->file('disk_image')) : null;
-        $rent = $this->rentRepository->store($request, $cover_image, $disk_image);
+        $rent = $this->rentRepository->store($request);
         return $this->response->item($rent, new RentTransformer());
     }
 

@@ -11,15 +11,27 @@ class RentRepository {
         return Rent::all();
     }
 
-    public function store(Request $request, $disk_image, $cover_image) {
-//        return $disk_image;
+    public function store(Request $request) {
         $rent = $request->only([
-            'game_id', 'max_week', 'availability', 'platform_id', 'earning_amount',
+            'game_id', 'max_week', 'availability', 'platform_id',
             'disk_condition_id', 'rented_user_id', 'status'
         ]);
+        if(isset($request->cover_image))
+        {
+            $image = $request->cover_image;
+            $cover_image = 'cover_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            \Image::make($image)->save(storage_path('app/public/rent-image/') . $cover_image);
+            $rent['cover_image'] =  $cover_image ;
+        }
+        if(isset($request->disk_image))
+        {
+            $image = $request->disk_image;
+            $disk_image = 'disk_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            \Image::make($image)->save(storage_path('app/public/rent-image/').$disk_image);
+            $rent['disk_image'] =   $disk_image ;
+        }
+        $rent['earning_amount'] = 500;
         $rent['user_id'] = auth()->user()->id;
-        $rent['cover_image'] =  $cover_image ;
-        $rent['disk_image'] =   $disk_image ;
 
         return Rent::create($rent);
     }
