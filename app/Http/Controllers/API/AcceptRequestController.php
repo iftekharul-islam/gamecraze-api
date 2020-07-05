@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class AcceptRequestController extends BaseController
 {
+    /**
+     * @param AcceptCreateRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function acceptRequest(AcceptCreateRequest $request) {
         $post = Exchange::findOrFail($request->post_id);
         $post->borrower_id = $request->input('borrower_id');

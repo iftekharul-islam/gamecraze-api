@@ -8,6 +8,9 @@ use App\Http\Requests\GenreUpdateRequest;
 use App\Repositories\GenreRepository;
 use App\Transformers\GenreTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
+use http\Env\Request;
 
 class GenreController extends BaseController
 {
@@ -48,6 +51,9 @@ class GenreController extends BaseController
      */
     public function store(GenreCreateRequest $request) {
         $genre = $this->genreRepository->create($request);
+        if (!$genre) {
+            throw new StoreResourceFailedException();
+        }
         return $this->response->item($genre, new GenreTransformer());
     }
 
@@ -57,6 +63,9 @@ class GenreController extends BaseController
      */
     public function update(GenreUpdateRequest $request) {
         $genre = $this->genreRepository->update($request);
+        if (!$genre) {
+            throw new UpdateResourceFailedException();
+        }
         return $this->response->item($genre, new GenreTransformer());
     }
 

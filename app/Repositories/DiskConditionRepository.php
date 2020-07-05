@@ -37,11 +37,16 @@ class DiskConditionRepository
      * @param $request
      * @return mixed
      */
-    public function update($disk_condition, $request) {
+    public function update($request) {
+        $disk_condition = DiskCondition::find($request->id);
+
+        if (!$disk_condition) {
+            return false;
+        }
         $disk_data = $request->only(['name', 'description', 'status']);
 
         if (isset($disk_data['name'])) {
-            $disk_condition->name= $disk_data['name'];
+            $disk_condition->name = $disk_data['name'];
         }
         if (isset($disk_data['description'])) {
             $disk_condition->description = $disk_data['description'];

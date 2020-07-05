@@ -3,57 +3,86 @@
 namespace App\Repositories;
 
 use App\Models\Game;
-use App\Models\Genre;
-use App\Models\Platform;
 use Illuminate\Http\Request;
 
 class GameRepository {
+
+    /**
+     * @return Game[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function all() {
         return Game::all();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findById($id) {
         return Game::findOrFail($id);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function create(Request $request) {
-        $game = new Game();
-        $game->name = $request->name;
-        $game->game_mode = $request->game_mode;
-        $game->description = $request->description;
-        $game->released = $request->released;
-        $game->rating = $request->rating;
-        $game->publisher = $request->publisher;
-
-        $game->save();
+        $data = $request->only([
+            'name', 'game_mode', 'description', 'released', 'rating', 'publisher'
+        ]);
+        $data['author_id'] = auth()->user()->id;
+        $game = Game::create($data);
 
         if ($request->has('tags')) {
 	        $tags = explode(',', $request->tags);
 	        $game->tag($tags);
         }
-
-
-//        $genres_id = Genre::whereIn('name', $request->genres)->get(['id']);
-//        $game->genres()->attach($genres_id);
-//
-//        $platforms_id = Platform::whereIn('name', $request->platforms)->get(['id']);
-//        $game->platforms()->attach($platforms_id);
         return $game;
     }
 
-    public function update(Request $request) {
-        $game = Game::findOrFail($request->id);
-        $game->name = $request->name;
-        $game->game_mode = $request->game_mode;
-        $game->description = $request->description;
-        $game->released = $request->release_date;
-        $game->rating = $request->rating;
-        $game->publisher = $request->publisher;
+    /**
+     * @param $request
+     * @param $id
+     * @return int
+     */
+    public function update($request, $id) {
+        $game = Game::find($id);
+        if (!$game)
+        {
+            return 0;
+        }
+
+        $data = $request->only([
+            'name', 'game_mode', 'description', 'release_date', 'rating', 'publisher'
+        ]);
+
+        if (isset($data['name'])) {
+            $game->name = $data['name'];
+        };
+        if (isset($data['game_mode'])) {
+            $game->game_mode = $data['game_mode'];
+        };
+        if (isset($data['description'])) {
+            $game->description= $data['description'];
+        };
+        if (isset($data['released'])) {
+            $game->released = $data['released'];
+        };
+        if (isset($data['rating'])) {
+            $game->rating = $data['rating'];
+        };
+        if (isset($data['publisher'])) {
+            $game->publisher = $data['publisher'];
+        };
+
         $game->save();
-
         return $game;
     }
 
+    /**]
+     * @param $id
+     * @return int
+     */
     public function delete($id) {
         $game = Game::find($id);
 
@@ -64,6 +93,10 @@ class GameRepository {
         return 0;
     }
 
+    /**
+     * @param $gameName
+     * @return mixed
+     */
     public function search($gameName) {
         return Game::where('name','like','%'.$gameName.'%')->orderBy('id','desc')->get();
     }
