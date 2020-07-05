@@ -39,6 +39,9 @@
         // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
+        $api->post('platforms', 'App\Http\Controllers\API\PlatformController@store');
+        $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
+        $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
 
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
