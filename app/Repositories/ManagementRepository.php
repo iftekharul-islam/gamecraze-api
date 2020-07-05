@@ -38,8 +38,11 @@ class ManagementRepository {
     }
 
     public function delete($id) {
-        $management = Management::findOrFail($id);
-        $management->delete();
-        return;
+        $management = Management::find($id);
+        if ($management) {
+            return $management->delete();
+        }
+
+        return 0;
     }
 }

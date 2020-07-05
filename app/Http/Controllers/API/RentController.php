@@ -7,6 +7,7 @@ use App\Http\Requests\RentCreateRequest;
 use App\Http\Requests\RentUpdateRequest;
 use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
+use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,7 +36,7 @@ class RentController extends BaseController
         $rents = $this->rentRepository->all();
         return $this->response->collection($rents, new RentTransformer());
     }
-	
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -50,7 +51,7 @@ class RentController extends BaseController
         $rent = $this->rentRepository->store($request, $cover_image, $disk_image);
         return $this->response->item($rent, new RentTransformer());
     }
-	
+
 	/**
 	 * @param $id
 	 *
@@ -69,13 +70,13 @@ class RentController extends BaseController
      */
     public function update(RentUpdateRequest $request)
     {
-	
+
 	    $rents = $this->rentRepository->update($request);
-	    
+
 	    if ($rents === false) {
 	    	throw new UpdateResourceFailedException("Id is missing");
 	    }
-	    
+
 	    return $this->response->item($rents, new RentTransformer());
     }
 
@@ -85,7 +86,14 @@ class RentController extends BaseController
      */
     public function destroy($id)
     {
-        $this->rentRepository->delete($id);
-        
+        $status = $this->rentRepository->delete($id);
+        if ($status == 0) {
+            throw new DeleteResourceFailedException();
+        }
+
+        return $this->response->array([
+            "status_code" => 200,
+            "message" => "Resource has been deleted."
+        ]);
     }
 }

@@ -34,8 +34,11 @@ class GenreRepository {
     }
 
     public function delete($id) {
-        $genre = Genre::findOrFail($id);
-        $genre->delete();
-        return;
+        $genre = Genre::find($id);
+        if ($genre) {
+            return $genre->delete();
+        }
+
+        return 0;
     }
 }

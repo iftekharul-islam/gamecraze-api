@@ -31,7 +31,7 @@ class GameRepository {
 	        $tags = explode(',', $request->tags);
 	        $game->tag($tags);
         }
-        
+
 
 //        $genres_id = Genre::whereIn('name', $request->genres)->get(['id']);
 //        $game->genres()->attach($genres_id);
@@ -55,12 +55,12 @@ class GameRepository {
     }
 
     public function delete($id) {
-        $category = Game::find($id);
-        
-        if ($category) {
-	        return $category->delete();
+        $game = Game::find($id);
+
+        if ($game) {
+	        return $game->delete();
         }
-        
+
         return 0;
     }
 

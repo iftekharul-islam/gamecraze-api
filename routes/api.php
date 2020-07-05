@@ -25,8 +25,8 @@
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
         // OTP
-        $api->post('sendOtp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
-        $api->post('verifyOtp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
+        $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
+        $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
         // Games
         $api->get('games/latest', 'App\Http\Controllers\API\GameController@latestGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
@@ -39,14 +39,14 @@
         // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
-      
+
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
 
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
 
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
-	
+
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
 	    $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
 
