@@ -47,16 +47,6 @@ class OneTimePasswordController extends BaseController
 
         $response = $this->otpRepository->verifyOtp($request);
 
-        if ($response === false) {
-	        return $this->response->array([
-		        'error' => true,
-		        'message' => "There is an error"
-	        ]);
-        }
-
-	    return $this->response->array([
-		    'error' => false,
-		    'access_token' => $response
-	    ]);
+	    return $this->response->array($response);
     }
 }

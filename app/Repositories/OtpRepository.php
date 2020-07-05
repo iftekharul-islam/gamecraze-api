@@ -38,7 +38,7 @@ class OtpRepository {
 	/**
 	 * @param Request $request
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
     public function verifyOtp(Request $request) {
         $otp = OneTimePassword::where('phone_number', $request->input('phone_number'))->latest()->first();
@@ -49,23 +49,33 @@ class OtpRepository {
 
 
 	    if (trim($otp->otp) !== trim($request->input('otp')) || $otpCreateTime >= config('otp.lifetime')) {
-		    return false;
+		    return [
+		        'error' => true,
+                'message' => 'There is an error'
+            ];
 	    }
 
 	    $user = User::where('phone_number', $request->input('phone_number'))->first();
 
 	    if ($user) {
 		    $token = $user->createToken($user->phone_number .'-'. now());
-		    return $token->accessToken;
+		    return [
+                'error' => false,
+		        'new_user' => false,
+		        'token' => $token->accessToken
+            ];
 	    }
 
 	    $user = User::create([
-		    'name' => $request->input('name'),
 		    'phone_number' => $request->input('phone_number')
 	    ]);
 
 	    $token = $user->createToken($user->phone_number .'-'. now());
 
-	    return $token->accessToken;
+	    return [
+            'error' => false,
+            'new_user' => true,
+            'token' => $token->accessToken
+        ];
     }
 }
