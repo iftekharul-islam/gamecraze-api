@@ -28,11 +28,11 @@ class RentCreateRequest extends FormRequest
             'max_week' =>  'required|integer',
             'availability' =>  'required',
             'platform_id' =>  'required|integer',
-            'earning_amount' =>  'required',
+            'earning_amount' =>  '',
             'disk_condition_id' =>  'required|integer',
             'cover_image' =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'disk_image' =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
-            'rented_user_id' =>  'required|integer',
+            'rented_user_id' =>  'nullable|integer',
             'status' => 'required|integer',
         ];
     }
