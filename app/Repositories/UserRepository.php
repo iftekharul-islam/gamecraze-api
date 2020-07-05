@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
+use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -29,16 +30,23 @@ class UserRepository {
         $userData = $request->all();
         $user = User::where('phone_number', $userData['phone_number'])->first();
 
-        if (isset($userData['email'])) {
-            $user->email = $userData['email'];
-        }
-        if (isset($userData['password'])) {
-            $user->password = bcrypt($userData['password']);
+        if ($user) {
+            if (isset($userData['name'])) {
+                $user->name = $userData['name'];
+            }
+            if (isset($userData['email'])) {
+                $user->email = $userData['email'];
+            }
+            if (isset($userData['password'])) {
+                $user->password = bcrypt($userData['password']);
+            }
+
+            $user->save();
+            return $user;
         }
 
-        $user->save();
+        throw new UpdateResourceFailedException();
 
-        return $user;
     }
 
     public function delete($id) {
