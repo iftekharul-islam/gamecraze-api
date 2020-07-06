@@ -22,8 +22,13 @@ class UserRepository {
 
     public function create(Request $request) {
         $user = User::create($request->all());
+        $role = Role::where('name', 'customer')->first();
 
-        return response()->json($user, 201);
+        if ($user && $role) {
+            $user->assignRole($role);
+            return $user;
+        }
+        return false;
     }
 
     public function update(Request$request) {

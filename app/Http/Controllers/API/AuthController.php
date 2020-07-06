@@ -9,6 +9,8 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
+use App\Transformers\UserTransformer;
+use Dingo\Api\Exception\StoreResourceFailedException;
 use Illuminate\Http\Request;
 
 
@@ -54,13 +56,16 @@ class AuthController extends BaseController
 
     /**
      * @param UserCreateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      */
     public function register(UserCreateRequest $request)
     {
         $user = $this->userRepository->create($request);
 
-        return response()->json($user);
+        if ($user == false) {
+            throw new StoreResourceFailedException();
+        }
+        return $this->response->item((object)$user, new UserTransformer());
     }
 
     /**
@@ -69,7 +74,18 @@ class AuthController extends BaseController
      */
     public function login(UserLoginRequest $request)
     {
-        return $this->loginService->login($request);
+        $token = $this->loginService->login($request);
+        if ($token == false) {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'Wrong email or password'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => false,
+            'token' => $token
+        ]);
     }
 
     /**

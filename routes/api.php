@@ -27,6 +27,8 @@
         // OTP
         $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
         $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
+        // Reset Password
+        $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         // Games
         $api->get('games/latest', 'App\Http\Controllers\API\GameController@latestGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');

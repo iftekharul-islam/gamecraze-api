@@ -6,10 +6,8 @@ use App\Jobs\SendOtp;
 use App\Models\OneTimePassword;
 use Carbon\Carbon;
 use App\Models\User;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
-
+use Spatie\Permission\Models\Role;
 
 
 class OtpRepository {
@@ -70,9 +68,15 @@ class OtpRepository {
 		    'phone_number' => $request->input('phone_number')
 	    ]);
 
-	    $token = $user->createToken($user->phone_number .'-'. now());
+	    $role = Role::where('name', 'customer')->first();
 
-	    return [
+	    if ($user && $role) {
+	        $user->assignRole($role);
+        }
+
+        $token = $user->createToken($user->phone_number .'-'. now());
+
+        return [
             'error' => false,
             'new_user' => true,
             'token' => $token->accessToken
