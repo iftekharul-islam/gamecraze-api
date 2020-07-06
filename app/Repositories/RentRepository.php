@@ -30,7 +30,6 @@ class RentRepository {
             \Image::make($image)->save(storage_path('app/public/rent-image/').$disk_image);
             $rent['disk_image'] =   $disk_image ;
         }
-        $rent['earning_amount'] = '';
         $rent['user_id'] = auth()->user()->id;
 
         return Rent::create($rent);

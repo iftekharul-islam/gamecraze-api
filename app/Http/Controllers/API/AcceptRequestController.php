@@ -7,7 +7,6 @@ use App\Models\Exchange;
 use App\Http\Controllers\BaseController;
 use App\Notifications\AcceptNotification;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class AcceptRequestController extends BaseController
 {
