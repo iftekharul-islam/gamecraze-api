@@ -51,9 +51,12 @@
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
 
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
-
+        //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
 	    $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
+        //disk-condition get
+        $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
+        $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
@@ -65,15 +68,11 @@
             // Users Role & Permission
 
             //Disk Conditions Crud
-            $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
-            $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
             $api->post('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@store');
             $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
             $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
 
             //For rent purpose
-	        $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
-	        $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
