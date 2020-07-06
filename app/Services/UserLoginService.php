@@ -16,7 +16,7 @@ class UserLoginService {
                 return $token->accessToken;
             }
             else {
-                return 0;
+                return false;
             }
         }
         else {
@@ -26,7 +26,7 @@ class UserLoginService {
                 return $token->accessToken;
             }
             else {
-                return 0;
+                return false;
             }
         }
 
