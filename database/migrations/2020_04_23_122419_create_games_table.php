@@ -16,6 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('author_id');
             $table->longText('description');
             $table->string('game_mode');
             $table->decimal('rating', 2, 1)->default(0.0);
