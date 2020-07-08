@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RentRepository {
     public function all() {
-        return Rent::all();
+        return Rent::with('game', 'user', 'platform', 'diskCondition')
+            ->where(auth()->user()->id, 'user_id')->get();
     }
 
     public function store(Request $request) {

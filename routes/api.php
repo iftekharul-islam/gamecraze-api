@@ -21,6 +21,7 @@
             return ['Fruits' => 'Delicious and healthy!!!'];
         });
 
+        $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
         // Login & Register
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
@@ -74,7 +75,7 @@
 
             //For rent purpose
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
-            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+//            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
 
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');

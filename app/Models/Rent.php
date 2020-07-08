@@ -20,4 +20,10 @@ class Rent extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    public function platform() {
+        return $this->belongsTo(Platform::class);
+    }
+    public function diskCondition() {
+        return $this->belongsTo(DiskCondition::class, 'disk_condition_id');
+    }
 }
