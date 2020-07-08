@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -16,6 +17,14 @@ class RolesAndPermissionsSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
+        $user = new User();
+        $user->name = 'tushar';
+        $user->email = 'tushar@gmail.com';
+        $user->password = bcrypt('password');
+        $user->phone_number = '01770353601';
+
+        $user->save();
+
         // create permissions
         Permission::create(['name' => 'add game']);
         Permission::create(['name' => 'update game']);
@@ -28,6 +37,9 @@ class RolesAndPermissionsSeeder extends Seeder
         $role->givePermissionTo('add game');
         $role->givePermissionTo('update game');
         $role->givePermissionTo('delete game');
+
+        $user->assignRole($role);
+
 //        $role->givePermissionTo('edit doctor_list');
 
         // or may be done by chaining

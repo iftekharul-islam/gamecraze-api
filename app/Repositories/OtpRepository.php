@@ -43,14 +43,20 @@ class OtpRepository {
 
         $created_at = new Carbon($otp->created_at);
 
-        $otpCreateTime = $created_at->diff(Carbon::now())->s;
+        $timeDiff = $created_at->diffInSeconds(Carbon::now());
 
-	    if (trim($otp->otp) !== trim($request->input('otp')) || $otpCreateTime >= config('otp.lifetime')) {
+	    if (trim($otp->otp) !== trim($request->input('otp'))) {
 		    return [
 		        'error' => true,
-                'message' => 'There is an error'
+                'message' => 'wrongOtp'
             ];
 	    }
+	    elseif ($timeDiff >= config('otp.lifetime')) {
+            return [
+                'error' => true,
+                'message' => 'timeout'
+            ];
+        }
 
 	    $user = User::where('phone_number', $request->input('phone_number'))->first();
 

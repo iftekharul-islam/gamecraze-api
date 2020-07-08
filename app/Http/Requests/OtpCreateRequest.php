@@ -24,7 +24,7 @@ class OtpCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' => 'required|min:11|max:14'
+            'phone_number' => 'required|min:11|max:11'
         ];
     }
 }
