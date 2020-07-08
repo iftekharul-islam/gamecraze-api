@@ -40,9 +40,11 @@ class PlatformRepository {
     public function update(Request $request) {
 
         $platform = Platform::find($request->id);
-        $data = $request->only([
-            'name',
-        ]);
+        if (!$platform) {
+            return false;
+        }
+        $data = $request->only(['name']);
+
         if (isset($data['name'])) {
             $platform->name = $data['name'];
             $platform->slug = Str::slug($data['name']);
