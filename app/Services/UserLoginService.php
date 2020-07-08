@@ -23,7 +23,10 @@ class UserLoginService {
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
                 $token = $user->createToken($user->email .'-'. now());
-                return $token->accessToken;
+                return [
+                    'user' => $user,
+                    'token' => $token->accessToken
+                ];
             }
             else {
                 return false;
