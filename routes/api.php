@@ -21,7 +21,6 @@
             return ['Fruits' => 'Delicious and healthy!!!'];
         });
 
-        $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
         // Login & Register
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
@@ -54,7 +53,6 @@
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
         //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
-	    $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
         //disk-condition get
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
         $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
@@ -75,7 +73,7 @@
 
             //For rent purpose
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
-//            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+            $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
 
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
@@ -109,6 +107,8 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
+                //All rent post for a user
+                $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
 
             });
 

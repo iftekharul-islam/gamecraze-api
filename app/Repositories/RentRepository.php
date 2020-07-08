@@ -4,12 +4,13 @@ namespace App\Repositories;
 
 use App\Models\Rent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class RentRepository {
     public function all() {
         return Rent::with('game', 'user', 'platform', 'diskCondition')
-            ->where(auth()->user()->id, 'user_id')->get();
+            ->where( 'user_id', Auth::user()->id )->get();
     }
 
     public function store(Request $request) {

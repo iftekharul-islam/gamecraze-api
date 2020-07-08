@@ -8,6 +8,8 @@ use App\Http\Requests\PlatformUpdateRequest;
 use App\Repositories\PlatformRepository;
 use App\Transformers\PlatformTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
+use Illuminate\Http\Request;
 
 class PlatformController extends BaseController
 {
@@ -55,8 +57,12 @@ class PlatformController extends BaseController
      * @param PlatformUpdateRequest $request
      * @return \Dingo\Api\Http\Response
      */
-    public function update(PlatformUpdateRequest $request) {
+    public function update(Request $request) {
         $platform = $this->platformRepository->update($request);
+        if (!$platform)
+        {
+            throw new UpdateResourceFailedException();
+        }
         return $this->response->item($platform, new PlatformTransformer());
     }
 

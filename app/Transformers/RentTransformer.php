@@ -10,7 +10,7 @@ use League\Fractal\TransformerAbstract;
 
 class RentTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['game','user', 'platform', 'diskCondition'];
+    protected $availableIncludes = ['game', 'user', 'platform', 'diskCondition'];
     public function transform(Rent $rent)
     {
         // specify what elements are going to be visible to the API
@@ -27,6 +27,7 @@ class RentTransformer extends TransformerAbstract
             'disk_image' =>  $rent->disk_image,
             'rented_user_id' =>  $rent->rented_user_id,
             'status' => $rent->status,
+            'game' => $rent->game
         ];
     }
 
