@@ -11,7 +11,7 @@ use League\Fractal\TransformerAbstract;
 class GameTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
-        'genres', 'assets', 'platforms'
+        'genres', 'assets', 'platforms', 'rents'
     ];
     public function transform(Game $game)
     {
@@ -37,6 +37,9 @@ class GameTransformer extends TransformerAbstract
 
     public function includePlatforms(Game $game) {
         return $this->collection($game->platforms, new PlatformTransformer());
+    }
+    public function includeRents(Game $game) {
+        return $this->collection($game->rents, new RentTransformer());
     }
 
 }

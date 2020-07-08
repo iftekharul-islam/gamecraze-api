@@ -9,7 +9,6 @@ use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
-use Illuminate\Support\Facades\Storage;
 
 class RentController extends BaseController
 {

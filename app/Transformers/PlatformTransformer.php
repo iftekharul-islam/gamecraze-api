@@ -16,6 +16,7 @@ class PlatformTransformer extends TransformerAbstract
         // specify what elements are going to be visible to the API
         return [
             'id' => $platform->id,
+            'Author id' => $platform->author_id,
             'name' => $platform->name,
             'slug' => $platform->slug,
         ];

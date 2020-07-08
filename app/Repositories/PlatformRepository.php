@@ -7,32 +7,54 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PlatformRepository {
+    /**
+     * @return Platform[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function all() {
         return Platform::all();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findById($id) {
         return Platform::findOrFail($id);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function create(Request $request) {
-        $platform = new Platform();
-        $platform->name = $request->name;
-        $platform->slug = Str::slug($request->name);
-        $platform->save();
-
-        return $platform;
+        $platform = $request->only(['name']);
+        $platform['author_id'] = auth()->user()->id;
+        $platform['slug'] = Str::slug($request->name);
+        return Platform::create($platform);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function update(Request $request) {
-        $platform = Platform::findOrFail($request->id);
-        $platform->name = $request->name;
-        $platform->slug = Str::slug($request->name);
-        $platform->save();
 
+        $platform = Platform::find($request->id);
+        $data = $request->only([
+            'name',
+        ]);
+        if (isset($data['name'])) {
+            $platform->name = $data['name'];
+            $platform->slug = Str::slug($data['name']);
+        }
+        $platform->save();
         return $platform;
     }
 
+    /**
+     * @param $id
+     * @return int
+     */
     public function delete($id) {
         $platform = Platform::find($id);
 
