@@ -82,10 +82,8 @@ class AuthController extends BaseController
             ]);
         }
 
-        return $this->response->array([
-            'error' => false,
-            'token' => $token
-        ]);
+        $token['error'] = false;
+        return $this->response->array($token);
     }
 
     /**

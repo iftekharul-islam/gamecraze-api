@@ -45,7 +45,6 @@ class OtpRepository {
 
         $otpCreateTime = $created_at->diff(Carbon::now())->s;
 
-
 	    if (trim($otp->otp) !== trim($request->input('otp')) || $otpCreateTime >= config('otp.lifetime')) {
 		    return [
 		        'error' => true,
@@ -59,8 +58,9 @@ class OtpRepository {
 		    $token = $user->createToken($user->phone_number .'-'. now());
 		    return [
                 'error' => false,
-		        'new_user' => false,
-		        'token' => $token->accessToken
+		        'newUser' => false,
+		        'token' => $token->accessToken,
+                'user' => $user
             ];
 	    }
 
@@ -78,8 +78,9 @@ class OtpRepository {
 
         return [
             'error' => false,
-            'new_user' => true,
-            'token' => $token->accessToken
+            'newUser' => true,
+            'token' => $token->accessToken,
+            'user' => $user
         ];
     }
 }
