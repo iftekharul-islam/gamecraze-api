@@ -29,7 +29,7 @@ class PlatformRepository {
     public function create(Request $request) {
         $platform = $request->only(['name']);
         $platform['author_id'] = auth()->user()->id;
-        $platform['slug'] = Str::slug($request->name);
+        $platform['slug'] = Str::slug($platform['name']);
         return Platform::create($platform);
     }
 
