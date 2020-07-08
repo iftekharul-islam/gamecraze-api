@@ -72,6 +72,7 @@
             $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
 
             //For rent purpose
+            $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
@@ -86,7 +87,6 @@
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
             //User Profile
             $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
-
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
@@ -107,9 +107,6 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
-                //All rent post for a user
-                $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
-
             });
 
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
