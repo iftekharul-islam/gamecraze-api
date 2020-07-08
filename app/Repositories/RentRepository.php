@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RentRepository {
     public function all() {
-        return Rent::all();
+        return Rent::with('game', 'user', 'platform', 'diskCondition')
+            ->where(auth()->user()->id, 'user_id')->get();
     }
 
     public function store(Request $request) {
@@ -16,14 +17,14 @@ class RentRepository {
             'game_id', 'max_week', 'availability', 'platform_id',
             'disk_condition_id', 'rented_user_id', 'status'
         ]);
-        if(isset($request->cover_image))
+        if (isset($request->cover_image))
         {
             $image = $request->cover_image;
             $cover_image = 'cover_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             \Image::make($image)->save(storage_path('app/public/rent-image/') . $cover_image);
             $rent['cover_image'] =  $cover_image ;
         }
-        if(isset($request->disk_image))
+        if (isset($request->disk_image))
         {
             $image = $request->disk_image;
             $disk_image = 'disk_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
