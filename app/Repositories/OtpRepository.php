@@ -39,7 +39,8 @@ class OtpRepository {
 	 * @return mixed
 	 */
     public function verifyOtp(Request $request) {
-        $otp = OneTimePassword::where('phone_number', $request->input('phone_number'))->latest()->first();
+        $phone_number = $request->has('email') ? User::where('email', $request->input('email'))->first()->phone_number : $request->input('phone_number');
+        $otp = OneTimePassword::where('phone_number', $phone_number)->latest()->first();
 
         $created_at = new Carbon($otp->created_at);
 
@@ -58,7 +59,7 @@ class OtpRepository {
             ];
         }
 
-	    $user = User::where('phone_number', $request->input('phone_number'))->first();
+	    $user = User::where('phone_number', $phone_number)->first();
 
 	    if ($user) {
 		    $token = $user->createToken($user->phone_number .'-'. now());
@@ -71,7 +72,7 @@ class OtpRepository {
 	    }
 
 	    $user = User::create([
-		    'phone_number' => $request->input('phone_number')
+		    'phone_number' => $phone_number
 	    ]);
 
 	    $role = Role::where('name', 'customer')->first();
