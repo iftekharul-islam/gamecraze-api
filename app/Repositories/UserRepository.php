@@ -33,7 +33,7 @@ class UserRepository {
 
     public function update(Request$request) {
         $userData = $request->all();
-        $user = User::where('phone_number', $userData['phone_number'])->first();
+        $user = auth()->user();
 
         if ($user) {
             if (isset($userData['name'])) {
@@ -42,8 +42,26 @@ class UserRepository {
             if (isset($userData['email'])) {
                 $user->email = $userData['email'];
             }
+            if (isset($userData['phone_number'])) {
+                $user->phone_number = $userData['phone_number'];
+            }
+            if (isset($userData['gender'])) {
+                $user->gender = $userData['gender'];
+            }
+            if (isset($userData['birth_date'])) {
+                $user->birth_date = $userData['birth_date'];
+            }
+            if (isset($userData['address'])) {
+                $user->address = $userData['address'];
+            }
             if (isset($userData['password'])) {
                 $user->password = bcrypt($userData['password']);
+            }
+            if (isset($userData['image'])) {
+                $image = $userData['image'];
+                $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
+                $user->image =  'profile/' . $userImage;
             }
 
             $user->save();

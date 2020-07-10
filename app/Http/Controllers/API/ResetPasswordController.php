@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\ResetPasswordRequest;
+use App\Http\Requests\VerifyResetPasswordRequest;
 use App\Repositories\ResetPasswordRepository;
 use Illuminate\Http\Request;
 
@@ -27,5 +28,10 @@ class ResetPasswordController extends BaseController
             'error' => false,
             'media' => $code
         ]);
+    }
+
+    public function verifyResetCode(VerifyResetPasswordRequest $request) {
+        $response = $this->resetPasswordRepository->verifyCode($request);
+        return $this->response->array($response);
     }
 }
