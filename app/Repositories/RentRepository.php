@@ -8,9 +8,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class RentRepository {
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function all() {
         return Rent::with('game', 'user', 'platform', 'diskCondition')
             ->where( 'user_id', Auth::user()->id )->get();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function allRent() {
+        return Rent::with('game', 'user', 'platform', 'diskCondition')->get();
     }
 
     public function store(Request $request) {

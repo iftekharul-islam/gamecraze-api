@@ -36,6 +36,14 @@ class RentController extends BaseController
         return $this->response->collection($rents, new RentTransformer());
     }
 
+    /**
+     * @return \Dingo\Api\Http\Response
+     */
+    public function allRent() {
+        $rents = $this->rentRepository->allRent();
+        return $this->response->collection($rents, new RentTransformer());
+    }
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
