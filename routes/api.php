@@ -47,12 +47,14 @@
 
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
-
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
 
         $api->get('categories/{slug}', 'App\Http\Controllers\API\CategoryController@index');
+
         //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
+	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
+
         //disk-condition get
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
         $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
@@ -62,7 +64,7 @@
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
-            $api->delete('user/destory/{id}', 'App\Http\Controllers\API\AuthController@destroy');
+            $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             // Users Role & Permission
 

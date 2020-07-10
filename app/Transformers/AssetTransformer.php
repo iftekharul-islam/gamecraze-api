@@ -6,6 +6,7 @@ namespace App\Transformers;
 use App\Models\Asset;
 
 // Dingo includes Fractal to help with transformations
+use Illuminate\Support\Facades\Storage;
 use League\Fractal\TransformerAbstract;
 
 class AssetTransformer extends TransformerAbstract
@@ -16,7 +17,7 @@ class AssetTransformer extends TransformerAbstract
         return [
             'id' => $asset->id,
             'name' => $asset->name,
-            'url' => $asset->url,
+            'url' => asset('/storage/rent-image/' . $asset->name),
         ];
     }
 }

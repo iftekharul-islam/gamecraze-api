@@ -23,11 +23,10 @@ class RentTransformer extends TransformerAbstract
             'platform_id' =>  $rent->platform_id,
             'earning_amount' =>  $rent->earning_amount,
             'disk_condition_id' =>  $rent->disk_condition_id,
-            'cover_image' =>  $rent->cover_image,
-            'disk_image' =>  $rent->disk_image,
+            'cover_image' =>  asset('/storage/rent-image/' . $rent->cover_image),
+            'disk_image' =>  asset('/storage/rent-image/' . $rent->disk_image),
             'rented_user_id' =>  $rent->rented_user_id,
             'status' => $rent->status,
-            'game' => $rent->game
         ];
     }
 
