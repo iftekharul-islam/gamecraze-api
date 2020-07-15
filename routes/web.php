@@ -16,10 +16,50 @@ use Illuminate\Support\Facades\Route;
 Route:: get('/', function () {
     return view('welcome');
 });
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route:: get('/admin', function () {
-    return view('admin');
+Route::prefix('admin')->group(function () {
+    Route::get('login', function () {
+        return view('admin.login');
+    });
+    Route::middleware(['auth', 'role:admin'])->group(function () {
+        Route::get('dashboard','\App\Http\Controllers\DashboardController@index');
+        Route::get('add-platform', function () {
+            return view('admin.platform.add-platform');
+        });
+
+        Route::get('all-platforms','\App\Http\Controllers\PlatformController@index')->name('all-platform');
+        Route::get('platforms','\App\Http\Controllers\PlatformController@create')->name('platform.create');
+        Route::post('platforms','\App\Http\Controllers\PlatformController@store')->name('platform.store');
+        Route::get('platforms/edit/{id}','\App\Http\Controllers\PlatformController@edit')->name('platform.edit');
+        Route::put('platforms/edit/{id}','\App\Http\Controllers\PlatformController@update')->name('platform.update');
+        Route::delete('platforms/destroy/{id}','\App\Http\Controllers\PlatformController@destroy')->name('platform.destroy');
+
+        Route::get('all-genres','\App\Http\Controllers\GenreController@index')->name('all-genre');
+        Route::get('genres','\App\Http\Controllers\GenreController@create')->name('genre.create');
+        Route::post('genres','\App\Http\Controllers\GenreController@store')->name('genre.store');
+        Route::get('genres/edit/{id}','\App\Http\Controllers\GenreController@edit')->name('genre.edit');
+        Route::put('genres/edit/{id}','\App\Http\Controllers\GenreController@update')->name('genre.update');
+        Route::delete('genres/destroy/{id}','\App\Http\Controllers\GenreController@destroy')->name('genre.destroy');
+
+        Route::get('add-disk-condition', function () {
+            return view('admin.disk-condition.add-disk-condition');
+        });
+        Route::get('all-disk-conditions', function () {
+            return view('admin.disk-condition.all-disk-conditions');
+        });
+        Route::get('add-game', function () {
+            return view('admin.game.add-game');
+        });
+        Route::get('all-games', function () {
+            return view('admin.game.all-games');
+        });
+    });
 });
+
+//Route:: get('/admin', function () {
+//    return view('admin');
+//});
 
 
 Auth::routes();

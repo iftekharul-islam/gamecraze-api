@@ -43,7 +43,7 @@
         // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
-        $api->post('platforms', 'App\Http\Controllers\API\PlatformController@store');
+//        $api->post('platforms', 'App\Http\Controllers\API\PlatformController@store');
         $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
         $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
 
@@ -59,7 +59,7 @@
 
         //disk-condition get
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
-        $api->get('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@index');
+        $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
@@ -69,11 +69,6 @@
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             // Users Role & Permission
-
-            //Disk Conditions Crud
-            $api->post('disk-conditions/', 'App\Http\Controllers\API\DiskConditionController@store');
-            $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
-            $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
 
             //For rent purpose
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
@@ -111,6 +106,11 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
+
+                //Disk Conditions Crud
+                $api->post('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@store');
+                $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
+                $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
             });
 
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
