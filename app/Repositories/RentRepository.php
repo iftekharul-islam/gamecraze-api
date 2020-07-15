@@ -108,4 +108,9 @@ class RentRepository {
         }
         return 0;
     }
+
+    public function cartItems($ids) {
+
+        return Rent::whereIn('id', $ids)->get();
+    }
 }

@@ -55,6 +55,7 @@
 
         //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
+	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 
         //disk-condition get
@@ -91,6 +92,9 @@
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
             //User Profile
             $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
+            //Lend Game
+            $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
+
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
