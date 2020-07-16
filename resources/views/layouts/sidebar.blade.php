@@ -34,13 +34,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="all-games" class="nav-link active">
+                            <a href="{{ route('all-game') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Games</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add-game" class="nav-link">
+                            <a href="{{ route('game.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Game</p>
                             </a>
