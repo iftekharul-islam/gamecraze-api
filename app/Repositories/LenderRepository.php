@@ -2,11 +2,19 @@
 
 namespace App\Repositories;
 
-use App\models\Lender;
+use App\Jobs\SendEmailToLender;
+use App\Jobs\SendEmailToRenter;
+use App\Models\Lender;
+use App\Models\Rent;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LenderRepository {
+
+    public function all() {
+        return Lender::with('rent.game','rent.platform','rent.diskCondition')->where('lender_id', auth()->user()->id)->get();
+    }
     /**
      * @param Request $request
      * @return array
@@ -15,7 +23,7 @@ class LenderRepository {
         for ($i = 0; $i < count($request->postId); $i++) {
             $data = [
                 'lender_id' => auth()->user()->id,
-                'rent_post_id' => $request->postId[$i],
+                'rent_id' => $request->postId[$i],
                 'lend_week' => $request->week[$i],
                 'lend_cost' => 500,
                 'lend_date' => Carbon::now(),
@@ -29,7 +37,11 @@ class LenderRepository {
                     'message' => "Something went wrong"
                 ];
             }
+            $renter = User::find(Rent::find($request->postId[$i])->user_id);
+            SendEmailToRenter::dispatch($renter);
         }
+        $lender = auth()->user();
+        SendEmailToLender::dispatch($lender);
         return [
             'error' => false,
             'message' => "Store Successful"

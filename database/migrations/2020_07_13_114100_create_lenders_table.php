@@ -16,7 +16,9 @@ class CreateLendersTable extends Migration
         Schema::create('lenders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('lender_id');
-            $table->unsignedBigInteger('rent_post_id');
+            $table->foreign('lender_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('rent_id');
+            $table->foreign('rent_id')->references('id')->on('rents')->onDelete('cascade');
             $table->integer('lend_week');
             $table->integer('lend_cost');
             $table->date('lend_date');

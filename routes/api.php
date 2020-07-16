@@ -89,6 +89,7 @@
             $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
             //Lend Game
             $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
+            $api->get('lends', 'App\Http\Controllers\API\LenderController@index');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

@@ -21,7 +21,7 @@ class LenderController extends Controller
      */
     public function index()
     {
-        //
+        return $this->lenderRepository->all();
     }
 
     /**

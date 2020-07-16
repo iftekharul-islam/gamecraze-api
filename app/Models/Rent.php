@@ -26,4 +26,7 @@ class Rent extends Model
     public function diskCondition() {
         return $this->belongsTo(DiskCondition::class, 'disk_condition_id');
     }
+    public function lend() {
+        return $this->belongsTo(Lender::class, 'rent_id');
+    }
 }
