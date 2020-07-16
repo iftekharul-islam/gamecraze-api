@@ -9,6 +9,7 @@ use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
+use Illuminate\Http\Request;
 
 class RentController extends BaseController
 {
@@ -100,5 +101,12 @@ class RentController extends BaseController
             "status_code" => 200,
             "message" => "Resource has been deleted."
         ]);
+    }
+
+    public function cartItems(Request $request) {
+
+        $ids = explode(',', $request->ids);
+        $rents = $this->rentRepository->cartItems($ids);
+        return $this->response->collection($rents, new RentTransformer());
     }
 }
