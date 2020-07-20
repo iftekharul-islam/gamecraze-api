@@ -24,6 +24,9 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="card card-primary">
+                    @if ($errors->has('success'))
+                        <span class="help-block"><strong>{{ $errors->first('success') }}</strong></span>
+                    @endif
                     <div class="card-header">
                         <h3 class="card-title">Add Game</h3>
                     </div>
@@ -34,28 +37,37 @@
                         <input type="text" class="form-control d-none" id="rating" name="rating">
                         <input type="text" class="form-control d-none" id="released" name="released">
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <select name="name" class="form-control selectpicker gamePick" data-live-search="true" data-placeholder="Select.." id="gameList">
+                                <select name="name" class="form-control selectpicker gamePick" data-live-search="true" data-placeholder="Select.." id="gameList" required>
                                     <option data-tokens="" selected disabled>Select a game...</option>
                                 </select>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                                @endif
                             </div>
-                            <div class="form-group">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Enter Description" required></textarea>
+                                @if ($errors->has('description'))
+                                    <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('game_mode') ? ' has-error' : '' }}">
+                                <label for="mode">Game Mode</label>
+                                <input type="text" class="form-control" id="mode" name="game_mode" placeholder="Enter Game Mode" required>
+                                @if ($errors->has('game_mode'))
+                                    <span class="text-danger"><strong>{{ $errors->first('game_mode') }}</strong></span>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label for="mode">Game Mode</label>
-                                <input type="text" class="form-control" id="mode" name="game_mode" placeholder="Enter Game Mode">
+                                <label>Game image</label>
+                                <input type="file" class="form-control" id="game_image" name="game_image">
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <label>Game image</label>--}}
-{{--                                <input type="file" class="form-control" id="game_image" name="game_image">--}}
-{{--                            </div>--}}
                         </div>
                         <!-- /.card-body -->
 
-                        <div class="card-footer">
+                        <div class="card-body">
                             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
                         </div>
                     </form>
@@ -81,7 +93,6 @@
                     let gameList = data.results;
                     let optionValue = '';
                     $.each(gameList, function( index, value ) {
-                        // console.log( index + ": " + value.name );
                         optionValue += `<option data-tokens="${value.id}"
                                                 data-rating="${value.rating}"
                                                 data-released="${value.released}">
@@ -91,10 +102,6 @@
                     $('#gameList').append(`${optionValue}`);
                     $('#gameList').selectpicker('refresh');
                     console.log(optionValue);
-                    // forEach(gameList as game)
-                    // {
-                    //     console.log(game);
-                    // }
                     console.log(gameList);
                     $('#gameList').change(function () {
                         let game_rating = $('#gameList').children("option:selected").data('rating');
@@ -106,39 +113,6 @@
                 }
             });
         });
-        {{--$(".btn-submit").click(function(e){--}}
-
-        {{--    e.preventDefault();--}}
-
-        {{--    var name = $("input[name=name]").val();--}}
-        {{--    var description =  $.trim($("#description").val());--}}
-        {{--    var status = $("input[name=status]").val();--}}
-        {{--    console.log(name)--}}
-        {{--    console.log(description)--}}
-        {{--    console.log(status)--}}
-
-        {{--    $.ajax({--}}
-        {{--        type:'POST',--}}
-        {{--        url: "http://gamingapp.test/api/disk-conditions",--}}
-        {{--        headers: {--}}
-        {{--            'Authorization' : 'Bearer ' + localStorage.getItem('token'),--}}
-        {{--            'X-CSRF-Token': '{{ csrf_token() }}',--}}
-        {{--        },--}}
-        {{--        data:{name: name, description: description, status: status},--}}
-
-        {{--        success:function(data){--}}
-        {{--            console.log(data)--}}
-        {{--            swal({--}}
-        {{--                title: "Good job!",--}}
-        {{--                text: "Disk Condition Created Successfully!",--}}
-        {{--                icon: "success",--}}
-        {{--                button: "Aww yiss!",--}}
-        {{--            });--}}
-        {{--            window.location.replace('all-disk-conditions');--}}
-        {{--        }--}}
-
-        {{--    });--}}
-        {{--});--}}
     </script>
 @endsection
 

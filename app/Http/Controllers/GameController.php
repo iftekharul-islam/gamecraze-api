@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GameCreateRequest;
 use App\Models\Asset;
 use App\Models\Game;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class GameController extends Controller
@@ -18,7 +18,7 @@ class GameController extends Controller
     public function index()
     {
         $games = Game::all();
-        return view('admin.game.all-games', compact('games'));
+        return view('admin.game.index', compact('games'));
     }
 
     /**
@@ -28,7 +28,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('admin.game.add-game');
+        return view('admin.game.create');
     }
 
     /**
@@ -37,9 +37,8 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GameCreateRequest $request)
     {
-//        return $request->all();
         $game_data = $request->only(['name', 'game_mode', 'rating', 'description', 'released']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
@@ -47,23 +46,19 @@ class GameController extends Controller
         $game_data['description'] = $game_data['description'] ? $game_data['description'] : 'Testing description';
         $game = Game::create($game_data);
 
+        if ($request->file('game_image')) {
+            $image = $request->file('game_image');
+            $image_name =$image->storeAs( 'game_' . time() . '_' .$game->id . '.jpg');
+            $path = $request->file('game_image')->save(storage_path('app/public/game-image/'), $image_name, 'public');
+        }
 
-//        if (isset($request->game_image))
-//        {
-//            $image = $request->game_image;
-//            $image_name = 'game_' . time() . '_' .$game->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-//            $path = Storage::disk('public')->put('game-image', $request->file('game_image'));
-//            \Image::make($image)->save(storage_path('app/public/game-image/') . $image_name);
-//            $rent['cover_image'] =  $image_name ;
-//            $request->url = 'game-image'. $image_name;
-//            Asset::create([
-//                'game_id' => $game->id,
-//                'name' => $image_name,
-//                'url' => $path,
-//            ]);
-//        }
+        Asset::create([
+            'game_id' => $game->id,
+            'name' => $image_name,
+            'url' => $path,
+        ]);
 
-        return redirect()->route('all-game')->with('success', 'Game successfully stored');
+        return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
 
     /**
@@ -85,7 +80,9 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        $game = Game::findOrFail($id);
+        $asset = Asset::findOrFail($id);
+        return view('admin.game.edit', compact('game', 'asset'));
     }
 
     /**
@@ -112,7 +109,7 @@ class GameController extends Controller
 
         if ($game) {
             $game->delete();
-            return redirect()->back();
+            return back()->with('status', 'Game successfully deleted');
         }
 
         return false;

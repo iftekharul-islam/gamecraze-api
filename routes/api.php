@@ -17,9 +17,6 @@
     $api = app('Dingo\Api\Routing\Router');
 
     $api->version('v1', function ($api) {
-        $api->get('/', function() {
-            return ['Fruits' => 'Delicious and healthy!!!'];
-        });
 
         // Login & Register
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
@@ -137,7 +134,4 @@
     });
 
     $api->version('v2', function ($api) {
-        $api->get('/', function() {
-            return ['Fruits' => 'For Human Fruits also Delicious and healthy!'];
-        });
     });

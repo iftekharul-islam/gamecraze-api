@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GenreCreateRequest;
-use App\Models\Genre;
+use App\Models\Rent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
-class GenreController extends Controller
+class RentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,11 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::all();
-        return view('admin.genre.index', compact('genres'));
+        $rents = Rent::with('game', 'user', 'platform', 'diskCondition')->get();
+
+
+//        return $rents;
+        return view('admin.rent-post.index', compact('rents'));
     }
 
     /**
@@ -27,7 +29,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('admin.genre.create');
+        //
     }
 
     /**
@@ -36,17 +38,9 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GenreCreateRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->only([
-            'name'
-        ]);
-        $data['author_id'] = auth()->user()->id;
-        $data['slug'] = Str::slug($request->name);
-
-        Genre::create($data);
-
-        return redirect()->route('all-genre')->with('status', 'Genre successfully Created');
+        //
     }
 
     /**
@@ -68,8 +62,7 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        $genre = Genre::findOrFail($id);
-        return view('admin.genre.edit', compact('genre'));
+        //
     }
 
     /**
@@ -81,18 +74,7 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $genre = Genre::find($request->id);
-        if (!$genre) {
-            return false;
-        }
-        $data = $request->only(['name']);
-
-        if (isset($data['name'])) {
-            $genre->name = $data['name'];
-            $genre->slug = Str::slug($data['name']);
-        }
-        $genre->save();
-        return redirect()->route('all-genre')->with('success', 'Genre successfully updated!');
+        //
     }
 
     /**
@@ -103,12 +85,6 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        $genre = Genre::find($id);
-        if ($genre) {
-            $genre->delete();
-            return back()->with('success', 'Platform successfully Deleted!');
-        }
-
-        return false;
+        //
     }
 }
