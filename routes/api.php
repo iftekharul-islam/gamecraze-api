@@ -62,6 +62,9 @@
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
         $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
 
+        //pay
+        $api->post('pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
