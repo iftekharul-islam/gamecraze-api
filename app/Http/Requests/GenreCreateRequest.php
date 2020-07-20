@@ -27,4 +27,10 @@ class GenreCreateRequest extends FormRequest
             'name' => 'required'
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field cannot be empty',
+        ];
+    }
 }

@@ -30,7 +30,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper mt-5">
+    <div class="wrapper">
         @if(Auth::user())
             @include('layouts.navbar')
             @include('layouts.sidebar')
@@ -78,7 +78,7 @@
     <!-- overlayScrollbars -->
     <script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <!-- AdminLTE App -->
-    <script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
+    <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->

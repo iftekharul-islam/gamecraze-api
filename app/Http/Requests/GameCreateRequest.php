@@ -29,7 +29,17 @@ class GameCreateRequest extends FormRequest
             'game_mode' => 'required',
             'released' => 'required',
             'rating' => 'required',
-            'publisher' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'The Name field cannot be empty',
+            'description.required' => 'The Description field cannot be empty',
+            'game_mode.required' => 'The Game Mode field cannot be empty',
+            'released.required' => 'The Released field cannot be empty',
+            'rating.required' => 'The Rating field cannot be empty',
+
         ];
     }
 }

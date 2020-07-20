@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Platforms</h1>
+                        <h1>All Rent post</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Platforms</li>
+                            <li class="breadcrumb-item active">Rent post</li>
                         </ol>
                     </div>
                 </div>
@@ -43,35 +43,44 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">All Platforms</h3>
-                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
                                         <th>Serial no</th>
-                                        <th>Name</th>
-                                        <th>Slug</th>
+                                        <th>Renter name</th>
+                                        <th>Game Name</th>
+                                        <th>Game available from</th>
+                                        <th>Max week for rent</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($platforms as $key=>$platform)
+                                    @foreach($rents as $key=>$rent)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $platform->name }}</td>
-                                            <td>{{ $platform->slug }}</td>
+                                            <td>{{ $rent->user_id }}</td>
+                                            <td>{{ $rent->game_id }}</td>
+                                            <td>{{ $rent->availability }}</td>
+                                            <td>{{ $rent->max_week }}</td>
                                             <td>
-                                                <a class="btn btn-lg btn-primary mr-3"
-                                                   href="{{ route('platform.edit', $platform->id) }}"><i
-                                                        class="far fa-edit"></i></a>
-                                                <button class="btn btn-danger btn-lg" type="button"
-                                                        onclick="removeDepartment({{ $platform->id }})">
+                                                @if ($rent->status == 1)
+                                                    <a class="badge-success badge text-white" >Active</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Inactive</a>
+                                                @endif
+                                            </td>
+                                            <td>
+{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
+{{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
+{{--                                                        class="far fa-edit"></i></a>--}}
+                                                <button class="btn btn-danger btn-sm" type="button"
+                                                        onclick="removeDepartment({{ $rent->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
-                                                <form id="delete-form-{{ $platform->id }}"
-                                                      action="{{ route('platform.destroy', $platform->id) }}"
+                                                <form id="delete-form-{{ $rent->id }}"
+                                                      action="{{ route('game.destroy', $rent->id) }}"
                                                       method="post" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
@@ -97,11 +106,11 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script>
+    <script type="text/javascript">
         function removeDepartment(id) {
             swal({
                 title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this user!",
+                text: "Once deleted, you will not be able to recover!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -109,6 +118,14 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         document.getElementById('delete-form-' + id).submit();
+                        swal ({
+                            title: "Games Deleted!",
+                            text: "Selected Game Delete Successful!",
+                            timer: 1500
+                        });
+                    }
+                    else {
+                        swal("Your information is safe!");
                     }
                 });
         }

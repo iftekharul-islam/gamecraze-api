@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlatformCreateRequest;
 use App\Models\Platform;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class PlatformController extends Controller
@@ -16,7 +18,7 @@ class PlatformController extends Controller
     public function index()
     {
         $platforms = Platform::all();
-        return view('admin.platform.all-platforms', compact('platforms'));
+        return view('admin.platform.index', compact('platforms'));
     }
 
     /**
@@ -26,7 +28,7 @@ class PlatformController extends Controller
      */
     public function create()
     {
-        return view('admin.platform.add-platform');
+        return view('admin.platform.create');
     }
 
     /**
@@ -35,14 +37,14 @@ class PlatformController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlatformCreateRequest $request)
     {
         $platform = $request->only(['name']);
         $platform['author_id'] = auth()->user()->id;
         $platform['slug'] = Str::slug($platform['name']);
         Platform::create($platform);
 
-        return redirect()->route('all-platform')->with('status', 'Platform Successfully Created');
+        return redirect()->route('all-platform')->with("status", 'Platform successfully created');
     }
 
     /**
@@ -64,7 +66,8 @@ class PlatformController extends Controller
      */
     public function edit($id)
     {
-        //
+        $platform = Platform::findOrFail($id);
+        return view('admin.platform.edit', compact('platform'));
     }
 
     /**
@@ -87,7 +90,7 @@ class PlatformController extends Controller
             $platform->slug = Str::slug($data['name']);
         }
         $platform->save();
-        return back()->with('status', 'Platform Successfully Updated');
+        return redirect()->route('all-platform')->with('success', 'Platform successfully updated!');
     }
 
     /**
@@ -102,7 +105,7 @@ class PlatformController extends Controller
 
         if ($platform) {
             $platform->delete();
-            return back();
+            return back()->with('status', 'Platform deleted successfully');
         }
 
         return false;

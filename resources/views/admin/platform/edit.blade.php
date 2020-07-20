@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -8,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Platform</h1>
+                        <h1>Edit Platform</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Platform</li>
+                            <li class="breadcrumb-item active">Edit Platform</li>
                         </ol>
                     </div>
                 </div>
@@ -24,25 +23,20 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Add Platform</h3>
-                    </div>
-                    <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="{{ route('platform.store') }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('platform.update', $platform->id) }}" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Platform Name">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $platform->name }}">
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
-                <!-- /.card -->
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

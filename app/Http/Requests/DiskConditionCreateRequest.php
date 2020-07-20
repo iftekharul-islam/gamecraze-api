@@ -29,4 +29,14 @@ class DiskConditionCreateRequest extends FormRequest
             'status' => 'required|integer',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field cannot be empty',
+            'name.unique' => 'The name field should be unique',
+            'description.required' => 'The description field cannot be empty',
+            'status.required' => 'The status field cannot be empty',
+        ];
+    }
 }

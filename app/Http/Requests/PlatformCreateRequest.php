@@ -27,4 +27,12 @@ class PlatformCreateRequest extends FormRequest
             'name' => 'required|unique:platforms,name'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field cannot be empty',
+        ];
+    }
+
 }

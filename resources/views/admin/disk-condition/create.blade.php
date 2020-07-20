@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Disk Conditions</h1>
+                        <h1>Add Disk Condition</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -29,24 +29,35 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" role="form" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('diskCondition.store') }}" class="w-75 mx-auto">
+                        @csrf
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Disk Condition Name">
+                                @if ($errors->has('name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                                @endif
                             </div>
-                            <div class="form-group">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+                                @if ($errors->has('description'))
+                                    <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
+                                @endif
                             </div>
+
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status" placeholder="Enter Status">
+                                <select name="status" class="form-control">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
                             </div>
                         </div>
                         <!-- /.card-body -->
 
-                        <div class="card-footer">
+                        <div class="card-body">
                             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
                         </div>
                     </form>
@@ -60,40 +71,4 @@
 @endsection
 
 @section('js')
-    <script>
-        $(".btn-submit").click(function(e){
-
-            e.preventDefault();
-
-            var name = $("input[name=name]").val();
-            var description =  $.trim($("#description").val());
-            var status = $("input[name=status]").val();
-            console.log(name)
-            console.log(description)
-            console.log(status)
-
-            $.ajax({
-                type:'POST',
-                url: "http://gamingapp.test/api/disk-conditions",
-                headers: {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('token'),
-                    'X-CSRF-Token': '{{ csrf_token() }}',
-                },
-                data:{name: name, description: description, status: status},
-
-                success:function(data){
-                    console.log(data)
-                    swal({
-                        title: "Good job!",
-                        text: "Disk Condition Created Successfully!",
-                        icon: "success",
-                        button: "Aww yiss!",
-                    });
-                    window.location.replace('all-disk-conditions');
-                }
-
-            });
-        });
-    </script>
 @endsection
-

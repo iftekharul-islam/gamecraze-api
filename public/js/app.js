@@ -104,8 +104,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module '/home/vagrant/gamehub-api/resources/js/app.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-module.exports = __webpack_require__(/*! /home/vagrant/gamehub-api/resources/sass/app.scss */"./resources/sass/app.scss");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/Users/feroj/Documents/projects/gamehub-api/resources/js/app.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+module.exports = __webpack_require__(/*! /Users/feroj/Documents/projects/gamehub-api/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
