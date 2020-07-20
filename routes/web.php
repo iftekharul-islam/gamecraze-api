@@ -17,9 +17,6 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => [ 'auth', 'role:admin']], function () {
         Route::get('dashboard','\App\Http\Controllers\DashboardController@index')->name('dashboard');
-//        Route::get('add-platform', function () {
-//            return view('admin.platform.add-platform');
-//        });
         //Platform Crud
         Route::get('all-platforms','\App\Http\Controllers\PlatformController@index')->name('all-platform');
         Route::get('create-platform','\App\Http\Controllers\PlatformController@create')->name('platform.create');
@@ -56,22 +53,10 @@ Route::prefix('admin')->group(function () {
 //        Route::post('rent-post/update/{id}','\App\Http\Controllers\RentController@update')->name('rentPost.update');
         Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
 
-//        Route::get('add-disk-condition', function () {
-//            return view('admin.disk-condition.add-disk-condition');
-//        });
-//        Route::get('all-disk-conditions', function () {
-//            return view('admin.disk-condition.all-disk-conditions');
-//        });
     });
 });
 
-//Route:: get('/admin', function () {
-//    return view('admin');
-//});
-
-
 Auth::routes();
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 
