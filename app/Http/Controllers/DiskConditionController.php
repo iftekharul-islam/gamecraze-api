@@ -43,7 +43,7 @@ class DiskConditionController extends Controller
         $diskCondition['author_id'] = auth()->user()->id;
         DiskCondition::create($diskCondition);
 
-        return redirect()->route('diskCondition.all')->with("success", 'Disk condition successfully created!');
+        return redirect()->route('diskCondition.all')->with("status", 'Disk condition successfully created!');
     }
 
     /**
@@ -76,7 +76,7 @@ class DiskConditionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $diskCondition = DiskCondition::find($request->id);
         if (!$diskCondition) {
@@ -94,7 +94,7 @@ class DiskConditionController extends Controller
             $diskCondition->status = $data['status'];
         }
         $diskCondition->save();
-        return redirect()->route('diskCondition.all')->with('success', 'disk condition successfully updated!');
+        return redirect()->route('diskCondition.all')->with('status', 'Disk condition successfully updated!');
     }
 
     /**

@@ -39,12 +39,12 @@ Route::prefix('admin')->group(function () {
         Route::post('games/update/{id}','\App\Http\Controllers\GameController@update')->name('game.update');
         Route::delete('games/destroy/{id}','\App\Http\Controllers\GameController@destroy')->name('game.destroy');
         //Disk condition Crud
-        Route::get('all-disk-conditions','\App\Http\Controllers\diskConditionController@index')->name('diskCondition.all');
-        Route::get('create-disk-condition','\App\Http\Controllers\diskConditionController@create')->name('diskCondition.create');
-        Route::post('store-disk-condition','\App\Http\Controllers\diskConditionController@store')->name('diskCondition.store');
-        Route::get('disk-condition/edit/{id}','\App\Http\Controllers\diskConditionController@edit')->name('diskCondition.edit');
-        Route::post('disk-condition/update/{id}','\App\Http\Controllers\diskConditionController@update')->name('diskCondition.update');
-        Route::delete('disk-condition/destroy/{id}','\App\Http\Controllers\diskConditionController@destroy')->name('diskCondition.destroy');
+        Route::get('all-disk-conditions','\App\Http\Controllers\DiskConditionController@index')->name('diskCondition.all');
+        Route::get('create-disk-condition','\App\Http\Controllers\DiskConditionController@create')->name('diskCondition.create');
+        Route::post('store-disk-condition','\App\Http\Controllers\DiskConditionController@store')->name('diskCondition.store');
+        Route::get('disk-condition/edit/{id}','\App\Http\Controllers\DiskConditionController@edit')->name('diskCondition.edit');
+        Route::post('disk-condition/update/{id}','\App\Http\Controllers\DiskConditionController@update')->name('diskCondition.update');
+        Route::delete('disk-condition/destroy/{id}','\App\Http\Controllers\DiskConditionController@destroy')->name('diskCondition.destroy');
         // Rent Post Cru
         Route::get('all-rent-post','\App\Http\Controllers\RentController@index')->name('rentPost.all');
 //        Route::get('create-rent-post','\App\Http\Controllers\RentController@create')->name('rentPost.create');

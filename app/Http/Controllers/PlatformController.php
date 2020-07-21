@@ -90,7 +90,7 @@ class PlatformController extends Controller
             $platform->slug = Str::slug($data['name']);
         }
         $platform->save();
-        return redirect()->route('all-platform')->with('success', 'Platform successfully updated!');
+        return redirect()->route('all-platform')->with('status', 'Platform successfully updated!');
     }
 
     /**
