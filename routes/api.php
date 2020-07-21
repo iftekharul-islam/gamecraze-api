@@ -52,6 +52,7 @@
 
         //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
+        $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
 	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 
@@ -60,7 +61,11 @@
         $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
 
         //pay
-        $api->post('pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');
+        $api->post('/pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');
+        $api->post('/success', 'App\Http\Controllers\API\SslCommerzPaymentController@success');
+        $api->post('/fail', 'App\Http\Controllers\API\SslCommerzPaymentController@fail');
+        $api->post('/cancel', 'App\Http\Controllers\API\SslCommerzPaymentController@cancel');
+        $api->post('/ipn', 'App\Http\Controllers\API\SslCommerzPaymentController@ipn');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
@@ -72,7 +77,7 @@
             // Users Role & Permission
 
             //For rent purpose
-            $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
+
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
