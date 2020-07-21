@@ -80,8 +80,8 @@
                                                         onclick="removeDepartment({{ $rent->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $rent->id }}"
-                                                      action="{{ route('game.destroy', $rent->id) }}"
-                                                      method="post" style="display: none;">
+                                                      action="{{ route('rentPost.destroy', $rent->id) }}"
+                                                      method="post" class="d-none">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>

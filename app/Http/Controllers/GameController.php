@@ -46,18 +46,18 @@ class GameController extends Controller
         $game_data['description'] = $game_data['description'] ? $game_data['description'] : 'Testing description';
         $game = Game::create($game_data);
 
-        if ($request->file('game_image')) {
+        if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
-            $image_name =$image->storeAs( 'game_' . time() . '_' .$game->id . '.jpg');
-            $path = $request->file('game_image')->save(storage_path('app/public/game-image/'), $image_name, 'public');
+            $image_name = 'game-'. auth()->user()->id. '-' .$image->getClientOriginalName();
+            $path = "game-image/". $image_name;
+            $image->storeAs('game-image' , $image_name);
+
+            Asset::create([
+                'game_id' => $game->id,
+                'name' => $image_name,
+                'url' => 'storage/'. $path,
+            ]);
         }
-
-        Asset::create([
-            'game_id' => $game->id,
-            'name' => $image_name,
-            'url' => $path,
-        ]);
-
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
 

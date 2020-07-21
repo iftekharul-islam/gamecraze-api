@@ -32,6 +32,7 @@ class PlatformCreateRequest extends FormRequest
     {
         return [
             'name.required' => 'The name field cannot be empty',
+            'name.unique' => 'The name field should be unique',
         ];
     }
 

@@ -16,9 +16,6 @@ class RentController extends Controller
     public function index()
     {
         $rents = Rent::with('game', 'user', 'platform', 'diskCondition')->get();
-
-
-//        return $rents;
         return view('admin.rent-post.index', compact('rents'));
     }
 
@@ -85,6 +82,13 @@ class RentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rent = Rent::find($id);
+
+        if ($rent) {
+            $rent->delete();
+            return back()->with('status', 'Disk Condition deleted successfully');
+        }
+
+        return false;
     }
 }

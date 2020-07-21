@@ -33,8 +33,8 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $diskCondition->name }}">
                             </div>
                             <div class="form-group">
-                                <label for="name">Description</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $diskCondition->description }}">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" name="description" value="{{ $diskCondition->description }}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Status</label>

@@ -92,7 +92,7 @@ class GenreController extends Controller
             $genre->slug = Str::slug($data['name']);
         }
         $genre->save();
-        return redirect()->route('all-genre')->with('success', 'Genre successfully updated!');
+        return redirect()->route('all-genre')->with('status', 'Genre successfully updated!');
     }
 
     /**
@@ -106,7 +106,7 @@ class GenreController extends Controller
         $genre = Genre::find($id);
         if ($genre) {
             $genre->delete();
-            return back()->with('success', 'Platform successfully Deleted!');
+            return back()->with('status', 'Platform successfully Deleted!');
         }
 
         return false;

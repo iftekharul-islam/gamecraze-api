@@ -29,6 +29,7 @@ class GameCreateRequest extends FormRequest
             'game_mode' => 'required',
             'released' => 'required',
             'rating' => 'required',
+            'game_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:50'
         ];
     }
     public function messages()
@@ -39,6 +40,8 @@ class GameCreateRequest extends FormRequest
             'game_mode.required' => 'The Game Mode field cannot be empty',
             'released.required' => 'The Released field cannot be empty',
             'rating.required' => 'The Rating field cannot be empty',
+            'game_image.image' => 'Invalid image type',
+            'game_image.max' => 'Image size cannot be larger than 50 kb',
 
         ];
     }
