@@ -28,7 +28,8 @@ class CreateRentsTable extends Migration
             $table->string('disk_image')->nullable();
             $table->unsignedBigInteger('rented_user_id')->nullable();
             $table->foreign('rented_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('status')->default(0);
+            $table->integer('status')->nullable();
+            $table->text('reason')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

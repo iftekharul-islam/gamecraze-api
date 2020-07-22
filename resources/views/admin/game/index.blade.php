@@ -68,7 +68,7 @@
 {{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
 {{--                                                        class="far fa-edit"></i></a>--}}
                                                 <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="removeDepartment({{ $game->id }})">
+                                                        onclick="deleteGame({{ $game->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $game->id }}"
                                                       action="{{ route('game.destroy', $game->id) }}"
@@ -98,27 +98,44 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function removeDepartment(id) {
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+        function deleteGame(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        document.getElementById('delete-form-' + id).submit();
-                        swal ({
-                            title: "Games Deleted!",
-                            text: "Selected Game Delete Successful!",
-                            timer: 1500
-                        });
-                    }
-                    else {
-                        swal("Your information is safe!");
-                    }
-                });
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('delete-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'Your imaginary file is safe :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
         }
     </script>
 @endsection
