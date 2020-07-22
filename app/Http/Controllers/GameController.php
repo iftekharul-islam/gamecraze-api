@@ -28,7 +28,6 @@ class GameController extends Controller
      */
     public function create()
     {
-//        return view('admin.profile');
         return view('admin.game.create');
     }
 

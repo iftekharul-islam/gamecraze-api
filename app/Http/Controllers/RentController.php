@@ -16,7 +16,6 @@ class RentController extends Controller
     public function index()
     {
         $rents = Rent::with('game', 'user', 'platform', 'diskCondition')->get();
-//        return $rents->game->name;
         return view('admin.rent-post.index', compact('rents'));
     }
 
