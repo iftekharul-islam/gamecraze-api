@@ -52,7 +52,6 @@
 
         //Rent get
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
-        $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
 	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 
@@ -77,7 +76,7 @@
             // Users Role & Permission
 
             //For rent purpose
-
+            $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
