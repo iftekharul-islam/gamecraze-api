@@ -102,12 +102,7 @@ class PlatformController extends Controller
     public function destroy($id)
     {
         $platform = Platform::find($id);
-
-        if ($platform) {
-            $platform->delete();
-            return back()->with('status', 'Platform deleted successfully');
-        }
-
-        return false;
+        $platform->delete();
+        return back()->with('status', 'Platform deleted successfully');
     }
 }

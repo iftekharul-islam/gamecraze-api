@@ -105,13 +105,8 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        $game = Game::find($id);
-
-        if ($game) {
-            $game->delete();
-            return back()->with('status', 'Game successfully deleted');
-        }
-
-        return false;
+        $game = Game::findOrFail($id);
+        $game->delete();
+        return back()->with('status', 'Game successfully deleted');
     }
 }

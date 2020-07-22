@@ -62,7 +62,7 @@ class RentController extends Controller
     public function approve(Request $request, $id)
     {
         $rent = Rent::findOrFail($id);
-        $rent->status = '1';
+        $rent->status = 1;
         $rent->reason = null;
         $rent->save();
 
@@ -77,7 +77,7 @@ class RentController extends Controller
     public function reject(Request $request, $id)
     {
         $rent = Rent::findOrFail($id);
-        $rent->status = '0';
+        $rent->status = 0;
         $rent->reason = $request->reason;
         $rent->save();
 
@@ -114,13 +114,9 @@ class RentController extends Controller
      */
     public function destroy($id)
     {
-        $rent = Rent::find($id);
+        $rent = Rent::findOrfail($id);
+        $rent->delete();
+        return back()->with('status', 'Disk Condition deleted successfully');
 
-        if ($rent) {
-            $rent->delete();
-            return back()->with('status', 'Disk Condition deleted successfully');
-        }
-
-        return "false";
     }
 }
