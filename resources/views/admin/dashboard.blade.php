@@ -234,7 +234,7 @@
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="{{ asset('adminlte/dist/img/user7-128x128.jpg') }}">
+                                                <img class="contacts-list-img" src="{{ asset('adminlte/dist/img/user1-128x128.jpg') }}">
 
                                                 <div class="contacts-list-info">
                           <span class="contacts-list-name">

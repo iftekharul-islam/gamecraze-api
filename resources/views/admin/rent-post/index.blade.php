@@ -17,25 +17,26 @@
                         </ol>
                     </div>
                 </div>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @elseif (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @elseif (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-        @endif<!-- /.container-fluid -->
+        <!-- /.container-fluid -->
         </section>
         <!-- Main content -->
         <section class="content">
@@ -48,12 +49,12 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Serial no</th>
+                                        <th>no</th>
                                         <th>Renter name</th>
                                         <th>Game Name</th>
-                                        <th>Game available from</th>
-                                        <th>Max week for rent</th>
-                                        <th>Status</th>
+                                        <th>Available from</th>
+                                        <th>Max Week</th>
+                                        <th>Approval</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -61,21 +62,27 @@
                                     @foreach($rents as $key=>$rent)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $rent->user_id }}</td>
-                                            <td>{{ $rent->game_id }}</td>
+                                            <td>{{ $rent->user->name }}</td>
+                                            <td>
+                                                <a href="{{ route('rentPost.show', $rent->id) }}">{{ $rent->game->name ?? '' }}</a>
+                                            </td>
                                             <td>{{ $rent->availability }}</td>
                                             <td>{{ $rent->max_week }}</td>
                                             <td>
-                                                @if ($rent->status == 1)
-                                                    <a class="badge-success badge text-white" >Active</a>
+                                                @if ($rent->status === 1)
+                                                    <a class="badge-success badge text-white" >Approved</a>
+                                                @elseif ($rent->status === 0)
+                                                    <a class="badge-danger badge text-white" >Rejected</a>
                                                 @else
-                                                    <a class="badge-danger badge text-white" >Inactive</a>
+                                                    <a class="badge-warning badge text-white" >Pending</a>
                                                 @endif
                                             </td>
                                             <td>
 {{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
 {{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
 {{--                                                        class="far fa-edit"></i></a>--}}
+                                                <a href="{{ route('rentPost.show', $rent->id) }}" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
                                                         onclick="removeDepartment({{ $rent->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
@@ -108,26 +115,43 @@
 @section('js')
     <script type="text/javascript">
         function removeDepartment(id) {
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        document.getElementById('delete-form-' + id).submit();
-                        swal ({
-                            title: "Games Deleted!",
-                            text: "Selected Game Delete Successful!",
-                            timer: 1500
-                        });
-                    }
-                    else {
-                        swal("Your information is safe!");
-                    }
-                });
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('delete-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'Your imaginary file is safe :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
         }
     </script>
 @endsection

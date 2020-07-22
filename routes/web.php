@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::prefix('admin')->group(function () {
@@ -45,8 +46,11 @@ Route::prefix('admin')->group(function () {
         Route::get('disk-condition/edit/{id}','\App\Http\Controllers\DiskConditionController@edit')->name('diskCondition.edit');
         Route::post('disk-condition/update/{id}','\App\Http\Controllers\DiskConditionController@update')->name('diskCondition.update');
         Route::delete('disk-condition/destroy/{id}','\App\Http\Controllers\DiskConditionController@destroy')->name('diskCondition.destroy');
-        // Rent Post Cru
+        // Rent Post Crud
         Route::get('rent-posts','\App\Http\Controllers\RentController@index')->name('rentPost.all');
+        Route::get('rent-posts/{id}','\App\Http\Controllers\RentController@show')->name('rentPost.show');
+        Route::post('rent-posts/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
+        Route::post('rent-posts/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
 //        Route::get('create-rent-post','\App\Http\Controllers\RentController@create')->name('rentPost.create');
 //        Route::post('store-rent-post','\App\Http\Controllers\RentController@store')->name('rentPost.store');
 //        Route::get('rent-post/edit/{id}','\App\Http\Controllers\RentController@edit')->name('rentPost.edit');

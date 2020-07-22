@@ -11,7 +11,7 @@ class Rent extends Model
 
     protected $fillable = [
        'user_id', 'game_id', 'availability', 'max_week', 'platform_id', 'earning_amount',
-        'disk_condition_id', 'cover_image', 'disk_image', 'rented_user_id', 'status'
+        'disk_condition_id', 'cover_image', 'disk_image', 'rented_user_id', 'status', 'reason'
     ];
 
     public function game() {
@@ -24,6 +24,6 @@ class Rent extends Model
         return $this->belongsTo(Platform::class);
     }
     public function diskCondition() {
-        return $this->belongsTo(DiskCondition::class, 'disk_condition_id');
+        return $this->belongsTo(DiskCondition::class);
     }
 }

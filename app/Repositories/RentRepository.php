@@ -26,7 +26,7 @@ class RentRepository {
     public function store(Request $request) {
         $rent = $request->only([
             'game_id', 'max_week', 'availability', 'platform_id',
-            'disk_condition_id', 'rented_user_id', 'status'
+            'disk_condition_id', 'rented_user_id',
         ]);
         if (isset($request->cover_image))
         {
@@ -60,7 +60,7 @@ class RentRepository {
 
         $rent_data = $request->only([
           'game_id', 'max_week', 'availability', 'platform_id', 'earning_amount',
-          'disk_condition_id', 'rented_user_id', 'status', 'cover_image', 'disk_image'
+          'disk_condition_id', 'rented_user_id', 'cover_image', 'disk_image'
         ]);
 
         if (isset($rent_data['cover_image'])){
@@ -91,9 +91,6 @@ class RentRepository {
 
         if (isset($rent_data['rented_user_id'])) {
             $rent->rented_user_id= $rent_data['rented_user_id'];
-        }
-        if (isset($rent_data['status'])) {
-            $rent->status= $rent_data['status'];
         }
 
         $rent->save();

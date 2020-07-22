@@ -98,26 +98,42 @@
 @section('js')
     <script type="text/javascript">
         function removeDepartment(id) {
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        document.getElementById('delete-form-' + id).submit();
-                        swal ({
-                            title: "Genre Deleted!",
-                            text: "Selected genre Delete Successful!",
-                            timer: 1500
-                        });
-                    }
-                    else {
-                        swal("Your information is safe!");
-                    }
-                });
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('delete-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'Your imaginary file is safe :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
         }
     </script>
 @endsection
