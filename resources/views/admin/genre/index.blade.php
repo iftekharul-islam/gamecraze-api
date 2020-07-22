@@ -66,7 +66,7 @@
                                                        href="{{ route('genre.edit', $genre->id) }}"><i
                                                             class="far fa-edit"></i></a>
                                                     <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="removeDepartment({{ $genre->id }})">
+                                                            onclick="deleteGenre({{ $genre->id }})">
                                                         <i class="far fa-trash-alt"></i></button>
                                                     <form id="delete-form-{{ $genre->id }}"
                                                           action="{{ route('genre.destroy', $genre->id) }}"
@@ -97,7 +97,7 @@
 
 @section('js')
     <script type="text/javascript">
-        function removeDepartment(id) {
+        function deleteGenre(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',

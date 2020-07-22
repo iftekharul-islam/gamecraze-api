@@ -84,7 +84,7 @@
                                                 <a href="{{ route('rentPost.show', $rent->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="removeDepartment({{ $rent->id }})">
+                                                        onclick="deletePost({{ $rent->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $rent->id }}"
                                                       action="{{ route('rentPost.destroy', $rent->id) }}"
@@ -114,8 +114,8 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function removeDepartment(id) {
-            const swalWithBootstrapButtons = Swal.mixin({
+        function deletePost (id) {
+            const swalWithBootstrapButtons = Swal.mixin ({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',
                     cancelButton: 'btn btn-danger'
@@ -123,7 +123,7 @@
                 buttonsStyling: false
             })
 
-            swalWithBootstrapButtons.fire({
+            swalWithBootstrapButtons.fire ({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
@@ -131,7 +131,7 @@
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
-            }).then((result) => {
+            }).then ((result) => {
                 if (result.value) {
                     document.getElementById('delete-form-' + id).submit();
                     swalWithBootstrapButtons.fire({

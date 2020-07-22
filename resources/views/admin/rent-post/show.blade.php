@@ -167,7 +167,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function makeApprove(id) {
+        function makeApprove (id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',
@@ -176,7 +176,7 @@
                 buttonsStyling: false
             });
 
-            swalWithBootstrapButtons.fire({
+            swalWithBootstrapButtons.fire ({
                 title: "Are you sure?",
                 text: "Want to Approve this post",
                 icon: "warning",
@@ -184,7 +184,7 @@
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
-            }).then((result) => {
+            }).then ((result) => {
                 if (result.value) {
                     document.getElementById('approve-form-' + id).submit();
                     swalWithBootstrapButtons.fire({
@@ -205,7 +205,7 @@
                 }
             });
         }
-        function makeReject(id) {
+        function makeReject (id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -226,7 +226,7 @@
             //             document.getElementById('swal-input2').value
             //         ]
             //     }
-            swalWithBootstrapButtons.fire({
+            swalWithBootstrapButtons.fire ({
                 title: 'Reject Reason',
                 input: 'text',
                 inputPlaceholder: 'Explain Reject reason..',
@@ -236,7 +236,7 @@
                         return 'You need to write something!'
                     }
                 },
-            }).then((result) => {
+            }).then ((result) => {
                 if (result.value) {
                     $('#reason').val(result.value);
                     document.getElementById('reject-form-' + id).submit();

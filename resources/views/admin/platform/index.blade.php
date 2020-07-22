@@ -67,7 +67,7 @@
                                                    href="{{ route('platform.edit', $platform->id) }}"><i
                                                         class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="removeDepartment({{ $platform->id }})">
+                                                        onclick="deletePlatform({{ $platform->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $platform->id }}"
                                                       action="{{ route('platform.destroy', $platform->id) }}"
@@ -97,7 +97,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function removeDepartment(id) {
+        function deletePlatform(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',

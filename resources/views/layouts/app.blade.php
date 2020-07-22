@@ -34,12 +34,12 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        @if(Auth::user())
+        @if (Auth::user())
             @include('layouts.navbar')
             @include('layouts.sidebar')
         @endif
-        @yield('content')
-        @if(Auth::user())
+        @yield ('content')
+        @if (Auth::user())
             <footer class="main-footer">
                 <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
                 All rights reserved.

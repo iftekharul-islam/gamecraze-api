@@ -68,7 +68,7 @@
 {{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
 {{--                                                        class="far fa-edit"></i></a>--}}
                                                 <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="removeDepartment({{ $game->id }})">
+                                                        onclick="deleteGame({{ $game->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $game->id }}"
                                                       action="{{ route('game.destroy', $game->id) }}"
@@ -98,7 +98,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function removeDepartment(id) {
+        function deleteGame(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',
