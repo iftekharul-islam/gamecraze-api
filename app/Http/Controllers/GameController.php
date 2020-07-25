@@ -5,11 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GameCreateRequest;
 use App\Models\Asset;
 use App\Models\Game;
+use App\Repositories\Admin\GameRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
+    /**
+     * @var GameRepository
+     */
+    private $gameRepository;
+
+    /**
+     * GameController constructor.
+     * @param GameRepository $gameRepository
+     */
+    public function __construct(GameRepository $gameRepository)
+    {
+        $this->gameRepository = $gameRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +31,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
+
+        $games = $this->gameRepository->all();
         return view('admin.game.index', compact('games'));
     }
 
@@ -39,25 +54,7 @@ class GameController extends Controller
      */
     public function store(GameCreateRequest $request)
     {
-        $game_data = $request->only(['name', 'game_mode', 'rating', 'description', 'released']);
-        $game_data['author_id'] = auth()->user()->id;
-        $game_data['slug'] = Str::slug($game_data['name']);
-        $game_data['publisher'] = 'Testing';
-        $game_data['description'] = $game_data['description'] ? $game_data['description'] : 'Testing description';
-        $game = Game::create($game_data);
-
-        if ($request->hasFile('game_image')) {
-            $image = $request->file('game_image');
-            $image_name = 'game-'. auth()->user()->id. '-' .$image->getClientOriginalName();
-            $path = "game-image/". $image_name;
-            $image->storeAs('game-image' , $image_name);
-
-            Asset::create([
-                'game_id' => $game->id,
-                'name' => $image_name,
-                'url' => 'storage/'. $path,
-            ]);
-        }
+        $this->gameRepository->store($request);
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
 
@@ -105,8 +102,7 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        $game = Game::findOrFail($id);
-        $game->delete();
+        $this->gameRepository->delete($id);
         return back()->with('status', 'Game successfully deleted');
     }
 }
