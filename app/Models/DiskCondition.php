@@ -13,4 +13,7 @@ class DiskCondition extends Model
         'author_id', 'name', 'description', 'status'
     ];
 
+    public function rents(){
+        return $this->hasMany(Rent::class);
+    }
 }

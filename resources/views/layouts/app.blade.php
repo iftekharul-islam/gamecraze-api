@@ -26,18 +26,20 @@
     <link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <!-- Bootstrap -->
+    <link rel="stylesheet" src="{{ asset('css/bootstrap.min.css') }}">
+    <!-- Bootstrap-select -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
+{{--    <link rel="stylesheet" src="{{ asset('css/bootstrap-select.min.css') }}">--}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        @if(Auth::user())
+        @if (Auth::user())
             @include('layouts.navbar')
             @include('layouts.sidebar')
         @endif
-
-        @yield('content')
-        @if(Auth::user())
+        @yield ('content')
+        @if (Auth::user())
             <footer class="main-footer">
                 <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
                 All rights reserved.
@@ -50,13 +52,14 @@
 
     <!-- jQuery -->
     <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <!-- sweetalert2 js -->
+    <script src="{{ asset('sweetalert2/sweetalert2.all.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- ChartJS -->
@@ -83,7 +86,13 @@
     <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- sweetalert -->
+{{--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
+    <!-- Bootstrap js -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- Bootstrap-select js -->
+{{--    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
     @yield('js')
 </body>
 </html>

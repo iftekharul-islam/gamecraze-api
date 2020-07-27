@@ -106,12 +106,7 @@ class DiskConditionController extends Controller
     public function destroy($id)
     {
         $diskCondition = DiskCondition::find($id);
-
-        if ($diskCondition) {
-            $diskCondition->delete();
-            return back()->with('status', 'Disk Condition deleted successfully');
-        }
-
-        return false;
+        $diskCondition->delete();
+        return back()->with('status', 'Disk Condition deleted successfully');
     }
 }

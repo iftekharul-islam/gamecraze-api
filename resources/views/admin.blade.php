@@ -1002,7 +1002,7 @@
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="{{asset('adminlte/dist/img/user3-128x128.jpg')}}">
+                                                <img class="contacts-list-img" src="{{asset('sweetalert2')}}">
 
                                                 <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -1032,7 +1032,7 @@
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="{{asset('adminlte/dist/img/user6-128x128.jpg')}}">
+                                                <img class="contacts-list-img" src="{{asset('sweetalert2')}}">
 
                                                 <div class="contacts-list-info">
                           <span class="contacts-list-name">

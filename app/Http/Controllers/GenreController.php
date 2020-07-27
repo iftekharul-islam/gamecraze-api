@@ -104,11 +104,7 @@ class GenreController extends Controller
     public function destroy($id)
     {
         $genre = Genre::find($id);
-        if ($genre) {
-            $genre->delete();
-            return back()->with('status', 'Platform successfully Deleted!');
-        }
-
-        return false;
+        $genre->delete();
+        return back()->with('status', 'Platform successfully Deleted!');
     }
 }
