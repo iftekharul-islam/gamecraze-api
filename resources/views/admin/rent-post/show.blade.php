@@ -181,7 +181,7 @@
                 text: "Want to Approve this post",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Yes, Approve it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             }).then ((result) => {
