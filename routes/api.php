@@ -94,6 +94,9 @@
             //Lend Game
             $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
             $api->get('lends', 'App\Http\Controllers\API\LenderController@index');
+            //Payment
+            $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
+            $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

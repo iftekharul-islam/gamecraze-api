@@ -30,7 +30,6 @@ class RentCreateRequest extends FormRequest
             'platform_id' =>  'required|integer',
             'disk_condition_id' =>  'required|integer',
             'rented_user_id' =>  'nullable|integer',
-            'status' => 'required|integer',
         ];
     }
 }

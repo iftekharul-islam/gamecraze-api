@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Models\Address;
 use App\Models\User;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
@@ -51,8 +52,24 @@ class UserRepository {
             if (isset($userData['birth_date'])) {
                 $user->birth_date = $userData['birth_date'];
             }
-            if (isset($userData['address'])) {
-                $user->address = $userData['address'];
+            if (isset($userData['id_number'])) {
+                $user->identification_number = $userData['id_number'];
+            }
+            if (isset($userData['id_image'])) {
+                $image = $userData['id_image'];
+                $userImage = 'id_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
+                $user->image =  'identification/' . $userImage;
+            }
+            if (isset($userData['address']) || isset($userData['addressLine1']) || isset($userData['addressLine2']) || isset($userData['city']) || isset($userData['postCode'])) {
+                $address = Address::create([
+                    'address' =>  $userData['address'],
+                    'address_line_1' => $userData['addressLine1'],
+                    'address_line_2' => $userData['addressLine2'],
+                    'city' => $userData['city'],
+                    'post_code' => $userData['postCode']
+                ]);
+                $user->address_id = $address->id;
             }
             if (isset($userData['password'])) {
                 $user->password = bcrypt($userData['password']);
@@ -65,6 +82,8 @@ class UserRepository {
             }
 
             $user->save();
+
+            $user['address'] = $user->address;
             return $user;
         }
 

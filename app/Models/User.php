@@ -45,6 +45,9 @@ class User extends Authenticatable
     public function rents() {
         return $this->hasMany(Rent::class);
     }
+    public function address() {
+        return $this->belongsTo(Address::class);
+    }
 
     public function routeNotificationForSlack($notification)
     {

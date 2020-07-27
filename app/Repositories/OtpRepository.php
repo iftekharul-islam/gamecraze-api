@@ -67,7 +67,8 @@ class OtpRepository {
                 'error' => false,
 		        'newUser' => false,
 		        'token' => $token->accessToken,
-                'user' => $user
+                'user' => $user,
+                'address' => $user->address,
             ];
 	    }
 
@@ -87,7 +88,8 @@ class OtpRepository {
             'error' => false,
             'newUser' => true,
             'token' => $token->accessToken,
-            'user' => $user
+            'user' => $user,
+            'address' => $user->address,
         ];
     }
 }
