@@ -50,8 +50,8 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Rent Poster name</th>
-                                        <th>Lender Name</th>
+                                        <th>Game owner</th>
+                                        <th>Renter</th>
                                         <th>Rented Game</th>
                                         <th>Lending date</th>
                                         <th>Status</th>

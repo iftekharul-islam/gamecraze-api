@@ -32,7 +32,7 @@ class GameController extends Controller
     public function index()
     {
 
-        $games = $this->gameRepository->all();
+        $games = $this->gameRepository->allGame();
         return view('admin.game.index', compact('games'));
     }
 
@@ -43,7 +43,8 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('admin.game.create');
+        $genres = $this->gameRepository->allgenre();
+        return view('admin.game.create', compact('genres'));
     }
 
     /**

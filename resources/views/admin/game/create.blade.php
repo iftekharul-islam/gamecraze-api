@@ -46,6 +46,17 @@
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('genre') ? ' has-error' : '' }}">
+                                <label for="genre">Genre</label>
+                                <select name="genres[]" id="genres" class="form-control selectpicker" multiple data-live-search="true" required>
+                                    @foreach($genres as $genre)
+                                        <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('genre'))
+                                    <span class="text-danger"><strong>{{ $errors->first('genre') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" placeholder="Enter Description" required></textarea>

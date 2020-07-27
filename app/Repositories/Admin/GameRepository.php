@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Asset;
 use App\Models\Game;
+use App\Models\Genre;
 use Illuminate\Support\Str;
 
 class GameRepository
@@ -13,8 +14,15 @@ class GameRepository
     /**
      * @return Game[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function all() {
+    public function allGame() {
         return Game::all();
+    }
+
+    /**
+     * @return Game[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function allGenre() {
+        return Genre::all();
     }
 
     /**
@@ -29,6 +37,8 @@ class GameRepository
         $game_data['publisher'] = 'Testing';
         $game_data['description'] = $game_data['description'] ? $game_data['description'] : 'Testing description';
         $game = Game::create($game_data);
+
+        $game->genres()->sync($request->genres, false);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
