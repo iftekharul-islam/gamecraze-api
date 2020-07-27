@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Admin\LendRepository;
 use Illuminate\Http\Request;
-use App\Repositories\Admin\RentRepository;
 
-class RentController extends Controller
+class LendController extends Controller
 {
-    /**
-     * @var RentRepository
-     */
-    private $rentRepository;
-    /**
-     * RentController constructor.
-     * @param RentRepository $rentRepository
-     */
-    public function __construct(RentRepository $rentRepository)
+    private $lendRepository;
+
+    public function __construct(LendRepository $lendRepository)
     {
-        $this->rentRepository = $rentRepository;
+        $this->lendRepository = $lendRepository;
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +20,10 @@ class RentController extends Controller
      */
     public function index()
     {
-        $rents = $this->rentRepository->all();
-        return view('admin.rent-post.index', compact('rents'));
+        // TODO Need to check
+        $lends = $this->lendRepository->history();
+//        return $lends;
+        return view('admin.lend-history.index', compact('lends'));
     }
 
     /**
@@ -57,33 +53,13 @@ class RentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show($id)
     {
-        $rent = $this->rentRepository->details($id);
-        return view('admin.rent-post.show', compact('rent'));
+        $lend = $this->lendRepository->details($id);
+//        return $lend;
+        return view('admin.lend-history.show', compact('lend'));
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function approve(Request $request, $id)
-    {
-        $rent = $this->rentRepository->approve($id);
-        return back()->with('status', 'Rent post Approved successfully!!');
-    }
-
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function reject(Request $request, $id)
-    {
-        $rent = $this->rentRepository->reject($request, $id);
-        return back()->with('status', 'Rent post Rejected!!');
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -115,8 +91,6 @@ class RentController extends Controller
      */
     public function destroy($id)
     {
-        $rent = $this->rentRepository->delete($id);
-        return back()->with('status', 'Disk Condition deleted successfully');
-
+        //
     }
 }

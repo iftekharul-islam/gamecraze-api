@@ -28,7 +28,6 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
-{{--                            <span class="right badge badge-danger">New</span>--}}
                         </p>
                     </a>
                 </li>
@@ -103,7 +102,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ (request()->routeIs('diskCondition.all', 'diskCondition.create')) ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ (request()->routeIs('diskCondition.all', 'diskCondition.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-save"></i>
                         <p>
                             Disk Condition
                             <i class="fas fa-angle-left right"></i>
@@ -140,6 +139,14 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Lend History
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">

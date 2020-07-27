@@ -3,28 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlatformCreateRequest;
-use App\Models\Platform;
+use App\Repositories\Admin\PlatformRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
 
 class PlatformController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @var PlatformRepository
+     */
+    private $platformRepository;
+
+    /**
+     * PlatformController constructor.
+     * @param PlatformRepository $platformRepository
+     */
+    public function __construct(PlatformRepository $platformRepository)
+    {
+        $this->platformRepository = $platformRepository;
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $platforms = Platform::all();
+
+        $platforms = $this->platformRepository->all();
         return view('admin.platform.index', compact('platforms'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -32,77 +41,50 @@ class PlatformController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PlatformCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(PlatformCreateRequest $request)
     {
-        $platform = $request->only(['name']);
-        $platform['author_id'] = auth()->user()->id;
-        $platform['slug'] = Str::slug($platform['name']);
-        Platform::create($platform);
-
+        $this->platformRepository->store($request);
         return redirect()->route('all-platform')->with("status", 'Platform successfully created');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
      */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+    /**]
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $platform = Platform::findOrFail($id);
+        $platform = $this->platformRepository->edit($id);
         return view('admin.platform.edit', compact('platform'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $platform = Platform::find($request->id);
-        if (!$platform) {
-            return false;
-        }
-        $data = $request->only(['name']);
-
-        if (isset($data['name'])) {
-            $platform->name = $data['name'];
-            $platform->slug = Str::slug($data['name']);
-        }
-        $platform->save();
+        $this->platformRepository->update($request);
         return redirect()->route('all-platform')->with('status', 'Platform successfully updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $platform = Platform::find($id);
-        $platform->delete();
+        $this->platformRepository->delete($id);
         return back()->with('status', 'Platform deleted successfully');
     }
 }

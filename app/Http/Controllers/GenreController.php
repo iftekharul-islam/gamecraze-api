@@ -3,12 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GenreCreateRequest;
-use App\Models\Genre;
+use App\Repositories\Admin\GenreRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class GenreController extends Controller
 {
+    /**
+     * @var
+     */
+    private $genreRepository;
+
+    /**
+     * GenreController constructor.
+     * @param GenreRepository $genreRepository
+     */
+    public function __construct(GenreRepository $genreRepository)
+    {
+        $this->genreRepository = $genreRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +29,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::all();
+        $genres = $this->genreRepository->all();
         return view('admin.genre.index', compact('genres'));
     }
 
@@ -38,14 +51,7 @@ class GenreController extends Controller
      */
     public function store(GenreCreateRequest $request)
     {
-        $data = $request->only([
-            'name'
-        ]);
-        $data['author_id'] = auth()->user()->id;
-        $data['slug'] = Str::slug($request->name);
-
-        Genre::create($data);
-
+        $this->genreRepository->store($request);
         return redirect()->route('all-genre')->with('status', 'Genre successfully Created');
     }
 
@@ -68,7 +74,7 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        $genre = Genre::findOrFail($id);
+        $genre = $this->genreRepository->edit($id);
         return view('admin.genre.edit', compact('genre'));
     }
 
@@ -79,19 +85,9 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $genre = Genre::find($request->id);
-        if (!$genre) {
-            return false;
-        }
-        $data = $request->only(['name']);
-
-        if (isset($data['name'])) {
-            $genre->name = $data['name'];
-            $genre->slug = Str::slug($data['name']);
-        }
-        $genre->save();
+        $this->genreRepository->update($request);
         return redirect()->route('all-genre')->with('status', 'Genre successfully updated!');
     }
 
@@ -103,8 +99,7 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        $genre = Genre::find($id);
-        $genre->delete();
+        $this->genreRepository->delete($id);
         return back()->with('status', 'Platform successfully Deleted!');
     }
 }

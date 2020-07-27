@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
@@ -26,8 +28,6 @@
     <link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" src="{{ asset('css/bootstrap.min.css') }}">
     <!-- Bootstrap-select -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
 {{--    <link rel="stylesheet" src="{{ asset('css/bootstrap-select.min.css') }}">--}}
@@ -88,11 +88,11 @@
     <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
     <!-- sweetalert -->
 {{--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
-    <!-- Bootstrap js -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- Bootstrap-select js -->
 {{--    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ asset('css/bootstrap.min.js') }}"></script>
     @yield('js')
 </body>
 </html>
