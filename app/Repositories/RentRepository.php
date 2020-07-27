@@ -20,7 +20,7 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')->get();
+        return Rent::all();
     }
 
     public function store(Request $request) {

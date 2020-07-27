@@ -62,14 +62,13 @@ class UserRepository {
                 $user->image =  'identification/' . $userImage;
             }
             if (isset($userData['address']) || isset($userData['addressLine1']) || isset($userData['addressLine2']) || isset($userData['city']) || isset($userData['postCode'])) {
-                $address = Address::create([
-                    'address' =>  $userData['address'],
-                    'address_line_1' => $userData['addressLine1'],
-                    'address_line_2' => $userData['addressLine2'],
-                    'city' => $userData['city'],
-                    'post_code' => $userData['postCode']
-                ]);
-                $user->address_id = $address->id;
+                $address = Address::find($user->address_id);
+                $address->address = $userData['address'];
+                $address->address_line_1 = $userData['addressLine1'];
+                $address->address_line_2 = $userData['addressLine2'];
+                $address->city = $userData['city'];
+                $address->post_code = $userData['postCode'];
+                $address->save();
             }
             if (isset($userData['password'])) {
                 $user->password = bcrypt($userData['password']);

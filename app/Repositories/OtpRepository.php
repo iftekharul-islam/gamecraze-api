@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Jobs\SendOtp;
+use App\Models\Address;
 use App\Models\OneTimePassword;
 use Carbon\Carbon;
 use App\Models\User;
@@ -75,6 +76,16 @@ class OtpRepository {
 	    $user = User::create([
 		    'phone_number' => $phone_number
 	    ]);
+
+	    $address = Address::create([
+	        'address' => null,
+            'address_line_1' => null,
+            'address_line_2' => null,
+            'city' => null,
+            'post_code' => null
+        ]);
+	    $user->address_id = $address->id;
+	    $user->save();
 
 	    $role = Role::where('name', 'customer')->first();
 
