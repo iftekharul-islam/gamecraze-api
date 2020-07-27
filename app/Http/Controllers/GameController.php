@@ -77,8 +77,8 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        $game = Game::findOrFail($id);
-        $asset = Asset::findOrFail($id);
+        $game = $this->gameRepository->editGame($id);
+        $asset = $this->gameRepository->editAsset($id);
         return view('admin.game.edit', compact('game', 'asset'));
     }
 

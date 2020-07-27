@@ -10,11 +10,11 @@ class Lender extends Model
     use SoftDeletes;
     protected $fillable = ['lender_id', 'rent_post_id', 'lend_week', 'lend_cost', 'lend_date', 'payment_method', 'status'];
 
-    public function Renter() {
-        return $this->hasOne(User::class,'id','rent_post_id');
+    public function rentPost() {
+        return $this->hasOne(Rent::class,'id','rent_post_id');
     }
 
-    public function Lender() {
+    public function lender() {
         return $this->hasOne(User::class,'id','lender_id');
     }
 }

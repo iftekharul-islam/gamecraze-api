@@ -47,9 +47,23 @@ class GameRepository
 
     /**
      * @param $id
+     */
+    public function editGame($id) {
+        return Game::findOrFail($id);
+    }
+
+    /**
+     * @param $id
      * @return mixed
      */
-    public function xdelete($id) {
+    public function editAsset($id) {
+        return Asset::findOrFail($id);
+    }
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id) {
         $game = Game::findOrFail($id);
         $game->delete();
         return $game;

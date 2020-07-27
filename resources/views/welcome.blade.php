@@ -29,32 +29,5 @@
         <button type="submit" class="btn btn-primary btn-submit">Login</button>
     </form>
 </div>
-
-<script>
-
-    $("#login-form").on('submit', function(e){
-
-        e.preventDefault();
-        console.log('Form Submitted');
-        {{--var email = $("input[name=email]").val();--}}
-        {{--var password = $("input[name=password]").val();--}}
-        {{--console.log(email)--}}
-        {{--console.log(password)--}}
-
-        {{--$.ajax({--}}
-        {{--    type:'POST',--}}
-        {{--    url: "http://gamingapp.test/api/login",--}}
-        {{--    headers: {--}}
-        {{--        'X-CSRF-Token': '{{ csrf_token() }}',--}}
-        {{--    },--}}
-        {{--    data:{email:email, password:password},--}}
-
-        {{--    success:function(data){--}}
-        {{--        console.log(data)--}}
-        {{--    }--}}
-
-        {{--});--}}
-    });
-</script>
 </body>
 </html>

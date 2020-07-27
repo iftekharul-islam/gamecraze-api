@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('', '\App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::prefix('admin')->group(function () {
@@ -23,7 +24,7 @@ Route::prefix('admin')->group(function () {
         Route::get('create/platform','\App\Http\Controllers\PlatformController@create')->name('platform.create');
         Route::post('store/platforms','\App\Http\Controllers\PlatformController@store')->name('platform.store');
         Route::get('platform/edit/{id}','\App\Http\Controllers\PlatformController@edit')->name('platform.edit');
-        Route::post('platform/update/{id}','\App\Http\Controllers\PlatformController@update')->name('platform.update');
+        Route::post('platform/update','\App\Http\Controllers\PlatformController@update')->name('platform.update');
         Route::delete('platform/destroy/{id}','\App\Http\Controllers\PlatformController@destroy')->name('platform.destroy');
         //Genre Crud
         Route::get('genres','\App\Http\Controllers\GenreController@index')->name('all-genre');
@@ -58,6 +59,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
         // Lend
         Route::get('lends','\App\Http\Controllers\LendController@index')->name('lend.all');
+        Route::get('lend/{id}','\App\Http\Controllers\LendController@show')->name('lend.show');
 //        Route::get('rent-post/{id}','\App\Http\Controllers\RentController@show')->name('rentPost.show');
 //        Route::post('rent-post/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
 //        Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');

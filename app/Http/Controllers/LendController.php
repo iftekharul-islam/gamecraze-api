@@ -55,7 +55,9 @@ class LendController extends Controller
      */
     public function show($id)
     {
-        //
+        $lend = $this->lendRepository->details($id);
+//        return $lend;
+        return view('admin.lend-history.show', compact('lend'));
     }
 
     /**

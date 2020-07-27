@@ -52,6 +52,7 @@
                                         <th>No</th>
                                         <th>Rent Poster name</th>
                                         <th>Lender Name</th>
+                                        <th>Rented Game</th>
                                         <th>Lending date</th>
                                         <th>Status</th>
                                         <th>View</th>
@@ -63,8 +64,9 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $lend->lender->name}}</td>
                                             <td>
-                                                {{ $lend->renter->name }}
+                                                {{ $lend->rentPost->user->name }}
                                             </td>
+                                            <td>{{ $lend->rentPost->game->name }}</td>
                                             <td>{{ $lend->lend_date }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
@@ -76,7 +78,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary mr-3" href="#">
+                                                <a class="btn btn-sm btn-primary mr-3" href="{{ route('lend.show', $lend->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                                 </a>
                                             </td>
