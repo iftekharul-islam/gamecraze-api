@@ -17,7 +17,7 @@ class AssetTransformer extends TransformerAbstract
         return [
             'id' => $asset->id,
             'name' => $asset->name,
-            'url' => asset('/storage/rent-image/' . $asset->name),
+            'url' => asset('/storage/game-image/' . $asset->name),
         ];
     }
 }
