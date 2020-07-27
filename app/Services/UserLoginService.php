@@ -22,10 +22,11 @@ class UserLoginService {
         else {
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
+                $user['address'] = $user->address;
                 $token = $user->createToken($user->email .'-'. now());
                 return [
                     'user' => $user,
-                    'token' => $token->accessToken
+                    'token' => $token->accessToken,
                 ];
             }
             else {
