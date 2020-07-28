@@ -36,7 +36,7 @@
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');
         $api->get('genres/', 'App\Http\Controllers\API\GenreController@index');
         // Search
-        $api->get('search/{name}', 'App\Http\Controllers\API\SearchController@search');
+        $api->get('search', 'App\Http\Controllers\API\SearchController@search');
         // Platforms
         $api->get('platforms/{id}', 'App\Http\Controllers\API\PlatformController@show');
         $api->get('platforms', 'App\Http\Controllers\API\PlatformController@index');
