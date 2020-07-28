@@ -65,10 +65,10 @@
                                     <div class="col-sm-4 invoice-col border-right">
                                         Owner<hr>
                                         <address>
-                                            <strong>{{ $lend->rentPost->user->name }}</strong><br>
-                                            {{ $lend->rentPost->user->address }}<br>
-                                            {{ $lend->rentPost->user->email }}<br>
-                                            {{ $lend->rentPost->user->phone_number }}<br>
+                                            <strong>{{ $lend->rent->user->name }}</strong><br>
+                                            {{ $lend->rent->user->address }}<br>
+                                            {{ $lend->rent->user->email }}<br>
+                                            {{ $lend->rent->user->phone_number }}<br>
                                         </address>
                                     </div>
                                     <!-- /.col -->
@@ -77,7 +77,11 @@
                                         <hr>
                                         <address>
                                             <strong>{{ $lend->lender->name }}</strong><br>
-                                            {{ $lend->lender->address }}<br>
+                                            {{ $lend->lender->address->address }}<br>
+                                            {{ $lend->lender->address->address_line_1 }}<br>
+                                            {{ $lend->lender->address->address_line_2 }}<br>
+                                            {{ $lend->lender->address->city }}<br>
+                                            {{ $lend->lender->address->post_code }}<br>
                                             {{ $lend->lender->email }}<br>
                                             {{ $lend->lender->phone_number }}<br>
                                         </address>
@@ -113,20 +117,20 @@
                                 <div class="row invoice-info">
                                     <div class="col-sm-6 invoice-col">
                                        <address>
-                                           <strong>Name :</strong><span> {{ $lend->rentPost->game->name }}</span><br>
-                                           <strong>Availability :</strong><span> {{ $lend->rentPost->availability }}</span><br>
-                                           <strong>Disk Condition :</strong><span> {{ $lend->rentPost->diskCondition->name }}</span><br>
-                                           <strong>Platform :</strong><span> {{ $lend->rentPost->platform->name }}</span><br>
+                                           <strong>Name :</strong><span> {{ $lend->rent->game->name }}</span><br>
+                                           <strong>Availability :</strong><span> {{ $lend->rent->availability }}</span><br>
+                                           <strong>Disk Condition :</strong><span> {{ $lend->rent->diskCondition->name }}</span><br>
+                                           <strong>Platform :</strong><span> {{ $lend->rent->platform->name }}</span><br>
                                        </address>
                                     </div>
                                     <div class="col-sm-3 invoice-col">
                                         <div class="disk-preview disk">
-                                            <img src="{{ asset('storage/rent-image/'. $lend->rentPost->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                            <img src="{{ asset('storage/rent-image/'. $lend->rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
                                         </div>
                                     </div>
                                     <div class="col-sm-3 invoice-col">
                                         <div class="cover-preview disk">
-                                            <img src="{{ asset('storage/rent-image/'. $lend->rentPost->disk_image) }}" class="img-thumbnail">
+                                            <img src="{{ asset('storage/rent-image/'. $lend->rent->disk_image) }}" class="img-thumbnail">
                                         </div>
                                     </div>
                                 </div>

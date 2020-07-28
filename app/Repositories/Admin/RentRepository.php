@@ -3,7 +3,9 @@
 
 namespace App\Repositories\Admin;
 
+use App\Jobs\SendEmailToRenter;
 use App\Models\Rent;
+use App\Notifications\RenterNotification;
 
 class RentRepository
 {

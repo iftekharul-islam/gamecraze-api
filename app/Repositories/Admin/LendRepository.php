@@ -11,7 +11,7 @@ class LendRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function history() {
-        return Lender::with('lender', 'rentPost.user', 'rentPost.game')->get();
+        return Lender::with('lender', 'rent.user', 'rent.game')->get();
     }
 
     /**
@@ -19,6 +19,6 @@ class LendRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function details($id) {
-        return Lender::with('lender', 'rentPost.user', 'rentPost.game')->findOrFail($id);
+        return Lender::with('lender', 'rent.user', 'rent.game')->findOrFail($id);
     }
 }

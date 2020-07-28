@@ -64,9 +64,9 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $lend->lender->name}}</td>
                                             <td>
-                                                {{ $lend->rentPost->user->name }}
+                                                {{ $lend->rent->user->name }}
                                             </td>
-                                            <td>{{ $lend->rentPost->game->name }}</td>
+                                            <td>{{ $lend->rent->game->name }}</td>
                                             <td>{{ $lend->lend_date }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
