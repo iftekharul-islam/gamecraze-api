@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -22,6 +23,15 @@ class RolesAndPermissionsSeeder extends Seeder
         $user->email = 'tushar@gmail.com';
         $user->password = bcrypt('password');
         $user->phone_number = '01770353601';
+
+        $address = Address::create([
+            'address' => null,
+            'address_line_1' => null,
+            'address_line_2' => null,
+            'city' => null,
+            'post_code' => null
+        ]);
+        $user->address_id = $address->id;
 
         $user->save();
 

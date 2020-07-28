@@ -20,7 +20,7 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::all();
+        return Rent::where('status', 1)->get();
     }
 
     public function store(Request $request) {
