@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Transformers\GameTransformer;
 use App\Repositories\SearchRepository;
+use App\Transformers\RentTransformer;
 use Illuminate\Http\Request;
 
 class SearchController extends BaseController
@@ -17,8 +18,8 @@ class SearchController extends BaseController
 
     public function search($name) {
         if ($name != '') {
-            $games = $this->searchRepository->search($name);
-            return $this->response->collection($games, new GameTransformer());
+            $rents = $this->searchRepository->search($name);
+            return $this->response->collection($rents, new RentTransformer());
         }
         else {
             return response()->json('Empty');
