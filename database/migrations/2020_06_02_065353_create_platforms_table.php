@@ -18,6 +18,7 @@ class CreatePlatformsTable extends Migration
             $table->integer('author_id');
             $table->string('name');
             $table->string('slug');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

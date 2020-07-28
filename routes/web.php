@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function () {
         Route::get('create/platform','\App\Http\Controllers\PlatformController@create')->name('platform.create');
         Route::post('store/platforms','\App\Http\Controllers\PlatformController@store')->name('platform.store');
         Route::get('platform/edit/{id}','\App\Http\Controllers\PlatformController@edit')->name('platform.edit');
-        Route::post('platform/update','\App\Http\Controllers\PlatformController@update')->name('platform.update');
+        Route::post('platform/update/{id}','\App\Http\Controllers\PlatformController@update')->name('platform.update');
         Route::delete('platform/destroy/{id}','\App\Http\Controllers\PlatformController@destroy')->name('platform.destroy');
         //Genre Crud
         Route::get('genres','\App\Http\Controllers\GenreController@index')->name('all-genre');
@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
         //Games Crud
         Route::get('games','\App\Http\Controllers\GameController@index')->name('all-game');
         Route::get('create/game','\App\Http\Controllers\GameController@create')->name('game.create');
+        Route::get('game/{id}','\App\Http\Controllers\GameController@show')->name('game.show');
         Route::post('store/game','\App\Http\Controllers\GameController@store')->name('game.store');
 //        Route::get('game/edit/{id}','\App\Http\Controllers\GameController@edit')->name('game.edit');
 //        Route::post('game/update/{id}','\App\Http\Controllers\GameController@update')->name('game.update');

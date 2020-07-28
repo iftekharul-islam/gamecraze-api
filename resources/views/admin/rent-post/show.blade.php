@@ -65,7 +65,7 @@
                                         <b>Birthday</b> <a class="float-right">{{ $rent->user->birth_date }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Phone Number</b> <a class="float-right">{{ $rent->user->phone_number }}</a>
+                                        <b>Phone No.</b> <a class="float-right">{{ $rent->user->phone_number }}</a>
                                     </li>
                                 </ul>
                             </div>

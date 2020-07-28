@@ -67,7 +67,9 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        //
+        $game = $this->gameRepository->show($id);
+//        return $game;
+        return view('admin.game.show', compact('game'));
     }
 
     /**

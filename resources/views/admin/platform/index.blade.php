@@ -45,23 +45,32 @@
                     <!-- /.container-fluid -->
                     <div class="col-12">
                         <div class="card">
-                            <!-- /.card-header -->
+                            <div class="card-header">
+                                <a href="{{ route('platform.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Platform</a>
+                            </div>
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Serial no</th>
                                         <th>Name</th>
                                         <th>Slug</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($platforms as $key=>$platform)
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
                                             <td>{{ $platform->name }}</td>
                                             <td>{{ $platform->slug }}</td>
+                                            <td>
+                                                @if ($platform->status == 1)
+                                                    <a class="badge-success badge text-white" >Active</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Inactive</a>
+                                                @endif
+                                            </td>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-3"
                                                    href="{{ route('platform.edit', $platform->id) }}"><i

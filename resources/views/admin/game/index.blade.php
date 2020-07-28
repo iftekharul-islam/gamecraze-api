@@ -44,7 +44,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <!-- /.card-header -->
+                            <div class="card-header">
+                                <a href="{{ route('game.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Game</a>
+                            </div>
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
@@ -60,7 +62,7 @@
                                     @foreach($games as $key=>$game)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $game->name }}</td>
+                                            <td><a href="{{ route('game.show', $game->id) }}">{{ $game->name }}</a></td>
                                             <td>{{ $game->rating }}</td>
                                             <td>{{ $game->game_mode }}</td>
                                             <td>

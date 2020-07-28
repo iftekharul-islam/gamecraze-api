@@ -70,7 +70,7 @@ class RentController extends Controller
      */
     public function approve(Request $request, $id)
     {
-        $rent = $this->rentRepository->approve($id);
+        $this->rentRepository->approve($id);
         return back()->with('status', 'Rent post Approved successfully!!');
     }
 
@@ -81,7 +81,7 @@ class RentController extends Controller
      */
     public function reject(Request $request, $id)
     {
-        $rent = $this->rentRepository->reject($request, $id);
+        $this->rentRepository->reject($request, $id);
         return back()->with('status', 'Rent post Rejected!!');
     }
     /**
@@ -115,7 +115,7 @@ class RentController extends Controller
      */
     public function destroy($id)
     {
-        $rent = $this->rentRepository->delete($id);
+        $this->rentRepository->delete($id);
         return back()->with('status', 'Disk Condition deleted successfully');
 
     }

@@ -34,10 +34,17 @@
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Platform Name" required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                                @endif
                             </div>
-                            @if ($errors->has('name'))
-                                <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
-                            @endif
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" class="form-control" required>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">Submit</button>
