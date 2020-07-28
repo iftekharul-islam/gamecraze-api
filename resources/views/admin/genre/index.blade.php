@@ -44,12 +44,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <!-- /.card-header -->
+                            <div class="card-header">
+                                <a href="{{ route('genre.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Genre</a>
+                            </div>
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>Slug</th>
                                         <th>Action</th>
@@ -58,7 +59,6 @@
                                     <tbody>
                                         @foreach($genres as $key=>$genre)
                                             <tr>
-                                                <td>{{ $key+1 }}</td>
                                                 <td>{{ $genre->name }}</td>
                                                 <td>{{ $genre->slug }}</td>
                                                 <td>

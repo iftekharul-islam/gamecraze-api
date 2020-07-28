@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
+use App\Models\Lender;
+use App\Models\Rent;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,7 +17,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $games = Game::all()->count();
+        $rents = Rent::all()->count();
+        $users = User::all()->count();
+        $lends = Lender::all()->count();
+        return view('admin.dashboard', compact('games', 'rents', 'users', 'lends'));
     }
 
 }

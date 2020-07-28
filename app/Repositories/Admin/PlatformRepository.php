@@ -21,7 +21,7 @@ class PlatformRepository
      * @return mixed
      */
     public function store($request) {
-        $platform = $request->only(['name']);
+        $platform = $request->only(['name', 'status']);
         $platform['author_id'] = auth()->user()->id;
         $platform['slug'] = Str::slug($platform['name']);
         return Platform::create($platform);
@@ -40,15 +40,15 @@ class PlatformRepository
      * @return bool
      */
     public function update($request) {
-        $platform = Platform::find($request->id);
-        if (!$platform) {
-            return false;
-        }
-        $data = $request->only(['name']);
+        $platform = Platform::findOrFail($request->id);
+        $data = $request->only(['name', 'status']);
 
         if (isset($data['name'])) {
             $platform->name = $data['name'];
             $platform->slug = Str::slug($data['name']);
+        }
+        if (isset($data['status'])) {
+            $platform->status = $data['status'];
         }
         $platform->save();
         return $platform;

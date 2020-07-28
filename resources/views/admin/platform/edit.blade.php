@@ -31,6 +31,13 @@
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $platform->name }}">
                             </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ $platform->status == 1 ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ $platform->status == 0 ? 'selected' : '' }}>Inactive</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -44,10 +44,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                <div class="card-header">
+                                    <a href="{{ route('diskCondition.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Disk Condition</a>
+                                </div>
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Status</th>
@@ -57,7 +59,6 @@
                                     <tbody>
                                     @foreach($diskConditions as $key=>$diskCondition)
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
                                             <td>{{ $diskCondition->name }}</td>
                                             <td>{{ $diskCondition->description }}</td>
                                             <td>

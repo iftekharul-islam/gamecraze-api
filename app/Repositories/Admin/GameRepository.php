@@ -21,10 +21,16 @@ class GameRepository
     /**
      * @return Game[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function allGenre() {
+    public function allGenre () {
         return Genre::all();
     }
 
+    /**
+     *
+     */
+    public function show ($id) {
+        return Game::with('assets')->findOrFail($id);
+    }
     /**
      * @param $request
      * @return mixed
