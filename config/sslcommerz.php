@@ -23,4 +23,5 @@ return [
     'failed_url' => '/fail',
     'cancel_url' => '/cancel',
     'ipn_url' => '/ipn',
+    'game_hub' => env('GAMEHUB', 'staging.gamehub.com.bd')
 ];

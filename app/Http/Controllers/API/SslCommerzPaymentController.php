@@ -108,7 +108,7 @@ class SslCommerzPaymentController extends BaseController
                 $update_product = Order::where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
-                return redirect('http://localhost:8080/success');
+                return redirect(config('sslcommerz.game_hub') . 'success');
             }
             /*
             That means IPN did not work or IPN URL was not set in your merchant panel and Transation validation failed.
