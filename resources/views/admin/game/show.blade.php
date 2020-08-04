@@ -60,7 +60,7 @@
                                         </tr>
                                         <tr>
                                             <td>Released:</td>
-                                            <td>{{ $game->released }}</td>
+                                            <td>{{ date('d F, Y', strtotime($game->released)) }}</td>
                                         </tr>
                                         <tr>
                                             <td>Mode:</td>
@@ -69,6 +69,22 @@
                                         <tr>
                                             <td>Rating:</td>
                                             <td>{{ $game->rating }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Platforms:</td>
+                                            <td>
+                                            @foreach($game->platforms as $platform)
+                                                <span class="badge-success badge">{{ $platform->name }}</span>
+                                            @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Genres:</td>
+                                            <td>
+                                                @foreach($game->genres as $genre)
+                                                    <span class="badge-success badge">{{ $genre->name }}</span>
+                                                @endforeach
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

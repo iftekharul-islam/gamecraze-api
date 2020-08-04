@@ -34,20 +34,27 @@
                     <!-- form start -->
                     <form method="post" action="{{ route('game.store') }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
-                        <input type="text" class="form-control d-none" id="rating" name="rating">
-                        <input type="text" class="form-control d-none" id="released" name="released">
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <select name="name" class="form-control selectpicker gamePick" data-live-search="true" data-placeholder="Select.." id="gameList" required>
-                                    <option data-tokens="" selected disabled>Select a game...</option>
-                                </select>
+                                <input name="name" class="form-control" placeholder="Enter a game name..." required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('platforms') ? ' has-error' : '' }}">
+                                <label for="genre">Platforms</label>
+                                <select name="platforms[]" id="platforms" class="form-control selectpicker" multiple data-live-search="true" required>
+                                    @foreach($platforms as $platform)
+                                        <option value="{{$platform->id}}">{{$platform->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('platform'))
+                                    <span class="text-danger"><strong>{{ $errors->first('platform') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('genre') ? ' has-error' : '' }}">
-                                <label for="genre">Genre</label>
+                                <label for="genre">Genres</label>
                                 <select name="genres[]" id="genres" class="form-control selectpicker" multiple data-live-search="true" required>
                                     @foreach($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->name}}</option>
@@ -55,6 +62,20 @@
                                 </select>
                                 @if ($errors->has('genre'))
                                     <span class="text-danger"><strong>{{ $errors->first('genre') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('released') ? ' has-error' : '' }}">
+                                <label for="mode">Release date</label>
+                                <input type="date" class="form-control" id="released" name="released" placeholder="Enter Game released date" required>
+                                @if ($errors->has('released'))
+                                    <span class="text-danger"><strong>{{ $errors->first('released') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
+                                <label for="mode">Rating (Out of 10)</label>
+                                <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter Game rating" required>
+                                @if ($errors->has('rating'))
+                                    <span class="text-danger"><strong>{{ $errors->first('rating') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
@@ -90,40 +111,3 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
-
-@section('js')
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                method:'GET',
-                url:'https://api.rawg.io/api/games?page=1&page_size=100',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                },
-                success:function(data) {
-                    let gameList = data.results;
-                    let optionValue = '';
-                    $.each(gameList, function( index, value ) {
-                        optionValue += `<option data-tokens="${value.id}"
-                                                data-rating="${value.rating}"
-                                                data-released="${value.released}">
-                                                ${value.name}
-                                        </option>`
-                    });
-                    $('#gameList').append(`${optionValue}`);
-                    $('#gameList').selectpicker('refresh');
-                    console.log(optionValue);
-                    console.log(gameList);
-                    $('#gameList').change(function () {
-                        let game_rating = $('#gameList').children("option:selected").data('rating');
-                        $('#rating').val(game_rating);
-                        let game_released = $('#gameList').children("option:selected").data('released');
-                        $('#released').val(game_released);
-                    });
-
-                }
-            });
-        });
-    </script>
-@endsection
-

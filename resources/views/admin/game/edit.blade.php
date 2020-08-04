@@ -32,14 +32,21 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $game->name }}">
                             </div>
                             <div class="form-group">
+                                <label for="name">Release date</label>
+                                <input type="date" class="form-control" id="released" name="released" value="{{ $game->released }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Rating (Out of 10)</label>
+                                <input type="number" class="form-control" id="rating" name="rating" value="{{ $game->rating }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="name">Description</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $game->description }}">
+                                <input type="text" class="form-control" id="description" name="description" value="{{ $game->description }}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Game Mode</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $game->game_mode }}">
+                                <input type="text" class="form-control" id="game_mode" name="game_mode" value="{{ $game->game_mode }}">
                             </div>
-
                         </div>
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">Submit</button>

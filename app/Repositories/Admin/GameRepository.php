@@ -7,6 +7,7 @@ namespace App\Repositories\Admin;
 use App\Models\Asset;
 use App\Models\Game;
 use App\Models\Genre;
+use App\Models\Platform;
 use Illuminate\Support\Str;
 
 class GameRepository
@@ -26,10 +27,17 @@ class GameRepository
     }
 
     /**
+     * @return Genre[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function allPlatform () {
+        return Platform::all();
+    }
+
+    /**
      *
      */
     public function show ($id) {
-        return Game::with('assets')->findOrFail($id);
+        return Game::with('assets', 'platforms', 'genres')->findOrFail($id);
     }
     /**
      * @param $request
@@ -45,6 +53,7 @@ class GameRepository
         $game = Game::create($game_data);
 
         $game->genres()->sync($request->genres, false);
+        $game->platforms()->sync($request->platforms, false);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
@@ -63,10 +72,31 @@ class GameRepository
 
     /**
      * @param $id
+     * @return mixed
      */
-    public function editGame($id) {
-        return Game::findOrFail($id);
+    public function update($request, $id) {
+        $game = Game::findOrFail($id);
+        $data = $request->only(['name', 'released', 'rating', 'description', 'game_mode']);
+
+        if (isset($data['name'])) {
+            $game->name = $data['name'];
+        }
+        if (isset($data['released'])) {
+            $game->released = $data['released'];
+        }
+        if (isset($data['rating'])) {
+            $game->rating = $data['rating'];
+        }
+        if (isset($data['description'])) {
+            $game->description = $data['description'];
+        }
+        if (isset($data['game_mode'])) {
+            $game->game_mode = $data['game_mode'];
+        }
+        $game->save();
+        return $game;
     }
+
 
     /**
      * @param $id

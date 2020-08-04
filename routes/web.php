@@ -38,8 +38,8 @@ Route::prefix('admin')->group(function () {
         Route::get('create/game','\App\Http\Controllers\GameController@create')->name('game.create');
         Route::get('game/{id}','\App\Http\Controllers\GameController@show')->name('game.show');
         Route::post('store/game','\App\Http\Controllers\GameController@store')->name('game.store');
-//        Route::get('game/edit/{id}','\App\Http\Controllers\GameController@edit')->name('game.edit');
-//        Route::post('game/update/{id}','\App\Http\Controllers\GameController@update')->name('game.update');
+        Route::get('game/edit/{id}','\App\Http\Controllers\GameController@edit')->name('game.edit');
+        Route::post('game/update/{id}','\App\Http\Controllers\GameController@update')->name('game.update');
         Route::delete('game/destroy/{id}','\App\Http\Controllers\GameController@destroy')->name('game.destroy');
         //Disk condition Crud
         Route::get('disk-conditions','\App\Http\Controllers\DiskConditionController@index')->name('diskCondition.all');
