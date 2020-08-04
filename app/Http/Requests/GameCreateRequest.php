@@ -25,6 +25,8 @@ class GameCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'genres' => 'required',
+            'platforms' => 'required',
             'description' => 'required',
             'game_mode' => 'required',
             'released' => 'required',
@@ -36,6 +38,8 @@ class GameCreateRequest extends FormRequest
     {
         return [
             'name.required' => 'The Name field cannot be empty',
+            'name.genres' => 'The Genre field cannot be empty',
+            'name.platforms' => 'The Platform field cannot be empty',
             'description.required' => 'The Description field cannot be empty',
             'game_mode.required' => 'The Game Mode field cannot be empty',
             'released.required' => 'The Released field cannot be empty',

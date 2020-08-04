@@ -66,9 +66,9 @@
                                             <td>{{ $game->rating }}</td>
                                             <td>{{ $game->game_mode }}</td>
                                             <td>
-{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
-{{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
-{{--                                                        class="far fa-edit"></i></a>--}}
+                                                <a class="btn btn-sm btn-primary mr-3"
+                                                   href="{{ route('game.edit', $game->id) }}"><i
+                                                        class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
                                                         onclick="deleteGame({{ $game->id }})">
                                                     <i class="far fa-trash-alt"></i></button>

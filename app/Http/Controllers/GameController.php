@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GameCreateRequest;
-use App\Models\Asset;
 use App\Models\Game;
 use App\Repositories\Admin\GameRepository;
 use Illuminate\Http\Request;
@@ -43,8 +42,9 @@ class GameController extends Controller
      */
     public function create()
     {
-        $genres = $this->gameRepository->allgenre();
-        return view('admin.game.create', compact('genres'));
+        $genres = $this->gameRepository->allGenre();
+        $platforms = $this->gameRepository->allPlatform();
+        return view('admin.game.create', compact('genres', 'platforms'));
     }
 
     /**
@@ -80,9 +80,9 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        $game = $this->gameRepository->editGame($id);
-        $asset = $this->gameRepository->editAsset($id);
-        return view('admin.game.edit', compact('game', 'asset'));
+        $game = $this->gameRepository->show($id);
+//        $asset = $this->gameRepository->editAsset($id);
+        return view('admin.game.edit', compact('game'));
     }
 
     /**
@@ -94,7 +94,8 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->gameRepository->update($request, $id);
+        return redirect()->route('all-game')->with('status', 'Game updated successfully');
     }
 
     /**
