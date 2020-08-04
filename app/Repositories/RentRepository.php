@@ -20,7 +20,7 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::where('status', 1)->get();
+        return Rent::where('status', 1)->select('game_id')->distinct()->get();
     }
 
     public function store(Request $request) {
@@ -109,5 +109,9 @@ class RentRepository {
     public function cartItems($ids) {
 
         return Rent::whereIn('id', $ids)->get();
+    }
+
+    public function rentPostedUsers($id) {
+        return Rent::where('game_id', $id)->get();
     }
 }

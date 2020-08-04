@@ -66,6 +66,9 @@
         $api->post('/cancel', 'App\Http\Controllers\API\SslCommerzPaymentController@cancel');
         $api->post('/ipn', 'App\Http\Controllers\API\SslCommerzPaymentController@ipn');
 
+        //Rent Posted Users
+        $api->get('rent-posted-users/{id}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
