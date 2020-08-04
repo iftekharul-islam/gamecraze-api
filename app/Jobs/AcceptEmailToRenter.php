@@ -2,25 +2,28 @@
 
 namespace App\Jobs;
 
-use App\Notifications\RenterNotification;
+use App\Models\User;
+use App\Notifications\RenterPostAcceptNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SendEmailToRenter implements ShouldQueue
+class AcceptEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    private $renter;
     private $rent;
 
     /**
-     * Create a new job instance.
-     *
-     * @param $renter
+     * AcceptEmailToRenter constructor.
+     * @param User $renter
+     * @param $rent
      */
-    public function __construct($rent)
+    public function __construct(User $renter, $rent)
     {
+        $this->renter = $renter;
         $this->rent = $rent;
     }
 
@@ -31,6 +34,6 @@ class SendEmailToRenter implements ShouldQueue
      */
     public function handle()
     {
-        $this->renter->notify(new RenterNotification());
+        $this->renter->notify(new RenterPostAcceptNotification($this->rent));
     }
 }

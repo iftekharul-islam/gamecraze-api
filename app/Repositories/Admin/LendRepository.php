@@ -10,15 +10,15 @@ class LendRepository
     /**
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function history() {
-        return Lender::with('lender', 'rent.user', 'rent.game')->get();
+    public function history () {
+        return Lender::with('lender', 'rent')->get();
     }
 
     /**
      * @param $id
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function details($id) {
-        return Lender::with('lender', 'rent.user', 'rent.game')->findOrFail($id);
+    public function details ($id) {
+        return Lender::with('lender', 'rent.user.address', 'rent.game')->findOrFail($id);
     }
 }

@@ -50,11 +50,7 @@
                                          src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}"
                                          alt="User profile picture">
                                 </div>
-                                <h3 class="profile-username text-center">{{ $rent->user->name }}</h3>
-
-                                <p class="text-muted text-center">Software Engineer</p>
-
-                                <ul class="list-group list-group-unbordered mb-3">
+                                <h3 class="profile-username text-center">{{ $rent->user->name }}</h3><ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Gender</b> <a class="float-right">{{ $rent->user->gender }}</a>
                                     </li>

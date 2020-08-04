@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Game owner</th>
-                                        <th>Renter</th>
+                                        <th>Borrower</th>
                                         <th>Rented Game</th>
                                         <th>Lending date</th>
                                         <th>Status</th>
@@ -66,7 +66,11 @@
                                             <td>
                                                 {{ $lend->rent->user->name }}
                                             </td>
-                                            <td>{{ $lend->rent->game->name }}</td>
+                                            <td>
+                                                <a href="{{ route('lend.show', $lend->id) }}">
+                                                    {{ $lend->rent->game->name }}
+                                                </a>
+                                            </td>
                                             <td>{{ $lend->lend_date }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
@@ -116,48 +120,5 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@endsection
-@section('js')
-    <script type="text/javascript">
-        function deletePost (id) {
-            const swalWithBootstrapButtons = Swal.mixin ({
-                customClass: {
-                    confirmButton: 'btn btn-success ml-2',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire ({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then ((result) => {
-                if (result.value) {
-                    document.getElementById('delete-form-' + id).submit();
-                    swalWithBootstrapButtons.fire({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
-                        icon: 'success',
-                        timer: 1500,
-                    })
-                } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire({
-                        title: 'Cancelled',
-                        text: 'Your imaginary file is safe :)',
-                        icon: 'error',
-                        timer: 1500,
-                    })
-                }
-            });
-        }
-    </script>
 @endsection
 
