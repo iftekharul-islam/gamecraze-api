@@ -116,9 +116,9 @@ class SslCommerzPaymentController extends BaseController
             */
             $update_product = Order::where('transaction_id', $tran_id)
                 ->update(['status' => 'Failed']);
-            return redirect('http://localhost:8080/fail');
+            return redirect(config('sslcommerz.game_hub') . 'fail');
         }
-        return redirect('http://localhost:8080/success');
+        return redirect(config('sslcommerz.game_hub') . 'success');
     }
 
     public function fail(Request $request)
@@ -131,9 +131,9 @@ class SslCommerzPaymentController extends BaseController
             $update_product = Order::where('transaction_id', $tran_id)
                 ->update(['status' => 'Failed']);
 
-            return redirect('http://localhost:8080/fail');
+            return redirect(config('sslcommerz.game_hub') . 'fail');
         }
-        return redirect('http://localhost:8080/success');
+        return redirect(config('sslcommerz.game_hub') . 'success');
     }
 
     public function cancel(Request $request)
