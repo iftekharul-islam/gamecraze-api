@@ -13,12 +13,12 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>{{ $games }}</h3>
-                                <p>New Games</p>
+                                <p>All Games</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-game-controller-b"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('all-game') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -33,7 +33,7 @@
                             <div class="icon">
                                 <i class="ion ion-ios-bookmarks"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('rentPost.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -43,12 +43,12 @@
                             <div class="inner">
                                 <h3>{{ $lends }}</h3>
 
-                                <p>On Lending</p>
+                                <p>On Rent</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-book"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('lend.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

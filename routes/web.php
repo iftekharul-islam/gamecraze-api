@@ -65,7 +65,8 @@ Route::prefix('admin')->group(function () {
 //        Route::post('rent-post/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
 //        Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
 //        Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
-
+        //Search bar
+        Route::get('search','\App\Http\Controllers\SearchController@index')->name('search.game');
     });
 });
 Auth::routes();
