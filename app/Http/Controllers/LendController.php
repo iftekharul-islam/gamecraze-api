@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lender;
 use App\Repositories\Admin\LendRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LendController extends Controller
@@ -56,8 +58,13 @@ class LendController extends Controller
     public function show($id)
     {
         $lend = $this->lendRepository->details($id);
-//        return $lend;
-        return view('admin.lend-history.show', compact('lend'));
+        $data = Lender::all()->first();
+        $lendDate = $data->lend_date;
+        $lendWeek = $data->lend_week;
+        $startDate = date("d F, Y", strtotime ($lendDate ."+1 day"));
+        $endDate = date("d F, Y", strtotime ($startDate ."+" .+ $lendWeek . "week"));
+
+        return view('admin.lend-history.show', compact('lend', 'endDate', 'startDate'));
     }
 
     /**
