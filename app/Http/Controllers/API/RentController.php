@@ -109,4 +109,9 @@ class RentController extends BaseController
         $rents = $this->rentRepository->cartItems($ids);
         return $this->response->collection($rents, new RentTransformer());
     }
+
+    public function rentPostedUsers($id) {
+        $rents = $this->rentRepository->rentPostedUsers($id);
+        return $this->response->collection($rents, new RentTransformer());
+    }
 }
