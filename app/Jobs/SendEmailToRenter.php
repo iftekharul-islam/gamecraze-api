@@ -12,16 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class SendEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $rent;
+    private $renter;
 
     /**
      * Create a new job instance.
      *
      * @param $renter
      */
-    public function __construct($rent)
+    public function __construct($renter)
     {
-        $this->rent = $rent;
+        $this->renter = $renter;
     }
 
     /**
