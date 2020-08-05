@@ -56,7 +56,6 @@ class SslCommerzPaymentController extends BaseController
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
-        $post_data['success_url'] = "http://localhost:8080/success";
 
         #Before  going to initiate the payment order status need to update as Pending.
 
