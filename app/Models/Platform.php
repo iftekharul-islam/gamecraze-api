@@ -13,4 +13,7 @@ class Platform extends Model
     public function games() {
         return $this->belongsToMany(Game::class)->withPivot(['requirements','released_at']);
     }
+    public function rent() {
+        return $this->hasOne(Rent::class);
+    }
 }
