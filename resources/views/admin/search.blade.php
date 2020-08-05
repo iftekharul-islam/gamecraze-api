@@ -44,10 +44,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <a href="{{ route('game.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Game</a>
-                            </div>
                             <div class="card-body">
+                                @if(count($games)>0)
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -83,6 +81,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                    <h3 class='text-center'>No data found</h3>
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
