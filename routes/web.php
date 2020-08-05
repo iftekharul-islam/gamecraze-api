@@ -18,6 +18,10 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => [ 'auth', 'role:admin']], function () {
+        //Search bar
+        Route::get('search','\App\Http\Controllers\SearchController@index')->name('search');
+        Route::get('autocomplete','\App\Http\Controllers\SearchController@autocomplete')->name('autocomplete');
+
         Route::get('dashboard','\App\Http\Controllers\DashboardController@index')->name('dashboard');
         //Platform Crud
         Route::get('platforms','\App\Http\Controllers\PlatformController@index')->name('all-platform');
@@ -65,8 +69,6 @@ Route::prefix('admin')->group(function () {
 //        Route::post('rent-post/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
 //        Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
 //        Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
-        //Search bar
-        Route::get('search','\App\Http\Controllers\SearchController@index')->name('search.game');
     });
 });
 Auth::routes();

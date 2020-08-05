@@ -49,7 +49,6 @@
             </footer>
         @endif
     </div>
-
     <!-- jQuery -->
     <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -92,7 +91,18 @@
 {{--    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="{{ asset('css/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js"></script>
+    <script>
+        var path = "{{ route('autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source: function (query, process) {
+                return $.get(path + $('#search').val(), {}, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
     @yield('js')
 </body>
 </html>

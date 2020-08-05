@@ -13,19 +13,17 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <form action="{{ route('search.game') }}" method="get">
-                    {{ csrf_field() }}
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </form>
+        <div class="form-inline ml-3">
+            <form class="input-group input-group-sm" action="{{ route('search') }}" method="get">
+                {{csrf_field()}}
+                <input class="typeahead form-control form-control-navbar" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+                </div>
+            </form>
+        </div>
         <!-- Messages Dropdown Menu -->
 {{--        <li class="nav-item dropdown">--}}
 {{--            <a class="nav-link" data-toggle="dropdown" href="#">--}}

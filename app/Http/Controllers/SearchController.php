@@ -14,11 +14,21 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        return 'hi';
-        $games = Game::where('name', 'ilike', "%{$request->input('search')}%")
+        $games = Game::where("name","LIKE","%{$request->input('search')}%")
             ->get();
 
-        return view('search', compact('games'));
+//        return response()->json($games);
+
+        return view('admin.search', compact('games'));
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $data = Item::select("name")
+            ->where("name","LIKE","%{$request->query}%")
+            ->get();
+
+        return response()->json($data);
     }
 
     /**
