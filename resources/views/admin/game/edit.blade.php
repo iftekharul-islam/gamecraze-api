@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <div class="card card-primary">
                     <!-- form start -->
-                    <form method="post" action="{{ route('game.update', $game->id) }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -32,20 +32,59 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $game->name }}">
                             </div>
                             <div class="form-group">
-                                <label for="name">Release date</label>
+                                <label for="genres">Genres</label>
+                                <select name="genres[]" class="form-control selectpicker" multiple data-live-search="true">
+                                    @foreach($genres as $genre)
+                                        @foreach($game->genres as $gen)
+                                            @if($gen->id == $genre->id)
+                                                <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
+                                                <?php continue 2; ?>
+                                            @endif
+                                        @endforeach
+                                        <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="platforms">Platforms</label>
+                                <select name="platforms[]" class="form-control selectpicker" multiple data-live-search="true">
+                                    @foreach($platforms as $platform)
+                                        @foreach($game->platforms as $plat)
+                                            @if($plat->id == $platform->id)
+                                                <option value="{{ $platform->id }}" selected>{{ $platform->name }}</option>
+                                                <?php continue 2; ?>
+                                            @endif
+                                        @endforeach
+                                            <option value="{{ $platform->id }}">{{ $platform->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="released">Release date</label>
                                 <input type="date" class="form-control" id="released" name="released" value="{{ $game->released }}">
                             </div>
                             <div class="form-group">
-                                <label for="name">Rating (Out of 10)</label>
+                                <label for="rating">Rating (Out of 10)</label>
                                 <input type="number" class="form-control" id="rating" name="rating" value="{{ $game->rating }}">
                             </div>
                             <div class="form-group">
-                                <label for="name">Description</label>
+                                <label for="description">Description</label>
                                 <input type="text" class="form-control" id="description" name="description" value="{{ $game->description }}">
                             </div>
                             <div class="form-group">
-                                <label for="name">Game Mode</label>
+                                <label for="game_mode">Game Mode</label>
                                 <input type="text" class="form-control" id="game_mode" name="game_mode" value="{{ $game->game_mode }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="game_image">Game image</label>
+                                <input type="file" class="form-control mb-2" id="game_image" name="game_image" onchange="loadPreview(this);">
+                                @if(count($game->assets)>0)
+                                    @foreach($game->assets as $asset)
+                                        <img src="{{ asset($asset->url) }}" id="preview_img" class="img-thumbnail" width="200" height="150">
+                                    @endforeach
+                                @else
+                                    <img src="{{ asset('storage/game-image/dummy-image.jpg') }}" id="preview_img" class="img-thumbnail" width="200" height="150">
+                                @endif
                             </div>
                         </div>
                         <div class="card-body">
@@ -59,4 +98,22 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+@section('js')
+    <script>
+        function loadPreview(input, id) {
+            id = id || '#preview_img';
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(id)
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+@endsection
+
 

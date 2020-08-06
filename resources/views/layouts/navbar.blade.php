@@ -15,7 +15,6 @@
         <!-- SEARCH FORM -->
         <div class="form-inline ml-3">
             <form class="input-group input-group-sm" action="{{ route('search') }}" method="get">
-                {{csrf_field()}}
                 <input class="typeahead form-control form-control-navbar" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
