@@ -75,6 +75,7 @@ class GameRepository
      * @return mixed
      */
     public function update($request, $id) {
+
         $game = Game::findOrFail($id);
         $data = $request->only(['name', 'released', 'rating', 'description', 'game_mode']);
 
@@ -94,7 +95,32 @@ class GameRepository
             $game->game_mode = $data['game_mode'];
         }
         $game->save();
-        return $game;
+
+        $game->genres()->sync($request->genres);
+        $game->platforms()->sync($request->platforms);
+
+        if ($request->hasFile('game_image')) {
+            $image = $request->file('game_image');
+            $image_name = 'game-'. auth()->user()->id. '-' .$image->getClientOriginalName();
+            $path = "game-image/". $image_name;
+            $image->storeAs('game-image' , $image_name);
+
+            if (isset($game->assets[0]) && $game->assets[0] != null){
+                $oldImg = $game->assets[0]->url;
+                unlink($oldImg);
+
+                $img = Asset::find($game->assets[0]->id);
+                $img->name = $image_name;
+                $img->url = 'storage/'. $path;
+                $img->save();
+            } else {
+                Asset::create([
+                    'game_id' => $game->id,
+                    'name' => $image_name,
+                    'url' => 'storage/'. $path,
+                ]);
+            }
+        }
     }
 
 

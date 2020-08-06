@@ -17,8 +17,6 @@ class SearchController extends Controller
         $games = Game::where("name","LIKE","%{$request->input('search')}%")
             ->get();
 
-//        return response()->json($games);
-
         return view('admin.search', compact('games'));
     }
 

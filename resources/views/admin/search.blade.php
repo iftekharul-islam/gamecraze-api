@@ -47,6 +47,7 @@
                             <div class="card-body">
                                 @if(count($games)>0)
                                 <table id="example2" class="table table-bordered table-hover">
+                                    <h4>Found {{count($games)}} data on search</h4>
                                     <thead>
                                     <tr>
                                         <th>Serial no</th>

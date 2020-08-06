@@ -71,6 +71,7 @@
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
+                    <!-- calender -->
                     <section class="col-lg-7 connectedSortable">
                         <!-- Calendar -->
                         <div class="card bg-gradient-success">
@@ -113,6 +114,7 @@
                     </section>
                     <!-- /.Left col -->
                     <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                    <!-- canvas -->
                     <section class="col-lg-5 connectedSortable">
                         <!-- Map card -->
                         <div class="card bg-gradient-primary">

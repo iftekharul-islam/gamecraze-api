@@ -74,11 +74,11 @@
                                             <td>{{ $lend->lend_date }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
-                                                    <a class="badge-info badge text-white" >On lending</a>
+                                                    <a class="badge-info badge text-white">On lending</a>
                                                 @elseif ($lend->status === 1)
-                                                    <a class="badge-success badge text-white" >Lending complete</a>
+                                                    <a class="badge-success badge text-white">Lending complete</a>
                                                 @elseif ($lend->status === 2)
-                                                    <a class="badge-danger badge text-white" >Stolen by lender</a>
+                                                    <a class="badge-danger badge text-white">Stolen by lender</a>
                                                 @endif
                                             </td>
                                             <td>
