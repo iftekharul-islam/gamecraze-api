@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Asset;
 use App\Models\Game;
+use App\Models\GameMode;
 use App\Models\Genre;
 use App\Models\Platform;
 use Illuminate\Support\Str;
@@ -34,10 +35,17 @@ class GameRepository
     }
 
     /**
+     * @return GameMode[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function allGameMode () {
+        return GameMode::all();
+    }
+
+    /**
      *
      */
     public function show ($id) {
-        return Game::with('assets', 'platforms', 'genres')->findOrFail($id);
+        return Game::with('assets', 'platforms', 'genres', 'gameModes')->findOrFail($id);
     }
     /**
      * @param $request
@@ -45,7 +53,7 @@ class GameRepository
      */
     public function store($request) {
 
-        $game_data = $request->only(['name', 'game_mode', 'rating', 'description', 'released']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = 'Testing';
@@ -54,6 +62,7 @@ class GameRepository
 
         $game->genres()->sync($request->genres, false);
         $game->platforms()->sync($request->platforms, false);
+        $game->gameModes()->sync($request->game_modes, false);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
@@ -98,6 +107,7 @@ class GameRepository
 
         $game->genres()->sync($request->genres);
         $game->platforms()->sync($request->platforms);
+        $game->gameModes()->sync($request->game_modes);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');

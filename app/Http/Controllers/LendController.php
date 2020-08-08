@@ -22,9 +22,7 @@ class LendController extends Controller
      */
     public function index()
     {
-        // TODO Need to check
         $lends = $this->lendRepository->history();
-//        return $lends;
         return view('admin.lend-history.index', compact('lends'));
     }
 

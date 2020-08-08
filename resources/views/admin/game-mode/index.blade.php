@@ -8,17 +8,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Games</h1>
+                        <h1>Game mode</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Games</li>
+                            <li class="breadcrumb-item active">Game mode</li>
                         </ol>
                     </div>
                 </div>
             </div>
-        <!-- /.container-fluid -->
         </section>
         <!-- Main content -->
         <section class="content">
@@ -32,6 +31,7 @@
                         {{ session('error') }}
                     </div>
                 @endif
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -42,38 +42,46 @@
                     </div>
                 @endif
                 <div class="row">
+                    <!-- /.container-fluid -->
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('game.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Game</a>
+                                <a href="{{ route('gameMode.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Game mode</a>
                             </div>
                             <div class="card-body">
-                                @if (count($games) > 0)
+                                @if (count($gameModes)>0)
                                     <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Serial no</th>
                                         <th>Name</th>
-                                        <th>Rating</th>
+                                        <th>Slug</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($games as $key=>$game)
+                                    @foreach($gameModes as $key=>$gameMode)
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td><a href="{{ route('game.show', $game->id) }}">{{ $game->name }}</a></td>
-                                            <td>{{ $game->rating }}</td>
+                                            <td>{{ $gameMode->name }}</td>
+                                            <td>{{ $gameMode->slug }}</td>
+                                            <td>
+                                                @if ($gameMode->status == 1)
+                                                    <a class="badge-success badge text-white" >Active</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Inactive</a>
+                                                @endif
+                                            </td>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-3"
-                                                   href="{{ route('game.edit', $game->id) }}"><i
+                                                   href="{{ route('gameMode.edit', $gameMode->id) }}"><i
                                                         class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="deleteGame({{ $game->id }})">
+                                                        onclick="deleteGameMode({{ $gameMode->id }})">
                                                     <i class="far fa-trash-alt"></i></button>
-                                                <form id="delete-form-{{ $game->id }}"
-                                                      action="{{ route('game.destroy', $game->id) }}"
-                                                      method="post" style="display: none;">
+                                                <form id="delete-form-{{ $gameMode->id }}"
+                                                      action="{{ route('gameMode.destroy', $gameMode->id) }}"
+                                                      method="post" class="d-none">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -102,7 +110,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function deleteGame(id) {
+        function deleteGameMode(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',
@@ -134,7 +142,7 @@
                 ) {
                     swalWithBootstrapButtons.fire({
                         title: 'Cancelled',
-                        text: 'Your imaginary file is safe :)',
+                        text: 'Your file is safe :)',
                         icon: 'error',
                         timer: 1500,
                     })

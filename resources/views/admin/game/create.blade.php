@@ -43,7 +43,7 @@
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('platforms') ? ' has-error' : '' }}">
-                                <label for="genre">Platforms</label>
+                                <label for="platforms">Platforms</label>
                                 <select name="platforms[]" id="platforms" class="form-control selectpicker" multiple data-live-search="true" required>
                                     @foreach($platforms as $platform)
                                         <option value="{{$platform->id}}">{{$platform->name}}</option>
@@ -54,7 +54,7 @@
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('genre') ? ' has-error' : '' }}">
-                                <label for="genre">Genres</label>
+                                <label for="genres">Genres</label>
                                 <select name="genres[]" id="genres" class="form-control selectpicker" multiple data-live-search="true" required>
                                     @foreach($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->name}}</option>
@@ -65,14 +65,14 @@
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('released') ? ' has-error' : '' }}">
-                                <label for="mode">Release date</label>
+                                <label for="released">Release date</label>
                                 <input type="date" class="form-control" id="released" name="released" placeholder="Enter Game released date" required>
                                 @if ($errors->has('released'))
                                     <span class="text-danger"><strong>{{ $errors->first('released') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                <label for="mode">Rating (Out of 10)</label>
+                                <label for="rating">Rating (Out of 100)</label>
                                 <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter Game rating" required>
                                 @if ($errors->has('rating'))
                                     <span class="text-danger"><strong>{{ $errors->first('rating') }}</strong></span>
@@ -85,11 +85,15 @@
                                     <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="false-padding-bottom-form form-group{{ $errors->has('game_mode') ? ' has-error' : '' }}">
-                                <label for="mode">Game Mode</label>
-                                <input type="text" class="form-control" id="mode" name="game_mode" placeholder="Enter Game Mode" required>
-                                @if ($errors->has('game_mode'))
-                                    <span class="text-danger"><strong>{{ $errors->first('game_mode') }}</strong></span>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('game_modes') ? ' has-error' : '' }}">
+                                <label for="game_modes">Game Mode</label>
+                                <select name="game_modes[]" id="game_modes" class="form-control selectpicker" multiple data-live-search="true" required>
+                                    @foreach($gameModes as $gameMode)
+                                        <option value="{{$gameMode->id}}">{{$gameMode->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('platform'))
+                                    <span class="text-danger"><strong>{{ $errors->first('platform') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">
