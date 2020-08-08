@@ -11,7 +11,7 @@ class LendRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function history () {
-        return Lender::with('lender', 'rent')->get();
+        return Lender::with('lender', 'rent.game')->get();
     }
 
     /**

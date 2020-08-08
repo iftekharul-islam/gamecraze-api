@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Genre extends Model
+class GameMode extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'name', 'author_id', 'slug'
+        'author_id', 'name', 'status', 'slug'
     ];
 
     public function games()

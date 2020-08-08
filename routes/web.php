@@ -52,6 +52,13 @@ Route::prefix('admin')->group(function () {
         Route::get('disk-condition/edit/{id}','\App\Http\Controllers\DiskConditionController@edit')->name('diskCondition.edit');
         Route::post('disk-condition/update/{id}','\App\Http\Controllers\DiskConditionController@update')->name('diskCondition.update');
         Route::delete('disk-condition/destroy/{id}','\App\Http\Controllers\DiskConditionController@destroy')->name('diskCondition.destroy');
+        //Game Mode Crud
+        Route::get('game-modes','\App\Http\Controllers\GameModeController@index')->name('gameMode.all');
+        Route::get('create/game-mode','\App\Http\Controllers\GameModeController@create')->name('gameMode.create');
+        Route::post('store/game-mode','\App\Http\Controllers\GameModeController@store')->name('gameMode.store');
+        Route::get('game-mode/edit/{id}','\App\Http\Controllers\GameModeController@edit')->name('gameMode.edit');
+        Route::post('game-mode/update/{id}','\App\Http\Controllers\GameModeController@update')->name('gameMode.update');
+        Route::delete('game-mode/destroy/{id}','\App\Http\Controllers\GameModeController@destroy')->name('gameMode.destroy');
         // Rent Post Crud
         Route::get('rent-posts','\App\Http\Controllers\RentController@index')->name('rentPost.all');
         Route::get('rent-post/{id}','\App\Http\Controllers\RentController@show')->name('rentPost.show');

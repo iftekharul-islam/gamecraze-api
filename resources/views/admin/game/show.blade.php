@@ -64,7 +64,11 @@
                                         </tr>
                                         <tr>
                                             <td>Mode:</td>
-                                            <td>{{ $game->game_mode }}</td>
+                                            <td>
+                                                @foreach($game->gameModes as $gameMode)
+                                                    <span class="badge-success badge">{{ $gameMode->name }}</span>
+                                                @endforeach
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Rating:</td>
