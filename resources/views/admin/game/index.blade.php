@@ -69,7 +69,7 @@
                                                 @if ($game->is_trending === 1)
                                                     <a class="badge-success badge text-white" >Trending</a>
                                                 @else ($game->is_trending === 0)
-                                                    <a class="badge-danger badge text-white" >No Trending</a>
+                                                    <a class="badge-danger badge text-white" >Not Trending</a>
                                                 @endif
                                             </td>
                                             <td>

@@ -69,11 +69,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" value="{{ $game->description }}">
+                                <textarea type="text" class="ckeditor form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
+
                             </div>
                             <div class="form-group">
                                 <label for="game_mode">Game Mode</label>
-                                <input type="text" class="form-control" id="game_mode" name="game_mode" value="{{ $game->game_mode }}">
+                                <select name="game_modes[]" class="form-control selectpicker" multiple data-live-search="true">
+                                    @foreach($modes as $mode)
+                                        @foreach($game->gameModes as $gameMode)
+                                            @if($mode->id == $gameMode->id)
+                                                <option value="{{ $gameMode->id }}" selected>{{ $gameMode->name }}</option>
+                                                <?php continue 2; ?>
+                                            @endif
+                                        @endforeach
+                                        <option value="{{ $mode->id }}">{{ $mode->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="game_image">Game image</label>
@@ -84,6 +95,14 @@
                                     @endforeach
                                 @else
                                     <img src="{{ asset('storage/game-image/dummy-image.jpg') }}" id="preview_img" class="img-thumbnail" width="200" height="150">
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
+                                <label for="is_trending">Is Trending</label><br>
+                                <input type="radio" name="is_trending" value="1" {{ $game->is_trending ==1 ? 'checked':'' }}/> Yes
+                                <input type="radio" name="is_trending" value="0" {{ $game->is_trending ==0 ? 'checked':'' }}/> no
+                                @if ($errors->has('is_trending'))
+                                    <span class="text-danger"><strong>{{ $errors->first('is_trending') }}</strong></span>
                                 @endif
                             </div>
                         </div>
@@ -100,6 +119,9 @@
 @endsection
 @section('js')
     <script>
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
         function loadPreview(input, id) {
             id = id || '#preview_img';
             if (input.files && input.files[0]) {

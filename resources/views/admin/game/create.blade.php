@@ -80,7 +80,7 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" id="mytextarea" name="description" placeholder="Enter Description" required></textarea>
+                                <textarea class="ckeditor form-control" id="description" name="description" placeholder="Enter Description" required></textarea>
                                 @if ($errors->has('description'))
                                     <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif
@@ -124,10 +124,9 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: '#mytextarea'
+    <script>
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
         });
     </script>
 @endsection
