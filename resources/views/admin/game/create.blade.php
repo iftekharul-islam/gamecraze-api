@@ -80,7 +80,7 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" placeholder="Enter Description" required></textarea>
+                                <textarea class="form-control" id="mytextarea" name="description" placeholder="Enter Description" required></textarea>
                                 @if ($errors->has('description'))
                                     <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif
@@ -100,6 +100,14 @@
                                 <label>Game image</label>
                                 <input type="file" class="form-control" id="game_image" name="game_image">
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
+                                <label for="is_trending">Is Trending</label><br>
+                                <input type="radio" name="is_trending" value="1" checked/> Yes
+                                <input type="radio" name="is_trending" value="0" /> no
+                                @if ($errors->has('is_trending'))
+                                    <span class="text-danger"><strong>{{ $errors->first('is_trending') }}</strong></span>
+                                @endif
+                            </div>
                         </div>
                         <!-- /.card-body -->
 
@@ -114,4 +122,12 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+@section('js')
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 @endsection

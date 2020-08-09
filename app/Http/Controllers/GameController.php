@@ -55,6 +55,7 @@ class GameController extends Controller
      */
     public function store(GameCreateRequest $request)
     {
+//        return $request->all();
         $this->gameRepository->store($request);
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }

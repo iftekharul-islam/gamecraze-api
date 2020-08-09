@@ -55,6 +55,7 @@
                                         <th>Serial no</th>
                                         <th>Name</th>
                                         <th>Rating</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -64,6 +65,13 @@
                                             <td>{{ $key+1 }}</td>
                                             <td><a href="{{ route('game.show', $game->id) }}">{{ $game->name }}</a></td>
                                             <td>{{ $game->rating }}</td>
+                                            <td>
+                                                @if ($game->is_trending === 1)
+                                                    <a class="badge-success badge text-white" >Trending</a>
+                                                @else ($game->is_trending === 0)
+                                                    <a class="badge-danger badge text-white" >No Trending</a>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-3"
                                                    href="{{ route('game.edit', $game->id) }}"><i
