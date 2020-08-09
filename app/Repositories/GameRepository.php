@@ -100,4 +100,8 @@ class GameRepository {
     public function search($gameName) {
         return Game::where('name','like','%'.$gameName.'%')->orderBy('id','desc')->get();
     }
+
+    public function rentGames($ids) {
+        return Game::whereIn('id', $ids)->get();
+    }
 }

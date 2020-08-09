@@ -107,4 +107,10 @@ class GameController extends BaseController
         $games = Game::latest('released')->take(5)->get();
         return $this->response->collection($games, new GameTransformer());
     }
+
+    public function rentGames(Request $request) {
+        $ids = explode(',', $request->ids);
+        $games = $this->gameRepository->rentGames($ids);
+        return $this->response->collection($games, new GameTransformer());
+    }
 }

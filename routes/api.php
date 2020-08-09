@@ -54,6 +54,7 @@
 	    $api->get('rents/{id}', 'App\Http\Controllers\API\RentController@show');
 	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
+	    $api->get('rent-games', 'App\Http\Controllers\API\GameController@rentGames');
 
         //disk-condition get
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
