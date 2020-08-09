@@ -53,7 +53,7 @@ class GameRepository
      */
     public function store($request) {
 
-        $game_data = $request->only(['name', 'rating', 'description', 'released']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = 'Testing';
@@ -86,7 +86,7 @@ class GameRepository
     public function update($request, $id) {
 
         $game = Game::findOrFail($id);
-        $data = $request->only(['name', 'released', 'rating', 'description', 'game_mode']);
+        $data = $request->only(['name', 'released', 'rating', 'description', 'game_mode', 'is_trending']);
 
         if (isset($data['name'])) {
             $game->name = $data['name'];
@@ -102,6 +102,9 @@ class GameRepository
         }
         if (isset($data['game_mode'])) {
             $game->game_mode = $data['game_mode'];
+        }
+        if (isset($data['is_trending'])) {
+            $game->is_trending = $data['is_trending'];
         }
         $game->save();
 

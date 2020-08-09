@@ -80,9 +80,10 @@ class GameController extends Controller
     public function edit($id)
     {
         $game = $this->gameRepository->show($id);
-        $genres = $this->gameRepository->allGenre();
         $platforms = $this->gameRepository->allPlatform();
-        return view('admin.game.edit', compact('game', 'genres', 'platforms'));
+        $genres = $this->gameRepository->allGenre();
+        $modes = $this->gameRepository->allGameMode();
+        return view('admin.game.edit', compact('game', 'genres', 'platforms', 'modes'));
     }
 
     /**
