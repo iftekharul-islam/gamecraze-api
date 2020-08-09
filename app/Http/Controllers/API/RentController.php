@@ -104,7 +104,6 @@ class RentController extends BaseController
     }
 
     public function cartItems(Request $request) {
-
         $ids = explode(',', $request->ids);
         $rents = $this->rentRepository->cartItems($ids);
         return $this->response->collection($rents, new RentTransformer());

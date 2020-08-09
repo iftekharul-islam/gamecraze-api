@@ -59,13 +59,11 @@ class UserRepository {
                 $image = $userData['id_image'];
                 $userImage = 'id_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
-                $user->image =  'identification/' . $userImage;
+                $user->identification_image =  'identification/' . $userImage;
             }
-            if (isset($userData['address']) || isset($userData['addressLine1']) || isset($userData['addressLine2']) || isset($userData['city']) || isset($userData['postCode'])) {
+            if (isset($userData['address']) || isset($userData['city']) || isset($userData['postCode'])) {
                 $address = Address::find($user->address_id);
                 $address->address = $userData['address'];
-                $address->address_line_1 = $userData['addressLine1'];
-                $address->address_line_2 = $userData['addressLine2'];
                 $address->city = $userData['city'];
                 $address->post_code = $userData['postCode'];
                 $address->save();
