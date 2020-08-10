@@ -52,10 +52,11 @@
                                     <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Serial no</th>
+                                        <th>No</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role(s)</th>
+                                        <th>Type</th>
 {{--                                        <th>Action</th>--}}
                                     </tr>
                                     </thead>
@@ -69,7 +70,15 @@
                                                 @foreach($user->roles as $role)
                                                     {{ $role->name }},
                                                 @endforeach
-
+                                            </td>
+                                            <td>
+                                                @if ($user->status === 0)
+                                                    <a class="badge-danger badge text-white">Inactive</a>
+                                                @elseif ($user->status === 1)
+                                                    <a class="badge-success badge text-white">Active</a>
+                                                @elseif ($user->status === null)
+                                                    <a class="badge-info badge text-white">Invalid</a>
+                                                @endif
                                             </td>
 {{--                                            <td>--}}
 {{--                                                <a class="btn btn-sm btn-primary mr-3"--}}

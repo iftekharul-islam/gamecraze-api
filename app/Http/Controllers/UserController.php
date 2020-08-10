@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Repositories\Admin\UserRepository;
-use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -31,7 +29,6 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userRepository->user();
-//        return $users;
         return view('admin.user.index', compact('users'));
     }
 

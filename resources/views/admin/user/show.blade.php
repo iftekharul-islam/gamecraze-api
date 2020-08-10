@@ -75,6 +75,7 @@
                                 <h3 class="card-title">User details</h3>
                             </div>
                             <div class="card-body">
+                                @if ($user->address != null)
                                 <table class="table table-borderless">
                                     <tbody>
                                     <tr>
@@ -85,28 +86,11 @@
                                         <td>City:</td>
                                         <td>{{ $user->address->city }}</td>
                                     </tr>
-{{--                                    <tr>--}}
-{{--                                        <td>Mode:</td>--}}
-{{--                                        <td>{{ $rent->game->game_mode }}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td>Platform:</td>--}}
-{{--                                        <td>{{ $rent->platform->name ?? '' }}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td>Rating:</td>--}}
-{{--                                        <td>{{ $rent->game->rating }}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td>Disk condition:</td>--}}
-{{--                                        <td>{{ $rent->diskCondition->name ?? '' }} ({{ $rent->diskCondition->description ?? '' }})</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td>Max Rent Week:</td>--}}
-{{--                                        <td>{{ $rent->max_week }}</td>--}}
-{{--                                    </tr>--}}
                                     </tbody>
                                 </table>
+                                @else
+                                    <h4 class="text-center">No data available</h4>
+                                @endif
                                 <hr class="fancy4">
                             </div><!-- /.card-body -->
                         </div>
