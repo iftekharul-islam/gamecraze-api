@@ -76,6 +76,9 @@ Route::prefix('admin')->group(function () {
 //        Route::post('rent-post/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
 //        Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
 //        Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
+        // users
+        Route::get('users','\App\Http\Controllers\UserController@index')->name('user.all');
+        Route::get('user/{id}','\App\Http\Controllers\UserController@show')->name('user.show');
     });
 });
 Auth::routes();

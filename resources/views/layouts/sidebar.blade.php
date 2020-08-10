@@ -65,7 +65,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('gameMode.all') }}" class="nav-link {{ (request()->routeIs('gameMode.all', 'gameMode.create')) ? 'active' : '' }}">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="nav-icon fas fa-user-friends"></i>
                         <p>
                             Game Mode
                         </p>
@@ -76,6 +76,14 @@
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Rent Posts
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('user.all') }}" class="nav-link {{ (request()->routeIs('user.all', 'user.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            User
                         </p>
                     </a>
                 </li>
