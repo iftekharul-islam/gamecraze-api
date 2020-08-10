@@ -32,6 +32,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('user.all') }}" class="nav-link {{ (request()->routeIs('user.all', 'user.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('all-game') }}" class="nav-link {{ (request()->routeIs('all-game', 'game.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -76,14 +84,6 @@
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Rent Posts
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('user.all') }}" class="nav-link {{ (request()->routeIs('user.all', 'user.show')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            User
                         </p>
                     </a>
                 </li>
