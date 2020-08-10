@@ -45,7 +45,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('game.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Game</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> User</a>
                             </div>
                             <div class="card-body">
 {{--                                @if (count($users) > 0)--}}

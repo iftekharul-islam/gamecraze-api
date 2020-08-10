@@ -79,6 +79,8 @@ Route::prefix('admin')->group(function () {
         // users
         Route::get('users','\App\Http\Controllers\UserController@index')->name('user.all');
         Route::get('user/{id}','\App\Http\Controllers\UserController@show')->name('user.show');
+        Route::get('create/user','\App\Http\Controllers\UserController@create')->name('user.create');
+        Route::post('store/user','\App\Http\Controllers\UserController@store')->name('user.store');
     });
 });
 Auth::routes();

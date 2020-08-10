@@ -78,12 +78,12 @@
                                 <table class="table table-borderless">
                                     <tbody>
                                     <tr>
-                                        <td>Location:</td>
+                                        <td>Address:</td>
                                         <td>{{ $user->address->address }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Address:</td>
-                                        <td>{{ $user->address->address_line_1 }}</td>
+                                        <td>City:</td>
+                                        <td>{{ $user->address->city }}</td>
                                     </tr>
 {{--                                    <tr>--}}
 {{--                                        <td>Mode:</td>--}}

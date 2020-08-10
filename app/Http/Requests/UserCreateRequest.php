@@ -24,8 +24,21 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'phone_number' => 'required|max:11',
+            'name' => 'required|unique:users,name',
+            'phone_number' => 'required|unique:users,phone_number|max:11',
+            'password' => 'required|confirmed',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field cannot be empty',
+            'name.unique' => 'The name field should be unique',
+            'phone_number.required' => 'The phone number field cannot be empty',
+            'phone_number.unique' => 'The phone number should be unique',
+            'password.required' => 'The password field cannot be empty',
+            'password.confirmed' => 'The password field should be same',
         ];
     }
 }
