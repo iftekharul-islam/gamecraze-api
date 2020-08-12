@@ -80,6 +80,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('basePrice.all') }}" class="nav-link {{ (request()->routeIs('basePrice.all', 'basePrice.create')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Base price
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('rentPost.all') }}" class="nav-link {{ (request()->routeIs('rentPost.all')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>

@@ -81,6 +81,13 @@ Route::prefix('admin')->group(function () {
         Route::get('user/{id}','\App\Http\Controllers\UserController@show')->name('user.show');
         Route::get('create/user','\App\Http\Controllers\UserController@create')->name('user.create');
         Route::post('store/user','\App\Http\Controllers\UserController@store')->name('user.store');
+        //Base price Crud
+        Route::get('base-prices','\App\Http\Controllers\BasePriceController@index')->name('basePrice.all');
+        Route::get('create/base-price','\App\Http\Controllers\BasePriceController@create')->name('basePrice.create');
+        Route::post('store/base-price','\App\Http\Controllers\BasePriceController@store')->name('basePrice.store');
+        Route::get('base-price/edit/{id}','\App\Http\Controllers\BasePriceController@edit')->name('basePrice.edit');
+        Route::post('base-price/update/{id}','\App\Http\Controllers\BasePriceController@update')->name('basePrice.update');
+        Route::delete('base-price/destroy/{id}','\App\Http\Controllers\BasePriceController@destroy')->name('basePrice.destroy');
     });
 });
 Auth::routes();
