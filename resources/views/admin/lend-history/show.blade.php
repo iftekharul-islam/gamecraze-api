@@ -78,7 +78,7 @@
                                             <address>
                                                 <strong>{{ $lend->rent->user->name }}</strong><br>
                                                 {{ $lend->rent->user->address->address }}<br>
-                                                {{ $lend->rent->user->address->address_line_1 }}<br>
+                                                {{ $lend->rent->user->address->city }}<br>
                                                 {{ $lend->rent->user->email }}<br>
                                                 {{ $lend->rent->user->phone_number }}<br>
                                             </address>
@@ -88,16 +88,11 @@
                                             Borrower
                                             <hr>
                                             <address>
-                                                <strong>{{ $lend->lender->name }}</strong><br>
-                                                {{ $lend->lender->address->address }}<br>
-                                                @if ($lend->lender->address->address_line_1)
-                                                    {{ $lend->lender->address->address_line_1 }}<br>
-                                                @endif
-                                                @if ($lend->lender->address->address_line_2)
-                                                    {{ $lend->lender->address->address_line_2 }}<br>
-                                                @endif
-                                                {{ $lend->lender->email }}<br>
-                                                {{ $lend->lender->phone_number }}<br>
+                                                <strong>{{ $lend->rent->user->name }}</strong><br>
+                                                {{ $lend->rent->user->address->address }}<br>
+                                                {{ $lend->rent->user->address->city }}<br>
+                                                {{ $lend->rent->user->email }}<br>
+                                                {{ $lend->rent->user->phone_number }}<br>
                                             </address>
                                         </div>
                                         <div class="col-sm-4 invoice-col">

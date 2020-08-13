@@ -29,8 +29,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Bootstrap-select -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
-{{--    <link rel="stylesheet" src="{{ asset('css/bootstrap-select.min.css') }}">--}}
+{{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -88,23 +88,23 @@
     <!-- sweetalert -->
 {{--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
     <!-- Bootstrap-select js -->
-{{--    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>--}}
     <!-- Bootstrap js -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
     <!-- CK Editor -->
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-    <script>
-        var path = "{{ route('autocomplete') }}";
-        $('input.typeahead').typeahead({
-            source: function (query, process) {
-                return $.get(path + $('#search').val(), {}, function (data) {
-                    return process(data);
-                });
-            }
-        });
-    </script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+{{--    <script>--}}
+{{--        var path = "{{ route('autocomplete') }}";--}}
+{{--        $('input.typeahead').typeahead({--}}
+{{--            source: function (query, process) {--}}
+{{--                return $.get(path + $('#search').val(), {}, function (data) {--}}
+{{--                    return process(data);--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
     @yield('js')
 </body>
 </html>
