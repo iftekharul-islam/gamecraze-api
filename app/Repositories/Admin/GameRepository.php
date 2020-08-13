@@ -5,6 +5,7 @@ namespace App\Repositories\Admin;
 
 
 use App\Models\Asset;
+use App\Models\BasePrice;
 use App\Models\Game;
 use App\Models\GameMode;
 use App\Models\Genre;
@@ -41,11 +42,15 @@ class GameRepository
         return GameMode::all();
     }
 
+    public function basePrice () {
+        return BasePrice::all();
+    }
+
     /**
      *
      */
     public function show ($id) {
-        return Game::with('assets', 'platforms', 'genres', 'gameModes')->findOrFail($id);
+        return Game::with('assets', 'platforms', 'genres', 'gameModes', 'basePrice')->findOrFail($id);
     }
     /**
      * @param $request
@@ -53,7 +58,7 @@ class GameRepository
      */
     public function store($request) {
 
-        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = 'Testing';
