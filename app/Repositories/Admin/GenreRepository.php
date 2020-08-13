@@ -14,7 +14,7 @@ class GenreRepository
      */
     public function all()
     {
-        return $genres = Genre::all();
+        return $genres = Genre::orderBy('name', 'ASC')->get();
     }
 
     /**

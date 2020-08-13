@@ -13,7 +13,7 @@ class GameModeRepository
      * @return GameMode[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return GameMode::all();
+        return GameMode::orderBy('name', 'ASC')->get();
     }
 
     /**

@@ -46,6 +46,7 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
+                                @if (count($lends) > 0)
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -71,7 +72,7 @@
                                                     {{ $lend->rent->game->name }}
                                                 </a>
                                             </td>
-                                            <td>{{ $lend->lend_date }}</td>
+                                            <td>{{ date('d F Y', strtotime($lend->lend_date)) }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
                                                     <a class="badge-info badge text-white">On lending</a>
@@ -106,6 +107,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                    <h4 class="text-center">No data found</h4>
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>

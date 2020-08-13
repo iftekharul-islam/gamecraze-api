@@ -14,7 +14,7 @@ class UserRepository
     public function user(){
         return User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name','!=', 'admin');
-        })->get();
+        })->orderBy('created_at', 'ASC')->get();
     }
 
      public function findById($id){

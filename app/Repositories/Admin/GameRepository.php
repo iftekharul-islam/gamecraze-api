@@ -18,7 +18,7 @@ class GameRepository
      * @return Game[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allGame() {
-        return Game::all();
+        return Game::orderBy('name', 'ASC')->get();
     }
 
     /**

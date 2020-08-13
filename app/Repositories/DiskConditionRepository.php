@@ -12,7 +12,7 @@ class DiskConditionRepository
      * @return DiskCondition[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return DiskCondition::all();
+        return DiskCondition::orderBy('name', 'ASC')->get();
     }
 
     /**

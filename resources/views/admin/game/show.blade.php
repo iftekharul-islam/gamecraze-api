@@ -52,7 +52,7 @@
                                         </tr>
                                         <tr>
                                             <td>Description:</td>
-                                            <td>{{ $game->description }}</td>
+                                            <td>{!! $game->description !!}</td>
                                         </tr>
                                         <tr>
                                             <td>Publisher:</td>

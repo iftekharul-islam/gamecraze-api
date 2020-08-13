@@ -13,7 +13,7 @@ class PlatformRepository
      * @return Platform[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return Platform::all();
+        return Platform::orderBy('name', 'ASC')->get();
     }
 
     /**
