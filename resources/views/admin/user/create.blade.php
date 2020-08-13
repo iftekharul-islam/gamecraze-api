@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Platform Name" required>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter user name" required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
@@ -61,7 +61,7 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                 <label for="password_confirmation">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conform password" required>
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" required>
                                 @if ($errors->has('password'))
                                     <span class="text-danger"><strong>{{ $errors->first('password') }}</strong></span>
                                 @endif
