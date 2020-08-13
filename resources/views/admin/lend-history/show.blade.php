@@ -104,7 +104,7 @@
                                                <strong>Started time:</strong><span> {{ $startDate }} </span><br>
                                                <strong>End time :</strong><span> {{ $endDate }} </span><br>
 {{--                                               <strong>Lend Cost :</strong><span> {{ $lend->lend_cost }}</span><br>--}}
-                                               <strong>Lend Cost :</strong><span> {{ $grandTotal }}</span><br>
+                                               <strong>Lend Cost :</strong><span> {{ $sum }}</span><br>
                                                <strong>Payment :</strong><span class="badge-success badge">{{ $lend->payment_method }}</span><br>
                                             </address>
                                         </div>
@@ -160,7 +160,7 @@
                                                 <table class="table">
                                                     <tr>
                                                         <th style="width:50%">Subtotal:</th>
-                                                        <td>BDT {{ $grandTotal }}</td>
+                                                        <td>BDT {{ $sum }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tax (9.3%)</th>
@@ -198,7 +198,7 @@
 @endsection
 @section('js')
     <script>
-        var amount = {{ $grandTotal }} + 100;
+        var amount = {{ $sum }} + 100;
         $('#total').html('BDT ' +amount);
 
         $("#get").click(function () {

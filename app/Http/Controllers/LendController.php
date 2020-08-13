@@ -58,29 +58,20 @@ class LendController extends Controller
         $lend = $this->lendRepository->details($id);
         $base = $lend->rent->game->basePrice->base;
         $sum = 0;
-        if ( $lend->lend_week >= 1 ){
-            $sum = $base;
-        }
-        if ( $lend->lend_week >= 2 ){
-            $sum = $sum + ($base*.75);
-        }
-        if ( $lend->lend_week >= 3 ){
-            $sum = $sum + ($base*.65);
-        }
-        if ( $lend->lend_week > 3 ){
-            $total = $lend->lend_week - 3;
-            $s = 0;
-            for ($i = 1 ; $i <= $total; $i++){
-                $s +=  ($base*.65);
-            }
-            $grandTotal = $s + $sum;
+        $mapping = [
+            1 => 1,
+            2 => .75,
+            3 => .65,
+        ];
+        for ($i = 1; $i <= $lend->lend_week; $i++) {
+            $sum += isset($mapping[$i]) ? $base * $mapping[$i] : $base * last($mapping);
         }
         $lendDate = $lend->lend_date;
         $lendWeek = $lend->lend_week;
         $startDate = date("d F, Y", strtotime ($lendDate ."+1 day"));
         $endDate = date("d F, Y", strtotime ($startDate ."+" .+ $lendWeek . "week"));
 
-        return view('admin.lend-history.show', compact('lend', 'endDate', 'startDate', 'grandTotal'));
+        return view('admin.lend-history.show', compact('lend', 'endDate', 'startDate', 'sum'));
     }
 
     /**

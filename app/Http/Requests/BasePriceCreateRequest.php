@@ -37,6 +37,7 @@ class BasePriceCreateRequest extends FormRequest
             'end.required' => 'The end price field cannot be empty',
             'end.gt' => 'The end price field cannot be equal and less than start price',
             'base.required' => 'The base price field cannot be empty',
+            'base.unique' => 'The base price field should be unique',
             'status.required' => 'The status field cannot be empty',
         ];
     }
