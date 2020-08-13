@@ -46,6 +46,7 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
+                                @if (count($rents) > 0)
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -66,7 +67,7 @@
                                             <td>
                                                 <a href="{{ route('rentPost.show', $rent->id) }}">{{ $rent->game->name ?? '' }}</a>
                                             </td>
-                                            <td>{{ $rent->availability }}</td>
+                                            <td>{{ date('d F Y', strtotime($rent->availability)) }}</td>
                                             <td>{{ $rent->max_week }}</td>
                                             <td>
                                                 @if ($rent->status === 1)
@@ -116,6 +117,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                    <h4 class="text-center">No data found</h4>
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>

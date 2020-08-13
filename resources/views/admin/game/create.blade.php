@@ -114,7 +114,7 @@
                             <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
                                 <label for="is_trending">Is Trending</label><br>
                                 <input type="radio" name="is_trending" value="1" checked/> Yes
-                                <input type="radio" name="is_trending" value="0" /> no
+                                <input type="radio" name="is_trending" value="0" /> No
                                 @if ($errors->has('is_trending'))
                                     <span class="text-danger"><strong>{{ $errors->first('is_trending') }}</strong></span>
                                 @endif

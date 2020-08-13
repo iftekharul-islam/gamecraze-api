@@ -49,6 +49,7 @@
                                 <a href="{{ route('platform.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Platform</a>
                             </div>
                             <div class="card-body">
+                                @if (count($platforms) > 0)
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -89,6 +90,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                    <h4 class="text-center">No data found</h4>
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
