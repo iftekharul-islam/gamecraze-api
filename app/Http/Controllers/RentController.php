@@ -27,7 +27,6 @@ class RentController extends Controller
     public function index()
     {
         $rents = $this->rentRepository->all();
-//        return $rents;
         return view('admin.rent-post.index', compact('rents'));
     }
 
