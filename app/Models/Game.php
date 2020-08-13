@@ -11,20 +11,15 @@ class Game extends Model
     use Taggable, SoftDeletes;
 
     protected $fillable = [
-        'name', 'author_id', 'description', 'released', 'rating', 'is_trending', 'publisher'
+        'name', 'author_id', 'description', 'released', 'rating', 'base_price_id', 'is_trending', 'publisher'
     ];
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
     }
-
     public function assets(){
         return $this->hasMany(Asset::class);
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function exchanges() {
         return $this->hasMany(Exchange::class);
     }
@@ -37,5 +32,8 @@ class Game extends Model
     public function gameModes()
     {
         return $this->belongsToMany(GameMode::class);
+    }
+    public function basePrice() {
+        return $this->hasOne(BasePrice::class,'id','base_price_id');
     }
 }

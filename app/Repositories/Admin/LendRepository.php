@@ -19,6 +19,6 @@ class LendRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function details ($id) {
-        return Lender::with('lender', 'rent.user.address', 'rent.game')->findOrFail($id);
+        return Lender::with('lender', 'rent.user.address', 'rent.game', 'rent.game.basePrice')->findOrFail($id);
     }
 }

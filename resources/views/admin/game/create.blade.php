@@ -96,6 +96,17 @@
                                     <span class="text-danger"><strong>{{ $errors->first('platform') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('base_price_id') ? ' has-error' : '' }}">
+                                <label for="price">Base Price</label>
+                                <select name="base_price_id" id="base_price_id" class="form-control selectpicker" data-live-search="true" required>
+                                    @foreach($basePrices as $basePrice)
+                                        <option value="{{$basePrice->id}}">{{$basePrice->start}} - {{$basePrice->end}} = {{$basePrice->base}}(BDT)</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('base_price_id'))
+                                    <span class="text-danger"><strong>{{ $errors->first('base_price_id') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="form-group">
                                 <label>Game image</label>
                                 <input type="file" class="form-control" id="game_image" name="game_image">

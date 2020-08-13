@@ -44,7 +44,8 @@ class GameController extends Controller
         $genres = $this->gameRepository->allGenre();
         $platforms = $this->gameRepository->allPlatform();
         $gameModes = $this->gameRepository->allGameMode();
-        return view('admin.game.create', compact('genres', 'platforms', 'gameModes'));
+        $basePrices = $this->gameRepository->basePrice();
+        return view('admin.game.create', compact('genres', 'platforms', 'gameModes', 'basePrices'));
     }
 
     /**

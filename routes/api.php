@@ -43,7 +43,12 @@
 //        $api->post('platforms', 'App\Http\Controllers\API\PlatformController@store');
         $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
         $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
-
+        //disk-condition get
+        $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
+        $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
+        //Base Price get
+        $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
+        $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
@@ -55,10 +60,6 @@
 	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 	    $api->get('rent-games', 'App\Http\Controllers\API\GameController@rentGames');
-
-        //disk-condition get
-        $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
-        $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
 
         //pay
         $api->post('/pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');
@@ -122,11 +123,12 @@
                 $api->post('platforms/', 'App\Http\Controllers\API\PlatformController@store');
                 $api->delete('platforms/{id}', 'App\Http\Controllers\API\PlatformController@destroy');
                 $api->put('platforms/{id}', 'App\Http\Controllers\API\PlatformController@update');
-
                 //Disk Conditions Crud
                 $api->post('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@store');
                 $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
                 $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
+                //Base Price Calculate
+                $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
             });
 
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');

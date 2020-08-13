@@ -3,7 +3,6 @@
 
 namespace App\Transformers;
 
-
 use App\Models\DiskCondition;
 use League\Fractal\TransformerAbstract;
 
