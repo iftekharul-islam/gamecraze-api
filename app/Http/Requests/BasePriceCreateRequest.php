@@ -26,7 +26,7 @@ class BasePriceCreateRequest extends FormRequest
         return [
             'start' => 'required|integer',
             'end' => 'required|integer|gt:start',
-            'base' => 'required|integer',
+            'base' => 'required|integer|unique:base_prices,base',
             'status' => 'required',
         ];
     }
