@@ -18,7 +18,7 @@ class CreateGamesTable extends Migration
             $table->string('name');
             $table->integer('author_id');
             $table->longText('description');
-            $table->decimal('rating', 2, 1)->default(0.0);
+            $table->integer('rating');
             $table->string('publisher');
             $table->unsignedBigInteger('base_price_id')->nullable();
             $table->boolean('is_trending');
