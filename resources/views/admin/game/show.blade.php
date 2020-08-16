@@ -59,16 +59,12 @@
                                             <td>{{ $game->publisher }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Released:</td>
-                                            <td>{{ date('d F, Y', strtotime($game->released)) }}</td>
+                                            <td>Developer:</td>
+                                            <td>{{ $game->developer }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Mode:</td>
-                                            <td>
-                                                @foreach($game->gameModes as $gameMode)
-                                                    <span class="badge-success badge">{{ $gameMode->name }}</span>
-                                                @endforeach
-                                            </td>
+                                            <td>Released:</td>
+                                            <td>{{ date('d F, Y', strtotime($game->released)) }}</td>
                                         </tr>
                                         <tr>
                                             <td>Rating:</td>

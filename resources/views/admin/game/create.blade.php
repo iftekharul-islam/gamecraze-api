@@ -44,22 +44,30 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('platforms') ? ' has-error' : '' }}">
                                 <label for="platforms">Platforms</label>
-                                <select name="platforms[]" id="platforms" class="form-control selectpicker" multiple data-live-search="true" required>
-                                    @foreach($platforms as $platform)
-                                        <option value="{{$platform->id}}">{{$platform->name}}</option>
-                                    @endforeach
-                                </select>
+                                @if (count($platforms) > 0)
+                                    <select name="platforms[]" id="platforms" class="form-control selectpicker" multiple data-live-search="true" required>
+                                        @foreach($platforms as $platform)
+                                            <option value="{{$platform->id}}">{{$platform->name}}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <input type="text" class="form-control text-danger" value="Please fill the platform table first !!!" disabled>
+                                @endif
                                 @if ($errors->has('platform'))
                                     <span class="text-danger"><strong>{{ $errors->first('platform') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('genre') ? ' has-error' : '' }}">
                                 <label for="genres">Genres</label>
-                                <select name="genres[]" id="genres" class="form-control selectpicker" multiple data-live-search="true" required>
-                                    @foreach($genres as $genre)
-                                        <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                    @endforeach
-                                </select>
+                                @if (count($genres) > 0)
+                                    <select name="genres[]" id="genres" class="form-control selectpicker" multiple data-live-search="true" required>
+                                        @foreach($genres as $genre)
+                                            <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <input type="text" class="form-control text-danger" value="Please fill the Genres table first !!!" disabled>
+                                @endif
                                 @if ($errors->has('genre'))
                                     <span class="text-danger"><strong>{{ $errors->first('genre') }}</strong></span>
                                 @endif
@@ -69,6 +77,20 @@
                                 <input type="date" class="form-control" id="released" name="released" placeholder="Enter Game released date" required>
                                 @if ($errors->has('released'))
                                     <span class="text-danger"><strong>{{ $errors->first('released') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('publisher') ? ' has-error' : '' }}">
+                                <label for="publisher">Publisher</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Game publisher" required>
+                                @if ($errors->has('publisher'))
+                                    <span class="text-danger"><strong>{{ $errors->first('publisher') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('developer') ? ' has-error' : '' }}">
+                                <label for="developer">Developer</label>
+                                <input type="text" class="form-control" id="developer" name="developer" placeholder="Enter Game developer" required>
+                                @if ($errors->has('developer'))
+                                    <span class="text-danger"><strong>{{ $errors->first('developer') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
@@ -85,24 +107,17 @@
                                     <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="false-padding-bottom-form form-group{{ $errors->has('game_modes') ? ' has-error' : '' }}">
-                                <label for="game_modes">Game Mode</label>
-                                <select name="game_modes[]" id="game_modes" class="form-control selectpicker" multiple data-live-search="true" required>
-                                    @foreach($gameModes as $gameMode)
-                                        <option value="{{$gameMode->id}}">{{$gameMode->name}}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('platform'))
-                                    <span class="text-danger"><strong>{{ $errors->first('platform') }}</strong></span>
-                                @endif
-                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('base_price_id') ? ' has-error' : '' }}">
                                 <label for="price">Base Price</label>
+                                @if(count($basePrices) > 0)
                                 <select name="base_price_id" id="base_price_id" class="form-control selectpicker" data-live-search="true" required>
                                     @foreach($basePrices as $basePrice)
-                                        <option value="{{$basePrice->id}}">{{$basePrice->start}} - {{$basePrice->end}} = {{$basePrice->base}}(BDT)</option>
+                                        <option value="{{$basePrice->id}}">{{$basePrice->start}} - {{$basePrice->end}} = {{$basePrice->base}} (BDT)</option>
                                     @endforeach
                                 </select>
+                                @else
+                                    <input type="text" class="form-control text-danger" value="Please fill the base price table first !!!" disabled>
+                                @endif
                                 @if ($errors->has('base_price_id'))
                                     <span class="text-danger"><strong>{{ $errors->first('base_price_id') }}</strong></span>
                                 @endif
