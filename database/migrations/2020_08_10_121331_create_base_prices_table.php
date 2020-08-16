@@ -20,7 +20,6 @@ class CreateBasePricesTable extends Migration
             $table->integer('end');
             $table->integer('base');
             $table->boolean('status')->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

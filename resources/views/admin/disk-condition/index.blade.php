@@ -18,7 +18,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -43,10 +42,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
                                 <div class="card-header">
                                     <a href="{{ route('diskCondition.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Disk Condition</a>
                                 </div>
+                            <div class="card-body">
                                 @if (count($diskConditions) > 0)
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>

@@ -19,7 +19,9 @@ class DashboardController extends Controller
     {
         $games = Game::all()->count();
         $rents = Rent::all()->count();
-        $users = User::all()->count();
+        $users = User::with('roles')->whereHas('roles', function ($query) {
+                    return $query->where('name','!=', 'admin');
+                })->count();
         $lends = Lender::all()->count();
         return view('admin.dashboard', compact('games', 'rents', 'users', 'lends'));
     }

@@ -68,7 +68,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td>
                                                 @foreach($user->roles as $role)
-                                                    {{ $role->name }},
+                                                    <a class="badge-primary badge text-white">{{ $role->name }}</a>
                                                 @endforeach
                                             </td>
                                             <td>

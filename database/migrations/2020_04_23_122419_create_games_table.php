@@ -20,6 +20,7 @@ class CreateGamesTable extends Migration
             $table->longText('description');
             $table->integer('rating');
             $table->string('publisher');
+            $table->string('developer');
             $table->unsignedBigInteger('base_price_id')->nullable();
             $table->boolean('is_trending');
             $table->date('released');
