@@ -78,19 +78,17 @@
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
-            // Users Role & Permission
-
             //For rent purpose
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
-
+            //role crud
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
             $api->get('user/role/show','App\Http\Controllers\API\UserController@showRole');
             $api->post('user/permission/create','App\Http\Controllers\API\UserController@createPermission');
             $api->get('user/permission/show','App\Http\Controllers\API\UserController@showPermission');
-
+            //permission crud
             $api->post('role-permission/{role_id}/{per_id}','App\Http\Controllers\API\UserController@rolehasPermission');
             $api->post('user-role/{user_id}/{role_id}','App\Http\Controllers\API\UserController@userhasRole');
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
@@ -102,7 +100,8 @@
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
-
+            //Base Price Calculate
+            $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
@@ -127,8 +126,6 @@
                 $api->post('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@store');
                 $api->delete('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@destroy');
                 $api->put('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@update');
-                //Base Price Calculate
-                $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
             });
 
             $api->post('exchanges/', 'App\Http\Controllers\API\PostController@store');
