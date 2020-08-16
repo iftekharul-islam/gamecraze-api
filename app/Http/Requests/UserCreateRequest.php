@@ -25,6 +25,7 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:users,name',
+            'email' => 'required|unique:users,email',
             'phone_number' => 'required|unique:users,phone_number|max:11',
             'password' => 'required|confirmed',
         ];
@@ -35,6 +36,7 @@ class UserCreateRequest extends FormRequest
         return [
             'name.required' => 'The name field cannot be empty',
             'name.unique' => 'The name field should be unique',
+            'name.email' => 'The email field should be unique',
             'phone_number.required' => 'The phone number field cannot be empty',
             'phone_number.unique' => 'The phone number should be unique',
             'password.required' => 'The password field cannot be empty',
