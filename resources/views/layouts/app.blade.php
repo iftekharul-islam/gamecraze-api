@@ -40,10 +40,10 @@
         @endif
         @yield ('content')
         @if (Auth::user())
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <footer class="main-footer ">
+                <strong class="ml-1">Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
                 All rights reserved.
-                <div class="float-right d-none d-sm-inline-block">
+                <div class="float-right d-none d-sm-inline-block mr-2">
                     <b>Version</b> 3.0.5
                 </div>
             </footer>

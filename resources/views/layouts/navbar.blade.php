@@ -17,7 +17,7 @@
             <form class="input-group input-group-sm" action="{{ route('search') }}" method="get">
                 <input class="typeahead form-control form-control-navbar" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
+                <button class="btn btn-navbar mr-1" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
                 </div>
