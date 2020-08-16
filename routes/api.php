@@ -49,6 +49,7 @@
         //Base Price get
         $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
         $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
+        $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
@@ -100,8 +101,6 @@
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
-            //Base Price Calculate
-            $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
