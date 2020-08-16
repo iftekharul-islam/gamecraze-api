@@ -43,9 +43,8 @@ class GameController extends Controller
     {
         $genres = $this->gameRepository->allGenre();
         $platforms = $this->gameRepository->allPlatform();
-        $gameModes = $this->gameRepository->allGameMode();
         $basePrices = $this->gameRepository->basePrice();
-        return view('admin.game.create', compact('genres', 'platforms', 'gameModes', 'basePrices'));
+        return view('admin.game.create', compact('genres', 'platforms', 'basePrices'));
     }
 
     /**
@@ -56,6 +55,7 @@ class GameController extends Controller
      */
     public function store(GameCreateRequest $request)
     {
+//        return $request->all();
         $this->gameRepository->store($request);
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
@@ -83,8 +83,7 @@ class GameController extends Controller
         $game = $this->gameRepository->show($id);
         $platforms = $this->gameRepository->allPlatform();
         $genres = $this->gameRepository->allGenre();
-        $modes = $this->gameRepository->allGameMode();
-        return view('admin.game.edit', compact('game', 'genres', 'platforms', 'modes'));
+        return view('admin.game.edit', compact('game', 'genres', 'platforms'));
     }
 
     /**

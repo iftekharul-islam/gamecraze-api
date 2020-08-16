@@ -64,27 +64,20 @@
                                 <input type="date" class="form-control" id="released" name="released" value="{{ $game->released }}">
                             </div>
                             <div class="form-group">
+                                <label for="publisher">Publisher</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher" value="{{ $game->publisher }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="developer">Developer</label>
+                                <input type="text" class="form-control" id="developer" name="developer" value="{{ $game->developer }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="rating">Rating (Out of 10)</label>
                                 <input type="number" class="form-control" id="rating" name="rating" value="{{ $game->rating }}">
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea type="text" class="ckeditor form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="game_mode">Game Mode</label>
-                                <select name="game_modes[]" class="form-control selectpicker" multiple data-live-search="true">
-                                    @foreach($modes as $mode)
-                                        @foreach($game->gameModes as $gameMode)
-                                            @if($mode->id == $gameMode->id)
-                                                <option value="{{ $gameMode->id }}" selected>{{ $gameMode->name }}</option>
-                                                <?php continue 2; ?>
-                                            @endif
-                                        @endforeach
-                                        <option value="{{ $mode->id }}">{{ $mode->name }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="game_image">Game image</label>

@@ -72,14 +72,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('gameMode.all') }}" class="nav-link {{ (request()->routeIs('gameMode.all', 'gameMode.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>
-                            Game Mode
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('basePrice.all') }}" class="nav-link {{ (request()->routeIs('basePrice.all', 'basePrice.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>

@@ -53,7 +53,6 @@
                                         <th>Serial no</th>
                                         <th>Name</th>
                                         <th>Rating</th>
-                                        <th>Game mode</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -63,7 +62,6 @@
                                             <td>{{ $key+1 }}</td>
                                             <td><a href="{{ route('game.show', $game->id) }}">{{ $game->name }}</a></td>
                                             <td>{{ $game->rating }}</td>
-                                            <td>{{ $game->game_mode }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-3"
                                                    href="{{ route('game.edit', $game->id) }}"><i

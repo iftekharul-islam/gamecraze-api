@@ -7,7 +7,6 @@ namespace App\Repositories\Admin;
 use App\Models\Asset;
 use App\Models\BasePrice;
 use App\Models\Game;
-use App\Models\GameMode;
 use App\Models\Genre;
 use App\Models\Platform;
 use Illuminate\Support\Str;
@@ -35,13 +34,6 @@ class GameRepository
         return Platform::all();
     }
 
-    /**
-     * @return GameMode[]|\Illuminate\Database\Eloquent\Collection
-     */
-    public function allGameMode () {
-        return GameMode::all();
-    }
-
     public function basePrice () {
         return BasePrice::all();
     }
@@ -50,7 +42,7 @@ class GameRepository
      *
      */
     public function show ($id) {
-        return Game::with('assets', 'platforms', 'genres', 'gameModes', 'basePrice')->findOrFail($id);
+        return Game::with('assets', 'platforms', 'genres', 'basePrice')->findOrFail($id);
     }
     /**
      * @param $request
@@ -58,7 +50,7 @@ class GameRepository
      */
     public function store($request) {
 
-        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = 'Testing';
@@ -67,7 +59,6 @@ class GameRepository
 
         $game->genres()->sync($request->genres, false);
         $game->platforms()->sync($request->platforms, false);
-        $game->gameModes()->sync($request->game_modes, false);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
@@ -91,7 +82,7 @@ class GameRepository
     public function update($request, $id) {
 
         $game = Game::findOrFail($id);
-        $data = $request->only(['name', 'released', 'rating', 'description', 'game_mode', 'is_trending']);
+        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer']);
 
         if (isset($data['name'])) {
             $game->name = $data['name'];
@@ -105,8 +96,11 @@ class GameRepository
         if (isset($data['description'])) {
             $game->description = $data['description'];
         }
-        if (isset($data['game_mode'])) {
-            $game->game_mode = $data['game_mode'];
+        if (isset($data['publisher'])) {
+            $game->publisher = $data['publisher'];
+        }
+        if (isset($data['developer'])) {
+            $game->developer = $data['developer'];
         }
         if (isset($data['is_trending'])) {
             $game->is_trending = $data['is_trending'];
@@ -115,7 +109,6 @@ class GameRepository
 
         $game->genres()->sync($request->genres);
         $game->platforms()->sync($request->platforms);
-        $game->gameModes()->sync($request->game_modes);
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');

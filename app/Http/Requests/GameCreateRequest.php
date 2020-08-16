@@ -27,8 +27,9 @@ class GameCreateRequest extends FormRequest
             'name' => 'required',
             'genres' => 'required',
             'platforms' => 'required',
-            'game_modes' => 'required',
             'released' => 'required',
+            'publisher' => 'required',
+            'developer' => 'required',
             'rating' => 'required',
             'game_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120'
         ];
@@ -39,7 +40,6 @@ class GameCreateRequest extends FormRequest
             'name.required' => 'The Name field cannot be empty',
             'name.genres' => 'The Genre field cannot be empty',
             'name.platforms' => 'The Platform field cannot be empty',
-            'game_modes.required' => 'Game Mode cannot be empty',
             'released.required' => 'The Released field cannot be empty',
             'rating.required' => 'The Rating field cannot be empty',
             'game_image.image' => 'Invalid image type',
