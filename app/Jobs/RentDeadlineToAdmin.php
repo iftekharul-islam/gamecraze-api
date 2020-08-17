@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class RentDeadlineToAdmin implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $user;
+    private $lend;
     private $admin;
     private $endDate;
 
@@ -24,10 +24,10 @@ class RentDeadlineToAdmin implements ShouldQueue
      * @param $user
      * @param $endDate
      */
-    public function __construct($user, $admin, $endDate)
+    public function __construct($lend, $admin, $endDate)
     {
         $this->admin = $admin;
-        $this->user = $user;
+        $this->lend = $lend;
         $this->endDate = $endDate;
     }
 
@@ -38,6 +38,6 @@ class RentDeadlineToAdmin implements ShouldQueue
      */
     public function handle()
     {
-        $this->admin->notify(new RentDeadlineAdminNotification($this->user, $this->endDate));
+        $this->admin->notify(new RentDeadlineAdminNotification($this->lend, $this->endDate));
     }
 }

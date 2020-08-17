@@ -10,15 +10,17 @@ class RentDeadlineNotification extends Notification
 {
     use Queueable;
     private $endDate;
+    private $game;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($endDate)
+    public function __construct($endDate, $game)
     {
         $this->endDate = $endDate;
+        $this->game = $game;
     }
 
     /**
@@ -41,8 +43,9 @@ class RentDeadlineNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->line('Your Borrowed Game is '. $this->game->name )
                     ->line('Your deadline date is '. $this->endDate->format('d/m/Y') )
-                    ->line('Its already 2 days left')
+                    ->line('Its almost 2 days left & if you want play this game for more times.Please contact with helpline.')
                     ->line('Thank you for stay with us!');
     }
 

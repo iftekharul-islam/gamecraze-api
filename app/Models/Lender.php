@@ -15,6 +15,6 @@ class Lender extends Model
     }
 
     public function lender() {
-        return $this->belongsTo(User::class,'id','lender_id');
+        return $this->hasOne(User::class,'id','lender_id');
     }
 }

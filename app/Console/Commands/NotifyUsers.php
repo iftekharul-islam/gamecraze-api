@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\RentDeadlineToAdmin;
 use App\Jobs\RentDeadlineToUser;
+use App\Models\Lender;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\Doctrine\CarbonDoctrineType;
@@ -42,22 +43,20 @@ class NotifyUsers extends Command
      */
     public function handle()
     {
-        $currentDate = '15 09 2020';
-        $users = User::with('lends')->whereNotNull('email')->get();
+        $currentDate = Carbon::today()->format('d m Y');
+//        $users = User::with('lends', '')->whereNotNull('email')->get();
+        $lends = Lender::with('lender', 'rent.game')->get();
         $admins = User::role('Admin')->get();
-        $this->info($admins);
-        foreach ($users as $user) {
-            foreach ($user->lends as $lend) {
-                $endDate = Carbon::parse($lend->lend_date)->addDays($lend->lend_week * 7 + 1);
-                $notifyDate = $endDate->addDays(-2)->format('d m Y');
-                if ($currentDate == $notifyDate) {
-                    RentDeadlineToUser::dispatch($user, $endDate);
-                    foreach ($admins as $admin) {
-                        RentDeadlineToAdmin::dispatch($user, $admin, $endDate);
-                    }
+        foreach ($lends as $lend) {
+            $endDate = Carbon::parse($lend->lend_date)->addDays($lend->lend_week * 7 + 1);
+            $notifyDate = $endDate->addDays(-2)->format('d m Y');
+            if ($currentDate == $notifyDate) {
+                RentDeadlineToUser::dispatch($lend, $endDate);
+                foreach ($admins as $admin) {
+                    RentDeadlineToAdmin::dispatch($lend, $admin, $endDate);
                 }
-                return false;
             }
+            return false;
         }
     }
 }

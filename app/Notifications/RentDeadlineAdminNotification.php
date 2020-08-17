@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notification;
 class RentDeadlineAdminNotification extends Notification
 {
     use Queueable;
-    private $user;
+    private $lend;
     private $endDate;
 
     /**
@@ -19,9 +19,9 @@ class RentDeadlineAdminNotification extends Notification
      * @param User $user
      * @param $endDate
      */
-    public function __construct(User $user, $endDate)
+    public function __construct($lend, $endDate)
     {
-        $this->user = $user;
+        $this->lend = $lend;
         $this->endDate = $endDate;
     }
 
@@ -45,9 +45,9 @@ class RentDeadlineAdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                        ->line('Customer name: ' . $this->user->name . ' & deadline date is '. $this->endDate->format('d/m/Y') )
-                        ->line('Its already 2 days left')
-                        ->line('Thank you for stay with us!');
+                        ->line('Customer name: ' . $this->lend->lender->name . ' & Borrowed game is '. $this->lend->rent->game->name)
+                        ->line('Deadline date is '. $this->endDate->format('d/m/Y'))
+                        ->line('Its already 2 days left');
     }
 
     /**
