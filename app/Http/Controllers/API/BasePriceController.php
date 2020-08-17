@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
-use App\Repositories\BasePriceRepository;
+use App\Repositories\Admin\BasePriceRepository;
 use App\Transformers\BasePriceTransformer;
 use Illuminate\Http\Request;
 

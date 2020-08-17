@@ -79,8 +79,6 @@ class OtpRepository {
 
 	    $address = Address::create([
 	        'address' => null,
-            'address_line_1' => null,
-            'address_line_2' => null,
             'city' => null,
             'post_code' => null
         ]);
