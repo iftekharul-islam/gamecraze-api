@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BasePriceCreateRequest;
 use App\Http\Requests\BasePriceUpdateRequest;
 use App\Models\BasePrice;
-use App\Repositories\Admin\basePriceRepository;
+use App\Repositories\Admin\BasePriceRepository;
 
 class BasePriceController extends Controller
 {
