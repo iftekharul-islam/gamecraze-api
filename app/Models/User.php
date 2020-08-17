@@ -53,4 +53,7 @@ class User extends Authenticatable
     {
         return 'https://hooks.slack.com/services/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';
     }
+    public function lends() {
+        return $this->hasMany(Lender::class, 'lender_id', 'id');
+    }
 }

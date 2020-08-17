@@ -3,23 +3,24 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PasswordResetRequest extends Notification
+class RentDeadlineNotification extends Notification
 {
     use Queueable;
-    private $otp;
+    private $endDate;
+    private $game;
 
     /**
      * Create a new notification instance.
      *
-     * @param $otp
+     * @return void
      */
-    public function __construct($otp)
+    public function __construct($endDate, $game)
     {
-        $this->otp = $otp;
+        $this->endDate = $endDate;
+        $this->game = $game;
     }
 
     /**
@@ -42,9 +43,10 @@ class PasswordResetRequest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Game Hub Password Reset Code')
-                    ->line('Your Password reset code is '. $this->otp)
-                    ->line('Thank you for using our application!');
+                    ->line('Your Borrowed Game is '. $this->game->name )
+                    ->line('Your deadline date is '. $this->endDate->format('d/m/Y') )
+                    ->line('Its almost 2 days left & if you want play this game for more times.Please contact with helpline.')
+                    ->line('Thank you for stay with us!');
     }
 
     /**
