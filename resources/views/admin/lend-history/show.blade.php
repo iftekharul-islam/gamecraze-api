@@ -131,7 +131,7 @@
                                                <strong>Availability :</strong><span> {{ date('d F, Y', strtotime($lend->rent->availability)) }}</span><br>
                                                <strong>Disk Condition :</strong><span> {{ $lend->rent->diskCondition->name }}</span><br>
                                                <strong>Platform :</strong><span> {{ $lend->rent->platform->name }}</span><br>
-                                               <div id="element"></div>
+                                               <div id="element"></div>§
                                            </address>
                                         </div>
                                         <div class="col-sm-3 invoice-col">

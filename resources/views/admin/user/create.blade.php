@@ -59,11 +59,11 @@
                                     <span class="text-danger"><strong>{{ $errors->first('password') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="false-padding-bottom-form form-group{{ $errors->has('confirmPassword') ? ' has-error' : '' }}">
-                                <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-                                @if ($errors->has('confirmPassword'))
-                                    <span class="text-danger"><strong>{{ $errors->first('confirmPassword') }}</strong></span>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="text-danger"><strong>{{ $errors->first('password_confirmation') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">

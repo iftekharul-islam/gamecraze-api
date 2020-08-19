@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .card-body table tr .game-post-details-right {
+            width: 75%;
+        }
+    </style>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -8,12 +14,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Profile</h1>
+                        <h1>Rent post history</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
+                            <li class="breadcrumb-item active">Rent post history</li>
                         </ol>
                     </div>
                 </div>
@@ -104,7 +110,7 @@
                                 <table class="table table-borderless">
                                     <tbody>
                                         <tr>
-                                            <td>name:</td>
+                                            <td>Name:</td>
                                             <td>{{ $rent->game->name }}</td>
                                         </tr>
                                         <tr>
@@ -112,12 +118,16 @@
                                             <td>{!! $rent->game->description !!}</td>
                                         </tr>
                                         <tr>
-                                            <td>Mode:</td>
-                                            <td>{{ $rent->game->game_mode }}</td>
-                                        </tr>
-                                        <tr>
                                             <td>Platform:</td>
                                             <td>{{ $rent->platform->name ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Publisher:</td>
+                                            <td>{{ $rent->game->publisher }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Developer:</td>
+                                            <td>{{ $rent->game->developer }}</td>
                                         </tr>
                                         <tr>
                                             <td>Rating:</td>

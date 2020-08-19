@@ -52,6 +52,9 @@ class UserRepository
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
         $role = Role::where('name', 'customer')->first();
+        if (!$role) {
+            $role = Role::create(['name' => 'customer']);
+        }
         if ($user && $role) {
             $user->assignRole($role);
             return $user;
