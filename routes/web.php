@@ -74,6 +74,8 @@ Route::prefix('admin')->group(function () {
         Route::get('user/{id}','\App\Http\Controllers\UserController@show')->name('user.show');
         Route::get('create/user','\App\Http\Controllers\UserController@create')->name('user.create');
         Route::post('store/user','\App\Http\Controllers\UserController@store')->name('user.store');
+        Route::get('user/edit/{id}','\App\Http\Controllers\UserController@edit')->name('user.edit');
+        Route::post('user/update/{id}','\App\Http\Controllers\UserController@update')->name('user.update');
         //Base price Crud
         Route::get('base-prices','\App\Http\Controllers\BasePriceController@index')->name('basePrice.all');
         Route::get('create/base-price','\App\Http\Controllers\BasePriceController@create')->name('basePrice.create');

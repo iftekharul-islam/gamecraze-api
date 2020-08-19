@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create User</h1>
+                        <h1>Edit User</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Create User</li>
+                            <li class="breadcrumb-item active">Edit User</li>
                         </ol>
                     </div>
                 </div>
@@ -24,53 +24,53 @@
             <div class="container-fluid">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add User</h3>
+                        <h3 class="card-title">Edit User</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="{{ route('user.store') }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('user.update', $user->id) }}" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter user name" required>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('email') ? 'has-error' : '' }}">
                                 <label for="email">E-mail</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                 @if ($errors->has('email'))
                                     <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
                                 <label for="phone_number">Phone Number</label>
-                                <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+                                <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}">
                                 @if ($errors->has('phone_number'))
                                     <span class="text-danger"><strong>{{ $errors->first('phone_number') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 @if ($errors->has('password'))
                                     <span class="text-danger"><strong>{{ $errors->first('password') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="false-padding-bottom-form form-group{{ $errors->has('confirmPassword') ? ' has-error' : '' }}">
-                                <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-                                @if ($errors->has('confirmPassword'))
-                                    <span class="text-danger"><strong>{{ $errors->first('confirmPassword') }}</strong></span>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password">
+                                @if ($errors->has('password'))
+                                    <span class="text-danger"><strong>{{ $errors->first('password') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select name="status" class="form-control" required>
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
                         </div>

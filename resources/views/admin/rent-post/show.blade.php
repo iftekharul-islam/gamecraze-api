@@ -109,7 +109,7 @@
                                         </tr>
                                         <tr>
                                             <td>Description:</td>
-                                            <td>{{ $rent->game->description }}</td>
+                                            <td>{!! $rent->game->description !!}</td>
                                         </tr>
                                         <tr>
                                             <td>Mode:</td>
