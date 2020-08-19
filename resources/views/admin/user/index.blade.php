@@ -57,7 +57,7 @@
                                         <th>Email</th>
                                         <th>Role(s)</th>
                                         <th>Type</th>
-{{--                                        <th>Action</th>--}}
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,7 +65,7 @@
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a></td>
-                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->email ? $user->email : $user->phone_number }}</td>
                                             <td>
                                                 @foreach($user->roles as $role)
                                                     <a class="badge-primary badge text-white">{{ $role->name }}</a>
@@ -80,10 +80,10 @@
                                                     <a class="badge-info badge text-white">Invalid</a>
                                                 @endif
                                             </td>
-{{--                                            <td>--}}
-{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
-{{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
-{{--                                                        class="far fa-edit"></i></a>--}}
+                                            <td>
+                                                <a class="btn btn-sm btn-primary mr-3"
+                                                   href="{{ route('user.edit', $user->id) }}"><i
+                                                        class="far fa-edit"></i></a>
 {{--                                                <button class="btn btn-danger btn-sm" type="button"--}}
 {{--                                                        onclick="deleteGame({{ $game->id }})">--}}
 {{--                                                    <i class="far fa-trash-alt"></i></button>--}}
@@ -92,8 +92,8 @@
 {{--                                                      method="post" style="display: none;">--}}
 {{--                                                    @csrf--}}
 {{--                                                    @method('DELETE')--}}
-{{--                                                </form>--}}
-{{--                                            </td>--}}
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

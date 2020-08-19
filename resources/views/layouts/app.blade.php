@@ -92,6 +92,8 @@
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>--}}
     <!-- Bootstrap js -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- countdown js -->
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
     <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>

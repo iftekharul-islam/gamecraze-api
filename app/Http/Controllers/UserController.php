@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->userRepository->edit($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -84,9 +86,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request)
     {
-        //
+        $this->userRepository->update($request);
+        return redirect()->route('user.all')->with('status', 'User successfully updated!');
     }
 
     /**

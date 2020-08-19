@@ -131,6 +131,7 @@
                                                <strong>Availability :</strong><span> {{ date('d F, Y', strtotime($lend->rent->availability)) }}</span><br>
                                                <strong>Disk Condition :</strong><span> {{ $lend->rent->diskCondition->name }}</span><br>
                                                <strong>Platform :</strong><span> {{ $lend->rent->platform->name }}</span><br>
+                                               <div id="element"></div>
                                            </address>
                                         </div>
                                         <div class="col-sm-3 invoice-col">
@@ -198,6 +199,16 @@
 @endsection
 @section('js')
     <script>
+        // var startdate = "2020/06/16",
+        //     enddate = "2020/10/16";
+        // if(new Date() >= new Date(startdate) && new Date() <= new Date(enddate)) {
+        //     $("#element")
+        //         .countdown(enddate, function(event) {
+        //             $(this).text(
+        //                 event.strftime('%D days %H:%M:%S')
+        //             );
+        //         });
+        // }
         var amount = {{ $sum }} + 100;
         $('#total').html('BDT ' +amount);
 
