@@ -32,10 +32,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('area.all') }}" class="nav-link {{ (request()->routeIs('area.all', 'area.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-map-marked-alt"></i>
+                        <p>
+                            Locations
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('user.all') }}" class="nav-link {{ (request()->routeIs('user.all', 'user.show')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
                             Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('checkpoint.all') }}" class="nav-link {{ (request()->routeIs('checkpoint.all', 'checkpoint.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-thumbtack"></i>
+                        <p>
+                            Checkpoint
                         </p>
                     </a>
                 </li>
