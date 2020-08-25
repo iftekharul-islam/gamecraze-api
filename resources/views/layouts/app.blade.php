@@ -15,7 +15,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">--}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
     <!-- Bootstrap -->
@@ -62,7 +62,7 @@
     <!-- Bootstrap 4 -->
     <script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- ChartJS -->
-    <script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
+{{--    <script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>--}}
     <!-- Sparkline -->
     <script src="{{asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
     <!-- JQVMap -->

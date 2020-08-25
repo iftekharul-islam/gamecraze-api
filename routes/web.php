@@ -83,6 +83,41 @@ Route::prefix('admin')->group(function () {
         Route::get('base-price/edit/{id}','\App\Http\Controllers\BasePriceController@edit')->name('basePrice.edit');
         Route::post('base-price/update/{id}','\App\Http\Controllers\BasePriceController@update')->name('basePrice.update');
         Route::delete('base-price/destroy/{id}','\App\Http\Controllers\BasePriceController@destroy')->name('basePrice.destroy');
+        //Division Crud
+        Route::get('divisions','\App\Http\Controllers\DivisionController@index')->name('division.all');
+        Route::get('create/division','\App\Http\Controllers\DivisionController@create')->name('division.create');
+        Route::post('store/division','\App\Http\Controllers\DivisionController@store')->name('division.store');
+        Route::get('division/edit/{id}','\App\Http\Controllers\DivisionController@edit')->name('division.edit');
+        Route::post('division/update/{id}','\App\Http\Controllers\DivisionController@update')->name('division.update');
+        Route::delete('division/destroy/{id}','\App\Http\Controllers\DivisionController@destroy')->name('division.destroy');
+         //District Crud
+        Route::get('districts','\App\Http\Controllers\DistrictController@index')->name('district.all');
+        Route::get('create/district','\App\Http\Controllers\DistrictController@create')->name('district.create');
+        Route::post('store/district','\App\Http\Controllers\DistrictController@store')->name('district.store');
+        Route::get('district/edit/{id}','\App\Http\Controllers\DistrictController@edit')->name('district.edit');
+        Route::post('district/update/{id}','\App\Http\Controllers\DistrictController@update')->name('district.update');
+        Route::delete('district/destroy/{id}','\App\Http\Controllers\DistrictController@destroy')->name('district.destroy');
+        //Thana Crud
+        Route::get('thanas','\App\Http\Controllers\ThanaController@index')->name('thana.all');
+        Route::get('create/thana','\App\Http\Controllers\ThanaController@create')->name('thana.create');
+        Route::post('store/thana','\App\Http\Controllers\ThanaController@store')->name('thana.store');
+        Route::get('thana/edit/{id}','\App\Http\Controllers\ThanaController@edit')->name('thana.edit');
+        Route::post('thana/update/{id}','\App\Http\Controllers\ThanaController@update')->name('thana.update');
+        Route::delete('thana/destroy/{id}','\App\Http\Controllers\ThanaController@destroy')->name('thana.destroy');
+        //Area Crud
+        Route::get('areas','\App\Http\Controllers\AreaController@index')->name('area.all');
+        Route::get('create/area','\App\Http\Controllers\AreaController@create')->name('area.create');
+        Route::post('store/area','\App\Http\Controllers\AreaController@store')->name('area.store');
+        Route::get('area/edit/{id}','\App\Http\Controllers\AreaController@edit')->name('area.edit');
+        Route::post('area/update/{id}','\App\Http\Controllers\AreaController@update')->name('area.update');
+        Route::delete('area/destroy/{id}','\App\Http\Controllers\AreaController@destroy')->name('area.destroy');
+        // Checkpoint Crud
+        Route::get('checkpoints','\App\Http\Controllers\CheckpointController@index')->name('checkpoint.all');
+        Route::get('checkpoint/{id}','\App\Http\Controllers\CheckpointController@show')->name('checkpoint.show');
+        Route::get('checkpoint/create','\App\Http\Controllers\CheckpointController@create')->name('checkpoint.create');
+        Route::post('checkpoint/store','\App\Http\Controllers\CheckpointController@store')->name('checkpoint.store');
+        Route::get('checkpoint/edit/{id}','\App\Http\Controllers\CheckpointController@edit')->name('checkpoint.edit');
+        Route::post('checkpoint/update/{id}','\App\Http\Controllers\CheckpointController@update')->name('checkpoint.update');
     });
 });
 Auth::routes();
