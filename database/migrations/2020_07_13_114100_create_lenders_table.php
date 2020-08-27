@@ -19,6 +19,7 @@ class CreateLendersTable extends Migration
             $table->foreign('lender_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('rent_id');
             $table->foreign('rent_id')->references('id')->on('rents')->onDelete('cascade');
+            $table->unsignedBigInteger('checkpoint_id')->nullable();
             $table->integer('lend_week');
             $table->integer('lend_cost');
             $table->date('lend_date');

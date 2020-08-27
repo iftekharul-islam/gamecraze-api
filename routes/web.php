@@ -114,8 +114,8 @@ Route::prefix('admin')->group(function () {
         // Checkpoint Crud
         Route::get('checkpoints','\App\Http\Controllers\CheckpointController@index')->name('checkpoint.all');
         Route::get('checkpoint/{id}','\App\Http\Controllers\CheckpointController@show')->name('checkpoint.show');
-        Route::get('checkpoint/create','\App\Http\Controllers\CheckpointController@create')->name('checkpoint.create');
-        Route::post('checkpoint/store','\App\Http\Controllers\CheckpointController@store')->name('checkpoint.store');
+        Route::get('create/checkpoint','\App\Http\Controllers\CheckpointController@create')->name('checkpoint.create');
+        Route::post('store/checkpoint','\App\Http\Controllers\CheckpointController@store')->name('checkpoint.store');
         Route::get('checkpoint/edit/{id}','\App\Http\Controllers\CheckpointController@edit')->name('checkpoint.edit');
         Route::post('checkpoint/update/{id}','\App\Http\Controllers\CheckpointController@update')->name('checkpoint.update');
     });

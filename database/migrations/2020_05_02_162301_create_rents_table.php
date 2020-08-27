@@ -22,6 +22,7 @@ class CreateRentsTable extends Migration
             $table->date('availability');
             $table->integer('max_week');
             $table->integer('platform_id')->unsigned();
+            $table->unsignedBigInteger('checkpoint_id')->nullable();
             $table->decimal('earning_amount')->nullable();
             $table->integer('disk_condition_id')->unsigned();
             $table->string('cover_image')->nullable();
