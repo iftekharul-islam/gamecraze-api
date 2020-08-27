@@ -50,6 +50,8 @@
         $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
         $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
         $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
+        //Checkpoint all
+        $api->get('checkpoints','\App\Http\Controllers\API\CheckpointController@index');
         // Exchanges
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@getActiveExchange');
         $api->get('exchanges', 'App\Http\Controllers\API\ExchangeController@index');
