@@ -47,6 +47,26 @@ class BasePriceController extends Controller
     }
 
     /**
+     * @param $gameId
+     * @param $lendWeek
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function gameCalculate ($gameId, $lendWeek) {
+        $game = Game::with('basePrice')->findOrFail($gameId);
+        $base = $game->basePrice->base;
+        $sum = 0;
+        $mapping = [
+            1 => 1,
+            2 => .75,
+            3 => .65,
+        ];
+        for ($i = 1; $i <= $lendWeek; $i++) {
+            $sum += isset($mapping[$i]) ? $base * $mapping[$i] : $base * last($mapping);
+        }
+        return response($sum);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

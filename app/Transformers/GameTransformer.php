@@ -12,7 +12,7 @@ use League\Fractal\TransformerAbstract;
 class GameTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
-        'genres', 'assets', 'platforms', 'rents'
+        'genres', 'assets', 'platforms', 'rents', 'basePrice'
     ];
     public function transform(Game $game)
     {
@@ -24,6 +24,7 @@ class GameTransformer extends TransformerAbstract
             'release_date' => $game->released,
             'game_mode' => $game->game_mode,
             'description' => $game->description,
+            'base_price_id' => $game->base_price_id,
             'rating' => $game->rating,
             'publisher' => $game->publisher,
         ];
@@ -44,4 +45,7 @@ class GameTransformer extends TransformerAbstract
         return $this->collection($game->rents, new RentTransformer());
     }
 
+    public function includeBasePrice(Game $game) {
+        return $this->item($game->basePrice, new BasePriceTransformer());
+    }
 }

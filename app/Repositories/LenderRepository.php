@@ -25,6 +25,7 @@ class LenderRepository {
                 'lender_id' => auth()->user()->id,
                 'rent_id' => $request->postId[$i],
                 'lend_week' => $request->week[$i],
+                'checkpoint_id' => $request->checkpointId[$i] == 'u'  ? null :  $request->checkpointId[$i],
                 'lend_cost' => 500,
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->paymentMethod,

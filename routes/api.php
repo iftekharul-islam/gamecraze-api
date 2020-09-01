@@ -47,9 +47,10 @@
         $api->get('disk-conditions/{id}', 'App\Http\Controllers\API\DiskConditionController@show');
         $api->get('disk-conditions', 'App\Http\Controllers\API\DiskConditionController@index');
         //Base Price get
-        $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
+//        $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
         $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
         $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
+        $api->get('base-price/game-calculation/{gameId}/{lendWeek}', 'App\Http\Controllers\API\BasePriceController@gameCalculate');
         //Checkpoint all
         $api->get('checkpoints','\App\Http\Controllers\API\CheckpointController@index');
         // Exchanges
