@@ -26,8 +26,12 @@ class RentRepository {
     public function store(Request $request) {
         $rent = $request->only([
             'game_id', 'max_week', 'availability', 'platform_id',
-            'disk_condition_id', 'rented_user_id',
+            'disk_condition_id', 'rented_user_id', 'checkpoint_id'
         ]);
+        if (isset($request->checkpoint_id)) {
+            $rent['checkpoint_id'] = $request->checkpoint_id ? $rent['checkpoint_id'] : '';
+        }
+
         if (isset($request->cover_image))
         {
             $image = $request->cover_image;

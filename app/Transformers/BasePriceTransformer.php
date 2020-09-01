@@ -14,8 +14,9 @@ class BasePriceTransformer extends TransformerAbstract
         return [
             'id' => $basePrice->id,
             'Author_id' => $basePrice->author_id,
-            'Start price' =>  $basePrice->start,
-            'End price' =>  $basePrice->end,
+            'Start_price' =>  $basePrice->start,
+            'End_price' =>  $basePrice->end,
+            'base' =>  $basePrice->base,
             'status' => $basePrice->status,
         ];
     }
