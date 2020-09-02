@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlatformCreateRequest;
+use App\Models\Platform;
 use App\Repositories\Admin\PlatformRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class PlatformController extends Controller
 {

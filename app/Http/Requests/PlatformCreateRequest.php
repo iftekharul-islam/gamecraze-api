@@ -24,7 +24,9 @@ class PlatformCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:platforms,name'
+            'name' => 'required|unique:platforms,name',
+            'url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
         ];
     }
 
@@ -33,6 +35,9 @@ class PlatformCreateRequest extends FormRequest
         return [
             'name.required' => 'The name field cannot be empty',
             'name.unique' => 'The name field should be unique',
+            'url.required' => 'The image field cannot be empty',
+            'url.image' => 'Invalid image type',
+            'url.max' => 'Image size cannot be larger than 2 MB',
         ];
     }
 
