@@ -107,46 +107,28 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td>Name:</td>
-                                            <td>{{ $rent->game->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Description:</td>
-                                            <td>{!! $rent->game->description !!}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Platform:</td>
-                                            <td>{{ $rent->platform->name ?? '' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Publisher:</td>
-                                            <td>{{ $rent->game->publisher }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Developer:</td>
-                                            <td>{{ $rent->game->developer }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rating:</td>
-                                            <td>{{ $rent->game->rating }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Disk condition:</td>
-                                            <td>{{ $rent->diskCondition->name ?? '' }} ({{ $rent->diskCondition->description ?? '' }})</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Max Rent Week:</td>
-                                            <td>{{ $rent->max_week }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Game Base Price:</td>
-                                            <td>{{ $rent->game->basePrice->base }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="row invoice-info">
+                                    <div class="col-sm-6 invoice-col border-right">
+                                        <address>
+                                            <strong>Name :</strong><span> {{ $rent->game->name }}</span><br>
+                                            <strong>Description :</strong><span>{!! $rent->game->description !!}</span>
+{{--                                            <strong>Description:</strong><span>adadjaslkdjaslkdjlaksd jlkasjdlkasjdlkasjdlkjasdlkjaslkdjaslkdjlkasdjklasjdlkasjdl</span><br>--}}
+                                            <strong>Platform: </strong><span> <img width="35px" height="30px" src="{{ asset($rent->platform->url) }}" alt=""></span><br>
+                                            <strong>Publisher :</strong><span> {{ $rent->game->publisher }}</span><br>
+                                            <strong>Developer :</strong><span> {{ $rent->game->developer }}</span><br>
+                                            <strong>Rating :</strong><span> {{ $rent->game->rating }}</span><br>
+                                        </address>
+                                    </div>
+                                    <div class="col-sm-6 invoice-col">
+                                        <address>
+                                            <strong>Disk condition :</strong><span> {{ $rent->diskCondition->name ?? '' }} ({{ $rent->diskCondition->description ?? '' }})</span><br>
+                                            <strong>Max Rent Week :</strong><span> {{ $rent->max_week }}</span><br>
+                                            <strong>Game Base Price :</strong><span> {{ $rent->game->basePrice->base }}</span><br>
+                                            <strong>Delivery :</strong><span> {{ $rent->checkpoint ?  $rent->checkpoint->name : 'COD' }}</span><br>
+                                        </address>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
                                 <hr class="fancy4">
                                 <div class="row">
                                     <div class="col">

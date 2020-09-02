@@ -10,7 +10,7 @@ use League\Fractal\TransformerAbstract;
 
 class RentTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['game', 'user', 'platform', 'diskCondition'];
+    protected $availableIncludes = ['game', 'user', 'platform', 'diskCondition', 'checkpoint'];
     public function transform(Rent $rent)
     {
         // specify what elements are going to be visible to the API
@@ -21,6 +21,7 @@ class RentTransformer extends TransformerAbstract
             'max_number_of_week' =>  $rent->max_week,
             'availability_from_date' =>  $rent->availability,
             'platform_id' =>  $rent->platform_id,
+            'checkpoint_id' =>  $rent->checkpoint_id,
             'earning_amount' =>  $rent->earning_amount,
             'disk_condition_id' =>  $rent->disk_condition_id,
             'cover_image' =>  asset('/storage/rent-image/' . $rent->cover_image),
@@ -41,6 +42,9 @@ class RentTransformer extends TransformerAbstract
     }
     public function includeDiskCondition(Rent $rent) {
         return $this->item($rent->diskCondition, new DiskConditionTransformer());
+    }
+    public function includeCheckpoint(Rent $rent) {
+        return $this->item($rent->checkpoint, new CheckpointTransformer());
     }
 
 }
