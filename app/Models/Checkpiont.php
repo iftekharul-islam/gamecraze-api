@@ -18,7 +18,7 @@ class Checkpiont extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public function area() {
-            return $this->belongsTo(Area::class, 'area_id', 'id');
+        return $this->belongsTo(Area::class, 'area_id', 'id');
     }
 
 }

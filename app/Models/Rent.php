@@ -29,4 +29,7 @@ class Rent extends Model
     public function lend() {
         return $this->belongsTo(Lender::class, 'rent_id');
     }
+    public function checkpoint() {
+        return $this->belongsTo(Checkpiont::class, 'checkpoint_id', 'id');
+    }
 }
