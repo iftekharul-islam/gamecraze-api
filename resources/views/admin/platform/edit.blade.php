@@ -24,12 +24,16 @@
             <div class="container-fluid">
                 <div class="card card-primary">
                     <!-- form start -->
-                    <form method="post" action="{{ route('platform.update', $platform->id) }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('platform.update', $platform->id) }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $platform->name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Platform image</label>
+                                <input type="file" class="form-control" id="url" name="url" value="{{ $platform->url }}">
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>

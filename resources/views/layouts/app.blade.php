@@ -41,10 +41,10 @@
         @yield ('content')
         @if (Auth::user())
             <footer class="main-footer ">
-                <strong class="ml-1">Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+                <strong class="ml-1">Copyright &copy; 2020 <a href="http://augnitive.com" target="#">Augnitive</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block mr-2">
-                    <b>Version</b> 3.0.5
+                    <b>Version</b> 1.0.0
                 </div>
             </footer>
         @endif

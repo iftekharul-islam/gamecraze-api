@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="{{ route('platform.store') }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('platform.store') }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -36,6 +36,13 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Platform Name" required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+                                <label>Platform image</label>
+                                <input type="file" class="form-control" id="url" name="url">
+                                @if ($errors->has('url'))
+                                    <span class="text-danger"><strong>{{ $errors->first('url') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">

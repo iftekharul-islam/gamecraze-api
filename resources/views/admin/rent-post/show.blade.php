@@ -141,6 +141,10 @@
                                             <td>Max Rent Week:</td>
                                             <td>{{ $rent->max_week }}</td>
                                         </tr>
+                                        <tr>
+                                            <td>Game Base Price:</td>
+                                            <td>{{ $rent->game->basePrice->base }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <hr class="fancy4">

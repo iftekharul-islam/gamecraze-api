@@ -18,6 +18,7 @@ class PlatformTransformer extends TransformerAbstract
             'id' => $platform->id,
             'Author id' => $platform->author_id,
             'name' => $platform->name,
+            'url' => asset($platform->url),
             'slug' => $platform->slug,
         ];
     }

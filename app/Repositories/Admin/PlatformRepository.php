@@ -21,8 +21,16 @@ class PlatformRepository
      * @return mixed
      */
     public function store($request) {
-        $platform = $request->only(['name', 'status']);
+        $platform = $request->only(['name', 'status', 'url']);
         $platform['author_id'] = auth()->user()->id;
+
+        $image = $request->file('url');
+        $image_name ='platform'. time() . '.'.$image->getClientOriginalExtension();
+
+//        $destinationPath = public_path('storage/platform-image/') .$image_name;
+//        $img = Image::make($image->getRealPath());
+        $image->storeAs('platform-image/', $image_name);
+        $platform['url'] =  'storage/platform-image/' .$image_name;
         $platform['slug'] = Str::slug($platform['name']);
         return Platform::create($platform);
     }
@@ -41,11 +49,18 @@ class PlatformRepository
      */
     public function update($request) {
         $platform = Platform::findOrFail($request->id);
-        $data = $request->only(['name', 'status']);
+        $data = $request->only(['name', 'status', 'url']);
 
         if (isset($data['name'])) {
             $platform->name = $data['name'];
             $platform->slug = Str::slug($data['name']);
+        }
+        if (isset($data['url'])) {
+            unlink($platform->url);
+            $image = $request->file('url');
+            $image_name ='platform'. time() . '.'.$image->getClientOriginalExtension();
+            $image->storeAs('platform-image/', $image_name);
+            $platform['url'] =  'storage/platform-image/' .$image_name;
         }
         if (isset($data['status'])) {
             $platform->status = $data['status'];
@@ -60,6 +75,7 @@ class PlatformRepository
      */
     public function delete($id) {
         $platform = Platform::find($id);
+        unlink($platform->url);
         $platform->delete();
         return $platform;
     }

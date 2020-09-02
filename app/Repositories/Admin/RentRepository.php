@@ -24,7 +24,7 @@ class RentRepository
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
      */
     public function details($id) {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')
+        return Rent::with('game', 'user', 'platform', 'diskCondition', 'game.basePrice')
             ->where('id', $id)
             ->first();
     }
