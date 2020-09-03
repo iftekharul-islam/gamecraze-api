@@ -54,6 +54,8 @@
                                         <tr>
                                             <th>Price Range(BDT)</th>
                                             <th>Base price</th>
+                                            <th>Second week</th>
+                                            <th>Third week</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -63,6 +65,8 @@
                                             <tr>
                                                 <td>{{ $base->start }} - {{ $base->end }}</td>
                                                 <td>{{ $base->base }}</td>
+                                                <td>{{ $base->second_week }}</td>
+                                                <td>{{ $base->third_week }}</td>
                                                 <td>
                                                     @if ($base->status === 1)
                                                         <a class="badge-success badge text-white" >Active</a>

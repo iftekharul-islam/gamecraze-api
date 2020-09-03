@@ -19,6 +19,8 @@ class CreateBasePricesTable extends Migration
             $table->integer('start');
             $table->integer('end');
             $table->integer('base');
+            $table->double('second_week');
+            $table->double('third_week');
             $table->boolean('status')->nullable();
             $table->timestamps();
         });

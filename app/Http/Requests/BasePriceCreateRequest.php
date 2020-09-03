@@ -27,6 +27,8 @@ class BasePriceCreateRequest extends FormRequest
             'start' => 'required|integer',
             'end' => 'required|integer|gt:start',
             'base' => 'required|integer|unique:base_prices,base',
+            'second_week' => 'required',
+            'third_week' => 'required',
             'status' => 'required',
         ];
     }
@@ -37,6 +39,8 @@ class BasePriceCreateRequest extends FormRequest
             'end.required' => 'The end price field cannot be empty',
             'end.gt' => 'The end price field cannot be equal and less than start price',
             'base.required' => 'The base price field cannot be empty',
+            'second_week.required' => 'The second week field cannot be empty',
+            'third_week.required' => 'The third week field cannot be empty',
             'base.unique' => 'The base price field should be unique',
             'status.required' => 'The status field cannot be empty',
         ];
