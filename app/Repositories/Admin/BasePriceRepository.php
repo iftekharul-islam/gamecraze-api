@@ -39,13 +39,19 @@ class basePriceRepository
      */
     public function update($request) {
         $price = BasePrice::findOrFail($request->id);
-        $data = $request->only(['start', 'end', 'base', 'status']);
+        $data = $request->only(['start', 'end', 'base', 'second_week', 'third_week', 'status']);
 
         $price->start = $data['start'];
         $price->end = $data['end'];
 
         if (isset($data['base'])) {
             $price->base = $data['base'];
+        }
+        if (isset($data['second_week'])) {
+            $price->second_week = $data['second_week'];
+        }
+        if (isset($data['third_week'])) {
+            $price->third_week = $data['third_week'];
         }
         if (isset($data['status'])) {
             $price->status = $data['status'];
