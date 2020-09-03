@@ -53,15 +53,17 @@ class BasePriceController extends Controller
      */
     public function gameCalculate ($gameId, $lendWeek) {
         $game = Game::with('basePrice')->findOrFail($gameId);
-        $base = $game->basePrice->base;
+        $basePrice = $game->basePrice;
+        $second_week = $basePrice->second_week;
+        $third_week = $basePrice->third_week;
         $sum = 0;
         $mapping = [
             1 => 1,
-            2 => .75,
-            3 => .65,
+            2 => $second_week,
+            3 => $third_week,
         ];
         for ($i = 1; $i <= $lendWeek; $i++) {
-            $sum += isset($mapping[$i]) ? $base * $mapping[$i] : $base * last($mapping);
+            $sum += isset($mapping[$i]) ? $basePrice->base * $mapping[$i] : $basePrice->base * last($mapping);
         }
         return response($sum);
     }

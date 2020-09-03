@@ -55,14 +55,14 @@
                             </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('second_week') ? ' has-error' : '' }}">
                                 <label for="second_week">Second week</label>
-                                <input type="number" step="any" class="form-control" id="second_week" name="second_week" placeholder="Enter second week percentage">
+                                <input type="number" step="any" class="form-control" id="second_week" name="second_week" min="0" placeholder="Enter second week percentage">
                                 @if ($errors->has('second_week'))
                                     <span class="text-danger"><strong>{{ $errors->first('second_week') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('third_week') ? ' has-error' : '' }}">
                                 <label for="third_week">Third week</label>
-                                <input type="number" step="any" class="form-control" id="third_week" name="third_week" placeholder="Enter third week percentage">
+                                <input type="number" step="any" class="form-control" id="third_week" name="third_week" min="0" placeholder="Enter third week percentage">
                                 @if ($errors->has('third_week'))
                                     <span class="text-danger"><strong>{{ $errors->first('third_week') }}</strong></span>
                                 @endif
