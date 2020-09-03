@@ -49,6 +49,20 @@
                                     <span class="text-danger"><strong>{{ $errors->first('base') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('second_week') ? ' has-error' : '' }}">
+                                <label for="second_week">Second week</label>
+                                <input type="number" step="any" min="0" class="form-control" id="second_week" name="second_week" value="{{ $price->second_week }}">
+                                @if ($errors->has('second_week'))
+                                    <span class="text-danger"><strong>{{ $errors->first('second_week') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('third_week') ? ' has-error' : '' }}">
+                                <label for="third_week">Third week</label>
+                                <input type="number" step="any" min="0" class="form-control" id="third_week" name="third_week" value="{{ $price->third_week }}">
+                                @if ($errors->has('third_week'))
+                                    <span class="text-danger"><strong>{{ $errors->first('third_week') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control">
