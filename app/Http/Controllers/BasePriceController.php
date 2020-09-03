@@ -92,6 +92,7 @@ class BasePriceController extends Controller
      */
     public function update(BasePriceUpdateRequest $request, $id)
     {
+        return $request->all();
         $start = $request->start;
         $end = $request->end;
         $error = [

@@ -20,7 +20,7 @@ class basePriceRepository
      * @return mixed
      */
     public function store($request) {
-        $data = $request->only(['start', 'end', 'base', 'status']);
+        $data = $request->only(['start', 'end', 'base', 'second_week', 'third_week', 'status']);
         $data['author_id'] = auth()->user()->id;
         return BasePrice::create($data);
     }

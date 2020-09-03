@@ -56,15 +56,17 @@ class LendController extends Controller
     public function show($id)
     {
         $lend = $this->lendRepository->details($id);
-        $base = $lend->rent->game->basePrice->base;
+        $basePrice = $lend->rent->game->basePrice;
+        $second_week = $basePrice->second_week;
+        $third_week = $basePrice->third_week;
         $sum = 0;
         $mapping = [
             1 => 1,
-            2 => .75,
-            3 => .65,
+            2 => $second_week,
+            3 => $third_week,
         ];
         for ($i = 1; $i <= $lend->lend_week; $i++) {
-            $sum += isset($mapping[$i]) ? $base * $mapping[$i] : $base * last($mapping);
+            $sum += isset($mapping[$i]) ? $basePrice->base * $mapping[$i] : $basePrice->base * last($mapping);
         }
         $lendDate = $lend->lend_date;
         $lendWeek = $lend->lend_week;

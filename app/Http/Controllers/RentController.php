@@ -60,7 +60,6 @@ class RentController extends Controller
     public function show(Request $request, $id)
     {
         $rent = $this->rentRepository->details($id);
-//        return $rent;
         return view('admin.rent-post.show', compact('rent'));
     }
 
