@@ -5,7 +5,7 @@ namespace App\Transformers;
 
 
 use App\Models\Area;
-use App\models\Checkpiont;
+use App\Models\Checkpiont;
 use League\Fractal\TransformerAbstract;
 
 class CheckpointTransformer extends TransformerAbstract

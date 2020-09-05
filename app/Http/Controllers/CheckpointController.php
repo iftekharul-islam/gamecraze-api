@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckpointCreateRequest;
-use App\models\Checkpiont;
 use App\Repositories\Admin\CheckpointRepository;
 use Illuminate\Http\Request;
 

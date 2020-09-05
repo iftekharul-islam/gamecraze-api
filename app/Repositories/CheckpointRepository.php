@@ -3,8 +3,7 @@
 
 namespace App\Repositories;
 
-
-use App\models\Checkpiont;
+use App\Models\Checkpiont;
 
 class CheckpointRepository
 {

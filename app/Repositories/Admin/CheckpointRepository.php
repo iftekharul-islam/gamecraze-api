@@ -4,7 +4,7 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Area;
-use App\models\Checkpiont;
+use App\Models\Checkpiont;
 use App\Models\User;
 
 class CheckpointRepository
