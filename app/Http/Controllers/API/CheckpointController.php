@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\models\Checkpiont;
+use App\Http\Controllers\BaseController;
 use App\Repositories\CheckpointRepository;
 use App\Transformers\CheckpointTransformer;
 use Illuminate\Http\Request;
 
-class CheckpointController extends Controller
+class CheckpointController extends BaseController
 {
     private $checkpointRepository;
 

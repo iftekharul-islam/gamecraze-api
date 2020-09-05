@@ -20,13 +20,14 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
+        logger($request);
         for ($i = 0; $i < count($request->postId); $i++) {
             $data = [
                 'lender_id' => auth()->user()->id,
                 'rent_id' => $request->postId[$i],
                 'lend_week' => $request->week[$i],
                 'checkpoint_id' => $request->checkpointId[$i] == 'u'  ? null :  $request->checkpointId[$i],
-                'lend_cost' => 500,
+                'lend_cost' => $request->totalPrice,
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->paymentMethod,
                 'status' => 0
