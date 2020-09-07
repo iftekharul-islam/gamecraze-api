@@ -24,7 +24,9 @@ class AddColumnToUsersTable extends Migration
             $table->string('interest')->nullable();
             $table->string('image')->nullable();
             $table->decimal('wallet')->default(0);
+            $table->integer('rent_limit')->default(1);
             $table->boolean('status')->default(false);
+
         });
     }
 
@@ -45,6 +47,7 @@ class AddColumnToUsersTable extends Migration
             $table->dropColumn('interest');
             $table->dropColumn('image');
             $table->dropColumn('wallet');
+            $table->dropColumn('rent_limit');
             $table->dropColumn('status');
         });
     }

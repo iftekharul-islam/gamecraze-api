@@ -22,7 +22,8 @@ class UserTransformer extends TransformerAbstract
             'gender' => $user->gender,
             'birth_date' => $user->birth_date,
             'address' => $user->address,
-            'roles' => $user->roles
+            'roles' => $user->roles,
+            'rent_limit' => $user->rent_limit
         ];
     }
 

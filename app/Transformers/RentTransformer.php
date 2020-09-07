@@ -44,7 +44,10 @@ class RentTransformer extends TransformerAbstract
         return $this->item($rent->diskCondition, new DiskConditionTransformer());
     }
     public function includeCheckpoint(Rent $rent) {
-        return $this->item($rent->checkpoint, new CheckpointTransformer());
+        if ($rent->checkpoint) {
+            return $this->item($rent->checkpoint, new CheckpointTransformer());
+        }
+        return null;
     }
 
 }
