@@ -74,7 +74,8 @@ class OtpRepository {
 	    }
 
 	    $user = User::create([
-		    'phone_number' => $phone_number
+		    'phone_number' => $phone_number,
+            'status' => 1,
 	    ]);
 
 	    $address = Address::create([
