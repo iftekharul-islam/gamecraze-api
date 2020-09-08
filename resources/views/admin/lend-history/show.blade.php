@@ -88,11 +88,11 @@
                                             Borrower
                                             <hr>
                                             <address>
-                                                <strong>{{ $lend->rent->user->name }}</strong><br>
-                                                {{ $lend->rent->user->address->address }}<br>
-                                                {{ $lend->rent->user->address->city }}<br>
-                                                {{ $lend->rent->user->email }}<br>
-                                                {{ $lend->rent->user->phone_number }}<br>
+                                                <strong>{{ $lend->lender->name }}</strong><br>
+                                                {{ $lend->lender->address->address }}<br>
+                                                {{ $lend->lender->address->city }}<br>
+                                                {{ $lend->lender->email }}<br>
+                                                {{ $lend->lender->phone_number }}<br>
                                             </address>
                                         </div>
                                         <div class="col-sm-4 invoice-col">

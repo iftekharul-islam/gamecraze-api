@@ -20,7 +20,6 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        logger($request);
         for ($i = 0; $i < count($request->postId); $i++) {
             $data = [
                 'lender_id' => auth()->user()->id,
@@ -39,6 +38,10 @@ class LenderRepository {
                     'message' => "Something went wrong"
                 ];
             }
+            $rent = Rent::findOrFail($request->postId[$i]);
+            $rent->rented_user_id = auth()->user()->id;
+            $rent->save();
+
             $renter = User::find(Rent::find($request->postId[$i])->user_id);
             SendEmailToRenter::dispatch($renter);
         }
