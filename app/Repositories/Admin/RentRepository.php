@@ -37,8 +37,10 @@ class RentRepository
 
         $rent = Rent::findOrFail($id);
         $userId = $rent->user_id;
+
         $rent->status = 1;
         $rent->save();
+
         $renter = User::where('id', $userId)->first();
         AcceptEmailToRenter::dispatch($renter, $rent);
         return $rent;
