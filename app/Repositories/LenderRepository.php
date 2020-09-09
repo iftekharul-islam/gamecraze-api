@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 class LenderRepository {
 
     public function all() {
-        $lends =  Lender::with('rent.game','rent.platform','rent.diskCondition')->where('lender_id', auth()->user()->id)->get();
-        return response()->json(['data'=> $lends], 200);
+        return Lender::with('rent.game','rent.platform','rent.diskCondition')->where('lender_id', auth()->user()->id)->get();
     }
     /**
      * @param Request $request
