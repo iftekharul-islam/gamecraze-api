@@ -112,7 +112,6 @@
                                         <address>
                                             <strong>Name :</strong><span> {{ $rent->game->name }}</span><br>
                                             <strong>Description :</strong><span>{!! $rent->game->description !!}</span><br>
-{{--                                            <strong>Description:</strong><span>adadjaslkdjaslkdjlaksd jlkasjdlkasjdlkasjdlkjasdlkjaslkdjaslkdjlkasdjklasjdlkasjdl</span><br>--}}
                                             <strong>Platform: </strong><span> <img width="35px" height="30px" src="{{ asset($rent->platform->url) }}" alt=""></span><br>
                                             <strong>Publisher :</strong><span> {{ $rent->game->publisher }}</span><br>
                                             <strong>Developer :</strong><span> {{ $rent->game->developer }}</span><br>
