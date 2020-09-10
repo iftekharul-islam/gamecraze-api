@@ -81,6 +81,12 @@ class AuthController extends BaseController
                 'message' => 'Wrong email or password'
             ]);
         }
+        if ($token['message'] == 'inactiveUser') {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'inactiveUser'
+            ]);
+        }
 
         $token['error'] = false;
         return $this->response->array($token);
