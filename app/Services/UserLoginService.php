@@ -12,6 +12,12 @@ class UserLoginService {
         if (isset($request->phone_number)) {
             $user = User::where('phone_number', $request->input('phone_number'))->first();
             if ($user) {
+                if ($user->status == 0) {
+                    return [
+                        'error' => true,
+                        'message' => 'inactiveUser'
+                    ];
+                }
                 $token = $user->createToken($user->phone_number .'-'. now());
                 return $token->accessToken;
             }
@@ -22,6 +28,11 @@ class UserLoginService {
         else {
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
+                if ($user->status == 0) {
+                    return [
+                        'message' => 'inactiveUser'
+                    ];
+                }
                 $user['address'] = $user->address;
                 $token = $user->createToken($user->email .'-'. now());
                 return [

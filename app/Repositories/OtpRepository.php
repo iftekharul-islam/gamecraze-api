@@ -61,8 +61,14 @@ class OtpRepository {
         }
 
 	    $user = User::where('phone_number', $phone_number)->first();
-
+        logger($user);
 	    if ($user) {
+	        if ($user->status == 0) {
+                return [
+                    'error' => true,
+                    'message' => 'inactiveUser'
+                ];
+            }
 		    $token = $user->createToken($user->phone_number .'-'. now());
 		    return [
                 'error' => false,
