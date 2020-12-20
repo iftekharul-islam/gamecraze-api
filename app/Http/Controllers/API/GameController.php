@@ -9,6 +9,7 @@ use App\Http\Requests\GameCreateRequest;
 use App\Repositories\GameRepository;
 use App\Services\AssetService;
 use App\Transformers\GameTransformer;
+use App\Transformers\RentTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
@@ -45,11 +46,11 @@ class GameController extends BaseController
         return $this->response->collection($games, new GameTransformer());
     }
 
-	/**
-	 * @param GameCreateRequest $request
-	 *
-	 * @return \Dingo\Api\Http\Response
-	 */
+    /**
+     * @param GameCreateRequest $request
+     *
+     * @return \Dingo\Api\Http\Response
+     */
     public function store(GameCreateRequest $request)
     {
         $game = $this->gameRepository->create($request);
@@ -103,12 +104,27 @@ class GameController extends BaseController
     /**
      * @return \Dingo\Api\Http\Response
      */
-    public function latestGames() {
-        $games = Game::latest('released')->take(5)->get();
+    public function latestGames()
+    {
+        $games = $this->gameRepository->latest();
         return $this->response->collection($games, new GameTransformer());
     }
 
-    public function rentGames(Request $request) {
+    /**
+     * @return \Dingo\Api\Http\Response
+     */
+    public function trendingGames()
+    {
+        $games = $this->gameRepository->trending();
+        return $this->response->collection($games, new RentTransformer());
+    }
+
+    /**
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response
+     */
+    public function rentGames(Request $request)
+    {
         $ids = explode(',', $request->ids);
         $games = $this->gameRepository->rentGames($ids);
         return $this->response->collection($games, new GameTransformer());

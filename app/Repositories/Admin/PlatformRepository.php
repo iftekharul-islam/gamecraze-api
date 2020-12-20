@@ -29,6 +29,7 @@ class PlatformRepository
 
 //        $destinationPath = public_path('storage/platform-image/') .$image_name;
 //        $img = Image::make($image->getRealPath());
+
         $image->storeAs('platform-image/', $image_name);
         $platform['url'] =  'storage/platform-image/' .$image_name;
         $platform['slug'] = Str::slug($platform['name']);
