@@ -3,14 +3,17 @@
 namespace App\Repositories;
 
 use App\Models\Game;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
-class GameRepository {
+class GameRepository
+{
 
     /**
      * @return Game[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function all() {
+    public function all()
+    {
         return Game::all();
     }
 
@@ -18,7 +21,8 @@ class GameRepository {
      * @param $id
      * @return mixed
      */
-    public function findById($id) {
+    public function findById($id)
+    {
         return Game::findOrFail($id);
     }
 
@@ -26,7 +30,8 @@ class GameRepository {
      * @param Request $request
      * @return mixed
      */
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $data = $request->only([
             'name', 'game_mode', 'description', 'released', 'rating', 'publisher'
         ]);
@@ -34,8 +39,8 @@ class GameRepository {
         $game = Game::create($data);
 
         if ($request->has('tags')) {
-	        $tags = explode(',', $request->tags);
-	        $game->tag($tags);
+            $tags = explode(',', $request->tags);
+            $game->tag($tags);
         }
         return $game;
     }
@@ -45,10 +50,10 @@ class GameRepository {
      * @param $id
      * @return int
      */
-    public function update($request, $id) {
+    public function update($request, $id)
+    {
         $game = Game::find($id);
-        if (!$game)
-        {
+        if (!$game) {
             return 0;
         }
 
@@ -63,7 +68,7 @@ class GameRepository {
             $game->game_mode = $data['game_mode'];
         };
         if (isset($data['description'])) {
-            $game->description= $data['description'];
+            $game->description = $data['description'];
         };
         if (isset($data['released'])) {
             $game->released = $data['released'];
@@ -83,11 +88,12 @@ class GameRepository {
      * @param $id
      * @return int
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $game = Game::find($id);
 
         if ($game) {
-	        return $game->delete();
+            return $game->delete();
         }
 
         return 0;
@@ -97,11 +103,35 @@ class GameRepository {
      * @param $gameName
      * @return mixed
      */
-    public function search($gameName) {
-        return Game::where('name','like','%'.$gameName.'%')->orderBy('id','desc')->get();
+    public function search($gameName)
+    {
+        return Game::where('name', 'like', '%' . $gameName . '%')->orderBy('id', 'desc')->get();
     }
 
-    public function rentGames($ids) {
+    /**
+     * @return mixed
+     */
+    public function latest()
+    {
+        return Game::latest('released')->take(5)->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function trending()
+    {
+        return Rent::whereHas('game', function ($q) {
+            $q->where('is_trending', 1);
+        })->get();
+    }
+
+    /**
+     * @param $ids
+     * @return mixed
+     */
+    public function rentGames($ids)
+    {
         return Game::whereIn('id', $ids)->get();
     }
 }
