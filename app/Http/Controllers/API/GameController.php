@@ -104,9 +104,9 @@ class GameController extends BaseController
     /**
      * @return \Dingo\Api\Http\Response
      */
-    public function latestGames()
+    public function upcomingGames()
     {
-        $games = $this->gameRepository->latest();
+        $games = $this->gameRepository->upcomingGames();
         return $this->response->collection($games, new GameTransformer());
     }
 

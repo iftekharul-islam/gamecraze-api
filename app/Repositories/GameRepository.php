@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Game;
 use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GameRepository
@@ -111,9 +112,9 @@ class GameRepository
     /**
      * @return mixed
      */
-    public function latest()
+    public function upcomingGames()
     {
-        return Game::latest('released')->take(5)->get();
+        return Game::where('released', '>', Carbon::today()->format('Y-m-d'))->get();
     }
 
     /**
