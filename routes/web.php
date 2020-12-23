@@ -49,6 +49,8 @@ Route::prefix('admin')->group(function () {
         Route::delete('games-video/destroy/{id}','\App\Http\Controllers\GameController@videoDestroy')->name('video.destroy');
         //game screenshots  delete
         Route::delete('games-screenshots/destroy/{id}','\App\Http\Controllers\GameController@screenshotsDestroy')->name('screenshots.destroy');
+        // New & articles section
+
         //Disk condition Crud
         Route::get('disk-conditions','\App\Http\Controllers\DiskConditionController@index')->name('diskCondition.all');
         Route::get('create/disk-condition','\App\Http\Controllers\DiskConditionController@create')->name('diskCondition.create');
