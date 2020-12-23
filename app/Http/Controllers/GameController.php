@@ -56,7 +56,8 @@ class GameController extends Controller
     public function store(GameCreateRequest $request)
     {
 //        return $request->all();
-        $this->gameRepository->store($request);
+        $data = $this->gameRepository->store($request);
+//        return $data;
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
 
@@ -109,5 +110,24 @@ class GameController extends Controller
     {
         $this->gameRepository->delete($id);
         return back()->with('status', 'Game successfully deleted');
+    }
+
+    public function videoDestroy($id)
+    {
+        $data = $this->gameRepository->videoDestroy($id);
+        if ($data == true) {
+            return back()->with('status', 'Game successfully deleted');
+        }
+        return back()->with('failed', 'Game successfully deleted');
+    }
+
+    public function screenshotsDestroy($id)
+    {
+        return 'hello';
+        $data = $this->gameRepository->screenshotsDestroy($id);
+        if ($data == true) {
+            return back()->with('status', 'Screenshots successfully deleted');
+        }
+        return back()->with('error', 'Screenshots successfully deleted');
     }
 }

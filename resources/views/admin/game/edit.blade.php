@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <div class="card card-primary">
                     <!-- form start -->
-                    <form method="post" action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data" class="w-75 mx-auto">
+                    <form id="main-form" method="post" action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -90,6 +90,97 @@
                                     <img src="{{ asset('storage/game-image/dummy-image.jpg') }}" id="preview_img" class="img-thumbnail" width="200" height="150">
                                 @endif
                             </div>
+                            @if(count($game->screenshots) > 0)
+                            <table class="table table-bordered mt-2" id="dynamicVideos">
+                                <tr>
+                                    <th>Screenshots</th>
+{{--                                    <th>Action</th>--}}
+                                </tr>
+                                @foreach($game->screenshots as $item)
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <img width="50%" src="{{ asset($item->url) }}" alt="{{ $item->name }}">
+                                        </div>
+                                    </td>
+{{--                                    <td>--}}
+{{--                                        <button class="btn btn-danger btn-sm" type="button"--}}
+{{--                                                onclick="deleteScreenshots({{ $item->id }})">--}}
+{{--                                            <i class="far fa-trash-alt"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <form id="delete-screenshots-form-{{ $item->id }}"--}}
+{{--                                              action="{{ route('screenshots.destroy', $item->id) }}"--}}
+{{--                                              method="post" style="display: none;">--}}
+{{--                                            @csrf--}}
+{{--                                            @method('DELETE')--}}
+{{--                                        </form>--}}
+{{--                                    </td>--}}
+                                </tr>
+                                @endforeach
+                            </table>
+                            @endif
+                            <table class="table table-bordered mt-2" id="dynamicScreenshot">
+                                <tr>
+                                    <th>Add Screenshots</th>
+{{--                                    <th>Action</th>--}}
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="screenshot_image[]" id="screenshotFile">
+                                            <label class="custom-file-label" for="screenshotFile">Choose file</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" name="add" id="addScreenshot" class="btn btn-success">Add More</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            @if(count($game->videoUrls) > 0)
+                                <table class="table table-bordered mt-2" id="dynamicVideos">
+                                    <tr>
+                                        <th>Videos</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    @foreach($game->videoUrls as $url)
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <iframe width="420" height="315" src="{{ $url->url }}"></iframe>
+                                                </div>
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                <button class="btn btn-danger btn-sm" type="button"--}}
+{{--                                                        onclick="deleteVideo({{ $url->id }})">--}}
+{{--                                                    <i class="far fa-trash-alt"></i></button>--}}
+{{--                                                <form id="delete-video-form-{{ $url->id }}"--}}
+{{--                                                      action="{{ route('video.destroy', $url->id) }}"--}}
+{{--                                                      method="post" style="display: none;">--}}
+{{--                                                    @csrf--}}
+{{--                                                    @method('DELETE')--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            @endif
+                            <table class="table table-bordered mt-2" id="dynamicVideos">
+                                <tr>
+                                    <th>Add Videos</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="video_url[]" id="videoFile">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" name="add" id="addVideo" class="btn btn-success">Add More</button>
+                                    </td>
+                                </tr>
+
+                            </table>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
                                 <label for="is_trending">Is Trending</label><br>
                                 <input type="radio" name="is_trending" value="1" {{ $game->is_trending ==1 ? 'checked':'' }}/> Yes
@@ -100,7 +191,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -112,6 +203,89 @@
 @endsection
 @section('js')
     <script>
+        /*$('#submit-button').on('click', function () {
+            $('#main-form').submit();
+        })*/
+        function deleteScreenshots(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('delete-screenshots-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'Your file is safe :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
+        }
+
+        function deleteVideo(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('delete-video-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'Your file is safe :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
+        }
+
         $(document).ready(function () {
             $('.ckeditor').ckeditor();
         });
@@ -128,6 +302,26 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        $(document).on("change", ".custom-file-input", function() {
+            console.log('hello');
+            var fileName = $(this).val().split("\\").pop();
+            console.log(fileName);
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        var i = 0;
+        var j = 0
+        $(document).on('click', "#addScreenshot", function(){
+            ++i;
+            $("#dynamicScreenshot").append('<tr><td><div class="custom-file"><input type="file" class="custom-file-input" id="screenshotFile-'+i+'" name="screenshot_image[]"><label class="custom-file-label" for="screenshotFile-'+i+'">Choose file</label></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+        });
+        $(document).on('click', "#addVideo", function(){
+            ++j;
+            $("#dynamicVideos").append('<tr><td><div class="form-group"><input type="text" class="form-control" id="videoFile-'+j+'" name="video_url[]"><label class="custom-file-label" for="videoFile-'+i+'">Choose file</label></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+        });
+        $(document).on('click', '.remove-tr', function(){
+            $(this).parents('tr').remove();
+        });
     </script>
 @endsection
 
