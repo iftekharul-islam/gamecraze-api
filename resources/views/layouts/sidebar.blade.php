@@ -64,6 +64,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('all-game') }}" class="nav-link {{ (request()->routeIs('all-game', 'game.create')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            News and articles
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('all-platform') }}" class="nav-link {{ (request()->routeIs('all-platform', 'platform.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
