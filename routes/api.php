@@ -75,6 +75,9 @@
 
         //Rent Posted Users
         $api->get('rent-posted-users/{id}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
+        // New & articles section
+        Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
+        Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
