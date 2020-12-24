@@ -121,7 +121,7 @@ class GameRepository
 
         if ($request->hasFile('game_image')) {
             $image = $request->file('game_image');
-            $image_name = 'game-' . auth()->user()->id . '-' . $image->getClientOriginalName();
+            $image_name = 'game-' . auth()->user()->id . '-' . time() . $image->getClientOriginalName();
             $path = "game-image/" . $image_name;
             $image->storeAs('game-image', $image_name);
 
@@ -239,8 +239,11 @@ class GameRepository
     public function delete($id)
     {
         $game = Game::findOrFail($id);
-        $game->delete();
-        return $game;
+        if ($game) {
+            $game->delete();
+            return true;
+        }
+        return false;
     }
 
     /**

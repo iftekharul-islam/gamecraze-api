@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Repositories\Admin\ArticleRepository;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    private $repository;
+
+    public function __construct(ArticleRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = $this->repository->allArticle();
+        return view('admin.article.index', compact('articles'));
     }
 
     /**
@@ -24,7 +33,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.article.create');
     }
 
     /**
@@ -35,7 +44,10 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        return $request->all();
+        $data = $this->repository->store($request);
+//        return $data;
+        return redirect()->route('all-article')->with('status', 'Article successfully stored');
     }
 
     /**
@@ -44,9 +56,11 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+        $article = $this->repository->show($id);
+//        return $article;
+        return view('admin.article.show', compact('article'));
     }
 
     /**
@@ -55,9 +69,10 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $article = $this->repository->show($id);
+        return view('admin.article.edit', compact('article'));
     }
 
     /**
@@ -67,19 +82,23 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+//        return $request->all();
+        $data = $this->repository->update($request, $id);
+        return redirect()->route('all-article')->with('status', 'Article updated successfully');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $data = $this->repository->delete($id);
+        if ($data === true){
+            return back()->with('status', 'Article successfully deleted');
+        }
+        return back()->with('error', 'Article delete not successful');
     }
 }

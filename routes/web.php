@@ -50,7 +50,13 @@ Route::prefix('admin')->group(function () {
         //game screenshots  delete
         Route::delete('games-screenshots/destroy/{id}','\App\Http\Controllers\GameController@screenshotsDestroy')->name('screenshots.destroy');
         // New & articles section
-
+        Route::get('articles','\App\Http\Controllers\ArticleController@index')->name('all-article');
+        Route::get('create/article','\App\Http\Controllers\ArticleController@create')->name('article.create');
+        Route::post('store/article','\App\Http\Controllers\ArticleController@store')->name('article.store');
+        Route::get('article/{id}','\App\Http\Controllers\ArticleController@show')->name('article.show');
+        Route::get('article/edit/{id}','\App\Http\Controllers\ArticleController@edit')->name('article.edit');
+        Route::post('article/update/{id}','\App\Http\Controllers\ArticleController@update')->name('article.update');
+        Route::delete('article/destroy/{id}','\App\Http\Controllers\ArticleController@destroy')->name('article.destroy');
         //Disk condition Crud
         Route::get('disk-conditions','\App\Http\Controllers\DiskConditionController@index')->name('diskCondition.all');
         Route::get('create/disk-condition','\App\Http\Controllers\DiskConditionController@create')->name('diskCondition.create');

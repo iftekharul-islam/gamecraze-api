@@ -108,8 +108,11 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        $this->gameRepository->delete($id);
-        return back()->with('status', 'Game successfully deleted');
+        $data = $this->gameRepository->delete($id);
+        if ($data === true){
+            return back()->with('status', 'Game successfully deleted');
+        }
+        return back()->with('error', 'Game delete not successful');
     }
 
     public function videoDestroy($id)
