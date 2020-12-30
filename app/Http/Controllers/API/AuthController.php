@@ -11,6 +11,7 @@ use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
 use App\Transformers\UserTransformer;
 use Dingo\Api\Exception\StoreResourceFailedException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 
@@ -75,18 +76,19 @@ class AuthController extends BaseController
     public function login(UserLoginRequest $request)
     {
         $token = $this->loginService->login($request);
+        logger($token);
         if ($token == false) {
             return $this->response->array([
                 'error' => true,
                 'message' => 'Wrong email or password'
             ]);
         }
-        if ($token['message'] == 'inactiveUser') {
-            return $this->response->array([
-                'error' => true,
-                'message' => 'inactiveUser'
-            ]);
-        }
+//        if ($token['message'] == 'inactiveUser') {
+//            return $this->response->array([
+//                'error' => true,
+//                'message' => 'inactiveUser'
+//            ]);
+//        }
 
         $token['error'] = false;
         return $this->response->array($token);
@@ -94,7 +96,7 @@ class AuthController extends BaseController
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function logout(Request $request)
     {
@@ -104,7 +106,7 @@ class AuthController extends BaseController
 
     /**
      * @param UserUpdateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(UserUpdateRequest $request)
     {
@@ -114,12 +116,27 @@ class AuthController extends BaseController
 
     /**
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy($id)
     {
         $this->userRepository->delete($id);
         return response()->json("User Deleted successfully");
+    }
+
+    public function checkPassword(Request $request)
+    {
+        $user = $this->userRepository->checkPassword($request);
+        if ($user) {
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Password not set'
+            ]);
+        }
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Password is set'
+        ]);
     }
 
 }

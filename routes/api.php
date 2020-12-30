@@ -28,6 +28,9 @@
         $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         $api->post('verify-reset-code', 'App\Http\Controllers\API\ResetPasswordController@verifyResetCode');
 
+        // Check password is set or not
+        $api->post('check-password', 'App\Http\Controllers\API\AuthController@checkPassword');
+
         // Games
         $api->get('games/upcoming-games', 'App\Http\Controllers\API\GameController@upcomingGames');
         $api->get('games/trending', 'App\Http\Controllers\API\GameController@trendingGames');
