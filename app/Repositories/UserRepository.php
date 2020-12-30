@@ -151,4 +151,8 @@ class UserRepository {
         $user->givePermissionTo($permission);
         return;
     }
+
+    public function checkPassword(Request $request) {
+        return User::where('email', $request->input('email'))->where('password', null)->first();
+    }
 }
