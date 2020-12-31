@@ -111,7 +111,7 @@ class AuthController extends BaseController
     public function update(UserUpdateRequest $request)
     {
         $user = $this->userRepository->update($request);
-        return response()->json($user);
+        return response()->json(['error' => false, 'data' => $user]);
     }
 
     /**
@@ -130,12 +130,29 @@ class AuthController extends BaseController
         if ($user) {
             return $this->response->array([
                 'error' => false,
-                'message' => 'Password not set'
+                'message' => 'Password not set',
+                'user' => $user
             ]);
         }
         return $this->response->array([
             'error' => true,
             'message' => 'Password is set'
+        ]);
+    }
+
+    public function checkEmailExist(Request $request)
+    {
+        $user = $this->userRepository->checkEmailExist($request);
+        if ($user) {
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Email exist',
+                'user' => $user
+            ]);
+        }
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Email not exist'
         ]);
     }
 
