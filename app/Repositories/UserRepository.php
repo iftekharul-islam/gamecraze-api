@@ -35,6 +35,9 @@ class UserRepository {
     public function update(Request$request) {
         $userData = $request->all();
         $user = auth()->user();
+        if (!$user) {
+            $user = User::where('email', $request->input('email'))->first();
+        }
 
         if ($user) {
             if (isset($userData['name'])) {
@@ -154,5 +157,8 @@ class UserRepository {
 
     public function checkPassword(Request $request) {
         return User::where('email', $request->input('email'))->where('password', null)->first();
+    }
+    public function checkEmailExist(Request $request) {
+        return User::where('email', $request->input('email'))->first();
     }
 }

@@ -30,6 +30,7 @@
 
         // Check password is set or not
         $api->post('check-password', 'App\Http\Controllers\API\AuthController@checkPassword');
+        $api->post('check-email-exist', 'App\Http\Controllers\API\AuthController@checkEmailExist');
 
         // Games
         $api->get('games/upcoming-games', 'App\Http\Controllers\API\GameController@upcomingGames');
@@ -81,12 +82,12 @@
         // New & articles section
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
         Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
+        $api->put('users', 'App\Http\Controllers\API\AuthController@update');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
-            $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             //For rent purpose
