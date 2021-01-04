@@ -12,16 +12,20 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 
 
-class UserRepository {
-    public function all() {
+class UserRepository
+{
+    public function all()
+    {
         return User::all();
     }
 
-    public function findById() {
+    public function findById()
+    {
         return User::findOrFail(auth()->user()->id);
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $user = User::create($request->all());
         $role = Role::where('name', 'customer')->first();
 
@@ -32,7 +36,43 @@ class UserRepository {
         return false;
     }
 
-    public function update(Request$request) {
+    public function emailRegistration($request)
+    {
+        $userData = $request->all();
+        $data = User::where('phone_number', $request->phone_number)->first();
+        if ($data) {
+            return [
+                'error' => true,
+                'message' => 'Phone Number already exists',
+            ];
+        }
+        $user = new User();
+
+        if (isset($userData['name'])) {
+            $user->name = $userData['name'];
+        }
+        if (isset($userData['lastName'])) {
+            $user->last_name = $userData['lastName'];
+        }
+        if (isset($userData['email'])) {
+            $user->email = $userData['email'];
+        }
+        if (isset($userData['phone_number'])) {
+            $user->phone_number = $userData['phone_number'];
+        }
+        if (isset($userData['password'])) {
+            $user->password = $userData['password'];
+        }
+        $user->save();
+
+        return [
+            'error' => false,
+            'user' => $user,
+        ];
+    }
+
+    public function update(Request $request)
+    {
         $userData = $request->all();
         $user = auth()->user();
         if (!$user) {
@@ -65,7 +105,7 @@ class UserRepository {
                 $image = $userData['id_image'];
                 $userImage = 'id_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
-                $user->identification_image =  'identification/' . $userImage;
+                $user->identification_image = 'identification/' . $userImage;
             }
             if (isset($userData['address']) || isset($userData['city']) || isset($userData['postCode'])) {
                 $address = Address::find($user->address_id);
@@ -81,7 +121,7 @@ class UserRepository {
                 $image = $userData['image'];
                 $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
-                $user->image =  'profile/' . $userImage;
+                $user->image = 'profile/' . $userImage;
             }
 
             $user->save();
@@ -94,7 +134,8 @@ class UserRepository {
 
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $user = User::findOrFail($id);
         $user->delete();
 
@@ -127,7 +168,7 @@ class UserRepository {
         return Permission::all();
     }
 
-    public function rolehasPermission($role_id,$per_id)
+    public function rolehasPermission($role_id, $per_id)
     {
         $permission = Permission::findById($per_id);
         $role = Role::findById($role_id);
@@ -155,10 +196,13 @@ class UserRepository {
         return;
     }
 
-    public function checkPassword(Request $request) {
+    public function checkPassword(Request $request)
+    {
         return User::where('email', $request->input('email'))->where('password', null)->first();
     }
-    public function checkEmailExist(Request $request) {
+
+    public function checkEmailExist(Request $request)
+    {
         return User::where('email', $request->input('email'))->first();
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\UserCreateByEmailRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
@@ -13,7 +15,7 @@ use App\Transformers\UserTransformer;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use phpseclib\Crypt\Hash;
 
 
 class AuthController extends BaseController
@@ -114,6 +116,20 @@ class AuthController extends BaseController
         return response()->json(['error' => false, 'data' => $user]);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function emailRegistration(Request $request)
+    {
+        $data = $this->userRepository->emailRegistration($request);
+        if ($data['error'] == true) {
+            return response()->json($data);
+        }
+        $data['token'] = $this->generateAccessToken($data['user']);
+
+        return response()->json($data);
+    }
     /**
      * @param $id
      * @return JsonResponse
