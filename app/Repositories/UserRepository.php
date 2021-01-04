@@ -61,7 +61,7 @@ class UserRepository
             $user->phone_number = $userData['phone_number'];
         }
         if (isset($userData['password'])) {
-            $user->password = $userData['password'];
+            $user->password = bcrypt($userData['password']);
         }
         $user->save();
 
