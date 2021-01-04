@@ -24,6 +24,7 @@
         // OTP
         $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
         $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
+        $api->post('verify-email', 'App\Http\Controllers\API\AuthController@emailRegistration');
         // Reset Password
         $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         $api->post('verify-reset-code', 'App\Http\Controllers\API\ResetPasswordController@verifyResetCode');
@@ -83,6 +84,7 @@
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
         Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
         $api->put('users', 'App\Http\Controllers\API\AuthController@update');
+//        $api->post('email-registration', 'App\Http\Controllers\API\AuthController@emailRegistration');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
