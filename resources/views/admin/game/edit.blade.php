@@ -360,7 +360,7 @@
             $('<input>', {
                 'name': '_method',
                 'type': 'hidden',
-                'value': 'DELETe'
+                'value': 'DELETE'
             });
 
             return form.append(token, hiddenInput).appendTo('body');
