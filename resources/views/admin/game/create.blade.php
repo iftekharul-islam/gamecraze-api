@@ -148,7 +148,7 @@
                                 @endif
                             </div>
                             <label>Trending image</label>
-                            <small>(Height: 238px and width: 437px)</small>
+                            <small>(Width: 238px and Height: 437px)</small>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="trending_url" id="trendingFile">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
@@ -158,7 +158,7 @@
                                 @endif
                             </div>
                             <label>Cover image</label>
-                            <small>(Height: 1920px and width: 600px)</small>
+                            <small>(Width: 1920px and Height: 600px)</small>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="cover_url" id="coverFile">
                                 <label class="custom-file-label" for="coverFile">Choose file</label>
@@ -167,7 +167,7 @@
                                 @endif
                             </div>
                             <label>Poster image</label>
-                            <small>(Height: 250px and width: 170px)</small>
+                            <small>(Width: 250px and Height: 170px)</small>
                             <div class="custom-file">
 {{--                                <input type="file" class="form-control" id="poster_image" name="poster_url">--}}
                                 <input type="file" class="custom-file-input" name="poster_url" id="posterFile">

@@ -71,4 +71,10 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function topArticles(Request $request) {
+        $number = $request->get('number') ? $request->get('number') : 5;
+        $articles = $this->repository->latestArticles($number);
+        return $this->response->collection($articles, new ArticleTransformer());
+    }
 }

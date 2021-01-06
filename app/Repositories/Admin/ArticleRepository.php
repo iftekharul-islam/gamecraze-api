@@ -14,7 +14,7 @@ class ArticleRepository
      */
     public function allArticle()
     {
-        return Article::orderBy('created_at', 'ASC')->get();
+        return Article::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -102,5 +102,12 @@ class ArticleRepository
         return false;
     }
 
-
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function latestArticles($number = 5)
+    {
+        return Article::where('status', 1)->orderBy('created_at', 'DESC')->take($number)->get();
+    }
 }

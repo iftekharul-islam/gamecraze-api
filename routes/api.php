@@ -82,6 +82,7 @@
         $api->get('rent-posted-users/{id}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
         // New & articles section
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
+        Route::get('top-articles','\App\Http\Controllers\API\ArticleController@topArticles');
         Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
         $api->put('users', 'App\Http\Controllers\API\AuthController@update');
 //        $api->post('email-registration', 'App\Http\Controllers\API\AuthController@emailRegistration');

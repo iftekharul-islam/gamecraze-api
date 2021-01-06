@@ -52,7 +52,7 @@
                                     <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Serial no</th>
+                                        <th>SN</th>
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Status</th>
@@ -63,15 +63,14 @@
                                     @foreach($articles as $key=>$article)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-{{--                                            <td><a href="{{ route('game.show', $game->id) }}">{{ $game->name }}</a></td>--}}
                                             <td>{{ $article->title }}</td>
-                                            <td>{!! $article->description !!}</td>
+                                            <td>{!! Str::limit($article->description, 100) !!}</td>
                                             <td>{{ $article->status == 1 ? 'Active' : 'Inactive' }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary mr-3"
+                                                <a class="btn btn-sm btn-primary mr-1"
                                                    href="{{ route('article.show', $article->id) }}"><i
                                                         class="far fa-eye"></i></a>
-                                                <a class="btn btn-sm btn-primary mr-3"
+                                                <a class="btn btn-sm btn-primary mr-1"
                                                    href="{{ route('article.edit', $article->id) }}"><i
                                                         class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
