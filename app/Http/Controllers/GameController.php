@@ -126,11 +126,10 @@ class GameController extends Controller
 
     public function screenshotsDestroy($id)
     {
-        return 'hello';
         $data = $this->gameRepository->screenshotsDestroy($id);
         if ($data == true) {
             return back()->with('status', 'Screenshots successfully deleted');
         }
-        return back()->with('error', 'Screenshots successfully deleted');
+        return back()->with('error', 'Could not delete screenshot');
     }
 }
