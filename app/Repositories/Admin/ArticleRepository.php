@@ -12,9 +12,9 @@ class ArticleRepository
     /**
      * @return mixed
      */
-    public function allArticle()
+    public function allArticle($order = 'DESC', $perPage = 5)
     {
-        return Article::orderBy('created_at', 'DESC')->get();
+        return Article::orderBy('created_at', $order)->paginate($perPage);
     }
 
     /**
@@ -103,11 +103,24 @@ class ArticleRepository
     }
 
     /**
-     * @param $id
-     * @return bool
+     * @param $number
+     * @return collection
      */
     public function latestArticles($number = 5)
     {
         return Article::where('status', 1)->orderBy('created_at', 'DESC')->take($number)->get();
+    }
+
+    /**
+     * @param $number
+     * @return collection
+     */
+    public function relatedArticles($article_id, $number = 3)
+    {
+        return Article::where('status', 1)
+            ->where('id', '!=', $article_id)
+            ->take($number)
+            ->inRandomOrder()
+            ->get();
     }
 }

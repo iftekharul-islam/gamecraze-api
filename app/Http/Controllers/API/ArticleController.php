@@ -20,10 +20,12 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = $this->repository->allArticle();
-        return $this->response->collection($articles, new ArticleTransformer());
+        $order = $request->get('order') ?? 'ASC';
+        $perPage = $request->get('perPage') ?? 5;
+        $articles = $this->repository->allArticle($order, $perPage);
+        return $this->response->paginator($articles, new ArticleTransformer());
     }
 
     /**
@@ -71,10 +73,26 @@ class ArticleController extends Controller
     {
         //
     }
-
+    /**
+     * get latest articles
+     *
+     * @param  int  number 
+     * @return \Illuminate\Http\Response
+     */
     public function topArticles(Request $request) {
         $number = $request->get('number') ? $request->get('number') : 5;
         $articles = $this->repository->latestArticles($number);
+        return $this->response->collection($articles, new ArticleTransformer());
+    }
+
+    /**
+     * get related articles
+     * @param  int  number 
+     * @return \Illuminate\Http\Response
+     */
+    public function getRelatedArticles(Request $request, $id) {
+        $number = $request->get('number') ? $request->get('number') : 3;
+        $articles = $this->repository->relatedArticles($id, $number);
         return $this->response->collection($articles, new ArticleTransformer());
     }
 }
