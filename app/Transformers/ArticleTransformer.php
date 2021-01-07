@@ -5,7 +5,7 @@ namespace App\Transformers;
 // We need to reference the Items Model
 use App\Models\Article;
 use App\Models\Game;
-
+use Carbon\Carbon;
 // Dingo includes Fractal to help with transformations
 use Illuminate\Support\Str;
 use League\Fractal\TransformerAbstract;
@@ -22,6 +22,7 @@ class ArticleTransformer extends TransformerAbstract
             'id' => $article->id,
             'title' => $article->title,
             'description' => $article->description,
+            'created' => Carbon::parse($article->created_at)->format('F d, Y'),
             'thumbnail' => asset('/'. $article->thumbnail),
             'status' => $article->status,
         ];
