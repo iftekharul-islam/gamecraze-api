@@ -62,6 +62,10 @@
                                             <td>Status:</td>
                                             <td>{{ $article->status == 1 ? 'Active' : 'Inactive' }}</td>
                                         </tr>
+                                        <tr>
+                                            <td>Is Featured:</td>
+                                            <td>{{ $article->is_featured == 1 ? 'Yes' : 'No' }}</td>
+                                        </tr>
 
                                     </tbody>
                                 </table>

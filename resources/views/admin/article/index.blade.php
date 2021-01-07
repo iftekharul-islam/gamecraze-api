@@ -65,7 +65,7 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $article->title }}</td>
                                             <td>{!! Str::limit($article->description, 100) !!}</td>
-                                            <td>{{ $article->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                            <td>{{ $article->status == 1 ? 'Active' : 'Inactive' }} {{ $article->is_featured == 1 ? ', Featured' : '' }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-1"
                                                    href="{{ route('article.show', $article->id) }}"><i

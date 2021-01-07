@@ -61,12 +61,21 @@
                                     <span class="text-danger"><strong>{{ $errors->first('thumbnail') }}</strong></span>
                                 @endif
                             </div>
-                            <div
-                                class="false-padding-bottom-form form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('status') ? ' has-error' : '' }}">
                                 <label for="name">Status</label>
                                 <select name="status" class="form-control select2">
                                     <option value="1">Active</option>
                                     <option value="2">Inactive</option>
+                                </select>
+                                @if ($errors->has('status'))
+                                    <span class="text-danger"><strong>{{ $errors->first('status') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                <label for="name">Is Featured</label>
+                                <select name="is_featured" class="form-control select2">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
                                 </select>
                                 @if ($errors->has('status'))
                                     <span class="text-danger"><strong>{{ $errors->first('status') }}</strong></span>

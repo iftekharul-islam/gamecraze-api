@@ -64,6 +64,7 @@ class GameRepository
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = $game_data['publisher'] ?? 'Testing publisher';
         $game_data['description'] = $game_data['description'] ? $game_data['description'] : 'Testing description';
+
         if ($request->hasFile('trending_url')) {
             $trending = $request->file('trending_url');
             $trending_name = $game_data['name'] . '-trending-' . auth()->user()->id . '-' . time() . $trending->getClientOriginalName();
@@ -85,7 +86,7 @@ class GameRepository
             $poster->storeAs('game-image', $poster_name);
             $game_data['poster_url'] = 'storage/' . $path;
         }
-//        return $game_data;
+
         $game = Game::create($game_data);
 
         $game->genres()->sync($request->genres, false);

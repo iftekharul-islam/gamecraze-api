@@ -44,9 +44,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-//        return $request->all();
         $data = $this->repository->store($request);
-//        return $data;
         return redirect()->route('all-article')->with('status', 'Article successfully stored');
     }
 

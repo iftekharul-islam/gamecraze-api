@@ -95,4 +95,10 @@ class ArticleController extends Controller
         $articles = $this->repository->relatedArticles($id, $number);
         return $this->response->collection($articles, new ArticleTransformer());
     }
+
+    public function getFeaturedArticles(Request $request) {
+        $number = $request->get('number') ? $request->get('number') : 3;
+        $articles = $this->repository->featuredArticles($number);
+        return $this->response->collection($articles, new ArticleTransformer());
+    }
 }

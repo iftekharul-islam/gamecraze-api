@@ -34,7 +34,8 @@ class ArticleRepository
     public function update($request, $id)
     {
         $article = Article::findOrFail($id);
-        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status']);
+        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status', 'is_featured']);
+        $article->is_featured = 0;
 
         if (isset($data['title'])) {
             $article->title = $data['title'];
@@ -51,6 +52,10 @@ class ArticleRepository
         if (isset($data['status'])) {
             $article->status = $data['status'];
         }
+        if (isset($data['is_featured'])) {
+            $article->is_featured = $data['is_featured'];
+        }
+
         if (isset($data['thumbnail'])) {
 
             $thumbnail = $request->file('thumbnail');
@@ -73,7 +78,7 @@ class ArticleRepository
      */
     public function store($request)
     {
-        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status']);
+        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status', 'is_featured']);
         $data['user_id'] = auth()->user()->id;
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
@@ -121,6 +126,15 @@ class ArticleRepository
             ->where('id', '!=', $article_id)
             ->take($number)
             ->inRandomOrder()
+            ->get();
+    }
+
+    public function featuredArticles($number)
+    {
+        return Article::where('status', 1)
+            ->where('is_featured', 1)
+            ->orderBy('created_at', 'DESC')
+            ->take($number)
             ->get();
     }
 }
