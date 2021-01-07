@@ -118,6 +118,9 @@
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
+            //set upcoming game reminder
+            // $api->post('set-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@store');
+
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
