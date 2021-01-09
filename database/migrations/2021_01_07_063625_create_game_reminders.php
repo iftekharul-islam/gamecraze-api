@@ -19,6 +19,7 @@ class CreateGameReminders extends Migration
             $table->unsignedBigInteger('game_id');
             $table->boolean('is_sent')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

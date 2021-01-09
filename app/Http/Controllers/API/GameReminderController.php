@@ -31,7 +31,7 @@ class GameReminderController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -40,10 +40,18 @@ class GameReminderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GameReminderCreateRequest $request)
+    public function store(Request $request, $game_id)
     {
-        $this->repository->create($request->game_id, auth()->user()->id);
-        return responseData('Added to reminder', 200);
+        if ($this->repository->checkIfExists(auth()->user()->id, $game_id)) {
+            return responseData('Reminder already set', 200);
+        }
+
+        $reminder = $this->repository->create($request->game_id, auth()->user()->id);
+        if ($reminder)  {
+            return responseData('Added to reminder', 200);
+        }
+
+        return responseData('Could not set reminder', 200);
     }
 
     /**

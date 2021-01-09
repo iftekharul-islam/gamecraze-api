@@ -28,10 +28,16 @@ class GameReminderRepository
 
     public function create($game_id, $user_id)
     {
-        return GameReminder::create([
+        $reminder = GameReminder::create([
             'game_id' => $game_id,
             'user_id' => $user_id
         ]);
+
+        if ( $reminder ) {
+            return true;
+        }
+
+        return false;
     }
 
     public function update(Request $request)
@@ -99,7 +105,15 @@ class GameReminderRepository
 
     public function delete($id)
     {
-        
 
+    }
+
+    public function checkIfExists($user_id, $game_id)
+    {
+        if (GameReminder::where('user_id', $user_id)->where('game_id', $game_id)->count() > 0) {
+            return true;
+        }
+
+        return false;
     }
 }
