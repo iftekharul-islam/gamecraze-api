@@ -34,7 +34,12 @@ class RentController extends BaseController
      */
     public function index() {
         $rents = $this->rentRepository->all();
-        return $this->response->collection($rents, new RentTransformer());
+        if ($rents) {
+            return $this->response->collection($rents, new RentTransformer());
+        }
+
+        return responseData('No post found', 404);
+        
     }
 
     /**

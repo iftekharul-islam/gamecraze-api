@@ -1,6 +1,5 @@
 <?php
 
-use App\Jobs\SendReminder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -135,7 +134,4 @@ Route::prefix('admin')->group(function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test-reminder', function() {
-    SendReminder::dispatch(10);
-});
 
