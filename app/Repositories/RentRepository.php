@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Jobs\SendReminder;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,10 @@ class RentRepository {
             $rent['disk_image'] =   $disk_image ;
         }
         $rent['user_id'] = auth()->user()->id;
+        
+        logger('game id: ', $rent['game_id']);
+        
+        SendReminder::dispatch($rent['game_id']);
 
         return Rent::create($rent);
     }
