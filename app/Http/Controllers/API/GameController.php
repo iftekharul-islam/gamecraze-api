@@ -13,7 +13,9 @@ use App\Transformers\RentTransformer;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
+use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
+use function Composer\Autoload\includeFile;
 
 class GameController extends BaseController
 {
@@ -38,7 +40,7 @@ class GameController extends BaseController
     }
 
     /**
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -49,7 +51,7 @@ class GameController extends BaseController
     /**
      * @param GameCreateRequest $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function store(GameCreateRequest $request)
     {
@@ -62,7 +64,7 @@ class GameController extends BaseController
 
     /**
      * @param $id
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -72,7 +74,7 @@ class GameController extends BaseController
 
     /**
      * @param GameUpdateRequest $request
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -102,7 +104,7 @@ class GameController extends BaseController
     }
 
     /**
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function upcomingGames()
     {
@@ -111,7 +113,7 @@ class GameController extends BaseController
     }
 
     /**
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function trendingGames()
     {
@@ -121,12 +123,44 @@ class GameController extends BaseController
 
     /**
      * @param Request $request
-     * @return \Dingo\Api\Http\Response
+     * @return Response
      */
     public function rentGames(Request $request)
     {
         $ids = explode(',', $request->ids);
         $games = $this->gameRepository->rentGames($ids);
         return $this->response->collection($games, new GameTransformer());
+    }
+
+    public function filterGames(Request $request)
+    {
+        $ids = explode(',', $request->input('ids'));
+
+
+
+        if ($request->input('search')) {
+            $search = $request->input('search');
+        }
+        else {
+            $search = "";
+        }
+
+
+        if ($request->input('categories')) {
+            $categories = explode(',', $request->input('categories'));
+        }
+        else {
+            $categories = [];
+        }
+        if ($request->input('platforms')) {
+            $platforms = explode(',', $request->input('platforms'));
+        }
+        else {
+            $platforms = [];
+        }
+
+        $filteredGames = $this->gameRepository->filterGames($ids, $categories, $platforms, $search);
+
+        return $this->response->collection($filteredGames, new GameTransformer());
     }
 }

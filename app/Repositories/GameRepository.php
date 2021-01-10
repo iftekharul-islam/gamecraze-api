@@ -135,4 +135,27 @@ class GameRepository
     {
         return Game::whereIn('id', $ids)->get();
     }
+
+    public function filterGames($ids, $categories, $platforms, $search)
+    {
+        if (empty($categories) && empty($platforms) && $search == '') {
+            return Game::whereIn('id', $ids)->get();
+        }
+
+        return Game::whereIn('id', $ids)
+            ->when($categories, function ($q) use ($categories) {
+                $q->with('genres')->whereHas('genres', function($query2) use ($categories){
+                    $query2->whereIn('slug', $categories);
+                });
+            })
+            ->when($platforms, function ($q) use ($platforms) {
+                $q->with('platforms')->whereHas('platforms', function($query2) use ($platforms){
+                    $query2->whereIn('slug', $platforms);
+                });
+            })
+            ->when($search, function ($q) use ($search) {
+                return $q->where('name', 'like', '%' . $search . '%');
+            })
+            ->get();
+    }
 }

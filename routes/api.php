@@ -70,6 +70,7 @@
 	    $api->get('cart-items', 'App\Http\Controllers\API\RentController@cartItems');
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 	    $api->get('rent-games', 'App\Http\Controllers\API\GameController@rentGames');
+	    $api->get('filter-games', 'App\Http\Controllers\API\GameController@filterGames');
 
         //pay
         $api->post('/pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');
