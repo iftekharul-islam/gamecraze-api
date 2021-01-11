@@ -42,6 +42,13 @@ class OtpRepository {
     public function verifyOtp(Request $request) {
         $phone_number = $request->has('email') ? User::where('email', $request->input('email'))->first()->phone_number : $request->input('phone_number');
         $otp = OneTimePassword::where('phone_number', $phone_number)->latest()->first();
+        
+        if (!$otp) {
+            return [
+                'error' => true,
+                'message' => 'otpNotFound'
+            ];
+        }
 
         $created_at = new Carbon($otp->created_at);
 

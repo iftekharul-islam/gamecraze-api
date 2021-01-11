@@ -91,6 +91,9 @@
         $api->put('users', 'App\Http\Controllers\API\AuthController@update');
 //        $api->post('email-registration', 'App\Http\Controllers\API\AuthController@emailRegistration');
 
+        Route::get('validate-token/{token}','\App\Http\Controllers\API\ResetPasswordController@validateToken');
+        Route::put('update-password','\App\Http\Controllers\API\ResetPasswordController@updatePassword');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->get('users', 'App\Http\Controllers\API\UserController@index');

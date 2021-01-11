@@ -74,9 +74,16 @@ class UserRepository
     public function update(Request $request)
     {
         $userData = $request->all();
+
         $user = auth()->user();
         if (!$user) {
-            $user = User::where('email', $request->input('email'))->first();
+            $user = User::when($userData['phone_number'], function($query) use($userData) {
+                    $query->where('phone_number', $userData['phone_number']);
+                })
+                ->when($userData['email'], function($query) use($userData) {
+                    $query->where('email', $userData['email']);
+                })
+                ->first();
         }
 
         if ($user) {
