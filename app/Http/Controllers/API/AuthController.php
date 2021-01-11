@@ -150,7 +150,6 @@ class AuthController extends BaseController
     {
         $user = $this->userRepository->checkPassword($request);
         if ($user) {
-          
             $token = hash('sha256', Str::random(30));
             $link = env('GAMEHUB_FRONT') . '/update-password/' . $token;
             $expires = Carbon::now()->addHours(1)->format('Y-m-d H:i:s');
@@ -162,7 +161,7 @@ class AuthController extends BaseController
 
             Mail::to($user->email)
                 ->queue(new SendPasswordResetMail($user->name, $link));
-                
+
             return $this->response->array([
                 'error' => false,
                 'message' => 'Password not set',

@@ -47,12 +47,15 @@ class ResetPasswordController extends BaseController
                 'message' => 'Token Not Found'
             ]);
         }
-        // if (Carbon::parse($token->expires_at)->gt(Carbon::now())) {
-        //     return $this->response->array([
-        //         'error' => true,
-        //         'message' => 'Token Expired'
-        //     ]);
-        // }
+        $now = Carbon::now();
+        $token_exp = Carbon::parse($token->expires_at);
+        if ($now->gt($token_exp)) {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'Token Expired',
+                'now' => $now
+            ]);
+        }
 
         return $this->response->array([
             'error' => false,
@@ -62,23 +65,31 @@ class ResetPasswordController extends BaseController
 
     public function updatePassword(Request $request) {
         $token = ResetPasswordToken::where('token', $request->token)->first();
+        if (!$token) {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'Token not found'
+            ]);
+        }
+
         $user = User::findOrFail($token->user_id);
-        logger('user: ' . json_encode($user));
-        logger('req: ' .json_encode($request->all()));
         if ($user) {
+            $user->name = $request->name;
+            $user->last_name = $request->lastName;
+            $user->phone_number = $request->phone_number;
             $user->password = Hash::make($request->password);
             $user->save();
             // $token->expires_at =  Carbon::now()->subDays(5);
             // $token->save();
             $token->delete();
 
-            $accessToke = $user->createToken($user->email.'-'.now());
-        
+            $accessToken = $user->createToken($user->email.'-'.now());
+
             return $this->response->array([
                 'error' => false,
                 'message' => 'Password updated',
                 'user' => $user,
-                'token' =>$accessToke->accessToken
+                'token' => $accessToken->accessToken
             ]);
         }
 
@@ -86,6 +97,5 @@ class ResetPasswordController extends BaseController
             'error' => true,
             'message' => 'User not found'
         ]);
-        
     }
 }
