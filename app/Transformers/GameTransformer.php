@@ -27,6 +27,8 @@ class GameTransformer extends TransformerAbstract
             'base_price_id' => $game->base_price_id,
             'rating' => $game->rating,
             'publisher' => $game->publisher,
+            'poster_url' => asset($game->poster_url),
+            'trending_url' => asset($game->trending_url)
         ];
     }
 

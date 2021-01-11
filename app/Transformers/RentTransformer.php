@@ -32,7 +32,9 @@ class RentTransformer extends TransformerAbstract
     }
 
     public function includeGame(Rent $rent) {
-        return $this->item($rent->game, new GameTransformer());
+        if (isset($rent->game)) {
+            return $this->item($rent->game, new GameTransformer());
+        }
     }
     public function includeUser(Rent $rent) {
         return $this->item($rent->user, new UserTransformer());

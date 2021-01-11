@@ -57,7 +57,9 @@ class PlatformRepository
             $platform->slug = Str::slug($data['name']);
         }
         if (isset($data['url'])) {
-            unlink($platform->url);
+            if (file_exists($platform->url)) {
+                unlink($platform->url);
+            }
             $image = $request->file('url');
             $image_name ='platform'. time() . '.'.$image->getClientOriginalExtension();
             $image->storeAs('platform-image/', $image_name);

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Jobs\SendReminder;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::where('status', 1)->get();
+        return Rent::with('game', 'user', 'platform', 'diskCondition')->where('status', 1)->get();
     }
 
     public function store(Request $request) {
@@ -47,8 +48,15 @@ class RentRepository {
             $rent['disk_image'] =   $disk_image ;
         }
         $rent['user_id'] = auth()->user()->id;
+        $post = Rent::create($rent);
+        logger('game id: ', $rent['game_id']);
+        
+        if ($post) {
+            SendReminder::dispatch($rent['game_id']);
+            return $post;
+        }
 
-        return Rent::create($rent);
+        return null;
     }
 
     public function show($id) {
