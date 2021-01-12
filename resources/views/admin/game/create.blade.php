@@ -177,6 +177,7 @@
                                 @endif
                             </div>
                             <label>Game image</label>
+                            <small>(Width: 250px and Height: 170px)</small>
                             <div class="custom-file">
                                 <input type="file" multiple="multiple" class="custom-file-input" name="game_image" id="gameFile">
                                 <label class="custom-file-label" for="gameFile">Choose file</label>
