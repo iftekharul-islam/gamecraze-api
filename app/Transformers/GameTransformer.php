@@ -28,7 +28,8 @@ class GameTransformer extends TransformerAbstract
             'rating' => $game->rating,
             'publisher' => $game->publisher,
             'poster_url' => asset($game->poster_url),
-            'trending_url' => asset($game->trending_url)
+            'trending_url' => asset($game->trending_url),
+            'developer' => $game->developer
         ];
     }
 
