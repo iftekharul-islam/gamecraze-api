@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
-use SebastianBergmann\Environment\Console;
 
 class UserRepository
 {
