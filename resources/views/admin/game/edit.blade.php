@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image">Trending image (Height: 238px and width: 437px)</label>
+                                <label for="game_image">Trending image (Width: 238px and Height: 437px)</label>
                                 <input type="file" class="form-control mb-2" id="trending_url" name="trending_url" max-width="437" onchange="loadPreview(this, preview_trending);">
                                 @if($game->trending_url)
                                     <img src="{{ asset($game->trending_url) }}" id="preview_trending" class="img-thumbnail">
@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image">Cover image (Height: 1920px and width: 600px)</label>
+                                <label for="game_image">Cover image (Width: 1920px and Height: 600px)</label>
                                 <input type="file" class="form-control mb-2" id="cover_url" name="cover_url" max-width="437" onchange="loadPreview(this, preview_cover);">
                                 @if($game->cover_url)
                                     <img src="{{ asset($game->cover_url) }}" id="preview_cover" class="img-thumbnail">
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image"> Poster image (Height: 250px and width: 170px) No file chosen</label>
+                                <label for="game_image"> Poster image (Width: 250px and Height: 170px) No file chosen</label>
                                 <input type="file" class="form-control mb-2" id="poster_url" name="poster_url" max-width="437" onchange="loadPreview(this, preview_poster);">
                                 @if($game->poster_url)
                                     <img src="{{ asset($game->poster_url) }}" id="preview_poster" class="img-thumbnail">
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image">Game image</label>
+                                <label for="game_image">Game image (Width: 250px and Height: 170px)</label>
                                 <input type="file" class="form-control mb-2" id="game_image" name="game_image" onchange="loadPreview(this);">
                                 @if(count($game->assets)>0)
                                     @foreach($game->assets as $asset)
