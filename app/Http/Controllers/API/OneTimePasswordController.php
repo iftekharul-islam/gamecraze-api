@@ -31,7 +31,6 @@ class OneTimePasswordController extends BaseController
     public function sendOtp(OtpCreateRequest $request) {
         $code = $this->otpRepository->create($request);
 
-
 	    return $this->response->array([
 	    	'error' => false,
 		    'otp' => $code

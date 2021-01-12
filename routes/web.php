@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendPasswordResetMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -134,4 +136,3 @@ Route::prefix('admin')->group(function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-

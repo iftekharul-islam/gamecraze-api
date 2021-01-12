@@ -7,15 +7,21 @@ use App\Http\Requests\UserCreateByEmailRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Jobs\SendResetPasswordLinkToEmail;
+use App\Mail\SendPasswordResetMail;
+use App\Models\ResetPasswordToken;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
 use App\Transformers\UserTransformer;
+use Carbon\Carbon;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use phpseclib\Crypt\Hash;
+use Illuminate\Support\Str;
 
 
 class AuthController extends BaseController
@@ -144,15 +150,30 @@ class AuthController extends BaseController
     {
         $user = $this->userRepository->checkPassword($request);
         if ($user) {
+            $token = hash('sha256', Str::random(30));
+            $link = env('GAMEHUB_FRONT') . '/update-password/' . $token;
+            $expires = Carbon::now()->addHours(1)->format('Y-m-d H:i:s');
+            $create = ResetPasswordToken::create([
+                'user_id' => $user->id,
+                'token' => $token,
+                'expires_at' => $expires
+            ]);
+
+            Mail::to($user->email)
+                ->queue(new SendPasswordResetMail($user->name, $link));
+
             return $this->response->array([
                 'error' => false,
                 'message' => 'Password not set',
-                'user' => $user
+                'user' => $user,
+                'isPaswordEmpty' => true
             ]);
         }
+
         return $this->response->array([
             'error' => true,
-            'message' => 'Password is set'
+            'message' => 'Password is set',
+            'isPaswordEmpty' => false
         ]);
     }
 
