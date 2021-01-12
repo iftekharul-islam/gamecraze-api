@@ -8,11 +8,11 @@
 <body>
     <h5>Dear admin, </h5>
     <p>New contact request from Gamehub</p>
-    <p>Name: {{ $first_name }} {{ $last_name }}</p>
-    <p>Phone: {{ $phone }}</p>
-    <p>Email: {{ $email }}</p>
-    <p>Message: {{ $message }}</p>
+    <p>Name: {{ $data['first_name'] }} {{ $data['last_name'] }}</p>
+    <p>Phone: {{ $data['phone_number'] }}</p>
+    <p>Email: {{ $data['email'] }}</p>
+    <p>Message:</p>
+    <p>{{ $data['message'] }}</p>
     <p>Thank you,<br/>Gamehub</p>
-
 </body>
 </html>

@@ -19,7 +19,6 @@ class SendContactMail extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
-        logger('data: ' . json_encode($this->data));
     }
 
     /**
@@ -29,14 +28,6 @@ class SendContactMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contact')
-            ->subject('New Contact Mail')
-            ->with([
-                'first_name' => $this->data['first_name'] ,
-                'last_name' => $this->data['last_name'] ,
-                'phone' =>  $this->data['phone'] ,
-                'email' =>  $this->data['email'] ,
-                'message' =>  $this->data['message'] ,
-            ]);
+        return $this->subject('New Contact Mail')->view('email.contact');
     }
 }

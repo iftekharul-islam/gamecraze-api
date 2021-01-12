@@ -32,8 +32,7 @@ class SendContactEmailToAdmin implements ShouldQueue
      */
     public function handle()
     {
-        logger('mail data: ' . $this->data);
-        // Mail::to('debashish2@augnitive.com')
-        //     ->queue(new SendContactMail($this->data));
+        Mail::to('debashish@augnitive.com')
+            ->send(new SendContactMail($this->data));
     }
 }
