@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
-
+use SebastianBergmann\Environment\Console;
 
 class UserRepository
 {
@@ -130,7 +130,6 @@ class UserRepository
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
                 $user->image = 'profile/' . $userImage;
             }
-
             $user->save();
 
             $user['address'] = $user->address;
