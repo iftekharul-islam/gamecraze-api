@@ -11,7 +11,6 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 
-
 class UserRepository
 {
     public function all()
@@ -130,7 +129,6 @@ class UserRepository
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
                 $user->image = 'profile/' . $userImage;
             }
-
             $user->save();
 
             $user['address'] = $user->address;

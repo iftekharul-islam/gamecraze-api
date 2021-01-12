@@ -88,7 +88,7 @@
         Route::get('article/related/{id}','\App\Http\Controllers\API\ArticleController@getRelatedArticles');
         Route::get('featured-article','\App\Http\Controllers\API\ArticleController@getFeaturedArticles');
 
-        $api->put('users', 'App\Http\Controllers\API\AuthController@update');
+        // $api->put('users', 'App\Http\Controllers\API\AuthController@update');
 //        $api->post('email-registration', 'App\Http\Controllers\API\AuthController@emailRegistration');
 
         Route::get('validate-token/{token}','\App\Http\Controllers\API\ResetPasswordController@validateToken');
@@ -96,6 +96,7 @@
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
+            $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
