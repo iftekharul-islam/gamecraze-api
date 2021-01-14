@@ -120,11 +120,14 @@ class GameRepository
     /**
      * @return mixed
      */
-    public function trending()
+    public function trending($numberOfPost = 10)
     {
         return Rent::whereHas('game', function ($q) {
             $q->where('is_trending', 1);
-        })->get();
+        })
+        ->distinct()
+        ->take($numberOfPost)
+        ->get();
     }
 
     /**

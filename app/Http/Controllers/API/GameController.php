@@ -117,7 +117,7 @@ class GameController extends BaseController
      */
     public function trendingGames()
     {
-        $games = $this->gameRepository->trending();
+        $games = $this->gameRepository->trending(8);
         return $this->response->collection($games, new RentTransformer());
     }
 
