@@ -31,8 +31,6 @@
                     <div class="card-header">
                         <h3 class="card-title">Add Video</h3>
                     </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
                     <form method="post" action="{{ route('video.store') }}" enctype="multipart/form-data"
                           class="w-75 mx-auto">
                         @csrf
@@ -64,29 +62,15 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- /.card-body -->
 
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
                         </div>
                     </form>
                 </div>
-                <!-- /.card -->
-            </div><!-- /.container-fluid -->
+                
+            </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
-@section('js')
-    <script>
-        $(document).ready(function () {
-            $('.ckeditor').ckeditor();
-        });
-        $(document).on("change", ".custom-file-input", function() {
-            var fileName = $(this).val().split("\\").pop();
-            console.log(fileName);
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-@endsection
+
