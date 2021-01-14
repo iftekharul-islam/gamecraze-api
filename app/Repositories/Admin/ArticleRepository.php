@@ -111,9 +111,13 @@ class ArticleRepository
      * @param $number
      * @return collection
      */
-    public function latestArticles($number = 5)
+    public function featured($number = 5)
     {
-        return Article::where('status', 1)->orderBy('created_at', 'DESC')->take($number)->get();
+        return Article::where('status', 1)
+            ->where('is_featured', 1)
+            ->orderBy('created_at', 'DESC')
+            ->take($number)
+            ->get();
     }
 
     /**

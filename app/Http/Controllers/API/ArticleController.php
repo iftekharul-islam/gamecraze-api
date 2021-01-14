@@ -79,9 +79,9 @@ class ArticleController extends Controller
      * @param  int  number 
      * @return \Illuminate\Http\Response
      */
-    public function topArticles(Request $request) {
+    public function featuredArticles(Request $request) {
         $number = $request->get('number') ? $request->get('number') : 5;
-        $articles = $this->repository->latestArticles($number);
+        $articles = $this->repository->featured($number);
         return $this->response->collection($articles, new ArticleTransformer());
     }
 
