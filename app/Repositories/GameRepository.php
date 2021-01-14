@@ -158,4 +158,16 @@ class GameRepository
             })
             ->get();
     }
+
+    public function relatedGames($genres) {
+        return Rent::with('game')->whereHas('game', function($query) use ($genres){
+                $query->with('genres')->whereHas('genres', function($query1) use ($genres) {
+                    $query1->whereIn('slug', $genres);
+                });
+            })
+            ->select('game_id')
+            ->where('status', 1)
+            ->groupBy('game_id')
+            ->get();
+    }
 }

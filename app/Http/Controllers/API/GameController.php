@@ -163,4 +163,18 @@ class GameController extends BaseController
 
         return $this->response->collection($filteredGames, new GameTransformer());
     }
+
+    public function relatedGames(Request $request, $genres) {
+        if ($genres) {
+            $genres = explode(',', $genres);
+        }
+        else {
+            $genres = [];
+        }
+        logger($request->url());
+        logger($genres);
+        logger($request->all());
+        $games = $this->gameRepository->relatedGames($genres);
+        return $this->response->collection($games, new RentTransformer());
+    }
 }

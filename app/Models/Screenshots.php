@@ -12,6 +12,6 @@ class Screenshots extends Model
 
     public function game()
     {
-        return $this->belongsTo(Game::class,'game_id','id');
+        return $this->belongsTo(Game::class,'id','game_id');
     }
 }
