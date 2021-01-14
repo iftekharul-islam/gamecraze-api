@@ -132,6 +132,15 @@ Route::prefix('admin')->group(function () {
         Route::post('store/checkpoint','\App\Http\Controllers\CheckpointController@store')->name('checkpoint.store');
         Route::get('checkpoint/edit/{id}','\App\Http\Controllers\CheckpointController@edit')->name('checkpoint.edit');
         Route::post('checkpoint/update/{id}','\App\Http\Controllers\CheckpointController@update')->name('checkpoint.update');
+
+        // Featured video
+        Route::get('videos','\App\Http\Controllers\FeaturedVideoController@index')->name('video.all');
+        Route::get('videos/{id}','\App\Http\Controllers\FeaturedVideoController@show')->name('video.show');
+        Route::get('create/video','\App\Http\Controllers\FeaturedVideoController@create')->name('video.create');
+        Route::post('store/video','\App\Http\Controllers\FeaturedVideoController@store')->name('video.store');
+        Route::get('video/edit/{id}','\App\Http\Controllers\FeaturedVideoController@edit')->name('video.edit');
+        Route::post('video/update/{id}','\App\Http\Controllers\FeaturedVideoController@update')->name('video.update');
+        Route::delete('video/delete/{id}','\App\Http\Controllers\FeaturedVideoController@destroy')->name('featured.video.delete');
     });
 });
 Auth::routes();

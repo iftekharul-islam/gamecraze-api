@@ -96,6 +96,7 @@
 
         Route::get('validate-token/{token}','\App\Http\Controllers\API\ResetPasswordController@validateToken');
         Route::put('update-password','\App\Http\Controllers\API\ResetPasswordController@updatePassword');
+        Route::get('featured-videos','\App\Http\Controllers\API\FeaturedVideoController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
