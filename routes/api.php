@@ -38,6 +38,7 @@
         $api->get('games/trending', 'App\Http\Controllers\API\GameController@trendingGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
+        $api->get('games/related/{genres}', 'App\Http\Controllers\API\GameController@relatedGames');
         // Genres
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');
         $api->get('genres/', 'App\Http\Controllers\API\GenreController@index');
