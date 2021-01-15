@@ -81,4 +81,13 @@ class PlatformController extends BaseController
             "message" => "Resource has been deleted."
         ]);
     }
+
+    /**
+     * @return \Dingo\Api\Http\Response
+     */
+    public function featuredPlatforms(Request $request) {
+        $number = $request->number ?? 4;
+        $platforms = $this->platformRepository->featured($number);
+        return $this->response->collection($platforms, new PlatformTransformer());
+    }
 }

@@ -42,6 +42,13 @@
                                     <option value="0" {{ $platform->status == 0 ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="status">Is Featured</label>
+                                <select name="is_featured" class="form-control" required>
+                                    <option value="0" @if($platform->is_featured == 0) selected @endif>No</option>
+                                    <option value="1" @if($platform->is_featured == 1) selected @endif>Yes</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">Submit</button>

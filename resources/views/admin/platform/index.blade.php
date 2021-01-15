@@ -56,6 +56,7 @@
                                         <th>Name</th>
                                         <th>Slug</th>
                                         <th>Image</th>
+                                        <th>Featured</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -66,8 +67,13 @@
                                             <td>{{ $platform->name }}</td>
                                             <td>{{ $platform->slug }}</td>
                                             <td><img class="align-bottom" width="32px" height="30px" src="{{ asset($platform->url) }}" alt=""></td>
-{{--                                            <td><img src="https://img.icons8.com/ios-filled/50/000000/nintendo-switch.png"/></td>--}}
-{{--                                            <td><i class="fab fa-playstation"></i></td>--}}
+                                            <td>
+                                                @if ($platform->is_featured == 1)
+                                                    <a class="badge-info badge text-white" >Yes</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >No</a>
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if ($platform->status == 1)
                                                     <a class="badge-success badge text-white" >Active</a>
