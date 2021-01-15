@@ -20,13 +20,6 @@ class SubscriptionController extends Controller
      */
     public function subscribe(Request $request)
     {
-        return $this->subscriptionService->addSubscriber($request->email);
-        
-        // if ($subscribe) {
-        //     return responseData('subscribed', 200);
-        // }
-
-        // return responseData('Internal Server Error', 200);
-        
+        return $this->subscriptionService->addSubscriber($request->email);        
     }
 }
