@@ -98,6 +98,7 @@
         Route::put('update-password','\App\Http\Controllers\API\ResetPasswordController@updatePassword');
         Route::get('featured-videos','\App\Http\Controllers\API\FeaturedVideoController@index');
         Route::post('subscribe','\App\Http\Controllers\API\SubscriptionController@subscribe');
+        Route::get('featured-platforms','\App\Http\Controllers\API\PlatformController@featuredPlatforms');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users

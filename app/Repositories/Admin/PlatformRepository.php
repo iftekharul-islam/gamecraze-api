@@ -21,14 +21,11 @@ class PlatformRepository
      * @return mixed
      */
     public function store($request) {
-        $platform = $request->only(['name', 'status', 'url']);
+        $platform = $request->only(['name', 'status', 'url', 'is_featured']);
         $platform['author_id'] = auth()->user()->id;
 
         $image = $request->file('url');
         $image_name ='platform'. time() . '.'.$image->getClientOriginalExtension();
-
-//        $destinationPath = public_path('storage/platform-image/') .$image_name;
-//        $img = Image::make($image->getRealPath());
 
         $image->storeAs('platform-image/', $image_name);
         $platform['url'] =  'storage/platform-image/' .$image_name;
@@ -50,7 +47,8 @@ class PlatformRepository
      */
     public function update($request) {
         $platform = Platform::findOrFail($request->id);
-        $data = $request->only(['name', 'status', 'url']);
+        $data = $request->only(['name', 'status', 'url', 'is_featured']);
+        $platform->is_featured = $data['is_featured'];
 
         if (isset($data['name'])) {
             $platform->name = $data['name'];

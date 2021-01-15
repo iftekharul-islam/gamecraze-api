@@ -66,4 +66,16 @@ class PlatformRepository {
 
         return 0;
     }
+
+    /**
+     * @param $id
+     * @return int
+     */
+    public function featured($number) {
+        return Platform::where('status', 1)
+            ->where('is_featured', 1)
+            ->orderBy('name', 'ASC')
+            ->take($number)
+            ->get();
+    }
 }
