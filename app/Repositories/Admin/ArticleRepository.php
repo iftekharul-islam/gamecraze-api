@@ -88,7 +88,6 @@ class ArticleRepository
 
             $data['thumbnail'] = 'storage/' . $path;
         }
-//        return $data;
         Article::create($data);
         return $data;
     }
@@ -106,19 +105,6 @@ class ArticleRepository
         }
         return false;
     }
-
-    /**
-     * @param $number
-     * @return collection
-     */
-    // public function featured($number = 5)
-    // {
-    //     return Article::where('status', 1)
-    //         ->where('is_featured', 1)
-    //         ->orderBy('created_at', 'DESC')
-    //         ->take($number)
-    //         ->get();
-    // }
 
     /**
      * @param $number
