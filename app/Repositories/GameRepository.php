@@ -125,7 +125,9 @@ class GameRepository
         return Rent::whereHas('game', function ($q) {
             $q->where('is_trending', 1);
         })
-        ->distinct()
+        ->where('status', 1)
+        ->select('game_id')
+        ->groupBy('game_id')
         ->take($numberOfPost)
         ->get();
     }

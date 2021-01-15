@@ -84,12 +84,11 @@
         $api->get('rent-posted-users/{id}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
         // New & articles section
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
-        Route::get('top-articles','\App\Http\Controllers\API\ArticleController@topArticles');
+        // Route::get('featured-articles','\App\Http\Controllers\API\ArticleController@featuredArticles');
         Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
         Route::get('article/related/{id}','\App\Http\Controllers\API\ArticleController@getRelatedArticles');
         Route::get('featured-article','\App\Http\Controllers\API\ArticleController@getFeaturedArticles');
 
-        // $api->put('users', 'App\Http\Controllers\API\AuthController@update');
 //        $api->post('email-registration', 'App\Http\Controllers\API\AuthController@emailRegistration');
 
         //contact mail
@@ -98,6 +97,7 @@
         Route::get('validate-token/{token}','\App\Http\Controllers\API\ResetPasswordController@validateToken');
         Route::put('update-password','\App\Http\Controllers\API\ResetPasswordController@updatePassword');
         Route::get('featured-videos','\App\Http\Controllers\API\FeaturedVideoController@index');
+        Route::post('subscribe','\App\Http\Controllers\API\SubscriptionController@subscribe');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users

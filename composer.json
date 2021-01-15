@@ -21,6 +21,7 @@
         "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "spatie/laravel-newsletter": "^4.9",
         "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {
