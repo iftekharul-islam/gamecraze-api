@@ -23,7 +23,8 @@ class UserTransformer extends TransformerAbstract
             'birth_date' => $user->birth_date,
             'address' => $user->address,
             'roles' => $user->roles,
-            'rent_limit' => $user->rent_limit
+            'rent_limit' => $user->rent_limit,
+            'is_phone_verified' => $user->is_phone_verified
         ];
     }
 

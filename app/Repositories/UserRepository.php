@@ -97,6 +97,9 @@ class UserRepository
             }
             if (isset($userData['phone_number'])) {
                 $user->phone_number = $userData['phone_number'];
+                if ($user->phone_number != $userData['phone_number']) {
+                    $user->is_phone_verified = 0;
+                }
             }
             if (isset($userData['gender'])) {
                 $user->gender = $userData['gender'];
@@ -129,6 +132,7 @@ class UserRepository
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
                 $user->image = 'profile/' . $userImage;
             }
+
             $user->save();
 
             $user['address'] = $user->address;
