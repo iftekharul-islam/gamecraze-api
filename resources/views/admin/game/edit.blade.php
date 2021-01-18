@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image"> Poster image (Width: 200px and Height: 3000px) No file chosen</label>
+                                <label for="game_image"> Poster image (Width: 200px and Height: 300px) No file chosen</label>
                                 <input type="file" class="form-control mb-2" id="poster_url" name="poster_url" max-width="437" onchange="loadPreview(this, preview_poster);">
                                 @if($game->poster_url)
                                     <img src="{{ asset($game->poster_url) }}" id="preview_poster" class="img-thumbnail">
