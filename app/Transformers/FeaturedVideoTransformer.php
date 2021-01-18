@@ -7,7 +7,7 @@ use App\Models\FeaturedVideo;
 use App\Models\VideoUrl;
 use League\Fractal\TransformerAbstract;
 
-class VideoTransformer extends TransformerAbstract
+class FeaturedVideoTransformer extends TransformerAbstract
 {
 
     public function transform(FeaturedVideo $video)

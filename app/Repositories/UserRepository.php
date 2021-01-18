@@ -117,7 +117,7 @@ class UserRepository
                 $image = $userData['id_image'];
                 $userImage = 'id_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
-                $user->identification_image = 'identification/' . $userImage;
+                $user->identification_image = 'storage/identification/' . $userImage;
             }
             if (isset($userData['address']) || isset($userData['city']) || isset($userData['postCode'])) {
                 $address = Address::find($user->address_id);
@@ -141,7 +141,7 @@ class UserRepository
                 $image = $userData['image'];
                 $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
-                $user->image = 'profile/' . $userImage;
+                $user->image = 'storage/profile/' . $userImage;
             }
 
             $user->save();

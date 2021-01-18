@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\FeaturedVideoRepository;
-use App\Transformers\VideoTransformer;
+use App\Transformers\FeaturedVideoTransformer;
 use Illuminate\Http\Request;
 
 class FeaturedVideoController extends Controller
@@ -24,6 +24,6 @@ class FeaturedVideoController extends Controller
     {
         $numberOfVideo = $request->number ?? 5;
         $videos = $this->featuredVideoRepo->featuredVideos($numberOfVideo);
-        return $this->response->collection($videos, new VideoTransformer());
+        return $this->response->collection($videos, new FeaturedVideoTransformer());
     }
 }
