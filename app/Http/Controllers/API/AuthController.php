@@ -119,6 +119,7 @@ class AuthController extends BaseController
     public function update(UserUpdateRequest $request)
     {
         $user = $this->userRepository->update($request);
+        $user['identification_image'] = asset($user->identification_image);
         return response()->json(['error' => false, 'data' => $user]);
     }
 
