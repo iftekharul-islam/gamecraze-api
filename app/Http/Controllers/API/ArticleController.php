@@ -89,5 +89,10 @@ class ArticleController extends Controller
         $number = $request->get('number') ? $request->get('number') : 3;
         $articles = $this->repository->featuredArticles($number);
         return $this->response->collection($articles, new ArticleTransformer());
+    } 
+    public function topArticles(Request $request) {
+        $number = $request->get('number') ? $request->get('number') : 3;
+        $articles = $this->repository->topArticles($number);
+        return $this->response->collection($articles, new ArticleTransformer());
     }
 }

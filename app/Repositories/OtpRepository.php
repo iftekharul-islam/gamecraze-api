@@ -67,7 +67,7 @@ class OtpRepository {
         }
 
 	    $user = User::where('phone_number', $phone_number)->first();
-        logger($user);
+
 	    if ($user) {
             $user->is_phone_verified = 1;
             $user->save();
@@ -77,7 +77,8 @@ class OtpRepository {
                     'message' => 'inactiveUser'
                 ];
             }
-		    $token = $user->createToken($user->phone_number .'-'. now());
+            $token = $user->createToken($user->phone_number .'-'. now());
+            $user['image'] = $user->image ? asset($user->image) : '';
 		    return [
                 'error' => false,
 		        'newUser' => false,
