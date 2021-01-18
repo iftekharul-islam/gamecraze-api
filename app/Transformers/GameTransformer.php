@@ -31,7 +31,9 @@ class GameTransformer extends TransformerAbstract
             'trending_url' => asset($game->trending_url),
             'developer' => $game->developer,
             'coverImage' => asset($game->cover_url),
-            'upcoming_url' => asset($game->upcoming_url)
+            'upcoming_url' => asset($game->upcoming_url),
+            'supported_language' => $game->supported_language,
+            'official_website' => $game->official_website
         ];
     }
 
