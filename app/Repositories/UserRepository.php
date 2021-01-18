@@ -9,7 +9,7 @@ use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Str;
+use File;
 
 class UserRepository
 {
@@ -97,6 +97,9 @@ class UserRepository
             }
             if (isset($userData['phone_number'])) {
                 $user->phone_number = $userData['phone_number'];
+                if ($user->phone_number != $userData['phone_number']) {
+                    $user->is_phone_verified = 0;
+                }
             }
             if (isset($userData['gender'])) {
                 $user->gender = $userData['gender'];
@@ -108,6 +111,9 @@ class UserRepository
                 $user->identification_number = $userData['id_number'];
             }
             if (isset($userData['id_image'])) {
+                if (!File::isDirectory(storage_path('app/public/identification'))){
+                    File::makeDirectory(storage_path('app/public/identification'), 0777, true, true);
+                }
                 $image = $userData['id_image'];
                 $userImage = 'id_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
@@ -124,11 +130,20 @@ class UserRepository
                 $user->password = bcrypt($userData['password']);
             }
             if (isset($userData['image'])) {
+                if (!File::isDirectory(storage_path('app/public/profile'))){
+                    File::makeDirectory(storage_path('app/public/profile'), 0777, true, true);
+                }
+
+                // if ($user->image) {
+                //     deleteFile([$user->image]);
+                // }
+
                 $image = $userData['image'];
                 $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 \Image::make($image)->save(storage_path('app/public/profile/') . $userImage);
                 $user->image = 'profile/' . $userImage;
             }
+
             $user->save();
 
             $user['address'] = $user->address;
