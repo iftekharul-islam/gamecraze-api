@@ -20,7 +20,6 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        logger('create lend: '. json_encode($request->all()));
         for ($i = 0; $i < count($request->postId); $i++) {
             $data = [
                 'lender_id' => auth()->user()->id,
