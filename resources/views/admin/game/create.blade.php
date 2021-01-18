@@ -117,6 +117,24 @@
                                 @endif
                             </div>
                             <div
+                                class="false-padding-bottom-form form-group{{ $errors->has('supported_language') ? ' has-error' : '' }}">
+                                <label for="developer">Supported Languages</label>
+                                <input type="text" class="form-control" id="supported_language" name="supported_language"
+                                       placeholder="Enter Game supported languages" required>
+                                @if ($errors->has('supported_language'))
+                                    <span class="text-danger"><strong>{{ $errors->first('supported_language') }}</strong></span>
+                                @endif
+                            </div>
+                            <div
+                                class="false-padding-bottom-form form-group{{ $errors->has('official_website') ? ' has-error' : '' }}">
+                                <label for="developer">Official Website Link</label>
+                                <input type="text" class="form-control" id="official_website" name="official_website"
+                                       placeholder="Enter Game official website" required>
+                                @if ($errors->has('official_website'))
+                                    <span class="text-danger"><strong>{{ $errors->first('official_website') }}</strong></span>
+                                @endif
+                            </div>
+                            <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
                                 <textarea class="ckeditor form-control" id="description" name="description"
@@ -167,7 +185,7 @@
                                 @endif
                             </div>
                             <label>Poster image</label>
-                            <small>(Width: 250px and Height: 170px)</small>
+                            <small>(Width: 200px and Height: 300px)</small>
                             <div class="custom-file">
 {{--                                <input type="file" class="form-control" id="poster_image" name="poster_url">--}}
                                 <input type="file" class="custom-file-input" name="poster_url" id="posterFile">
@@ -176,13 +194,13 @@
                                     <span class="text-danger"><strong>{{ $errors->first('poster_url') }}</strong></span>
                                 @endif
                             </div>
-                            <label>Game image</label>
+                            <label>Upcoming image</label>
                             <small>(Width: 250px and Height: 170px)</small>
                             <div class="custom-file">
-                                <input type="file" multiple="multiple" class="custom-file-input" name="game_image" id="gameFile">
+                                <input type="file" multiple="multiple" class="custom-file-input" name="upcoming_image" id="gameFile">
                                 <label class="custom-file-label" for="gameFile">Choose file</label>
-                                @if ($errors->has('game_image'))
-                                    <span class="text-danger"><strong>{{ $errors->first('game_image') }}</strong></span>
+                                @if ($errors->has('upcoming_image'))
+                                    <span class="text-danger"><strong>{{ $errors->first('upcoming_image') }}</strong></span>
                                 @endif
                             </div>
                             <table class="table table-bordered mt-2" id="dynamicScreenshot">
