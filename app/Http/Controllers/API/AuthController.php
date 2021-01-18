@@ -119,7 +119,8 @@ class AuthController extends BaseController
     public function update(UserUpdateRequest $request)
     {
         $user = $this->userRepository->update($request);
-        $user['identification_image'] = asset($user->identification_image);
+        $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
+        $user['image'] = $user->image ? asset($user->image) : '';
         return response()->json(['error' => false, 'data' => $user]);
     }
 
@@ -134,6 +135,7 @@ class AuthController extends BaseController
             return response()->json($data);
         }
         $data['token'] = $this->generateAccessToken($data['user']);
+        $data['image'] = $data['user']['image'] ? asset($data['user']['image']) : '';
 
         return response()->json($data);
     }
@@ -162,6 +164,7 @@ class AuthController extends BaseController
 
             Mail::to($user->email)
                 ->queue(new SendPasswordResetMail($user->name, $link));
+            $user->image = $user->image ? asset($user->image) : '';
 
             return $this->response->array([
                 'error' => false,

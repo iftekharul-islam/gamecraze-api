@@ -127,4 +127,11 @@ class ArticleRepository
             ->take($number)
             ->get();
     }
+    public function topArticles($number = 4)
+    {
+        return Article::where('status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->take($number)
+            ->get();
+    }
 }

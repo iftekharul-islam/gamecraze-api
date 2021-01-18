@@ -42,7 +42,6 @@ class OtpRepository {
     public function verifyOtp(Request $request) {
         $phone_number = $request->has('email') ? User::where('email', $request->input('email'))->first()->phone_number : $request->input('phone_number');
         $otp = OneTimePassword::where('phone_number', $phone_number)->latest()->first();
-        
         if (!$otp) {
             return [
                 'error' => true,
@@ -68,15 +67,18 @@ class OtpRepository {
         }
 
 	    $user = User::where('phone_number', $phone_number)->first();
-        logger($user);
+
 	    if ($user) {
+            $user->is_phone_verified = 1;
+            $user->save();
 	        if ($user->status == 0) {
                 return [
                     'error' => true,
                     'message' => 'inactiveUser'
                 ];
             }
-		    $token = $user->createToken($user->phone_number .'-'. now());
+            $token = $user->createToken($user->phone_number .'-'. now());
+            $user['image'] = $user->image ? asset($user->image) : '';
 		    return [
                 'error' => false,
 		        'newUser' => false,
@@ -89,6 +91,7 @@ class OtpRepository {
 	    $user = User::create([
 		    'phone_number' => $phone_number,
             'status' => 1,
+            'is_phone_verified' => 1
 	    ]);
 
 	    $address = Address::create([

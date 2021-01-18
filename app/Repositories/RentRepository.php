@@ -7,6 +7,7 @@ use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class RentRepository {
     /**
@@ -29,8 +30,13 @@ class RentRepository {
             'game_id', 'max_week', 'availability', 'platform_id',
             'disk_condition_id', 'rented_user_id', 'checkpoint_id'
         ]);
+
         if (isset($request->checkpoint_id)) {
             $rent['checkpoint_id'] = $request->checkpoint_id ? $rent['checkpoint_id'] : '';
+        }
+
+        if (!File::isDirectory(storage_path('app/public/rent-image'))){
+            File::makeDirectory(storage_path('app/public/rent-image'), 0777, true, true);
         }
 
         if (isset($request->cover_image))
@@ -49,7 +55,6 @@ class RentRepository {
         }
         $rent['user_id'] = auth()->user()->id;
         $post = Rent::create($rent);
-        logger('game id: ', $rent['game_id']);
         
         if ($post) {
             SendReminder::dispatch($rent['game_id']);

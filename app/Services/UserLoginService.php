@@ -37,6 +37,8 @@ class UserLoginService {
                 $token = $user->createToken($user->email .'-'. now());
                 $user['identification_image'] = asset($user->identification_image);
                 $user['address'] = $user->address;
+                $user['image'] = $user->image ? asset($user->image) : '';
+
                 return [
                     'user' => $user,
                     'token' => $token->accessToken,
