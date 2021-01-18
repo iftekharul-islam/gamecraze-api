@@ -60,7 +60,7 @@ class GameRepository
      */
     public function store($request)
     {
-        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'supported_language', 'official_website']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = $game_data['publisher'] ?? 'Testing publisher';
@@ -88,6 +88,14 @@ class GameRepository
             $path = "game-image/" . $poster_name;
             $poster->storeAs('game-image', $poster_name);
             $game_data['poster_url'] = 'storage/' . $path;
+        }
+
+        if ($request->hasFile('upcoming_image')) {
+            $upcoming = $request->file('upcoming_image');
+            $upcoming_name = $game_data['name'] . '-upcoming-' . auth()->user()->id . '-' . time() . $upcoming->getClientOriginalName();
+            $path = "game-image/" . $upcoming_name;
+            $upcoming->storeAs('game-image', $upcoming_name);
+            $game_data['upcoming_url'] = 'storage/' . $path;
         }
 
         $game = Game::create($game_data);
@@ -123,18 +131,6 @@ class GameRepository
             }
         }
 
-        if ($request->hasFile('game_image')) {
-            $image = $request->file('game_image');
-            $image_name = 'game-' . auth()->user()->id . '-' . time() . $image->getClientOriginalName();
-            $path = "game-image/" . $image_name;
-            $image->storeAs('game-image', $image_name);
-
-            Asset::create([
-                'game_id' => $game->id,
-                'name' => $image_name,
-                'url' => 'storage/' . $path,
-            ]);
-        }
         return $game;
     }
 
@@ -145,8 +141,8 @@ class GameRepository
     public function update($request, $id)
     {
         $game = Game::findOrFail($id);
-        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer']);
-
+        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer', 'supported_language', 'official_website']);
+        $game->is_trending = 0;
         if (isset($data['name'])) {
             $game->name = $data['name'];
         }
@@ -167,6 +163,12 @@ class GameRepository
         }
         if (isset($data['is_trending'])) {
             $game->is_trending = $data['is_trending'];
+        }
+        if (isset($data['supported_language'])) {
+            $game->supported_language = $data['supported_language'];
+        }
+        if (isset($data['official_website'])) {
+            $game->official_website = $data['official_website'];
         }
 
         if ($request->hasFile('trending_url')) {
@@ -194,6 +196,15 @@ class GameRepository
             $poster->storeAs('game-image', $poster_name);
             deleteFile([$game->poster_url]);
             $game->poster_url = 'storage/' . $path;
+        }
+
+        if ($request->hasFile('upcoming_image')) {
+            $upcoming = $request->file('upcoming_image');
+            $upcoming_name = $data['name'] . '-upcoming-' . auth()->user()->id . '-' . time() . $upcoming->getClientOriginalName();
+            $path = "game-image/" . $upcoming_name;
+            $upcoming->storeAs('game-image', $upcoming_name);
+            deleteFile([$game->upcoming_url]);
+            $game->upcoming_url = 'storage/' . $path;
         }
 
         $game->save();
@@ -229,31 +240,6 @@ class GameRepository
                 $video_data['url'] = $value;
 
                 VideoUrl::create($video_data);
-            }
-        }
-
-        if ($request->hasFile('game_image')) {
-            $image = $request->file('game_image');
-            $image_name = 'game-' . auth()->user()->id . '-' . $image->getClientOriginalName();
-            $path = "game-image/" . $image_name;
-            $image->storeAs('game-image', $image_name);
-
-            if (isset($game->assets[0]) && $game->assets[0] != null) {
-                $oldImg = $game->assets[0]->url;
-                if (file_exists($oldImg)) {
-                    unlink($oldImg);
-                }
-
-                $img = Asset::find($game->assets[0]->id);
-                $img->name = $image_name;
-                $img->url = 'storage/' . $path;
-                $img->save();
-            } else {
-                Asset::create([
-                    'game_id' => $game->id,
-                    'name' => $image_name,
-                    'url' => 'storage/' . $path,
-                ]);
             }
         }
     }

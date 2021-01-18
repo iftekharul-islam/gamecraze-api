@@ -76,6 +76,14 @@
                                 <input type="number" class="form-control" id="rating" name="rating" value="{{ $game->rating }}">
                             </div>
                             <div class="form-group">
+                                <label for="supported_language">Supported Languages</label>
+                                <input type="text" class="form-control" id="supported_language" name="supported_language" value="{{ $game->supported_language }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="official_website">Official Website Link</label>
+                                <input type="text" class="form-control" id="official_website" name="official_website" value="{{ $game->official_website }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea type="text" class="ckeditor form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
                             </div>
@@ -101,7 +109,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image"> Poster image (Width: 250px and Height: 170px) No file chosen</label>
+                                <label for="game_image"> Poster image (Width: 200px and Height: 3000px) No file chosen</label>
                                 <input type="file" class="form-control mb-2" id="poster_url" name="poster_url" max-width="437" onchange="loadPreview(this, preview_poster);">
                                 @if($game->poster_url)
                                     <img src="{{ asset($game->poster_url) }}" id="preview_poster" class="img-thumbnail">
@@ -111,14 +119,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="game_image">Game image (Width: 250px and Height: 170px)</label>
-                                <input type="file" class="form-control mb-2" id="game_image" name="game_image" onchange="loadPreview(this);">
-                                @if(count($game->assets)>0)
-                                    @foreach($game->assets as $asset)
-                                        <img src="{{ asset($asset->url) }}" id="preview_img" class="img-thumbnail" width="200" height="150">
-                                    @endforeach
+                                <label for="game_image">Upcoming image (Width: 250px and Height: 170px)</label>
+                                <input type="file" class="form-control mb-2" id="game_image" name="upcoming_image" onchange="loadPreview(this, preview_upcoming);">
+
+                                @if($game->upcoming_url)
+                                    <img src="{{ asset($game->upcoming_url) }}" id="preview_upcoming" class="img-thumbnail">
                                 @else
-                                    <img src="{{ asset('storage/game-image/dummy-image.jpg') }}" id="preview_img" class="img-thumbnail" width="200" height="150">
+                                    <img src="{{ asset('storage/game-image/dummy-image.jpg') }}" id="preview_upcoming" class="img-thumbnail" width="200" height="150">
                                 @endif
                             </div>
                             @if(count($game->screenshots) > 0)
@@ -344,17 +351,17 @@
 
         function createForm(url) {
             console.log(url)
-            var form = 
+            var form =
             $('<form>', {
                 'method': 'POST',
                 'action': url
             });
 
-            var token = 
+            var token =
             $('<input>', {
                 'type': 'hidden',
                 'name': '_token',
-                'value': "{{ csrf_token() }}" 
+                'value': "{{ csrf_token() }}"
             });
             var hiddenInput =
             $('<input>', {

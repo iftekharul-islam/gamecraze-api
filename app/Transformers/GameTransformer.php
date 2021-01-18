@@ -12,7 +12,7 @@ use League\Fractal\TransformerAbstract;
 class GameTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
-        'genres', 'assets', 'platforms', 'rents', 'basePrice', 'screenshots'
+        'genres', 'assets', 'platforms', 'rents', 'basePrice', 'screenshots', 'videoUrls'
     ];
     public function transform(Game $game)
     {
@@ -30,7 +30,8 @@ class GameTransformer extends TransformerAbstract
             'poster_url' => asset($game->poster_url),
             'trending_url' => asset($game->trending_url),
             'developer' => $game->developer,
-            'coverImage' => asset($game->cover_url)
+            'coverImage' => asset($game->cover_url),
+            'upcoming_url' => asset($game->upcoming_url)
         ];
     }
 
@@ -54,5 +55,8 @@ class GameTransformer extends TransformerAbstract
     }
     public function includeScreenshots(Game $game) {
         return $this->collection($game->screenshots, new ScreenshotTransformer());
+    }
+    public function includeVideoUrls(Game $game) {
+        return $this->collection($game->videoUrls, new VideoTransformer());
     }
 }
