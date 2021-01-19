@@ -76,11 +76,11 @@
                                         <div class="col-sm-4 invoice-col border-right">
                                             Owner<hr>
                                             <address>
-                                                <strong>{{ $lend->rent->user->name }}</strong><br>
-                                                {{ $lend->rent->user->address->address }}<br>
-                                                {{ $lend->rent->user->address->city }}<br>
-                                                {{ $lend->rent->user->email }}<br>
-                                                {{ $lend->rent->user->phone_number }}<br>
+                                                <strong>{{ isset($lend->rent->user->name) ? isset($lend->rent->user->name) : '' }}</strong><br>
+                                                {{ isset($lend->rent->user->address->address) ? $lend->rent->user->address->address : '' }}<br>
+                                                {{ isset($lend->rent->user->address->city) ? $lend->rent->user->address->city : '' }}<br>
+                                                {{ isset($lend->rent->user->email) ? $lend->rent->user->email : '' }}<br>
+                                                {{ isset($lend->rent->user->phone_number) ? $lend->rent->user->phone_number : '' }}<br>
                                             </address>
                                         </div>
                                         <!-- /.col -->
@@ -88,11 +88,11 @@
                                             Borrower
                                             <hr>
                                             <address>
-                                                <strong>{{ $lend->lender->name }}</strong><br>
-                                                {{ $lend->lender->address->address }}<br>
-                                                {{ $lend->lender->address->city }}<br>
-                                                {{ $lend->lender->email }}<br>
-                                                {{ $lend->lender->phone_number }}<br>
+                                                <strong>{{ isset($lend->lender->name) ? $lend->lender->name : '' }}</strong><br>
+                                                {{ isset($lend->lender->address->address) ? $lend->lender->address->address : '' }}<br>
+                                                {{ isset($lend->lender->address->city) ? $lend->lender->address->city : '' }}<br>
+                                                {{ isset($lend->lender->email) ? $lend->lender->email : '' }}<br>
+                                                {{ isset($lend->lender->phone_number) ? $lend->lender->phone_number : '' }}<br>
                                             </address>
                                         </div>
                                         <div class="col-sm-4 invoice-col">
@@ -127,31 +127,36 @@
                                     <div class="row invoice-info">
                                         <div class="col-sm-6 invoice-col">
                                            <address>
-                                               <strong>Name :</strong><span><a href="{{ route('game.show', $lend->rent->game->id) }}"> {{ $lend->rent->game->name }}</a></span><br>
-                                               <strong>Availability :</strong><span> {{ date('d F, Y', strtotime($lend->rent->availability)) }}</span><br>
-                                               <strong>Disk Condition :</strong><span> {{ $lend->rent->diskCondition->name }}</span><br>
-                                               <strong>Platform :</strong><span> {{ $lend->rent->platform->name }}</span><br>
+                                               <strong>Name :</strong><span><a href="{{ route('game.show', $lend->rent->game->id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></span><br>
+                                               <strong>Availability :</strong><span> {{ isset($lend->rent->availability) ? date('d F, Y', strtotime($lend->rent->availability)) : '' }}</span><br>
+                                               <strong>Disk Condition :</strong><span> {{ isset($lend->rent->diskCondition->name) ? $lend->rent->diskCondition->name : '' }}</span><br>
+                                               <strong>Platform :</strong><span> {{ isset($lend->rent->platform->name) ? $lend->rent->platform->name : '' }}</span><br>
                                                <div id="element"></div>
                                            </address>
                                         </div>
                                         <div class="col-sm-3 invoice-col">
                                             <div class="disk-preview disk">
-                                                <img src="{{ asset('storage/rent-image/'. $lend->rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                                @if(isset($lend->rent->cover_image))
+                                                    <img src="{{ asset('storage/rent-image/'. $lend->rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-sm-3 invoice-col">
                                             <div class="cover-preview disk">
-                                                <img src="{{ asset('storage/rent-image/'. $lend->rent->disk_image) }}" class="img-thumbnail">
+                                                @if(isset($lend->rent->disk_image))
+                                                    <img src="{{ asset('storage/rent-image/'. $lend->rent->disk_image) }}" class="img-thumbnail">
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /.row -->
                                     <hr>
+                                   
                                     <div class="row">
                                         <!-- accepted payments column -->
                                         <div class="col-6">
                                             <p class="lead">Payment Methods :</p>
-                                            <span class="badge-success badge">{{ $lend->payment_method }}</span>
+                                            <span class="badge-success badge">{{ isset($lend->payment_method) ? $lend->payment_method : '' }}</span>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-6">
