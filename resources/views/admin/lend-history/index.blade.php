@@ -69,7 +69,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('lend.show', $lend->id) }}">
-                                                    {{ $lend->rent->game->name }}
+                                                    {{ isset($lend->rent->game->name) ? $lend->rent->game->name : '' }}
                                                 </a>
                                             </td>
                                             <td>{{ date('d F Y', strtotime($lend->lend_date)) }}</td>
