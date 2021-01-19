@@ -63,9 +63,9 @@
                                     @foreach($lends as $key=>$lend)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $lend->lender->name}}</td>
+                                            <td>{{ isset($lend->lender->name) ? $lend->lender->name : '' }}</td>
                                             <td>
-                                                {{ $lend->rent->user->name }}
+                                                {{ isset($lend->rent->user->name) ? $lend->rent->user->name : '' }}
                                             </td>
                                             <td>
                                                 <a href="{{ route('lend.show', $lend->id) }}">
