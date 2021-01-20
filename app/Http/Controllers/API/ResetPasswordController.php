@@ -72,6 +72,13 @@ class ResetPasswordController extends BaseController
             ]);
         }
 
+        if (User::where('phone_number', $request->phone_number)->where('id', '!=', $token->user_id)->count() > 0) {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'numberExists'
+            ]);
+        }
+
         $user = User::findOrFail($token->user_id);
         if ($user) {
             $user->name = $request->name;
