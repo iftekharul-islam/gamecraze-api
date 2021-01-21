@@ -80,6 +80,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Game Post details</h3>
                                 <div class="float-right">
+                                    @if ($rent->status == 0)
+                                        <button class="btn btn-sm btn-primary disabled"><i class="fa fa-check" aria-hidden="true"></i>Pending</button>
+                                    @endif
                                     @if ($rent->status == 1)
                                         <button class="btn btn-sm btn-success disabled"><i class="fa fa-check" aria-hidden="true"></i>Approved</button>
                                     @else
@@ -91,7 +94,7 @@
                                             @csrf
                                         </form>
                                     @endif
-                                    @if ($rent->status === 0)
+                                    @if ($rent->status === 2)
                                             <button class="btn btn-sm btn-danger disabled"><i class="fa fa-times mr-1" aria-hidden="true"></i>Rejected</button>
                                     @else
                                         <button class="btn btn-danger btn-sm" type="button"

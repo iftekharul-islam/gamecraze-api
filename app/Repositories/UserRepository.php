@@ -89,8 +89,8 @@ class UserRepository
             if (isset($userData['name'])) {
                 $user->name = $userData['name'];
             }
-            if (isset($userData['lastName'])) {
-                $user->last_name = $userData['lastName'];
+            if (isset($userData['last_name'])) {
+                $user->last_name = $userData['last_name'];
             }
             if (isset($userData['email'])) {
                 $user->email = $userData['email'];

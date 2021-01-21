@@ -55,7 +55,7 @@ class RentRepository
 
         $rent = Rent::findOrFail($id);
         $userId = $rent->user_id;
-        $rent->status = 0;
+        $rent->status = 2;
         $rent->reason = $request->reason;
         $rent->save();
         $renter = User::where('id', $userId)->first();
