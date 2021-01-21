@@ -246,11 +246,19 @@ class UserRepository
            
             if ($data['image_type'] == 'profile') {
                 $user->image = 'storage/profile/' . $userImage;
-                \Image::make($image)->save(storage_path('app/public/profile/') . $userImage)->resize(256, 256);
+                \Image::make($image)
+                    ->resize(null, 256, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(storage_path('app/public/profile/') . $userImage);
             }
             if ($data['image_type'] == 'cover') {
                 $user->cover = 'storage/profile/' . $userImage;
-                \Image::make($image)->save(storage_path('app/public/profile/') . $userImage)->resize(1905, 370);
+                \Image::make($image)
+                ->resize(null, 370, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(storage_path('app/public/profile/') . $userImage);
             }
 
             $user->save();
