@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\UpdateUserByPhoneRequest;
 use App\Http\Requests\UserCreateByEmailRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserLoginRequest;
@@ -118,6 +119,31 @@ class AuthController extends BaseController
      */
     public function update(UserUpdateRequest $request)
     {
+        $user = $this->userRepository->update($request);
+        $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
+        $user['image'] = $user->image ? asset($user->image) : '';
+        return response()->json(['error' => false, 'data' => $user]);
+    }
+
+    /**
+     * @param UserUpdateRequest $request
+     * @return JsonResponse
+     */
+    public function updateUserByPhone(Request $request)
+    {
+        $count = isset($request->phone_number) ? User::where('phone_number', $request->phone_number)->where('id', '!=', auth()->user()->id)->count() : 0;
+        $countEmail = isset($request->email) ? User::where('email', $request->email)->where('id', '!=', auth()->user()->id)->count() : 0;
+        
+        if ($count > 0 || $countEmail > 0) {
+            return response()->json([
+                'error' => true, 
+                'data' => [
+                    'isPhoneExists' => $count > 0 ? true : false,
+                    'isEmailExists' => $countEmail > 0 ? true : false
+                ]
+            ]); 
+        }
+
         $user = $this->userRepository->update($request);
         $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
         $user['image'] = $user->image ? asset($user->image) : '';

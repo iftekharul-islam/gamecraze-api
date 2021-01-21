@@ -103,6 +103,7 @@
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
+            $api->put('update-users-by-phone', 'App\Http\Controllers\API\AuthController@updateUserByPhone');
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
