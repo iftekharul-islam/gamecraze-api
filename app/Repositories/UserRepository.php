@@ -225,4 +225,38 @@ class UserRepository
     {
         return User::where('email', $request->input('email'))->first();
     }
+
+    public function updateProfileImage($data) {
+        $user = User::findOrFail(auth()->user()->id);
+        if (isset($data['image']) && isset($data['image_type'])) {
+            if (!File::isDirectory(storage_path('app/public/profile'))){
+                File::makeDirectory(storage_path('app/public/profile'), 0777, true, true);
+            }
+
+            if ($data['image_type'] == 'profile' && $user->image) {
+                deleteFile([$user->image]);
+            } 
+
+            if ($data['image_type'] == 'cover' && $user->cover) {
+                deleteFile([$user->cover]);
+            } 
+
+            $image = $data['image'];
+            $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+           
+            if ($data['image_type'] == 'profile') {
+                $user->image = 'storage/profile/' . $userImage;
+                \Image::make($image)->save(storage_path('app/public/profile/') . $userImage)->resize(256, 256);
+            }
+            if ($data['image_type'] == 'cover') {
+                $user->cover = 'storage/profile/' . $userImage;
+                \Image::make($image)->save(storage_path('app/public/profile/') . $userImage)->resize(1905, 370);
+            }
+
+            $user->save();
+            return $user;
+        }
+
+        return null;
+    }
 }

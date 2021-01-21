@@ -24,7 +24,10 @@ class UserTransformer extends TransformerAbstract
             'address' => $user->address,
             'roles' => $user->roles,
             'rent_limit' => $user->rent_limit,
-            'is_phone_verified' => $user->is_phone_verified
+            'is_phone_verified' => $user->is_phone_verified,
+            'image' => $user->image ? asset($user->image) : '',
+            'cover' => $user->cover ? asset($user->cover) : '',
+            'identification_image' => $user->identification_image ? asset($user->identification_image) : '',
         ];
     }
 

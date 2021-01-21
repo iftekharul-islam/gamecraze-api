@@ -122,6 +122,7 @@ class AuthController extends BaseController
         $user = $this->userRepository->update($request);
         $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
         $user['image'] = $user->image ? asset($user->image) : '';
+        $user['cover'] = $user->cover ? asset($user->cover) : '';
         return response()->json(['error' => false, 'data' => $user]);
     }
 
@@ -147,6 +148,7 @@ class AuthController extends BaseController
         $user = $this->userRepository->update($request);
         $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
         $user['image'] = $user->image ? asset($user->image) : '';
+        $user['cover'] = $user->cover ? asset($user->cover) : '';
         return response()->json(['error' => false, 'data' => $user]);
     }
 
@@ -162,7 +164,8 @@ class AuthController extends BaseController
         }
         $data['token'] = $this->generateAccessToken($data['user']);
         $data['image'] = $data['user']['image'] ? asset($data['user']['image']) : '';
-
+        $data['cover'] = $data['user']['cover'] ? asset($data['user']['cover']) : '';
+        $data['identification_image'] = $data['user']['identification_image'] ? asset($data['user']['identification_image']) : '';
         return response()->json($data);
     }
     /**
@@ -191,7 +194,9 @@ class AuthController extends BaseController
             Mail::to($user->email)
                 ->queue(new SendPasswordResetMail($user->name, $link));
             $user->image = $user->image ? asset($user->image) : '';
-
+            $user->cover =  $user->cover ? asset( $user->cover) : '';
+            $user->identification_image = $user->identification_image ? asset($user->identification_image) : '';
+            
             return $this->response->array([
                 'error' => false,
                 'message' => 'Password not set',
@@ -220,6 +225,25 @@ class AuthController extends BaseController
         return $this->response->array([
             'error' => true,
             'message' => 'Email not exist'
+        ]);
+    }
+
+    public function updateProfileImage(Request $request)
+    {
+        $user = $this->userRepository->updateProfileImage($request->only(['image', 'image_type']));
+        if ($user) {
+            $user['identification_image'] = $user->identification_image ? asset($user->identification_image) : '';
+            $user['image'] = $user->image ? asset($user->image) : '';
+            $user['cover'] = $user->cover ? asset($user->cover) : '';
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Uploaded successfully',
+                'user' => $user->load('address')
+            ]);
+        }
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Could not upload image'
         ]);
     }
 
