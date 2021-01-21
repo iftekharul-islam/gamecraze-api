@@ -117,6 +117,11 @@ class GameRepository
         return Game::where('released', '>', Carbon::today()->format('Y-m-d'))->get();
     }
 
+    public function releasedGames()
+    {
+        return Game::where('released', '<', Carbon::today()->format('Y-m-d'))->get();
+    }
+
     /**
      * @return mixed
      */

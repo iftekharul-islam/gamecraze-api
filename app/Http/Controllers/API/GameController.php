@@ -112,6 +112,12 @@ class GameController extends BaseController
         return $this->response->collection($games, new GameTransformer());
     }
 
+    public function releasedGames()
+    {
+        $games = $this->gameRepository->releasedGames();
+        return $this->response->collection($games, new GameTransformer());
+    }
+
     /**
      * @return Response
      */
