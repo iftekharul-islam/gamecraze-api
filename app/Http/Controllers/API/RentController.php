@@ -39,7 +39,7 @@ class RentController extends BaseController
         }
 
         return responseData('No post found', 404);
-        
+
     }
 
     /**

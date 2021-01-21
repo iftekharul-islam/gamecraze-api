@@ -73,13 +73,13 @@
                                                 @if ($rent->status === 1)
                                                     <a class="badge-success badge text-white" >Approved</a>
                                                 @elseif ($rent->status === 0)
-                                                    <a class="badge-danger badge text-white" >Rejected</a>
-                                                @else
                                                     <a class="badge-warning badge text-white" >Pending</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Rejected</a>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($rent->status == 0 || $rent->status === null)
+                                                @if ($rent->status == 0 || $rent->status === 2)
                                                     <button class="btn btn-success btn-sm" type="button"
                                                             onclick="makeApprove({{ $rent->id }})"> <i class="fa fa-check" aria-hidden="true"></i></button>
                                                     <form id="approve-form-{{ $rent->id }}"
@@ -88,7 +88,7 @@
                                                         @csrf
                                                     </form>
                                                 @endif
-                                                @if ($rent->status == 1 || $rent->status === null)
+                                                @if ($rent->status == 1 || $rent->status === 2)
                                                     <button class="btn btn-danger btn-sm" type="button"
                                                             onclick="makeReject({{ $rent->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                     <form id="reject-form-{{ $rent->id }}"

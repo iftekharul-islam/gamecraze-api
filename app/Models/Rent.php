@@ -32,4 +32,7 @@ class Rent extends Model
     public function checkpoint() {
         return $this->belongsTo(Checkpiont::class, 'checkpoint_id', 'id');
     }
+    public function renter() {
+        return $this->hasOne(User::class, 'id', 'rented_user_id');
+    }
 }
