@@ -11,36 +11,43 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 
-class OtpRepository {
-    public function all() {
+class OtpRepository
+{
+    public function all()
+    {
         return OneTimePassword::all();
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $otp = rand(100000, 999999);
 
         $phone = $request->input('phone_number');
 
         SendOtp::dispatch($phone, $otp);
 
-	    return $otp;
+        return $otp;
     }
 
-    public function update(Request $request) {
-
-    }
-
-    public function delete($id) {
+    public function update(Request $request)
+    {
 
     }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return mixed
-	 */
-    public function verifyOtp(Request $request) {
-        $phone_number = $request->has('email') ? User::where('email', $request->input('email'))->first()->phone_number : $request->input('phone_number');
+    public function delete($id)
+    {
+
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function verifyOtp(Request $request)
+    {
+        $phone_number = $request->has('email') ? User::where('email',
+            $request->input('email'))->first()->phone_number : $request->input('phone_number');
         $otp = OneTimePassword::where('phone_number', $phone_number)->latest()->first();
         if (!$otp) {
             return [
@@ -53,62 +60,61 @@ class OtpRepository {
 
         $timeDiff = $created_at->diffInSeconds(Carbon::now());
 
-	    if (trim($otp->otp) !== trim($request->input('otp'))) {
-		    return [
-		        'error' => true,
+        if (trim($otp->otp) !== trim($request->input('otp'))) {
+            return [
+                'error' => true,
                 'message' => 'wrongOtp'
             ];
-	    }
-	    elseif ($timeDiff >= config('otp.lifetime')) {
+        } elseif ($timeDiff >= config('otp.lifetime')) {
             return [
                 'error' => true,
                 'message' => 'timeout'
             ];
         }
 
-	    $user = User::where('phone_number', $phone_number)->first();
+        $user = User::where('phone_number', $phone_number)->first();
 
-	    if ($user) {
+        if ($user) {
             $user->is_phone_verified = 1;
             $user->save();
-	        if ($user->status == 0) {
+            if ($user->status == 0) {
                 return [
                     'error' => true,
                     'message' => 'inactiveUser'
                 ];
             }
-            $token = $user->createToken($user->phone_number .'-'. now());
+            $token = $user->createToken($user->phone_number . '-' . now());
             $user['image'] = $user->image ? asset($user->image) : '';
-		    return [
+            return [
                 'error' => false,
-		        'newUser' => false,
-		        'token' => $token->accessToken,
+                'newUser' => false,
+                'token' => $token->accessToken,
                 'user' => $user,
                 'address' => $user->address,
             ];
-	    }
+        }
 
-	    $user = User::create([
-		    'phone_number' => $phone_number,
+        $user = User::create([
+            'phone_number' => $phone_number,
             'status' => 1,
             'is_phone_verified' => 1
-	    ]);
+        ]);
 
-	    $address = Address::create([
-	        'address' => null,
+        $address = Address::create([
+            'address' => null,
             'city' => null,
             'post_code' => null
         ]);
-	    $user->address_id = $address->id;
-	    $user->save();
+        $user->address_id = $address->id;
+        $user->save();
 
-	    $role = Role::where('name', 'customer')->first();
+        $role = Role::where('name', 'customer')->first();
 
-	    if ($user && $role) {
-	        $user->assignRole($role);
+        if ($user && $role) {
+            $user->assignRole($role);
         }
 
-        $token = $user->createToken($user->phone_number .'-'. now());
+        $token = $user->createToken($user->phone_number . '-' . now());
 
         return [
             'error' => false,

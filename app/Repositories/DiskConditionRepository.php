@@ -11,7 +11,8 @@ class DiskConditionRepository
     /**
      * @return DiskCondition[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function all() {
+    public function all()
+    {
         return DiskCondition::orderBy('name', 'ASC')->get();
     }
 
@@ -19,7 +20,8 @@ class DiskConditionRepository
      * @param $request
      * @return mixed
      */
-    public function store($request) {
+    public function store($request)
+    {
         $disk_condition = $request->only(['name', 'description', 'status']);
         $disk_condition['author_id'] = auth()->user()->id;
         return DiskCondition::create($disk_condition);
@@ -29,7 +31,8 @@ class DiskConditionRepository
      * @param $id
      * @return mixed
      */
-    public function show($id) {
+    public function show($id)
+    {
         return DiskCondition::findOrFail($id);
     }
 
@@ -37,7 +40,8 @@ class DiskConditionRepository
      * @param $request
      * @return mixed
      */
-    public function update($request) {
+    public function update($request)
+    {
         $disk_condition = DiskCondition::find($request->id);
 
         if (!$disk_condition) {
@@ -62,7 +66,8 @@ class DiskConditionRepository
      * @param $id
      * @return int
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $disk_condition = DiskCondition::find($id);
         if ($disk_condition) {
             return $disk_condition->delete();
