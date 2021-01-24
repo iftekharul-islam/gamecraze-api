@@ -105,6 +105,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('deliveryCharge.all') }}" class="nav-link {{ (request()->routeIs('deliveryCharge.all', 'deliveryCharge.create')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Delivery Charges
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ route('video.all') }}" class="nav-link {{ (request()->routeIs('basePrice.all', 'basePrice.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-film"></i>
                         <p>
