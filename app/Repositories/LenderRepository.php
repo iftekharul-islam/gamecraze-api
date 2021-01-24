@@ -20,15 +20,18 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        for ($i = 0; $i < count($request->postId); $i++) {
+        $lender = auth()->user();
+        $cartItems = $request->get('cart_items');
+        for ($i = 0; $i < count($cartItems); $i++) {
             $data = [
-                'lender_id' => auth()->user()->id,
-                'rent_id' => $request->postId[$i],
-                'lend_week' => $request->week[$i],
-                'checkpoint_id' => $request->checkpointId[$i] == 'u'  ? null :  $request->checkpointId[$i],
-                'lend_cost' => $request->totalPrice,
+                'lender_id' => $lender->id,
+                'rent_id' => $cartItems[$i]['rent']['id'],
+                'lend_week' => $cartItems[$i]['lend_week'],
+                'checkpoint_id' => $cartItems[$i]['delivery_type'] == 'u'  ? null :  $cartItems[$i]['delivery_type'],
+                'lend_cost' =>$cartItems[$i]['price'],
                 'lend_date' => Carbon::now(),
-                'payment_method' => $request->paymentMethod,
+                'payment_method' => $request->get('paymentMethod'),
+                'address' => $request->get('address') ? $request->get('address') : null,
                 'status' => 0
             ];
             $lend = Lender::create($data);
@@ -38,14 +41,14 @@ class LenderRepository {
                     'message' => "Something went wrong"
                 ];
             }
-            $rent = Rent::findOrFail($request->postId[$i]);
-            $rent->rented_user_id = auth()->user()->id;
+            $rent = Rent::findOrFail($cartItems[$i]['rent']['id']);
+            $rent->rented_user_id = $lender->id;
             $rent->save();
 
-            $renter = User::find(Rent::find($request->postId[$i])->user_id);
+            $renter = User::findOrFail($cartItems[$i]['rent']['user_id']);
             SendEmailToRenter::dispatch($renter);
         }
-        $lender = auth()->user();
+        
         SendEmailToLender::dispatch($lender);
         return [
             'error' => false,

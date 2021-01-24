@@ -58,5 +58,4 @@ class RentTransformer extends TransformerAbstract
         }
         return null;
     }
-
 }
