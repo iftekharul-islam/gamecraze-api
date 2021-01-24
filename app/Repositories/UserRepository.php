@@ -76,7 +76,7 @@ class UserRepository
             'post_code' => null
         ]);
         $user->address_id = $address->id;
-        
+
         $user->save();
 
         return [
