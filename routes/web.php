@@ -141,6 +141,14 @@ Route::prefix('admin')->group(function () {
         Route::get('video/edit/{id}','\App\Http\Controllers\FeaturedVideoController@edit')->name('video.edit');
         Route::post('video/update/{id}','\App\Http\Controllers\FeaturedVideoController@update')->name('video.update');
         Route::delete('video/delete/{id}','\App\Http\Controllers\FeaturedVideoController@destroy')->name('featured.video.delete');
+
+        // Delivery Charges
+        Route::get('delivery-charges','\App\Http\Controllers\DeliveryChargeController@index')->name('deliveryCharge.all');
+        Route::get('delivery-charges/create','\App\Http\Controllers\DeliveryChargeController@create')->name('deliveryCharge.create');
+        Route::post('delivery-charges','\App\Http\Controllers\DeliveryChargeController@store')->name('deliveryCharge.store');
+        Route::get('delivery-charges/edit/{id}','\App\Http\Controllers\DeliveryChargeController@edit')->name('deliveryCharge.edit');
+        Route::post('delivery-charges/update/{id}','\App\Http\Controllers\DeliveryChargeController@update')->name('deliveryCharge.update');
+        Route::delete('delivery-charges/delete/{id}','\App\Http\Controllers\DeliveryChargeController@destroy')->name('deliveryCharge.destroy');
     });
 });
 Auth::routes();
