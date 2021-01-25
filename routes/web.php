@@ -141,6 +141,11 @@ Route::prefix('admin')->group(function () {
         Route::get('video/edit/{id}','\App\Http\Controllers\FeaturedVideoController@edit')->name('video.edit');
         Route::post('video/update/{id}','\App\Http\Controllers\FeaturedVideoController@update')->name('video.update');
         Route::delete('video/delete/{id}','\App\Http\Controllers\FeaturedVideoController@destroy')->name('featured.video.delete');
+
+        //game orders
+        Route::get('orders','\App\Http\Controllers\GameOrderController@index')->name('orders.all');
+        Route::get('orders/{id}','\App\Http\Controllers\GameOrderController@show')->name('orders.show');
+        Route::post('order-status/{status_type}/{order_id}/{status}','\App\Http\Controllers\GameOrderController@updateOrderStatus')->name('orders.status.update');
     });
 });
 Auth::routes();

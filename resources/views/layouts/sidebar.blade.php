@@ -105,7 +105,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('video.all') }}" class="nav-link {{ (request()->routeIs('basePrice.all', 'basePrice.create')) ? 'active' : '' }}">
+                    <a href="{{ route('video.all') }}" class="nav-link {{ (request()->routeIs('video.all', 'video.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-film"></i>
                         <p>
                             Freatured Videos
@@ -120,11 +120,20 @@
                         </p>
                     </a>
                 </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
                         <p>
                             Lend History
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('orders.all') }}" class="nav-link {{ Request()->routeIs('orders.all') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Orders
                         </p>
                     </a>
                     <hr>

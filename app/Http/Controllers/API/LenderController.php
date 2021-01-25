@@ -32,8 +32,6 @@ class LenderController extends Controller
      */
     public function store(Request $request)
     {
-        // logger($request->get('cart_items'));
-        // return;
         return $this->lenderRepository->create($request);
     }
 
