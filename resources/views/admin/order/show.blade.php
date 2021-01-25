@@ -92,15 +92,15 @@
                                                 <strong>Amount :</strong><span> {{ $order->amount }} BDT</span><br>
                                                 <strong>Delivery Status :</strong><span> {{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</span><br>
                                                 <strong>Payment method :</strong><span class="badge-success badge">{{ $order->payment_method }}</span><br>
-                                                <strong>Payment Status :</strong><span class="badge-success badge">{{ $order->payment_status == 1 ? 'Paid' : 'Not Paid' }}</span><br>
+                                                <strong>Payment Status :</strong><span class="badge-success badge">{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</span><br>
                                             </address>
                                         </div>
                                         <div class="col-sm-4 invoice-col">
                                             Update Order Status
                                             <hr>
-                                            <form method="post" action="{{ route('orders.status.update', [']) }}" class="mx-auto form-inline">
+                                            <form id="formDeliveryStatus" method="post" action="{{ route('orders.status.update', ['status_type' => 'delivery', 'order_id' => $order->id]) }}" class="mx-auto form-inline mb-3">
                                                 @csrf
-                                                <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <div class="false-padding-bottom-form form-group mr-2">
                                                     
                                                     <select name="status" class="form-control">
                                                         <option value="0" @if($order->delivery_status == 0) selected @endif>Pending</option>
@@ -112,8 +112,16 @@
                                                         <span class="text-danger"><strong>{{ $errors->first('status') }}</strong></span>
                                                     @endif
                                                 </div>
-                                                <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                    <button type="submit" class="btn btn-primary btn-submit">Update</button>
+                                                <div class="false-padding-bottom-form form-group">
+                                                    <button onclick="confirm('formDeliveryStatus')" type="button" class="btn btn-primary btn-submit">Update</button>
+                                                </div>
+                                            </form>
+
+                                            <form id="formPaymentStatus" method="post" action="{{ route('orders.status.update', ['status_type' => 'payment', 'order_id' => $order->id]) }}" class="mx-auto form-inline ">
+                                                @csrf
+                                                <div class="false-padding-bottom-form form-group">
+                                                    <input type="hidden" name="status" value="{{ $order->payment_status == 1 ? 0 : 1 }}">
+                                                    <button onclick="confirm('formPaymentStatus')" type="button" class="btn {{ $order->payment_status == 1 ? 'btn-primary' : 'btn-warning' }} btn-submit">Change payment status to {{ $order->payment_status == 1 ? "Unpaid" : "Paid" }}</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -186,8 +194,30 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script>
-       
+    <script type="text/javascript">
+        function confirm(form) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Confirm',
+                text: "Are you sure?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, update it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById(form).submit();
+                }
+            });
+        }
     </script>
 @endsection
 

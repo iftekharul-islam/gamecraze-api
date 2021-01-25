@@ -145,7 +145,8 @@ Route::prefix('admin')->group(function () {
         //game orders
         Route::get('orders','\App\Http\Controllers\GameOrderController@index')->name('orders.all');
         Route::get('orders/{id}','\App\Http\Controllers\GameOrderController@show')->name('orders.show');
-        Route::post('order-status/{status_type}/{order_id}/{status}','\App\Http\Controllers\GameOrderController@updateOrderStatus')->name('orders.status.update');
+        Route::post('order-status/{status_type}/{order_id}','\App\Http\Controllers\GameOrderController@updateOrderStatus')->name('orders.status.update');
+        Route::post('order-disk-status/{lend_id}/{status}','\App\Http\Controllers\LendController@updateStatus')->name('orders.disk.status.update');
     });
 });
 Auth::routes();

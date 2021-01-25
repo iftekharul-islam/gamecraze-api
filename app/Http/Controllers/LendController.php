@@ -109,4 +109,9 @@ class LendController extends Controller
     {
         //
     }
+
+    public function updateStatus($lend_id, $status) {
+        $status = $this->lendRepository->updateStatus($lend_id, $status);
+        return back()->with('success', 'Status updated');
+    }
 }
