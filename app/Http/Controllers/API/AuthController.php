@@ -248,12 +248,11 @@ class AuthController extends BaseController
     }
 
     public function validatePhoneEmail(Request $request) {
-        logger($request->all());
-
         $user = auth()->user();
         $emailExists = false;
         $phoneExists = false;
         $error = false;
+        
         if ($request->get('email')) {
             if (User::where('email', $request->get('email'))->where('id', '!=', $user->id)->count() > 0) {
                 $error = true;
