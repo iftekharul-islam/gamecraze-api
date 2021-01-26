@@ -82,11 +82,4 @@ class LenderRepository {
 
         return 0;
     }
-
-    public function updateStatus($lend_id, $status) {
-        $lender = Lender::findOrFail($lend_id);
-        $lender->status = $status;
-        $lender->save();
-        return true;
-    }
 }

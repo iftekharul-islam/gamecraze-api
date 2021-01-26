@@ -101,12 +101,10 @@
                                             <form id="formDeliveryStatus" method="post" action="{{ route('orders.status.update', ['status_type' => 'delivery', 'order_id' => $order->id]) }}" class="mx-auto form-inline mb-3">
                                                 @csrf
                                                 <div class="false-padding-bottom-form form-group mr-2">
-                                                    
                                                     <select name="status" class="form-control">
-                                                        <option value="0" @if($order->delivery_status == 0) selected @endif>Pending</option>
-                                                        <option value="1" @if($order->delivery_status == 1) selected @endif>Processing</option>
-                                                        <option value="2" @if($order->delivery_status == 2) selected @endif>Delivered</option>
-                                                        <option value="3" @if($order->delivery_status == 3) selected @endif>Rejected</option>
+                                                        @foreach(config('gamehub.order_delivery_status') as $key => $status)
+                                                            <option value="{{$key}}" @if($order->delivery_status == $key) selected @endif>{{ ucfirst($status) }}</option>
+                                                        @endforeach
                                                     </select>
                                                     @if ($errors->has('status'))
                                                         <span class="text-danger"><strong>{{ $errors->first('status') }}</strong></span>
@@ -154,7 +152,6 @@
                                                             <th>Availability</th>
                                                             <th>Week</th>
                                                             <th>Status</th>
-                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -165,8 +162,23 @@
                                                                 <td>{{ $lend->lend_cost }}</td>
                                                                 <td>{{ isset($lend->rent->availability) ? date('d M, Y', strtotime($lend->rent->availability)) : '' }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
-                                                                <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td>
-                                                                <td></td>
+                                                                <!-- <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td> -->
+                                                                <td>
+                                                                    @php $formId = 'game'.$lend->id @endphp
+                                                                    <form id="{{$lend->id}}" method="post" action="{{ route('orders.disk.status.update', ['lend_id' => $lend->id]) }}" class="mx-auto form-inline">
+                                                                        @csrf
+                                                                        <div class="false-padding-bottom-form form-group mr-2">
+                                                                            <select name="status" class="form-control">
+                                                                                @foreach(config('gamehub.disk_delivery_status') as $key => $status)
+                                                                                    <option value="{{$key}}" @if($lend->status == $key) selected @endif>{{ ucfirst($status) }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="false-padding-bottom-form form-group">
+                                                                            <button onclick="confirm({{$lend->id}})" type="button" class="btn btn-primary btn-submit">Update</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

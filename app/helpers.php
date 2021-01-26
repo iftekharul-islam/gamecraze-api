@@ -40,7 +40,7 @@ if (!function_exists("generateOrderNo")){
     {
         $latestOrder = GameOrder::orderBy('id', 'desc')->first();
         if ($latestOrder) {
-            return $latestOrder + 1;
+            return $latestOrder->order_no + 1;
         } 
   
         return 0001;

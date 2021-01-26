@@ -110,8 +110,12 @@ class LendController extends Controller
         //
     }
 
-    public function updateStatus($lend_id, $status) {
-        $status = $this->lendRepository->updateStatus($lend_id, $status);
-        return back()->with('success', 'Status updated');
+    public function updateStatus(Request $request, $lend_id) {
+       
+        $status = $this->lendRepository->updateStatus($lend_id, $request->status);
+        if ($status) {
+            return back()->with('status', 'Disk delivery updated');
+        }
+        return back()->with('error', 'Could not update status');
     }
 }

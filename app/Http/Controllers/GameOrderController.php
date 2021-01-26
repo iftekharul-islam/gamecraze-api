@@ -97,7 +97,7 @@ class GameOrderController extends Controller
     public function updateOrderStatus(Request $request, $status_type, $order_id) {
         $order = $this->gameOrderRepository->updateStatus($status_type, $order_id, $request->status);
         if ($order) {
-            return back()->with('success', 'Status updated');
+            return back()->with('status', 'Status updated');
         }
 
         return back()->with('error', 'Failed to update status');

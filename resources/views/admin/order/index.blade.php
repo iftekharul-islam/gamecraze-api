@@ -50,7 +50,7 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>SL</th>
+                                        <!-- <th>SL</th> -->
                                         <th>Order No</th>
                                         <th>Amount</th>
                                         <th>Date</th>
@@ -62,12 +62,12 @@
                                     <tbody>
                                     @foreach($orders as $key => $order)
                                         <tr>
-                                            <td>{{ $key + $orders->firstItem() }}</td>
+                                            <!-- <td>{{ $key + $orders->firstItem() }}</td> -->
                                             <td>{{ 'GH'.str_pad($order->order_no, 4, 0, STR_PAD_LEFT)  }}</td>
                                             <td>{{ $order->amount }}</td>
                                             <td>{{ $order->created_at->format('j M Y') }}</td>
                                             <td>{{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</td>
-                                            <td>{{ $order->payment_status == 1 ? 'Paid' : 'Not Paid' }}</td>
+                                            <td>{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-3" href="{{ route('orders.show', $order->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
@@ -77,6 +77,10 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="mt-3">
+                                    {{ $orders->links() }}
+                                </div>
+                                
                                 @else
                                     <h4 class="text-center">No data found</h4>
                                 @endif
