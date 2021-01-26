@@ -21,4 +21,11 @@ class LendRepository
     public function details ($id) {
         return Lender::with('lender', 'lender.address', 'rent.user.address', 'rent.game', 'rent.game.basePrice')->findOrFail($id);
     }
+
+    public function updateStatus($lend_id, $status) {
+        $lender = Lender::findOrFail($lend_id);
+        $lender->status = $status;
+        $lender->save();
+        return true;
+    }
 }

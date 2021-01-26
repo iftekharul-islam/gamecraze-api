@@ -105,6 +105,7 @@
                 </li>
 
                 <li class="nav-item">
+
                     <a href="{{ route('deliveryCharge.all') }}" class="nav-link {{ (request()->routeIs('deliveryCharge.all', 'deliveryCharge.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
@@ -129,11 +130,20 @@
                         </p>
                     </a>
                 </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
                         <p>
                             Lend History
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('orders.all') }}" class="nav-link {{ Request()->routeIs('orders.all') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Orders
                         </p>
                     </a>
                     <hr>

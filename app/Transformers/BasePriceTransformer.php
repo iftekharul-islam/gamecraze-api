@@ -17,6 +17,8 @@ class BasePriceTransformer extends TransformerAbstract
             'Start_price' =>  $basePrice->start,
             'End_price' =>  $basePrice->end,
             'base' =>  $basePrice->base,
+            'second_week' => $basePrice->second_week,
+            'third_week' => $basePrice->third_week,
             'status' => $basePrice->status,
         ];
     }

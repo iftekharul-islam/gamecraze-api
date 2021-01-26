@@ -142,6 +142,12 @@ Route::prefix('admin')->group(function () {
         Route::post('video/update/{id}','\App\Http\Controllers\FeaturedVideoController@update')->name('video.update');
         Route::delete('video/delete/{id}','\App\Http\Controllers\FeaturedVideoController@destroy')->name('featured.video.delete');
 
+        //game orders
+        Route::get('orders','\App\Http\Controllers\GameOrderController@index')->name('orders.all');
+        Route::get('orders/{id}','\App\Http\Controllers\GameOrderController@show')->name('orders.show');
+        Route::post('order-status/{status_type}/{order_id}','\App\Http\Controllers\GameOrderController@updateOrderStatus')->name('orders.status.update');
+        Route::post('order-disk-status/{lend_id}','\App\Http\Controllers\LendController@updateStatus')->name('orders.disk.status.update');
+
         // Delivery Charges
         Route::get('delivery-charges','\App\Http\Controllers\DeliveryChargeController@index')->name('deliveryCharge.all');
         Route::get('delivery-charges/create','\App\Http\Controllers\DeliveryChargeController@create')->name('deliveryCharge.create');
