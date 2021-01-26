@@ -110,6 +110,8 @@
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
+            $api->post('user-phone-email-validation', 'App\Http\Controllers\API\AuthController@validatePhoneEmail');
+            
             //For rent purpose
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
