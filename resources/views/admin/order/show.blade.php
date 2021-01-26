@@ -89,7 +89,6 @@
                                             <hr>
                                             <address>
                                                 <strong>Order date :</strong><span> {{ $order->created_at->format('d M Y') }}</span><br>
-                                                <strong>Amount :</strong><span> {{ $order->amount }} BDT</span><br>
                                                 <strong>Delivery Status :</strong><span> {{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</span><br>
                                                 <strong>Payment method :</strong><span class="badge-success badge">{{ $order->payment_method }}</span><br>
                                                 <strong>Payment Status :</strong><span class="badge-success badge">{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</span><br>
@@ -186,6 +185,32 @@
                                             </div>
                                         @endif
                                         
+                                    </div>
+
+                                    <div class="row">
+                                    <div class="col-6 offset-md-6">
+                                            <p class="lead">Payment details :</p>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tr>
+                                                        <th style="width:50%">Subtotal (BDT):</th>
+                                                        <td class="text-right">{{ number_format($order->amount, 2) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tax (9.3%):</th>
+                                                        <td class="text-right">0.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Delivery Fee (BDT):</th>
+                                                        <td class="text-right">{{ number_format($order->delivery_charge, 2) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Total (BDT):</th>
+                                                        <td id="total" class="text-right">{{ number_format($order->amount + $order->delivery_charge, 2) }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.row -->
                                     <hr>
