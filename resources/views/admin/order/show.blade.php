@@ -89,7 +89,6 @@
                                             <hr>
                                             <address>
                                                 <strong>Order date :</strong><span> {{ $order->created_at->format('d M Y') }}</span><br>
-                                                <!-- <strong>Amount :</strong><span> {{ $order->amount + $order->delivery_charge }} BDT</span><br> -->
                                                 <strong>Delivery Status :</strong><span> {{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</span><br>
                                                 <strong>Payment method :</strong><span class="badge-success badge">{{ $order->payment_method }}</span><br>
                                                 <strong>Payment Status :</strong><span class="badge-success badge">{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</span><br>
