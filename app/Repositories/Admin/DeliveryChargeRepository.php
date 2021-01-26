@@ -69,4 +69,8 @@ class DeliveryChargeRepository
         return $charge;
     }
 
+    public function getCharge() {
+        return DeliveryCharge::orderBy('created_at', 'desc')->first();
+    }
+
 }
