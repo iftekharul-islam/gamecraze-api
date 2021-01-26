@@ -147,6 +147,14 @@ Route::prefix('admin')->group(function () {
         Route::get('orders/{id}','\App\Http\Controllers\GameOrderController@show')->name('orders.show');
         Route::post('order-status/{status_type}/{order_id}','\App\Http\Controllers\GameOrderController@updateOrderStatus')->name('orders.status.update');
         Route::post('order-disk-status/{lend_id}','\App\Http\Controllers\LendController@updateStatus')->name('orders.disk.status.update');
+
+        // Delivery Charges
+        Route::get('delivery-charges','\App\Http\Controllers\DeliveryChargeController@index')->name('deliveryCharge.all');
+        Route::get('delivery-charges/create','\App\Http\Controllers\DeliveryChargeController@create')->name('deliveryCharge.create');
+        Route::post('delivery-charges','\App\Http\Controllers\DeliveryChargeController@store')->name('deliveryCharge.store');
+        Route::get('delivery-charges/edit/{id}','\App\Http\Controllers\DeliveryChargeController@edit')->name('deliveryCharge.edit');
+        Route::post('delivery-charges/update/{id}','\App\Http\Controllers\DeliveryChargeController@update')->name('deliveryCharge.update');
+        Route::delete('delivery-charges/delete/{id}','\App\Http\Controllers\DeliveryChargeController@destroy')->name('deliveryCharge.destroy');
     });
 });
 Auth::routes();

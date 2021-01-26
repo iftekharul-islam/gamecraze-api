@@ -32,6 +32,13 @@ class UserRepository
             $user->assignRole($role);
             return $user;
         }
+
+        $address = Address::create([
+            'address' => null,
+            'city' => null,
+            'post_code' => null
+        ]);
+        $user->address_id = $address->id;
         return false;
     }
 
@@ -62,6 +69,14 @@ class UserRepository
         if (isset($userData['password'])) {
             $user->password = bcrypt($userData['password']);
         }
+
+        $address = Address::create([
+            'address' => null,
+            'city' => null,
+            'post_code' => null
+        ]);
+        $user->address_id = $address->id;
+
         $user->save();
 
         return [
@@ -235,15 +250,15 @@ class UserRepository
 
             if ($data['image_type'] == 'profile' && $user->image) {
                 deleteFile([$user->image]);
-            } 
+            }
 
             if ($data['image_type'] == 'cover' && $user->cover) {
                 deleteFile([$user->cover]);
-            } 
+            }
 
             $image = $data['image'];
             $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-           
+
             if ($data['image_type'] == 'profile') {
                 $user->image = 'storage/profile/' . $userImage;
                 \Image::make($image)

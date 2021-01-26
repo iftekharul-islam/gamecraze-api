@@ -88,7 +88,7 @@
                                                         @csrf
                                                     </form>
                                                 @endif
-                                                @if ($rent->status == 1 || $rent->status === 2)
+                                                @if ($rent->status == 1 || $rent->status === 0)
                                                     <button class="btn btn-danger btn-sm" type="button"
                                                             onclick="makeReject({{ $rent->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                     <form id="reject-form-{{ $rent->id }}"
