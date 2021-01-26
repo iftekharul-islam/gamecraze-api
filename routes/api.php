@@ -100,6 +100,7 @@
         Route::get('featured-videos','\App\Http\Controllers\API\FeaturedVideoController@index');
         Route::post('subscribe','\App\Http\Controllers\API\SubscriptionController@subscribe');
         Route::get('featured-platforms','\App\Http\Controllers\API\PlatformController@featuredPlatforms');
+        Route::get('delivery-charge','\App\Http\Controllers\API\DeliveryChargeController@getCharge');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
