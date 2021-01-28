@@ -13,6 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                            <li class="breadcrumb-item "><a href="{{ route('user.all') }}">Users</a></li>
                             <li class="breadcrumb-item active">Profile</li>
                         </ol>
                     </div>
@@ -50,7 +51,7 @@
                                          src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}"
                                          alt="User profile picture">
                                 </div>
-                                <h3 class="profile-username text-center">{{ $user->name }}</h3><ul class="list-group list-group-unbordered mb-3">
+                                <h3 class="profile-username text-center">{{ $user->name . ' ' . $user->last_name }}</h3><ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Gender</b> <a class="float-right">{{ $user->gender }}</a>
                                     </li>
