@@ -69,7 +69,8 @@ class UserRepository
         if (isset($userData['password'])) {
             $user->password = bcrypt($userData['password']);
         }
-
+        $user->status = 1;
+        
         $address = Address::create([
             'address' => null,
             'city' => null,
