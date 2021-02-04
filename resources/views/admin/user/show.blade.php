@@ -61,7 +61,7 @@
                                         <b>Email</b> <a class="float-right">{{ $user->email ?? 'N/A' }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Birthday</b> <a class="float-right">{{ $user->birth_date ?? 'N/A' }}</a>
+                                        <b>Birthday</b> <a class="float-right">{{ gameHubDateFormat($user->birth_date, 'Y-m-d') ?? 'N/A' }}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Phone No.</b> <a class="float-right">{{ $user->phone_number ?? 'N/A' }}</a>

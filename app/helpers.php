@@ -87,7 +87,7 @@ if (!function_exists("gameHubDateFormat")){
         $d = DateTime::createFromFormat($fromFormat, $date);
         // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
         if ($d->format($fromFormat) === $date) {
-            return $d->format(config('gamehub.disk_delivery_status'));
+            return $d->format(config('gamehub.date_format'));
         }
 
         return null;
