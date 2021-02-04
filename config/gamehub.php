@@ -12,5 +12,6 @@ return [
         1 => 'processing',
         2 => 'delivered',
         3 => 'rejected',
-    ]
+    ],
+    'date_format' => 'd M Y'
 ];

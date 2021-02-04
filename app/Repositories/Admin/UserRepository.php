@@ -11,14 +11,15 @@ use Spatie\Permission\Models\Role;
 class UserRepository
 {
 
-    public function user() {
+    public function user($number = 20) {
         return User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name','!=', 'admin');
-        })->orderBy('created_at', 'ASC')->get();
+        })->orderBy('created_at', 'DESC')
+        ->paginate($number);
     }
 
-     public function findById($id) {
-            return User::with('roles', 'address')->findOrFail($id);
+    public function findById($id) {
+        return User::with('roles', 'address')->findOrFail($id);
     }
 
     public function edit($id) {

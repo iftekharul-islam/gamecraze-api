@@ -46,12 +46,14 @@ class UserRepository
     {
         $userData = $request->all();
         $data = User::where('phone_number', $request->phone_number)->first();
+
         if ($data) {
             return [
                 'error' => true,
                 'message' => 'Phone Number already exists',
             ];
         }
+
         $user = new User();
 
         if (isset($userData['name'])) {
@@ -69,13 +71,19 @@ class UserRepository
         if (isset($userData['password'])) {
             $user->password = bcrypt($userData['password']);
         }
+
         $user->status = 1;
-        
+        $role = Role::where('name', 'customer')->first();
+        if ($role) {
+            $user->assignRole($role);
+        }
+
         $address = Address::create([
             'address' => null,
             'city' => null,
             'post_code' => null
         ]);
+        
         $user->address_id = $address->id;
 
         $user->save();
