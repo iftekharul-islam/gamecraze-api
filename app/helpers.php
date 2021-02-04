@@ -91,7 +91,5 @@ if (!function_exists("gameHubDateFormat")){
         }
 
         return null;
-        
-       
     }
 }
