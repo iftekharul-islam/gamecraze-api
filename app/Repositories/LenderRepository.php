@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Jobs\SendEmailToLender;
 use App\Jobs\SendEmailToRenter;
+use App\Models\Commission;
 use App\Models\GameOrder;
 use App\Models\Lender;
 use App\Models\Rent;
@@ -27,7 +28,8 @@ class LenderRepository {
         $gameOrder = GameOrder::create([
             'order_no' => generateOrderNo(), 
             'user_id' => $lender->id, 
-            'amount' => $totalOrderAmount, 
+            'amount' => $totalOrderAmount,
+            'commission' => $this->commissionAmount($totalOrderAmount),
             'payment_method' => $request->get('paymentMethod'), 
             'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
             'delivery_status' => 0,
@@ -42,6 +44,8 @@ class LenderRepository {
                 'lend_week' => $cartItems[$i]['lend_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] == 'u'  ? null :  $cartItems[$i]['delivery_type'],
                 'lend_cost' => $cartItems[$i]['price'],
+                'commission' => $this->commissionAmount($cartItems[$i]['price']),
+                'renter_id' => $cartItems[$i]['rent']['user_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
                 'address' => $request->get('address') ? $request->get('address') : null,
@@ -71,16 +75,30 @@ class LenderRepository {
         ];
     }
 
+    /**
+     * @param $cart
+     * @return float|int
+     */
     public function cartTotal($cart) {
         if (count($cart)) {
             $amount = 0;
             foreach($cart as $item) {
                 $amount = $amount + $item['price'];
             }
-
             return round($amount, 2);
         }
 
         return 0;
+    }
+
+    /**
+     * @param $amount
+     * @return float|int
+     */
+    public function commissionAmount($amount)
+    {
+        $commission = Commission::first();
+
+        return ($amount * $commission->amount / 100);
     }
 }

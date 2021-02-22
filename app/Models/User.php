@@ -56,4 +56,12 @@ class User extends Authenticatable
     public function lends() {
         return $this->hasMany(Lender::class, 'lender_id', 'id');
     }
+
+    public function lendPosts() {
+        return $this->hasMany(Lender::class, 'renter_id', 'id');
+    }
+
+    public function transactionHistory() {
+        return $this->hasMany(TransactionHistory::class, 'user_id', 'id');
+    }
 }
