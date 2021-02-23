@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionHistory extends Model
 {
     protected $fillable = [
-        'user_id', 'amount', 'description', 'author_id', 'payment_type', 'post_id'
+        'user_id', 'amount', 'description', 'author_id', 'transaction_id', 'payment_type', 'post_id'
     ];
 
     public function author()

@@ -178,6 +178,11 @@
             $api->delete('requests/{id}', 'App\Http\Controllers\API\UserRequestController@destroy');
 
             $api->post('requests/accept', 'App\Http\Controllers\API\AcceptRequestController@acceptRequest');
+
+            //Transaction history by id
+            $api->get('transaction-details', 'App\Http\Controllers\API\TransactionController@transactionById');
+            $api->get('payment-history', 'App\Http\Controllers\API\TransactionController@paymentHistory');
+
         });
     });
 

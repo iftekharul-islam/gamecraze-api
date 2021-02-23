@@ -57,6 +57,13 @@
                                     <span class="text-danger"><strong>{{ $errors->first('amount') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('transaction_id') ? ' has-error' : '' }}">
+                                <label for="transaction_id">Transaction Id</label>
+                                <input type="text" class="form-control" id="transaction_id" name="transaction_id" placeholder="Enter transaction id ...">
+                                @if ($errors->has('transaction_id'))
+                                    <span class="text-danger"><strong>{{ $errors->first('transaction_id') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('end') ? ' has-error' : '' }}">
                                 <label for="end">Payment type</label>
                                 <select name="payment_type" class="form-control selectpicker">
@@ -95,6 +102,7 @@
                                         <thead>
                                         <tr>
                                             <th>Paid By</th>
+                                            <th>Transaction Id</th>
                                             <th>Payment Method</th>
                                             <th>Amount</th>
                                             <th>Date</th>
@@ -104,6 +112,7 @@
                                         @foreach($data as $item)
                                             <tr>
                                                 <td>{{ $item->author->name }}</td>
+                                                <td>{{ $item->transaction_id }}</td>
                                                 <td>{{ $item->payment_type }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->created_at }}</td>
