@@ -17,7 +17,6 @@
     $api = app('Dingo\Api\Routing\Router');
 
     $api->version('v1', function ($api) {
-
         // Login & Register
         $api->post('register', 'App\Http\Controllers\API\AuthController@register');
         $api->post('login', 'App\Http\Controllers\API\AuthController@login');
@@ -103,6 +102,8 @@
         Route::post('subscribe','\App\Http\Controllers\API\SubscriptionController@subscribe');
         Route::get('featured-platforms','\App\Http\Controllers\API\PlatformController@featuredPlatforms');
         Route::get('delivery-charge','\App\Http\Controllers\API\DeliveryChargeController@getCharge');
+        //notice
+        $api->get('notice', 'App\Http\Controllers\API\NoticeController@index');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
@@ -182,7 +183,6 @@
             //Transaction history by id
             $api->get('transaction-details', 'App\Http\Controllers\API\TransactionController@transactionById');
             $api->get('payment-history', 'App\Http\Controllers\API\TransactionController@paymentHistory');
-
         });
     });
 

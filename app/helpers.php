@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\GameOrder;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 
 if (! function_exists('deleteFile')) {
@@ -91,5 +92,12 @@ if (!function_exists("gameHubDateFormat")){
         }
 
         return null;
+    }
+}
+
+if (!function_exists("gameHubDateFormat")) {
+    function new_time_date_format($date)
+    {
+        return Carbon::parse($date)->format(config('gamehub.date_format'));
     }
 }

@@ -168,6 +168,13 @@ Route::prefix('admin')->group(function () {
         Route::get('pay-amount/{id}','\App\Http\Controllers\TransactionHistoryController@payAmount')->name('pay.amount');
         Route::get('my-lender-posts/{id}','\App\Http\Controllers\TransactionHistoryController@myLendPost')->name('my.lend.post');
         Route::post('payment/{id}','\App\Http\Controllers\TransactionHistoryController@payment')->name('payment');
+
+        //notice
+        Route::get('notice','\App\Http\Controllers\NoticeController@index')->name('notice');
+        Route::post('notice/store','\App\Http\Controllers\NoticeController@store')->name('notice.store');
+        Route::get('notice/edit/{id}','\App\Http\Controllers\NoticeController@edit')->name('notice.edit');
+        Route::post('notice/update/{id}','\App\Http\Controllers\NoticeController@update')->name('notice.update');
+        Route::delete('notice/delete/{id}','\App\Http\Controllers\NoticeController@destroy')->name('notice.delete');
     });
 });
 Auth::routes();
