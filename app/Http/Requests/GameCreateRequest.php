@@ -35,6 +35,7 @@ class GameCreateRequest extends FormRequest
             'cover_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'poster_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'game_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'image_source' => 'required',
         ];
     }
     public function messages()
@@ -53,7 +54,7 @@ class GameCreateRequest extends FormRequest
             'poster_image.required' => 'The Poster image cannot be empty',
             'game_image.image' => 'Invalid image type',
             'game_image.max' => 'Image size cannot be larger than 5 MB',
-
+            'image_source.image_source' => 'Image source cannot be empty',
         ];
     }
 }

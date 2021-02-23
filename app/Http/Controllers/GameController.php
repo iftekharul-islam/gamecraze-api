@@ -56,9 +56,8 @@ class GameController extends Controller
      */
     public function store(GameCreateRequest $request)
     {
-//        return $request->all();
         $data = $this->gameRepository->store($request);
-//        return $data;
+
         return redirect()->route('all-game')->with('status', 'Game successfully stored');
     }
 
@@ -71,6 +70,7 @@ class GameController extends Controller
     public function show($id)
     {
         $game = $this->gameRepository->show($id);
+
         return view('admin.game.show', compact('game'));
     }
 
