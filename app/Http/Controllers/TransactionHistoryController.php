@@ -21,6 +21,7 @@ class TransactionHistoryController extends Controller
         $data = $item->join('lenders', 'users.id', '=', 'lenders.renter_id')
             ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name')
             ->groupBy('lenders.renter_id')
+            ->where('lenders.status', 1)
             ->get();
 
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')->groupBy('user_id')->get();
@@ -40,7 +41,6 @@ class TransactionHistoryController extends Controller
     public function myLendPost($id)
     {
         $data = Lender::with('lender', 'rent.game')->where('renter_id', $id)->where('status', 1)->get();
-//        return $data;
 
         return view('admin.transaction_history.lend_list', compact('data'));
     }
@@ -56,7 +56,7 @@ class TransactionHistoryController extends Controller
 
     public function payment(Request $request, $id)
     {
-        $data = $request->only(['amount', 'description', 'payment_type', 'user_id', 'author_id']);
+        $data = $request->only(['amount', 'description', 'payment_type', 'transaction_id', 'user_id', 'author_id']);
 
         $data['description'] = 'Test description';
 
