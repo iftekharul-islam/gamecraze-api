@@ -97,6 +97,13 @@ Route::prefix('admin')->group(function () {
         Route::get('base-price/edit/{id}','\App\Http\Controllers\BasePriceController@edit')->name('basePrice.edit');
         Route::post('base-price/update/{id}','\App\Http\Controllers\BasePriceController@update')->name('basePrice.update');
         Route::delete('base-price/destroy/{id}','\App\Http\Controllers\BasePriceController@destroy')->name('basePrice.destroy');
+        //Commission Crud
+        Route::get('commission','\App\Http\Controllers\CommissionController@index')->name('commission');
+        Route::get('create/commission','\App\Http\Controllers\CommissionController@create')->name('commission.create');
+        Route::post('store/commission','\App\Http\Controllers\CommissionController@store')->name('commission.store');
+        Route::get('commission/edit/{id}','\App\Http\Controllers\CommissionController@edit')->name('commission.edit');
+        Route::post('commission/update/{id}','\App\Http\Controllers\CommissionController@update')->name('commission.update');
+        Route::delete('commission/destroy/{id}','\App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
         //Division Crud
         Route::get('divisions','\App\Http\Controllers\DivisionController@index')->name('division.all');
         Route::get('create/division','\App\Http\Controllers\DivisionController@create')->name('division.create');
@@ -155,6 +162,12 @@ Route::prefix('admin')->group(function () {
         Route::get('delivery-charges/edit/{id}','\App\Http\Controllers\DeliveryChargeController@edit')->name('deliveryCharge.edit');
         Route::post('delivery-charges/update/{id}','\App\Http\Controllers\DeliveryChargeController@update')->name('deliveryCharge.update');
         Route::delete('delivery-charges/delete/{id}','\App\Http\Controllers\DeliveryChargeController@destroy')->name('deliveryCharge.destroy');
+
+        // Transaction History
+        Route::get('transaction-history','\App\Http\Controllers\TransactionHistoryController@index')->name('transaction.history');
+        Route::get('pay-amount/{id}','\App\Http\Controllers\TransactionHistoryController@payAmount')->name('pay.amount');
+        Route::get('my-lender-posts/{id}','\App\Http\Controllers\TransactionHistoryController@myLendPost')->name('my.lend.post');
+        Route::post('payment/{id}','\App\Http\Controllers\TransactionHistoryController@payment')->name('payment');
     });
 });
 Auth::routes();

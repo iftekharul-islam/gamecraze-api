@@ -105,6 +105,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('commission') }}" class="nav-link {{ (request()->routeIs('commission', 'commission.create')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            GameHub Commission
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
 
                     <a href="{{ route('deliveryCharge.all') }}" class="nav-link {{ (request()->routeIs('deliveryCharge.all', 'deliveryCharge.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
@@ -144,6 +153,14 @@
                         <i class="nav-icon fa fa-history"></i>
                         <p>
                             Orders
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('transaction.history') }}" class="nav-link {{ Request()->routeIs('transaction.history') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Transaction history
                         </p>
                     </a>
                     <hr>

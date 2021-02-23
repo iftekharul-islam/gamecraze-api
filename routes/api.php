@@ -24,7 +24,7 @@
         // OTP
         $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
         $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
-        $api->post('verify-email', 'App\Http\Controllers\API\AuthController@emailRegistration');
+        $api->post('rent-posted-users', 'App\Http\Controllers\API\AuthController@emailRegistration');
         // Reset Password
         $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         $api->post('verify-reset-code', 'App\Http\Controllers\API\ResetPasswordController@verifyResetCode');
@@ -59,6 +59,8 @@
         $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
         $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
         $api->get('base-price/game-calculation/{gameId}/{lendWeek}', 'App\Http\Controllers\API\BasePriceController@gameCalculate');
+        //Commission percentage
+        $api->get('commission', 'App\Http\Controllers\API\CommissionController@index');
         //Checkpoint all
         $api->get('checkpoints','\App\Http\Controllers\API\CheckpointController@index');
         // Exchanges

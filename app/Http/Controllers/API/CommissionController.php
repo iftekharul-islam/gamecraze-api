@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CommissionRepository;
+use App\Transformers\BasePriceTransformer;
+use App\Transformers\CommissionTransformer;
 use Illuminate\Http\Request;
-use App\Repositories\LenderRepository;
 
-class LenderController extends Controller
+class CommissionController extends Controller
 {
-    private $lenderRepository;
-    public function __construct(LenderRepository $lenderRepository)
-    {
-        $this->lenderRepository = $lenderRepository;
-    }
+    private $commissionRepository;
 
+    public function __construct(CommissionRepository $commissionRepository)
+    {
+        $this->commissionRepository = $commissionRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +23,12 @@ class LenderController extends Controller
      */
     public function index()
     {
-        return $this->lenderRepository->all();
+        $data = $this->commissionRepository->index();
+
+        return $this->response->item($data, new CommissionTransformer());
     }
 
-    /**x
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -32,7 +36,7 @@ class LenderController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->lenderRepository->create($request);
+        //
     }
 
     /**
