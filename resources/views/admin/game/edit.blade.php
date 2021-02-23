@@ -211,6 +211,14 @@
                                     <span class="text-danger"><strong>{{ $errors->first('is_trending') }}</strong></span>
                                 @endif
                             </div>
+                            <div
+                                class="false-padding-bottom-form form-group{{ $errors->has('image_source') ? ' has-error' : '' }}">
+                                <label for="image_source">Image Source</label>
+                                <input type="text" class="form-control" id="image_source" name="image_source" value="{{ $game->image_source }}" required>
+                                @if ($errors->has('image_source'))
+                                    <span class="text-danger"><strong>{{ $errors->first('image_source') }}</strong></span>
+                                @endif
+                            </div>
                         </div>
                         <div class="card-body">
                             <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>

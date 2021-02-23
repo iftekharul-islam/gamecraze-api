@@ -60,7 +60,7 @@ class GameRepository
      */
     public function store($request)
     {
-        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'supported_language', 'official_website']);
+        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'image_source', 'supported_language', 'official_website']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = $game_data['publisher'] ?? 'Testing publisher';
@@ -141,7 +141,7 @@ class GameRepository
     public function update($request, $id)
     {
         $game = Game::findOrFail($id);
-        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer', 'supported_language', 'official_website']);
+        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer', 'supported_language', 'image_source', 'official_website']);
         $game->is_trending = 0;
         if (isset($data['name'])) {
             $game->name = $data['name'];
@@ -169,6 +169,9 @@ class GameRepository
         }
         if (isset($data['official_website'])) {
             $game->official_website = $data['official_website'];
+        }
+        if (isset($data['image_source'])) {
+            $game->image_source = $data['image_source'];
         }
 
         if ($request->hasFile('trending_url')) {

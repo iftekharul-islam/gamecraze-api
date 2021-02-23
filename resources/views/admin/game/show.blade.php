@@ -86,6 +86,10 @@
                                                 @endforeach
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>Image source:</td>
+                                            <td>{{ $game->image_source }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div><!-- /.card-body -->

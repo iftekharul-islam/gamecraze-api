@@ -50,7 +50,7 @@
                                         <thead>
                                         <tr>
                                             <th>Customer Name</th>
-                                            <th>Customer amount</th>
+                                            <th>Customer payable</th>
                                             <th>commission</th>
                                             <th>Paid</th>
                                             <th>Due</th>
@@ -71,7 +71,7 @@
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->commission }}</td>
                                                 <td>{{ $paid }}</td>
-                                                <td>{{ $item->amount + $item->commission - $paid }}</td>
+                                                <td>{{ $item->amount - $paid }}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item->renter_id) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
                                                     <a href="{{ route('my.lend.post', $item->renter_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-list"></i></a>
