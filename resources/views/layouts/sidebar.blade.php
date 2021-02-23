@@ -163,6 +163,14 @@
                             Transaction history
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('notice') }}" class="nav-link {{ Request()->routeIs('notice') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                           Notice board
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">
