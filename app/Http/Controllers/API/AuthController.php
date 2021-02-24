@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use phpseclib\Crypt\Hash;
 use Illuminate\Support\Str;
@@ -272,6 +273,14 @@ class AuthController extends BaseController
             'isEmailExists' => $emailExists,
             'isPhoneExists' => $phoneExists
         ]);
+    }
+
+    public function rentLimit()
+    {
+        $rent_limit = Auth::user()->rent_limit;
+
+        return response()->json(compact('rent_limit'), 200);
+
     }
 
 }
