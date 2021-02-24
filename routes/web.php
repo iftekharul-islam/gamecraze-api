@@ -175,6 +175,13 @@ Route::prefix('admin')->group(function () {
         Route::get('notice/edit/{id}','\App\Http\Controllers\NoticeController@edit')->name('notice.edit');
         Route::post('notice/update/{id}','\App\Http\Controllers\NoticeController@update')->name('notice.update');
         Route::delete('notice/delete/{id}','\App\Http\Controllers\NoticeController@destroy')->name('notice.delete');
+
+        //meta
+        Route::get('meta','\App\Http\Controllers\MetaController@index')->name('meta');
+        Route::post('meta/store','\App\Http\Controllers\MetaController@store')->name('meta.store');
+        Route::get('meta/edit/{id}','\App\Http\Controllers\MetaController@edit')->name('meta.edit');
+        Route::post('meta/update/{id}','\App\Http\Controllers\MetaController@update')->name('meta.update');
+        Route::delete('meta/delete/{id}','\App\Http\Controllers\MetaController@destroy')->name('meta.delete');
     });
 });
 Auth::routes();
