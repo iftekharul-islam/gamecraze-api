@@ -67,6 +67,13 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="is_verified">User Type</label>
+                                <select name="is_verified" class="form-control" required>
+                                    <option value="0">Rookie</option>
+                                    <option value="1">Elite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control" required>
                                     <option value="1">Active</option>

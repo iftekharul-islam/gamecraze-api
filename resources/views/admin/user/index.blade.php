@@ -57,7 +57,8 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role(s)</th>
-                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>User type</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -79,6 +80,13 @@
                                                     <a class="badge-success badge text-white">Active</a>
                                                 @elseif ($user->status === null)
                                                     <a class="badge-info badge text-white">Invalid</a>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($user->is_verified == 0)
+                                                    <a class="badge-info badge text-white">Rookie</a>
+                                                @elseif ($user->is_verified == 1)
+                                                    <a class="badge-danger badge text-white">Elite</a>
                                                 @endif
                                             </td>
                                             <td>

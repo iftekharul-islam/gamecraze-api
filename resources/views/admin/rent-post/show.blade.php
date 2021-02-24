@@ -123,6 +123,7 @@
                                     </div>
                                     <div class="col-sm-6 invoice-col">
                                         <address>
+                                            <strong>Disk type :</strong><span class="badge badge-primary"> {{ $rent->disk_type == 0 ? 'Digital Copy' : 'Physical Copy'}}</span><br>
                                             <strong>Disk condition :</strong><span> {{ $rent->diskCondition->name ?? '' }} ({{ $rent->diskCondition->description ?? '' }})</span><br>
                                             <strong>Max Rent Week :</strong><span> {{ $rent->max_week }}</span><br>
                                             <strong>Game Base Price :</strong><span> {{ $rent->game->basePrice->base }}</span><br>

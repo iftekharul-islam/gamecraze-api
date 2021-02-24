@@ -28,7 +28,7 @@ class UserRepository
 
     public function update($request) {
         $user =  User::findOrFail($request->id);
-        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'confirmPassword']);
+        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword']);
 
         if (isset($data['name'])) {
             $user->name = $data['name'];
@@ -42,6 +42,9 @@ class UserRepository
         if (isset($data['password'])) {
             $user->password = Hash::make($user['password']);
         }
+        if (isset($data['is_verified'])) {
+            $user->is_verified = $data['is_verified'];
+        }
         if (isset($data['status'])) {
             $user->status = $data['status'];
         }
@@ -49,7 +52,7 @@ class UserRepository
     }
 
     public function store($request) {
-        $data = $request->only(['name', 'email', 'phone_number', 'status']);
+        $data = $request->only(['name', 'email', 'phone_number', 'is_verified', 'status']);
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
         $role = Role::where('name', 'customer')->first();

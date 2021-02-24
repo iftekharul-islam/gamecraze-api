@@ -53,6 +53,7 @@ class UserController extends Controller
     public function store(UserCreateRequest $request)
     {
         $this->userRepository->store($request);
+
         return redirect()->route('user.all')->with("status", 'User successfully created');
     }
 
@@ -65,7 +66,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = $this->userRepository->findById($id);
-        // dd($user);
+
         return view('admin.user.show', compact('user'));
     }
 
@@ -78,6 +79,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->userRepository->edit($id);
+
         return view('admin.user.edit', compact('user'));
     }
 

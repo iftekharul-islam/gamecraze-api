@@ -55,6 +55,7 @@
                                         <th>Game Name</th>
                                         <th>Available from</th>
                                         <th>Max Week</th>
+                                        <th>Disk Type</th>
                                         <th>Approval</th>
                                         <th>Action</th>
                                     </tr>
@@ -69,6 +70,13 @@
                                             </td>
                                             <td>{{ date('d F Y', strtotime($rent->availability)) }}</td>
                                             <td>{{ $rent->max_week }}</td>
+                                            <td>
+                                                @if ($rent->disk_type == 1)
+                                                    <a class="badge-success badge text-white" >Physical Copy</a>
+                                                @elseif ($rent->disk_type == 0)
+                                                    <a class="badge-warning badge text-white" >Digital Copy</a>
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if ($rent->status === 1)
                                                     <a class="badge-success badge text-white" >Approved</a>
