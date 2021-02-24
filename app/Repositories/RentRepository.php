@@ -28,7 +28,7 @@ class RentRepository {
     public function store(Request $request) {
         $rent = $request->only([
             'game_id', 'max_week', 'availability', 'platform_id',
-            'disk_condition_id', 'rented_user_id', 'checkpoint_id'
+            'disk_condition_id', 'rented_user_id', 'checkpoint_id', 'disk_type'
         ]);
 
         if (isset($request->checkpoint_id)) {

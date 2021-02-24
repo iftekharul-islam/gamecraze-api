@@ -28,6 +28,7 @@ class UserTransformer extends TransformerAbstract
             'image' => $user->image ? asset($user->image) : '',
             'cover' => $user->cover ? asset($user->cover) : '',
             'identification_image' => $user->identification_image ? asset($user->identification_image) : '',
+            'is_verified' => $user->is_verified,
         ];
     }
 

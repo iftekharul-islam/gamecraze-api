@@ -28,7 +28,8 @@ class RentTransformer extends TransformerAbstract
             'disk_image' =>  asset('/storage/rent-image/' . $rent->disk_image),
             'rented_user_id' =>  $rent->rented_user_id,
             'status' => $rent->status,
-            'renter' => $rent->renter
+            'renter' => $rent->renter,
+            'disk_type' => $rent->disk_type
         ];
     }
 

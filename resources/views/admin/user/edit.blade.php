@@ -67,6 +67,13 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="status">User Type</label>
+                                <select name="is_verified" class="form-control" required>
+                                    <option value="0" {{ $user->is_verified == 0 ? 'selected' : '' }}>Rookie</option>
+                                    <option value="1" {{ $user->is_verified == 1 ? 'selected' : '' }}>Elite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Active</option>
