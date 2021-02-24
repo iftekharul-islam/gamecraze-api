@@ -52,9 +52,13 @@ class UserRepository
     }
 
     public function store($request) {
-        $data = $request->only(['name', 'email', 'phone_number', 'is_verified', 'status']);
+        $data = $request->only(['name', 'email', 'phone_number', 'is_verified', 'rent_limit', 'status']);
+
         $data['password'] = Hash::make($request->password);
+        $data['rent_limit'] = 2;
+
         $user = User::create($data);
+
         $role = Role::where('name', 'customer')->first();
         if (!$role) {
             $role = Role::create(['name' => 'customer']);

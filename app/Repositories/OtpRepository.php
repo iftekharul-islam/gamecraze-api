@@ -99,7 +99,8 @@ class OtpRepository
         $user = User::create([
             'phone_number' => $phone_number,
             'status' => 1,
-            'is_phone_verified' => 1
+            'is_phone_verified' => 1,
+            'rent_limit' => 2
         ]);
 
         $address = Address::create([
