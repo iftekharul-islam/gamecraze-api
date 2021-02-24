@@ -171,6 +171,14 @@
                            Notice board
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('meta') }}" class="nav-link {{ Request()->routeIs('meta') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Meta
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">
