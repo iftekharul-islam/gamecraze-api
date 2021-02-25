@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Jobs\SendReminder;
+use App\Models\Game;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,7 +129,9 @@ class RentRepository {
         return Rent::whereIn('id', $ids)->get();
     }
 
-    public function rentPostedUsers($id) {
-        return Rent::where('game_id', $id)->where('status', 1)->where('rented_user_id', null)->get();
+    public function rentPostedUsers($slug) {
+
+        $game = Game::where('slug', $slug)->first();
+        return Rent::where('game_id', $game->id)->where('status', 1)->where('rented_user_id', null)->get();
     }
 }

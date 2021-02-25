@@ -72,6 +72,12 @@ class GameController extends BaseController
         return $this->response->item($game, new GameTransformer());
     }
 
+    public function showBySlug($slug)
+    {
+        $game = $this->gameRepository->findBySlug($slug);
+        return $this->response->item($game, new GameTransformer());
+    }
+
     /**
      * @param GameUpdateRequest $request
      * @return Response

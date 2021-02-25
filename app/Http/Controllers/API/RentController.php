@@ -114,8 +114,8 @@ class RentController extends BaseController
         return $this->response->collection($rents, new RentTransformer());
     }
 
-    public function rentPostedUsers($id) {
-        $rents = $this->rentRepository->rentPostedUsers($id);
+    public function rentPostedUsers($slug) {
+        $rents = $this->rentRepository->rentPostedUsers($slug);
         return $this->response->collection($rents, new RentTransformer());
     }
 }

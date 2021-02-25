@@ -27,6 +27,11 @@ class GameRepository
         return Game::findOrFail($id);
     }
 
+    public function findBySlug($slug)
+    {
+        return Game::where('slug', $slug)->first();
+    }
+
     /**
      * @param Request $request
      * @return mixed

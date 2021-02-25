@@ -39,23 +39,30 @@ class TransactionController extends BaseController
     public function transactionById()
     {
         $id = Auth::user()->id;
-        $total_earning = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')
-            ->groupBy('user_id')
-            ->where('user_id', $id)
-            ->first();
 
-        $lend = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
-            ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name')
-            ->groupBy('lenders.renter_id')
-            ->where('lenders.status', 1)
-            ->where('lenders.renter_id', $id)
-            ->first();
+        $user_transaction = TransactionHistory::where('user_id', $id)->first();
+        $user_lends = Lender::where('renter_id', $id)->first();
 
-        $due = $total_earning['paid_amount'] - $lend['amount'];
+        if (!empty($user_transaction) && !empty($user_lends)) {
+
+            $total_earning = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')
+                ->groupBy('user_id')
+                ->where('user_id', $id)
+                ->first();
+
+            $lend = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
+                ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name')
+                ->groupBy('lenders.renter_id')
+                ->where('lenders.status', 1)
+                ->where('lenders.renter_id', $id)
+                ->first();
+
+            $due = $total_earning['paid_amount'] - $lend['amount'] ;
+        }
 
         $transactions_details = [
-            'total_earning' => $total_earning['paid_amount'],
-            'due' => $due,
+            'total_earning' => isset($total_earning) ? $total_earning['paid_amount'] : 0,
+            'due' => $due ?? 0,
         ];
 
         return response()->json(compact('transactions_details'), 200);

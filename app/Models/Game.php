@@ -11,7 +11,7 @@ class Game extends Model
     use Taggable, SoftDeletes;
 
     protected $fillable = [
-        'name', 'author_id', 'description', 'released', 'rating', 'base_price_id', 'is_trending', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'upcoming_url', 'image_source', 'supported_language', 'official_website'
+        'name', 'slug', 'author_id', 'description', 'released', 'rating', 'base_price_id', 'is_trending', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'upcoming_url', 'image_source', 'supported_language', 'official_website'
     ];
     public function genres()
     {

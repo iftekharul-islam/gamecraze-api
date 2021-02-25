@@ -23,7 +23,7 @@
         // OTP
         $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
         $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
-        $api->post('rent-posted-users', 'App\Http\Controllers\API\AuthController@emailRegistration');
+        $api->post('verify-email', 'App\Http\Controllers\API\AuthController@emailRegistration');
         // Reset Password
         $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         $api->post('verify-reset-code', 'App\Http\Controllers\API\ResetPasswordController@verifyResetCode');
@@ -37,6 +37,7 @@
         $api->get('games/released-games', 'App\Http\Controllers\API\GameController@releasedGames');
         $api->get('games/trending', 'App\Http\Controllers\API\GameController@trendingGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
+        $api->get('games/slug/{slug}', 'App\Http\Controllers\API\GameController@showBySlug');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
         $api->get('games/related/{genres}', 'App\Http\Controllers\API\GameController@relatedGames');
         // Genres
@@ -83,7 +84,7 @@
         $api->post('/ipn', 'App\Http\Controllers\API\SslCommerzPaymentController@ipn');
 
         //Rent Posted Users
-        $api->get('rent-posted-users/{id}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
+        $api->get('rent-posted-users/{slug}', 'App\Http\Controllers\API\RentController@rentPostedUsers');
         // New & articles section
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
         Route::get('top-articles','\App\Http\Controllers\API\ArticleController@topArticles');
