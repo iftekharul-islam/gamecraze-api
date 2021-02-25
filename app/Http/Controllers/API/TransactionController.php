@@ -57,7 +57,7 @@ class TransactionController extends BaseController
                 ->where('lenders.renter_id', $id)
                 ->first();
 
-            $due = $total_earning['paid_amount'] - $lend['amount'] ;
+            $due = $lend['amount'] - $total_earning['paid_amount'] ;
         }
 
         $transactions_details = [
