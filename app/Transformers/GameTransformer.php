@@ -6,7 +6,6 @@ namespace App\Transformers;
 use App\Models\Game;
 
 // Dingo includes Fractal to help with transformations
-use Illuminate\Support\Str;
 use League\Fractal\TransformerAbstract;
 
 class GameTransformer extends TransformerAbstract
@@ -20,7 +19,7 @@ class GameTransformer extends TransformerAbstract
         return [
             'id' => $game->id,
             'name' => $game->name,
-            'slug' => Str::slug($game->name),
+            'slug' => $game->slug,
             'release_date' => $game->released,
             'game_mode' => $game->game_mode,
             'description' => $game->description,

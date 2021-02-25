@@ -60,7 +60,7 @@ class GameRepository
      */
     public function store($request)
     {
-        $game_data = $request->only(['name', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'image_source', 'supported_language', 'official_website']);
+        $game_data = $request->only(['name', 'slug', 'rating', 'description', 'released', 'is_trending', 'base_price_id', 'publisher', 'developer', 'trending_url', 'cover_url', 'poster_url', 'image_source', 'supported_language', 'official_website']);
         $game_data['author_id'] = auth()->user()->id;
         $game_data['slug'] = Str::slug($game_data['name']);
         $game_data['publisher'] = $game_data['publisher'] ?? 'Testing publisher';
