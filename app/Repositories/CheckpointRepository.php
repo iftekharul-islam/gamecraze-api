@@ -8,7 +8,7 @@ use App\Models\Checkpiont;
 class CheckpointRepository
 {
     public function all() {
-        return Checkpiont::all();
+        return Checkpiont::where('status', 1)->get();
     }
 
 }

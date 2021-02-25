@@ -107,6 +107,7 @@
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
+
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->put('update-users-by-phone', 'App\Http\Controllers\API\AuthController@updateUserByPhone');
             $api->post('update-user-profile-image', 'App\Http\Controllers\API\AuthController@updateProfileImage'); 
