@@ -72,6 +72,7 @@ class UserRepository
             $user->password = bcrypt($userData['password']);
         }
 
+        $user->rent_limit = 2;
         $user->status = 1;
         $role = Role::where('name', 'customer')->first();
         if ($role) {

@@ -2,16 +2,19 @@
 return [
     'disk_delivery_status' => [
         0 => 'pending',
-        1 => 'processing',
+        1 => 'completed',
         2 => 'arrived at checkpoint',
         3 => 'delivered',
         4 => 'rejected',
+        5 => 'processing',
     ],
     'order_delivery_status'    => [
         0 => 'pending',
-        1 => 'processing',
+        1 => 'completed',
         2 => 'delivered',
         3 => 'rejected',
+        4 => 'processing',
+
     ],
     'date_format' => 'd M Y'
 ];

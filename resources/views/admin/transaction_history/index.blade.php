@@ -59,8 +59,8 @@
                                         </thead>
                                         <tbody>
                                         @foreach($data as $key=>$item)
+                                            @php $paid = 0; @endphp
                                             @foreach($paid_amount as $amount)
-                                                @php $paid = 0; @endphp
                                                 @if ($item->renter_id == $amount->user_id)
                                                     @php $paid =  $amount->paid_amount @endphp
                                                     @break
