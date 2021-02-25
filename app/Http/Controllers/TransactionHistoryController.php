@@ -17,8 +17,8 @@ class TransactionHistoryController extends Controller
      */
     public function index()
     {
-        $item = User::query();
-        $data = $item->join('lenders', 'users.id', '=', 'lenders.renter_id')
+
+        $data = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
             ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name')
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)

@@ -75,11 +75,17 @@
                                             <td>{{ date('d F Y', strtotime($lend->lend_date)) }}</td>
                                             <td>
                                                 @if ($lend->status === 0)
-                                                    <a class="badge-info badge text-white">On lending</a>
+                                                    <a class="badge-info badge text-white">Pending</a>
                                                 @elseif ($lend->status === 1)
                                                     <a class="badge-success badge text-white">Lending complete</a>
                                                 @elseif ($lend->status === 2)
-                                                    <a class="badge-danger badge text-white">Stolen by lender</a>
+                                                    <a class="badge-danger badge text-white">arrived at checkpoint</a>
+                                                @elseif ($lend->status === 3)
+                                                    <a class="badge-danger badge text-white">Delivered</a>
+                                                @elseif ($lend->status === 4)
+                                                    <a class="badge-danger badge text-white">Rejected</a>
+                                                @elseif ($lend->status === 5)
+                                                    <a class="badge-danger badge text-white">Processing</a>
                                                 @endif
                                             </td>
                                             <td>

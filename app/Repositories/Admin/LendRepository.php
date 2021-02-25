@@ -4,6 +4,7 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Lender;
+use App\Models\Rent;
 
 class LendRepository
 {
@@ -23,7 +24,15 @@ class LendRepository
     }
 
     public function updateStatus($lend_id, $status) {
+
         $lender = Lender::findOrFail($lend_id);
+
+        if ($status == 1) {
+            $rentPost = Rent::findOrFail($lender->rent_id);
+            $rentPost->rented_user_id = null;
+            $rentPost->save();
+
+        }
         $lender->status = $status;
         $lender->save();
         return true;

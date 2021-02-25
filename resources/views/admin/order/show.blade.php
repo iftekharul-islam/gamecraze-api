@@ -148,8 +148,9 @@
                                                             <th>SL</th>
                                                             <th>Game Name</th>
                                                             <th>Amount</th>
-                                                            <th>Availability</th>
+                                                            <th>Start date</th>
                                                             <th>Week</th>
+                                                            <th>End Date</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -159,8 +160,18 @@
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td><a href="{{ route('game.show', $lend->rent->game_id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></td>
                                                                 <td>{{ $lend->lend_cost }}</td>
-                                                                <td>{{ isset($lend->rent->availability) ? date('d M, Y', strtotime($lend->rent->availability)) : '' }}</td>
+{{--                                                                <td>{{ isset($lend->rent->availability) ? date('d M, Y', strtotime($lend->rent->availability)) : '' }}</td>--}}
+                                                                <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
+                                                                @php
+                                                                    $hour = Carbon\Carbon::parse($lend['created_at'])->format('H');
+                                                                if ($hour >= 12){
+                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 2 );
+                                                                } else {
+                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 )->format('Y-m-d');
+                                                                }
+                                                                @endphp
+                                                                <td>{{ date('d M, Y', strtotime($end_date)) }}</td>
                                                                 <!-- <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td> -->
                                                                 <td>
                                                                     @php $formId = 'game'.$lend->id @endphp

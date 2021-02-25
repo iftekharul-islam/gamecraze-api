@@ -132,6 +132,6 @@ class RentRepository {
     public function rentPostedUsers($slug) {
 
         $game = Game::where('slug', $slug)->first();
-        return Rent::where('game_id', $game->id)->where('status', 1)->where('rented_user_id', null)->get();
+        return Rent::where('game_id', $game->id)->where('status', 1)->get();
     }
 }
