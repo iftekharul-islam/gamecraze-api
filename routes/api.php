@@ -23,7 +23,7 @@
         // OTP
         $api->post('send-otp', 'App\Http\Controllers\API\OneTimePasswordController@sendOtp');
         $api->post('verify-otp', 'App\Http\Controllers\API\OneTimePasswordController@verifyOtp');
-        $api->post('rent-posted-users', 'App\Http\Controllers\API\AuthController@emailRegistration');
+        $api->post('verify-email', 'App\Http\Controllers\API\AuthController@emailRegistration');
         // Reset Password
         $api->post('send-reset-code', 'App\Http\Controllers\API\ResetPasswordController@sendResetCode');
         $api->post('verify-reset-code', 'App\Http\Controllers\API\ResetPasswordController@verifyResetCode');
