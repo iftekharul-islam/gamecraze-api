@@ -26,7 +26,6 @@ class RentCreateRequest extends FormRequest
         return [
             'game_id' =>  'required|integer',
             'max_week' =>  'required|integer',
-            'availability' =>  'required',
             'platform_id' =>  'required|integer',
             'disk_condition_id' =>  'required|integer',
             'rented_user_id' =>  'nullable|integer',

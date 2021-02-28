@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Jobs\SendReminder;
 use App\Models\Game;
 use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -28,9 +29,11 @@ class RentRepository {
 
     public function store(Request $request) {
         $rent = $request->only([
-            'game_id', 'max_week', 'availability', 'platform_id',
+            'game_id', 'max_week', 'platform_id',
             'disk_condition_id', 'rented_user_id', 'checkpoint_id', 'disk_type'
         ]);
+
+        $rent['availability']= Carbon::today();
 
         if (isset($request->checkpoint_id)) {
             $rent['checkpoint_id'] = $request->checkpoint_id ? $rent['checkpoint_id'] : '';

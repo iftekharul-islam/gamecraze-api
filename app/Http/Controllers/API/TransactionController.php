@@ -50,11 +50,10 @@ class TransactionController extends BaseController
                 ->where('user_id', $id)
                 ->first();
 
-            $lend = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
-                ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name')
-                ->groupBy('lenders.renter_id')
-                ->where('lenders.status', 1)
-                ->where('lenders.renter_id', $id)
+            $lend = Lender::selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id')
+                ->groupBy('renter_id')
+                ->where('status', 1)
+                ->where('renter_id', $id)
                 ->first();
 
             $due = $lend['amount'] - $total_earning['paid_amount'] ;
