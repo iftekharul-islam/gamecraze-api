@@ -142,6 +142,13 @@ class GameRepository
         ->get();
     }
 
+    public function popularGames($numberOfPost = 10)
+    {
+        return Rent::where('status', 1)
+            ->take($numberOfPost)
+            ->get();
+    }
+
     /**
      * @param $ids
      * @return mixed

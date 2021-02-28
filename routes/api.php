@@ -36,6 +36,7 @@
         $api->get('games/upcoming-games', 'App\Http\Controllers\API\GameController@upcomingGames');
         $api->get('games/released-games', 'App\Http\Controllers\API\GameController@releasedGames');
         $api->get('games/trending', 'App\Http\Controllers\API\GameController@trendingGames');
+        $api->get('games/popular-games', 'App\Http\Controllers\API\GameController@popularGames');
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
         $api->get('games/slug/{slug}', 'App\Http\Controllers\API\GameController@showBySlug');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');

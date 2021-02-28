@@ -16,15 +16,14 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')
-            ->where( 'user_id', Auth::user()->id )->get();
+        return Rent::where( 'user_id', Auth::user()->id )->get();
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')->where('status', 1)->get();
+        return Rent::where('status', 1)->get();
     }
 
     public function store(Request $request) {
