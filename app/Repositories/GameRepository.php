@@ -142,10 +142,10 @@ class GameRepository
         ->get();
     }
 
-    public function popularGames($numberOfPost = 10)
+    public function popularGames()
     {
         return Rent::where('status', 1)
-            ->take($numberOfPost)
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
