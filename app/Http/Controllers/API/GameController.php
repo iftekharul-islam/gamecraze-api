@@ -133,6 +133,11 @@ class GameController extends BaseController
         return $this->response->collection($games, new RentTransformer());
     }
 
+    public function popularGames()
+    {
+        $rents = $this->gameRepository->popularGames(8);
+        return $this->response->collection($rents, new RentTransformer());
+    }
     /**
      * @param Request $request
      * @return Response
