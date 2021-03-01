@@ -17,7 +17,7 @@ class RentRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')->orderBy('created_at','ASC')->get();
+        return Rent::with('game', 'user', 'platform', 'diskCondition')->orderBy('created_at','DESC')->get();
     }
 
     /**

@@ -41,27 +41,38 @@ class TransactionController extends BaseController
         $id = Auth::user()->id;
 
         $user_transaction = TransactionHistory::where('user_id', $id)->first();
-        $user_lends = Lender::where('renter_id', $id)->first();
+        $user_lends = Lender::where('renter_id', $id)->where('status', 1)->first();
 
-        if (!empty($user_transaction) && !empty($user_lends)) {
+        $total_paid_amount = 0;
+
+        if (!empty($user_transaction)) {
 
             $total_earning = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')
                 ->groupBy('user_id')
                 ->where('user_id', $id)
-                ->first();
+                ->firstOrFail();
+
+            $total_paid_amount = $total_earning['paid_amount'];
+        }
+
+        $total_lend_amount = 0;
+
+        if (!empty($user_lends)){
 
             $lend = Lender::selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id')
                 ->groupBy('renter_id')
                 ->where('status', 1)
                 ->where('renter_id', $id)
-                ->first();
+                ->firstOrFail();
 
-            $due = $lend['amount'] - $total_earning['paid_amount'] ;
+            $total_lend_amount = $lend['amount'];
+
         }
+        $due = $total_lend_amount - $total_paid_amount;
 
         $transactions_details = [
-            'total_earning' => isset($total_earning) ? $total_earning['paid_amount'] : 0,
-            'due' => $due ?? 0,
+            'total_earning' => $total_paid_amount,
+            'due' => $due,
         ];
 
         return response()->json(compact('transactions_details'), 200);

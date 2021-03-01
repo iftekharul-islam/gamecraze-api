@@ -87,6 +87,27 @@
                                 <label for="description">Description</label>
                                 <textarea type="text" class="ckeditor form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
                             </div>
+                            <div
+                                class="false-padding-bottom-form form-group{{ $errors->has('base_price_id') ? ' has-error' : '' }}">
+                                <label for="price">Base Price</label>
+                                @if(count($basePrices) > 0)
+                                    <select name="base_price_id" id="base_price_id" class="form-control selectpicker"
+                                            data-live-search="true" required>
+                                        @foreach($basePrices as $basePrice)
+                                            <option value="{{$basePrice->id}}" {{ $basePrice->id == $game->base_price_id ? 'selected' : '' }}>{{$basePrice->start}}
+                                                - {{$basePrice->end}} = {{$basePrice->base}} (BDT)
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <input type="text" class="form-control text-danger"
+                                           value="Please fill the base price table first !!!" disabled>
+                                @endif
+                                @if ($errors->has('base_price_id'))
+                                    <span
+                                        class="text-danger"><strong>{{ $errors->first('base_price_id') }}</strong></span>
+                                @endif
+                            </div>
 
                             <div class="form-group">
                                 <label for="game_image">Trending image (Width: 238px and Height: 437px)</label>
