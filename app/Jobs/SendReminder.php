@@ -35,19 +35,24 @@ class SendReminder implements ShouldQueue
      */
     public function handle()
     {
-        if (Rent::where('game_id', $this->game_id)->count() > 0) {
-            return false;
-        }
-        
+        logger('In the reminder notification');
+
         $game = Game::findOrFail($this->game_id);
         $game_link =  env('GAMEHUB_FRONT') .'/game-details/'. $game->id;
         $users = GameReminder::with('user')->where('game_id', $this->game_id)
+            ->whereHas('user', function ($q){
+                $q->where('email', '!=', null);
+            })
             ->where('is_sent', 0)
             ->get();
 
+        logger('users');
+        logger($users);
+
         foreach ($users as $user) {
-            Mail::to($user->user->email)
-            ->queue(new SendReminderMail($game->name, $game_link));
+            logger('user');
+            logger($user);
+            Mail::to($user->user->email)->queue(new SendReminderMail($game->name, $game_link));
             $user->is_sent = 1;
             $user->save();
         }

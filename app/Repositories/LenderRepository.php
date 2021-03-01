@@ -33,7 +33,8 @@ class LenderRepository {
             'payment_method' => $request->get('paymentMethod'), 
             'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
             'delivery_status' => 0,
-            'delivery_charge' => $request->get('delivery_charge') ? $request->get('delivery_charge') : 0
+            'delivery_charge' => $request->get('delivery_charge') ? $request->get('delivery_charge') : 0,
+            'address' => $request->address ?? '',
         ]);
 
         for ($i = 0; $i < count($cartItems); $i++) {

@@ -71,6 +71,7 @@ class RentController extends Controller
     public function approve(Request $request, $id)
     {
         $this->rentRepository->approve($id);
+
         return back()->with('status', 'Rent post Approved successfully!!');
     }
 

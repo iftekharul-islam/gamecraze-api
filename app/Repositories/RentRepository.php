@@ -59,12 +59,7 @@ class RentRepository {
         $rent['user_id'] = auth()->user()->id;
         $post = Rent::create($rent);
 
-        if ($post) {
-            SendReminder::dispatch($rent['game_id']);
-            return $post;
-        }
-
-        return null;
+        return $post;
     }
 
     public function show($id) {
