@@ -22,7 +22,7 @@ class GameRepository
      */
     public function allGame()
     {
-        return Game::orderBy('name', 'ASC')->get();
+        return Game::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -141,7 +141,7 @@ class GameRepository
     public function update($request, $id)
     {
         $game = Game::findOrFail($id);
-        $data = $request->only(['name', 'released', 'rating', 'description', 'is_trending', 'publisher', 'developer', 'supported_language', 'image_source', 'official_website']);
+        $data = $request->only(['name', 'released', 'rating', 'description', 'base_price_id', 'is_trending', 'publisher', 'developer', 'supported_language', 'image_source', 'official_website']);
         $game->is_trending = 0;
         if (isset($data['name'])) {
             $game->name = $data['name'];
@@ -172,6 +172,10 @@ class GameRepository
         }
         if (isset($data['image_source'])) {
             $game->image_source = $data['image_source'];
+        }
+
+        if (isset($data['base_price_id'])) {
+            $game->base_price_id = $data['base_price_id'];
         }
 
         if ($request->hasFile('trending_url')) {
