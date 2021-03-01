@@ -35,32 +35,30 @@ class SendOtp implements ShouldQueue
      */
     public function handle()
     {
-        $message = "Your OTP code is " . $this->otp;
-        $user = config("otp.sms_user");
-        $pass = config("otp.sms_pass");
-        $sid = config("otp.sms_sid");
-        $url = "http://sms.sslwireless.com/pushapi/dynamic/server.php";
+        $message = "Your GameHub OTP code is " . $this->otp;
+        $phone_number = '88'. $this->phone;
+
+        // datasoftbd sms
+
+        $dataSoftSms = $this->sentSmsBydataSoft($phone_number, $message);
+    }
+
+    public function sentSmsBydataSoft($phone_number, $message)
+    {
+        $base_url_non_masking = config("otp.sms_base_url");
+        $api_key = config("otp.sms_api_key");
+
+        $url = $base_url_non_masking . "?api_key=" . $api_key . "&smsType=text&mobileNo=" . $phone_number . "&smsContent=" . $message;
+
         $client = new Client();
-
+        logger('$url');
+        logger($url);
         try {
-            $response = $client->request('POST', $url, [
-                'form_params' => [
-                    'user' => $user,
-                    'pass' => $pass,
-                    'sid'  => $sid,
-                    'sms'  => [
-                        [$this->phone, $message],
-                    ],
-                ],
-            ]);
+            $request = $client->get($url);
 
-            OneTimePassword::create([
-                'phone_number' => $this->phone,
-                'otp' => $this->otp
-            ]);
-        }
-        catch (GuzzleException $exception) {
+        } catch (\Exception $exception) {
             logger($exception);
         }
     }
+
 }
