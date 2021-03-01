@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\OneTimePassword;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -55,6 +54,11 @@ class SendOtp implements ShouldQueue
         logger($url);
         try {
             $request = $client->get($url);
+
+            OneTimePassword::create([
+                'phone_number' => $this->phone,
+                'otp' => $this->otp
+            ]);
 
         } catch (\Exception $exception) {
             logger($exception);
