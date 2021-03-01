@@ -60,6 +60,7 @@ class RentController extends BaseController
     public function store(RentCreateRequest $request)
     {
         $rent = $this->rentRepository->store($request);
+
         return $this->response->item($rent, new RentTransformer());
     }
 

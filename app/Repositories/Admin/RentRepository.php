@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 use App\Jobs\AcceptEmailToRenter;
 use App\Jobs\RejectEmailToRenter;
 use App\Jobs\SendEmailToRenter;
+use App\Jobs\SendReminder;
 use App\Models\Rent;
 use App\Models\User;
 use App\Notifications\RenterNotification;
@@ -43,6 +44,13 @@ class RentRepository
 
         $renter = User::where('id', $userId)->first();
         AcceptEmailToRenter::dispatch($renter, $rent);
+
+        $game_in_rent = Rent::where('game_id', $rent->game_id)->where('status', 1)->count();
+
+        if ($game_in_rent < 2) {
+            logger("in sent reminder section");
+            SendReminder::dispatch($rent->game_id);
+        }
         return $rent;
     }
 

@@ -88,6 +88,7 @@
                                             Order Info
                                             <hr>
                                             <address>
+                                                <strong>Address :</strong><span> {{ $order->address }}</span><br>
                                                 <strong>Order date :</strong><span> {{ $order->created_at->format('d M Y') }}</span><br>
                                                 <strong>Delivery Status :</strong><span> {{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</span><br>
                                                 <strong>Payment method :</strong><span class="badge-success badge">{{ $order->payment_method }}</span><br>
