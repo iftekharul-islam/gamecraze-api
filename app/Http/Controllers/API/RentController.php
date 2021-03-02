@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\RentCreateRequest;
 use App\Http\Requests\RentUpdateRequest;
+use App\Models\Rent;
 use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
 use Dingo\Api\Exception\DeleteResourceFailedException;
@@ -118,5 +119,18 @@ class RentController extends BaseController
     public function rentPostedUsers($slug) {
         $rents = $this->rentRepository->rentPostedUsers($slug);
         return $this->response->collection($rents, new RentTransformer());
+    }
+
+    public function checkRented(Request $request) {
+        $ids = $request->ids;
+        $id = '';
+        foreach ($ids as $item){
+            $data = Rent::where('rented_user_id', '!=', null)->where('id', $item)->first();
+            if ($data) {
+                $id = $data->id;
+            }
+        }
+        return response()->json(compact('id'), 200);
+
     }
 }

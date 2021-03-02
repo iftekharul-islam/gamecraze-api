@@ -106,6 +106,8 @@
         Route::get('delivery-charge','\App\Http\Controllers\API\DeliveryChargeController@getCharge');
         //notice
         $api->get('notice', 'App\Http\Controllers\API\NoticeController@index');
+        $api->post('check-rented', 'App\Http\Controllers\API\RentController@checkRented');
+
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
