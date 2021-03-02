@@ -17,6 +17,13 @@ class LenderRepository {
     public function all() {
         return Lender::with('rent.game','rent.platform','rent.diskCondition')->where('lender_id', auth()->user()->id)->get();
     }
+
+    /**
+     * @return mixed
+     */
+    public function myLends() {
+        return Rent::where('rented_user_id', auth()->user()->id)->count();
+    }
     /**
      * @param Request $request
      * @return array

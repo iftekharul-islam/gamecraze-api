@@ -141,6 +141,7 @@
             //Lend Game
             $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
             $api->get('lends', 'App\Http\Controllers\API\LenderController@index');
+            $api->get('my-lends', 'App\Http\Controllers\API\LenderController@myLends');
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
