@@ -29,11 +29,6 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        $cartItems = $request->get('cart_items');
-        for ($i = 0; $i < count($cartItems); $i++) {
-            logger($cartItems[$i]['rent']['game']['data']['name']);
-        }
-        die();
         $lender = auth()->user();
         $myTotalLends = $this->myLends();
         if ($myTotalLends >= $lender->rent_limit){
