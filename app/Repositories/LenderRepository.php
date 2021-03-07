@@ -29,9 +29,30 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        $lender = auth()->user();
         $cartItems = $request->get('cart_items');
-        $totalOrderAmount = $this->cartTotal($cartItems);;
+        for ($i = 0; $i < count($cartItems); $i++) {
+            logger($cartItems[$i]['rent']['game']['data']['name']);
+        }
+        die();
+        $lender = auth()->user();
+        $myTotalLends = $this->myLends();
+        if ($myTotalLends >= $lender->rent_limit){
+            logger('Opps !!! You exceeded renting limit. Return your current games to rent new ones');
+            return [
+                'error' => true,
+                'message' => "Opps !!! You exceeded renting limit. Return your current games to rent new ones "
+            ];
+        }
+        $cartItems = $request->get('cart_items');
+        $ExistLends = $this->checkRented($cartItems);
+        if ($ExistLends) {
+            logger($ExistLends);
+            return [
+                'error' => true,
+                'message' => "Opps !!! The game " . $cartItems['rent']['game']['data']['name'] . " you wanted to rent is not available at this moment."
+            ];
+        }
+        $totalOrderAmount = $this->cartTotal($cartItems);
         $gameOrder = GameOrder::create([
             'order_no' => generateOrderNo(), 
             'user_id' => $lender->id, 
@@ -108,5 +129,21 @@ class LenderRepository {
         $commission = Commission::first();
 
         return ($amount * $commission->amount / 100);
+    }
+
+    /**
+     * @param $items
+     * @return mixed|null
+     */
+    public function checkRented($items) {
+        $data = null;
+        for ($i = 0; $i < count($items); $i++) {
+            $value = Rent::where('rented_user_id', '!=', null)->where('id', $items[$i]['rent']['id'])->first();
+            if ($value) {
+                $data = $items[$i];
+            }
+        }
+        return $data;
+
     }
 }
