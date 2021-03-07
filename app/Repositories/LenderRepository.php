@@ -39,6 +39,13 @@ class LenderRepository {
             ];
         }
         $cartItems = $request->get('cart_items');
+        $existRentlimit = $lender->rent_limit - $myTotalLends;
+        if (count($cartItems) > $existRentlimit){
+            return [
+                'error' => true,
+                'message' => "You can not rent more than two games at a time please Choose any " . $existRentlimit . " games to procced an order."
+            ];
+        }
         $ExistLends = $this->checkRented($cartItems);
         if ($ExistLends) {
             logger($ExistLends);
