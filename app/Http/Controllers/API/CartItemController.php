@@ -31,7 +31,7 @@ class CartItemController extends BaseController
      */
     public function store(Request $request)
     {
-        $itemExist = CartItem::where('rent_id', $request->rent_id)->first();
+        $itemExist = CartItem::where('rent_id', $request->rent_id)->where('user_id', Auth::user()->id)->first();
         if ($itemExist) {
             return [
                 'error' => true,
