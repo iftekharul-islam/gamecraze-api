@@ -16,5 +16,6 @@ return [
         4 => 'processing',
 
     ],
-    'date_format' => 'd M Y'
+    'date_format' => 'd M Y',
+    'commission' => 0.15,
 ];
