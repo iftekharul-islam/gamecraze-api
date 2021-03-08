@@ -147,6 +147,10 @@
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
             //set upcoming game reminder
             $api->post('set-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@store');
+            //cart item
+            $api->get('cart-items', 'App\Http\Controllers\API\CartItemController@index');
+            $api->post('cart-item/create', 'App\Http\Controllers\API\CartItemController@store');
+            $api->post('cart-item/destroy', 'App\Http\Controllers\API\CartItemController@destroy');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
