@@ -135,9 +135,7 @@ class GameController extends BaseController
 
     public function popularGames()
     {
-        $rents = $this->gameRepository->popularGames();
-        logger('$rents');
-        logger($rents);
+        $rents = $this->gameRepository->popularGames(10);
         return $this->response->collection($rents, new RentTransformer());
     }
     /**

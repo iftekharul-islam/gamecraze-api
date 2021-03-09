@@ -142,10 +142,11 @@ class GameRepository
         ->get();
     }
 
-    public function popularGames()
+    public function popularGames($numberOfPost = 10)
     {
         return Rent::where('status', 1)
             ->orderBy('created_at', 'desc')
+            ->take($numberOfPost)
             ->get()
             ->unique('game_id');
     }
