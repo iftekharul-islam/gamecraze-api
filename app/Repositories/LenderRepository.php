@@ -37,11 +37,14 @@ class LenderRepository {
         $cartItems = $request->get('cart_items');
         $existInCart = $this->isExistInCart($cartItems);
 
-        if ($existInCart > 0 ){
+        logger('$existInCart');
+        logger($existInCart);
+
+        if ($existInCart == [] ){
             logger('Not exist in the cart section');
             return [
                 'error' => true,
-                'message' => "Opps !!! You exceeded renting limit. Return your current games to rent new ones"
+                'message' => 'Opps !!! This item is not exist in your cart. Please rent again'
             ];
         }
         if ($myTotalLends >= $lender->rent_limit){
@@ -61,21 +64,20 @@ class LenderRepository {
         }
         $ExistLends = $this->checkRented($cartItems);
         if ($ExistLends) {
-            logger($ExistLends);
-            logger('Opps !!! The game ' . $ExistLends . ' is exist');
+            logger('Opps !!! The game is exist');
             return [
                 'error' => true,
-                'message' => "Opps !!! The game " . $ExistLends . " you wanted to rent is not available at this moment."
+                'message' => "Opps !!! The game " . implode(", ",$ExistLends) . " you wanted to rent is not available at this moment."
             ];
         }
-
+        logger(' in the lend store section');
         $totalOrderAmount = $this->cartTotal($cartItems);
         $gameOrder = GameOrder::create([
-            'order_no' => generateOrderNo(), 
-            'user_id' => $lender->id, 
+            'order_no' => generateOrderNo(),
+            'user_id' => $lender->id,
             'amount' => $totalOrderAmount,
             'commission' => $this->commissionAmount($totalOrderAmount),
-            'payment_method' => $request->get('paymentMethod'), 
+            'payment_method' => $request->get('paymentMethod'),
             'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
             'delivery_status' => 0,
             'delivery_charge' => $request->get('delivery_charge') ? $request->get('delivery_charge') : 0,
@@ -121,6 +123,7 @@ class LenderRepository {
         SendEmailToLender::dispatch($lender);
         CartItem::destroy($itemInCart);
 
+        logger('Store Successful');
         return [
             'error' => false,
             'message' => "Store Successful"
@@ -183,12 +186,16 @@ class LenderRepository {
      */
     public function isExistInCart($items) {
         $itemCount = count($items);
-        $totalData = 0;
+        $totalData = null;
         for ($i = 0; $i < $itemCount; $i++) {
-            $value = CartItem::where('id', $items[$i]['rent']['data']['id'])
-                ->where('user_id', Auth::user()->id)
-                ->count();
-            $totalData += $value;
+            $value = CartItem::where('id', $items[$i]['rent']['data']['id'])->first();
+            logger('$value');
+            logger($value);
+            if ($value === null) {
+                $totalData = $value;
+                // user doesn't exist
+            }
+            continue;
         }
 
         return $totalData;
