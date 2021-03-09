@@ -40,7 +40,7 @@ class LenderRepository {
         logger('$existInCart');
         logger($existInCart);
 
-        if ($existInCart == [] ){
+        if ($existInCart === true){
             logger('Not exist in the cart section');
             return [
                 'error' => true,
@@ -64,7 +64,7 @@ class LenderRepository {
         }
         $ExistLends = $this->checkRented($cartItems);
         if ($ExistLends) {
-            logger('Opps !!! The game is exist');
+            logger('Opps !!! The game is rented');
             return [
                 'error' => true,
                 'message' => "Opps !!! The game " . implode(", ",$ExistLends) . " you wanted to rent is not available at this moment."
@@ -186,18 +186,20 @@ class LenderRepository {
      */
     public function isExistInCart($items) {
         $itemCount = count($items);
-        $totalData = null;
+        $totalData = false;
         for ($i = 0; $i < $itemCount; $i++) {
-            $value = CartItem::where('id', $items[$i]['rent']['data']['id'])->first();
+            logger('$items[$i][\'rent\'][\'data\'][\'id\']');
+            logger($items[$i]['id']);
+            $value = CartItem::where('id', $items[$i]['id'])->first();
             logger('$value');
             logger($value);
             if ($value === null) {
-                $totalData = $value;
-                // user doesn't exist
+                $totalData = true;
+                // data doesn't exist
             }
-            continue;
         }
-
+        logger('$totalData');
+        logger($totalData);
         return $totalData;
 
     }
