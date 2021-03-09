@@ -34,6 +34,16 @@ class LenderRepository {
         $lender = auth()->user();
         $itemInCart = [];
         $myTotalLends = $this->myLends();
+        $cartItems = $request->get('cart_items');
+        $existInCart = $this->isExistInCart($cartItems);
+
+        if ($existInCart > 0 ){
+            logger('Not exist in the cart section');
+            return [
+                'error' => true,
+                'message' => "Opps !!! You exceeded renting limit. Return your current games to rent new ones"
+            ];
+        }
         if ($myTotalLends >= $lender->rent_limit){
             logger('Opps !!! You exceeded renting limit. Return your current games to rent new ones');
             return [
@@ -41,22 +51,24 @@ class LenderRepository {
                 'message' => "Opps !!! You exceeded renting limit. Return your current games to rent new ones "
             ];
         }
-        $cartItems = $request->get('cart_items');
-        $existRentlimit = $lender->rent_limit - $myTotalLends;
-        if (count($cartItems) > $existRentlimit){
+        $existRentLimit = $lender->rent_limit - $myTotalLends;
+        if (count($cartItems) > $existRentLimit){
+            logger('You can not rent more than two games');
             return [
                 'error' => true,
-                'message' => "You can not rent more than two games at a time please Choose any " . $existRentlimit . " games to procced an order."
+                'message' => "You can not rent more than two games at a time please Choose any " . $existRentLimit . " games to proceed an order."
             ];
         }
         $ExistLends = $this->checkRented($cartItems);
         if ($ExistLends) {
             logger($ExistLends);
+            logger('Opps !!! The game ' . $ExistLends . ' is exist');
             return [
                 'error' => true,
                 'message' => "Opps !!! The game " . $ExistLends . " you wanted to rent is not available at this moment."
             ];
         }
+
         $totalOrderAmount = $this->cartTotal($cartItems);
         $gameOrder = GameOrder::create([
             'order_no' => generateOrderNo(), 
@@ -162,6 +174,24 @@ class LenderRepository {
         }
 
         return $data;
+
+    }
+
+    /**
+     * @param $items
+     * @return int
+     */
+    public function isExistInCart($items) {
+        $itemCount = count($items);
+        $totalData = 0;
+        for ($i = 0; $i < $itemCount; $i++) {
+            $value = CartItem::where('id', $items[$i]['rent']['data']['id'])
+                ->where('user_id', Auth::user()->id)
+                ->count();
+            $totalData += $value;
+        }
+
+        return $totalData;
 
     }
 }
