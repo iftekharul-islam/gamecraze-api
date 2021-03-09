@@ -177,11 +177,15 @@ class LenderRepository {
 
     }
 
+    /**
+     * @param $items
+     * @return int
+     */
     public function isExistInCart($items) {
         $itemCount = count($items);
         $totalData = 0;
         for ($i = 0; $i < $itemCount; $i++) {
-            $value = CartItem::where('id', $items[$i]['rent']['id'])
+            $value = CartItem::where('id', $items[$i]['rent']['data']['id'])
                 ->where('user_id', Auth::user()->id)
                 ->count();
             $totalData += $value;
