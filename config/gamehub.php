@@ -18,4 +18,8 @@ return [
     ],
     'date_format' => 'd M Y',
     'commission' => 0.15,
+    'disk_type' => [
+        'digital_copy' => 0,
+        'physical_copy' => 1,
+    ]
 ];

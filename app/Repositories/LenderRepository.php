@@ -37,11 +37,7 @@ class LenderRepository {
         $cartItems = $request->get('cart_items');
         $existInCart = $this->isExistInCart($cartItems);
 
-        logger('$existInCart');
-        logger($existInCart);
-
-        if ($existInCart === true){
-            logger('Not exist in the cart section');
+        if (!$existInCart){
             return [
                 'error' => true,
                 'message' => 'Opps !!! This item is not exist in your cart. Please rent again'
@@ -185,22 +181,13 @@ class LenderRepository {
      * @return int
      */
     public function isExistInCart($items) {
-        $itemCount = count($items);
-        $totalData = false;
-        for ($i = 0; $i < $itemCount; $i++) {
-            logger('$items[$i][\'rent\'][\'data\'][\'id\']');
-            logger($items[$i]['id']);
-            $value = CartItem::where('id', $items[$i]['id'])->first();
-            logger('$value');
-            logger($value);
-            if ($value === null) {
-                $totalData = true;
-                // data doesn't exist
-            }
+        $ids = [];
+        foreach ($items as $item) {
+            $ids[] = $item['id'];
         }
-        logger('$totalData');
-        logger($totalData);
-        return $totalData;
+
+        $data = CartItem::whereIn('id', $ids)->count();
+        return $data > 0;
 
     }
 }

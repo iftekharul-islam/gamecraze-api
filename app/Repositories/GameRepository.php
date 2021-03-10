@@ -161,27 +161,44 @@ class GameRepository
         return Game::whereIn('id', $ids)->get();
     }
 
-    public function filterGames($ids, $categories, $platforms, $search)
+    /**
+     * @param $ids
+     * @param $categories
+     * @param $platforms
+     * @param $diskType
+     * @param $search
+     * @return mixed
+     */
+    public function filterGames($ids, $categories, $platforms, $diskType, $search)
     {
-        if (empty($categories) && empty($platforms) && $search == '') {
-            return Game::whereIn('id', $ids)->get();
-        }
 
-        return Game::whereIn('id', $ids)
-            ->when($categories, function ($q) use ($categories) {
-                $q->with('genres')->whereHas('genres', function($query2) use ($categories){
-                    $query2->whereIn('slug', $categories);
+        if (empty($categories) && empty($platforms) && empty($diskType) && $search == '') {
+            return Rent::whereHas('game', function ($q) use ($ids){
+                $q->whereIn('id', $ids);
+            })->get()->unique('game_id');
+        }
+        $data = Rent::query();
+        if ($diskType){
+            $data->whereIn('disk_type', $diskType);
+        }
+        return $data->whereHas('game', function($q) use ($ids, $categories, $platforms, $search) {
+            $q->whereIn('id', $ids)
+                ->when($categories, function ($qu) use ($categories) {
+                    $qu->with('genres')->whereHas('genres', function($query2) use ($categories){
+                        $query2->whereIn('slug', $categories);
+                    });
+                })
+                ->when($platforms, function ($qu) use ($platforms) {
+                    $qu->with('platforms')->whereHas('platforms', function($query2) use ($platforms){
+                        $query2->whereIn('slug', $platforms);
+                    });
+                })
+                ->when($search, function ($qu) use ($search) {
+                    return $qu->where('name', 'like', '%' . $search . '%');
                 });
-            })
-            ->when($platforms, function ($q) use ($platforms) {
-                $q->with('platforms')->whereHas('platforms', function($query2) use ($platforms){
-                    $query2->whereIn('slug', $platforms);
-                });
-            })
-            ->when($search, function ($q) use ($search) {
-                return $q->where('name', 'like', '%' . $search . '%');
-            })
-            ->get();
+        })
+            ->get()
+            ->unique('game_id');
     }
 
     public function relatedGames($genres) {

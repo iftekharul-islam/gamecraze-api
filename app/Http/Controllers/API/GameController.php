@@ -175,10 +175,22 @@ class GameController extends BaseController
         else {
             $platforms = [];
         }
+        if ($request->input('diskType')) {
+            $arrayItem = explode(',', $request->input('diskType'));
+            $data = config('gamehub.disk_type');
+            foreach ($arrayItem as $item) {
+                 if (in_array($item, $data)){
+                     $diskType[] = $data[$item];
+                 }
+            }
+        }
+        else {
+            $diskType = [];
+        }
 
-        $filteredGames = $this->gameRepository->filterGames($ids, $categories, $platforms, $search);
+        $filteredGames = $this->gameRepository->filterGames($ids, $categories, $platforms, $diskType, $search);
 
-        return $this->response->collection($filteredGames, new GameTransformer());
+        return $this->response->collection($filteredGames, new RentTransformer());
     }
 
     public function relatedGames(Request $request, $genres) {
