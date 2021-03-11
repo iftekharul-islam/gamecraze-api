@@ -50,6 +50,7 @@
                                         <thead>
                                         <tr>
                                             <th>Customer Name</th>
+                                            <th>Total Amount</th>
                                             <th>Customer payable</th>
                                             <th>commission</th>
                                             <th>Paid</th>
@@ -68,6 +69,7 @@
                                             @endforeach
                                             <tr>
                                                 <td>{{ $item->name }}</td>
+                                                <td>{{ $item->amount + $item->commission }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->commission }}</td>
                                                 <td>{{ $paid }}</td>
