@@ -50,7 +50,8 @@
                                     <tr>
                                         <th>Game</th>
                                         <th>Customer Name</th>
-                                        <th>Amount</th>
+                                        <th>Total Amount</th>
+                                        <th>Seller Amount</th>
                                         <th>commission</th>
                                         <th>Week for</th>
                                         <th>Lend date</th>
@@ -61,6 +62,7 @@
                                         <tr>
                                             <td>{{ $item->rent->game->name }}</td>
                                             <td>{{ $item->lender->name }}</td>
+                                            <td>{{ $item->lend_cost + $item->commission }}</td>
                                             <td>{{ $item->lend_cost }}</td>
                                             <td>{{ $item->commission }}</td>
                                             <td>{{ $item->lend_week }}</td>

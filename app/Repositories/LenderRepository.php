@@ -109,7 +109,8 @@ class LenderRepository {
             ];
 
         }
-        SendEmailToRenter::dispatch($renterIds, $data, $rentIds);
+        Lender::insert($data);
+        SendEmailToRenter::dispatch($renterIds, $rentIds);
         CartItem::destroy($cartIds);
 
         logger('Store Successful');
