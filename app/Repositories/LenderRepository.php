@@ -32,7 +32,10 @@ class LenderRepository {
      */
     public function create(Request $request) {
         $lender = auth()->user();
-        $itemInCart = [];
+        $cartIds = [];
+        $data = [];
+        $rentIds = [];
+        $renterIds = [];
         $myTotalLends = $this->myLends();
         $cartItems = $request->get('cart_items');
         $existInCart = $this->isExistInCart($cartItems);
@@ -83,10 +86,13 @@ class LenderRepository {
         $itemCount = count($cartItems);
 
         for ($i = 0; $i < $itemCount; $i++) {
-            $itemInCart[] = $cartItems[$i]['id'];
+            $cartIds[] = $cartItems[$i]['id'];
+            $rentIds[] = $cartItems[$i]['rent']['data']['id'];
+            $renterIds[] = $cartItems[$i]['rent']['data']['user_id'];
+
             $price = $cartItems[$i]['rent']['data']['game']['data']['basePrice']['data']['base'];
             $totalOrderAmount = $totalOrderAmount + $price;
-            $data = [
+            $data []= [
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent']['data']['id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
@@ -96,28 +102,15 @@ class LenderRepository {
                 'renter_id' => $cartItems[$i]['rent']['data']['user_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
-                'address' => $request->get('address') ? $request->get('address') : null,
                 'status' => 0,
-                'game_order_id' => $gameOrder->id
+                'game_order_id' => $gameOrder->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ];
 
-            $lend = Lender::create($data);
-            if (!$lend) {
-                return [
-                    'error' => true,
-                    'message' => "Something went wrong"
-                ];
-            }
-            $rent = Rent::findOrFail($cartItems[$i]['rent']['data']['id']);
-            $rent->rented_user_id = $lender->id;
-            $rent->save();
-
-            $renter = User::findOrFail($cartItems[$i]['rent']['data']['user_id']);
-            SendEmailToRenter::dispatch($renter);
         }
-
-        SendEmailToLender::dispatch($lender);
-        CartItem::destroy($itemInCart);
+        SendEmailToRenter::dispatch($renterIds, $data, $rentIds);
+        CartItem::destroy($cartIds);
 
         logger('Store Successful');
         return [
