@@ -27,6 +27,7 @@ class UserTransformer extends TransformerAbstract
             'is_phone_verified' => $user->is_phone_verified,
             'image' => $user->image ? asset($user->image) : '',
             'cover' => $user->cover ? asset($user->cover) : '',
+            'id_number' => $user->identification_number,
             'identification_image' => $user->identification_image ? asset($user->identification_image) : '',
             'is_verified' => $user->is_verified,
             'last_name' => $user->last_name
