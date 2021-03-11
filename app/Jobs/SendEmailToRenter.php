@@ -17,19 +17,16 @@ class SendEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     private $renterIds;
-    private $data;
     private $rentIds;
 
     /**
      * SendEmailToRenter constructor.
      * @param $renterIds
-     * @param $data
      * @param $rentIds
      */
-    public function __construct($renterIds, $data, $rentIds)
+    public function __construct($renterIds, $rentIds)
     {
         $this->renterIds = $renterIds;
-        $this->data = $data;
         $this->rentIds = $rentIds;
     }
 
@@ -41,7 +38,6 @@ class SendEmailToRenter implements ShouldQueue
     public function handle()
     {
         $lender = auth()->user();
-        Lender::insert($this->data);
         Rent::whereIn('id', $this->rentIds)->update(['rented_user_id' => $lender->id]);
         $users = User::whereIn('id', $this->renterIds)->get();
 
