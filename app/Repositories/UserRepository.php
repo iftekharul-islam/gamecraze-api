@@ -132,8 +132,8 @@ class UserRepository
             if (isset($userData['birth_date'])) {
                 $user->birth_date = $userData['birth_date'];
             }
-            if (isset($userData['id_number'])) {
-                $user->identification_number = $userData['id_number'];
+            if (isset($userData['identification_number'])) {
+                $user->identification_number = $userData['identification_number'];
             }
             if (isset($userData['id_image'])) {
                 if (!File::isDirectory(storage_path('app/public/identification'))){
