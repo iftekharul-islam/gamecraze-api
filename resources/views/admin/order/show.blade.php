@@ -160,7 +160,7 @@
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td><a href="{{ route('game.show', $lend->rent->game_id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></td>
-                                                                <td>{{ $lend->lend_cost }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->commission }}</td>
 {{--                                                                <td>{{ isset($lend->rent->availability) ? date('d M, Y', strtotime($lend->rent->availability)) : '' }}</td>--}}
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
@@ -206,7 +206,7 @@
                                                 <table class="table">
                                                     <tr>
                                                         <th style="width:50%">Subtotal (BDT):</th>
-                                                        <td class="text-right">{{ number_format($order->amount, 2) }}</td>
+                                                        <td class="text-right">{{ number_format(($order->amount + $order->commission), 2) }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tax (9.3%):</th>
@@ -218,7 +218,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th>Total (BDT):</th>
-                                                        <td id="total" class="text-right">{{ number_format($order->amount + $order->delivery_charge, 2) }}</td>
+                                                        <td id="total" class="text-right">{{ number_format($order->amount + $order->commission + $order->delivery_charge, 2) }}</td>
                                                     </tr>
                                                 </table>
                                             </div>
