@@ -13,7 +13,7 @@ class DiskConditionRepository
      */
     public function all()
     {
-        return DiskCondition::orderBy('name', 'ASC')->get();
+        return DiskCondition::orderBy('created_at', 'ASC')->get();
     }
 
     /**
