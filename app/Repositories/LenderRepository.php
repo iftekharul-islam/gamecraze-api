@@ -111,6 +111,9 @@ class LenderRepository {
 
         }
         Lender::insert($data);
+        $rentedGames = Rent::whereIn('id', $rentIds)->update(['rented_user_id' => $lender->id]);
+        logger('rented games');
+        logger($rentedGames);
         SendEmailToRenter::dispatch($renterIds, $rentIds);
         CartItem::destroy($cartIds);
 
