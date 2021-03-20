@@ -31,13 +31,15 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
+        logger($request->all());
+//        die();
         $lender = auth()->user();
         $cartIds = [];
         $data = [];
         $rentIds = [];
         $renterIds = [];
         $myTotalLends = $this->myLends();
-        $cartItems = $request->get('cart_items');
+        $cartItems = $request->get('cartItems');
         $existInCart = $this->isExistInCart($cartItems);
 
         if ($existInCart === true){
@@ -71,7 +73,7 @@ class LenderRepository {
             ];
         }
         logger(' in the lend store section');
-        $totalOrderAmount = $this->cartTotal($cartItems);
+        $totalOrderAmount = $request->discount_price + $request->delivery_charge;
         $gameOrder = GameOrder::create([
             'order_no' => generateOrderNo(),
             'user_id' => $lender->id,
@@ -88,19 +90,18 @@ class LenderRepository {
 
         for ($i = 0; $i < $itemCount; $i++) {
             $cartIds[] = $cartItems[$i]['id'];
-            $rentIds[] = $cartItems[$i]['rent']['data']['id'];
-            $renterIds[] = $cartItems[$i]['rent']['data']['user_id'];
+            $rentIds[] = $cartItems[$i]['rent_id'];
+            $renterIds[] = $cartItems[$i]['renter_id'];
 
-            $price = $cartItems[$i]['rent']['data']['game']['data']['basePrice']['data']['base'];
-            $totalOrderAmount = $totalOrderAmount + $price;
+            $price = $cartItems[$i]['discount_price'];
             $data []= [
                 'lender_id' => $lender->id,
-                'rent_id' => $cartItems[$i]['rent']['data']['id'],
+                'rent_id' => $cartItems[$i]['rent_id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] ?? null,
                 'lend_cost' => $price,
                 'commission' => $this->commissionAmount($price),
-                'renter_id' => $cartItems[$i]['rent']['data']['user_id'],
+                'renter_id' => $cartItems[$i]['renter_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
@@ -125,23 +126,6 @@ class LenderRepository {
     }
 
     /**
-     * @param $cart
-     * @return float|int
-     */
-    public function cartTotal($cart) {
-        if (count($cart)) {
-            $amount = 0;
-            foreach($cart as $item) {
-                $price = $item['rent']['data']['game']['data']['basePrice']['data']['base'];
-                $amount = $amount + $price;
-            }
-            return round($amount, 2);
-        }
-
-        return 0;
-    }
-
-    /**
      * @param $amount
      * @return float|int
      */
@@ -161,12 +145,12 @@ class LenderRepository {
         $itemCount = count($items);
 
         for ($i = 0; $i < $itemCount; $i++) {
-            $value = Rent::where('id', $items[$i]['rent']['data']['id'])
+            $value = Rent::where('id', $items[$i]['rent_id'])
                 ->where('rented_user_id', '!=', null)
                 ->first();
 
             if ($value) {
-                $data []= $items[$i]['rent']['data']['game']['data']['name'];
+                $data []= $items[$i]['game_name'];
             }
         }
 

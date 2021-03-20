@@ -36,14 +36,14 @@ class RentRepository
      */
     public function approve($id) {
 
-        $rent = Rent::findOrFail($id);
+        $rent = Rent::with('game')->findOrFail($id);
         $userId = $rent->user_id;
 
         $rent->status = 1;
         $rent->save();
 
         $renter = User::where('id', $userId)->first();
-        AcceptEmailToRenter::dispatch($renter, $rent);
+        AcceptEmailToRenter::dispatch($renter, $rent->game->name);
 
         $game_in_rent = Rent::where('game_id', $rent->game_id)->where('status', 1)->count();
 

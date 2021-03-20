@@ -21,5 +21,8 @@ return [
     'disk_type' => [
         'digital_copy' => 0,
         'physical_copy' => 1,
-    ]
+    ],
+    'digital_game_discount' => 20,
+    'offer_amount' => 15,
+    'delivery_charge' => 60,
 ];

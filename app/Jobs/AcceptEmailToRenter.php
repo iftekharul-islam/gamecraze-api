@@ -14,17 +14,17 @@ class AcceptEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     private $renter;
-    private $rent;
+    private $game;
 
     /**
      * AcceptEmailToRenter constructor.
      * @param User $renter
-     * @param $rent
+     * @param Game $game
      */
-    public function __construct(User $renter, $rent)
+    public function __construct(User $renter, $game)
     {
         $this->renter = $renter;
-        $this->rent = $rent;
+        $this->game = $game;
     }
 
     /**
@@ -34,6 +34,6 @@ class AcceptEmailToRenter implements ShouldQueue
      */
     public function handle()
     {
-        $this->renter->notify(new RenterPostAcceptNotification($this->rent));
+        $this->renter->notify(new RenterPostAcceptNotification($this->game));
     }
 }

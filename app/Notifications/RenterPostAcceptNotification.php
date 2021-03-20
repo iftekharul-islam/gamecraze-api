@@ -10,14 +10,14 @@ use Illuminate\Notifications\Notification;
 class RenterPostAcceptNotification extends Notification
 {
     use Queueable;
-    private $rent;
+    private $game;
     /**
      * RenterPostAcceptNotification constructor.
      * @param $rent
      */
-    public function __construct($rent)
+    public function __construct($game)
     {
-        $this->rent = $rent;
+        $this->game = $game;
     }
 
     /**
@@ -41,7 +41,7 @@ class RenterPostAcceptNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('Rent Post Approved')
-                    ->line('Your Rent Post id : '. $this->rent->id . ' is Approved')
+                    ->line('Your Rent Post for '. $this->game . ' is Approved')
                     ->line('Thank you for being with us');
     }
 

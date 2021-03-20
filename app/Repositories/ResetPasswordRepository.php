@@ -18,7 +18,8 @@ class ResetPasswordRepository {
             if (!$user) {
                 return false;
             }
-
+            $user->password = null;
+            $user->save();
             SendResetCodeEmail::dispatch($user, $otp);
 
             return $user->email;
