@@ -31,8 +31,6 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-//        logger($request->all());
-//        die();
         $lender = auth()->user();
         $cartIds = [];
         $data = [];
