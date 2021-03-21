@@ -40,6 +40,7 @@
         $api->get('games/{id}', 'App\Http\Controllers\API\GameController@show');
         $api->get('games/slug/{slug}', 'App\Http\Controllers\API\GameController@showBySlug');
         $api->get('games/', 'App\Http\Controllers\API\GameController@index');
+        $api->get('all-rent-games/', 'App\Http\Controllers\API\GameController@allRentPosts');
         $api->get('games/related/{genres}', 'App\Http\Controllers\API\GameController@relatedGames');
         // Genres
         $api->get('genres/{id}', 'App\Http\Controllers\API\GenreController@show');

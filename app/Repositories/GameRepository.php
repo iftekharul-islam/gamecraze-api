@@ -151,6 +151,14 @@ class GameRepository
             ->unique('game_id');
     }
 
+    public function allRentPosts()
+    {
+        return Rent::where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->unique('game_id');
+    }
+
 
     /**
      * @param $ids
