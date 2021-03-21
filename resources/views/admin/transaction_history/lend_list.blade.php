@@ -60,8 +60,8 @@
                                     <tbody>
                                     @foreach($data as $item)
                                         <tr>
-                                            <td>{{ $item->rent->game->name }}</td>
-                                            <td>{{ $item->lender->name }}</td>
+                                            <td><a href="{{ route('game.show', $item->rent->game->id) }}">{{ $item->rent->game->name }}</a></td>
+                                            <td><a href="{{ route('user.show', $item->lender->id) }}">{{ $item->lender->name }}</a></td>
                                             <td>{{ $item->lend_cost + $item->commission }}</td>
                                             <td>{{ $item->lend_cost }}</td>
                                             <td>{{ $item->commission }}</td>

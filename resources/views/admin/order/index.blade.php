@@ -50,8 +50,9 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <!-- <th>SL</th> -->
+                                        <th>SL</th>
                                         <th>Order No</th>
+                                        <th>Lender Name</th>
                                         <th>Amount</th>
                                         <th>Date</th>
                                         <th>Status</th>
@@ -62,8 +63,9 @@
                                     <tbody>
                                     @foreach($orders as $key => $order)
                                         <tr>
-                                            <!-- <td>{{ $key + $orders->firstItem() }}</td> -->
-                                            <td>{{ 'GH'.str_pad($order->order_no, 4, 0, STR_PAD_LEFT)  }}</td>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $order->order_no }}</td>
+                                                <td><a href="{{ route('user.show', $order->user->id) }}">{{ $order->user->name }}</a></td>
                                             <td>{{ $order->amount + $order->delivery_charge + $order->commission  }}</td>
                                             <td>{{ $order->created_at->format('j M Y') }}</td>
                                             <td>{{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</td>

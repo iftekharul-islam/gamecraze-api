@@ -6,6 +6,7 @@ use App\Models\Game;
 use App\Models\Rent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GameRepository
 {
@@ -137,9 +138,10 @@ class GameRepository
         })
         ->where('status', 1)
         ->select('game_id')
-        ->groupBy('game_id')
+        ->orderBy('created_at', 'desc')
         ->take($numberOfPost)
-        ->get();
+        ->get()
+        ->unique('game_id');
     }
 
     public function popularGames($numberOfPost = 10)

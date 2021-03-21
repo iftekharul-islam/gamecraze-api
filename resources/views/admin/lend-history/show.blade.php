@@ -76,7 +76,7 @@
                                         <div class="col-sm-4 invoice-col border-right">
                                             Owner<hr>
                                             <address>
-                                                <strong>{{ isset($lend->rent->user->name) ? isset($lend->rent->user->name) : '' }}</strong><br>
+                                                <strong>{{ isset($lend->rent->user->name) ? $lend->rent->user->name : '' }}</strong><br>
                                                 {{ isset($lend->rent->user->address->address) ? $lend->rent->user->address->address : '' }}<br>
                                                 {{ isset($lend->rent->user->address->city) ? $lend->rent->user->address->city : '' }}<br>
                                                 {{ isset($lend->rent->user->email) ? $lend->rent->user->email : '' }}<br>
