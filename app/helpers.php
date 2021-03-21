@@ -36,7 +36,7 @@ if (!function_exists('responseData')) {
  * generate order number
  * @param id int
  */
-if (!function_exists("generateOrderNo")){ 
+if (!function_exists("generateUniqueOrderNo")){
     function generateUniqueOrderNo()
     {
         $latestOrder = GameOrder::orderBy('id', 'desc')->first();

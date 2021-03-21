@@ -31,8 +31,6 @@ class LenderRepository {
      * @return array
      */
     public function create(Request $request) {
-        logger($request->all());
-//        die();
         $lender = auth()->user();
         $cartIds = [];
         $data = [];
@@ -73,12 +71,12 @@ class LenderRepository {
             ];
         }
         logger(' in the lend store section');
-        $totalOrderAmount = $request->discount_price + $request->delivery_charge;
+        $totalOrderAmount = $request->totalAmount + $request->deliveryCharge;
         $gameOrder = GameOrder::create([
             'order_no' => generateUniqueOrderNo(),
             'user_id' => $lender->id,
             'amount' => $totalOrderAmount,
-            'commission' => $this->commissionAmount($totalOrderAmount),
+            'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($totalOrderAmount),
             'payment_method' => $request->get('paymentMethod'),
             'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
             'delivery_status' => 0,
@@ -100,7 +98,7 @@ class LenderRepository {
                 'lend_week' => $cartItems[$i]['rent_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] ?? null,
                 'lend_cost' => $price,
-                'commission' => $this->commissionAmount($price),
+                'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($price),
                 'renter_id' => $cartItems[$i]['renter_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),

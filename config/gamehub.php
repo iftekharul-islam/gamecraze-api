@@ -25,4 +25,6 @@ return [
     'digital_game_discount' => 20,
     'offer_amount' => 15,
     'delivery_charge' => 60,
+    'discount_on_commission' => true,
+    'commission_amount' => 15,
 ];
