@@ -56,8 +56,6 @@ class GameOrderController extends Controller
     public function show($id)
     {
         $order = $this->gameOrderRepository->show($id);
-//        return $order;
-        // dd($order);
         return view('admin.order.show', compact('order'));
     }
 

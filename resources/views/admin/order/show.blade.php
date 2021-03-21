@@ -153,6 +153,7 @@
                                                             <th>Week</th>
                                                             <th>End Date</th>
                                                             <th>Status</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -189,6 +190,11 @@
                                                                             <button onclick="confirm({{$lend->id}})" type="button" class="btn btn-primary btn-submit">Update</button>
                                                                         </div>
                                                                     </form>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{ route('rentPost.show', $lend->rent->id) }}" class="btn btn-primary btn-sm">
+                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach

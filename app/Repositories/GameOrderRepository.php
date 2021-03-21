@@ -11,7 +11,7 @@ class GameOrderRepository
      * 
      */
     public function all($page = 20) {
-        return GameOrder::orderby('created_at', 'desc')->paginate($page);
+        return GameOrder::with(['user'])->orderby('created_at', 'desc')->paginate($page);
     }
 
     public function show($id) {

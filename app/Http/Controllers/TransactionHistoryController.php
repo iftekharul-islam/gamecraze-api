@@ -23,10 +23,17 @@ class TransactionHistoryController extends Controller
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)
             ->get();
-
+        $total_amount= 0;
+        $customer_amount= 0;
+        $gamehub_amount= 0;
+        foreach ($data as $item) {
+            $total_amount += $item->amount + $item->commission;
+            $customer_amount += $item->amount;
+            $gamehub_amount += $item->commission;
+        }
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')->groupBy('user_id')->get();
 
-        return view('admin.transaction_history.index', compact('data', 'paid_amount'));
+        return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'customer_amount', 'gamehub_amount'));
     }
 
     public function payAmount($id)

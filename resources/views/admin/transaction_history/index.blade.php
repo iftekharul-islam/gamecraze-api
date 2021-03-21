@@ -42,6 +42,17 @@
                     </div>
                 @endif
                 <div class="row">
+                    @if (count($data) > 0)
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <p> <b>Total amount :</b> {{ $total_amount }} </p>
+                                <p> <b>Customer amount :</b> {{ $customer_amount }}</p>
+                                <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">

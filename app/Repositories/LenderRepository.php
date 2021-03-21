@@ -75,7 +75,7 @@ class LenderRepository {
         logger(' in the lend store section');
         $totalOrderAmount = $request->discount_price + $request->delivery_charge;
         $gameOrder = GameOrder::create([
-            'order_no' => generateOrderNo(),
+            'order_no' => generateUniqueOrderNo(),
             'user_id' => $lender->id,
             'amount' => $totalOrderAmount,
             'commission' => $this->commissionAmount($totalOrderAmount),

@@ -72,7 +72,7 @@
                 <div class="row">
                     <!-- Left col -->
                     <!-- calender -->
-                    <section class="col-lg-7 connectedSortable">
+                    <section class="col-lg-6 connectedSortable">
                         <!-- Calendar -->
                         <div class="card bg-gradient-success">
                             <div class="card-header border-0">
@@ -115,7 +115,7 @@
                     <!-- /.Left col -->
                     <!-- right col (We are only adding the ID to make the widgets sortable)-->
                     <!-- canvas -->
-                    <section class="col-lg-5 connectedSortable">
+                    <section class="col-lg-6 connectedSortable">
                         <!-- Map card -->
                         <div class="card bg-gradient-primary">
                             <!-- /.card-body-->
@@ -138,6 +138,35 @@
                                     <!-- ./col -->
                                 </div>
                                 <!-- /.row -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <!-- small box -->
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h3>{{ $elite }}</h3>
+
+                                        <p>Elite User</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-book"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3>{{ $rookie }}</h3>
+
+                                        <p>Rookie User</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card -->

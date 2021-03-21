@@ -20,10 +20,20 @@ class DashboardController extends Controller
         $games = Game::all()->count();
         $rents = Rent::all()->count();
         $users = User::with('roles')->whereHas('roles', function ($query) {
-                    return $query->where('name','!=', 'admin');
-                })->count();
+            return $query->where('name', '!=', 'admin');
+        })->count();
+
         $lends = Lender::all()->count();
-        return view('admin.dashboard', compact('games', 'rents', 'users', 'lends'));
+
+        $elite = User::with('roles')->whereHas('roles', function ($query) {
+            return $query->where('name', '!=', 'admin');
+        })->where('is_verified', 1)->count();
+
+        $rookie = User::with('roles')->whereHas('roles', function ($query) {
+            return $query->where('name', '!=', 'admin');
+        })->where('is_verified', 0)->count();
+
+        return view('admin.dashboard', compact('games', 'rents', 'users', 'lends', 'elite', 'rookie'));
     }
 
 }

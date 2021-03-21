@@ -124,10 +124,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('video.all') }}" class="nav-link {{ (request()->routeIs('basePrice.all', 'basePrice.create')) ? 'active' : '' }}">
+                    <a href="{{ route('video.all') }}" class="nav-link {{ (request()->routeIs('video.all', 'video.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-film"></i>
                         <p>
-                            Freatured Videos
+                            Featured Videos
                         </p>
                     </a>
                 </li>
