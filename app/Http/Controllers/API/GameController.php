@@ -49,6 +49,15 @@ class GameController extends BaseController
     }
 
     /**
+     * @return Response
+     */
+    public function allRentPosts()
+    {
+        $rents = $this->gameRepository->allRentPosts();
+        return $this->response->collection($rents, new RentTransformer());
+    }
+
+    /**
      * @param GameCreateRequest $request
      *
      * @return Response
