@@ -211,12 +211,16 @@
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tr>
-                                                        <th style="width:50%">Subtotal (BDT):</th>
-                                                        <td class="text-right">{{ number_format(($order->amount + $order->commission), 2) }}</td>
+                                                        <th style="width:50%">Original Amount (BDT):</th>
+                                                        <td class="text-right">{{ number_format((($order->amount + $order->commission) + (($order->amount + $order->commission) * config('gamehub.commission_amount')/100) ), 2) }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax (9.3%):</th>
-                                                        <td class="text-right">0.00</td>
+                                                        <th style="width:50%">Discount amount (BDT):</th>
+                                                        <td class="text-right">{{ number_format((($order->amount + $order->commission) * config('gamehub.commission_amount')/100), 2) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width:50%">Subtotal (BDT):</th>
+                                                        <td class="text-right">{{ number_format(($order->amount + $order->commission), 2) }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Delivery Fee (BDT):</th>
