@@ -59,7 +59,7 @@
 //        $api->get('base-price/{id}', 'App\Http\Controllers\API\BasePriceController@show');
         $api->get('base-price', 'App\Http\Controllers\API\BasePriceController@index');
         $api->get('base-price/calculate/{id}', 'App\Http\Controllers\API\BasePriceController@calculate');
-        $api->get('base-price/game-calculation/{gameId}/{lendWeek}', 'App\Http\Controllers\API\BasePriceController@gameCalculate');
+        $api->get('base-price/game-calculation/{gameId}/{lendWeek}/{diskType}', 'App\Http\Controllers\API\BasePriceController@gameCalculate');
         //Commission percentage
         $api->get('commission', 'App\Http\Controllers\API\CommissionController@index');
         //Checkpoint all
@@ -76,6 +76,7 @@
 	    $api->get('rent-posts', 'App\Http\Controllers\API\RentController@allRent');
 	    $api->get('rent-games', 'App\Http\Controllers\API\GameController@rentGames');
 	    $api->get('filter-games', 'App\Http\Controllers\API\GameController@filterGames');
+	    $api->get('offer-amount', 'App\Http\Controllers\API\RentController@offerPercentage');
 
         //pay
         $api->post('/pay', 'App\Http\Controllers\API\SslCommerzPaymentController@payViaAjax');

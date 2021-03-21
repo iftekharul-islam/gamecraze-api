@@ -4,12 +4,27 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseController;
 use App\Models\CartItem;
+use App\Repositories\Admin\basePriceRepository;
 use App\Transformers\CartItemTransformer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class CartItemController extends BaseController
 {
+    /**
+     * @var
+     */
+    private $basePriceRepository;
+
+    /**
+     * BasePriceController constructor.
+     * @param BasePriceRepository $basePriceRepository
+     */
+    public function __construct(BasePriceRepository $basePriceRepository)
+    {
+        $this->basePriceRepository = $basePriceRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +32,47 @@ class CartItemController extends BaseController
      */
     public function index()
     {
-        $data = CartItem::where('user_id', Auth::user()->id)->get();
-        if ($data) {
-            return $this->response->collection($data, new CartItemTransformer());
+        $items = CartItem::with('rent.game')->where('user_id', Auth::user()->id)->get();
+
+        if ($items) {
+
+            $totalRegularPrice = 0;
+            $totalDiscountPrice = 0;
+            $deliveryCharge = 0;
+
+            $cartItems = new Collection();
+            foreach ($items as $item) {
+                $price = $this->basePriceRepository->gamePriceCalculation($item->rent->game_id, $item->rent_week, $item->rent->disk_type);
+                $cartItems->push((object)[
+                    'id' => $item->id,
+                    'rent_id' => $item->rent_id,
+                    'user_id' => $item->user_id,
+                    'rent_week' => $item->rent_week,
+                    'address' => $item->address,
+                    'status' => $item->status,
+                    'regular_price' => $price['regular_price'],
+                    'discount_price' => $price['discount_price'],
+                    'game_name' => $item->rent->game->name,
+                    'renter_id' => $item->rent->user_id,
+                ]);
+
+                $totalRegularPrice += $price['regular_price'];
+                $totalDiscountPrice += $price['discount_price'];
+
+                if ($item->rent->disk_type == 1) {
+                    $deliveryCharge = config('gamehub.delivery_charge');
+                }
+
+            }
+
+            $data = [
+                'cartItems' => $cartItems,
+                'totalRegularPrice' => $totalRegularPrice,
+                'totalDiscountPrice' => $totalDiscountPrice,
+                'deliveryCharge' => $deliveryCharge,
+            ];
+
+            return response()->json(compact('data'), 200);
         }
 
         return responseData('No cart items found', 404);
@@ -54,7 +107,6 @@ class CartItemController extends BaseController
      */
     public function destroy(Request $request)
     {
-        logger($request->id);
         $data = CartItem::where('id', $request->id)->where('user_id', auth()->user()->id)->first();
         if ($data){
             $data->delete();

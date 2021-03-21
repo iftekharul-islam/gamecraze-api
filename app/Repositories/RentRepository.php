@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use File;
+use mysql_xdevapi\Collection;
 
 class RentRepository {
     /**

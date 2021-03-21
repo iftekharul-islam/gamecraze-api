@@ -40,32 +40,22 @@ class BasePriceController extends Controller
         $basePrice = $gamePrice->basePrice->base;
         $prices = [
             1 => $basePrice,
-            2 => $basePrice * .75,
-            3 => $basePrice * .65,
+            2 => $basePrice * $basePrice->second_week,
+            3 => $basePrice * $basePrice->third_week,
         ];
         return response($prices);
     }
 
-    /**
+    /***
      * @param $gameId
      * @param $lendWeek
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @param $diskType
+     * @return array|\Illuminate\Http\JsonResponse|void
      */
-    public function gameCalculate ($gameId, $lendWeek) {
-        $game = Game::with('basePrice')->findOrFail($gameId);
-        $basePrice = $game->basePrice;
-        $second_week = $basePrice->second_week;
-        $third_week = $basePrice->third_week;
-        $sum = 0;
-        $mapping = [
-            1 => 1,
-            2 => $second_week,
-            3 => $third_week,
-        ];
-        for ($i = 1; $i <= $lendWeek; $i++) {
-            $sum += isset($mapping[$i]) ? $basePrice->base * $mapping[$i] : $basePrice->base * last($mapping);
-        }
-        return response($sum);
+    public function gameCalculate ($gameId, $lendWeek, $diskType) {
+        $price = $this->basePriceRepository->gamePriceCalculation($gameId, $lendWeek, $diskType);
+
+        return response()->json(compact('price'), 200);
     }
 
     /**

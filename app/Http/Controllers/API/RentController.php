@@ -133,4 +133,12 @@ class RentController extends BaseController
         return response()->json(compact('id'), 200);
 
     }
+
+    public function offerPercentage()
+    {
+        $offerAmount = config('gamehub.offer_amount');
+
+        return response()->json(compact('offerAmount'), 200);
+    }
+
 }
