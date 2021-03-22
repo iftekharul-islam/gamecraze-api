@@ -117,8 +117,8 @@
                                             <strong>Description :</strong><span>{!! $rent->game->description !!}</span><br>
                                             <strong>Platform: </strong><span> <img width="35px" height="30px" src="{{ asset($rent->platform->url) }}" alt=""></span><br>
                                             <strong>Publisher :</strong><span> {{ $rent->game->publisher }}</span><br>
-                                            <strong>Developer :</strong><span> {{ $rent->game->developer }}</span><br>
-                                            <strong>Rating :</strong><span> {{ $rent->game->rating }}</span><br>
+                                            @isset($rent->game_user_id) <strong>Game User ID :</strong><span> {{ $rent->game_user_id }}</span><br> @endisset
+                                            @isset($rent->game_password) <strong>Game Password :</strong><span> {{ $rent->game_password }}</span><br> @endisset
                                         </address>
                                     </div>
                                     <div class="col-sm-6 invoice-col">
@@ -128,6 +128,8 @@
                                             <strong>Max Rent Week :</strong><span> {{ $rent->max_week }}</span><br>
                                             <strong>Game Base Price :</strong><span> {{ $rent->game->basePrice->base }}</span><br>
                                             <strong>Delivery :</strong><span> {{ $rent->checkpoint ?  $rent->checkpoint->name : 'COD' }}</span><br>
+                                            <strong>Developer :</strong><span> {{ $rent->game->developer }}</span><br>
+                                            <strong>Rating :</strong><span> {{ $rent->game->rating }}</span><br>
                                         </address>
                                     </div>
                                     <!-- /.col -->
