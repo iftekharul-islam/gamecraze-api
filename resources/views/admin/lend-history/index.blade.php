@@ -51,6 +51,7 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Order No</th>
                                         <th>Game owner</th>
                                         <th>Borrower</th>
                                         <th>Rented Game</th>
@@ -63,6 +64,7 @@
                                     @foreach($lends as $key=>$lend)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
+                                            <td>{{ isset($lend->order) ? $lend->order->order_no : '' }}</td>
                                             <td>{{ isset($lend->lender->name) ? $lend->lender->name : '' }}</td>
                                             <td>
                                                 {{ isset($lend->rent->user->name) ? $lend->rent->user->name : '' }}
