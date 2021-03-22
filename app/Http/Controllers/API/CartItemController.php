@@ -54,6 +54,7 @@ class CartItemController extends BaseController
                     'discount_price' => $price['discount_price'],
                     'game_name' => $item->rent->game->name,
                     'renter_id' => $item->rent->user_id,
+                    'disk_type' => $item->rent->disk_type,
                 ]);
 
                 $totalRegularPrice += $price['regular_price'];
