@@ -73,7 +73,7 @@ class LenderRepository {
         logger(' in the lend store section');
         $totalOrderAmount = $request->totalAmount + $request->deliveryCharge;
         $gameOrder = GameOrder::create([
-            'order_no' => generateUniqueOrderNo(),
+            'order_no' => $this->generateUniqueOrderNo(),
             'user_id' => $lender->id,
             'amount' => $totalOrderAmount,
             'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($totalOrderAmount),
@@ -172,5 +172,18 @@ class LenderRepository {
         }
         return $totalData;
 
+    }
+
+    /***
+     * @return string
+     */
+    public function generateUniqueOrderNo()
+    {
+        $latestOrder = GameOrder::orderBy('id', 'desc')->first();
+        if ($latestOrder) {
+            $latestOrder = $latestOrder->order_no + 1;
+        }
+
+        return 'GH'.str_pad($latestOrder, 6, 0, STR_PAD_RIGHT);
     }
 }

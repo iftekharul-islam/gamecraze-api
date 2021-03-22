@@ -54,8 +54,9 @@
                                         class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif
                             </div>
+                            <label for="thumbnail">Image</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="thumbnail" id="thumbnailFile">
+                                <input type="file" class="custom-file-input" name="thumbnail" id="thumbnailFile" required>
                                 <label class="custom-file-label" for="thumbnailFile">Choose file</label>
                                 @if ($errors->has('thumbnail'))"
                                     <span class="text-danger"><strong>{{ $errors->first('thumbnail') }}</strong></span>

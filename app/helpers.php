@@ -32,16 +32,13 @@ if (!function_exists('responseData')) {
     }
 }
 
-/**
- * generate order number
- * @param id int
- */
+
 if (!function_exists("generateUniqueOrderNo")){
     function generateUniqueOrderNo()
     {
         $latestOrder = GameOrder::orderBy('id', 'desc')->first();
         if ($latestOrder) {
-            return $latestOrder->order_no + 1;
+            $latestOrder = $latestOrder->order_no + 1;
         }
 
         return 'GH'.str_pad($latestOrder, 6, time(), STR_PAD_RIGHT);

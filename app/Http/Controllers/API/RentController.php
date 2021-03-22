@@ -11,6 +11,7 @@ use App\Repositories\RentRepository;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class RentController extends BaseController
 {
