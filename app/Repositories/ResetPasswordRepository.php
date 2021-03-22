@@ -57,10 +57,29 @@ class ResetPasswordRepository {
 
         if ($user) {
             $token = $user->createToken($user->email .'-'. now());
+            $data = [
+                    'address_id' => $user->address_id,
+                    'birth_date' => $user->birth_date,
+                    'email' => $user->email,
+                    'gender' => $user->gender,
+                    'id' => $user->id,
+                    'identification_image' => asset($user->identification_image),
+                    'identification_number' => $user->identification_number,
+                    'image' => asset($user->image),
+                    'is_phone_verified' => $user->is_phone_verified,
+                    'is_verified' => $user->is_verified,
+                    'name' => $user->name,
+                    'last_name' => $user->last_name,
+                    'phone_number' => $user->phone_number,
+                    'rent_limit' => $user->rent_limit,
+                    'status' => $user->status,
+                    'updated_at' => $user->updated_at,
+                    'wallet' => $user->wallet,
+                ];
             return [
                 'error' => false,
                 'token' => $token->accessToken,
-                'user' => $user
+                'user' => $data
             ];
         }
     }

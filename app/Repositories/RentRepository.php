@@ -30,7 +30,7 @@ class RentRepository {
     public function store(Request $request) {
         $rent = $request->only([
             'game_id', 'max_week', 'platform_id',
-            'disk_condition_id', 'rented_user_id', 'checkpoint_id', 'disk_type'
+            'disk_condition_id', 'rented_user_id', 'checkpoint_id', 'disk_type', 'game_user_id', 'game_password'
         ]);
 
         $rent['availability']= Carbon::today();
