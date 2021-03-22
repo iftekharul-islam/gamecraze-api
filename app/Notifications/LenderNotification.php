@@ -10,15 +10,15 @@ use Illuminate\Notifications\Notification;
 class LenderNotification extends Notification
 {
     use Queueable;
+    private $gameNames;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * LenderNotification constructor.
+     * @param $gameNames
      */
-    public function __construct()
+    public function __construct($gameNames)
     {
-        //
+        $this->gameNames = $gameNames;
     }
 
     /**
@@ -42,7 +42,7 @@ class LenderNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Gamehub Lend Confirmation')
-            ->line('You Lend the games successfully')
+            ->line('You Lend the game(s): ' .implode(", ", $this->gameNames). ' successfully')
             ->line('Thank you for being with us');
     }
 

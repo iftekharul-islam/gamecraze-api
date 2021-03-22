@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Game;
 use App\Models\Lender;
 use App\Models\Rent;
 use App\Models\User;
@@ -17,15 +18,17 @@ class SendEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     private $renterIds;
+    private $gameNames;
 
     /**
      * SendEmailToRenter constructor.
      * @param $renterIds
-     * @param $rentIds
+     * @param $gameNames
      */
-    public function __construct($renterIds)
+    public function __construct($renterIds, $gameNames)
     {
         $this->renterIds = $renterIds;
+        $this->gameNames = $gameNames;
     }
 
     /**
@@ -38,7 +41,7 @@ class SendEmailToRenter implements ShouldQueue
         $lender = auth()->user();
         $users = User::whereIn('id', $this->renterIds)->get();
 
-        $lender->notify(new LenderNotification());
+        $lender->notify(new LenderNotification($this->gameNames));
         foreach($users as $user) {
             $user->notify(new RenterNotification());
         }

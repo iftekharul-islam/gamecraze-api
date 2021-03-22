@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class LenderRepository {
 
     public function all() {
-        return Lender::with('rent.game','rent.platform','rent.diskCondition')->where('lender_id', auth()->user()->id)->get();
+        return Lender::with('rent.game','rent.platform','rent.diskCondition', 'order')->where('lender_id', auth()->user()->id)->get();
     }
 
     /**
@@ -36,6 +36,7 @@ class LenderRepository {
         $data = [];
         $rentIds = [];
         $renterIds = [];
+        $gameNames = [];
         $myTotalLends = $this->myLends();
         $cartItems = $request->get('cartItems');
         $existInCart = $this->isExistInCart($cartItems);
@@ -90,6 +91,7 @@ class LenderRepository {
             $cartIds[] = $cartItems[$i]['id'];
             $rentIds[] = $cartItems[$i]['rent_id'];
             $renterIds[] = $cartItems[$i]['renter_id'];
+            $gameNames[]= $cartItems[$i]['game_name'];
 
             $price = $cartItems[$i]['discount_price'];
             $data []= [
@@ -111,9 +113,7 @@ class LenderRepository {
         }
         Lender::insert($data);
         $rentedGames = Rent::whereIn('id', $rentIds)->update(['rented_user_id' => $lender->id]);
-        logger('rented games');
-        logger($rentedGames);
-        SendEmailToRenter::dispatch($renterIds, $rentIds);
+        SendEmailToRenter::dispatch($renterIds, $gameNames);
         CartItem::destroy($cartIds);
 
         logger('Store Successful');
@@ -179,6 +179,6 @@ class LenderRepository {
      */
     public function generateUniqueOrderNo()
     {
-        return 'GH-'.str_pad(time(), 4, 0, STR_PAD_RIGHT);
+        return 'GH-'.mt_rand(0000,9999);
     }
 }

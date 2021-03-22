@@ -37,11 +37,11 @@ class BasePriceController extends Controller
 
     public function calculate($id) {
         $gamePrice = Game::with('basePrice')->findOrFail($id);
-        $basePrice = $gamePrice->basePrice->base;
+        $basePrice = $gamePrice->basePrice;
         $prices = [
-            1 => $basePrice,
-            2 => $basePrice * $basePrice->second_week,
-            3 => $basePrice * $basePrice->third_week,
+            1 => $basePrice->base,
+            2 => $basePrice->base * $basePrice->second_week,
+            3 => $basePrice->base * $basePrice->third_week,
         ];
         return response($prices);
     }
