@@ -129,12 +129,12 @@ class basePriceRepository
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
             $price = [
                 'regular_price' => $digital_rate,
-                'discount_price' => ceil($digital_rate - (($digital_rate * config('gamehub.offer_amount')) / 100))
+                'discount_price' => ceil($digital_rate - (($digital_rate * config('gamehub.offer_discount_amount')) / 100))
             ];
         } else {
             $price = [
                 'regular_price' => $sum,
-                'discount_price' => ceil($sum - (($sum * config('gamehub.offer_amount')) / 100))
+                'discount_price' => ceil($sum - (($sum * config('gamehub.offer_discount_amount')) / 100))
             ];
         }
 

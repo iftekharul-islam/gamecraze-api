@@ -10,15 +10,15 @@ use Illuminate\Notifications\Notification;
 class RenterNotification extends Notification
 {
     use Queueable;
+    private $gameName;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * RenterNotification constructor.
+     * @param $gameName
      */
-    public function __construct()
+    public function __construct($gameName)
     {
-        //
+        $this->gameName = $gameName;
     }
 
     /**
@@ -42,7 +42,7 @@ class RenterNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Gamehub Rent Confirmation')
-            ->line('Your Game rented successfully')
+            ->line('Your Game: ' . $this->gameName . ' is rented successfully')
             ->line('Thank you for being with us');
     }
 

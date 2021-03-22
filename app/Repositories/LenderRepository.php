@@ -35,21 +35,19 @@ class LenderRepository {
         $cartIds = [];
         $data = [];
         $rentIds = [];
-        $renterIds = [];
+        $renterDetails = [];
         $gameNames = [];
         $myTotalLends = $this->myLends();
         $cartItems = $request->get('cartItems');
         $existInCart = $this->isExistInCart($cartItems);
 
         if ($existInCart === true){
-            logger('Not exist in the cart section');
             return [
                 'error' => true,
                 'message' => 'Opps !!! This item is not exist in your cart. Please rent again'
             ];
         }
         if ($myTotalLends >= $lender->rent_limit){
-            logger('Opps !!! You exceeded renting limit. Return your current games to rent new ones');
             return [
                 'error' => true,
                 'message' => "Opps !!! You exceeded renting limit. Return your current games to rent new ones "
@@ -57,7 +55,6 @@ class LenderRepository {
         }
         $existRentLimit = $lender->rent_limit - $myTotalLends;
         if (count($cartItems) > $existRentLimit){
-            logger('You can not rent more than two games');
             return [
                 'error' => true,
                 'message' => "You can not rent more than two games at a time please Choose any " . $existRentLimit . " games to proceed an order."
@@ -65,13 +62,11 @@ class LenderRepository {
         }
         $ExistLends = $this->checkRented($cartItems);
         if ($ExistLends) {
-            logger('Opps !!! The game is rented');
             return [
                 'error' => true,
                 'message' => "Opps !!! The game " . implode(", ",$ExistLends) . " you wanted to rent is not available at this moment."
             ];
         }
-        logger(' in the lend store section');
         $totalOrderAmount = $request->totalAmount + $request->deliveryCharge;
         $gameOrder = GameOrder::create([
             'order_no' => $this->generateUniqueOrderNo(),
@@ -81,7 +76,7 @@ class LenderRepository {
             'payment_method' => $request->get('paymentMethod'),
             'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
             'delivery_status' => 0,
-            'delivery_charge' => $request->get('delivery_charge') ? $request->get('delivery_charge') : 0,
+            'delivery_charge' => $request->get('deliveryCharge') ? $request->get('deliveryCharge') : 0,
             'address' => $request->address ?? '',
         ]);
 
@@ -90,7 +85,10 @@ class LenderRepository {
         for ($i = 0; $i < $itemCount; $i++) {
             $cartIds[] = $cartItems[$i]['id'];
             $rentIds[] = $cartItems[$i]['rent_id'];
-            $renterIds[] = $cartItems[$i]['renter_id'];
+            $renterDetails[] = [
+                'renter_id' => $cartItems[$i]['renter_id'],
+                'game_name' => $cartItems[$i]['game_name']
+            ];
             $gameNames[]= $cartItems[$i]['game_name'];
 
             $price = $cartItems[$i]['discount_price'];
@@ -112,11 +110,10 @@ class LenderRepository {
 
         }
         Lender::insert($data);
-        $rentedGames = Rent::whereIn('id', $rentIds)->update(['rented_user_id' => $lender->id]);
-        SendEmailToRenter::dispatch($renterIds, $gameNames);
+        Rent::whereIn('id', $rentIds)->update(['rented_user_id' => $lender->id]);
+        SendEmailToRenter::dispatch($renterDetails, $gameNames);
         CartItem::destroy($cartIds);
 
-        logger('Store Successful');
         return [
             'error' => false,
             'message' => "Store Successful"

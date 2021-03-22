@@ -17,17 +17,17 @@ use Illuminate\Queue\SerializesModels;
 class SendEmailToRenter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $renterIds;
+    private $renterDetails;
     private $gameNames;
 
     /**
      * SendEmailToRenter constructor.
-     * @param $renterIds
+     * @param $renterDetails
      * @param $gameNames
      */
-    public function __construct($renterIds, $gameNames)
+    public function __construct($renterDetails, $gameNames)
     {
-        $this->renterIds = $renterIds;
+        $this->renterDetails = $renterDetails;
         $this->gameNames = $gameNames;
     }
 
@@ -39,11 +39,10 @@ class SendEmailToRenter implements ShouldQueue
     public function handle()
     {
         $lender = auth()->user();
-        $users = User::whereIn('id', $this->renterIds)->get();
-
         $lender->notify(new LenderNotification($this->gameNames));
-        foreach($users as $user) {
-            $user->notify(new RenterNotification());
+        foreach($this->renterDetails as $item) {
+            $user = User::where('id', $item['renter_id'])->first();
+            $user->notify(new RenterNotification($item['game_name']));
         }
 
     }

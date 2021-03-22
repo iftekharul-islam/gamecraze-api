@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\RentCreateRequest;
 use App\Http\Requests\RentUpdateRequest;
+use App\Models\Game;
 use App\Models\Rent;
 use App\Transformers\RentTransformer;
 use App\Repositories\RentRepository;
@@ -124,14 +125,21 @@ class RentController extends BaseController
 
     public function checkRented(Request $request) {
         $ids = $request->ids;
-        $id = '';
-        foreach ($ids as $item){
-            $data = Rent::where('rented_user_id', '!=', null)->where('id', $item)->first();
-            if ($data) {
-                $id = $data->id;
+        $data = [];
+
+        foreach ($ids as $id) {
+            $value = Rent::where('id', $id)
+                ->where('rented_user_id', '!=', null)
+                ->first();
+
+            if ($value) {
+                $item = Game::where('id', $value->game_id)->first();
+                $data[] = $item->name;
             }
         }
-        return response()->json(compact('id'), 200);
+        $data = implode(', ', $data);
+
+        return response()->json(compact('data'), 200);
 
     }
 
