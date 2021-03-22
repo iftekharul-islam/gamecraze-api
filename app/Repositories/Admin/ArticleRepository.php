@@ -12,9 +12,9 @@ class ArticleRepository
     /**
      * @return mixed
      */
-    public function allArticle($order = 'DESC', $perPage = 5)
+    public function allArticle($order = 'DESC')
     {
-        return Article::orderBy('created_at', $order)->paginate($perPage);
+        return Article::orderBy('created_at', $order)->get();
     }
 
     /**

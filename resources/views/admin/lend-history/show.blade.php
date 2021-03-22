@@ -165,20 +165,8 @@
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tr>
-                                                        <th style="width:50%">Subtotal:</th>
-                                                        <td>BDT {{ $sum }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax (9.3%)</th>
-                                                        <td>N/A</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Delivery Fee:</th>
-                                                        <td>BDT 100</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td id="total"></td>
+                                                        <th style="width:50%">Total:</th>
+                                                        <td>BDT {{ $lend->lend_cost + $lend->commission }}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -204,18 +192,6 @@
 @endsection
 @section('js')
     <script>
-        // var startdate = "2020/06/16",
-        //     enddate = "2020/10/16";
-        // if(new Date() >= new Date(startdate) && new Date() <= new Date(enddate)) {
-        //     $("#element")
-        //         .countdown(enddate, function(event) {
-        //             $(this).text(
-        //                 event.strftime('%D days %H:%M:%S')
-        //             );
-        //         });
-        // }
-        var amount = {{ $sum }} + 100;
-        $('#total').html('BDT ' +amount);
 
         $("#get").click(function () {
 
