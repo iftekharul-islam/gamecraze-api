@@ -179,11 +179,6 @@ class LenderRepository {
      */
     public function generateUniqueOrderNo()
     {
-        $latestOrder = GameOrder::orderBy('id', 'desc')->first();
-        if ($latestOrder) {
-            $latestOrder = $latestOrder->order_no + 1;
-        }
-
-        return 'GH'.str_pad($latestOrder, 6, 0, STR_PAD_RIGHT);
+        return 'GH-'.str_pad(time(), 4, 0, STR_PAD_RIGHT);
     }
 }

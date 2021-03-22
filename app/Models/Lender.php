@@ -23,6 +23,6 @@ class Lender extends Model
     }
 
     public function order() {
-        return $this->belongsTo(GameOrder::class);
+        return $this->belongsTo(GameOrder::class, 'game_order_id', 'id');
     }
 }

@@ -25,7 +25,7 @@ class ArticleController extends Controller
         $order = $request->get('order') ?? 'ASC';
         $perPage = $request->get('perPage') ?? 5;
         $articles = $this->repository->allArticle($order, $perPage);
-        return $this->response->paginator($articles, new ArticleTransformer());
+        return $this->response->collection($articles, new ArticleTransformer());
     }
 
     /**
