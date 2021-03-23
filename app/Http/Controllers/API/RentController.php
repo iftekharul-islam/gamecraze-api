@@ -150,4 +150,26 @@ class RentController extends BaseController
         return response()->json(compact('offerAmount'), 200);
     }
 
+    public function updateCredential(Request $request)
+    {
+        $data = Rent::find($request->rent_id);
+        if ($data) {
+            $data->game_user_id = $request->game_user_id;
+            $data->game_password = $request->game_password;
+
+            $data->save();
+
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Rent games user credential updated'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Rent id not match'
+        ]);
+
+    }
+
 }
