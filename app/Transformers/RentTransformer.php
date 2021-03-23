@@ -52,7 +52,10 @@ class RentTransformer extends TransformerAbstract
         return $this->item($rent->platform, new PlatformTransformer());
     }
     public function includeDiskCondition(Rent $rent) {
-        return $this->item($rent->diskCondition, new DiskConditionTransformer());
+        if ($rent->diskCondition) {
+            return $this->item($rent->diskCondition, new DiskConditionTransformer());
+        }
+        return null;
     }
     public function includeCheckpoint(Rent $rent) {
         if ($rent->checkpoint) {

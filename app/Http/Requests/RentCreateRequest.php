@@ -27,7 +27,6 @@ class RentCreateRequest extends FormRequest
             'game_id' =>  'required|integer',
             'max_week' =>  'required|integer',
             'platform_id' =>  'required|integer',
-            'disk_condition_id' =>  'required|integer',
             'rented_user_id' =>  'nullable|integer',
         ];
     }
