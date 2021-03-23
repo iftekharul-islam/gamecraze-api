@@ -168,8 +168,7 @@
                                                                     $discount = 0;
                                                                     $grandTotalDiscount = 0;
                                                                     if (config('gamehub.offer_discount') == true) {
-                                                                        $discountFromPercentage = 100 - config('gamehub.offer_discount_amount');
-                                                                        $grandTotalDiscount = ceil(($amount * 100)/$discountFromPercentage);
+                                                                        $grandTotalDiscount = ceil($amount + ($amount * config('gamehub.offer_discount_amount'))/100);
                                                                         $discount = $grandTotalDiscount - $amount;
                                                                     }
 
