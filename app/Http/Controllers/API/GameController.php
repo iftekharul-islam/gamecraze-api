@@ -54,6 +54,8 @@ class GameController extends BaseController
     public function allRentPosts()
     {
         $rents = $this->gameRepository->allRentPosts();
+        logger('rents data');
+        logger($rents);
         return $this->response->collection($rents, new RentTransformer());
     }
 

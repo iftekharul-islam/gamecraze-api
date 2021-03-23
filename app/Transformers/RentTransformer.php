@@ -34,7 +34,7 @@ class RentTransformer extends TransformerAbstract
             'status' => $rent->status,
             'renter' => $rent->renter,
             'disk_type' => $rent->disk_type,
-            'price_combination' => $this->gamePriceCalculation($rent->game_id, '1', $rent->disk_type),
+//            'price_combination' => $this->gamePriceCalculation($rent->game_id, '1', $rent->disk_type),
         ];
     }
 
@@ -71,42 +71,42 @@ class RentTransformer extends TransformerAbstract
      * @param $diskType
      * @return array|void
      */
-    public function gamePriceCalculation($gameId, $lendWeek, $diskType)
-    {
-        $game = Game::with('basePrice')->findOrFail($gameId);
-        $basePrice = $game->basePrice;
-        $second_week = $basePrice->second_week;
-        $third_week = $basePrice->third_week;
-        $sum = 0;
-        $mapping = [
-            1 => 1,
-            2 => $second_week,
-            3 => $third_week,
-        ];
-        for ($i = 1; $i <= $lendWeek; $i++) {
-            if (isset($mapping[$i])) {
-                $sum += $basePrice->base * $mapping[$i];
-            } else {
-                $lendWeek = $lendWeek - 3;
-                if ($lendWeek < 1){
-                    return;
-                }
-                $i = 0;
-            }
-        }
-        if ($diskType == config('gamehub.disk_type.digital_copy')){
-            $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
-            $price = [
-                'regular_price' => $digital_rate,
-                'discount_price' => ceil($digital_rate - (($digital_rate * config('gamehub.offer_discount_amount')) / 100))
-            ];
-        } else {
-            $price = [
-                'regular_price' => $sum,
-                'discount_price' => ceil($sum - (($sum * config('gamehub.offer_discount_amount')) / 100))
-            ];
-        }
-
-        return $price;
-    }
+//    public function gamePriceCalculation($gameId, $lendWeek, $diskType)
+//    {
+//        $game = Game::with('basePrice')->findOrFail($gameId);
+//        $basePrice = $game->basePrice;
+//        $second_week = $basePrice->second_week;
+//        $third_week = $basePrice->third_week;
+//        $sum = 0;
+//        $mapping = [
+//            1 => 1,
+//            2 => $second_week,
+//            3 => $third_week,
+//        ];
+//        for ($i = 1; $i <= $lendWeek; $i++) {
+//            if (isset($mapping[$i])) {
+//                $sum += $basePrice->base * $mapping[$i];
+//            } else {
+//                $lendWeek = $lendWeek - 3;
+//                if ($lendWeek < 1){
+//                    return;
+//                }
+//                $i = 0;
+//            }
+//        }
+//        if ($diskType == config('gamehub.disk_type.digital_copy')){
+//            $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
+//            $price = [
+//                'regular_price' => $digital_rate,
+//                'discount_price' => ceil($digital_rate - (($digital_rate * config('gamehub.offer_discount_amount')) / 100))
+//            ];
+//        } else {
+//            $price = [
+//                'regular_price' => $sum,
+//                'discount_price' => ceil($sum - (($sum * config('gamehub.offer_discount_amount')) / 100))
+//            ];
+//        }
+//
+//        return $price;
+//    }
 }
