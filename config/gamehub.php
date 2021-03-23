@@ -17,14 +17,14 @@ return [
 
     ],
     'date_format' => 'd M Y',
-    'commission' => 0.15,
     'disk_type' => [
         'digital_copy' => 0,
         'physical_copy' => 1,
     ],
-    'digital_game_discount' => 20,
-    'offer_amount' => 15,
-    'delivery_charge' => 60,
+    'commission' => 0.15,
     'discount_on_commission' => true,
-    'commission_amount' => 15,
+    'digital_game_discount' => 20,
+    'delivery_charge' => 60,
+    'offer_discount_amount' => 15,
+    'offer_discount' => true,
 ];

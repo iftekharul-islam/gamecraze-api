@@ -148,6 +148,8 @@
                                                         <tr>
                                                             <th>SL</th>
                                                             <th>Game Name</th>
+                                                            <th>Original Amount</th>
+                                                            <th>Discount Amount</th>
                                                             <th>Amount</th>
                                                             <th>Start date</th>
                                                             <th>Week</th>
@@ -161,8 +163,21 @@
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td><a href="{{ route('game.show', $lend->rent->game_id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></td>
-                                                                <td>{{ $lend->lend_cost + $lend->commission }}</td>
-{{--                                                                <td>{{ isset($lend->rent->availability) ? date('d M, Y', strtotime($lend->rent->availability)) : '' }}</td>--}}
+                                                                @php
+                                                                    $amount = $lend->lend_cost + $lend->commission;
+                                                                    $discount = 0;
+                                                                    $grandTotalDiscount = 0;
+                                                                    if (config('gamehub.offer_discount') == true) {
+                                                                        $discountFromPercentage = 100 - config('gamehub.offer_discount_amount');
+                                                                        $grandTotalDiscount = ceil(($amount * 100)/$discountFromPercentage);
+                                                                        $discount = $grandTotalDiscount - $amount;
+                                                                    }
+
+                                                                @endphp
+
+                                                                <td>{{ $grandTotalDiscount == 0 ? $amount : $grandTotalDiscount}}</td>
+                                                                <td>{{ $discount }}</td>
+                                                                <td>{{ $amount }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php
@@ -211,24 +226,16 @@
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tr>
-                                                        <th style="width:50%">Original Amount (BDT):</th>
-                                                        <td class="text-right">{{ number_format((($order->amount + $order->commission) + (($order->amount + $order->commission) * config('gamehub.commission_amount')/100) ), 2) }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width:50%">Discount amount (BDT):</th>
-                                                        <td class="text-right">{{ number_format((($order->amount + $order->commission) * config('gamehub.commission_amount')/100), 2) }}</td>
-                                                    </tr>
-                                                    <tr>
                                                         <th style="width:50%">Subtotal (BDT):</th>
-                                                        <td class="text-right">{{ number_format(($order->amount + $order->commission), 2) }}</td>
+                                                        <td class="text-right">{{ $order->amount + $order->commission - $order->delivery_charge }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Delivery Fee (BDT):</th>
-                                                        <td class="text-right">{{ number_format($order->delivery_charge, 2) }}</td>
+                                                        <td class="text-right">{{ ceil($order->delivery_charge) }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total (BDT):</th>
-                                                        <td id="total" class="text-right">{{ number_format($order->amount + $order->commission + $order->delivery_charge, 2) }}</td>
+                                                        <td id="total" class="text-right">{{ $order->amount + $order->commission }}</td>
                                                     </tr>
                                                 </table>
                                             </div>
