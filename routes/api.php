@@ -153,6 +153,10 @@
             $api->get('cart-items', 'App\Http\Controllers\API\CartItemController@index');
             $api->post('cart-item/create', 'App\Http\Controllers\API\CartItemController@store');
             $api->post('cart-item/destroy', 'App\Http\Controllers\API\CartItemController@destroy');
+            //update renter game credential
+            $api->post('game-credential-update', 'App\Http\Controllers\API\RentController@updateCredential');
+
+
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

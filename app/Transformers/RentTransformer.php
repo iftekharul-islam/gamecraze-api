@@ -35,6 +35,8 @@ class RentTransformer extends TransformerAbstract
             'renter' => $rent->renter,
             'disk_type' => $rent->disk_type,
             'price_combination' => $this->gamePriceCalculation($rent->game_id, '1', $rent->disk_type),
+            'game_user_id' => $rent->game_user_id,
+            'game_password' => $rent->game_password,
         ];
     }
 
