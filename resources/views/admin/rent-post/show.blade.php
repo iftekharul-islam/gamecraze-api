@@ -115,7 +115,7 @@
                                         <address>
                                             <strong>Name :</strong><span> {{ $rent->game->name }}</span><br>
                                             <strong>Description :</strong><span>{!! $rent->game->description !!}</span><br>
-                                            <strong>Platform: </strong><span> <img width="35px" height="30px" src="{{ asset($rent->platform->url) }}" alt=""></span><br>
+                                            <strong>Platform: </strong><span> {{ $rent->platform->name }}</span><br>
                                             <strong>Publisher :</strong><span> {{ $rent->game->publisher }}</span><br>
                                             @isset($rent->game_user_id) <strong>Game User ID :</strong><span> {{ $rent->game_user_id }}</span><br> @endisset
                                             @isset($rent->game_password) <strong>Game Password :</strong><span> {{ $rent->game_password }}</span><br> @endisset
@@ -135,20 +135,22 @@
                                     <!-- /.col -->
                                 </div>
                                 <hr class="fancy4">
-                                <div class="row">
-                                    <div class="col">
-                                        <span>Disk image:</span>
-                                        <div class="disk-preview disk">
-                                            <img src="{{ asset('storage/rent-image/'. $rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                @if($rent->disk_type == 1)
+                                    <div class="row">
+                                        <div class="col">
+                                            <span>Disk image:</span>
+                                            <div class="disk-preview disk">
+                                                <img src="{{ asset('storage/rent-image/'. $rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <span>Cover image</span>
+                                            <div class="cover-preview disk">
+                                                <img src="{{ asset('storage/rent-image/'. $rent->disk_image) }}" class="img-thumbnail">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <span>Cover image</span>
-                                        <div class="cover-preview disk">
-                                            <img src="{{ asset('storage/rent-image/'. $rent->disk_image) }}" class="img-thumbnail">
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
                             </div><!-- /.card-body -->
                         </div>
                         <!-- /.nav-tabs-custom -->

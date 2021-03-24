@@ -71,7 +71,7 @@ class TransactionController extends BaseController
         $due = $total_lend_amount - $total_paid_amount;
 
         $transactions_details = [
-            'total_earning' => $total_paid_amount,
+            'total_earning' => ceil($total_paid_amount),
             'due' => $due,
         ];
 
