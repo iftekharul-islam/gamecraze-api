@@ -41,6 +41,7 @@ class SendResetPasswordLinkToEmail implements ShouldQueue
         $token = hash('sha256', Str::random(30));
         $link = env('GAMEHUB_FRONT') . '/update-password/' . $token;
         $expires = Carbon::now()->addHours(1)->format('Y-m-d H:i:s');
+
         $create = ResetPasswordToken::create([
             'user_id' => $this->user->id,
             'token' => $this->user->id,

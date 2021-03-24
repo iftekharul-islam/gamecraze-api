@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 class LenderNotification extends Notification
 {
     use Queueable;
-    private $gameNames;
+    public $gameNames;
 
     /**
      * LenderNotification constructor.
