@@ -92,6 +92,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request)
     {
+//        return $request->all();
         $this->userRepository->update($request);
         return redirect()->route('user.all')->with('status', 'User successfully updated!');
     }
