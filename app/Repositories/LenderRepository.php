@@ -13,6 +13,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\Orders\Entities\Models\Order;
 
 class LenderRepository {
 
@@ -69,7 +70,7 @@ class LenderRepository {
         }
         $totalOrderAmount = $request->totalAmount + $request->deliveryCharge;
         $gameOrder = GameOrder::create([
-            'order_no' => $this->generateUniqueOrderNo(),
+            'order_no' => $this->generateOrderNo(),
             'user_id' => $lender->id,
             'amount' => $totalOrderAmount,
             'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($totalOrderAmount),
@@ -171,11 +172,23 @@ class LenderRepository {
 
     }
 
-    /***
+    /**
      * @return string
      */
-    public function generateUniqueOrderNo()
+    public function generateOrderNo()
     {
-        return 'GH-'.mt_rand(0000,9999);
+        $latestOrder = GameOrder::orderBy('id', 'desc')->first();
+        if ($latestOrder) {
+            $lastNumber = explode('-', $latestOrder->order_no);
+            $lastNumber = preg_replace("/[^0-9]/", "", end($lastNumber));
+            $orderNo = 'GH-' . str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
+            if (GameOrder::where('order_no', $orderNo)->count() > 0) {
+                $this->generateOrderNo();
+            }
+
+            return $orderNo;
+        }
+
+        return 'GH-' . date('Y') . date('m') . '-001';
     }
 }

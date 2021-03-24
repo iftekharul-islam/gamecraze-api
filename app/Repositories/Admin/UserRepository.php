@@ -40,7 +40,7 @@ class UserRepository
             $user->phone_number = $data['phone_number'];
         }
         if (isset($data['password'])) {
-            $user->password = Hash::make($user['password']);
+            $user->password = bcrypt($user['password']);
         }
         if (isset($data['is_verified'])) {
             $user->is_verified = $data['is_verified'];
