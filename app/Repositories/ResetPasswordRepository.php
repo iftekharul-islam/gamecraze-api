@@ -65,7 +65,7 @@ class ResetPasswordRepository {
                     'id' => $user->id,
                     'identification_image' => asset($user->identification_image),
                     'identification_number' => $user->identification_number,
-                    'image' => asset($user->image),
+                    'image' => isset($user->image) ? asset($user->image): null,
                     'is_phone_verified' => $user->is_phone_verified,
                     'is_verified' => $user->is_verified,
                     'name' => $user->name,

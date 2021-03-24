@@ -84,8 +84,8 @@ class OtpRepository
                 ];
             }
             $token = $user->createToken($user->phone_number . '-' . now());
-            $user['image'] = $user->image ? asset($user->image) : '';
-            $user->cover =  $user->cover ? asset( $user->cover) : '';
+            $user['image'] = $user->image ? asset($user->image) : null;
+            $user->cover =  $user->cover ? asset( $user->cover) : null;
             $user->identification_image = $user->identification_image ? asset($user->identification_image) : '';
             return [
                 'error' => false,
