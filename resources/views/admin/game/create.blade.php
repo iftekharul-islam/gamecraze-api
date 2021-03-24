@@ -137,7 +137,7 @@
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
-                                <textarea class="ckeditor form-control" id="description" name="description"
+                                <textarea class="form-control" id="description" name="description"
                                           placeholder="Enter Description" required></textarea>
                                 @if ($errors->has('description'))
                                     <span

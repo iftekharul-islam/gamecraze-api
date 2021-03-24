@@ -85,7 +85,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea type="text" class="ckeditor form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
+                                <textarea type="text" class="form-control" id="mytextarea" name="description">{{ $game->description }}</textarea>
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('base_price_id') ? ' has-error' : '' }}">
