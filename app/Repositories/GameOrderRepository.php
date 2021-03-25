@@ -35,15 +35,12 @@ class GameOrderRepository
             $order->save();
 
             if ($status == 4) {
-                logger('in the pro');
                 SentOrderProcessingEmail::dispatch($order);
             }
             if ($status == 2) {
-                logger('in the delivered');
                 SentOrderDeliveredEmail::dispatch($order);
             }
             if ($status == 1) {
-                logger('in the completed');
                 SentOrderCompletedEmail::dispatch($order);
             }
             return true;
