@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\RenterPostAcceptMail;
 use App\Models\User;
 use App\Notifications\RenterPostAcceptNotification;
 use Illuminate\Bus\Queueable;
@@ -9,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class AcceptEmailToRenter implements ShouldQueue
 {
@@ -34,6 +36,8 @@ class AcceptEmailToRenter implements ShouldQueue
      */
     public function handle()
     {
-        $this->renter->notify(new RenterPostAcceptNotification($this->game));
+        if ($this->renter->email != null){
+            Mail::to($this->renter->email)->queue(new RenterPostAcceptMail($this->renter->name, $this->game));
+        }
     }
 }

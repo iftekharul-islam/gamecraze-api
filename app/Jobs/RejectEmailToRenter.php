@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Mail\RenterPostRejectMail;
+use App\Models\Game;
 use App\Models\User;
 use App\Notifications\RenterPostEjectNotification;
 use Illuminate\Bus\Queueable;
@@ -9,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class RejectEmailToRenter implements ShouldQueue
 {
@@ -34,6 +37,8 @@ class RejectEmailToRenter implements ShouldQueue
      */
     public function handle()
     {
-        $this->renter->notify(new RenterPostEjectNotification($this->rent));
+        if ($this->renter->email != null){
+            Mail::to($this->renter->email)->queue(new RenterPostRejectMail($this->renter->name, $this->rent));
+        }
     }
 }
