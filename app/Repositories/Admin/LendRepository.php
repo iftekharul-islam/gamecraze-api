@@ -30,6 +30,7 @@ class LendRepository
         if ($status == 1 || $status == 4) {
             $rentPost = Rent::findOrFail($lender->rent_id);
             $rentPost->rented_user_id = null;
+            $rentPost->rented_lend_id = null;
             $rentPost->save();
 
         }
