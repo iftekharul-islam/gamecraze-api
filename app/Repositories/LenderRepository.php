@@ -107,10 +107,6 @@ class LenderRepository {
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
             ]);
-
-            logger('$data');
-            logger($data);
-
             Rent::where('id', $cartItems[$i]['rent_id'])
                 ->update([
                     'rented_user_id' => $lender->id,
