@@ -172,4 +172,12 @@ class RentController extends BaseController
 
     }
 
+    public function gameExistInRent($slug)
+    {
+        $game = Game::where('slug', $slug)->first();
+        $data = Rent::where('game_id', $game->id)->count();
+
+        return response()->json(compact('data'), 200);
+    }
+
 }
