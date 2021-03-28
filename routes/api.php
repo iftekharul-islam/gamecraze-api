@@ -109,7 +109,8 @@
         //notice
         $api->get('notice', 'App\Http\Controllers\API\NoticeController@index');
         $api->post('check-rented', 'App\Http\Controllers\API\RentController@checkRented');
-
+        // games exists in rent table
+        $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
@@ -155,8 +156,6 @@
             $api->post('cart-item/destroy', 'App\Http\Controllers\API\CartItemController@destroy');
             //update renter game credential
             $api->post('game-credential-update', 'App\Http\Controllers\API\RentController@updateCredential');
-
-
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
