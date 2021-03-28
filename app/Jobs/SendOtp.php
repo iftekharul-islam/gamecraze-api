@@ -44,16 +44,17 @@ class SendOtp implements ShouldQueue
 
     public function sentSmsBydataSoft($phone_number, $message)
     {
+
         $base_url_non_masking = config("otp.sms_base_url");
         $api_key = config("otp.sms_api_key");
 
         $url = $base_url_non_masking . "?api_key=" . $api_key . "&smsType=text&mobileNo=" . $phone_number . "&smsContent=" . $message;
 
         $client = new Client();
-        logger('$url');
-        logger($url);
         try {
-            $request = $client->get($url);
+            if (env('APP_ENV') == 'production'){
+                $request = $client->get($url);
+            }
 
             OneTimePassword::create([
                 'phone_number' => $this->phone,

@@ -13,14 +13,14 @@ use League\Fractal\TransformerAbstract;
 
 class RentTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['game', 'user', 'platform', 'diskCondition', 'checkpoint', 'renter'];
+    protected $availableIncludes = ['game', 'user', 'platform', 'diskCondition', 'checkpoint', 'renter', 'lend'];
 
     public function transform(Rent $rent)
     {
         // specify what elements are going to be visible to the API
         return [
             'id' => $rent->id,
-            'user_id' => $rent->user_id,
+            'rent_id' => $rent->user_id,
             'game_id' =>  $rent->game_id,
             'max_number_of_week' =>  $rent->max_week,
             'availability_from_date' =>  $rent->availability,
@@ -32,11 +32,11 @@ class RentTransformer extends TransformerAbstract
             'disk_image' =>  asset('/storage/rent-image/' . $rent->disk_image),
             'rented_user_id' =>  $rent->rented_user_id,
             'status' => $rent->status,
-            'renter' => $rent->renter,
             'disk_type' => $rent->disk_type,
             'price_combination' => $this->gamePriceCalculation($rent->game_id, '1', $rent->disk_type),
             'game_user_id' => $rent->game_user_id,
             'game_password' => $rent->game_password,
+            'rented_lend_id' => $rent->rented_lend_id,
         ];
     }
 
@@ -66,6 +66,12 @@ class RentTransformer extends TransformerAbstract
     public function includeRenter(Rent $rent) {
         if ($rent->renter) {
             return $this->item($rent->renter, new UserTransformer());
+        }
+        return null;
+    }
+    public function includeLend(Rent $rent) {
+        if ($rent->renter) {
+            return $this->item($rent->lend, new LendTransformers());
         }
         return null;
     }

@@ -6,6 +6,7 @@
     <title>Gamehub Email</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/63d4a93a06.js" crossorigin="anonymous"></script>
 </head>
 
 <body style="position: relative; min-height: 100vh; width: 80%;margin: auto;align-items: center; justify-content: space-between;">
@@ -40,7 +41,7 @@
                 <tr>
                     <td align="center">
                         <h5>Dear {{ $name }}, </h5>
-                        <p>Thanks for trusting GameHub. Your lend post for {{ $game }} is rejected due : {{ $reason }}.
+                        <p>Thanks for trusting GameHub. Your Rent post for {{ $game }} is rejected due : {{ $reason }}.
                             If you want to earn money by lending your unused games make sure your games maintaining our rules.
                             Better luck next time!</p>
                     </td>
@@ -60,12 +61,12 @@
         <td height="100"></td>
     </tr>
 </table>
-<div class="footer" style="position: absolute; bottom: 0; width: 100%; height: 80px; background: black;">
+<div class="footer" style="width: 100%; height: 80px; background: black;">
     <div style="display: flex;align-items: center; justify-content: space-between; width: 100%; margin: auto; color: white; height: 100%;">
         <div class="content" style="margin-left: 20px">
             <p> ©2021 Game Hub.</p>
         </div>
-        <div class="content">
+        <div class="content" style="margin: auto">
             <p> Powered By: Augnitive</p>
         </div>
         <div class="content" style="display: flex; align-items: center;margin-right: 20px">
