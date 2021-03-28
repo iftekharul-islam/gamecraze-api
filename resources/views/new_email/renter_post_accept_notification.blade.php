@@ -58,12 +58,12 @@
             <td height="100"></td>
         </tr>
     </table>
-    <div class="footer" style="position: absolute; bottom: 0; width: 100%; height: 80px; background: black;">
+    <div class="footer" style="width: 100%; height: 80px; background: black;">
         <div style="display: flex;align-items: center; justify-content: space-between; width: 100%; margin: auto; color: white; height: 100%;">
-            <div class="content" style="margin-left: 20px">
+            <div class="content" style="margin-left: 20px; vertical-align: center">
                 <p> ©2021 Game Hub.</p>
             </div>
-            <div class="content">
+            <div class="content" style="margin: auto">
                 <p> Powered By: Augnitive</p>
             </div>
             <div class="content" style="display: flex; align-items: center;margin-right: 20px">

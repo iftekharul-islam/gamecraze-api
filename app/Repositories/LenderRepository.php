@@ -13,6 +13,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Modules\Orders\Entities\Models\Order;
 
 class LenderRepository {
@@ -93,7 +94,7 @@ class LenderRepository {
             $gameNames[]= $cartItems[$i]['game_name'];
 
             $price = $cartItems[$i]['discount_price'];
-            $data []= [
+            $data = Lender::create([
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent_id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
@@ -105,13 +106,14 @@ class LenderRepository {
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
+            ]);
+            Rent::where('id', $cartItems[$i]['rent_id'])
+                ->update([
+                    'rented_user_id' => $lender->id,
+                    'rented_lend_id' => $data->id
+                ]);
 
         }
-        Lender::insert($data);
-        Rent::whereIn('id', $rentIds)->update(['rented_user_id' => $lender->id]);
         SendEmailToRenter::dispatch($renterDetails, $gameNames);
         CartItem::destroy($cartIds);
 

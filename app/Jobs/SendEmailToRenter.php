@@ -47,7 +47,6 @@ class SendEmailToRenter implements ShouldQueue
 
         foreach($this->renterDetails as $item) {
             $user = User::where('id', $item['renter_id'])->first();
-
             Mail::to($user->email)->queue(new SendRenterNotificationMail($item['game_name']));
         }
 

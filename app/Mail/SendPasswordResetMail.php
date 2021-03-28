@@ -21,7 +21,6 @@ class SendPasswordResetMail extends Mailable
     {
         $this->name = $name;
         $this->link = $link;
-        logger('name: '. $this->name.', link: '. $this->link);
     }
 
     /**
