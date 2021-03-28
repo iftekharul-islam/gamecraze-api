@@ -70,7 +70,7 @@ class RentTransformer extends TransformerAbstract
         return null;
     }
     public function includeLend(Rent $rent) {
-        if ($rent->renter) {
+        if ($rent->lend) {
             return $this->item($rent->lend, new LendTransformers());
         }
         return null;
