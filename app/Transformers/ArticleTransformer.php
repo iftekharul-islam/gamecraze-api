@@ -23,7 +23,7 @@ class ArticleTransformer extends TransformerAbstract
             'title' => $article->title,
             'description' => $article->description,
             'created' => Carbon::parse($article->created_at)->format('F d, Y'),
-            'thumbnail' => asset('/'. $article->thumbnail),
+            'thumbnail' => $article->thumbnail != null ? asset('/'. $article->thumbnail) : null,
             'status' => $article->status,
         ];
     }

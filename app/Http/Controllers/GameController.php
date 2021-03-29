@@ -98,7 +98,6 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        logger($request->all());
         $this->gameRepository->update($request, $id);
         return redirect()->route('all-game')->with('status', 'Game updated successfully');
     }
