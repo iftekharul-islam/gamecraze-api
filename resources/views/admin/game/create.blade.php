@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name">Name</label>
+                                <label for="name">Name</label> <label for="name" class="text-danger">*</label>
                                 <input name="name" class="form-control" placeholder="Enter a game name..." required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
@@ -46,7 +46,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('platforms') ? ' has-error' : '' }}">
-                                <label for="platforms">Platforms</label>
+                                <label for="platforms">Platforms</label><label for="platforms" class="text-danger">*</label>
                                 @if (count($platforms) > 0)
                                     <select name="platforms[]" id="platforms" class="form-control selectpicker" multiple
                                             data-live-search="true" required>
@@ -64,7 +64,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('genre') ? ' has-error' : '' }}">
-                                <label for="genres">Genres</label>
+                                <label for="genres">Genres</label><label for="genres" class="text-danger">*</label>
                                 @if (count($genres) > 0)
                                     <select name="genres[]" id="genres" class="form-control selectpicker" multiple
                                             data-live-search="true" required>
@@ -82,7 +82,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('released') ? ' has-error' : '' }}">
-                                <label for="released">Release date</label>
+                                <label for="released">Release date</label><label for="released" class="text-danger">*</label>
                                 <input type="date" class="form-control" id="released" name="released"
                                        placeholder="Enter Game released date" required>
                                 @if ($errors->has('released'))
@@ -91,7 +91,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('publisher') ? ' has-error' : '' }}">
-                                <label for="publisher">Publisher</label>
+                                <label for="publisher">Publisher</label><label for="publisher" class="text-danger">*</label>
                                 <input type="text" class="form-control" id="publisher" name="publisher"
                                        placeholder="Enter Game publisher" required>
                                 @if ($errors->has('publisher'))
@@ -100,7 +100,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('developer') ? ' has-error' : '' }}">
-                                <label for="developer">Developer</label>
+                                <label for="developer">Developer</label><label for="developer" class="text-danger">*</label>
                                 <input type="text" class="form-control" id="developer" name="developer"
                                        placeholder="Enter Game developer" required>
                                 @if ($errors->has('developer'))
@@ -109,7 +109,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                <label for="rating">Rating (Out of 100)</label>
+                                <label for="rating">Rating (Out of 100)</label><label for="rating" class="text-danger">*</label>
                                 <input type="number" class="form-control" id="rating" name="rating"
                                        placeholder="Enter Game rating" required>
                                 @if ($errors->has('rating'))
@@ -118,7 +118,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('supported_language') ? ' has-error' : '' }}">
-                                <label for="developer">Supported Languages</label>
+                                <label for="supported_language">Supported Languages</label><label for="developer" class="text-danger">*</label>
                                 <input type="text" class="form-control" id="supported_language" name="supported_language"
                                        placeholder="Enter Game supported languages" required>
                                 @if ($errors->has('supported_language'))
@@ -127,7 +127,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('official_website') ? ' has-error' : '' }}">
-                                <label for="developer">Official Website Link</label>
+                                <label for="official_website">Official Website Link</label><label for="official_website" class="text-danger">*</label>
                                 <input type="text" class="form-control" id="official_website" name="official_website"
                                        placeholder="Enter Game official website" required>
                                 @if ($errors->has('official_website'))
@@ -136,7 +136,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                <label for="description">Description</label>
+                                <label for="description">Description</label><label for="description" class="text-danger">*</label>
                                 <textarea class="form-control" id="description" name="description"
                                           placeholder="Enter Description" required></textarea>
                                 @if ($errors->has('description'))
@@ -146,7 +146,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('base_price_id') ? ' has-error' : '' }}">
-                                <label for="price">Base Price</label>
+                                <label for="price">Base Price</label><label for="price" class="text-danger">*</label>
                                 @if(count($basePrices) > 0)
                                     <select name="base_price_id" id="base_price_id" class="form-control selectpicker"
                                             data-live-search="true" required>
@@ -249,7 +249,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('image_source') ? ' has-error' : '' }}">
-                                <label for="image_source">Image Source</label>
+                                <label for="image_source">Image Source</label><label for="image_source" class="text-danger">*</label>
                                 <input type="text" class="form-control" id="image_source" name="image_source"
                                        placeholder="Enter image source name" required>
                                 @if ($errors->has('image_source'))
