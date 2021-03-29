@@ -31,10 +31,10 @@ class GameCreateRequest extends FormRequest
             'publisher' => 'required',
             'developer' => 'required',
             'rating' => 'required',
-            'trending_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'cover_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'poster_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'game_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'trending_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'cover_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'poster_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'game_image' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
             'image_source' => 'required',
         ];
     }
