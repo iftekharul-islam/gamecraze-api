@@ -26,14 +26,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{ $rents }}</h3>
+                                <h3>{{ $elite }}</h3>
 
-                                <p>Rent Post</p>
+                                <p>Elite User</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-ios-bookmarks"></i>
+                                <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="{{ route('rentPost.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('user.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -41,14 +41,14 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>{{ $lends }}</h3>
+                                <h3>{{ $rookie }}</h3>
 
-                                <p>On Rent</p>
+                                <p>Rookie User</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-ios-book"></i>
+                                <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="{{ route('lend.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('user.all') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -117,7 +117,7 @@
                     <!-- canvas -->
                     <section class="col-lg-6 connectedSortable">
                         <!-- Map card -->
-                        <div class="card bg-gradient-primary">
+                        <div class="card bg-gradient-primary d-none">
                             <!-- /.card-body-->
                             <div class="card-footer bg-transparent">
                                 <div class="row">
@@ -145,12 +145,27 @@
                                 <!-- small box -->
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        <h3>{{ $elite }}</h3>
+                                        <h3>{{ $rents }}</h3>
 
-                                        <p>Elite User</p>
+                                        <p>Rent Post</p>
+                                        <table>
+                                            <tr>
+                                                <td>Pending</td>
+                                                <td>{{ $pending_post }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rejected</td>
+                                                <td>{{ $reject_post }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Approved</td>
+                                                <td>{{ $approved_post }}</td>
+                                            </tr>
+                                        </table>
                                     </div>
+
                                     <div class="icon">
-                                        <i class="ion ion-ios-book"></i>
+                                        <i class="ion ion-ios-bookmarks"></i>
                                     </div>
                                 </div>
                             </div>
@@ -159,12 +174,27 @@
                                 <!-- small box -->
                                 <div class="small-box bg-warning">
                                     <div class="inner">
-                                        <h3>{{ $rookie }}</h3>
+                                        <h3>{{ $lends }}</h3>
 
-                                        <p>Rookie User</p>
+                                        <p>On Rent</p>
+                                        <table>
+                                            <tr>
+                                                <td>Pending</td>
+                                                <td>{{ $pending_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Processing</td>
+                                                <td>{{ $processing_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Delivered</td>
+                                                <td>{{ $delivered_rent }}</td>
+                                            </tr>
+                                        </table>
                                     </div>
+
                                     <div class="icon">
-                                        <i class="ion ion-person-add"></i>
+                                        <i class="ion ion-ios-book"></i>
                                     </div>
                                 </div>
                             </div>
