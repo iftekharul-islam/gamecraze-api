@@ -27,4 +27,5 @@ return [
     'delivery_charge' => 60,
     'offer_discount_amount' => 15,
     'offer_discount' => true,
+    'pagination' => 20,
 ];
