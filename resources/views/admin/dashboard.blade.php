@@ -143,6 +143,42 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3>{{ $lends }}</h3>
+
+                                        <p>On Rent</p>
+                                        <table>
+                                            <tr>
+                                                <td>Pending</td>
+                                                <td>{{ $pending_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rejected</td>
+                                                <td>{{ $rejected_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Processing</td>
+                                                <td>{{ $processing_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Delivered</td>
+                                                <td>{{ $delivered_rent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Completed</td>
+                                                <td>{{ $completed_rent }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="icon">
+                                        <i class="ion ion-ios-book"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!-- small box -->
                                 <div class="small-box bg-danger">
                                     <div class="inner">
                                         <h3>{{ $rents }}</h3>
@@ -166,35 +202,6 @@
 
                                     <div class="icon">
                                         <i class="ion ion-ios-bookmarks"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-lg-6">
-                                <!-- small box -->
-                                <div class="small-box bg-warning">
-                                    <div class="inner">
-                                        <h3>{{ $lends }}</h3>
-
-                                        <p>On Rent</p>
-                                        <table>
-                                            <tr>
-                                                <td>Pending</td>
-                                                <td>{{ $pending_rent }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Processing</td>
-                                                <td>{{ $processing_rent }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Delivered</td>
-                                                <td>{{ $delivered_rent }}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div class="icon">
-                                        <i class="ion ion-ios-book"></i>
                                     </div>
                                 </div>
                             </div>
