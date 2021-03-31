@@ -14,10 +14,28 @@ use App\Notifications\RenterNotification;
 class RentRepository
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function all() {
-        return Rent::with('game', 'user', 'platform', 'diskCondition')->orderBy('created_at','DESC')->get();
+    public function all($request) {
+
+        $rent = Rent::query();
+
+        if ($request->disk_type == 1) {
+            $rent->where('disk_type', $request->disk_type);
+        }
+        if ($request->disk_type != 1 && $request->disk_type != null) {
+            $rent->where('disk_type', 0);
+        }
+        if ($request->status == 1) {
+            $rent->where('status', $request->status);
+        }
+        if ($request->status != 1 && $request->status != null) {
+            $rent->where('status', 0);
+        }
+
+        return $rent->with('game', 'user', 'platform', 'diskCondition')
+            ->orderBy('created_at','DESC')
+            ->paginate(config('gamehub.pagination'));
     }
 
     /**

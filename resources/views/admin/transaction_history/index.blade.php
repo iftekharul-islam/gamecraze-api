@@ -79,7 +79,8 @@
                                                 @endif
                                             @endforeach
                                             <tr>
-                                                <td>{{ $item->name }}</td>
+
+                                                <td><a href="{{ route('user.show', $item->id) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
                                                 <td>{{ $item->amount + $item->commission }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->commission }}</td>
