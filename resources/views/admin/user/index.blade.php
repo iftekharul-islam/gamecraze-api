@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All users</h1>
+                        <h1>All users <span class="badge badge-primary">{{ $users->total() }}</span></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -43,6 +43,32 @@
                     </div>
                 @endif
                 <div class="row">
+                    <div class="col-8">
+                        <form action="{{ route('user.all') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3 form-group">
+                                            <label for="type">User Type :</label>
+                                            <select name="user_type" id="type" class="form-control">
+                                                <option selected disabled>Select user type</option>
+                                                <option value="0" {{ Request::get('user_type') != 1 && Request::get('user_type') != null ? 'selected' : ''}}>Rookie</option>
+                                                <option value="1" {{ Request::get('user_type') == 1 ? 'selected' : ''}}>Elite</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-9 form-group">
+                                            <label>User Search :</label>
+                                            <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
+                                                   placeholder="Search Here by phone/email...">
+                                        </div>
+                                        <div class="col-12 form-group float-right">
+                                            <button type="submit" class="btn btn-primary float-right">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -56,6 +82,7 @@
                                         <th>SL.</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Phone number</th>
                                         <th>Role(s)</th>
                                         <th>Status</th>
                                         <th>User type</th>
@@ -66,8 +93,9 @@
                                     @foreach($users as $key => $user)
                                         <tr>
                                             <td>{{ $key + $users->firstItem() }}</td>
-                                            <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a></td>
-                                            <td>{{ $user->email ? $user->email : $user->phone_number }}</td>
+                                            <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }} {{ $user->last_name ?? '' }}</a></td>
+                                            <td>{{ $user->email ?? ''}}</td>
+                                            <td>{{ $user->phone_number ?? ''}}</td>
                                             <td>
                                                 @foreach($user->roles as $role)
                                                     <a class="badge-primary badge text-white">{{ $role->name }}</a>

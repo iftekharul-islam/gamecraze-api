@@ -28,9 +28,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userRepository->user();
+        $users = $this->userRepository->user($request);
+
         return view('admin.user.index', compact('users'));
     }
 
