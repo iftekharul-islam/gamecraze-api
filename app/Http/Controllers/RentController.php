@@ -19,14 +19,15 @@ class RentController extends Controller
     {
         $this->rentRepository = $rentRepository;
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rents = $this->rentRepository->all();
+        $rents = $this->rentRepository->all($request);
+
         return view('admin.rent-post.index', compact('rents'));
     }
 

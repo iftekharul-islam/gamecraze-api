@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Rent post</h1>
+                        <h1>Rent posts <span class="badge badge-primary">{{ $rents->total() }}</span></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Rent post</li>
+                            <li class="breadcrumb-item active">Rent posts</li>
                         </ol>
                     </div>
                 </div>
@@ -42,6 +42,35 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-8">
+                        <form action="{{ route('rentPost.all') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="disk_type">Disk type :</label>
+                                            <select name="disk_type" id="type" class="form-control">
+                                                <option selected disabled>Select Disk Type</option>
+                                                <option value="0" {{ Request::get('disk_type') != 1 && Request::get('disk_type') != null ? 'selected' : ''}}>Digital</option>
+                                                <option value="1" {{ Request::get('disk_type') == 1 ? 'selected' : ''}}>Physical</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="status">Approval status:</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option selected disabled>Select Approval status</option>
+                                                <option value="0" {{ Request::get('status') != 1 && Request::get('status') != null ? 'selected' : ''}}>Pending</option>
+                                                <option value="1" {{ Request::get('status') == 1 ? 'selected' : ''}}>Approved</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 form-group float-right">
+                                            <button type="submit" class="btn btn-primary float-right">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <!-- /.card-header -->
@@ -125,6 +154,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="mt-3"> {{ $rents->appends(Request::all())->links() }} </div>
                                 @else
                                     <h4 class="text-center">No data found</h4>
                                 @endif

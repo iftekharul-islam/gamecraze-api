@@ -22,7 +22,6 @@ class GameOrderController extends Controller
      */
     public function index(Request $request)
     {
-//        return $request->all();
         $orders = $this->gameOrderRepository->all($request);
 
         return view('admin.order.index', compact('orders'));

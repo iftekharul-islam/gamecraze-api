@@ -19,8 +19,11 @@ class GameOrderRepository
 
         $order = GameOrder::query();
 
+        if ($request->status != 1 && $request->status != null) {
+            $order->where('delivery_status', 0);
+        }
         if ($request->status) {
-            $order->where('delivery_status', 'LIKE', "%{$request->status}%");
+            $order->where('delivery_status', $request->status);
         }
         if ($request->search) {
             $order->where('order_no', 'LIKE', "%{$request->search}%");
