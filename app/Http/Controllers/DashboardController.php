@@ -34,6 +34,8 @@ class DashboardController extends Controller
         $pending_rent = $lend_data->where('status', 0)->count();
         $processing_rent = $lend_data->where('status', 5)->count();
         $delivered_rent = $lend_data->where('status', 3)->count();
+        $rejected_rent = $lend_data->where('status', 4)->count();
+        $completed_rent = $lend_data->where('status', 2)->count();
 
         $elite = User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name', '!=', 'admin');
@@ -43,7 +45,7 @@ class DashboardController extends Controller
             return $query->where('name', '!=', 'admin');
         })->where('is_verified', 0)->count();
 
-        return view('admin.dashboard', compact('games', 'rents', 'approved_post', 'pending_post', 'reject_post', 'users', 'lends', 'pending_rent', 'delivered_rent', 'processing_rent', 'elite', 'rookie'));
+        return view('admin.dashboard', compact('games', 'rents', 'approved_post', 'pending_post', 'reject_post', 'users', 'lends', 'pending_rent', 'delivered_rent', 'processing_rent', 'rejected_rent', 'completed_rent', 'elite', 'rookie'));
     }
 
 }
