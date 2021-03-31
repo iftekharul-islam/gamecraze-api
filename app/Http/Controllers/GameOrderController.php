@@ -15,14 +15,16 @@ class GameOrderController extends Controller
     {
         $this->gameOrderRepository = $gameOrderRepository;
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = $this->gameOrderRepository->all(20);
+//        return $request->all();
+        $orders = $this->gameOrderRepository->all($request);
+
         return view('admin.order.index', compact('orders'));
     }
 

@@ -7,14 +7,26 @@ use App\Jobs\SentOrderCompletedEmail;
 use App\Jobs\SentOrderDeliveredEmail;
 use App\Jobs\SentOrderProcessingEmail;
 use App\Models\GameOrder;
+use App\Models\Order;
 
 class GameOrderRepository
 {
     /**
-     * 
+     * @param $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function all($page = 20) {
-        return GameOrder::with(['user'])->orderby('created_at', 'desc')->paginate($page);
+    public function all($request) {
+
+        $order = GameOrder::query();
+
+        if ($request->status) {
+            $order->where('delivery_status', 'LIKE', "%{$request->status}%");
+        }
+        if ($request->search) {
+            $order->where('order_no', 'LIKE', "%{$request->search}%");
+        }
+
+        return $order->with(['user'])->orderby('created_at', 'desc')->paginate(config('gamehub.pagination'));
     }
 
     public function show($id) {
