@@ -18,12 +18,22 @@ class DashboardController extends Controller
     public function index()
     {
         $games = Game::all()->count();
-        $rents = Rent::all()->count();
+
+        $rent_data = Rent::all();
+        $rents = $rent_data->count();
+        $approved_post = $rent_data->where('status', 1)->count();
+        $reject_post = $rent_data->where('status', 2)->count();
+        $pending_post = $rent_data->where('status', 0)->count();
+
         $users = User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name', '!=', 'admin');
         })->count();
 
-        $lends = Lender::all()->count();
+        $lend_data = Lender::all();
+        $lends = $lend_data->count();
+        $pending_rent = $lend_data->where('status', 0)->count();
+        $processing_rent = $lend_data->where('status', 5)->count();
+        $delivered_rent = $lend_data->where('status', 3)->count();
 
         $elite = User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name', '!=', 'admin');
@@ -33,7 +43,7 @@ class DashboardController extends Controller
             return $query->where('name', '!=', 'admin');
         })->where('is_verified', 0)->count();
 
-        return view('admin.dashboard', compact('games', 'rents', 'users', 'lends', 'elite', 'rookie'));
+        return view('admin.dashboard', compact('games', 'rents', 'approved_post', 'pending_post', 'reject_post', 'users', 'lends', 'pending_rent', 'delivered_rent', 'processing_rent', 'elite', 'rookie'));
     }
 
 }
