@@ -91,7 +91,7 @@
         // New & articles section
         Route::get('articles','\App\Http\Controllers\API\ArticleController@index');
         Route::get('top-articles','\App\Http\Controllers\API\ArticleController@topArticles');
-        Route::get('article/{id}','\App\Http\Controllers\API\ArticleController@show');
+        Route::get('article/{slug}','\App\Http\Controllers\API\ArticleController@show');
         Route::get('article/related/{id}','\App\Http\Controllers\API\ArticleController@getRelatedArticles');
         Route::get('featured-article','\App\Http\Controllers\API\ArticleController@getFeaturedArticles');
 

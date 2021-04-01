@@ -57,7 +57,6 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = $this->repository->show($id);
-//        return $article;
         return view('admin.article.show', compact('article'));
     }
 

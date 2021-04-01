@@ -21,6 +21,7 @@ class ArticleTransformer extends TransformerAbstract
         return [
             'id' => $article->id,
             'title' => $article->title,
+            'slug' => $article->slug,
             'description' => $article->description,
             'created' => Carbon::parse($article->created_at)->format('F d, Y'),
             'thumbnail' => $article->thumbnail != null ? asset('/'. $article->thumbnail) : null,

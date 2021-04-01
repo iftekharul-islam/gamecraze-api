@@ -45,9 +45,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $article = $this->repository->show($id);
+        $article = $this->repository->show($slug);
         return $this->response->item($article, new ArticleTransformer());
     }
 
