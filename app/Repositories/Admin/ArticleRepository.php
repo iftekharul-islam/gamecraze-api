@@ -5,25 +5,25 @@ namespace App\Repositories\Admin;
 
 
 use App\Models\Article;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleRepository
 {
     /**
      * @return mixed
      */
-    public function allArticle($order = 'DESC')
+    public function allArticle()
     {
-        return Article::orderBy('created_at', $order)->get();
+        return Article::orderBy('created_at', 'DESC')->get();
     }
 
     /**
      * @param $id
      * @return mixed
      */
-    public function show($id)
+    public function show($slug)
     {
-        return Article::findOrFail($id);
+        return Article::where('slug', $slug)->first();
     }
 
     /**
@@ -34,11 +34,12 @@ class ArticleRepository
     public function update($request, $id)
     {
         $article = Article::findOrFail($id);
-        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status', 'is_featured']);
+        $data = $request->only(['title', 'thumbnail', 'slug', 'description', 'user_id', 'status', 'is_featured']);
         $article->is_featured = 0;
 
         if (isset($data['title'])) {
             $article->title = $data['title'];
+            $article->slug = Str::slug($data['title']);
         }
         if (isset($data['thumbnail'])) {
             $article->thumbnail = $data['thumbnail'];
@@ -78,8 +79,9 @@ class ArticleRepository
      */
     public function store($request)
     {
-        $data = $request->only(['title', 'thumbnail', 'description', 'user_id', 'status', 'is_featured']);
+        $data = $request->only(['title', 'slug', 'thumbnail', 'description', 'user_id', 'status', 'is_featured']);
         $data['user_id'] = auth()->user()->id;
+        $data['slug'] = Str::slug($data['title']);
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $thumbnail_name = 'thumbnail-' . auth()->user()->id . '-' . time() . $thumbnail->getClientOriginalName();
@@ -89,6 +91,7 @@ class ArticleRepository
             $data['thumbnail'] = 'storage/' . $path;
         }
         Article::create($data);
+
         return $data;
     }
 
