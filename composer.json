@@ -23,7 +23,8 @@
         "laravel/ui": "^2.0",
         "spatie/laravel-backup": "^6.15",
         "spatie/laravel-newsletter": "^4.9",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "doctrine/dbal": "2.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
