@@ -18,9 +18,10 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^7.0",
         "laravel/passport": "^8.4",
-        "laravel/slack-notification-channel": "^2.0",
+        "laravel/slack-notification-channel": "^2.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "spatie/laravel-backup": "^6.15",
         "spatie/laravel-newsletter": "^4.9",
         "spatie/laravel-permission": "^3.11"
     },
