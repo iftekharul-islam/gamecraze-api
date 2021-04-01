@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $processing_rent = $lend_data->where('status', 5)->count();
         $delivered_rent = $lend_data->where('status', 3)->count();
         $rejected_rent = $lend_data->where('status', 4)->count();
-        $completed_rent = $lend_data->where('status', 2)->count();
+        $completed_rent = $lend_data->where('status', 1)->count();
 
         $elite = User::with('roles')->whereHas('roles', function ($query) {
             return $query->where('name', '!=', 'admin');
