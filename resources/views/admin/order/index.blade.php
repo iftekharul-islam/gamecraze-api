@@ -52,7 +52,7 @@
                                             <select name="status" class="form-control">
                                                 <option selected disabled>Select status</option>
                                                 @foreach(config('gamehub.order_delivery_status') as $key => $status)
-                                                    <option value="{{$key}}" {{ Request::get('status') == $key ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
+                                                    <option value="{{$key}}" {{ Request::get('status') == $key && Request::get('status') != null? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
