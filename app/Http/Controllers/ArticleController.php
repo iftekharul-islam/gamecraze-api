@@ -49,14 +49,12 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        $article = $this->repository->show($id);
+        $article = $this->repository->show($slug);
         return view('admin.article.show', compact('article'));
     }
 
@@ -81,7 +79,6 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        return $request->all();
         $data = $this->repository->update($request, $id);
         return redirect()->route('all-article')->with('status', 'Article updated successfully');
     }

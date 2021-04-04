@@ -17,7 +17,7 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function all() {
-        return Rent::where( 'user_id', Auth::user()->id )->get();
+        return Rent::where( 'user_id', Auth::user()->id )->orderBy('created_at', 'DESC')->get();
     }
 
     /**

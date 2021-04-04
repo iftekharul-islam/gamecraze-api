@@ -68,10 +68,10 @@
                                             <td>{{ $article->status == 1 ? 'Active' : 'Inactive' }} {{ $article->is_featured == 1 ? ', Featured' : '' }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary mr-1"
-                                                   href="{{ route('article.show', $article->id) }}"><i
+                                                   href="{{ route('article.show', $article->slug) }}"><i
                                                         class="far fa-eye"></i></a>
                                                 <a class="btn btn-sm btn-primary mr-1"
-                                                   href="{{ route('article.edit', $article->id) }}"><i
+                                                   href="{{ route('article.edit', $article->slug) }}"><i
                                                         class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"
                                                         onclick="deleteArticle({{ $article->id }})">
