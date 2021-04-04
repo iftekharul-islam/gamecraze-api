@@ -32,10 +32,20 @@ class GameOrderRepository
         return $order->with(['user'])->orderby('created_at', 'desc')->paginate(config('gamehub.pagination'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     */
     public function show($id) {
         return GameOrder::with(['user.address', 'lenders.rent.game'])->findOrFail($id);
     }
 
+    /**
+     * @param $status_type
+     * @param $order_id
+     * @param $status
+     * @return bool
+     */
     public function updateStatus($status_type, $order_id, $status) {
 
         $order = GameOrder::findOrFail($order_id);

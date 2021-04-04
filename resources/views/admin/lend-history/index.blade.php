@@ -42,6 +42,33 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-8">
+                        <form action="{{ route('lend.all') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 form-group">
+                                            <label for="status">Status :</label>
+                                            <select name="status" class="form-control">
+                                                <option selected disabled>Select status</option>
+                                                @foreach(config('gamehub.disk_delivery_status') as $key => $status)
+                                                    <option value="{{$key}}" {{ Request::get('status') == $key && Request::get('status') != null? 'selected' : '' }}>{{ ucfirst($status) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-8 form-group">
+                                            <label>Order Search :</label>
+                                            <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
+                                                   placeholder="Search Here...">
+                                        </div>
+                                        <div class="col-12 form-group float-right">
+                                            <button type="submit" class="btn btn-primary float-right">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <!-- /.card-header -->
@@ -115,6 +142,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="mt-3"> {{ $lends->appends(Request::all())->links() }} </div>
                                 @else
                                     <h4 class="text-center">No data found</h4>
                                 @endif

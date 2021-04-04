@@ -9,10 +9,26 @@ use App\Models\Rent;
 class LendRepository
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @param $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function history () {
-        return Lender::with('lender', 'rent.game', 'order')->orderBy('created_at','DESC')->get();
+    public function history ($request) {
+        $lends = Lender::query();
+        if ($request->status == 0 && $request->status != null) {
+            $lends->where('status', 0);
+        }
+        if ($request->status) {
+            $lends->where('status', $request->status);
+        }
+        if ($request->search) {
+            logger($request->search);
+            $lends->whereHas('order', function ($q) use ($request) {
+                $q->where('order_no', 'LIKE', "%{$request->search}%");
+            });
+        }
+        return $lends->with('lender', 'rent.game', 'order')
+            ->orderBy('created_at','DESC')
+            ->paginate(config('gamehub.pagination'));
     }
 
     /**
