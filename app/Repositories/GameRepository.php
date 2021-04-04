@@ -120,7 +120,9 @@ class GameRepository
      */
     public function upcomingGames()
     {
-        return Game::where('released', '>', Carbon::today()->format('Y-m-d'))->get();
+        return Game::where('released', '>', Carbon::today()->format('Y-m-d'))
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     public function releasedGames()

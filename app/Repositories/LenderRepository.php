@@ -19,7 +19,10 @@ use Modules\Orders\Entities\Models\Order;
 class LenderRepository {
 
     public function all() {
-        return Lender::with('rent.game','rent.platform','rent.diskCondition', 'order')->where('lender_id', auth()->user()->id)->get();
+        return Lender::with('rent.game','rent.platform','rent.diskCondition', 'order')
+            ->where('lender_id', auth()->user()->id)
+            ->orderBy('created_at','DESC')
+            ->get();
     }
 
     /**

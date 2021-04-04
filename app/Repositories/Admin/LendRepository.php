@@ -12,7 +12,7 @@ class LendRepository
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function history () {
-        return Lender::with('lender', 'rent.game', 'order')->orderBy('created_at','ASC')->get();
+        return Lender::with('lender', 'rent.game', 'order')->orderBy('created_at','DESC')->get();
     }
 
     /**

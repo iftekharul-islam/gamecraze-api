@@ -55,8 +55,8 @@ Route::prefix('admin')->group(function () {
         Route::get('articles','\App\Http\Controllers\ArticleController@index')->name('all-article');
         Route::get('create/article','\App\Http\Controllers\ArticleController@create')->name('article.create');
         Route::post('store/article','\App\Http\Controllers\ArticleController@store')->name('article.store');
-        Route::get('article/{id}','\App\Http\Controllers\ArticleController@show')->name('article.show');
-        Route::get('article/edit/{id}','\App\Http\Controllers\ArticleController@edit')->name('article.edit');
+        Route::get('article/{slug}','\App\Http\Controllers\ArticleController@show')->name('article.show');
+        Route::get('article/edit/{slug}','\App\Http\Controllers\ArticleController@edit')->name('article.edit');
         Route::post('article/update/{id}','\App\Http\Controllers\ArticleController@update')->name('article.update');
         Route::delete('article/destroy/{id}','\App\Http\Controllers\ArticleController@destroy')->name('article.destroy');
         //Disk condition Crud
