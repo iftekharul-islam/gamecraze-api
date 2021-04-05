@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Featured video</h1>
+                        <h1>Cover Image</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Featured video</li>
+                            <li class="breadcrumb-item active">Cover Image</li>
                         </ol>
                     </div>
                 </div>
@@ -45,37 +45,31 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('video.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add</a>
+                                <a href="{{ route('cover.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add</a>
                             </div>
                             <div class="card-body">
-                                @if (!$videos->isEmpty())
+                                @if (!$data->isEmpty())
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                         <tr>
                                             <th>SN</th>
                                             <th>Title</th>
                                             <th>URL</th>
-                                            <th>Is Featured</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($videos as $key => $video)
+                                        @foreach($data as $key => $item)
                                             <tr>
-                                                <td>{{ $key + $videos->firstItem() }}</td>
-                                                <td>{{ $video->title }}</td>
-                                                <td>{{ $video->video_url }}</td>
-                                                <td>{{ $video->is_featured == 1 ? 'Yes' : 'No' }}</td>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $item->title }}</td>
+                                                <td><a href="{{ url($item->url) }}" target="_blank"><img src="{{ url($item->url) }}" width="300px"></a></td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-primary mr-1" target="_blank" href="{{ $video->video_url }}"><i class="far fa-eye"></i></a>
-                                                    <a class="btn btn-sm btn-primary mr-1"
-                                                    href="{{ route('video.edit', $video->id) }}"><i
-                                                            class="far fa-edit"></i></a>
                                                     <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="deleteArticle({{ $video->id }})">
+                                                            onclick="deleteCover({{ $item->id }})">
                                                         <i class="far fa-trash-alt"></i></button>
-                                                    <form id="delete-form-{{ $video->id }}"
-                                                        action="{{ route('featured.video.delete', $video->id) }}"
+                                                    <form id="delete-form-{{ $item->id }}"
+                                                        action="{{ route('cover.delete', $item->id) }}"
                                                         method="post" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
@@ -86,7 +80,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-3">
-                                    {{ $videos->links() }}
+{{--                                    {{ $data->links() }}--}}
                                 </div>
                                 
                                 @else
@@ -109,7 +103,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function deleteArticle(id) {
+        function deleteCover(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',

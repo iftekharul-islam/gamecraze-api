@@ -31,7 +31,8 @@
         // Check password is set or not
         $api->post('check-password', 'App\Http\Controllers\API\AuthController@checkPassword');
         $api->post('check-email-exist', 'App\Http\Controllers\API\AuthController@checkEmailExist');
-
+        // Cover image
+        $api->get('cover-image', 'App\Http\Controllers\API\CoverImageController@index');
         // Games
         $api->get('games/upcoming-games', 'App\Http\Controllers\API\GameController@upcomingGames');
         $api->get('games/released-games', 'App\Http\Controllers\API\GameController@releasedGames');
