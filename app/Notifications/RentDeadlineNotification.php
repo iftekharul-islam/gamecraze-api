@@ -43,9 +43,9 @@ class RentDeadlineNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Your Borrowed Game is '. $this->game->name )
-                    ->line('Your deadline date is '. $this->endDate->format('d/m/Y') )
-                    ->line('Its almost 2 days left & if you want play this game for more times.Please contact with helpline.')
+                    ->line('Your Borrowed Game '. $this->game->name )
+                    ->line('Your deadline date '. $this->endDate )
+                    ->line('Its only 1 days left & if you want play this game for more times.Please contact with helpline.')
                     ->line('Thank you for stay with us!');
     }
 
