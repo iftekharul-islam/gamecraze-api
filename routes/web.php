@@ -150,6 +150,12 @@ Route::prefix('admin')->group(function () {
         Route::post('video/update/{id}','\App\Http\Controllers\FeaturedVideoController@update')->name('video.update');
         Route::delete('video/delete/{id}','\App\Http\Controllers\FeaturedVideoController@destroy')->name('featured.video.delete');
 
+        //Cover image
+        Route::get('cover-image','\App\Http\Controllers\CoverImageController@index')->name('cover.all');
+        Route::get('create/cover-image','\App\Http\Controllers\CoverImageController@create')->name('cover.create');
+        Route::post('store/cover-image','\App\Http\Controllers\CoverImageController@store')->name('cover.store');
+        Route::delete('cover-image/delete/{id}','\App\Http\Controllers\CoverImageController@destroy')->name('cover.delete');
+
         //game orders
         Route::get('orders','\App\Http\Controllers\GameOrderController@index')->name('orders.all');
         Route::get('orders/{id}','\App\Http\Controllers\GameOrderController@show')->name('orders.show');

@@ -98,7 +98,7 @@
                                             <td>{{ $user->email ?? ''}}</td>
                                             <td>{{ $user->phone_number ?? ''}}</td>
                                             <td>
-                                                @if ($user->id_status == false)
+                                                @if ($user->id_verified == false)
                                                     <a class="badge-danger badge text-white">Not Verified</a>
                                                 @else
                                                     <a class="badge-primary badge text-white">Verified</a>
