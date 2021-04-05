@@ -85,4 +85,16 @@ class UserRepository
         }
     }
 
+    public function idVerification($id)
+    {
+        $user = User::find($id);
+        if ($user){
+            $user->id_verified = true;
+            $user->save();
+            return true;
+        }
+
+        return false;
+    }
+
 }

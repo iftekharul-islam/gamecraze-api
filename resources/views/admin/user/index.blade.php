@@ -83,6 +83,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone number</th>
+                                        <th>ID status</th>
                                         <th>Role(s)</th>
                                         <th>Status</th>
                                         <th>User type</th>
@@ -96,6 +97,13 @@
                                             <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }} {{ $user->last_name ?? '' }}</a></td>
                                             <td>{{ $user->email ?? ''}}</td>
                                             <td>{{ $user->phone_number ?? ''}}</td>
+                                            <td>
+                                                @if ($user->id_status == false)
+                                                    <a class="badge-danger badge text-white">Not Verified</a>
+                                                @else
+                                                    <a class="badge-primary badge text-white">Verified</a>
+                                                @endif
+                                            </td>
                                             <td>
                                                 @foreach($user->roles as $role)
                                                     <a class="badge-primary badge text-white">{{ $role->name }}</a>

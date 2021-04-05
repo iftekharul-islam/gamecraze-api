@@ -30,7 +30,8 @@ class UserTransformer extends TransformerAbstract
             'identification_number' => $user->identification_number,
             'identification_image' => $user->identification_image ? asset($user->identification_image) : '',
             'is_verified' => $user->is_verified,
-            'last_name' => $user->last_name
+            'last_name' => $user->last_name,
+            'id_verified' => $user->id_verified,
         ];
     }
 
