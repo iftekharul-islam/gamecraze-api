@@ -86,6 +86,7 @@
                                         <th>Max Week</th>
                                         <th>Disk Type</th>
                                         <th>Approval</th>
+                                        <th>Post Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -114,6 +115,14 @@
                                                 @else
                                                     <a class="badge-danger badge text-white" >Rejected</a>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                @if ($rent->status_by_user == true)
+                                                    <a class="badge-success badge text-white" >Active</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Inactive</a>
+                                                @endif
+
                                             </td>
                                             <td>
                                                 @if ($rent->status == 0 || $rent->status === 2)
