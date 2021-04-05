@@ -170,8 +170,8 @@
                 if (result.value) {
                     document.getElementById('verification-form-' + id).submit();
                     swalWithBootstrapButtons.fire({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
+                        title: 'Verified!',
+                        text: 'User has been verified.',
                         icon: 'success',
                         timer: 1500,
                     })
