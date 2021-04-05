@@ -93,19 +93,22 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request)
     {
-//        return $request->all();
         $this->userRepository->update($request);
         return redirect()->route('user.all')->with('status', 'User successfully updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function UserIdVerification($id)
     {
-        //
+        $user = $this->userRepository->idVerification($id);
+
+        if ($user == true){
+            return redirect()->back()->with('status', 'User ID successfully verified');
+        }
+
+        return redirect()->back()->with('error', 'User ID successfully verified');
     }
 }

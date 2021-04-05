@@ -42,7 +42,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <!-- Profile Image -->
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile ">
@@ -66,13 +66,29 @@
                                     <li class="list-group-item">
                                         <b>Phone No.</b> <a class="float-right">{{ $user->phone_number ?? 'N/A' }}</a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <b>ID status</b>
+                                        @if ($user->id_verified == true)
+                                            <a class="badge-primary badge text-white">Verified</a>
+                                        @else
+                                            <a class="badge-danger badge text-white">Not Verified</a>
+                                            <a class="badge-success badge" type="button"
+                                               onclick="userVerification({{ $user->id }})">Verify now</a>
+                                            <form id="verification-form-{{ $user->id }}"
+                                                  action="{{ route('user.verification', $user->id) }}"
+                                                  method="post" style="display: none;">
+                                                @csrf
+                                                @method('POST')
+                                            </form>
+                                        @endif
+                                    </li>
                                 </ul>
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">User details</h3>
@@ -130,4 +146,47 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+@section('js')
+    <script type="text/javascript">
+        function userVerification(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success ml-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, verify !',
+                cancelButtonText: 'No, cancel !',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById('verification-form-' + id).submit();
+                    swalWithBootstrapButtons.fire({
+                        title: 'Verified!',
+                        text: 'User has been verified.',
+                        icon: 'success',
+                        timer: 1500,
+                    })
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Cancelled',
+                        text: 'User not verified :)',
+                        icon: 'error',
+                        timer: 1500,
+                    })
+                }
+            });
+        }
+    </script>
 @endsection
