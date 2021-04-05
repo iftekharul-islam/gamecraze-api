@@ -34,7 +34,7 @@ class RentDeadlineToUser implements ShouldQueue
      */
     public function handle()
     {
-        logger('sent mail to lender '. $this->lend->email);
+        logger('sent mail to lender '. $this->lend->lender->email);
         $this->lend->lender->notify(new RentDeadlineNotification($this->endDate, $this->lend->rent->game));
     }
 }
