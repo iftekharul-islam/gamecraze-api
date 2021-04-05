@@ -76,6 +76,7 @@ class NotifyUsers extends Command
             logger($notifyDate);
 
             if ($currentDate == $notifyDate) {
+                logger('in the mail sent section');
                 RentDeadlineToUser::dispatch($lend, $endDate);
                 foreach ($admins as $admin) {
                     RentDeadlineToAdmin::dispatch($lend, $admin, $endDate);

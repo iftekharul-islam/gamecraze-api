@@ -38,6 +38,7 @@ class RentDeadlineToAdmin implements ShouldQueue
      */
     public function handle()
     {
+        logger('sent mail to lender '. $this->admin->email);
         $this->admin->notify(new RentDeadlineAdminNotification($this->lend, $this->endDate));
     }
 }
