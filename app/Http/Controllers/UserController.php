@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -93,7 +94,39 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request)
     {
-        $this->userRepository->update($request);
+        $user =  User::findOrFail($request->id);
+        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword', 'identification_number', 'identification_image']);
+
+        if (isset($data['name'])) {
+            $user->name = $data['name'];
+        }
+        if (isset($data['email'])) {
+            $user->email = $data['email'];
+        }
+        if (isset($data['phone_number'])) {
+            $user->phone_number = $data['phone_number'];
+        }
+        if (isset($data['identification_number'])) {
+            $user->identification_number = $data['identification_number'];
+        }
+        if ($request->hasFile('identification_image')) {
+            $nid_image = $request->file('identification_image');
+            $image_name = 'id_' . time() . '_' . $user->id . '.' . $nid_image->getClientOriginalExtension();
+            $path = "identification/" . $image_name;
+            $nid_image->storeAs('identification', $image_name);
+            $user['identification_image'] = 'storage/' . $path;
+        }
+        if (isset($data['password'])) {
+            $user->password = Hash::make($data['password']);
+        }
+        if (isset($data['is_verified'])) {
+            $user->is_verified = $data['is_verified'];
+        }
+        if (isset($data['status'])) {
+            $user->status = $data['status'];
+        }
+        $user->save();
+
         return redirect()->route('user.all')->with('status', 'User successfully updated!');
     }
 
