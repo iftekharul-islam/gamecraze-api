@@ -139,6 +139,7 @@ class GameRepository
             $q->where('is_trending', 1);
         })
         ->where('status', 1)
+        ->where('status_by_user', 1)
         ->select('game_id')
         ->orderBy('created_at', 'desc')
         ->take($numberOfPost)
@@ -149,6 +150,7 @@ class GameRepository
     public function popularGames($numberOfPost = 10)
     {
         return Rent::where('status', 1)
+            ->where('status_by_user', 1)
             ->orderBy('created_at', 'desc')
             ->take($numberOfPost)
             ->get()
@@ -158,6 +160,7 @@ class GameRepository
     public function allRentPosts()
     {
         return Rent::where('status', 1)
+            ->where('status_by_user', 1)
             ->orderBy('created_at', 'desc')
             ->get()
             ->unique('game_id');
@@ -185,11 +188,14 @@ class GameRepository
     {
 
         if (empty($categories) && empty($platforms) && empty($diskType) && $search == '') {
-            return Rent::whereHas('game', function ($q) use ($ids){
+            return Rent::where('status', 1)
+                ->where('status_by_user', 1)
+                ->whereHas('game', function ($q) use ($ids){
                 $q->whereIn('id', $ids);
             })->get()->unique('game_id');
         }
         $data = Rent::query();
+        $data->where('status', 1)->where('status_by_user', 1);
         if ($diskType){
             $data->whereIn('disk_type', $diskType);
         }
@@ -221,6 +227,7 @@ class GameRepository
             })
             ->select('game_id')
             ->where('status', 1)
+            ->where('status_by_user', 1)
             ->groupBy('game_id')
             ->get();
     }

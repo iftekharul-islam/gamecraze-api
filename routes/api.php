@@ -159,6 +159,8 @@
             $api->post('game-credential-update', 'App\Http\Controllers\API\RentController@updateCredential');
             //update user cover image
             $api->post('user-cover-update', 'App\Http\Controllers\API\UserController@updateCoverImage');
+            //Rent post status update
+            $api->post('post-status-update', 'App\Http\Controllers\API\RentController@postStatusUpdate');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

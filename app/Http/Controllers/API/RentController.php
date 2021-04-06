@@ -180,4 +180,27 @@ class RentController extends BaseController
         return response()->json(compact('data'), 200);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function postStatusUpdate(Request $request)
+    {
+        $post = Rent::find($request->id);
+        if ($post) {
+            $post->status_by_user = $request->status;
+            $post->save();
+
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Rent post status updated'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Rent post status cannot update'
+        ]);
+    }
+
 }
