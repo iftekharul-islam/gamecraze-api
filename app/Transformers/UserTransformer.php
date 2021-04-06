@@ -32,6 +32,9 @@ class UserTransformer extends TransformerAbstract
             'is_verified' => $user->is_verified,
             'last_name' => $user->last_name,
             'id_verified' => $user->id_verified,
+            'referral_code' => $user->referral_code,
+            'referred_by' => $user->referred_by,
+            'referral_url' => env('GAMEHUB_FRONT').'/login?referred_code='.$user->referral_code
         ];
     }
 

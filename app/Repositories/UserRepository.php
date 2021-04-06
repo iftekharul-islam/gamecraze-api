@@ -71,6 +71,9 @@ class UserRepository
         if (isset($userData['password'])) {
             $user->password = bcrypt($userData['password']);
         }
+        if (isset($userData['referral'])) {
+            $user->referred_by = $userData['referral'];
+        }
 
         $user->rent_limit = 2;
         $user->status = 1;
@@ -86,9 +89,10 @@ class UserRepository
         ]);
         
         $user->address_id = $address->id;
-
         $user->save();
 
+        $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;
+        $user->save();
         return [
             'error' => false,
             'user' => $user,

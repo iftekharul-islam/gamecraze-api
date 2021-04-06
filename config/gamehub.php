@@ -28,4 +28,5 @@ return [
     'offer_discount_amount' => 15,
     'offer_discount' => true,
     'pagination' => 20,
+    'referred_amount' => 50,
 ];

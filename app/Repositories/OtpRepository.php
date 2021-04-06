@@ -41,14 +41,17 @@ class OtpRepository
 
     /**
      * @param Request $request
-     *
-     * @return mixed
+     * @return array
+     * @throws \Exception
      */
     public function verifyOtp(Request $request)
     {
-        $phone_number = $request->has('email') ? User::where('email',
-            $request->input('email'))->first()->phone_number : $request->input('phone_number');
+        $phone_number = $request->has('email') ?
+            User::where('email', $request->input('email'))->first()->phone_number :
+            $request->input('phone_number');
+
         $otp = OneTimePassword::where('phone_number', $phone_number)->latest()->first();
+
         if (!$otp) {
             return [
                 'error' => true,
@@ -100,7 +103,8 @@ class OtpRepository
             'phone_number' => $phone_number,
             'status' => 1,
             'is_phone_verified' => 1,
-            'rent_limit' => 2
+            'rent_limit' => 2,
+            'referred_by' => $request->referral_code,
         ]);
 
         $address = Address::create([
@@ -109,6 +113,7 @@ class OtpRepository
             'post_code' => null
         ]);
         $user->address_id = $address->id;
+        $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;
         $user->save();
 
         $role = Role::where('name', 'customer')->first();
