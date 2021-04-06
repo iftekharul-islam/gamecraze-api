@@ -157,6 +157,8 @@
             $api->post('cart-item/destroy', 'App\Http\Controllers\API\CartItemController@destroy');
             //update renter game credential
             $api->post('game-credential-update', 'App\Http\Controllers\API\RentController@updateCredential');
+            //update user cover image
+            $api->post('user-cover-update', 'App\Http\Controllers\API\UserController@updateCoverImage');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

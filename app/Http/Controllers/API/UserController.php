@@ -6,8 +6,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\PermissionCreateRequest;
 use App\Http\Requests\RoleCreateRequest;
+use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
+use Illuminate\Http\Request;
 
 class UserController extends BaseController
 {
@@ -120,5 +122,26 @@ class UserController extends BaseController
     public function profile() {
         $user = auth('api')->user();
         return $this->response->item($user, new UserTransformer());
+    }
+
+    public function updateCoverImage(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if ($user) {
+            $user->cover = $request->cover;
+
+            $user->save();
+
+            return $this->response->array([
+                'error' => false,
+                'message' => 'User cover image updated'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => true,
+            'message' => 'User cover cannot update'
+        ]);
+
     }
 }
