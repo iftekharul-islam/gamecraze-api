@@ -44,7 +44,7 @@ class UserRepository
 
     public function update($request) {
         $user =  User::findOrFail($request->id);
-        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword']);
+        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword', 'identification_number', 'identification_image']);
 
         if (isset($data['name'])) {
             $user->name = $data['name'];
@@ -52,7 +52,7 @@ class UserRepository
         if (isset($data['email'])) {
             $user->email = $data['email'];
         }
-         if (isset($data['phone_number'])) {
+        if (isset($data['phone_number'])) {
             $user->phone_number = $data['phone_number'];
         }
         if (isset($data['password'])) {

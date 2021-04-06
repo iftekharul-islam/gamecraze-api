@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="{{ route('user.update', $user->id) }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -50,6 +50,20 @@
                                 <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}">
                                 @if ($errors->has('phone_number'))
                                     <span class="text-danger"><strong>{{ $errors->first('phone_number') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('identification_number') ? ' has-error' : '' }}">
+                                <label for="identification_number">Identification Number</label>
+                                <input type="text" class="form-control" id="identification_number" name="identification_number" value="{{ $user->identification_number }}">
+                                @if ($errors->has('identification_number'))
+                                    <span class="text-danger"><strong>{{ $errors->first('identification_number') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('identification_image') ? ' has-error' : '' }}">
+                                <label for="identification_image">Phone Number</label>
+                                <input type="file" class="form-control" id="identification_image" name="identification_image" value="{{ $user->identification_image }}">
+                                @if ($errors->has('identification_image'))
+                                    <span class="text-danger"><strong>{{ $errors->first('identification_image') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('password') ? ' has-error' : '' }}">

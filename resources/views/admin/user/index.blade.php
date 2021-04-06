@@ -126,9 +126,9 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary mr-3"
-                                                   href="{{ route('user.edit', $user->id) }}">
-                                                    <i class="fas fa-wallet"></i></a>
+{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
+{{--                                                   href="{{ route('user.edit', $user->id) }}">--}}
+{{--                                                    <i class="fas fa-wallet"></i></a>--}}
                                                 <a class="btn btn-sm btn-primary mr-3"
                                                    href="{{ route('user.edit', $user->id) }}"><i
                                                         class="far fa-edit"></i></a>
