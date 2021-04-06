@@ -67,6 +67,9 @@
                                         <b>Phone No.</b> <a class="float-right">{{ $user->phone_number ?? 'N/A' }}</a>
                                     </li>
                                     <li class="list-group-item">
+                                        <b>Wallet Amount</b> <a class="float-right">{{ $user->wallet ?? 0 }}</a>
+                                    </li>
+                                    <li class="list-group-item">
                                         <b>ID status</b>
                                         @if ($user->id_verified == true)
                                             <a class="badge-primary badge text-white">Verified</a>

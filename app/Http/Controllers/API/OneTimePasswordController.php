@@ -37,11 +37,11 @@ class OneTimePasswordController extends BaseController
 	    ]);
     }
 
-	/**
-	 * @param VerifyOtpRequest $request
-	 *
-	 * @return array
-	 */
+    /**
+     * @param VerifyOtpRequest $request
+     * @return mixed
+     * @throws \Exception
+     */
     public function verifyOtp(VerifyOtpRequest $request) {
 
         $response = $this->otpRepository->verifyOtp($request);
