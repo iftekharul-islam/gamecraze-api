@@ -24,7 +24,9 @@ class RentRepository {
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function allRent() {
-        return Rent::where('status', 1)->get();
+        return Rent::where('status', 1)
+            ->where('status_by_user', 1)
+            ->get();
     }
 
     public function store(Request $request) {
@@ -130,6 +132,9 @@ class RentRepository {
     public function rentPostedUsers($slug) {
 
         $game = Game::where('slug', $slug)->first();
-        return Rent::where('game_id', $game->id)->where('status', 1)->get();
+        return Rent::where('game_id', $game->id)
+            ->where('status', 1)
+            ->where('status_by_user', 1)
+            ->get();
     }
 }

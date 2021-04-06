@@ -124,12 +124,15 @@ class UserController extends BaseController
         return $this->response->item($user, new UserTransformer());
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function updateCoverImage(Request $request)
     {
         $user = User::find($request->user_id);
         if ($user) {
             $user->cover = $request->cover;
-
             $user->save();
 
             return $this->response->array([
@@ -142,6 +145,5 @@ class UserController extends BaseController
             'error' => true,
             'message' => 'User cover cannot update'
         ]);
-
     }
 }

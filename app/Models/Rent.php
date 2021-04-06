@@ -11,7 +11,7 @@ class Rent extends Model
 
     protected $fillable = [
        'user_id', 'game_id', 'availability', 'max_week', 'platform_id', 'checkpoint_id', 'earning_amount', 'rented_lend_id',
-        'disk_condition_id', 'cover_image', 'disk_image', 'rented_user_id', 'status', 'reason', 'disk_type', 'game_user_id', 'game_password'
+        'disk_condition_id', 'cover_image', 'disk_image', 'rented_user_id', 'status', 'reason', 'disk_type', 'game_user_id', 'game_password', 'status_by_user'
     ];
 
     public function game() {
