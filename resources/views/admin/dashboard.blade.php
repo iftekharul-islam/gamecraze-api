@@ -151,23 +151,23 @@
                                         <table>
                                             <tr>
                                                 <td>Pending</td>
-                                                <td>{{ $pending_rent }}</td>
+                                                <td class="text-right" width="40px">{{ $pending_rent }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Rejected</td>
-                                                <td>{{ $rejected_rent }}</td>
+                                                <td class="text-right">{{ $rejected_rent }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Processing</td>
-                                                <td>{{ $processing_rent }}</td>
+                                                <td class="text-right">{{ $processing_rent }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Delivered</td>
-                                                <td>{{ $delivered_rent }}</td>
+                                                <td class="text-right">{{ $delivered_rent }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Completed</td>
-                                                <td>{{ $completed_rent }}</td>
+                                                <td class="text-right">{{ $completed_rent }}</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -187,15 +187,15 @@
                                         <table>
                                             <tr>
                                                 <td>Pending</td>
-                                                <td>{{ $pending_post }}</td>
+                                                <td class="text-right" width="40px">{{ $pending_post }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Rejected</td>
-                                                <td>{{ $reject_post }}</td>
+                                                <td class="text-right" width="40px">{{ $reject_post }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Approved</td>
-                                                <td>{{ $approved_post }}</td>
+                                                <td class="text-right" width="40px">{{ $approved_post }}</td>
                                             </tr>
                                         </table>
                                     </div>

@@ -176,6 +176,8 @@ class UserRepository
             $user->save();
 
             $user['address'] = $user->address;
+            $user['referral_url'] = env('GAMEHUB_FRONT').'/login?referred_code='.$user->referral_code;
+
             return $user;
         }
 

@@ -143,7 +143,7 @@
                     <a href="{{ route('rentPost.all') }}" class="nav-link {{ (request()->routeIs('rentPost.all')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Rent Posts
+                            Lend Posts
                         </p>
                     </a>
                 </li>
@@ -152,7 +152,7 @@
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
                         <p>
-                            Lend History
+                            Rent History
                         </p>
                     </a>
                 </li>

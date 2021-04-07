@@ -73,13 +73,22 @@ class GameOrderRepository
                 $lender = User::find($order->user_id);
                 logger('lender');
                 logger($lender);
-                if ($lender->referred_by) {
+                if (isset($lender->referred_by)) {
+
                     $orderCount = GameOrder::where('user_id', $order->user_id)->where('delivery_status', 1)->count();
-                    if ($orderCount == 1) {
+                    logger('order count');
+                    logger($orderCount);
+
+                    if ( 2 > $orderCount ) {
+
                         logger('in the order count');
+
                         $referredUser = User::where('referral_code', $lender->referred_by)->first();
                         $referredUser->wallet = $referredUser->wallet + config('gamehub.referred_amount');
                         $referredUser->save();
+
+                        logger('referred user');
+                        logger($referredUser);
 
                         $wallet = new WalletHistory();
                         $wallet->user_id = $referredUser->id;
@@ -89,6 +98,8 @@ class GameOrderRepository
                         $wallet->save();
 
                         logger($referredUser->wallet);
+                        logger('wallet history');
+                        logger($wallet);
                     }
                 }
             }
