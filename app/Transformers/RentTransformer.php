@@ -20,7 +20,7 @@ class RentTransformer extends TransformerAbstract
         // specify what elements are going to be visible to the API
         return [
             'id' => $rent->id,
-            'rent_id' => $rent->user_id,
+            'user_id' => $rent->user_id,
             'game_id' =>  $rent->game_id,
             'max_number_of_week' =>  $rent->max_week,
             'availability_from_date' =>  $rent->availability,

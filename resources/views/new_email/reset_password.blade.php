@@ -3,11 +3,12 @@
     <tr>
         <td>
             Dear concern,
+            <p>Please follow the link below. It will expire in one hour.</p>
         </td>
     </tr>
     <tr>
-        <td>
-            <a href="{{ $link }}" style="background: #FFD715; width: 120px; height: 35px; display: flex;align-items: center;justify-content: center; color: black;margin: auto;  text-decoration: none; font-weight: 700;">Reset Now</a>
+        <td style="text-align: center;">
+            <a href="{{ $link }}"><img src="{{ asset('email_image/reset.png') }}" alt="reset" style="margin-top: 32px; margin-bottom: 32px;"></a>
         </td>
     </tr>
     <tr>
