@@ -38,10 +38,10 @@ class TransactionController extends BaseController
 
     public function transactionById()
     {
-        $id = Auth::user()->id;
+        $user = Auth::user();
 
-        $user_transaction = TransactionHistory::where('user_id', $id)->first();
-        $user_lends = Lender::where('renter_id', $id)->where('status', 1)->first();
+        $user_transaction = TransactionHistory::where('user_id', $user->id)->first();
+        $user_lends = Lender::where('renter_id', $user->id)->where('status', 1)->first();
 
         $total_paid_amount = 0;
 
@@ -49,7 +49,7 @@ class TransactionController extends BaseController
 
             $total_earning = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')
                 ->groupBy('user_id')
-                ->where('user_id', $id)
+                ->where('user_id', $user->id)
                 ->firstOrFail();
 
             $total_paid_amount = $total_earning['paid_amount'];
@@ -62,7 +62,7 @@ class TransactionController extends BaseController
             $lend = Lender::selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id')
                 ->groupBy('renter_id')
                 ->where('status', 1)
-                ->where('renter_id', $id)
+                ->where('renter_id', $user->id)
                 ->firstOrFail();
 
             $total_lend_amount = $lend['amount'];
@@ -71,7 +71,7 @@ class TransactionController extends BaseController
         $due = $total_lend_amount - $total_paid_amount;
 
         $transactions_details = [
-            'total_earning' => ceil($total_paid_amount),
+            'total_earning' => ceil($total_paid_amount + $user->wallet),
             'due' => $due,
         ];
 
