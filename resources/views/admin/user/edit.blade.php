@@ -60,7 +60,7 @@
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('identification_image') ? ' has-error' : '' }}">
-                                <label for="identification_image">Phone Number</label>
+                                <label for="identification_image">Identification image</label>
                                 <input type="file" class="form-control" id="identification_image" name="identification_image" value="{{ $user->identification_image }}">
                                 @if ($errors->has('identification_image'))
                                     <span class="text-danger"><strong>{{ $errors->first('identification_image') }}</strong></span>
