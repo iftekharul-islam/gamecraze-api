@@ -7,7 +7,6 @@
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
-            <h5>Dear admin, </h5>
             <p>New contact request from Gamehub</p>
             <p>Name: {{ $data['first_name'] }} {{ $data['last_name'] }}</p>
             <p>Phone: {{ $data['phone_number'] }}</p>
