@@ -5,7 +5,9 @@
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
-            <p>Thanks for trusting GameHub. Your lend post for {{ $game }} is approved. If anyone wants to rent your game we will let you know. Keep posting more games to earn more.</p>
+            <p>Thanks for trusting GameHub. Your lend post for {{ $game }} is approved.
+                If anyone wants to rent your game we will let you know.
+                Keep posting more games to earn more.</p>
         </td>
     </tr>
     <tr>

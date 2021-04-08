@@ -32,7 +32,7 @@ class SendContactEmailToAdmin implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('debashish@augnitive.com')
+        Mail::to(config('gamehub.mail_to'))
             ->send(new SendContactMail($this->data));
     }
 }
