@@ -6,7 +6,7 @@
         </td>
     </tr>
     <tr>
-        <td style="padding-left: 80px; ">
+        <td style="padding-left: 80px; padding-right: 80px">
             <p>
                 Thanks for trusting GameHub. Your order of renting {{ $order->order_no }} is processed. The game(s) is delivered to: {{ $order->address }}. The rent count down will start from next date after delivery.
             </p>

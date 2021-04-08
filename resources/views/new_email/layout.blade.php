@@ -11,12 +11,14 @@
     <title>Gamehub Email</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <style type="text/css">
         @font-face {
             font-family: gil-regular;
-            src: url('/email_font/gilroy-regular.ttf');
+            src: url('{{ asset('email_font/gilroy-regular.ttf') }}');
         }
-        table, td, p {
+        table,
+        td,
+        p {
             font-family: gil-regular;
         }
     </style>
@@ -48,7 +50,7 @@
                 <thead>
                 @yield('content')
                 <tr>
-                    <td>
+                    <td style="padding-left: 80px; ">
                         <a href="https://www.gamehub.com.bd/games" style="display: block; margin-top: 40px; margin-bottom: 60px;"><img src="{{ asset('email_image/rent.png') }}" alt="rent"></a>
                     </td>
                 </tr>

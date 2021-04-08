@@ -6,7 +6,7 @@
         </td>
     </tr>
     <tr>
-        <td style="padding-left: 80px; ">
+        <td style="padding-left: 80px; padding-right: 80px">
             <p>Your Password reset code is {{ $otp }}</p>
         </td>
     </tr>
