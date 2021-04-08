@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Mail\RentDealineMailToAdmin;
+use App\Mail\RenterPostAcceptMail;
 use App\Models\User;
 use App\Notifications\RentDeadlineAdminNotification;
 use App\Notifications\RentDeadlineNotification;
@@ -10,6 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class RentDeadlineToAdmin implements ShouldQueue
 {
@@ -39,6 +42,6 @@ class RentDeadlineToAdmin implements ShouldQueue
     public function handle()
     {
         logger('sent mail to lender '. $this->admin->email);
-        $this->admin->notify(new RentDeadlineAdminNotification($this->lend, $this->endDate));
+        Mail::to($this->admin->email)->queue(new RentDealineMailToAdmin($this->lend, $this->endDate));
     }
 }

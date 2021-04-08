@@ -29,4 +29,5 @@ return [
     'offer_discount' => true,
     'pagination' => 20,
     'referred_amount' => 50,
+    'mail_to' => 'contact@augnitive.com',
 ];

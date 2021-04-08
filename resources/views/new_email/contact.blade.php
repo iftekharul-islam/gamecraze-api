@@ -2,13 +2,18 @@
 @section('content')
     <tr>
         <td style="padding-left: 80px; ">
-            Dear concern,
+            Dear admin,
         </td>
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
-            <p>You've recently asked to reset the password for your GameHub account.</p>
-            <p>To update your password, Reset code is {{ $otp }}</p>
+            <h5>Dear admin, </h5>
+            <p>New contact request from Gamehub</p>
+            <p>Name: {{ $data['first_name'] }} {{ $data['last_name'] }}</p>
+            <p>Phone: {{ $data['phone_number'] }}</p>
+            <p>Email: {{ $data['email'] }}</p>
+            <p>Message:</p>
+            <p>{{ $data['message'] }}</p>
         </td>
     </tr>
     <tr>

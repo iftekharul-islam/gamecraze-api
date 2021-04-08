@@ -1,13 +1,14 @@
 @extends('new_email.layout')
 @section('content')
     <tr>
-        <td style="padding-left: 80px; ">Dear {{ $name }},</td>
+        <td style="padding-left: 80px; ">Dear {{ $lend->lender->name }},</td>
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
             <p>
                 Thanks for trusting GameHub.
-                Your order of renting {{ $order->order_no }} is completed.
+                Your order of renting {{ $lend->rent->game->name  }} for {{ $lend->lend_week }} weeks is almost over.
+                You have only 24 hours remaining in your rental period.
                 To avoid any penalty please prepare the game(s) for return.
                 To process the return someone from our team will contact you soon.
             </p>
