@@ -180,11 +180,15 @@
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php
+                                                                if ($lend->rent->disk_type == 1) {
+                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 );
+                                                                } else {
                                                                     $hour = Carbon\Carbon::parse($lend['created_at'])->format('H');
                                                                 if ($hour >= 12){
                                                                     $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 2 );
                                                                 } else {
-                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 )->format('Y-m-d');
+                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 );
+                                                                }
                                                                 }
                                                                 @endphp
                                                                 <td>{{ date('d M, Y', strtotime($end_date)) }}</td>

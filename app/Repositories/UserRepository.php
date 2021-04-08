@@ -150,7 +150,7 @@ class UserRepository
             }
             if (isset($userData['address']) || isset($userData['city']) || isset($userData['postCode'])) {
                 $address = Address::find($user->address_id);
-                $address->address = $userData['address'];
+                $address->address = $userData['address'] ?? '';
                 $address->city = $userData['city'];
                 $address->post_code = $userData['postCode'];
                 $address->save();
@@ -162,10 +162,6 @@ class UserRepository
                 if (!File::isDirectory(storage_path('app/public/profile'))){
                     File::makeDirectory(storage_path('app/public/profile'), 0777, true, true);
                 }
-
-                // if ($user->image) {
-                //     deleteFile([$user->image]);
-                // }
 
                 $image = $userData['image'];
                 $userImage = 'profile_' . time() . '_' . $user->id . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];

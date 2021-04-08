@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         // Here execute the command once every day 2pm
         $schedule->command('users:notify')->dailyAt('14:00');
         //db backup
-        $schedule->command('backup:clean')->quarterly();
+        $schedule->command('backup:clean')->weekly();
         $schedule->command('backup:run')->dailyAt('00:00');
     }
 
