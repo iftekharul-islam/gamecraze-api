@@ -42,28 +42,29 @@ class CartItemController extends BaseController
 
             $cartItems = new Collection();
             foreach ($items as $item) {
-                $price = $this->basePriceRepository->gamePriceCalculation($item->rent->game_id, $item->rent_week, $item->rent->disk_type);
-                $cartItems->push((object)[
-                    'id' => $item->id,
-                    'rent_id' => $item->rent_id,
-                    'user_id' => $item->user_id,
-                    'rent_week' => $item->rent_week,
-                    'address' => $item->address,
-                    'status' => $item->status,
-                    'regular_price' => $price['regular_price'],
-                    'discount_price' => $price['discount_price'],
-                    'game_name' => $item->rent->game->name,
-                    'renter_id' => $item->rent->user_id,
-                    'disk_type' => $item->rent->disk_type,
-                ]);
+                if ($item->rent){
+                    $price = $this->basePriceRepository->gamePriceCalculation($item->rent->game_id, $item->rent_week, $item->rent->disk_type);
+                    $cartItems->push((object)[
+                        'id' => $item->id,
+                        'rent_id' => $item->rent_id,
+                        'user_id' => $item->user_id,
+                        'rent_week' => $item->rent_week,
+                        'address' => $item->address,
+                        'status' => $item->status,
+                        'regular_price' => $price['regular_price'],
+                        'discount_price' => $price['discount_price'],
+                        'game_name' => $item->rent->game->name,
+                        'renter_id' => $item->rent->user_id,
+                        'disk_type' => $item->rent->disk_type,
+                    ]);
 
-                $totalRegularPrice += $price['regular_price'];
-                $totalDiscountPrice += $price['discount_price'];
+                    $totalRegularPrice += $price['regular_price'];
+                    $totalDiscountPrice += $price['discount_price'];
 
-                if ($item->rent->disk_type == 1) {
-                    $deliveryCharge = config('gamehub.delivery_charge');
+                    if ($item->rent->disk_type == 1) {
+                        $deliveryCharge = config('gamehub.delivery_charge');
+                    }
                 }
-
             }
 
             $data = [

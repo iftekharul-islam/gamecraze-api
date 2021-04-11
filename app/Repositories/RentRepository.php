@@ -132,9 +132,20 @@ class RentRepository {
     public function rentPostedUsers($slug) {
 
         $game = Game::where('slug', $slug)->first();
+
         return Rent::where('game_id', $game->id)
             ->where('status', 1)
             ->where('status_by_user', 1)
             ->get();
+    }
+
+    public function checkAvailableRent($request)
+    {
+        $game = Game::where('slug', $request->slug)->first();
+
+        return Rent::where('game_id', $game->id)
+            ->where('rented_lend_id', null)
+            ->where('user_id', '!=', Auth::user()->id)
+            ->count();
     }
 }
