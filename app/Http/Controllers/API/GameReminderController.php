@@ -54,48 +54,31 @@ class GameReminderController extends Controller
         return responseData('Could not set reminder', 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function destroy(Request $request, $game_id)
     {
-        //
+        if ($this->repository->checkIfExists(auth()->user()->id, $game_id)) {
+            $removeReminder = $this->repository->destroyReminder(auth()->user()->id, $game_id);
+            if ($removeReminder == true){
+                return responseData('Reminder removed successfully', 200);
+            }
+            return responseData('Reminder Could not remove', 200);
+        }
+
+        return responseData('Could not find reminder', 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function checkReminder($game_id)
     {
-        //
-    }
+        if ($this->repository->checkIfExists(auth()->user()->id, $game_id)) {
+            return [
+                'reminder' => true,
+                'message' => "Reminder already set"
+            ];
+        }
+        return [
+            'reminder' => false,
+            'message' => "Reminder not set"
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

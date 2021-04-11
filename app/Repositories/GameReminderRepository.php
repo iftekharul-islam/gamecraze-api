@@ -116,4 +116,14 @@ class GameReminderRepository
 
         return false;
     }
+
+    public function destroyReminder($user_id, $game_id)
+    {
+        $data = GameReminder::where('user_id', $user_id)->where('game_id', $game_id)->first();
+        if ($data) {
+            $data->delete();
+            return true;
+        }
+        return false;
+    }
 }

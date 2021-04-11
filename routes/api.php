@@ -149,8 +149,10 @@
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
-            //set upcoming game reminder
+            //game reminder
             $api->post('set-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@store');
+            $api->post('remove-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@destroy');
+            $api->get('check-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@checkReminder');
             //cart item
             $api->get('cart-items', 'App\Http\Controllers\API\CartItemController@index');
             $api->post('cart-item/create', 'App\Http\Controllers\API\CartItemController@store');
@@ -161,6 +163,8 @@
             $api->post('user-cover-update', 'App\Http\Controllers\API\UserController@updateCoverImage');
             //Rent post status update
             $api->post('post-status-update', 'App\Http\Controllers\API\RentController@postStatusUpdate');
+            //available rent check
+            $api->get('available-rent/{slug}', 'App\Http\Controllers\API\RentController@availableRent');
 
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

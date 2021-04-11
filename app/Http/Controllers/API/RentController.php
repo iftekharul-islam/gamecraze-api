@@ -203,4 +203,21 @@ class RentController extends BaseController
         ]);
     }
 
+    public function availableRent(Request $request)
+    {
+        $availableRent = $this->rentRepository->checkAvailableRent($request);
+
+        if ($availableRent > 0) {
+            return $this->response->array([
+                'available' => true,
+                'message' => 'Rent post is available for rent'
+            ]);
+        }
+
+        return $this->response->array([
+            'available' => false,
+            'message' => 'Rent post not available for rent'
+        ]);
+    }
+
 }
