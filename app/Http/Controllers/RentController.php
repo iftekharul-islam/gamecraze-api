@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BasePrice;
+use App\Models\Platform;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\RentRepository;
 
@@ -94,7 +97,9 @@ class RentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->rentRepository->details($id);
+        $platforms = Platform::all();
+        return view('admin.rent-post.edit', compact('data', 'platforms'));
     }
 
     /**
@@ -106,7 +111,29 @@ class RentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Rent::find($id);
+        $data = $request->only('max_week', 'cover_image', 'disk_image');
+        if (isset($data['max_week'])) {
+            $post->max_week = $data['max_week'];
+        }
+        if ($request->file('cover_image')) {
+            $image = $request->file('cover_image');
+            $image_name = 'cover_' . time() . '_' .$post['game_id'] . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('rent-image', $image_name);
+            $data['cover_image'] = $image_name;
+            $post['cover_image'] = $data['cover_image'];
+        }
+        if ($request->file('disk_image')) {
+            $image = $request->file('disk_image');
+            $image_name = 'disk_' . time() . '_' .$post['game_id'] . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('rent-image', $image_name);
+            $data['disk_image'] = $image_name;
+            $post['disk_image'] = $data['disk_image'];
+        }
+        $post->save();
+
+        return redirect()->route('rentPost.all')->with('status', 'Lend post updated successfully');
+
     }
 
     /**

@@ -73,8 +73,8 @@ Route::prefix('admin')->group(function () {
         Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
 //        Route::get('create-rent-post','\App\Http\Controllers\RentController@create')->name('rentPost.create');
 //        Route::post('store-rent-post','\App\Http\Controllers\RentController@store')->name('rentPost.store');
-//        Route::get('rent-post/edit/{id}','\App\Http\Controllers\RentController@edit')->name('rentPost.edit');
-//        Route::post('rent-post/update/{id}','\App\Http\Controllers\RentController@update')->name('rentPost.update');
+        Route::get('rent-post/edit/{id}','\App\Http\Controllers\RentController@edit')->name('rentPost.edit');
+        Route::post('rent-post/update/{id}','\App\Http\Controllers\RentController@update')->name('rentPost.update');
         Route::delete('rent-post/destroy/{id}','\App\Http\Controllers\RentController@destroy')->name('rentPost.destroy');
         // Lend
         Route::get('lends','\App\Http\Controllers\LendController@index')->name('lend.all');
