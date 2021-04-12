@@ -92,7 +92,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $order->order_no }}</td>
-                                                <td><a href="{{ route('user.show', $order->user->id) }}">{{ $order->user->name }}</a></td>
+                                                <td><a href="{{ route('user.show', $order->user->id) }}">{{ $order->user->name }} {{ $order->user->last_name }}</a></td>
                                             <td>{{ $order->amount + $order->commission  }}</td>
                                             <td>{{ $order->created_at->format('j M Y') }}</td>
                                             <td>{{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</td>

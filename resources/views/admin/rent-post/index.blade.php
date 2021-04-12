@@ -94,7 +94,7 @@
                                     @foreach($rents as $key => $rent)
                                         <tr>
                                             <td>{{ $rents->firstItem() + $key }}</td>
-                                            <td>{{ $rent->user->name }}</td>
+                                            <td><a href="{{ route('user.show', $rent->user->id) }}">{{ $rent->user->name }} {{ $rent->user->last_name }}</a></td>
                                             <td>
                                                 <a href="{{ route('rentPost.show', $rent->id) }}">{{ $rent->game->name ?? '' }}</a>
                                             </td>

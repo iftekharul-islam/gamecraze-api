@@ -3,10 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\RentDealineMailToAdmin;
-use App\Mail\RenterPostAcceptMail;
 use App\Models\User;
-use App\Notifications\RentDeadlineAdminNotification;
-use App\Notifications\RentDeadlineNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

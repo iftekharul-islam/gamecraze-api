@@ -3,8 +3,11 @@
 namespace App\Repositories;
 
 use App\Jobs\SendReminder;
+use App\Jobs\SentLendPostNotification;
+use App\Jobs\SentRentPostNotification;
 use App\Models\Game;
 use App\Models\Rent;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +64,11 @@ class RentRepository {
         }
         $rent['user_id'] = auth()->user()->id;
         $post = Rent::create($rent);
+        $admins = User::role('Admin')->get();
+        foreach ($admins as $admin){
+            SentLendPostNotification::dispatch($post, $admin);
+        }
+
 
         return $post;
     }
