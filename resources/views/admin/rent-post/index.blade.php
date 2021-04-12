@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Rent posts <span class="badge badge-primary">{{ $rents->total() }}</span></h1>
+                        <h1>Lend posts <span class="badge badge-primary">{{ $rents->total() }}</span></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Rent posts</li>
+                            <li class="breadcrumb-item active">Lend posts</li>
                         </ol>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                                     <thead>
                                     <tr>
                                         <th>no</th>
-                                        <th>Renter name</th>
+                                        <th>Lender name</th>
                                         <th>Game Name</th>
                                         <th>Available from</th>
                                         <th>Max Week</th>
@@ -98,7 +98,7 @@
                                             <td>
                                                 <a href="{{ route('rentPost.show', $rent->id) }}">{{ $rent->game->name ?? '' }}</a>
                                             </td>
-                                            <td>{{ date('d F Y', strtotime($rent->availability)) }}</td>
+                                            <td width="150px">{{ date('d F Y', strtotime($rent->availability)) }}</td>
                                             <td>{{ $rent->max_week }}</td>
                                             <td>
                                                 @if ($rent->disk_type == 1)
@@ -124,7 +124,7 @@
                                                 @endif
 
                                             </td>
-                                            <td>
+                                            <td width="180px">
                                                 @if ($rent->status == 0 || $rent->status === 2)
                                                     <button class="btn btn-success btn-sm" type="button"
                                                             onclick="makeApprove({{ $rent->id }})"> <i class="fa fa-check" aria-hidden="true"></i></button>
@@ -144,9 +144,9 @@
                                                         @csrf
                                                     </form>
                                                 @endif
-{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
-{{--                                                   href="{{ route('game.edit', $game->id) }}"><i--}}
-{{--                                                        class="far fa-edit"></i></a>--}}
+                                                <a class="btn btn-sm btn-primary"
+                                                   href="{{ route('rentPost.edit', $rent->id) }}"><i
+                                                        class="far fa-edit"></i></a>
                                                 <a href="{{ route('rentPost.show', $rent->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-eye" aria-hidden="true"></i></a>
 {{--                                                <button class="btn btn-danger btn-sm" type="button"--}}
