@@ -2,24 +2,24 @@
 
 namespace App\Mail;
 
+use App\Models\Rent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendReminderMail extends Mailable
+class LendPostMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $game_name, $game_link;
+    public $post;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($game_name, $game_link)
+    public function __construct($post)
     {
-        $this->game_name = $game_name;
-        $this->game_link = $game_link;
+        $this->post = $post;
     }
 
     /**
@@ -29,12 +29,12 @@ class SendReminderMail extends Mailable
      */
     public function build()
     {
-        return $this->view('new_email.reminder_notification')
-            ->subject('Game available for rent reminder')
+        $post = Rent::with('user', 'game')->where('id', $this->post->id)->first();
+        return $this->view('new_email.lend_post_notification_to_admin')
+            ->subject('Rent Complete Reminder')
             ->with([
-                'game' => $this->game_name,
-                'link' => $this->game_link,
+                'customer' => $post->user->name,
+                'game' => $post->game->name
             ]);
-
     }
 }

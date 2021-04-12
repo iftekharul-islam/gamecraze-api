@@ -3,6 +3,7 @@
 
 namespace App\Repositories\Admin;
 
+use App\Jobs\SendReminder;
 use App\Models\Lender;
 use App\Models\Rent;
 use App\Models\User;
@@ -49,7 +50,15 @@ class LendRepository
             $rentPost->rented_user_id = null;
             $rentPost->rented_lend_id = null;
             $rentPost->save();
-
+            $availableRent = Rent::where('game_id', $rentPost->game_id)
+                ->where('status', 1)
+                ->where('rented_user_id', null)
+                ->where('rented_lend_id', null)
+                ->count();
+            if (2 > $availableRent) {
+                logger("in sent reminder section from rent post active");
+                SendReminder::dispatch($rentPost->game_id);
+            }
         }
         $lend->status = $status;
         $lend->save();
