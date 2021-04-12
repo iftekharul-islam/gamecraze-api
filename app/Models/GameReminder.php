@@ -10,7 +10,7 @@ class GameReminder extends Model
 {
     use Taggable, SoftDeletes;
     protected $fillable = [
-        'game_id', 'user_id'
+        'game_id', 'user_id', 'is_sent',
     ];
 
     public function user()

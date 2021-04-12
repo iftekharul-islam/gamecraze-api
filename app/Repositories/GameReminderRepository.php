@@ -110,7 +110,7 @@ class GameReminderRepository
 
     public function checkIfExists($user_id, $game_id)
     {
-        if (GameReminder::where('user_id', $user_id)->where('game_id', $game_id)->count() > 0) {
+        if (GameReminder::where('user_id', $user_id)->where('game_id', $game_id)->where('is_sent', 0)->count() > 0) {
             return true;
         }
 
