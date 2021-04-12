@@ -150,7 +150,7 @@
                                                             <th>Game Name</th>
                                                             <th>Original Amount</th>
                                                             <th>Discount Amount</th>
-                                                            <th>Amount</th>
+                                                            <th>Grand Amount</th>
                                                             <th>Start date</th>
                                                             <th>Week</th>
                                                             <th>End Date</th>
@@ -163,20 +163,20 @@
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td><a href="{{ route('game.show', $lend->rent->game_id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></td>
-                                                                @php
-                                                                    $amount = $lend->lend_cost + $lend->commission;
-                                                                    $discount = 0;
-                                                                    $grandTotalDiscount = 0;
-                                                                    if (config('gamehub.offer_discount') == true) {
-                                                                        $grandTotalDiscount = ceil($amount + ($amount * config('gamehub.offer_discount_amount'))/100);
-                                                                        $discount = $grandTotalDiscount - $amount;
-                                                                    }
+{{--                                                                @php--}}
+{{--                                                                    $amount = $lend->lend_cost + $lend->commission;--}}
+{{--                                                                    $discount = 0;--}}
+{{--                                                                    $grandTotalDiscount = 0;--}}
+{{--                                                                    if (config('gamehub.offer_discount') == true) {--}}
+{{--                                                                        $grandTotalDiscount = ceil($amount + ($amount * config('gamehub.offer_discount_amount'))/100);--}}
+{{--                                                                        $discount = $grandTotalDiscount - $amount;--}}
+{{--                                                                    }--}}
 
-                                                                @endphp
+{{--                                                                @endphp--}}
 
-                                                                <td>{{ $grandTotalDiscount == 0 ? $amount : $grandTotalDiscount}}</td>
-                                                                <td>{{ $discount }}</td>
-                                                                <td>{{ $amount }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->commission + $lend->discount_amount }}</td>
+                                                                <td>{{ $lend->discount_amount }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->commission }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php

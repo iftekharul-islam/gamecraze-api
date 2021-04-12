@@ -38,7 +38,6 @@ class LenderRepository {
     public function create(Request $request) {
         $lender = auth()->user();
         $cartIds = [];
-        $data = [];
         $rentIds = [];
         $renterDetails = [];
         $gameNames = [];
@@ -96,19 +95,22 @@ class LenderRepository {
             ];
             $gameNames[]= $cartItems[$i]['game_name'];
 
-            $price = $cartItems[$i]['discount_price'];
+            $discountAmount = $cartItems[$i]['discount_price'];
+            $mainAmount = $cartItems[$i]['regular_price'];
             $data = Lender::create([
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent_id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] ?? null,
-                'lend_cost' => $price,
-                'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($price),
+                'lend_cost' => $discountAmount,
+                'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($discountAmount),
                 'renter_id' => $cartItems[$i]['renter_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
+                'discount_amount' => config('gamehub.discount_on_commission') == true ? $cartItems[$i]['regular_price'] - $discountAmount = $cartItems[$i]['discount_price'] : 0,
+                'reference' => config('gamehub.discount_on_commission') == true ? 'gamehub lunch discount' : '',
             ]);
             Rent::where('id', $cartItems[$i]['rent_id'])
                 ->update([
