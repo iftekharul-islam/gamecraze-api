@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CustomersExport;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
-use App\Models\WalletHistory;
 use App\Repositories\Admin\UserRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -144,5 +146,16 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('error', 'User ID successfully verified');
+    }
+
+    /**
+     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function export()
+    {
+        $date = Carbon::now()->format('d-m-Y');
+        ob_end_clean();
+        ob_start();
+        return (new CustomersExport())->download('customers-'.  time() . '-' . $date  . '.xls');
     }
 }

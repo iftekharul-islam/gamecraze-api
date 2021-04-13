@@ -191,6 +191,9 @@ return [
         //image
         Intervention\Image\ImageServiceProvider::class,
 
+        //Maatwebsite excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -245,6 +248,7 @@ return [
         'DingoApi' => Dingo\Api\Facade\API::class,
         'DingoRoute' => Dingo\Api\Facade\Route::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

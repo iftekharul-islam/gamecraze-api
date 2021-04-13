@@ -69,7 +69,6 @@ class RentRepository {
             SentLendPostNotification::dispatch($post, $admin);
         }
 
-
         return $post;
     }
 
