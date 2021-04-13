@@ -73,6 +73,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <a href="{{ route('user.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> User</a>
+                                <a href="{{ route('customer.export') }}" class="btn btn-primary "> All customer Export</a>
                             </div>
                             <div class="card-body">
                                 @if ($users->isNotEmpty())

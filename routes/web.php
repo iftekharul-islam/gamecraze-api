@@ -91,6 +91,8 @@ Route::prefix('admin')->group(function () {
         Route::get('user/edit/{id}','\App\Http\Controllers\UserController@edit')->name('user.edit');
         Route::post('user/update/{id}','\App\Http\Controllers\UserController@update')->name('user.update');
         Route::post('user/verification/{id}','\App\Http\Controllers\UserController@UserIdVerification')->name('user.verification');
+        //user export
+        Route::get('customer/export/', '\App\Http\Controllers\UserController@export')->name('customer.export');
         //Base price Crud
         Route::get('base-prices','\App\Http\Controllers\BasePriceController@index')->name('basePrice.all');
         Route::get('create/base-price','\App\Http\Controllers\BasePriceController@create')->name('basePrice.create');
