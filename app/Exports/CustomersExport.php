@@ -51,7 +51,7 @@ class CustomersExport implements FromCollection, WithHeadings, WithColumnWidths
         return $data->with('address')
             ->whereHas('roles', function ($query) {
                 $query->where('name', '!=', 'admin');
-            })->get();
+            })->orderBy('created_at', 'DESC')->get();
     }
     /**
      * @return array
