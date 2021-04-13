@@ -29,7 +29,7 @@ class CustomersExport implements FromCollection, WithHeadings, WithColumnWidths
                 'phone_number' => $user->phone_number ?? 'N/A',
                 'email' => $user->email ?? 'N/A',
                 'id_status' => $user->status == 1 ? 'Verified' : 'Not Verified',
-                'user_type' => $user->user_type == 1 ? 'Elite' : 'Rookie',
+                'user_type' => $user->is_verified == 1 ? 'Elite' : 'Rookie',
                 'address' => isset($user->address) ? $user->address->address . ',' . $user->address->city . ',' . $user->address->post_code : 'N/A',
                 'nid' => $user->identification_number ?? '',
                 'referral_code' => $user->referral_code ?? '',
