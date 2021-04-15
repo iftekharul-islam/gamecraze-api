@@ -103,7 +103,7 @@ class OtpRepository
             'phone_number' => $phone_number,
             'status' => 1,
             'is_phone_verified' => 1,
-            'rent_limit' => 2,
+            'rent_limit' => config('gamehub.rent_limit'),
             'referred_by' => $request->referral_code,
         ]);
 

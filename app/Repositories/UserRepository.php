@@ -75,7 +75,7 @@ class UserRepository
             $user->referred_by = $userData['referral'];
         }
 
-        $user->rent_limit = 2;
+        $user->rent_limit = config('gamehub.rent_limit');;
         $user->status = 1;
         $role = Role::where('name', 'customer')->first();
         if ($role) {

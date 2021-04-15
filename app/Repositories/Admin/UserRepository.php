@@ -71,7 +71,7 @@ class UserRepository
         $data = $request->only(['name', 'email', 'phone_number', 'is_verified', 'rent_limit', 'status']);
 
         $data['password'] = Hash::make($request->password);
-        $data['rent_limit'] = 2;
+        $data['rent_limit'] = config('gamehub.rent_limit');
 
         $user = User::create($data);
 

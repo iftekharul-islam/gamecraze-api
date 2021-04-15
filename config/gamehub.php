@@ -21,13 +21,23 @@ return [
         'digital_copy' => 0,
         'physical_copy' => 1,
     ],
-    'commission' => 0.15,
-    'discount_on_commission' => true,
-    'digital_game_discount' => 20,
-    'delivery_charge' => 60,
-    'offer_discount_amount' => 15,
-    'offer_discount' => true,
+    'mail_to' => 'contact@augnitive.com',
+    'rent_limit' => 1, // user rent limit set on user create
     'pagination' => 20,
     'referred_amount' => 50,
-    'mail_to' => 'contact@augnitive.com',
+
+    'delivery_charge' => 60,
+    'commission' => 0.15,
+
+    'discount_on_commission' => true,
+    'digital_game_discount' => 20,
+
+    'offer_discount' => true,
+    'offer_discount_amount' => 15, // calculate in percentage
+    'offer_reference' => 'gamehub launch discount',
+
+    'offer_on_digital_game' => true,
+    'offer_percentage_digital_game' => 100, // calculate in percentage
+
+
 ];

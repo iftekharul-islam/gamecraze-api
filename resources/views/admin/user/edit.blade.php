@@ -45,6 +45,16 @@
                                     <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="rent_limit">Rent limit</label>
+                                <select name="rent_limit" class="form-control">
+                                    <option value="1" {{ $user->rent_limit == 1 ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ $user->rent_limit == 2 ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $user->rent_limit == 3 ? 'selected' : '' }}>3</option>
+                                    <option value="4" {{ $user->rent_limit == 4 ? 'selected' : '' }}>4</option>
+                                    <option value="5" {{ $user->rent_limit == 5 ? 'selected' : '' }}>5</option>
+                                </select>
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
                                 <label for="phone_number">Phone Number</label>
                                 <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}">
