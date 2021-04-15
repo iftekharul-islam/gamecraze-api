@@ -109,6 +109,7 @@ class basePriceRepository
         $second_week = $basePrice->second_week;
         $third_week = $basePrice->third_week;
         $sum = 0;
+        $digitalDiscountAmount = 0;
         $mapping = [
             1 => 1,
             2 => $second_week,
@@ -116,6 +117,7 @@ class basePriceRepository
         ];
         for ($i = 1; $i <= $lendWeek; $i++) {
             if (isset($mapping[$i])) {
+                $digitalDiscountAmount = $basePrice->base * $mapping[1];
                 $sum += $basePrice->base * $mapping[$i];
             } else {
                 $lendWeek = $lendWeek - 3;
@@ -127,9 +129,13 @@ class basePriceRepository
         }
         if ($diskType == config('gamehub.disk_type.digital_copy')){
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
+            $digitalDiscountAmount = ceil($digitalDiscountAmount - ($digitalDiscountAmount * config('gamehub.digital_game_discount') / 100));
+            $digital_discount = $digital_rate >= $digitalDiscountAmount ? $digitalDiscountAmount : 0;
             $price = [
-                'regular_price' => ($digital_rate + (($digital_rate * config('gamehub.offer_discount_amount')) / 100)),
-                'discount_price' => $digital_rate
+//                'regular_price' => ($digital_rate + (($digital_rate * config('gamehub.offer_discount_amount')) / 100)),
+                'regular_price' => $digital_rate,
+                'discount_price' => config('gamehub.offer_on_digital_game') == true ?
+                    $digital_rate - $digital_discount : $digital_rate,
             ];
         } else {
             $price = [

@@ -98,13 +98,16 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request)
     {
         $user =  User::findOrFail($request->id);
-        $data = $request->only(['name', 'email', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword', 'identification_number', 'identification_image']);
+        $data = $request->only(['name', 'email', 'rent_limit', 'phone_number', 'password', 'status', 'is_verified', 'confirmPassword', 'identification_number', 'identification_image']);
 
         if (isset($data['name'])) {
             $user->name = $data['name'];
         }
         if (isset($data['email'])) {
             $user->email = $data['email'];
+        }
+        if (isset($data['rent_limit'])) {
+            $user->rent_limit = $data['rent_limit'];
         }
         if (isset($data['phone_number'])) {
             $user->phone_number = $data['phone_number'];

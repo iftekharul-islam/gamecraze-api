@@ -67,6 +67,9 @@
                                         <b>Phone No.</b> <a class="float-right">{{ $user->phone_number ?? 'N/A' }}</a>
                                     </li>
                                     <li class="list-group-item">
+                                        <b>Rent Limit</b> <a class="float-right">{{ $user->rent_limit }} Games</a>
+                                    </li>
+                                    <li class="list-group-item">
                                         <b>Wallet Amount</b> <a class="float-right">{{ $user->wallet ?? 0 }}</a>
                                     </li>
                                     <li class="list-group-item">

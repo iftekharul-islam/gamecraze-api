@@ -87,13 +87,13 @@ class RentTransformer extends TransformerAbstract
     {
         $game = Game::with('basePrice')->findOrFail($gameId);
         $basePrice = $game->basePrice;
-        $second_week = $basePrice->second_week;
-        $third_week = $basePrice->third_week;
+        $secondWeek = $basePrice->second_week;
+        $thirdWeek = $basePrice->third_week;
         $sum = 0;
         $mapping = [
             1 => 1,
-            2 => $second_week,
-            3 => $third_week,
+            2 => $secondWeek,
+            3 => $thirdWeek,
         ];
         for ($i = 1; $i <= $lendWeek; $i++) {
             if (isset($mapping[$i])) {
@@ -109,8 +109,10 @@ class RentTransformer extends TransformerAbstract
         if ($diskType == config('gamehub.disk_type.digital_copy')){
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
             $price = [
-                'regular_price' => ($digital_rate + (($digital_rate * config('gamehub.offer_discount_amount')) / 100)),
-                'discount_price' => $digital_rate
+//                'regular_price' => ($digital_rate + (($digital_rate * config('gamehub.offer_discount_amount')) / 100)),
+                'regular_price' => $digital_rate,
+                'discount_price' => config('gamehub.offer_on_digital_game') == true ?
+                    $digital_rate - ($digital_rate * config('gamehub.offer_percentage_digital_game') / 100) : $digital_rate,
             ];
         } else {
             $price = [

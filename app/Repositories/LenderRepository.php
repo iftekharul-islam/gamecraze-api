@@ -110,7 +110,7 @@ class LenderRepository {
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
                 'discount_amount' => config('gamehub.discount_on_commission') == true ? $mainAmount - $discountAmount : 0,
-                'reference' => config('gamehub.discount_on_commission') == true ? 'gamehub lunch discount' : '',
+                'reference' => config('gamehub.discount_on_commission') == true ? config('gamehub.offer_reference') : '',
             ]);
             Rent::where('id', $cartItems[$i]['rent_id'])
                 ->update([
