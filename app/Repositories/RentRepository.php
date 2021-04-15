@@ -149,11 +149,10 @@ class RentRepository {
     public function checkAvailableRent($request)
     {
         $game = Game::where('slug', $request->slug)->first();
-        logger('game');
-        logger($game);
         return Rent::where('game_id', $game->id)
             ->where('rented_lend_id', null)
             ->where('rented_user_id', null)
+            ->status('status', 1)
             ->where('user_id', '!=', Auth::user()->id)
             ->count();
     }

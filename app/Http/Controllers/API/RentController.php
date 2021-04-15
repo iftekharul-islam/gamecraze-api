@@ -206,8 +206,6 @@ class RentController extends BaseController
     public function availableRent(Request $request)
     {
         $availableRent = $this->rentRepository->checkAvailableRent($request);
-        logger('available game');
-        logger($availableRent);
         if ($availableRent > 0) {
             return $this->response->array([
                 'available' => true,
