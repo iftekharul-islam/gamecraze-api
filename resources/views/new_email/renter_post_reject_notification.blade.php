@@ -8,7 +8,6 @@
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
             <p>Thanks for trusting GameHub. Your Rent post for {{ $game }} is rejected due : {{ $reason }}.
-                If you want to earn money by lending your unused games make sure your games maintaining our rules.
                 Better luck next time!
             </p>
         </td>

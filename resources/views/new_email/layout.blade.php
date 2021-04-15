@@ -20,6 +20,7 @@
         td,
         p {
             font-family: gil-regular;
+            font-size: 20px;
         }
     </style>
 </head>

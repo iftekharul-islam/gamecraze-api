@@ -63,7 +63,11 @@ class RentRepository
         $renter = User::where('id', $userId)->first();
         AcceptEmailToRenter::dispatch($renter, $rent->game->name);
 
-        $game_in_rent = Rent::where('game_id', $rent->game_id)->where('status', 1)->count();
+        $game_in_rent = Rent::where('game_id', $rent->game_id)
+            ->where('status', 1)
+            ->where('rented_user_id', null)
+            ->where('rented_lend_id', null)
+            ->count();
 
         if ($game_in_rent < 2) {
             logger("in sent reminder section");

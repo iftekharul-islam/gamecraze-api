@@ -7,7 +7,7 @@
         </td>
     </tr>
     <tr>
-        <td style="text-align: center; padding-left: 80px;">
+        <td style="padding-left: 80px;">
             <p>To update your password, click the button below:</p>
             <a href="{{ $link }}"><img src="{{ asset('email_image/reset.png') }}" alt="reset" style="margin-top: 32px; margin-bottom: 32px;"></a>
         </td>

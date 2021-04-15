@@ -109,7 +109,7 @@ class LenderRepository {
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
-                'discount_amount' => config('gamehub.discount_on_commission') == true ? $cartItems[$i]['regular_price'] - $discountAmount = $cartItems[$i]['discount_price'] : 0,
+                'discount_amount' => config('gamehub.discount_on_commission') == true ? $mainAmount - $discountAmount : 0,
                 'reference' => config('gamehub.discount_on_commission') == true ? 'gamehub lunch discount' : '',
             ]);
             Rent::where('id', $cartItems[$i]['rent_id'])
@@ -119,7 +119,7 @@ class LenderRepository {
                 ]);
 
         }
-        SendEmailToRenter::dispatch($renterDetails, $gameNames);
+        SendEmailToRenter::dispatch($renterDetails, $gameNames, $gameOrder['order_no']);
         CartItem::destroy($cartIds);
 
         return [

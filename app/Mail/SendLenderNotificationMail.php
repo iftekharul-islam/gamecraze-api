@@ -11,14 +11,16 @@ class SendLenderNotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $gameNames;
+    public $orderNo;
 
     /**
      * LenderNotification constructor.
      * @param $gameNames
      */
-    public function __construct($gameNames)
+    public function __construct($gameNames, $orderNo)
     {
         $this->gameNames = $gameNames;
+        $this->orderNo = $orderNo;
     }
 
     /**
@@ -31,6 +33,7 @@ class SendLenderNotificationMail extends Mailable
         return $this->view('new_email.lender_notification')
             ->subject('Gamehub Lend Confirmation')
             ->with([
+                'order' => $this->orderNo ,
                 'games' => implode(", ", $this->gameNames),
             ]);
     }
