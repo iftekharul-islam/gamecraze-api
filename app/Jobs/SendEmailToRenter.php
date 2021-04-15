@@ -22,16 +22,18 @@ class SendEmailToRenter implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     private $renterDetails;
     private $gameNames;
+    private $orderNo;
 
     /**
      * SendEmailToRenter constructor.
      * @param $renterDetails
      * @param $gameNames
      */
-    public function __construct($renterDetails, $gameNames)
+    public function __construct($renterDetails, $gameNames, $orderNo)
     {
         $this->renterDetails = $renterDetails;
         $this->gameNames = $gameNames;
+        $this->orderNo = $orderNo;
     }
 
     /**
@@ -43,7 +45,7 @@ class SendEmailToRenter implements ShouldQueue
     {
         $lender = auth()->user();
 
-        Mail::to($lender->email)->queue(new SendLenderNotificationMail($this->gameNames));
+        Mail::to($lender->email)->queue(new SendLenderNotificationMail($this->gameNames, $this->orderNo));
 
         foreach($this->renterDetails as $item) {
             $user = User::where('id', $item['renter_id'])->first();
