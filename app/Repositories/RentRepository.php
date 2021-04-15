@@ -152,6 +152,7 @@ class RentRepository {
 
         return Rent::where('game_id', $game->id)
             ->where('rented_lend_id', null)
+            ->where('rented_user_id', null)
             ->where('user_id', '!=', Auth::user()->id)
             ->count();
     }
