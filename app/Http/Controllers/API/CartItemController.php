@@ -33,7 +33,7 @@ class CartItemController extends BaseController
     public function index()
     {
         $items = CartItem::with('rent.game')->where('user_id', Auth::user()->id)->get();
-
+        $achievedDiscount = Auth::user()->achieve_discount;
         if ($items) {
 
             $totalRegularPrice = 0;
@@ -43,7 +43,7 @@ class CartItemController extends BaseController
             $cartItems = new Collection();
             foreach ($items as $item) {
                 if ($item->rent){
-                    $price = $this->basePriceRepository->gamePriceCalculation($item->rent->game_id, $item->rent_week, $item->rent->disk_type);
+                    $price = $this->basePriceRepository->gamePriceCalculation($item->rent->game_id, $item->rent_week, $item->rent->disk_type, $achievedDiscount);
                     $cartItems->push((object)[
                         'id' => $item->id,
                         'rent_id' => $item->rent_id,

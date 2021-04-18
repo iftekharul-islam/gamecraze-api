@@ -37,6 +37,7 @@ class LenderRepository {
      */
     public function create(Request $request) {
         $lender = auth()->user();
+        $discountOnDiskType = false;
         $cartIds = [];
         $rentIds = [];
         $renterDetails = [];
@@ -94,22 +95,31 @@ class LenderRepository {
                 'game_name' => $cartItems[$i]['game_name']
             ];
             $gameNames[]= $cartItems[$i]['game_name'];
-
             $discountAmount = $cartItems[$i]['discount_price'];
             $mainAmount = $cartItems[$i]['regular_price'];
+            $paymentAmount = $discountAmount;
+
+            $discountOnDiskType = false;
+            if ($cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy') && config('gamehub.offer_on_digital_game') == true){
+                $discountOnDiskType = true;
+            }
+
+            if ($lender->achieve_discount == true && $cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy')){
+                $paymentAmount = $mainAmount;
+            }
             $data = Lender::create([
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent_id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] ?? null,
-                'lend_cost' => $discountAmount,
-                'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($discountAmount),
+                'lend_cost' => $paymentAmount,
+                'commission' => config('gamehub.discount_on_commission') == true ? 0 : $this->commissionAmount($paymentAmount),
                 'renter_id' => $cartItems[$i]['renter_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
-                'discount_amount' => config('gamehub.discount_on_commission') == true ? $mainAmount - $discountAmount : 0,
+                'discount_amount' => config('gamehub.discount_on_commission') == true ? $mainAmount - $paymentAmount : 0,
                 'reference' => config('gamehub.discount_on_commission') == true ? config('gamehub.offer_reference') : '',
             ]);
             Rent::where('id', $cartItems[$i]['rent_id'])
@@ -118,6 +128,10 @@ class LenderRepository {
                     'rented_lend_id' => $data->id
                 ]);
 
+        }
+        if ($discountOnDiskType == true) {
+            $lender->achieve_discount = true;
+            $lender->save();
         }
         SendEmailToRenter::dispatch($renterDetails, $gameNames, $gameOrder['order_no']);
         CartItem::destroy($cartIds);

@@ -72,7 +72,7 @@ class TransactionController extends BaseController
 
         $transactions_details = [
             'total_earning' => ceil($total_paid_amount),
-            'due' => $due + $user->wallet,
+            'due' => $due,
         ];
 
         return response()->json(compact('transactions_details'), 200);

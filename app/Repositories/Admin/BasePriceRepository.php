@@ -97,12 +97,13 @@ class basePriceRepository
     }
 
     /**
+     * @param bool $achieveDiscount
      * @param $gameId
      * @param $lendWeek
      * @param $diskType
      * @return array|void
      */
-    public function gamePriceCalculation($gameId, $lendWeek, $diskType)
+    public function gamePriceCalculation($gameId, $lendWeek, $diskType, $achieveDiscount = false)
     {
         $game = Game::with('basePrice')->findOrFail($gameId);
         $basePrice = $game->basePrice;
@@ -137,6 +138,9 @@ class basePriceRepository
                 'discount_price' => config('gamehub.offer_on_digital_game') == true ?
                     $digital_rate - $digital_discount : $digital_rate,
             ];
+            if ($achieveDiscount == true){
+                $price['discount_price'] = $digital_rate;
+            }
         } else {
             $price = [
                 'regular_price' => ceil($sum + (($sum * config('gamehub.offer_discount_amount')) / 100)),

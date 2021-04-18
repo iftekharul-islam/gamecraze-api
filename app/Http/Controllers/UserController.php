@@ -163,9 +163,12 @@ class UserController extends Controller
         return (new CustomersExport())->download('customers-'.  time() . '-' . $date  . '.xls');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function referralHistory()
     {
-        $data = WalletHistory::with('User', 'referredUser')->paginate(config('gamehub.pagination'));
+        $data = WalletHistory::with('User', 'referredUser')->orderBy('created_at', 'DESC')->paginate(config('gamehub.pagination'));
         $total_earning = 0;
         foreach ($data as $item) {
             $total_earning += $item->amount;
