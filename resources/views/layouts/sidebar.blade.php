@@ -173,6 +173,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('referral.history') }}" class="nav-link {{ Request()->routeIs('referral.history') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Referral history
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('notice') }}" class="nav-link {{ Request()->routeIs('notice') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
                         <p>

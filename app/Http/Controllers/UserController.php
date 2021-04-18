@@ -6,6 +6,7 @@ use App\Exports\CustomersExport;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use App\Models\WalletHistory;
 use App\Repositories\Admin\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -160,5 +161,16 @@ class UserController extends Controller
         ob_end_clean();
         ob_start();
         return (new CustomersExport())->download('customers-'.  time() . '-' . $date  . '.xls');
+    }
+
+    public function referralHistory()
+    {
+        $data = WalletHistory::with('User', 'referredUser')->paginate(config('gamehub.pagination'));
+        $total_earning = 0;
+        foreach ($data as $item) {
+            $total_earning += $item->amount;
+        }
+
+        return view('admin.referral_history.index', compact('data', 'total_earning'));
     }
 }

@@ -7,7 +7,7 @@
     </tr>
     <tr>
         <td style="padding-left: 80px; ">
-            <p>Your Game: {{ $game }}is rented successfully</p>
+            <p>Your Game: {{ $game }} is rented successfully</p>
         </td>
     </tr>
     <tr>
