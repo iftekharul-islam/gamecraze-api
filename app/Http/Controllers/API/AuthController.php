@@ -12,6 +12,7 @@ use App\Jobs\SendResetPasswordLinkToEmail;
 use App\Mail\SendPasswordResetMail;
 use App\Models\ResetPasswordToken;
 use App\Models\User;
+use App\Models\WalletHistory;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
 use App\Services\UserLogoutService;
@@ -281,6 +282,24 @@ class AuthController extends BaseController
 
         return response()->json(compact('rent_limit'), 200);
 
+    }
+
+    public function referralHistory()
+    {
+        $user = Auth::user();
+        $history = walletHistory::with('referredUser')->where('user_id', $user->id)->get();
+
+        $total_earning = 0;
+        foreach ($history as $item) {
+            $total_earning += $item->amount;
+        }
+        $referred_history = [
+            'total_earning' => $total_earning,
+            'usable_amount' => ceil($user->wallet),
+            'history' => $history,
+        ];
+
+        return response()->json(compact('referred_history'), 200);
     }
 
 }

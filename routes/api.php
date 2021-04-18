@@ -125,6 +125,7 @@
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             $api->post('user-phone-email-validation', 'App\Http\Controllers\API\AuthController@validatePhoneEmail');
             $api->get('rent-limit', 'App\Http\Controllers\API\AuthController@rentLimit');
+            $api->get('referral-history', 'App\Http\Controllers\API\AuthController@referralHistory');
 
             //For rent purpose
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');

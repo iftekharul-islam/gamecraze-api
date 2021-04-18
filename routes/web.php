@@ -178,6 +178,8 @@ Route::prefix('admin')->group(function () {
         Route::get('my-lender-posts/{id}','\App\Http\Controllers\TransactionHistoryController@myLendPost')->name('my.lend.post');
         Route::post('payment/{id}','\App\Http\Controllers\TransactionHistoryController@payment')->name('payment');
 
+        // Referral history
+        Route::get('referral-history','\App\Http\Controllers\UserController@referralHistory')->name('referral.history');
         //notice
         Route::get('notice','\App\Http\Controllers\NoticeController@index')->name('notice');
         Route::post('notice/store','\App\Http\Controllers\NoticeController@store')->name('notice.store');
