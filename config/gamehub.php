@@ -8,7 +8,7 @@ return [
         4 => 'rejected',
         5 => 'processing',
     ],
-    'order_delivery_status'    => [
+    'order_delivery_status' => [
         0 => 'pending',
         1 => 'completed',
         2 => 'delivered',
