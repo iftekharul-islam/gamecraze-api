@@ -10,6 +10,7 @@ use App\Models\GameOrder;
 use App\Models\Lender;
 use App\Models\Rent;
 use App\Models\User;
+use App\Models\walletSpendHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,7 +74,7 @@ class LenderRepository {
                 'message' => "Opps !!! The game " . implode(", ",$ExistLends) . " you wanted to rent is not available at this moment."
             ];
         }
-        $totalOrderAmount = $request->totalAmount + $request->deliveryCharge;
+        $totalOrderAmount = $request->totalAmount + $request->deliveryCharge + $request->spendWalletAmount;
         $gameOrder = GameOrder::create([
             'order_no' => $this->generateOrderNo(),
             'user_id' => $lender->id,
@@ -136,8 +137,20 @@ class LenderRepository {
 
         if ($discountOnDiskType == true) {
             $lender->achieve_discount = true;
-            $lender->save();
         }
+
+        $lender->wallet = $lender->wallet - $request->spendWalletAmount;
+        $lender->save();
+
+        if ($request->spendWalletAmount != 0){
+            $spendData = new walletSpendHistory();
+            $spendData->user_id = $lender->id;
+            $spendData->order_id = $gameOrder->id;
+            $spendData->amount = $request->spendWalletAmount;
+            $spendData->reason = 'Spend for order';
+            $spendData->save();
+        }
+
         SendEmailToRenter::dispatch($renterDetails, $gameNames, $gameOrder['order_no']);
         CartItem::destroy($cartIds);
 
