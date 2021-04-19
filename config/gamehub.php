@@ -28,6 +28,7 @@ return [
 
     'delivery_charge' => 60,
     'commission' => 0.15,
+    'commission_amount' => 15, // calculate in percentage
 
     'discount_on_commission' => true,
     'digital_game_discount' => 20,

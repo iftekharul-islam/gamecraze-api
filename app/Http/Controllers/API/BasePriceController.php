@@ -53,8 +53,7 @@ class BasePriceController extends Controller
      * @return array|\Illuminate\Http\JsonResponse|void
      */
     public function gameCalculate ($gameId, $lendWeek, $diskType) {
-        $price = $this->basePriceRepository->gamePriceCalculation($gameId, $lendWeek, $diskType,);
-        logger($price);
+        $price = $this->basePriceRepository->gamePriceCalculation($gameId, $lendWeek, $diskType);
         return response()->json(compact('price'), 200);
     }
 
