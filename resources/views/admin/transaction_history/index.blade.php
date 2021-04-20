@@ -73,7 +73,6 @@
                                         @foreach($data as $key=>$item)
                                             @php
                                                 $paid = 0;
-                                                $total_amount = $item->amount + $item->discount_amount;
                                             @endphp
                                             @foreach($paid_amount as $amount)
                                                 @if ($item->renter_id == $amount->user_id)
@@ -82,13 +81,12 @@
                                                 @endif
                                             @endforeach
                                             <tr>
-
                                                 <td><a href="{{ route('user.show', $item->id) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
-                                                <td>{{ $total_amount}}</td>
-                                                <td>{{ $total_amount - $item->commission}}</td>
+                                                <td>{{ $item->amount + $item->discount_amount }}</td>
+                                                <td>{{ $item->amount + $item->discount_amount - $item->commission}}</td>
                                                 <td>{{ $item->commission }}</td>
                                                 <td>{{ $paid }}</td>
-                                                <td>{{ $total_amount - $paid }}</td>
+                                                <td>{{ $item->amount + $item->discount_amount - $paid }}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item->renter_id) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
                                                     <a href="{{ route('my.lend.post', $item->renter_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-list"></i></a>

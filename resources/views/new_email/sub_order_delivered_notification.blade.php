@@ -8,7 +8,7 @@
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
             <p>
-                Thanks for trusting GameHub. Your order of renting {{ $order }} and game : {{ $game }} is processed. The game is delivered to: {{ $address }}. The rent count down will start from next date after delivery.
+                Thanks for trusting GameHub. Your order of renting {{ $order }} and game : {{ $game }} is processed. The game is delivered to: {{ $address }}.
             </p>
             @if($game_id != null)
                 <p>Account User Id: {{ $game_id }}</p>
