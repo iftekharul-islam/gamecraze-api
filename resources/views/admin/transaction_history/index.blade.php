@@ -71,7 +71,10 @@
                                         </thead>
                                         <tbody>
                                         @foreach($data as $key=>$item)
-                                            @php $paid = 0; @endphp
+                                            @php
+                                                $paid = 0;
+                                                $total_amount = $item->amount + $item->discount_amount;
+                                            @endphp
                                             @foreach($paid_amount as $amount)
                                                 @if ($item->renter_id == $amount->user_id)
                                                     @php $paid =  $amount->paid_amount @endphp
@@ -81,11 +84,11 @@
                                             <tr>
 
                                                 <td><a href="{{ route('user.show', $item->id) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
-                                                <td>{{ $item->amount + $item->commission }}</td>
-                                                <td>{{ $item->amount }}</td>
+                                                <td>{{ $total_amount}}</td>
+                                                <td>{{ $total_amount - $item->commission}}</td>
                                                 <td>{{ $item->commission }}</td>
                                                 <td>{{ $paid }}</td>
-                                                <td>{{ $item->amount - $paid }}</td>
+                                                <td>{{ $total_amount - $paid }}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item->renter_id) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
                                                     <a href="{{ route('my.lend.post', $item->renter_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-list"></i></a>

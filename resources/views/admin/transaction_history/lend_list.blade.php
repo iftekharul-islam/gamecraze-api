@@ -59,11 +59,14 @@
                                     </thead>
                                     <tbody>
                                     @foreach($data as $item)
+                                        @php
+                                            $total_amount = $item->lend_cost + $item->discount_amount;
+                                        @endphp
                                         <tr>
                                             <td><a href="{{ route('game.show', $item->rent->game->id) }}">{{ $item->rent->game->name }}</a></td>
                                             <td><a href="{{ route('user.show', $item->lender->id) }}">{{ $item->lender->name }}</a></td>
-                                            <td>{{ $item->lend_cost + $item->commission }}</td>
-                                            <td>{{ $item->lend_cost }}</td>
+                                            <td>{{ $total_amount }}</td>
+                                            <td>{{ $total_amount - $item->commission }}</td>
                                             <td>{{ $item->commission }}</td>
                                             <td>{{ $item->lend_week }}</td>
                                             <td>{{ $item->created_at }}</td>
