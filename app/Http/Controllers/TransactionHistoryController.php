@@ -19,7 +19,7 @@ class TransactionHistoryController extends Controller
     {
 
         $data = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
-            ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name, users.id')
+            ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, SUM(commission) as commission, renter_id, users.name, users.id')
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)
             ->get();
@@ -32,7 +32,6 @@ class TransactionHistoryController extends Controller
             $gamehub_amount += $item->commission;
         }
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')->groupBy('user_id')->get();
-
         return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'customer_amount', 'gamehub_amount'));
     }
 

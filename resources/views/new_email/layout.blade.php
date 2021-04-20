@@ -58,11 +58,11 @@
                 <tr>
                     <td style="border-top: 1px solid rgba(196, 196, 196, 0.75); border-bottom: 1px solid rgba(196, 196, 196, 0.75); height:50px;">
                         <div style="text-align: center; width: fit-content; margin-left: auto; margin-right: auto; margin-top: 5px;">
-                            <a href="#" style="margin-right: 25px;"><img src="{{ asset('email_image/facebook.png') }}" alt="facebook"></a>
-                            <a href="#" style="margin-right: 25px;"><img src="{{ asset('email_image/twitter.png') }}" alt="twitter" style="height: 18px;"></a>
-                            <a href="#" style="margin-right: 25px;"><img src="{{ asset('email_image/insta.png') }}" alt="insta"></a>
-                            <a href="#" style="margin-right: 25px;"><img src="{{ asset('email_image/youtube.png') }}" alt="youtube" style="height: 18px;"></a>
-                            <a href="#"><img src="{{ asset('email_image/book.png') }}" alt="book"></a>
+                            <a href="https://www.facebook.com/gamehub.bangladesh" style="margin-right: 25px;"><img src="{{ asset('email_image/facebook.png') }}" alt="facebook"></a>
+                            <a href="https://twitter.com/BdGamehub" style="margin-right: 25px;"><img src="{{ asset('email_image/twitter.png') }}" alt="twitter" style="height: 18px;"></a>
+                            <a href="https://www.instagram.com/gamehub.bd" style="margin-right: 25px;"><img src="{{ asset('email_image/insta.png') }}" alt="insta"></a>
+                            <a href="https://www.youtube.com/channel/UCEtVjE3POZd-DKXpjpjJ53g" style="margin-right: 25px;"><img src="{{ asset('email_image/youtube.png') }}" alt="youtube" style="height: 18px;"></a>
+{{--                            <a href="#"><img src="{{ asset('email_image/book.png') }}" alt="book"></a>--}}
 
                         </div>
                     </td>
