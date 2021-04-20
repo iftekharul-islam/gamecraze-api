@@ -144,7 +144,7 @@ class basePriceRepository
         } else {
             $price = [
                 'regular_price' => ceil($sum + (($sum * config('gamehub.commission_amount')) / 100)),
-                'discount_price' => $sum
+                'discount_price' => ceil($sum)
             ];
         }
 

@@ -12,6 +12,7 @@ use App\Jobs\SendResetPasswordLinkToEmail;
 use App\Mail\SendPasswordResetMail;
 use App\Models\ResetPasswordToken;
 use App\Models\User;
+use App\Models\WalletHistory;
 use App\Models\walletSpendHistory;
 use App\Repositories\UserRepository;
 use App\Services\UserLoginService;
@@ -287,10 +288,11 @@ class AuthController extends BaseController
     public function referralHistory()
     {
         $user = Auth::user();
-        $history = walletSpendHistory::where('user_id', $user->id)->get();
+        $amounts = walletSpendHistory::where('user_id', $user->id)->get();
+        $history = walletHistory::with('referredUser')->where('user_id', $user->id)->get();
 
         $total_spending = 0;
-        foreach ($history as $item) {
+        foreach ($amounts as $item) {
             $total_spending += $item->amount;
         }
         $referred_history = [

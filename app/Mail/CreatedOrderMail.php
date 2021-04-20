@@ -7,21 +7,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendLenderNotificationMail extends Mailable
+class CreatedOrderMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $renter;
+    public $order;
     public $gameNames;
-    public $orderNo;
 
     /**
-     * SendLenderNotificationMail constructor.
+     * CreatedOrderMail constructor.
+     * @param $renter
+     * @param $order
      * @param $gameNames
-     * @param $orderNo
      */
-    public function __construct($gameNames, $orderNo)
+    public function __construct($renter, $order, $gameNames)
     {
+        $this->renter = $renter;
+        $this->order = $order;
         $this->gameNames = $gameNames;
-        $this->orderNo = $orderNo;
     }
 
     /**
@@ -31,11 +34,12 @@ class SendLenderNotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('new_email.lender_notification')
-            ->subject('Gamehub Lend Confirmation')
+        return $this->view('new_email.order_created_notification_to_admin')
+            ->subject('Rent Complete Reminder')
             ->with([
-                'order' => $this->orderNo ,
                 'games' => implode(', ', $this->gameNames),
+                'order' => $this->order,
+                'customer' => $this->renter->name,
             ]);
     }
 }

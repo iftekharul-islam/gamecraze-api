@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\CreatedOrderMail;
 use App\Mail\SendLenderNotificationMail;
 use App\Mail\SendRenterNotificationMail;
 use App\Models\Game;
@@ -44,12 +45,20 @@ class SendEmailToRenter implements ShouldQueue
     public function handle()
     {
         $lender = auth()->user();
-
-        Mail::to($lender->email)->queue(new SendLenderNotificationMail($this->gameNames, $this->orderNo));
-
+        if ($lender->email != null) {
+            Mail::to($lender->email)->queue(new SendLenderNotificationMail($this->gameNames, $this->orderNo));
+        }
         foreach($this->renterDetails as $item) {
             $user = User::where('id', $item['renter_id'])->first();
-            Mail::to($user->email)->queue(new SendRenterNotificationMail($item['game_name']));
+            if ($user->email != null) {
+                Mail::to($user->email)->queue(new SendRenterNotificationMail($item['game_name']));
+            }
+        }
+        $admins = User::role('Admin')->get();
+        foreach ($admins as $admin){
+            if ($admin->email != null) {
+                Mail::to($admin->email)->queue(new CreatedOrderMail($lender, $this->orderNo, $this->gameNames));
+            }
         }
 
     }
