@@ -85,6 +85,7 @@ class LenderRepository {
             'delivery_status' => 0,
             'delivery_charge' => $request->get('deliveryCharge') ? $request->get('deliveryCharge') : 0,
             'address' => $request->address ?? '',
+            'wallet_amount' => $request->spendWalletAmount ?? 0,
         ]);
 
         $itemCount = count($cartItems);

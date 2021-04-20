@@ -170,8 +170,8 @@ class UserController extends Controller
      */
     public function referralHistory(Request $request)
     {
-        $startDate = Carbon::parse($request->input('start_date'));
-        $endDate = Carbon::parse($request->input('end_date'));
+        $startDate = $request->input('start_date') ? Carbon::parse($request->input('start_date')) : null;
+        $endDate = $request->input('end_date') ? Carbon::parse($request->input('end_date')) : null;
 
         if ($startDate != null || $endDate != null) {
             $data = WalletHistory::with('User', 'referredUser')

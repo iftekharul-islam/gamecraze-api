@@ -174,11 +174,10 @@
 {{--                                                                    }--}}
 
 {{--                                                                @endphp--}}
-
-                                                                <td>{{ $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->lend_cost + $lend->discount_amount }}</td>
-                                                                <td>{{ $lend->lend_cost }}</td>
+                                                                <td>{{ $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->commission }}</td>
+                                                                <td>{{ $lend->lend_cost }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php
@@ -242,6 +241,12 @@
                                                         <th>Total (BDT):</th>
                                                         <td id="total" class="text-right">{{ $order->amount }}</td>
                                                     </tr>
+                                                    @if($order->wallet_amount != 0)
+                                                        <tr>
+                                                            <th>Referral Used (BDT):</th>
+                                                            <td id="total" class="text-right">{{ $order->wallet_amount }}</td>
+                                                        </tr>
+                                                    @endif
                                                 </table>
                                             </div>
                                         </div>
