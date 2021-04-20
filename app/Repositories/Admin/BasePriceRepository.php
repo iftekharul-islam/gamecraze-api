@@ -130,21 +130,30 @@ class basePriceRepository
         }
         if ($diskType == config('gamehub.disk_type.digital_copy')){
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
+            $digital_commission = ceil($digital_rate * config('gamehub.commission_amount') / 100);
+
             $digitalDiscountAmount = ceil($digitalDiscountAmount - ($digitalDiscountAmount * config('gamehub.digital_game_discount') / 100));
-            $digital_discount = $digital_rate >= $digitalDiscountAmount ? $digitalDiscountAmount : 0;
-            $digital_regular_price = ceil(($digital_rate + (($digital_rate * config('gamehub.commission_amount')) / 100)));
+            $digitalDiscountCommission = ceil($digitalDiscountAmount * config('gamehub.commission_amount') / 100);
+
             $price = [
-                'regular_price' => $digital_regular_price,
+                'regular_price' => $digital_rate,
+                'regular_commission' => $digital_commission,
+
                 'discount_price' => config('gamehub.offer_on_digital_game') == true ?
-                    $digital_rate - $digital_discount : $digital_regular_price,
+                    $digital_rate - $digitalDiscountAmount : $digital_rate,
+                'discount_commission' => config('gamehub.offer_on_digital_game') == true ?
+                    $digital_commission - $digitalDiscountCommission : $digital_commission,
             ];
             if ($achieveDiscount == true){
                 $price['discount_price'] = $price['regular_price'];
+                $price['discount_commission'] = $price['regular_commission'];
             }
         } else {
             $price = [
-                'regular_price' => ceil($sum + (($sum * config('gamehub.commission_amount')) / 100)),
-                'discount_price' => ceil($sum)
+                'regular_price' => ceil($sum),
+                'regular_commission' => ceil(($sum * config('gamehub.commission_amount')) / 100),
+                'discount_price' => ceil($sum),
+                'discount_commission' => 0
             ];
         }
 

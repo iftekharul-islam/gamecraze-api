@@ -174,10 +174,10 @@
 {{--                                                                    }--}}
 
 {{--                                                                @endphp--}}
-                                                                <td>{{ $lend->lend_cost + $lend->discount_amount }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->commission + $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->commission }}</td>
-                                                                <td>{{ $lend->lend_cost }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->commission }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php

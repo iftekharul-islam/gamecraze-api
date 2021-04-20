@@ -37,7 +37,9 @@ class CartItemController extends BaseController
         if ($items) {
 
             $totalRegularPrice = 0;
+            $totalRegularCommission = 0;
             $totalDiscountPrice = 0;
+            $totalDiscountCommission = 0;
             $deliveryCharge = 0;
 
             $cartItems = new Collection();
@@ -52,14 +54,18 @@ class CartItemController extends BaseController
                         'address' => $item->address,
                         'status' => $item->status,
                         'regular_price' => $price['regular_price'],
+                        'regular_commission' => $price['regular_commission'],
                         'discount_price' => $price['discount_price'],
+                        'discount_commission' => $price['discount_commission'],
                         'game_name' => $item->rent->game->name,
                         'renter_id' => $item->rent->user_id,
                         'disk_type' => $item->rent->disk_type,
                     ]);
 
                     $totalRegularPrice += $price['regular_price'];
+                    $totalRegularCommission += $price['regular_commission'];
                     $totalDiscountPrice += $price['discount_price'];
+                    $totalDiscountCommission += $price['discount_commission'];
 
                     if ($item->rent->disk_type == 1) {
                         $deliveryCharge = config('gamehub.delivery_charge');
@@ -69,8 +75,10 @@ class CartItemController extends BaseController
 
             $data = [
                 'cartItems' => $cartItems,
-                'totalRegularPrice' => $totalRegularPrice,
-                'totalDiscountPrice' => $totalDiscountPrice,
+                'totalRegularPrice' => $totalRegularPrice + $totalRegularCommission,
+                'totalRegularCommission' => $totalRegularCommission,
+                'totalDiscountPrice' => $totalDiscountPrice + $totalDiscountCommission,
+                'totalDiscountCommission' => $totalDiscountCommission,
                 'deliveryCharge' => $deliveryCharge,
             ];
 
