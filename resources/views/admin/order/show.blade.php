@@ -150,8 +150,8 @@
                                                             <th>Game Name</th>
                                                             <th>Original Amount</th>
                                                             <th>Discount Amount</th>
-                                                            <th>Grand Amount</th>
                                                             <th>Commission Amount</th>
+                                                            <th>Grand Amount</th>
                                                             <th>Start date</th>
                                                             <th>Week</th>
                                                             <th>End Date</th>
@@ -175,8 +175,8 @@
 
 {{--                                                                @endphp--}}
 
-                                                                <td>{{ $lend->lend_cost + $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->discount_amount }}</td>
+                                                                <td>{{ $lend->lend_cost + $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->lend_cost }}</td>
                                                                 <td>{{ $lend->commission }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
