@@ -7,6 +7,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Models\WalletHistory;
+use App\Models\WalletHistorys;
 use App\Repositories\Admin\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -164,16 +165,33 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function referralHistory()
+    public function referralHistory(Request $request)
     {
-        $data = WalletHistory::with('User', 'referredUser')->orderBy('created_at', 'DESC')->paginate(config('gamehub.pagination'));
+        $startDate = Carbon::parse($request->input('start_date'));
+        $endDate = Carbon::parse($request->input('end_date'));
+
+        if ($startDate != null || $endDate != null) {
+            $data = WalletHistory::with('User', 'referredUser')
+                ->whereDate('created_at', '>=', $startDate ?? Carbon::today()->subDays(30))
+                ->whereDate('created_at', '<=', $endDate ?? Carbon::today())
+                ->orderBy('created_at', 'DESC')
+                ->paginate(config('gamehub.pagination'));
+        } else {
+            $data = WalletHistory::with('User', 'referredUser')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(config('gamehub.pagination'));
+        }
+
         $total_earning = 0;
+
         foreach ($data as $item) {
             $total_earning += $item->amount;
         }
 
+//        return $data;
         return view('admin.referral_history.index', compact('data', 'total_earning'));
     }
 }
