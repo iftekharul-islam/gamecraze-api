@@ -31,7 +31,7 @@ class LendPostMail extends Mailable
     {
         $post = Rent::with('user', 'game')->where('id', $this->post->id)->first();
         return $this->view('new_email.lend_post_notification_to_admin')
-            ->subject('Rent Complete Reminder')
+            ->subject('New Lend Post Available')
             ->with([
                 'customer' => $post->user->name,
                 'game' => $post->game->name
