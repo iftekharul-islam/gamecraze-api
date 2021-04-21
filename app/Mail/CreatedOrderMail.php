@@ -35,7 +35,7 @@ class CreatedOrderMail extends Mailable
     public function build()
     {
         return $this->view('new_email.order_created_notification_to_admin')
-            ->subject('Rent Complete Reminder')
+            ->subject('New Order Available')
             ->with([
                 'games' => implode(', ', $this->gameNames),
                 'order' => $this->order,
