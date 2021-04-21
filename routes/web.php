@@ -180,6 +180,9 @@ Route::prefix('admin')->group(function () {
 
         // Referral history
         Route::get('referral-history','\App\Http\Controllers\UserController@referralHistory')->name('referral.history');
+        // Wallet spend history
+        Route::get('wallet-spend-history','\App\Http\Controllers\UserController@walletSpendHistory')->name('wallet.history');
+        Route::get('my-spend-list/{id}','\App\Http\Controllers\UserController@walletSpendById')->name('wallet.spend.show');
         //notice
         Route::get('notice','\App\Http\Controllers\NoticeController@index')->name('notice');
         Route::post('notice/store','\App\Http\Controllers\NoticeController@store')->name('notice.store');

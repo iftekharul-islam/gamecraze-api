@@ -19,21 +19,20 @@ class TransactionHistoryController extends Controller
     {
 
         $data = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
-            ->selectRaw('SUM(lend_cost) as amount, SUM(commission) as commission, renter_id, users.name, users.id')
+            ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, SUM(commission) as commission, SUM(original_commission) as original_commission, renter_id, users.name, users.id')
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)
             ->get();
         $total_amount= 0;
-        $customer_amount= 0;
+        $seller_amount= 0;
         $gamehub_amount= 0;
         foreach ($data as $item) {
-            $total_amount += $item->amount + $item->commission;
-            $customer_amount += $item->amount;
-            $gamehub_amount += $item->commission;
+            $total_amount += $item->amount + $item->discount_amount + $item->commission;
+            $seller_amount += $item->amount + $item->discount_amount + $item->commission - $item->original_commission;
+            $gamehub_amount += $item->original_commission;
         }
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id')->groupBy('user_id')->get();
-
-        return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'customer_amount', 'gamehub_amount'));
+        return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'seller_amount', 'gamehub_amount'));
     }
 
     public function payAmount($id)

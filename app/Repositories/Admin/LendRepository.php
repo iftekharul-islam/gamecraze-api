@@ -4,6 +4,9 @@
 namespace App\Repositories\Admin;
 
 use App\Jobs\SendReminder;
+use App\Jobs\SentSubOrderCompletedEmail;
+use App\Jobs\SentSubOrderDeliveredEmail;
+use App\Jobs\SentSubOrderProcessingEmail;
 use App\Models\Lender;
 use App\Models\Rent;
 use App\Models\User;
@@ -56,12 +59,21 @@ class LendRepository
                 ->where('rented_lend_id', null)
                 ->count();
             if (2 > $availableRent) {
-                logger("in sent reminder section from rent post active");
+                logger("in the sent reminder section from rent post available");
                 SendReminder::dispatch($rentPost->game_id);
             }
         }
         $lend->status = $status;
         $lend->save();
+        if ($status == 5){
+            SentSubOrderProcessingEmail::dispatch($lend);
+        }
+        if ($status == 3){
+            SentSubOrderDeliveredEmail::dispatch($lend);
+        }
+        if ($status == 1){
+            SentSubOrderCompletedEmail::dispatch($lend);
+        }
         return true;
     }
 }

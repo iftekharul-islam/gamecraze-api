@@ -181,6 +181,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('wallet.history') }}" class="nav-link {{ Request()->routeIs('wallet.history') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Wallet spend history
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('notice') }}" class="nav-link {{ Request()->routeIs('notice') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
                         <p>

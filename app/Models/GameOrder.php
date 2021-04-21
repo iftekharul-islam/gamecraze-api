@@ -9,7 +9,8 @@ class GameOrder extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'order_no', 'user_id', 'amount', 'commission', 'payment_method', 'payment_status', 'delivery_charge', 'delivery_status', 'address'
+        'order_no', 'user_id', 'amount', 'commission', 'payment_method', 'payment_status',
+        'delivery_charge', 'delivery_status', 'address', 'wallet_amount'
     ];
 
     public function lenders()

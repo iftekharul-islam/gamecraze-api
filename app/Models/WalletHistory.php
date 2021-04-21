@@ -8,7 +8,7 @@ class WalletHistory extends Model
 {
     protected $fillable = ['user_id', 'referred_user_id', 'amount', 'reason'];
 
-    public function User()
+    public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }

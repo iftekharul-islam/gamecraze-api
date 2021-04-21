@@ -47,7 +47,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
-                                <p> <b>Customer amount :</b> {{ $customer_amount }}</p>
+                                <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                         <tr>
                                             <th>Customer Name</th>
                                             <th>Total Amount</th>
-                                            <th>Customer payable</th>
+                                            <th>Seller Amount</th>
                                             <th>commission</th>
                                             <th>Paid</th>
                                             <th>Due</th>
@@ -71,7 +71,11 @@
                                         </thead>
                                         <tbody>
                                         @foreach($data as $key=>$item)
-                                            @php $paid = 0; @endphp
+                                            @php
+                                                $paid = 0;
+                                                $total_amount = $item->amount + $item->discount_amount + $item->commission ;
+                                                $payable_amount = $total_amount - $item->original_commission;
+                                            @endphp
                                             @foreach($paid_amount as $amount)
                                                 @if ($item->renter_id == $amount->user_id)
                                                     @php $paid =  $amount->paid_amount @endphp
@@ -79,13 +83,12 @@
                                                 @endif
                                             @endforeach
                                             <tr>
-
                                                 <td><a href="{{ route('user.show', $item->id) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
-                                                <td>{{ $item->amount + $item->commission }}</td>
-                                                <td>{{ $item->amount }}</td>
-                                                <td>{{ $item->commission }}</td>
+                                                <td>{{ $total_amount}}</td>
+                                                <td>{{ $total_amount - $item->original_commission }}</td>
+                                                <td>{{ $item->original_commission }}</td>
                                                 <td>{{ $paid }}</td>
-                                                <td>{{ $item->amount - $paid }}</td>
+                                                <td>{{ $payable_amount - $paid }}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item->renter_id) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
                                                     <a href="{{ route('my.lend.post', $item->renter_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-list"></i></a>

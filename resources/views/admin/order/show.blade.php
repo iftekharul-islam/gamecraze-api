@@ -143,13 +143,14 @@
                                         @if($order->lenders)
                                            
                                             <div class="col-md-12 invoice-col">
-                                                <table id="example2" class="table table-bordered table-hover">
+                                                <table id="example2" class="table table-bordered table-hover table-responsive">
                                                     <thead>
                                                         <tr>
                                                             <th>SL</th>
                                                             <th>Game Name</th>
                                                             <th>Original Amount</th>
                                                             <th>Discount Amount</th>
+                                                            <th>Commission Amount</th>
                                                             <th>Grand Amount</th>
                                                             <th>Start date</th>
                                                             <th>Week</th>
@@ -173,9 +174,9 @@
 {{--                                                                    }--}}
 
 {{--                                                                @endphp--}}
-
                                                                 <td>{{ $lend->lend_cost + $lend->commission + $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->discount_amount }}</td>
+                                                                <td>{{ $lend->commission }}</td>
                                                                 <td>{{ $lend->lend_cost + $lend->commission }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
@@ -230,7 +231,7 @@
                                                 <table class="table">
                                                     <tr>
                                                         <th style="width:50%">Subtotal (BDT):</th>
-                                                        <td class="text-right">{{ $order->amount + $order->commission - $order->delivery_charge }}</td>
+                                                        <td class="text-right">{{ $order->amount - $order->delivery_charge }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Delivery Fee (BDT):</th>
@@ -238,8 +239,14 @@
                                                     </tr>
                                                     <tr>
                                                         <th>Total (BDT):</th>
-                                                        <td id="total" class="text-right">{{ $order->amount + $order->commission }}</td>
+                                                        <td id="total" class="text-right">{{ $order->amount }}</td>
                                                     </tr>
+                                                    @if($order->wallet_amount != 0)
+                                                        <tr>
+                                                            <th>Referral Used (BDT):</th>
+                                                            <td id="total" class="text-right">{{ $order->wallet_amount }}</td>
+                                                        </tr>
+                                                    @endif
                                                 </table>
                                             </div>
                                         </div>

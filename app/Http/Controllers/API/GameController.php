@@ -209,9 +209,6 @@ class GameController extends BaseController
         else {
             $genres = [];
         }
-        logger($request->url());
-        logger($genres);
-        logger($request->all());
         $games = $this->gameRepository->relatedGames($genres);
         return $this->response->collection($games, new RentTransformer());
     }

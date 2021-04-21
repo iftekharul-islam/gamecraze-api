@@ -10,7 +10,8 @@ class Lender extends Model
     use SoftDeletes;
 
     protected $fillable = ['lender_id', 'rent_id', 'checkpoint_id', 'lend_week', 'lend_cost',
-        'commission', 'renter_id', 'lend_date', 'payment_method', 'status', 'game_order_id', 'discount_amount', 'reference'];
+        'commission', 'renter_id', 'lend_date', 'payment_method', 'status', 'game_order_id',
+        'discount_amount', 'reference', 'original_commission'];
 
 //    public function renter() {
 //        return $this->belongsTo(User::class,'renter_id','id');

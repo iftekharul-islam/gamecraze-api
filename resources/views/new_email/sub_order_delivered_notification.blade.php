@@ -8,8 +8,12 @@
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
             <p>
-                Thanks for trusting GameHub. Your order of renting {{ $order->order_no }} is processed. The game(s) is delivered to: {{ $order->address }}.
+                Thanks for trusting GameHub. Your order of renting {{ $order }} and game : {{ $game }} is processed. The game is delivered to: {{ $address }}.
             </p>
+            @if($game_id != null)
+                <p>Account User Id: {{ $game_id }}</p>
+                <p>Account Password: {{ $game_password }}</p>
+            @endif
             <p> We hope you will enjoy playing & to save more money rent more games ;)</p>
         </td>
     </tr>

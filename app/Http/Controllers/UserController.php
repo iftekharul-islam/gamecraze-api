@@ -7,6 +7,8 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Models\WalletHistory;
+use App\Models\WalletHistorys;
+use App\Models\walletSpendHistory;
 use App\Repositories\Admin\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -163,14 +165,57 @@ class UserController extends Controller
         return (new CustomersExport())->download('customers-'.  time() . '-' . $date  . '.xls');
     }
 
-    public function referralHistory()
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function referralHistory(Request $request)
     {
-        $data = WalletHistory::with('User', 'referredUser')->paginate(config('gamehub.pagination'));
+        $startDate = $request->input('start_date') ? Carbon::parse($request->input('start_date')) : null;
+        $endDate = $request->input('end_date') ? Carbon::parse($request->input('end_date')) : null;
+
+        if ($startDate != null || $endDate != null) {
+            $data = WalletHistory::with('User', 'referredUser')
+                ->whereDate('created_at', '>=', $startDate ?? Carbon::today()->subDays(30))
+                ->whereDate('created_at', '<=', $endDate ?? Carbon::today())
+                ->orderBy('created_at', 'DESC')
+                ->paginate(config('gamehub.pagination'));
+        } else {
+            $data = WalletHistory::with('User', 'referredUser')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(config('gamehub.pagination'));
+        }
+
         $total_earning = 0;
+
         foreach ($data as $item) {
             $total_earning += $item->amount;
         }
 
         return view('admin.referral_history.index', compact('data', 'total_earning'));
+    }
+
+    public function walletSpendHistory()
+    {
+        $data = User::join('wallet_spend_histories', 'users.id', '=', 'wallet_spend_histories.user_id')
+                ->selectRaw('SUM(amount) as amount, users.name, users.last_name, users.id')
+                ->groupBy('wallet_spend_histories.user_id')
+                ->paginate(config('gamehub.pagination'));
+
+        $total_spend = 0;
+        foreach ($data as $item) {
+            $total_spend += $item->amount;
+        }
+
+        return view('admin.wallet_spend_history.index', compact('data', 'total_spend'));
+    }
+
+    public function walletSpendById($id)
+    {
+        $data = walletSpendHistory::with('order')
+            ->where('user_id', $id)
+            ->paginate(config('gamehub.pagination'));
+
+        return view('admin.wallet_spend_history.show', compact('data'));
     }
 }

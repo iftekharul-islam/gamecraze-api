@@ -2,13 +2,13 @@
 @section('content')
     <tr>
         <td style="padding-left: 80px; ">
-            Dear {{ $name }},
+            Dear {{ $user }},
         </td>
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
             <p>
-                Thanks for trusting GameHub. Your order of renting {{ $order->order_no }} is processed. The game(s) is delivered to: {{ $order->address }}.
+                Thanks for trusting GameHub. Your order of renting {{ $order }} and game : {{ $game }} is under processing. The game will be delivered to {{ $address }} within 72 hours. The rent count down will start once you have the game in your hand.
             </p>
             <p> We hope you will enjoy playing & to save more money rent more games ;)</p>
         </td>
@@ -19,3 +19,4 @@
         </td>
     </tr>
 @endsection
+

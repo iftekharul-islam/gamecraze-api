@@ -5,8 +5,10 @@
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
-            <p> New lend post available, please review this post and take an appropriate action.</p>
-            <p> Customer name: {{ $customer }} & game : {{ $game }}</p>
+            <p> New Order available, Please review this Order.</p>
+            <p> Order no : {{ $order }}</p>
+            <p> Customer name: {{ $customer }}</p>
+            <p> Game(s) : {{ $games }}</p>
         </td>
     </tr>
     <tr>
