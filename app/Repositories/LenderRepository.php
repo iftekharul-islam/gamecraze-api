@@ -128,6 +128,7 @@ class LenderRepository {
                 'lend_cost' => $paymentAmount,
 //                'commission' => $discountOnCommission == true ? 0 : $this->commissionAmount($paymentAmount),
                 'commission' => $paymentCommission,
+                'original_commission' => $cartItems[$i]['regular_commission'],
                 'renter_id' => $cartItems[$i]['renter_id'],
                 'lend_date' => Carbon::now(),
                 'payment_method' => $request->get('paymentMethod'),
