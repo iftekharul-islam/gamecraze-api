@@ -73,7 +73,7 @@
                                         @foreach($data as $key=>$item)
                                             @php
                                                 $paid = 0;
-                                                $total_amount = $item->amount + $item->discount_amount;
+                                                $total_amount = $item->amount + $item->discount_amount + $item->commission;
                                             @endphp
                                             @foreach($paid_amount as $amount)
                                                 @if ($item->renter_id == $amount->user_id)
