@@ -59,13 +59,13 @@ class TransactionController extends BaseController
 
         if (!empty($user_lends)){
 
-            $lend = Lender::selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, renter_id')
+            $lend = Lender::selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, SUM(commission) as commission, SUM(original_commission) as original_commission, renter_id')
                 ->groupBy('renter_id')
                 ->where('status', 1)
                 ->where('renter_id', $user->id)
                 ->firstOrFail();
 
-            $total_lend_amount = $lend['amount'] + $lend['discount_amount'];
+            $total_lend_amount = $lend['amount'] + $lend['discount_amount'] + $lend['commission'] - $lend['original_commission'];
 
         }
         $due = $total_lend_amount - $total_paid_amount;
