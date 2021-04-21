@@ -47,7 +47,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
-                                <p> <b>Customer amount :</b> {{ $customer_amount }}</p>
+                                <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
                             </div>
                         </div>
