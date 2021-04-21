@@ -8,6 +8,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Models\WalletHistory;
 use App\Models\WalletHistorys;
+use App\Models\walletSpendHistory;
 use App\Repositories\Admin\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -191,7 +192,30 @@ class UserController extends Controller
             $total_earning += $item->amount;
         }
 
-//        return $data;
         return view('admin.referral_history.index', compact('data', 'total_earning'));
+    }
+
+    public function walletSpendHistory()
+    {
+        $data = User::join('wallet_spend_histories', 'users.id', '=', 'wallet_spend_histories.user_id')
+                ->selectRaw('SUM(amount) as amount, users.name, users.last_name, users.id')
+                ->groupBy('wallet_spend_histories.user_id')
+                ->paginate(config('gamehub.pagination'));
+
+        $total_spend = 0;
+        foreach ($data as $item) {
+            $total_spend += $item->amount;
+        }
+
+        return view('admin.wallet_spend_history.index', compact('data', 'total_spend'));
+    }
+
+    public function walletSpendById($id)
+    {
+        $data = walletSpendHistory::with('order')
+            ->where('user_id', $id)
+            ->paginate(config('gamehub.pagination'));
+
+        return view('admin.wallet_spend_history.show', compact('data'));
     }
 }
