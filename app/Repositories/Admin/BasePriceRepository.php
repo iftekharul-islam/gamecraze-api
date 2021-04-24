@@ -144,6 +144,7 @@ class basePriceRepository
                 'discount_commission' => config('gamehub.offer_on_digital_game') == true ?
                     $digital_commission - $digitalDiscountCommission : $digital_commission,
             ];
+            logger($price);
             if ($achieveDiscount == true){
                 $price['discount_price'] = $price['regular_price'];
                 $price['discount_commission'] = $price['regular_commission'];
