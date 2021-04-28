@@ -38,7 +38,6 @@ class SendResetCodeEmail implements ShouldQueue
      */
     public function handle()
     {
-//        $this->user->notify(new PasswordResetRequest($this->otp));
 
         PasswordReset::create([
             'email' => $this->user->email,

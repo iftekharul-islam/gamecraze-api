@@ -47,7 +47,7 @@ class NotifyUsers extends Command
         $lends = Lender::with('lender', 'rent.game')->where('status', 3)->get();
         logger('lends');
         logger($lends);
-        $admins = User::role('Admin')->get();
+        $admins = config('admin_mail.mail_to');
         foreach ($lends as $lend) {
             $rentStartDate = $lend->updated_at;
             $endDateFormat = Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7 );

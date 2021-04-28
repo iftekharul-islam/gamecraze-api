@@ -64,7 +64,7 @@ class RentRepository {
         }
         $rent['user_id'] = auth()->user()->id;
         $post = Rent::create($rent);
-        $admins = User::role('Admin')->get();
+        $admins = config('admin_mail.mail_to');
         foreach ($admins as $admin){
             SentLendPostNotification::dispatch($post, $admin);
         }
