@@ -22,7 +22,7 @@ class GameRepository
      */
     public function allGame()
     {
-        return Game::orderBy('created_at', 'DESC')->get();
+        return Game::orderBy('created_at', 'DESC')->paginate(config('gamehub.pagination'));
     }
 
     /**

@@ -21,7 +21,7 @@ class GameOrderRepository
 
         $order = GameOrder::query();
 
-        if ($request->status != 1 && $request->status != null) {
+        if ($request->status == 0 && $request->status != null) {
             $order->where('delivery_status', 0);
         }
         if ($request->status) {
