@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Games</h1>
+                        <h1>All Games <span class="badge badge-primary">{{ $games->total() }}</span></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -90,6 +90,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="mt-3"> {{ $games->appends(Request::all())->links() }} </div>
                                 @else
                                     <h4 class="text-center">No data found</h4>
                                 @endif
