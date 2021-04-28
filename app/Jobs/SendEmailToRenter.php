@@ -54,10 +54,10 @@ class SendEmailToRenter implements ShouldQueue
                 Mail::to($user->email)->queue(new SendRenterNotificationMail($item['game_name']));
             }
         }
-        $admins = User::role('Admin')->get();
+        $admins = config('admin_mail.mail_to');
         foreach ($admins as $admin){
             if ($admin->email != null) {
-                Mail::to($admin->email)->queue(new CreatedOrderMail($lender, $this->orderNo, $this->gameNames));
+                Mail::to($admin)->queue(new CreatedOrderMail($lender, $this->orderNo, $this->gameNames));
             }
         }
 

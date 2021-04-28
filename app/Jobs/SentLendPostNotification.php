@@ -34,6 +34,6 @@ class SentLendPostNotification implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->admin->email)->queue(new LendPostMail($this->post));
+        Mail::to($this->admin)->queue(new LendPostMail($this->post));
     }
 }
