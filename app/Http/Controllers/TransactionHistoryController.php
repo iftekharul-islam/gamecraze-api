@@ -22,6 +22,7 @@ class TransactionHistoryController extends Controller
             ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, SUM(commission) as commission, SUM(original_commission) as original_commission, renter_id, users.name, users.id')
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)
+            ->where('lenders.deleted_at', null)
             ->get();
         $total_amount= 0;
         $seller_amount= 0;
