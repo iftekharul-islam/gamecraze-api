@@ -92,10 +92,10 @@
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ isset($lend->order) ? $lend->order->order_no : '' }}</td>
-                                            <td>{{ isset($lend->lender->name) ? $lend->lender->name : '' }}</td>
                                             <td>
                                                 {{ isset($lend->rent->user->name) ? $lend->rent->user->name : '' }}
                                             </td>
+                                            <td>{{ isset($lend->lender->name) ? $lend->lender->name : '' }}</td>
                                             <td>
                                                 <a href="{{ route('lend.show', $lend->id) }}">
                                                     {{ isset($lend->rent->game->name) ? $lend->rent->game->name : '' }}
