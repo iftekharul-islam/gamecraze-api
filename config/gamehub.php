@@ -34,11 +34,15 @@ return [
     'digital_game_discount' => 20,
 
     'offer_discount' => true,
-    'offer_discount_amount' => 15, // calculate in percentage
-    'offer_reference' => 'gamehub launch discount',
-
     'offer_on_digital_game' => true,
-    'offer_percentage_digital_game' => 100, // calculate in percentage
+    'offer_on_physical_game' => true,
+
+    'offer_discount_amount' => 15, // calculate in percentage
+    'offer_percentage_digital_game' => 15, // calculate in percentage
+    'offer_reference' => 'Regular discount',
+
+//    'offer_percentage_digital_game' => 100, // previous calculate in percentage
+//    'offer_reference' => 'gamehub launch discount', // previous reference
 
 
 ];

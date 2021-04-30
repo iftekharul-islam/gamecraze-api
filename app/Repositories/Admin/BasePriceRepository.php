@@ -103,14 +103,13 @@ class basePriceRepository
      * @param $diskType
      * @return array|void
      */
-    public function gamePriceCalculation($gameId, $lendWeek, $diskType, $achieveDiscount = false)
+    public function gamePriceCalculation($gameId, $lendWeek, $diskType)
     {
         $game = Game::with('basePrice')->findOrFail($gameId);
         $basePrice = $game->basePrice;
         $second_week = $basePrice->second_week;
         $third_week = $basePrice->third_week;
         $sum = 0;
-        $digitalDiscountAmount = 0;
         $mapping = [
             1 => 1,
             2 => $second_week,
@@ -118,7 +117,6 @@ class basePriceRepository
         ];
         for ($i = 1; $i <= $lendWeek; $i++) {
             if (isset($mapping[$i])) {
-                $digitalDiscountAmount = $basePrice->base * $mapping[1];
                 $sum += $basePrice->base * $mapping[$i];
             } else {
                 $lendWeek = $lendWeek - 3;
@@ -129,34 +127,34 @@ class basePriceRepository
             }
         }
         if ($diskType == config('gamehub.disk_type.digital_copy')){
-            $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
-            $digital_commission = ceil($digital_rate * config('gamehub.commission_amount') / 100);
+            $digital_rate = ceil($sum - (($sum * config('gamehub.digital_game_discount')) / 100));
+            $digital_commission = ceil(($digital_rate * config('gamehub.commission_amount')) / 100);
 
-            $digitalDiscountAmount = ceil($digitalDiscountAmount - ($digitalDiscountAmount * config('gamehub.digital_game_discount') / 100));
-            $digitalDiscountCommission = ceil($digitalDiscountAmount * config('gamehub.commission_amount') / 100);
+            $digital_discount_amount = ceil($digital_rate);
+            $digital_discount_commission = 0;
 
             $price = [
                 'regular_price' => $digital_rate,
                 'regular_commission' => $digital_commission,
 
                 'discount_price' => config('gamehub.offer_on_digital_game') == true ?
-                    $digital_rate - $digitalDiscountAmount : $digital_rate,
+                    $digital_discount_amount : $digital_rate,
                 'discount_commission' => config('gamehub.offer_on_digital_game') == true ?
-                    $digital_commission - $digitalDiscountCommission : $digital_commission,
+                    $digital_discount_commission : $digital_commission,
             ];
-            if ($achieveDiscount == true){
-                $price['discount_price'] = $price['regular_price'];
-                $price['discount_commission'] = $price['regular_commission'];
-            }
         } else {
+            $physical_rate = $sum ;
+            $physical_commission = ($physical_rate * config('gamehub.commission_amount')) / 100;
+
+            $physical_discount_amount = $physical_rate;
+            $physical_discount_commission = 0;
             $price = [
-                'regular_price' => ceil($sum),
-                'regular_commission' => ceil(($sum * config('gamehub.commission_amount')) / 100),
-                'discount_price' => ceil($sum),
-                'discount_commission' => 0
+                'regular_price' => ceil($physical_rate),
+                'regular_commission' => ceil($physical_commission),
+                'discount_price' => ceil($physical_discount_amount),
+                'discount_commission' => $physical_discount_commission
             ];
         }
-
         return $price;
     }
 }
