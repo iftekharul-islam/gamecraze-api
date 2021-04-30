@@ -129,9 +129,8 @@ class basePriceRepository
         if ($diskType == config('gamehub.disk_type.digital_copy')){
             $digital_rate = ceil($sum - (($sum * config('gamehub.digital_game_discount')) / 100));
             $digital_commission = ceil(($digital_rate * config('gamehub.commission_amount')) / 100);
-            $total_price = $digital_rate + $digital_commission;
 
-            $digital_discount_amount = ceil($total_price - (($total_price * config('gamehub.offer_percentage_digital_game')) / 100));
+            $digital_discount_amount = ceil($digital_rate);
             $digital_discount_commission = 0;
 
             $price = [
@@ -146,9 +145,8 @@ class basePriceRepository
         } else {
             $physical_rate = $sum ;
             $physical_commission = ($physical_rate * config('gamehub.commission_amount')) / 100;
-            $total_price = $physical_rate + $physical_commission;
 
-            $physical_discount_amount = $total_price - (($total_price * config('gamehub.offer_discount_amount')) / 100);
+            $physical_discount_amount = $physical_rate;
             $physical_discount_commission = 0;
             $price = [
                 'regular_price' => ceil($physical_rate),

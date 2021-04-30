@@ -110,7 +110,7 @@ class RentTransformer extends TransformerAbstract
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
             $digital_regular_price = ceil(($digital_rate + (($digital_rate * config('gamehub.commission_amount')) / 100)));
             $digital_discount_price = config('gamehub.offer_on_digital_game') == true ?
-                $digital_regular_price - ($digital_regular_price * config('gamehub.offer_percentage_digital_game') / 100) : $digital_regular_price;
+                $digital_rate : $digital_regular_price;
             $price = [
                 'regular_price' => $digital_regular_price,
                 'discount_price' => ceil($digital_discount_price)
@@ -118,13 +118,13 @@ class RentTransformer extends TransformerAbstract
         } else {
             $physical_regular_price = ceil(($sum + (($sum * config('gamehub.commission_amount')) / 100)));
             $physical_discount_price = config('gamehub.offer_on_physical_game') == true ?
-                $physical_regular_price - ($physical_regular_price * config('gamehub.offer_discount_amount') / 100) : $physical_regular_price;
+                $sum  : $physical_regular_price;
             $price = [
                 'regular_price' => $physical_regular_price,
                 'discount_price' => ceil($physical_discount_price)
             ];
         }
-
+        logger($price);
         return $price;
     }
 }
