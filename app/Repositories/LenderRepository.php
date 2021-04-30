@@ -38,7 +38,7 @@ class LenderRepository {
      */
     public function create(Request $request) {
         $lender = auth()->user();
-        $discountOnDiskType = false;
+//        $discountOnDiskType = false;
         $totalCommission = 0;
         $cartIds = [];
         $rentIds = [];
@@ -106,20 +106,20 @@ class LenderRepository {
 
             $paymentAmount = $discountAmount;
             $paymentCommission = $discountCommission;
-            $discountOnDiskType = false;
+//            $discountOnDiskType = false;
 //            $discountOnCommission = config('gamehub.discount_on_commission');
 
 //            if ($cartItems[$i]['rent_week'] > 1){
 //                $discountOnCommission = false;
 //            }
-            if ($cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy') && config('gamehub.offer_on_digital_game') == true){
-                $discountOnDiskType = true;
-            }
-            if ($lender->achieve_discount == true && $cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy')){
-                $paymentAmount = $mainAmount;
-                $paymentCommission = $mainCommission;
-//                $discountOnCommission = false;
-            }
+//            if ($cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy') && config('gamehub.offer_on_digital_game') == true){
+//                $discountOnDiskType = true;
+//            }
+//            if ($lender->achieve_discount == true && $cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy')){
+//                $paymentAmount = $mainAmount;
+//                $paymentCommission = $mainCommission;
+////                $discountOnCommission = false;
+//            }
             $data = Lender::create([
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent_id'],
@@ -148,14 +148,13 @@ class LenderRepository {
         $gameOrder->commission = ceil($totalCommission);
         $gameOrder->save();
 
-        if ($discountOnDiskType == true) {
-            $lender->achieve_discount = true;
-        }
-
-        $lender->wallet = $lender->wallet - $request->spendWalletAmount;
-        $lender->save();
-
+//        if ($discountOnDiskType == true) {
+//            $lender->achieve_discount = true;
+//        }
         if ($request->spendWalletAmount != 0){
+            $lender->wallet = $lender->wallet - $request->spendWalletAmount;
+            $lender->save();
+
             $spendData = new walletSpendHistory();
             $spendData->user_id = $lender->id;
             $spendData->order_id = $gameOrder->id;
