@@ -109,15 +109,19 @@ class RentTransformer extends TransformerAbstract
         if ($diskType == config('gamehub.disk_type.digital_copy')){
             $digital_rate = ceil($sum - ($sum * config('gamehub.digital_game_discount') / 100));
             $digital_regular_price = ceil(($digital_rate + (($digital_rate * config('gamehub.commission_amount')) / 100)));
+            $digital_discount_price = config('gamehub.offer_on_digital_game') == true ?
+                $digital_regular_price - ($digital_regular_price * config('gamehub.offer_percentage_digital_game') / 100) : $digital_regular_price;
             $price = [
                 'regular_price' => $digital_regular_price,
-                'discount_price' => config('gamehub.offer_on_digital_game') == true ?
-                    $digital_rate - ($digital_rate * config('gamehub.offer_percentage_digital_game') / 100) : $digital_regular_price,
+                'discount_price' => ceil($digital_discount_price)
             ];
         } else {
+            $physical_regular_price = ceil(($sum + (($sum * config('gamehub.commission_amount')) / 100)));
+            $physical_discount_price = config('gamehub.offer_on_physical_game') == true ?
+                $physical_regular_price - ($physical_regular_price * config('gamehub.offer_discount_amount') / 100) : $physical_regular_price;
             $price = [
-                'regular_price' => ceil($sum + (($sum * config('gamehub.commission_amount')) / 100)),
-                'discount_price' => $sum
+                'regular_price' => $physical_regular_price,
+                'discount_price' => ceil($physical_discount_price)
             ];
         }
 
