@@ -304,7 +304,7 @@ class AuthController extends BaseController
         return response()->json(compact('referred_history'), 200);
     }
 
-    public function updateLocal(Request $request)
+    public function updateLocale(Request $request)
     {
         $user = User::find(Auth::user()->id);
         if (!$user){
