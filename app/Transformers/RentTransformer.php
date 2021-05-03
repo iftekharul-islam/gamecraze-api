@@ -124,7 +124,6 @@ class RentTransformer extends TransformerAbstract
                 'discount_price' => ceil($physical_discount_price)
             ];
         }
-        logger($price);
         return $price;
     }
 }
