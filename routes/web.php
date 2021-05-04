@@ -177,6 +177,8 @@ Route::prefix('admin')->group(function () {
         Route::get('pay-amount/{id}','\App\Http\Controllers\TransactionHistoryController@payAmount')->name('pay.amount');
         Route::get('my-lender-posts/{id}','\App\Http\Controllers\TransactionHistoryController@myLendPost')->name('my.lend.post');
         Route::post('payment/{id}','\App\Http\Controllers\TransactionHistoryController@payment')->name('payment');
+        //Transaction export
+        Route::get('transaction/export', '\App\Http\Controllers\TransactionHistoryController@transactionExport')->name('transaction.export');
 
         // Referral history
         Route::get('referral-history','\App\Http\Controllers\UserController@referralHistory')->name('referral.history');

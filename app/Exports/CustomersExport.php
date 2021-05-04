@@ -37,8 +37,6 @@ class CustomersExport implements FromCollection, WithHeadings, WithColumnWidths
                 'created_at' => isset($user->created_at) ? Carbon::parse($user->created_at)->format('d-m-Y') : 'N/A'
             ]);
         }
-
-        logger($userCollection);
         return $userCollection;
     }
 
