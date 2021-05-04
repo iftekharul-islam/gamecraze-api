@@ -7,6 +7,7 @@ return [
         3 => 'delivered',
         4 => 'rejected',
         5 => 'processing',
+        6 => 'postponed'
     ],
     'order_delivery_status' => [
         0 => 'pending',
@@ -14,6 +15,7 @@ return [
         2 => 'delivered',
         3 => 'rejected',
         4 => 'processing',
+        5 => 'postponed'
 
     ],
     'date_format' => 'd M Y',

@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Jobs\SentOrderCompletedEmail;
 use App\Jobs\SentOrderDeliveredEmail;
+use App\Jobs\SentOrderPostponedEmail;
 use App\Jobs\SentOrderProcessingEmail;
 use App\Models\GameOrder;
 use App\Models\Order;
@@ -60,7 +61,9 @@ class GameOrderRepository
         if ($status_type == 'delivery') {
             $order->delivery_status = $status;
             $order->save();
-
+            if ($status == 5) {
+                SentOrderPostponedEmail::dispatch($order);
+            }
             if ($status == 4) {
                 SentOrderProcessingEmail::dispatch($order);
             }
