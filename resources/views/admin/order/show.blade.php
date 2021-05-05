@@ -152,7 +152,7 @@
                                                             <th>Discount Amount</th>
                                                             <th>Commission Amount</th>
                                                             <th>Grand Amount</th>
-                                                            <th>Start date</th>
+                                                            <th>Rent date</th>
                                                             <th>Week</th>
                                                             <th>End Date</th>
                                                             <th>Status</th>
@@ -164,16 +164,6 @@
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td><a href="{{ route('game.show', $lend->rent->game_id) }}"> {{ isset($lend->rent->game->name) ? $lend->rent->game->name : ''}}</a></td>
-{{--                                                                @php--}}
-{{--                                                                    $amount = $lend->lend_cost + $lend->commission;--}}
-{{--                                                                    $discount = 0;--}}
-{{--                                                                    $grandTotalDiscount = 0;--}}
-{{--                                                                    if (config('gamehub.offer_discount') == true) {--}}
-{{--                                                                        $grandTotalDiscount = ceil($amount + ($amount * config('gamehub.offer_discount_amount'))/100);--}}
-{{--                                                                        $discount = $grandTotalDiscount - $amount;--}}
-{{--                                                                    }--}}
-
-{{--                                                                @endphp--}}
                                                                 <td>{{ $lend->lend_cost + $lend->commission + $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->discount_amount }}</td>
                                                                 <td>{{ $lend->commission }}</td>
@@ -181,18 +171,15 @@
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
                                                                 @php
-                                                                if ($lend->rent->disk_type == 1) {
-                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 );
-                                                                } else {
-                                                                    $hour = Carbon\Carbon::parse($lend['created_at'])->format('H');
-                                                                if ($hour >= 12){
-                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 2 );
-                                                                } else {
-                                                                    $end_date = Carbon\Carbon::parse($lend->lend_date)->addDays( $lend->lend_week * 7 + 1 );
-                                                                }
-                                                                }
+                                                                    $end_date = '';
+                                                                    if ($lend->status == 1) {
+                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at);
+                                                                        }
+                                                                    elseif ($lend->status == 3){
+                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7);
+                                                                    }
                                                                 @endphp
-                                                                <td>{{ date('d M, Y', strtotime($end_date)) }}</td>
+                                                                <td>{{ $end_date ? date('d M, Y', strtotime($end_date)) : '' }}</td>
                                                                 <!-- <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td> -->
                                                                 <td>
                                                                     @php $formId = 'game'.$lend->id @endphp
