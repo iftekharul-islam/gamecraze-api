@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TransactionHistoryController extends Controller
 {
@@ -20,13 +21,13 @@ class TransactionHistoryController extends Controller
     public function index(Request $request)
     {
          if ($request->search){
-            $value = User::where('name', 'LIKE', "%{$request->search}%")
-                    ->orWhere('last_name', 'LIKE', "%{$request->search}%")->join('lenders', 'users.id', '=', 'lenders.renter_id')
-                    ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, 
-                            SUM(commission) as commission, SUM(original_commission) as original_commission, 
+            $value = User::where(DB::raw("CONCAT(`name`, ' ', `last_name`)"), 'LIKE', "%".$request->search."%")
+                ->join('lenders', 'users.id', '=', 'lenders.renter_id')
+                    ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount,
+                            SUM(commission) as commission, SUM(original_commission) as original_commission,
                             SUM(lend_cost+commission+discount_amount) as total_amount,
-                            SUM(lend_cost+commission+discount_amount-original_commission) as seller_amount, 
-                            SUM(original_commission) as gamehub_amount, 
+                            SUM(lend_cost+commission+discount_amount-original_commission) as seller_amount,
+                            SUM(original_commission) as gamehub_amount,
                             renter_id, users.name, users.last_name, users.id')
                     ->groupBy('lenders.renter_id')
                     ->where('lenders.status', 1)
