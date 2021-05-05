@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 use App\Jobs\SendReminder;
 use App\Jobs\SentSubOrderCompletedEmail;
 use App\Jobs\SentSubOrderDeliveredEmail;
+use App\Jobs\SentSubOrderPostponedEmail;
 use App\Jobs\SentSubOrderProcessingEmail;
 use App\Models\Lender;
 use App\Models\Rent;
@@ -65,6 +66,10 @@ class LendRepository
         }
         $lend->status = $status;
         $lend->save();
+
+        if ($status == 6){
+            SentSubOrderPostponedEmail::dispatch($lend);
+        }
         if ($status == 5){
             SentSubOrderProcessingEmail::dispatch($lend);
         }

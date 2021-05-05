@@ -61,9 +61,9 @@ class GameOrderRepository
         if ($status_type == 'delivery') {
             $order->delivery_status = $status;
             $order->save();
-            if ($status == 5) {
-                SentOrderPostponedEmail::dispatch($order);
-            }
+//            if ($status == 5) {
+//                SentOrderPostponedEmail::dispatch($order);
+//            }
             if ($status == 4) {
                 SentOrderProcessingEmail::dispatch($order);
             }
