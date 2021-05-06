@@ -177,6 +177,10 @@
                                                                         }
                                                                     elseif ($lend->status == 3){
                                                                         $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7);
+
+                                                                        if ($lend->rent->disk_type != 1){
+                                                                            $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7 + 1);
+                                                                        }
                                                                     }
                                                                 @endphp
                                                                 <td>{{ $end_date ? date('d M, Y', strtotime($end_date)) : '' }}</td>
