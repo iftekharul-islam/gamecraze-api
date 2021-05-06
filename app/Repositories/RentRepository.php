@@ -2,18 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Jobs\SendReminder;
 use App\Jobs\SentLendPostNotification;
-use App\Jobs\SentRentPostNotification;
 use App\Models\Game;
 use App\Models\Rent;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use File;
-use mysql_xdevapi\Collection;
 
 class RentRepository {
     /**

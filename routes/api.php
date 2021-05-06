@@ -131,6 +131,7 @@
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+            $api->post('rent-image-update', 'App\Http\Controllers\API\RentController@imageUpdate');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
             //role crud
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
