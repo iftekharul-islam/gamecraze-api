@@ -81,7 +81,8 @@
                                         <th>Order No</th>
                                         <th>Lender Name</th>
                                         <th>Amount</th>
-                                        <th>Date</th>
+                                        <th>Create Date</th>
+                                        <th>End Date</th>
                                         <th>Status</th>
                                         <th>Payment</th>
                                         <th>Action</th>
@@ -95,6 +96,7 @@
                                                 <td><a href="{{ route('user.show', $order->user->id) }}">{{ $order->user->name }} {{ $order->user->last_name }}</a></td>
                                             <td>{{ $order->amount }}</td>
                                             <td>{{ $order->created_at->format('j M Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($order->end_date)->format('j M Y') }}</td>
                                             <td>{{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</td>
                                             <td>{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</td>
                                             <td>

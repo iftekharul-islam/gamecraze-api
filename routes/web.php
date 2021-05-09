@@ -198,6 +198,11 @@ Route::prefix('admin')->group(function () {
         Route::get('meta/edit/{id}','\App\Http\Controllers\MetaController@edit')->name('meta.edit');
         Route::post('meta/update/{id}','\App\Http\Controllers\MetaController@update')->name('meta.update');
         Route::delete('meta/delete/{id}','\App\Http\Controllers\MetaController@destroy')->name('meta.delete');
+
+        //bkash
+//        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
+        Route::post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash')->name('travel-initiate-bkash');
+        Route::post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment')->name('travel-confirm-bkash');
     });
 });
 Auth::routes();

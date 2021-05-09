@@ -75,6 +75,8 @@
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
                                 <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
+                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>
+
                             </div>
                         </div>
                     </div>
@@ -131,5 +133,74 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bKash_button').trigger('click');
+            var paymentID = '';
+            var bkashBaseUrl = "{{url('/admin')}}"
+            bKash.init({
+                paymentMode: 'checkout',
+                paymentRequest: {
+                    amount: 100,
+                    intent: 'sale'
+                },
+                createRequest: function (request) {
+                    let routeUrl = bkashBaseUrl + '/initiate-bkash';
+                    $.ajax({
+                        url: routeUrl,
+                        type: 'POST',
+                        data: request,
+                        contentType: 'application/json',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        success: function (data) {
+                            console.log('data logged: ', data);
+                            data = JSON.parse(data);
+                            if (data && data.paymentID != null) {
+                                paymentID = data.paymentID;
+                                bKash.create().onSuccess(data);
+                            } else {
+                                bKash.create().onError();
+                            }
+                        },
+                        error: function () {
+                            bKash.create().onError();
+                        }
+                    });
+                },
+                executeRequestOnAuthorization: function () {
+                    let routeUrl = bkashBaseUrl + '/confirm-bkash';
+                    $.ajax({
+                        url: routeUrl,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: JSON.stringify({
+                            "paymentID": paymentID
+                        }),
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            if (data && data.paymentID != null) {
+                                console.log(data);
+                                window.location.href = "{{ route('dashboard') }}";//Merchant's success page
+                            } else {
+                                bKash.execute().onError();
+                            }
+                        },
+                        error: function () {
+                            bKash.execute().onError();
+                        }
+                    });
+                },
+                onClose: function () {
+                    alert('User has clicked the close button');
+                }
+            });
+        })
+    </script>
 @endsection
 
