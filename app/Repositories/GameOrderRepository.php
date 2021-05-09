@@ -11,6 +11,7 @@ use App\Models\GameOrder;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\WalletHistory;
+use Carbon\Carbon;
 
 class GameOrderRepository
 {
@@ -30,6 +31,10 @@ class GameOrderRepository
         }
         if ($request->search) {
             $order->where('order_no', 'LIKE', "%{$request->search}%");
+        }
+
+        if ($request->start_date !== null || $request->end_date !== null) {
+            $order->whereBetween('end_date', [$request->start_date ?? Carbon::today()->subDays(30), $request->end_date ?? Carbon::today()]);
         }
 
         return $order->with(['user'])->orderby('created_at', 'desc')->paginate(config('gamehub.pagination'));
