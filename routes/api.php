@@ -115,10 +115,10 @@
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
-
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
             $api->put('update-users-by-phone', 'App\Http\Controllers\API\AuthController@updateUserByPhone');
-            $api->post('update-user-profile-image', 'App\Http\Controllers\API\AuthController@updateProfileImage'); 
+            $api->post('locale-update', 'App\Http\Controllers\API\AuthController@updateLocale');
+            $api->post('update-user-profile-image', 'App\Http\Controllers\API\AuthController@updateProfileImage');
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
             $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
@@ -131,6 +131,7 @@
             $api->get('rents/', 'App\Http\Controllers\API\RentController@index');
             $api->post('rents/', 'App\Http\Controllers\API\RentController@store');
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
+            $api->post('rent-image-update', 'App\Http\Controllers\API\RentController@imageUpdate');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
             //role crud
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');

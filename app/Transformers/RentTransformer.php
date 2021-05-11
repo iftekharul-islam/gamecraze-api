@@ -38,6 +38,7 @@ class RentTransformer extends TransformerAbstract
             'game_password' => $rent->game_password,
             'rented_lend_id' => $rent->rented_lend_id,
             'status_by_user' => $rent->status_by_user,
+            'end_date' => $rent->end_date
         ];
     }
 
@@ -124,7 +125,6 @@ class RentTransformer extends TransformerAbstract
                 'discount_price' => ceil($physical_discount_price)
             ];
         }
-        logger($price);
         return $price;
     }
 }

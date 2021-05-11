@@ -51,6 +51,7 @@
                                             <label for="status">Status :</label>
                                             <select name="status" class="form-control">
                                                 <option selected disabled>Select status</option>
+                                                <option value="">All Order</option>
                                                 @foreach(config('gamehub.order_delivery_status') as $key => $status)
                                                     <option value="{{$key}}" {{ Request::get('status') == $key && Request::get('status') != null? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                                                 @endforeach
@@ -60,6 +61,14 @@
                                             <label>Order Search :</label>
                                             <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
                                                    placeholder="Search Here...">
+                                        </div>
+                                        <div class="col-6-xxxl col-lg-6 col-6 form-group">
+                                            <label>Start date</label>
+                                            <input name="start_date" type="date" class="form-control" value="{{ Request::get('start_date') ?? '' }}">
+                                        </div>
+                                        <div class="col-6-xxxl col-lg-6 col-6 form-group">
+                                            <label>End date</label>
+                                            <input name="end_date" type="date" class="form-control" value="{{ Request::get('end_date') ?? '' }}">
                                         </div>
                                         <div class="col-12 form-group float-right">
                                             <button type="submit" class="btn btn-primary float-right">Search</button>
@@ -81,7 +90,8 @@
                                         <th>Order No</th>
                                         <th>Lender Name</th>
                                         <th>Amount</th>
-                                        <th>Date</th>
+                                        <th>Create Date</th>
+                                        <th>End Date</th>
                                         <th>Status</th>
                                         <th>Payment</th>
                                         <th>Action</th>
@@ -95,6 +105,7 @@
                                                 <td><a href="{{ route('user.show', $order->user->id) }}">{{ $order->user->name }} {{ $order->user->last_name }}</a></td>
                                             <td>{{ $order->amount }}</td>
                                             <td>{{ $order->created_at->format('j M Y') }}</td>
+                                            <td>{{ isset($order->end_date) ? \Carbon\Carbon::parse($order->end_date)->format('j M Y') : '-' }}</td>
                                             <td>{{ ucfirst(getOrderDeliveryStatus($order->delivery_status)) }}</td>
                                             <td>{{ $order->payment_status == 1 ? 'Paid' : 'Unpaid' }}</td>
                                             <td>

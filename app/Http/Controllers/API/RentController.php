@@ -13,6 +13,7 @@ use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use File;
 
 class RentController extends BaseController
 {
@@ -85,14 +86,57 @@ class RentController extends BaseController
      */
     public function update(RentUpdateRequest $request)
     {
-
 	    $rents = $this->rentRepository->update($request);
 
 	    if ($rents === false) {
-	    	throw new UpdateResourceFailedException("Id is missing");
+	    	throw new UpdateResourceFailedException("Something went wrong");
 	    }
 
 	    return $this->response->item($rents, new RentTransformer());
+    }
+
+    /**
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response
+     */
+    public function imageUpdate(Request $request)
+    {
+//	    $rent = $this->rentRepository->imageUpdate($request);
+
+        $rent = Rent::find($request->id);
+        if (!$rent) {
+            return $this->response->array([
+                'error' => true,
+                'message' => 'Rent image not updated'
+            ]);
+        }
+
+        if (!File::isDirectory(storage_path('app/public/rent-image'))){
+            File::makeDirectory(storage_path('app/public/rent-image'), 0777, true, true);
+        }
+
+        if (isset($request->cover_image))
+        {
+            $image = $request->cover_image;
+            $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            $cover_image = 'cover_' . time() . '_' .$rent['game_id'] . '.' . $extension;
+            \Image::make($image)->save(storage_path('app/public/rent-image/') . $cover_image);
+            $rent['cover_image'] =  $cover_image ;
+        }
+        if (isset($request->disk_image))
+        {
+            $image = $request->disk_image;
+            $disk_image = 'disk_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            \Image::make($image)->save(storage_path('app/public/rent-image/').$disk_image);
+            $rent['disk_image'] =   $disk_image ;
+        }
+
+        $rent->save();
+
+        return $this->response->array([
+            'error' => false,
+            'message' => 'Rent images updated'
+        ]);
     }
 
     /**

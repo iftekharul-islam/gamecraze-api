@@ -177,6 +177,8 @@ Route::prefix('admin')->group(function () {
         Route::get('pay-amount/{id}','\App\Http\Controllers\TransactionHistoryController@payAmount')->name('pay.amount');
         Route::get('my-lender-posts/{id}','\App\Http\Controllers\TransactionHistoryController@myLendPost')->name('my.lend.post');
         Route::post('payment/{id}','\App\Http\Controllers\TransactionHistoryController@payment')->name('payment');
+        //Transaction export
+        Route::get('transaction/export', '\App\Http\Controllers\TransactionHistoryController@transactionExport')->name('transaction.export');
 
         // Referral history
         Route::get('referral-history','\App\Http\Controllers\UserController@referralHistory')->name('referral.history');
@@ -196,6 +198,11 @@ Route::prefix('admin')->group(function () {
         Route::get('meta/edit/{id}','\App\Http\Controllers\MetaController@edit')->name('meta.edit');
         Route::post('meta/update/{id}','\App\Http\Controllers\MetaController@update')->name('meta.update');
         Route::delete('meta/delete/{id}','\App\Http\Controllers\MetaController@destroy')->name('meta.delete');
+
+        //bkash
+//        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
+        Route::post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash')->name('travel-initiate-bkash');
+        Route::post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment')->name('travel-confirm-bkash');
     });
 });
 Auth::routes();

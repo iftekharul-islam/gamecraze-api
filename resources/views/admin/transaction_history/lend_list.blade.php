@@ -69,7 +69,7 @@
                                             <td>{{ $total_amount - $item->original_commission}}</td>
                                             <td>{{ $item->original_commission }}</td>
                                             <td>{{ $item->lend_week }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->created_at->format('j M Y') }}</td>
                                         </tr>
                                     @endforeach
 

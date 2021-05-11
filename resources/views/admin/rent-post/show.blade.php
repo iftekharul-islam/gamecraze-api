@@ -142,13 +142,13 @@
                                         <div class="col">
                                             <span>Disk image:</span>
                                             <div class="disk-preview disk">
-                                                <img src="{{ asset('storage/rent-image/'. $rent->cover_image) }}" id="disk-preview" class="img-thumbnail">
+                                                <img src="{{ asset('storage/rent-image/'. $rent->disk_image) }}" id="disk-preview" class="img-thumbnail">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <span>Cover image</span>
                                             <div class="cover-preview disk">
-                                                <img src="{{ asset('storage/rent-image/'. $rent->disk_image) }}" class="img-thumbnail">
+                                                <img src="{{ asset('storage/rent-image/'. $rent->cover_image) }}" class="img-thumbnail">
                                             </div>
                                         </div>
                                     </div>

@@ -5,11 +5,13 @@ namespace App\Repositories;
 
 use App\Jobs\SentOrderCompletedEmail;
 use App\Jobs\SentOrderDeliveredEmail;
+use App\Jobs\SentOrderPostponedEmail;
 use App\Jobs\SentOrderProcessingEmail;
 use App\Models\GameOrder;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\WalletHistory;
+use Carbon\Carbon;
 
 class GameOrderRepository
 {
@@ -29,6 +31,10 @@ class GameOrderRepository
         }
         if ($request->search) {
             $order->where('order_no', 'LIKE', "%{$request->search}%");
+        }
+
+        if ($request->start_date !== null || $request->end_date !== null) {
+            $order->whereBetween('end_date', [$request->start_date ?? Carbon::today()->subDays(30), $request->end_date ?? Carbon::today()]);
         }
 
         return $order->with(['user'])->orderby('created_at', 'desc')->paginate(config('gamehub.pagination'));
@@ -60,7 +66,9 @@ class GameOrderRepository
         if ($status_type == 'delivery') {
             $order->delivery_status = $status;
             $order->save();
-
+//            if ($status == 5) {
+//                SentOrderPostponedEmail::dispatch($order);
+//            }
             if ($status == 4) {
                 SentOrderProcessingEmail::dispatch($order);
             }

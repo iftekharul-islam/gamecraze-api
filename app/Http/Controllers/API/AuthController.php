@@ -304,4 +304,22 @@ class AuthController extends BaseController
         return response()->json(compact('referred_history'), 200);
     }
 
+    public function updateLocale(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        if (!$user){
+            return $this->response->array([
+                'error' => true,
+                'message' => 'something went wrong !'
+            ]);
+        }
+        $user->locale = $request->value;
+        $user->save();
+
+        return $this->response->array([
+            'error' => false,
+            'message' => 'local updated !'
+        ]);
+    }
+
 }

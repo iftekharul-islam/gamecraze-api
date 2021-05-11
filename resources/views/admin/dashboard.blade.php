@@ -183,7 +183,7 @@
                                     <div class="inner">
                                         <h3>{{ $rents }}</h3>
 
-                                        <p>Rent Post</p>
+                                        <p>Lend Post</p>
                                         <table>
                                             <tr>
                                                 <td>Pending</td>
