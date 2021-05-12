@@ -170,20 +170,20 @@
                                                                 <td>{{ $lend->lend_cost + $lend->commission }}</td>
                                                                 <td>{{ date('d M, Y', strtotime($lend->lend_date)) }}</td>
                                                                 <td>{{ $lend->lend_week }}</td>
-{{--                                                                @php--}}
-{{--                                                                    $end_date = '';--}}
-{{--                                                                    if ($lend->status == 1) {--}}
-{{--                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at);--}}
-{{--                                                                        }--}}
-{{--                                                                    elseif ($lend->status == 3){--}}
-{{--                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7);--}}
+                                                                @php
+                                                                    $end_date = '';
+                                                                    if ($lend->status == 1) {
+                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at);
+                                                                        }
+                                                                    elseif ($lend->status == 3){
+                                                                        $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7);
 
-{{--                                                                        if ($lend->rent->disk_type != 1){--}}
-{{--                                                                            $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7 + 1);--}}
-{{--                                                                        }--}}
-{{--                                                                    }--}}
-{{--                                                                @endphp--}}
-                                                                <td>{{ isset($lend->end_date) ? date('d M, Y', strtotime($lend->end_date)) : '-' }}</td>
+                                                                        if ($lend->rent->disk_type != 1){
+                                                                            $end_date = Carbon\Carbon::parse($lend->updated_at)->addDays($lend->lend_week * 7 + 1);
+                                                                        }
+                                                                    }
+                                                                @endphp
+                                                                <td>{{ isset($lend->end_date) ? date('d M, Y', strtotime($lend->end_date)) : $end_date }}</td>
                                                                 <!-- <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td> -->
                                                                 <td>
                                                                     @php $formId = 'game'.$lend->id @endphp

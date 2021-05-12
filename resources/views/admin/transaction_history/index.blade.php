@@ -75,7 +75,7 @@
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
                                 <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
-                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>
+{{--                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>--}}
 
                             </div>
                         </div>
@@ -133,7 +133,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             $('#bKash_button').trigger('click');
