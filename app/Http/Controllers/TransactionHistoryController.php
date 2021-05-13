@@ -35,7 +35,7 @@ class TransactionHistoryController extends Controller
                     ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount,
                             SUM(commission) as commission, SUM(original_commission) as original_commission,
                             SUM(lend_cost+commission+discount_amount) as total_amount,
-                            SUM(lend_cost+commission+discount_amount-original_commission) as seller_amount,
+                            SUM(lend_cost+commission+discount_amount) as seller_amount,
                             SUM(original_commission) as gamehub_amount,
                             renter_id, users.name, users.last_name, users.id')
                     ->groupBy('lenders.renter_id')
@@ -47,7 +47,7 @@ class TransactionHistoryController extends Controller
                 ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, 
                             SUM(commission) as commission, SUM(original_commission) as original_commission, 
                             SUM(lend_cost+commission+discount_amount) as total_amount,
-                            SUM(lend_cost+commission+discount_amount-original_commission) as seller_amount, 
+                            SUM(lend_cost+commission+discount_amount) as seller_amount, 
                             SUM(original_commission) as gamehub_amount, 
                             renter_id, users.name, users.last_name, users.id')
                 ->groupBy('lenders.renter_id')
@@ -130,6 +130,35 @@ class TransactionHistoryController extends Controller
         return (new TransactionsExport())->download('transaction-'.  time() . '-' . $date  . '.xls');
     }
 
+
+    public function grantToken()
+    {
+        $request_data = [
+            'app_key' => env('BKASH_APP_KEY'),
+            'app_secret' => env('BKASH_APP_SECRET')
+        ];
+        $url = curl_init(env('BKASH_GRANT_URL'));
+        $request_data_json = json_encode($request_data);
+        $header = array(
+            'Content-Type:application/json',
+            'username:' . env('BKASH_USER_NAME'),
+            'password:' . env('BKASH_USER_PASSWORD')
+        );
+        curl_setopt($url, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($url, CURLOPT_POSTFIELDS, $request_data_json);
+        curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        $data = curl_exec($url);
+        $code = curl_getinfo($url, CURLINFO_HTTP_CODE);
+        curl_close($url);
+        if ($code == 200) {
+            return json_decode($data, true);
+        }
+        return null;
+    }
+
     public function payBkash(Request $request)
     {
         $token = $this->bkashPaymentService->grantToken();
@@ -143,6 +172,9 @@ class TransactionHistoryController extends Controller
             'merchantInvoiceNumber' => 'SR100000000'
         ];
         return $this->bkashPaymentService->processPayment($data);
+//        $data = $this->bkashPaymentService->processPayment($data);
+//        $value = $this->executeBkashPayment($data);
+//        return $value;
     }
 
 
@@ -150,9 +182,12 @@ class TransactionHistoryController extends Controller
     {
         $executeBkash = $this->bkashPaymentService->execute($request);
         $bkashData = json_decode($executeBkash, true);
+        logger($bkashData);
+//        die();
         if ($bkashData['transactionStatus'] === 'Completed') {
 //            $orderNo = $this->bkashPayment($bkashData);
 //            if ($orderNo) {
+                logger('payment complete');
                 Session::flash('success_message', __('Order Completed Successfully! Please check email. '));
 //                Session::flash('success_message', __('Order Completed Successfully! Please check email. order-no: ' . $orderNo));
                 return $executeBkash;
@@ -338,4 +373,87 @@ class TransactionHistoryController extends Controller
 //        curl_close($curl);
 //        return $orderNo;
 //    }
+
+//    public function getToken()
+//    {
+//        session()->forget('bkash_token');
+//
+//        $post_token = array(
+//            'app_key' => env('BKASH_APP_KEY'),
+//            'app_secret' => env('BKASH_APP_SECRET')
+//        );
+//
+////        $url = curl_init("$this->base_url/checkout/token/grant");
+//        $url = curl_init(env('BKASH_GRANT_URL'));
+//        $post_token = json_encode($post_token);
+//        $header = array(
+//            'Content-Type:application/json',
+//            'username:' . env('BKASH_USER_NAME'),
+//            'password:' . env('BKASH_USER_PASSWORD')
+//        );
+//
+//        curl_setopt($url, CURLOPT_HTTPHEADER, $header);
+//        curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
+//        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($url, CURLOPT_POSTFIELDS, $post_token);
+//        curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
+//        $resultdata = curl_exec($url);
+//        curl_close($url);
+//
+//        $response = json_decode($resultdata, true);
+//
+//        if (array_key_exists('msg', $response)) {
+//            return $response;
+//        }
+//
+////        session()->put('bkash_token', $response['id_token']);
+//        return $response['id_token'];
+////        return response()->json(['success', true]);
+//    }
+
+//    public function createPayment()
+//    {
+//        $auth = $this->getToken();
+//
+//        $callbackURL='fb.com';
+//
+//        $requestbody = array(
+//            'mode' => '0011',
+//            'amount' => '10',
+//            'currency' => 'BDT',
+//            'intent' => 'sale',
+//            'payerReference' => '01770618575',
+//            'merchantInvoiceNumber' => 'commonPayment001',
+//            'callbackURL' => $callbackURL
+//        );
+////        http://www.bkashcluster.com:9080/dreamwave/merchant/trxcheck/sendmsg
+//        $url = curl_init('https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/create');
+////        $url = curl_init(env('BKASH_CREATE_URL'));
+//        $requestbodyJson = json_encode($requestbody);
+////        logger($url);
+////        die();
+//        $header = array(
+//            'Content-Type:application/json',
+//            'Authorization:' . $auth,
+//            'X-APP-Key:shared_app_key'
+//        );
+//
+//        curl_setopt($url, CURLOPT_HTTPHEADER, $header);
+//        curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
+//        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
+//        curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
+//        curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+//        $resultdata = curl_exec($url);
+//        curl_close($url);
+//        echo $resultdata;
+//
+//        $obj = json_decode($resultdata);
+//        logger(json_encode($obj));
+////        die();
+//
+//        header("Location: " . $obj->{'bkashURL'});
+//
+//    }
+
 }
