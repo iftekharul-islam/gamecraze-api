@@ -107,8 +107,8 @@
                                                 <td>{{ $item['total_amount']}}</td>
                                                 <td>{{ $item['seller_amount'] - $item['original_commission'] }}</td>
                                                 <td>{{ $item['original_commission'] }}</td>
-                                                <td>{{ $item['seller_amount'] - $item['due'] }}</td>
-                                                <td>{{ $item['due'] }}</td>
+                                                <td>{{ $item['seller_amount'] - $item['due'] - $item['original_commission']  }}</td>
+                                                <td>{{ $item['due']}}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item['renter_id']) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
                                                     <a href="{{ route('my.lend.post', $item['renter_id']) }}" class="btn btn-primary btn-sm"><i class="fas fa-list"></i></a>
