@@ -105,7 +105,7 @@
                                             <tr>
                                                 <td><a href="{{ route('user.show', $item['id']) }}">{{ $item['name'] }} {{ $item['last_name'] }}</a></td>
                                                 <td>{{ $item['total_amount']}}</td>
-                                                <td>{{ $item['seller_amount'] }}</td>
+                                                <td>{{ $item['seller_amount'] - $item['original_commission'] }}</td>
                                                 <td>{{ $item['original_commission'] }}</td>
                                                 <td>{{ $item['seller_amount'] - $item['due'] }}</td>
                                                 <td>{{ $item['due'] }}</td>
@@ -134,6 +134,7 @@
     </div>
     <!-- /.content-wrapper -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script id="myScript" src="https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js"></script>
     <script>
         $(document).ready(function () {
             $('#bKash_button').trigger('click');
