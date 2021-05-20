@@ -73,7 +73,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
-                                <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
+                                <p> <b>Seller amount :</b> {{ $seller_amount - $gamehub_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
 {{--                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>--}}
 
