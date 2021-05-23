@@ -113,6 +113,11 @@
         // games exists in rent table
         $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
+        //bkash
+//        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
+        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
+        $api->post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
+        $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
@@ -210,6 +215,19 @@
             //Transaction history by id
             $api->get('transaction-details', 'App\Http\Controllers\API\TransactionController@transactionById');
             $api->get('payment-history', 'App\Http\Controllers\API\TransactionController@paymentHistory');
+
+            //Rating by renter
+            $api->post('renter-rating', 'App\Http\Controllers\API\RatingController@renterRating');
+            //Rating by lender
+            $api->post('lender-rating', 'App\Http\Controllers\API\RatingController@lenderRating');
+            //Rating check
+            $api->get('rating-check', 'App\Http\Controllers\API\RatingController@ratingCheck');
+            //renter rating list
+            $api->get('renter-rating-list', 'App\Http\Controllers\API\RatingController@renterRatingList');
+            //lender rating list
+            $api->get('lender-rating-list', 'App\Http\Controllers\API\RatingController@lenderRatingList');
+            //promo code
+            $api->post('apply-promo', 'App\Http\Controllers\API\UserController@applyCode');
         });
     });
 

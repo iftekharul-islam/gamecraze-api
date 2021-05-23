@@ -76,6 +76,7 @@ class BkashPaymentService
     public function execute($request)
     {
         $paymentID = $request->paymentID;
+        logger($paymentID);
 
         $token = $this->grantToken();
         $url = curl_init(env('BKASH_EXECUTE_URL') . $paymentID);
@@ -90,6 +91,33 @@ class BkashPaymentService
         curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
         $response = curl_exec($url);
         curl_close($url);
+//        logger($response);
+        return $response;
+    }
+
+    public function execute2($data)
+    {
+        $data = json_decode($data, true);
+        logger($data['paymentID']);
+//        die();
+        $paymentID = $data['paymentID'];
+
+        $token = $this->grantToken();
+        logger($token);
+        $url = curl_init(env('BKASH_EXECUTE_URL') . $paymentID);
+        $header = array(
+            'Content-Type:application/json',
+            'authorization:' . $token,
+            'x-app-key:' . env('BKASH_APP_KEY')
+        );
+        curl_setopt($url, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
+        $response = curl_exec($url);
+        curl_close($url);
+//        logger($response);
+//        die();
         return $response;
     }
 }

@@ -107,7 +107,7 @@
 {{--            }--}}
 {{--        });--}}
 {{--    </script>--}}
-    <script src="{{ asset('js/bKash-checkout-sandbox.js') }}"></script>
+{{--    <script src="{{ asset('js/bKash-checkout-sandbox.js') }}"></script>--}}
     @yield('js')
 </body>
 </html>

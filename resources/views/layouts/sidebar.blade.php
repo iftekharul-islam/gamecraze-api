@@ -105,10 +105,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('commission') }}" class="nav-link {{ (request()->routeIs('commission', 'commission.create')) ? 'active' : '' }}">
+                    <a href="{{ route('discount') }}" class="nav-link {{ (request()->routeIs('discount', 'discount.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
-                            GameHub Commission
+                            Discount
                         </p>
                     </a>
                 </li>
