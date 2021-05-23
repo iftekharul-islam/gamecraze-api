@@ -10,6 +10,7 @@ use App\Jobs\SentSubOrderPostponedEmail;
 use App\Jobs\SentSubOrderProcessingEmail;
 use App\Models\GameOrder;
 use App\Models\Lender;
+use App\Models\Rating;
 use App\Models\Rent;
 use App\Models\User;
 use Carbon\Carbon;
@@ -96,6 +97,13 @@ class LendRepository
             SentSubOrderDeliveredEmail::dispatch($lend);
         }
         if ($status == 1){
+
+            $rating = new Rating();
+            $rating->lend_id = $lend->id;
+            $rating->renter_id = $lend->lender_id;
+            $rating->lender_id = $lend->renter_id;
+            $rating->save();
+
             SentSubOrderCompletedEmail::dispatch($lend);
         }
         return true;

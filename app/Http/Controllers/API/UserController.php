@@ -146,4 +146,18 @@ class UserController extends BaseController
             'message' => 'User cover cannot update'
         ]);
     }
+
+    public function applyCode(Request $request)
+    {
+        if ($request->promo == config('gamehub.promo_code')) {
+            return $this->response->array([
+                'amount' => config('gamehub.promo_amount'),
+                'error' => false
+            ]);
+        }
+        return $this->response->array([
+            'amount' => 0,
+            'error' => true
+        ]);
+    }
 }

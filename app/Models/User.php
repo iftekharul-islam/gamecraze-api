@@ -70,4 +70,14 @@ class User extends Authenticatable
     public function walletHistory() {
         return $this->hasMany(WalletHistory::class, 'user_id', 'id');
     }
+
+    public function lenderRating()
+    {
+        return $this->hasMany(Rating::class, 'lender_id', 'id');
+    }
+
+    public function RenterRating()
+    {
+        return $this->hasMany(Rating::class, 'renter_id', 'id');
+    }
 }

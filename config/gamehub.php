@@ -43,6 +43,8 @@ return [
     'offer_percentage_digital_game' => 15, // calculate in percentage
     'offer_reference' => 'Regular discount',
 
+    'promo_code' => 'abc',
+    'promo_amount' => 100,
 //    'offer_percentage_digital_game' => 100, // previous calculate in percentage
 //    'offer_reference' => 'gamehub launch discount', // previous reference
 
