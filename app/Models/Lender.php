@@ -11,7 +11,7 @@ class Lender extends Model
 
     protected $fillable = ['lender_id', 'rent_id', 'checkpoint_id', 'lend_week', 'lend_cost',
         'commission', 'renter_id', 'lend_date', 'payment_method', 'status', 'game_order_id',
-        'discount_amount', 'reference', 'original_commission'];
+        'discount_amount', 'reference', 'original_commission', 'end_date'];
 
 //    public function renter() {
 //        return $this->belongsTo(User::class,'renter_id','id');

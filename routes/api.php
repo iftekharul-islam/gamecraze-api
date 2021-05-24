@@ -216,10 +216,8 @@
             $api->get('transaction-details', 'App\Http\Controllers\API\TransactionController@transactionById');
             $api->get('payment-history', 'App\Http\Controllers\API\TransactionController@paymentHistory');
 
-            //Rating by renter
-            $api->post('renter-rating', 'App\Http\Controllers\API\RatingController@renterRating');
-            //Rating by lender
-            $api->post('lender-rating', 'App\Http\Controllers\API\RatingController@lenderRating');
+            //Rating by user
+            $api->post('user-rating', 'App\Http\Controllers\API\RatingController@userRating');
             //Rating check
             $api->get('rating-check', 'App\Http\Controllers\API\RatingController@ratingCheck');
             //renter rating list

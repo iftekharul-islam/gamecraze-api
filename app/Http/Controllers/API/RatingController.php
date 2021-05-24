@@ -15,81 +15,49 @@ class RatingController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function renterRating(Request $request)
+    public function userRating(Request $request)
     {
-        $rating = Rating::where('lend_id', $request->lend_id)->first();
+        logger($request->all());
+        logger(Auth::user()->id);
 
-        if($rating){
-            $rating->renter_id = $request->renter_id;
-            $rating->renter_rating = $request->renter_rating;
-            $rating->renter_comment = $request->renter_comment;
-            $rating->save();
+        $renter = Rating::where('renter_id', Auth::user()->id)->where('id', $request->id)->first();
 
-            return response()->json(compact('rating'), 200);
+        if($renter){
+            $renter->renter_rating = $request->rating;
+            $renter->renter_comment = $request->comment;
+            $renter->notify_renter = true;
+            $renter->save();
+
+            return responseData('Renter rating successfully updated');
         }
 
-        $rating = new Rating();
-        $rating->lend_id = $request->lend_id;
-        $rating->renter_id = $request->renter_id;
-        $rating->renter_rating = $request->renter_rating;
-        $rating->renter_comment = $request->renter_comment;
-        $rating->save();
+        $lender = Rating::where('lender_id', Auth::user()->id)->where('id', $request->id)->first();
 
-        return response()->json(compact('rating'), 200);
+        if($lender){
+            $lender->lender_rating = $request->rating;
+            $lender->lender_comment = $request->comment;
+            $lender->notify_lender = true;
+            $lender->save();
+
+            return responseData('Lender rating successfully updated');
+        }
+
+        return responseData('Rating id not found');
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function lenderRating(Request $request)
-    {
-        $rating = Rating::where('lend_id', $request->lend_id)->first();
-
-        if($rating){
-            $rating->lender_id = $request->lender_id;
-            $rating->lender_rating = $request->lender_rating;
-            $rating->lender_comment = $request->lender_comment;
-            $rating->save();
-
-            return response()->json(compact('rating'), 200);
-        }
-
-        $rating = new Rating();
-        $rating->lend_id = $request->lend_id;
-        $rating->lender_id = $request->lender_id;
-        $rating->lender_rating = $request->lender_rating;
-        $rating->lender_comment = $request->lender_comment;
-        $rating->save();
-
-        return response()->json(compact('rating'), 200);
-    }
-
-    /**
-     * @return array
+     * @return \Dingo\Api\Http\Response
      */
     public function ratingCheck()
     {
-        $pendingRating = Rating::where('lender_id', Auth::user()->id)
+        $rating = Rating::where('lender_id', Auth::user()->id)
             ->where('notify_lender', null)
             ->orWhere(function ($q) {
                 $q->where('renter_id', Auth::user()->id)
                     ->where('notify_renter', null);
-            })
-            ->count();
+            })->get();
 
-        if ($pendingRating > 0){
-            $ratingCheck =[
-                'pending' => true,
-                'error' => false,
-            ];
-            return response()->json(compact('ratingCheck'), 200);
-        }
-        $ratingCheck =[
-            'pending' => false,
-            'error' => true,
-        ];
-        return response()->json(compact('ratingCheck'), 200);
+        return $this->response->collection($rating, new RatingTransformer());
     }
 
     /**
