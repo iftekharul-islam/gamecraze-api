@@ -79,4 +79,32 @@ class RatingController extends Controller
 
         return $this->response->collection($rating, new RatingTransformer());
     }
+
+    public function avgLenderRating()
+    {
+        $total = Rating::where('lender_id', Auth::user()->id)->sum('lender_rating');
+        $collection = Rating::where('lender_id', Auth::user()->id)->count();
+        $avg_value = 0;
+        if ($total > 0){
+            $avg_value = $total / $collection;
+        }
+        return $this->response->array([
+            'avg' => ceil($avg_value),
+            'error' => false
+        ]);
+    }
+
+    public function avgRenterRating()
+    {
+        $total = Rating::where('renter_id', Auth::user()->id)->sum('renter_rating');
+        $collection = Rating::where('renter_id', Auth::user()->id)->count();
+        $avg_value = 0;
+        if ($total > 0){
+            $avg_value = $total / $collection;
+        }
+        return $this->response->array([
+            'avg' => ceil($avg_value),
+            'error' => false
+        ]);
+    }
 }
