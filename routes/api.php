@@ -222,10 +222,10 @@
             $api->get('rating-check', 'App\Http\Controllers\API\RatingController@ratingCheck');
             //renter rating list
             $api->get('renter-rating-list', 'App\Http\Controllers\API\RatingController@renterRatingList');
-            $api->get('avg-renter-rating', 'App\Http\Controllers\API\RatingController@avgRenterRating');
+            $api->get('avg-renter-rating', 'App\Http\Controllers\API\RatingController@avgRenterRatingForMe');
             //lender rating list
             $api->get('lender-rating-list', 'App\Http\Controllers\API\RatingController@lenderRatingList');
-            $api->get('avg-lender-rating', 'App\Http\Controllers\API\RatingController@avgLenderRating');
+            $api->get('avg-lender-rating', 'App\Http\Controllers\API\RatingController@avgLenderRatingForMe');
             //promo code
             $api->post('apply-promo', 'App\Http\Controllers\API\UserController@applyCode');
         });
