@@ -65,7 +65,10 @@ class RatingController extends Controller
      */
     public function lenderRatingList()
     {
-        $rating = Rating::where('lender_id', Auth::user()->id)->get();
+        $rating = Rating::where('lender_id', Auth::user()->id)
+            ->where('notify_lender', '!=', null)
+            ->orWhere('notify_renter', '!=', null)
+            ->get();
 
         return $this->response->collection($rating, new RatingTransformer());
     }
@@ -75,14 +78,17 @@ class RatingController extends Controller
      */
     public function renterRatingList()
     {
-        $rating = Rating::where('renter_id', Auth::user()->id)->get();
+        $rating = Rating::where('renter_id', Auth::user()->id)
+            ->where('notify_renter', '!=', null)
+            ->orWhere('notify_lender', '!=', null)
+            ->get();
 
         return $this->response->collection($rating, new RatingTransformer());
     }
 
     public function avgLenderRatingForMe()
     {
-        $total = Rating::where('lender_id', Auth::user()->id)->sum('renter_rating');
+        $total = Rating::where('lender_id', Auth::user()->id)->where('notify_renter', '!=', null)->sum('renter_rating');
         $collection = Rating::where('lender_id', Auth::user()->id)->count();
         $avg_value = 0;
         if ($total > 0){
@@ -96,7 +102,7 @@ class RatingController extends Controller
 
     public function avgRenterRatingForMe()
     {
-        $total = Rating::where('renter_id', Auth::user()->id)->sum('lender_rating');
+        $total = Rating::where('renter_id', Auth::user()->id)->where('notify_lender', '!=', null)->sum('lender_rating');
         $collection = Rating::where('renter_id', Auth::user()->id)->count();
         $avg_value = 0;
         if ($total > 0){
