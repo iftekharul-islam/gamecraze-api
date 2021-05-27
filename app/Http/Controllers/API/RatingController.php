@@ -66,9 +66,10 @@ class RatingController extends Controller
     public function lenderRatingList()
     {
         $rating = Rating::where('lender_id', Auth::user()->id)
-            ->where('notify_lender', '!=', null)
-            ->orWhere('notify_renter', '!=', null)
-            ->get();
+            ->where(function ($query) {
+                $query->where('notify_lender', '!=', null)
+                    ->orWhere('notify_renter', '!=', null);
+                    })->get();
 
         return $this->response->collection($rating, new RatingTransformer());
     }
@@ -79,9 +80,10 @@ class RatingController extends Controller
     public function renterRatingList()
     {
         $rating = Rating::where('renter_id', Auth::user()->id)
-            ->where('notify_renter', '!=', null)
-            ->orWhere('notify_lender', '!=', null)
-            ->get();
+            ->where(function ($query) {
+                $query->where('notify_renter', '!=', null)
+                    ->orWhere('notify_lender', '!=', null);
+            })->get();
 
         return $this->response->collection($rating, new RatingTransformer());
     }
