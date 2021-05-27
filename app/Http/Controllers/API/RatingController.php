@@ -91,7 +91,7 @@ class RatingController extends Controller
     public function avgLenderRatingForMe()
     {
         $total = Rating::where('lender_id', Auth::user()->id)->where('notify_renter', '!=', null)->sum('renter_rating');
-        $collection = Rating::where('lender_id', Auth::user()->id)->count();
+        $collection = Rating::where('lender_id', Auth::user()->id)->where('notify_renter', '!=', null)->count();
         $avg_value = 0;
         if ($total > 0){
             $avg_value = $total / $collection;
@@ -105,7 +105,7 @@ class RatingController extends Controller
     public function avgRenterRatingForMe()
     {
         $total = Rating::where('renter_id', Auth::user()->id)->where('notify_lender', '!=', null)->sum('lender_rating');
-        $collection = Rating::where('renter_id', Auth::user()->id)->count();
+        $collection = Rating::where('renter_id', Auth::user()->id)->where('notify_lender', '!=', null)->count();
         $avg_value = 0;
         if ($total > 0){
             $avg_value = $total / $collection;
