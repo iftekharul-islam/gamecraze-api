@@ -48,5 +48,13 @@ return [
 //    'offer_percentage_digital_game' => 100, // previous calculate in percentage
 //    'offer_reference' => 'gamehub launch discount', // previous reference
 
+    'amount_type' => [
+        'flat' => 1,
+        'percentage' => 2
+    ],
 
+    'user_type' => [
+        'rookie' => 1,
+        'elite' => 2
+    ]
 ];

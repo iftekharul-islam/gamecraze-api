@@ -227,7 +227,7 @@
             $api->get('lender-rating-list', 'App\Http\Controllers\API\RatingController@lenderRatingList');
             $api->get('avg-lender-rating', 'App\Http\Controllers\API\RatingController@avgLenderRatingForMe');
             //promo code
-            $api->post('apply-promo', 'App\Http\Controllers\API\UserController@applyCode');
+            $api->post('apply-promo', 'App\Http\Controllers\API\CouponController@applyCode');
         });
     });
 

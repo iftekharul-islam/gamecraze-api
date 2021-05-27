@@ -31,6 +31,9 @@
     <!-- Bootstrap-select -->
 {{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+{{--    select 2--}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -54,6 +57,7 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>

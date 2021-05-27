@@ -114,7 +114,6 @@
         });
         function dataDetails(id) {
             $.ajax({
-                {{--url: "{{ route('checkpoint.show', id) }}",--}}
                 url: "checkpoint/" + id,
                 method: "GET",
                 data: {
@@ -122,7 +121,6 @@
                 },
                 success: function (response) {
                     let checkpointDetials = response.data;
-                    console.log(checkpointDetials);
                     var all = `<div class="card bg-light">
                                     <div class="card-header text-muted border-bottom-0 title">
                                         Checkpoint: ${checkpointDetials.name}
@@ -146,7 +144,6 @@
                                         </div>
                                     </div>
                              </div>`
-                    console.log(all);
                     $('.dataDetails').html(all);
 
                 },

@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Discount</h1>
+                        <h1>Coupon</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Discount</li>
+                            <li class="breadcrumb-item active">Coupon</li>
                         </ol>
                     </div>
                 </div>
@@ -45,24 +45,24 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('discount.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Discount</a>
+                                <a href="{{ route('coupon.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Coupon</a>
                             </div>
                             <div class="card-body">
                                 @if (count($data) > 0)
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
-                                        <tr>
-                                            <th>Type</th>
-                                            <th>Code</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Code</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($data as $item)
                                             <tr>
-                                                <td>{{ $item->type }}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td>{{ $item->code }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>
@@ -76,13 +76,16 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-sm btn-primary mr-3"
-                                                       href="{{ route('discount.edit', $item->id) }}"><i
+                                                       href="{{ route('coupon.show', $item->id) }}"><i
+                                                            class="far fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-primary mr-3"
+                                                       href="{{ route('coupon.edit', $item->id) }}"><i
                                                             class="far fa-edit"></i></a>
                                                     <button class="btn btn-danger btn-sm" type="button"
                                                             onclick="deletePrice({{ $item->id }})">
                                                         <i class="far fa-trash-alt"></i></button>
                                                     <form id="delete-form-{{ $item->id }}"
-                                                          action="{{ route('discount.destroy', $item->id) }}"
+                                                          action="{{ route('coupon.destroy', $item->id) }}"
                                                           method="post" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')

@@ -105,10 +105,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('discount') }}" class="nav-link {{ (request()->routeIs('discount', 'discount.create')) ? 'active' : '' }}">
+                    <a href="{{ route('coupon') }}" class="nav-link {{ (request()->routeIs('coupon', 'coupon.create')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
-                            Discount
+                            Coupon
                         </p>
                     </a>
                 </li>
