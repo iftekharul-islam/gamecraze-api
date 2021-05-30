@@ -65,13 +65,28 @@ class RatingController extends Controller
      */
     public function lenderRatingList()
     {
-        $rating = Rating::where('lender_id', Auth::user()->id)
+        $rating = $this->lendingRating();
+
+        return $this->response->collection($rating, new RatingTransformer());
+    }
+
+    public function totalLendingRating()
+    {
+        $rating = $this->lendingRating();
+
+        return $this->response->array([
+            'total' => count($rating),
+            'error' => false
+        ]);
+    }
+
+    public function lendingRating()
+    {
+        return Rating::where('lender_id', Auth::user()->id)
             ->where(function ($query) {
                 $query->where('notify_lender', '!=', null)
                     ->orWhere('notify_renter', '!=', null);
-                    })->get();
-
-        return $this->response->collection($rating, new RatingTransformer());
+            })->get();
     }
 
     /**
@@ -79,13 +94,28 @@ class RatingController extends Controller
      */
     public function renterRatingList()
     {
-        $rating = Rating::where('renter_id', Auth::user()->id)
+        $rating = $this->rentingRating();
+
+        return $this->response->collection($rating, new RatingTransformer());
+    }
+
+    public function totalRentingRating()
+    {
+        $rating = $this->rentingRating();
+
+        return $this->response->array([
+            'total' => count($rating),
+            'error' => false
+        ]);
+    }
+
+    public function rentingRating()
+    {
+        return Rating::where('renter_id', Auth::user()->id)
             ->where(function ($query) {
                 $query->where('notify_renter', '!=', null)
                     ->orWhere('notify_lender', '!=', null);
             })->get();
-
-        return $this->response->collection($rating, new RatingTransformer());
     }
 
     public function avgLenderRatingForMe()

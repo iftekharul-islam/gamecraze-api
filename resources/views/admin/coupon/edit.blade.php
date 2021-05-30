@@ -25,28 +25,80 @@
                 <div class="card card-primary">
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="{{ route('discount.update', $data->id) }}" class="w-75 mx-auto">
+                    <form method="post" action="{{ route('coupon.update', $data->id) }}" class="w-75 mx-auto">
                         @csrf
                         <div class="card-body">
-                            <div class="false-padding-bottom-form form-group {{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type">Type</label>
-                                <input type="text" class="form-control" name="type" value="{{ $data->type }}">
-                                @if ($errors->has('type'))
-                                    <span class="text-danger"><strong>{{ $errors->first('type') }}</strong></span>
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="amount">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Enter name" value="{{ $data->name }}" required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('code') ? ' has-error' : '' }}">
-                                <label for="code">Code</label>
-                                <input type="text" class="form-control" name="code" value="{{ $data->code }}">
+                                <label for="amount">Code</label>
+                                <input type="text" class="form-control" name="code" placeholder="Enter code" value="{{ $data->code }}">
                                 @if ($errors->has('code'))
                                     <span class="text-danger"><strong>{{ $errors->first('code') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('amount') ? ' has-error' : '' }}">
                                 <label for="amount">Amount</label>
-                                <input type="number" class="form-control" id="amount" name="amount" value="{{ $data->amount }}">
+                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="{{ $data->amount }}">
                                 @if ($errors->has('amount'))
                                     <span class="text-danger"><strong>{{ $errors->first('amount') }}</strong></span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="amount_type">Amount Type</label>
+                                <select name="amount_type" class="form-control">
+                                    <option value="">Select user type</option>
+                                    <option value="1" {{ $data->amount_type == 1 ? 'selected' : '' }}>Flat</option>
+                                    <option value="2" {{ $data->amount_type == 2 ? 'selected' : '' }}>Percentage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="user_type">User Type</label>
+                                <select name="user_type" class="form-control">
+                                    <option value="">All User</option>
+                                    <option value="1" {{ $data->user_type == 1 ? 'selected' : '' }}>Rookie</option>
+                                    <option value="2" {{ $data->user_type == 2 ? 'selected' : '' }}>Elite</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">For specific User</label>
+                                <select name="set_user_id" class="form-control user-select">
+                                    <option value="" selected>Select a user</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" {{ $data->set_user_id == $user->id ? 'selected' : '' }}>{{ $user->name }} {{ $user->last_name }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('limit') ? ' has-error' : '' }}">
+                                <label for="limit">Limit</label>
+                                <input type="number" class="form-control" id="limit" min="1" max="10" name="limit" value="{{ $data->limit }}">
+                                @if ($errors->has('limit'))
+                                    <span class="text-danger"><strong>{{ $errors->first('limit') }}</strong></span>
+                                @endif
+                            </div>
+
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('start_date') ? ' has-error' : '' }}">
+                                <label for="limit">Start date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date"  value="{{ $data->start_date }}">
+                                @if ($errors->has('start_date'))
+                                    <span class="text-danger"><strong>{{ $errors->first('start_date') }}</strong></span>
+                                @endif
+                            </div>
+
+                            <div class="false-padding-bottom-form form-group {{ $errors->has('end_date') ? ' has-error' : '' }}">
+                                <label for="limit">End date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date"  value="{{ $data->end_date }}">
+                                @if ($errors->has('end_date'))
+                                    <span class="text-danger"><strong>{{ $errors->first('end_date') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">

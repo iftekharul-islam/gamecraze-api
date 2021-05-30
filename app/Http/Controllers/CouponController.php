@@ -67,8 +67,11 @@ class CouponController extends Controller
     public function edit($id)
     {
         $data = Coupon::find($id);
+        $users = User::with('roles')->whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'admin');
+        })->orderBy('created_at', 'DESC')->get();
 
-        return view('admin.coupon.edit', compact('data'));
+        return view('admin.coupon.edit', compact('data', 'users'));
     }
 
     /**
@@ -80,29 +83,45 @@ class CouponController extends Controller
      */
     public function update(Request $request)
     {
-        $discount = Coupon::findOrFail($request->id);
+        $coupon = Coupon::findOrFail($request->id);
 
-        if (!$discount) {
-            return redirect()->route('discount')->with('error', 'Discount not updated');
-        }
-        $data = $request->only(['amount', 'status', 'author_id']);
+        $data = $request->only(['name', 'code', 'amount', 'amount_type', 'user_type', 'set_user_id', 'limit',
+            'start_date', 'end_date', 'status', 'author_id']);
 
-        if (isset($data['type'])) {
-            $discount->type = $data['type'];
+        if (isset($data['name'])) {
+            $coupon->name = $data['name'];
         }
         if (isset($data['code'])) {
-            $discount->code = $data['code'];
+            $coupon->code = $data['code'];
         }
         if (isset($data['amount'])) {
-            $discount->amount = $data['amount'];
+            $coupon->amount = $data['amount'];
+        }
+        if (isset($data['amount_type'])) {
+            $coupon->amount_type = $data['amount_type'];
+        }
+        if (isset($data['user_type'])) {
+            $coupon->user_type = $data['user_type'];
+        }
+        if (isset($data['set_user_id'])) {
+            $coupon->set_user_id = $data['set_user_id'];
+        }
+        if (isset($data['limit'])) {
+            $coupon->limit = $data['limit'];
+        }
+        if (isset($data['start_date'])) {
+            $coupon->start_date = $data['start_date'];
+        }
+        if (isset($data['end_date'])) {
+            $coupon->end_date = $data['end_date'];
         }
         if (isset($data['status'])) {
-            $discount->status = $data['status'];
+            $coupon->status = $data['status'];
         }
-        $discount->author_id = auth()->user()->id;
+        $coupon->author_id = auth()->user()->id;
 
-        $discount->save();
-        return redirect()->route('coupon')->with('status', 'Discount successfully updated');
+        $coupon->save();
+        return redirect()->route('coupon')->with('status', 'Coupon successfully updated');
     }
 
     /**

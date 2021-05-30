@@ -223,9 +223,11 @@
             //renter rating list
             $api->get('renter-rating-list', 'App\Http\Controllers\API\RatingController@renterRatingList');
             $api->get('avg-renter-rating', 'App\Http\Controllers\API\RatingController@avgRenterRatingForMe');
+            $api->get('total-renter-rating', 'App\Http\Controllers\API\RatingController@totalRentingRating');
             //lender rating list
             $api->get('lender-rating-list', 'App\Http\Controllers\API\RatingController@lenderRatingList');
             $api->get('avg-lender-rating', 'App\Http\Controllers\API\RatingController@avgLenderRatingForMe');
+            $api->get('total-lending-rating', 'App\Http\Controllers\API\RatingController@totalLendingRating');
             //promo code
             $api->post('apply-promo', 'App\Http\Controllers\API\CouponController@applyCode');
         });

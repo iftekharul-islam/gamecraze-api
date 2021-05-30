@@ -18,6 +18,7 @@ class CouponController extends Controller
         $coupon = Coupon::where('code', $request->promo)->where('status', true)
                 ->where('start_date', '<=', $today)->where('end_date', '>=', $today)
                 ->first();
+        logger($coupon);
         if (!$coupon){
             logger('coupon not found');
             return $this->response->array([
@@ -90,9 +91,8 @@ class CouponController extends Controller
         $amount = 0;
         if ($coupon->amount_type == config('gamehub.amount_type.flat')) {
             $amount = $request->amount - $coupon->amount;
-        }
-        if ($coupon->amount_type == config('gamehub.amount_type.percentage')) {
-            $amount = ceil($request->amount - ($request->amount/$coupon->amount));
+        } elseif ($coupon->amount_type == config('gamehub.amount_type.percentage')) {
+            $amount = ceil($request->amount - (($request->amount*$coupon->amount)/100));
         }
 
         return $amount;
