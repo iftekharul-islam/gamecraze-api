@@ -43,7 +43,7 @@ class SendReminder implements ShouldQueue
         logger($users);
         if (count($users) > 0){
             foreach ($users as $user) {
-                if ($user->user->email != null){
+                if ($user->user['email'] != null){
                     Mail::to($user->user->email)->queue(new SendReminderMail($game->name, $game_link));
                     $user->is_sent = 1;
                     $user->save();
