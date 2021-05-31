@@ -42,7 +42,6 @@ class SendReminder implements ShouldQueue
             ->where('is_sent', 0)
             ->get();
 
-        logger($users);
         if (count($users) > 0){
             foreach ($users as $user) {
                 if ($user->user->email != null){
