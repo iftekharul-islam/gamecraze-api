@@ -75,21 +75,27 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-primary mr-3"
-                                                       href="{{ route('coupon.show', $item->id) }}"><i
-                                                            class="far fa-eye"></i></a>
-                                                    <a class="btn btn-sm btn-primary mr-3"
-                                                       href="{{ route('coupon.edit', $item->id) }}"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="deletePrice({{ $item->id }})">
-                                                        <i class="far fa-trash-alt"></i></button>
-                                                    <form id="delete-form-{{ $item->id }}"
-                                                          action="{{ route('coupon.destroy', $item->id) }}"
-                                                          method="post" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
+                                                    <div class="text-center">
+                                                        <a class="btn btn-sm btn-primary mr-3"
+                                                           href="{{ route('coupon.show', $item->id) }}"><i
+                                                                class="far fa-eye"></i></a>
+                                                        <a class="btn btn-sm btn-primary mr-3"
+                                                           href="{{ route('coupon.edit', $item->id) }}"><i
+                                                                class="far fa-edit"></i></a>
+                                                        <button class="btn btn-danger btn-sm" type="button"
+                                                                onclick="deletePrice({{ $item->id }})">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                        <form id="delete-form-{{ $item->id }}"
+                                                              action="{{ route('coupon.destroy', $item->id) }}"
+                                                              method="post" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </div>
+                                                    <div class="card-body d-flex">
+                                                        <input type="text" class="form-control" id="copy_{{ $item->id }}" value="{{ env('GAMEHUB_PROMO_URL') . '?promo=' . $item->code }}" readonly>
+                                                        <button value="copy" class=" ml-2 btn btn-success" onclick="copyToClipboard('copy_{{ $item->id }}')"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -115,6 +121,10 @@
 @endsection
 @section('js')
     <script type="text/javascript">
+        function copyToClipboard(id) {
+            document.getElementById(id).select();
+            document.execCommand('copy');
+        }
         function deletePrice(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
