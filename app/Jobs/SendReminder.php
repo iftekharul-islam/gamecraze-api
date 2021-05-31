@@ -40,13 +40,16 @@ class SendReminder implements ShouldQueue
         $users = GameReminder::with('user')->where('game_id', $this->game_id)
             ->where('is_sent', 0)
             ->get();
-
-        foreach ($users as $user) {
-            if ($user->user->email != null){
-                Mail::to($user->user->email)->queue(new SendReminderMail($game->name, $game_link));
-                $user->is_sent = 1;
-                $user->save();
+        logger($users);
+        if (count($users) > 0){
+            foreach ($users as $user) {
+                if ($user->user->email != null){
+                    Mail::to($user->user->email)->queue(new SendReminderMail($game->name, $game_link));
+                    $user->is_sent = 1;
+                    $user->save();
+                }
             }
         }
+
     }
 }
