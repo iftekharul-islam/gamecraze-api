@@ -27,6 +27,18 @@ class CouponController extends Controller
                 'error' => true
             ]);
         }
+        if ($coupon->limit != null) {
+            logger('coupon in limit');
+            $userUsed = CouponUser::where('coupon_id', $coupon->id)->where('user_id', Auth::user()->id)->count();
+
+            if ($userUsed >= $coupon->limit){
+                return $this->response->array([
+                    'coupon_id' => null,
+                    'amount' => 0,
+                    'error' => true
+                ]);
+            }
+        }
         if ($coupon->set_user_id == Auth::user()->id) {
             logger('coupon in set user id');
             $amount = $this->amountCalculatuon($coupon, $request);
@@ -46,19 +58,6 @@ class CouponController extends Controller
                 'amount' => $amount,
                 'error' => false
             ]);
-        }
-
-        if ($coupon->limit != null) {
-            logger('coupon in limit');
-            $userUsed = CouponUser::where('coupon_id', $coupon->id)->where('user_id', Auth::user()->id)->count();
-
-            if ($userUsed >= $coupon->limit){
-                return $this->response->array([
-                    'coupon_id' => null,
-                    'amount' => 0,
-                    'error' => true
-                ]);
-            }
         }
         logger('coupon in general');
         $amount = $this->amountCalculatuon($coupon, $request);
