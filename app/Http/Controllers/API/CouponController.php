@@ -39,26 +39,27 @@ class CouponController extends Controller
                 ]);
             }
         }
-        if ($coupon->set_user_id == Auth::user()->id) {
+        if ($coupon->user_type == null && $coupon->set_user_id != null && $coupon->set_user_id != Auth::user()->id) {
             logger('coupon in set user id');
-            $amount = $this->amountCalculatuon($coupon, $request);
             return $this->response->array([
                 'coupon_id' => $coupon->id,
-                'amount' => $amount,
-                'error' => false
+                'amount' => 0,
+                'error' => true
             ]);
         }
-        $user_type = Auth::user()->id_verified == 1 ? config('gamehub.user_type.elite') : config('gamehub.user_type.rookie');
 
-        if ($coupon->user_type == $user_type) {
+        $user_type = Auth::user()->id_verified == 1 ? config('gamehub.user_type.rookie') : config('gamehub.user_type.elite');
+
+        if ($coupon->user_type != null && $coupon->user_type != $user_type) {
             logger('coupon in user type');
             $amount = $this->amountCalculatuon($coupon, $request);
             return $this->response->array([
                 'coupon_id' => $coupon->id,
-                'amount' => $amount,
-                'error' => false
+                'amount' => 0,
+                'error' => true
             ]);
         }
+
         logger('coupon in general');
         $amount = $this->amountCalculatuon($coupon, $request);
         return $this->response->array([
