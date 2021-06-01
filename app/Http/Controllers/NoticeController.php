@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SentNoticeEmail;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,8 @@ class NoticeController extends Controller
 
         $data['author_id'] = Auth::user()->id;
 
-        Notice::create($data);
+        $notice = Notice::create($data);
+        SentNoticeEmail::dispatch($notice);
 
         return redirect()->back()->with('status', 'Notice successfully created');
     }

@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title ...">
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title ..." required>
                                 @if ($errors->has('title'))
                                     <span class="text-danger"><strong>{{ $errors->first('title') }}</strong></span>
                                 @endif

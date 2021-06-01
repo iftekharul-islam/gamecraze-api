@@ -86,7 +86,7 @@ class RatingController extends Controller
             ->where(function ($query) {
                 $query->where('notify_lender', '!=', null)
                     ->orWhere('notify_renter', '!=', null);
-            })->get();
+            })->orderBy('updated_at', 'DESC')->get();
     }
 
     /**
@@ -115,7 +115,7 @@ class RatingController extends Controller
             ->where(function ($query) {
                 $query->where('notify_renter', '!=', null)
                     ->orWhere('notify_lender', '!=', null);
-            })->get();
+            })->orderBy('updated_at', 'DESC')->get();
     }
 
     public function avgLenderRatingForMe()
