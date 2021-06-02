@@ -216,18 +216,20 @@
             $api->get('transaction-details', 'App\Http\Controllers\API\TransactionController@transactionById');
             $api->get('payment-history', 'App\Http\Controllers\API\TransactionController@paymentHistory');
 
-            //Rating by renter
-            $api->post('renter-rating', 'App\Http\Controllers\API\RatingController@renterRating');
-            //Rating by lender
-            $api->post('lender-rating', 'App\Http\Controllers\API\RatingController@lenderRating');
+            //Rating by user
+            $api->post('user-rating', 'App\Http\Controllers\API\RatingController@userRating');
             //Rating check
             $api->get('rating-check', 'App\Http\Controllers\API\RatingController@ratingCheck');
             //renter rating list
             $api->get('renter-rating-list', 'App\Http\Controllers\API\RatingController@renterRatingList');
+            $api->get('avg-renter-rating', 'App\Http\Controllers\API\RatingController@avgRenterRatingForMe');
+            $api->get('total-renter-rating', 'App\Http\Controllers\API\RatingController@totalRentingRating');
             //lender rating list
             $api->get('lender-rating-list', 'App\Http\Controllers\API\RatingController@lenderRatingList');
+            $api->get('avg-lender-rating', 'App\Http\Controllers\API\RatingController@avgLenderRatingForMe');
+            $api->get('total-lending-rating', 'App\Http\Controllers\API\RatingController@totalLendingRating');
             //promo code
-            $api->post('apply-promo', 'App\Http\Controllers\API\UserController@applyCode');
+            $api->post('apply-promo', 'App\Http\Controllers\API\CouponController@applyCode');
         });
     });
 

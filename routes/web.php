@@ -106,14 +106,23 @@ Route::prefix('admin')->group(function () {
 //        Route::post('store/commission','\App\Http\Controllers\CommissionController@store')->name('commission.store');
 //        Route::get('commission/edit/{id}','\App\Http\Controllers\CommissionController@edit')->name('commission.edit');
 //        Route::post('commission/update/{id}','\App\Http\Controllers\CommissionController@update')->name('commission.update');
-        Route::delete('commission/destroy/{id}','\App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
+//        Route::delete('commission/destroy/{id}','\App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
         //Discount Crud
-        Route::get('discount','\App\Http\Controllers\DiscountController@index')->name('discount');
-        Route::get('create/discount','\App\Http\Controllers\DiscountController@create')->name('discount.create');
-        Route::post('store/discount','\App\Http\Controllers\DiscountController@store')->name('discount.store');
-        Route::get('discount/edit/{id}','\App\Http\Controllers\DiscountController@edit')->name('discount.edit');
-        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
-        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
+//        Route::get('discount','\App\Http\Controllers\DiscountController@index')->name('discount');
+//        Route::get('create/discount','\App\Http\Controllers\DiscountController@create')->name('discount.create');
+//        Route::post('store/discount','\App\Http\Controllers\DiscountController@store')->name('discount.store');
+//        Route::get('discount/edit/{id}','\App\Http\Controllers\DiscountController@edit')->name('discount.edit');
+//        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
+//        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
+
+        // Coupon CRUD
+        Route::get('coupon','\App\Http\Controllers\CouponController@index')->name('coupon');
+        Route::get('create/discount','\App\Http\Controllers\CouponController@create')->name('coupon.create');
+        Route::post('store/discount','\App\Http\Controllers\CouponController@store')->name('coupon.store');
+        Route::get('show/discount/{id}','\App\Http\Controllers\CouponController@show')->name('coupon.show');
+        Route::get('discount/edit/{id}','\App\Http\Controllers\CouponController@edit')->name('coupon.edit');
+        Route::post('discount/update/{id}','\App\Http\Controllers\CouponController@update')->name('coupon.update');
+        Route::delete('discount/destroy/{id}','\App\Http\Controllers\CouponController@destroy')->name('coupon.destroy');
 
         //Division Crud
         Route::get('divisions','\App\Http\Controllers\DivisionController@index')->name('division.all');

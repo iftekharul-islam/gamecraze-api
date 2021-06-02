@@ -15,81 +15,49 @@ class RatingController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function renterRating(Request $request)
+    public function userRating(Request $request)
     {
-        $rating = Rating::where('lend_id', $request->lend_id)->first();
+        logger($request->all());
+        logger(Auth::user()->id);
 
-        if($rating){
-            $rating->renter_id = $request->renter_id;
-            $rating->renter_rating = $request->renter_rating;
-            $rating->renter_comment = $request->renter_comment;
-            $rating->save();
+        $renter = Rating::where('renter_id', Auth::user()->id)->where('id', $request->id)->first();
 
-            return response()->json(compact('rating'), 200);
+        if($renter){
+            $renter->renter_rating = $request->rating;
+            $renter->renter_comment = $request->comment;
+            $renter->notify_renter = true;
+            $renter->save();
+
+            return responseData('Renter rating successfully updated');
         }
 
-        $rating = new Rating();
-        $rating->lend_id = $request->lend_id;
-        $rating->renter_id = $request->renter_id;
-        $rating->renter_rating = $request->renter_rating;
-        $rating->renter_comment = $request->renter_comment;
-        $rating->save();
+        $lender = Rating::where('lender_id', Auth::user()->id)->where('id', $request->id)->first();
 
-        return response()->json(compact('rating'), 200);
+        if($lender){
+            $lender->lender_rating = $request->rating;
+            $lender->lender_comment = $request->comment;
+            $lender->notify_lender = true;
+            $lender->save();
+
+            return responseData('Lender rating successfully updated');
+        }
+
+        return responseData('Rating id not found');
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function lenderRating(Request $request)
-    {
-        $rating = Rating::where('lend_id', $request->lend_id)->first();
-
-        if($rating){
-            $rating->lender_id = $request->lender_id;
-            $rating->lender_rating = $request->lender_rating;
-            $rating->lender_comment = $request->lender_comment;
-            $rating->save();
-
-            return response()->json(compact('rating'), 200);
-        }
-
-        $rating = new Rating();
-        $rating->lend_id = $request->lend_id;
-        $rating->lender_id = $request->lender_id;
-        $rating->lender_rating = $request->lender_rating;
-        $rating->lender_comment = $request->lender_comment;
-        $rating->save();
-
-        return response()->json(compact('rating'), 200);
-    }
-
-    /**
-     * @return array
+     * @return \Dingo\Api\Http\Response
      */
     public function ratingCheck()
     {
-        $pendingRating = Rating::where('lender_id', Auth::user()->id)
+        $rating = Rating::where('lender_id', Auth::user()->id)
             ->where('notify_lender', null)
             ->orWhere(function ($q) {
                 $q->where('renter_id', Auth::user()->id)
                     ->where('notify_renter', null);
-            })
-            ->count();
+            })->get();
 
-        if ($pendingRating > 0){
-            $ratingCheck =[
-                'pending' => true,
-                'error' => false,
-            ];
-            return response()->json(compact('ratingCheck'), 200);
-        }
-        $ratingCheck =[
-            'pending' => false,
-            'error' => true,
-        ];
-        return response()->json(compact('ratingCheck'), 200);
+        return $this->response->collection($rating, new RatingTransformer());
     }
 
     /**
@@ -97,9 +65,28 @@ class RatingController extends Controller
      */
     public function lenderRatingList()
     {
-        $rating = Rating::where('lender_id', Auth::user()->id)->where('notify_lender', null)->get();
+        $rating = $this->lendingRating();
 
         return $this->response->collection($rating, new RatingTransformer());
+    }
+
+    public function totalLendingRating()
+    {
+        $rating = $this->lendingRating();
+
+        return $this->response->array([
+            'total' => count($rating),
+            'error' => false
+        ]);
+    }
+
+    public function lendingRating()
+    {
+        return Rating::where('lender_id', Auth::user()->id)
+            ->where(function ($query) {
+                $query->where('notify_lender', '!=', null)
+                    ->orWhere('notify_renter', '!=', null);
+            })->orderBy('updated_at', 'DESC')->get();
     }
 
     /**
@@ -107,8 +94,55 @@ class RatingController extends Controller
      */
     public function renterRatingList()
     {
-        $rating = Rating::where('renter_id', Auth::user()->id)->where('notify_renter', null)->get();
+        $rating = $this->rentingRating();
 
         return $this->response->collection($rating, new RatingTransformer());
+    }
+
+    public function totalRentingRating()
+    {
+        $rating = $this->rentingRating();
+
+        return $this->response->array([
+            'total' => count($rating),
+            'error' => false
+        ]);
+    }
+
+    public function rentingRating()
+    {
+        return Rating::where('renter_id', Auth::user()->id)
+            ->where(function ($query) {
+                $query->where('notify_renter', '!=', null)
+                    ->orWhere('notify_lender', '!=', null);
+            })->orderBy('updated_at', 'DESC')->get();
+    }
+
+    public function avgLenderRatingForMe()
+    {
+        $total = Rating::where('lender_id', Auth::user()->id)->where('notify_renter', '!=', null)->sum('renter_rating');
+        $collection = Rating::where('lender_id', Auth::user()->id)->where('notify_renter', '!=', null)->count();
+        $avg_value = 0;
+        if ($total > 0){
+            $avg_value = $total / $collection;
+        }
+        return $this->response->array([
+            'avg' => ceil($avg_value),
+            'error' => false
+        ]);
+    }
+
+    public function avgRenterRatingForMe()
+    {
+        $total = Rating::where('renter_id', Auth::user()->id)->where('notify_lender', '!=', null)->sum('lender_rating');
+        $collection = Rating::where('renter_id', Auth::user()->id)->where('notify_lender', '!=', null)->count();
+        $avg_value = 0;
+        if ($total > 0){
+            $avg_value = $total / $collection;
+        }
+        return $this->response->array([
+            'avg' => ceil($avg_value),
+            'error' => false
+        ]);
     }
 }

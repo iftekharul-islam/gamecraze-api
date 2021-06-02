@@ -222,12 +222,18 @@
                                                 <table class="table">
                                                     <tr>
                                                         <th style="width:50%">Subtotal (BDT):</th>
-                                                        <td class="text-right">{{ $order->amount - $order->delivery_charge }}</td>
+                                                        <td class="text-right">{{ $order->amount - $order->delivery_charge + $order->discount_amount }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Delivery Fee (BDT):</th>
                                                         <td class="text-right">{{ ceil($order->delivery_charge) }}</td>
                                                     </tr>
+                                                    @if($order->discount_amount)
+                                                        <tr>
+                                                            <th>Redeem Discount:</th>
+                                                            <td id="total" class="text-right">{{ $order->discount_amount }}</td>
+                                                        </tr>
+                                                    @endif
                                                     <tr>
                                                         <th>Total (BDT):</th>
                                                         <td id="total" class="text-right">{{ $order->amount }}</td>

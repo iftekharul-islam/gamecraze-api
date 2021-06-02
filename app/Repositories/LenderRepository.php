@@ -6,6 +6,7 @@ use App\Jobs\SendEmailToLender;
 use App\Jobs\SendEmailToRenter;
 use App\Models\CartItem;
 use App\Models\Commission;
+use App\Models\CouponUser;
 use App\Models\GameOrder;
 use App\Models\Lender;
 use App\Models\Rent;
@@ -86,6 +87,8 @@ class LenderRepository {
             'delivery_charge' => $request->get('deliveryCharge') ? $request->get('deliveryCharge') : 0,
             'address' => $request->address ?? '',
             'wallet_amount' => $request->spendWalletAmount ?? 0,
+            'coupon_id' => $request->couponId,
+            'discount_amount' => $request->discountAmount,
         ]);
 
         $itemCount = count($cartItems);
@@ -161,6 +164,15 @@ class LenderRepository {
             $spendData->amount = $request->spendWalletAmount;
             $spendData->reason = 'Spend for order';
             $spendData->save();
+        }
+
+        if ($request->couponId != null) {
+            $couponHistory = new CouponUser();
+            $couponHistory->user_id = $lender->id;
+            $couponHistory->order_id = $gameOrder->id;
+            $couponHistory->coupon_id = $request->couponId;
+            $couponHistory->amount = $request->discountAmount;
+            $couponHistory->save();
         }
 
         SendEmailToRenter::dispatch($renterDetails, $gameNames, $gameOrder['order_no']);

@@ -199,18 +199,23 @@ class GameRepository
         if ($diskType){
             $data->whereIn('disk_type', $diskType);
         }
-        return $data->whereHas('game', function($q) use ($ids, $categories, $platforms, $search) {
+        $data->when($platforms, function ($qu) use ($platforms) {
+            $qu->with('platform')->whereHas('platform', function($query2) use ($platforms){
+                $query2->whereIn('slug', $platforms);
+            });
+        });
+        return $data->whereHas('game', function($q) use ($ids, $categories, $search) {
             $q->whereIn('id', $ids)
                 ->when($categories, function ($qu) use ($categories) {
                     $qu->with('genres')->whereHas('genres', function($query2) use ($categories){
                         $query2->whereIn('slug', $categories);
                     });
                 })
-                ->when($platforms, function ($qu) use ($platforms) {
-                    $qu->with('platforms')->whereHas('platforms', function($query2) use ($platforms){
-                        $query2->whereIn('slug', $platforms);
-                    });
-                })
+//                ->when($platforms, function ($qu) use ($platforms) {
+//                    $qu->with('platforms')->whereHas('platforms', function($query2) use ($platforms){
+//                        $query2->whereIn('slug', $platforms);
+//                    });
+//                })
                 ->when($search, function ($qu) use ($search) {
                     return $qu->where('name', 'like', '%' . $search . '%');
                 });
