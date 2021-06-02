@@ -48,7 +48,7 @@ class CouponController extends Controller
             ]);
         }
 
-        $user_type = Auth::user()->id_verified == 1 ? config('gamehub.user_type.rookie') : config('gamehub.user_type.elite');
+        $user_type = Auth::user()->id_verified == 1 ? config('gamehub.user_type.elite') : config('gamehub.user_type.rookie');
         logger("user type");
         logger($user_type);
 

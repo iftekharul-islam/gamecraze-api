@@ -59,7 +59,7 @@
                                             <strong>Name :</strong><span> {{ $data->name }}</span><br>
                                             <strong>Code :</strong><span> {{ $data->code }}</span><br>
                                             <strong>Amount :</strong><span>{{ $data->amount }}</span><br>
-                                            <strong>Amount Type: </strong><span> {{ $data->amount_type == 1 ? 'Flate' : 'Percentage' }}</span><br>
+                                            <strong>Amount Type: </strong><span> {{ $data->amount_type == 1 ? 'Flat' : 'Percentage' }}</span><br>
                                             <strong>Limit: </strong><span> {{ $data->limit }}</span><br>
                                         </address>
                                     </div>
