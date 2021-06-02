@@ -37,8 +37,13 @@ class SentNoticeEmail implements ShouldQueue
                 $query->where('name', '!=', 'admin');
             })->get();
 
+        logger('total user');
+        logger(count($users));
+
         foreach ($users as $user) {
             if ($user->email != null){
+                logger('user email id');
+                logger($user->email);
                 Mail::to($user)->queue(new SentNoticeEmailToCustomer($this->notice, $user->name));
             }
         }
