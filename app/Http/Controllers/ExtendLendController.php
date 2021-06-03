@@ -6,6 +6,7 @@ use App\Jobs\SentExtendEmailToCustomer;
 use App\Models\ExtendLend;
 use App\Models\GameOrder;
 use App\Models\Lender;
+use App\Models\Rent;
 use App\Repositories\Admin\basePriceRepository;
 use Carbon\Carbon;
 
@@ -39,6 +40,9 @@ class ExtendLendController extends Controller
             return back()->with('error', 'Unable to approve this request !!');
         }
 
+        $rent = Rent::findOrFail($lend_data->rent_id);
+
+
         $price = $this->basePriceRepository->gamePriceCalculation($lend_data->rent->game_id, $data->week, $lend_data->rent->disk_type);
 
         $lend_order = Lender::create([
@@ -65,6 +69,9 @@ class ExtendLendController extends Controller
 
         $lend_data->status = 1;
         $lend_data->save();
+
+        $rent->rented_lend_id = $lend_order->id;
+        $rent->save();
 
         $data->status = true;
         $data->save();
