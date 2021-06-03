@@ -34,6 +34,7 @@ class NoticeController extends Controller
         $data['author_id'] = Auth::user()->id;
 
         $notice = Notice::create($data);
+
         SentNoticeEmail::dispatch($notice);
 
         return redirect()->back()->with('status', 'Notice successfully created');

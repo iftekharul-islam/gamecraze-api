@@ -172,7 +172,8 @@
             $api->post('post-status-update', 'App\Http\Controllers\API\RentController@postStatusUpdate');
             //available rent check
             $api->get('available-rent/{slug}', 'App\Http\Controllers\API\RentController@availableRent');
-
+            //lend extend request
+            $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games

@@ -121,7 +121,7 @@ class LenderRepository {
 //            if ($lender->achieve_discount == true && $cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy')){
 //                $paymentAmount = $mainAmount;
 //                $paymentCommission = $mainCommission;
-////                $discountOnCommission = false;
+//                $discountOnCommission = false;
 //            }
             $data = Lender::create([
                 'lender_id' => $lender->id,
