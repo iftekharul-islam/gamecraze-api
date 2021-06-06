@@ -12,9 +12,20 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\WalletHistory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class GameOrderRepository
 {
+
+    public function index()
+    {
+        return GameOrder::where('user_id', Auth::user()->id)->get();
+    }
+
+    public function getById($id)
+    {
+        return GameOrder::where('id', $id)->first();
+    }
     /**
      * @param $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator

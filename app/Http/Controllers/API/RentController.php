@@ -51,6 +51,7 @@ class RentController extends BaseController
      */
     public function allRent() {
         $rents = $this->rentRepository->allRent();
+
         return $this->response->collection($rents, new RentTransformer());
     }
 

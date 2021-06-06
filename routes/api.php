@@ -149,6 +149,9 @@
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
             //User Profile
             $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
+            //orders
+            $api->get('orders', 'App\Http\Controllers\API\OrderController@index');
+            $api->get('order/{id}', 'App\Http\Controllers\API\OrderController@showById');
             //Lend Game
             $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
             $api->get('lends', 'App\Http\Controllers\API\LenderController@index');
