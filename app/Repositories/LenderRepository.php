@@ -82,7 +82,7 @@ class LenderRepository {
             'amount' => $totalOrderAmount,
             'commission' =>  0,
             'payment_method' => $request->get('paymentMethod'),
-            'payment_status' => strtolower($request->get('paymentMethod')) == 'cod' ? 0 : 1,
+            'payment_status' => 0,
             'delivery_status' => 0,
             'delivery_charge' => $request->get('deliveryCharge') ? $request->get('deliveryCharge') : 0,
             'address' => $request->address ?? '',
