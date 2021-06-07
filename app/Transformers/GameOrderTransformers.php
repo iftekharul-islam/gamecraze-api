@@ -23,11 +23,11 @@ class GameOrderTransformers extends TransformerAbstract
             'commission' =>  $order->commission,
             'payment_method' =>  $order->payment_method,
             'payment_status' =>  $order->payment_status,
-            'delivery_charge' =>  $order->delivery_charge,
+            'delivery_charge' =>  ceil($order->delivery_charge),
             'delivery_status' =>  $order->delivery_status,
-            'payment_status' => $order->payment_status,
             'address' =>  $order->address,
-            'wallet_amount' =>  $order->wallet_amount,
+            'wallet_amount' =>  ceil($order->wallet_amount),
+            'discount_amount' =>  ceil($order->discount_amount),
             'create_date' => $order->created_at,
             'end_date' => $order->end_date
         ];
