@@ -102,34 +102,19 @@ class LenderRepository {
             ];
             $gameNames[]= $cartItems[$i]['game_name'];
 
-            $mainAmount = $cartItems[$i]['regular_price'];
-            $mainCommission = $cartItems[$i]['regular_commission'];
+            $regularAmount = $cartItems[$i]['regular_price'];
+            $regularCommission = $cartItems[$i]['regular_commission'];
             $discountAmount = $cartItems[$i]['discount_price'];
             $discountCommission = $cartItems[$i]['discount_commission'];
 
-            $paymentAmount = $discountAmount;
-            $paymentCommission = $discountCommission;
-//            $discountOnDiskType = false;
-//            $discountOnCommission = config('gamehub.discount_on_commission');
-
-//            if ($cartItems[$i]['rent_week'] > 1){
-//                $discountOnCommission = false;
-//            }
-//            if ($cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy') && config('gamehub.offer_on_digital_game') == true){
-//                $discountOnDiskType = true;
-//            }
-//            if ($lender->achieve_discount == true && $cartItems[$i]['disk_type'] == config('gamehub.disk_type.digital_copy')){
-//                $paymentAmount = $mainAmount;
-//                $paymentCommission = $mainCommission;
-//                $discountOnCommission = false;
-//            }
+            $paymentAmount = $regularAmount;
+            $paymentCommission = $regularCommission;
             $data = Lender::create([
                 'lender_id' => $lender->id,
                 'rent_id' => $cartItems[$i]['rent_id'],
                 'lend_week' => $cartItems[$i]['rent_week'],
                 'checkpoint_id' => $cartItems[$i]['delivery_type'] ?? null,
                 'lend_cost' => $paymentAmount,
-//                'commission' => $discountOnCommission == true ? 0 : $this->commissionAmount($paymentAmount),
                 'commission' => $paymentCommission,
                 'original_commission' => $cartItems[$i]['regular_commission'],
                 'renter_id' => $cartItems[$i]['renter_id'],
@@ -137,8 +122,8 @@ class LenderRepository {
                 'payment_method' => $request->get('paymentMethod'),
                 'status' => 0,
                 'game_order_id' => $gameOrder->id,
-                'discount_amount' => config('gamehub.discount_on_commission') == true ? ($mainAmount + $mainCommission) - ($paymentAmount + $paymentCommission) : 0,
-                'reference' => config('gamehub.discount_on_commission') == true ? config('gamehub.offer_reference') : '',
+//                'discount_amount' => config('gamehub.discount_on_commission') == true ? ($regularAmount + $regularCommission) - ($paymentAmount + $paymentCommission) : 0,
+//                'reference' => config('gamehub.discount_on_commission') == true ? config('gamehub.offer_reference') : '',
             ]);
             $totalCommission += $data['commission'];
             Rent::where('id', $cartItems[$i]['rent_id'])
