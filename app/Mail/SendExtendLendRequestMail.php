@@ -30,7 +30,7 @@ class SendExtendLendRequestMail extends Mailable
     public function build()
     {
         return $this->view('new_email.lend_extend_request_to_admin')
-            ->subject('New lend extend request available')
+            ->subject('New Rent extend request available')
             ->with([
                 'order_no' => $this->lend->order->order_no,
             ]);
