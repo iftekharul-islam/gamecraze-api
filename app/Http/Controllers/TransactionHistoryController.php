@@ -46,8 +46,8 @@ class TransactionHistoryController extends Controller
             $value = User::join('lenders', 'users.id', '=', 'lenders.renter_id')
                 ->selectRaw('SUM(lend_cost) as amount, SUM(discount_amount) as discount_amount, 
                             SUM(commission) as commission, SUM(original_commission) as original_commission, 
-                            SUM(lend_cost+commission+discount_amount) as total_amount,
-                            SUM(lend_cost+commission+discount_amount) as seller_amount, 
+                            SUM(lend_cost+commission) as total_amount,
+                            SUM(lend_cost+commission) as seller_amount, 
                             SUM(original_commission) as gamehub_amount, 
                             renter_id, users.name, users.last_name, users.id')
                 ->groupBy('lenders.renter_id')
@@ -73,8 +73,8 @@ class TransactionHistoryController extends Controller
         $seller_amount= 0;
         $gamehub_amount= 0;
         foreach ($data as $item) {
-            $total_amount += $item['total_amount'];
-            $seller_amount += $item['seller_amount'];
+            $total_amount += $item['total_amount'] + $item['discount_amount'];
+            $seller_amount += $item['seller_amount'] + $item['discount_amount'];
             $gamehub_amount += $item['gamehub_amount'];
         }
 
