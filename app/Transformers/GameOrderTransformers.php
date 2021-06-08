@@ -29,7 +29,7 @@ class GameOrderTransformers extends TransformerAbstract
             'wallet_amount' =>  ceil($order->wallet_amount),
             'discount_amount' =>  ceil($order->discount_amount),
             'create_date' => $order->created_at,
-            'end_date' => $order->end_date
+            'end_date' => $order->end_date,
         ];
     }
 
