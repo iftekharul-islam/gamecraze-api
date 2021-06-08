@@ -5,7 +5,7 @@
     </tr>
     <tr>
         <td style="padding-left: 80px; padding-right: 80px">
-            <p> New lend extend request available, please review this post and take an appropriate action.</p>
+            <p> New rent extend request available, please review this post and take an appropriate action.</p>
             <p> Order no : {{ $order_no }}</p>
         </td>
     </tr>
