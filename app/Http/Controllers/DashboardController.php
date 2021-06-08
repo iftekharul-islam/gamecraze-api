@@ -6,7 +6,6 @@ use App\Models\Game;
 use App\Models\Lender;
 use App\Models\Rent;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
