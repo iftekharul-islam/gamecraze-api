@@ -52,14 +52,14 @@
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group {{ $errors->has('amount') ? ' has-error' : '' }}">
                                 <label for="amount">Amount</label>
-                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount ...">
+                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount ..." required>
                                 @if ($errors->has('amount'))
                                     <span class="text-danger"><strong>{{ $errors->first('amount') }}</strong></span>
                                 @endif
                             </div>
                             <div class="false-padding-bottom-form form-group {{ $errors->has('transaction_id') ? ' has-error' : '' }}">
                                 <label for="transaction_id">Transaction Id</label>
-                                <input type="text" class="form-control" id="transaction_id" name="transaction_id" placeholder="Enter transaction id ...">
+                                <input type="text" class="form-control" id="transaction_id" name="transaction_id" placeholder="Enter transaction id ..." required>
                                 @if ($errors->has('transaction_id'))
                                     <span class="text-danger"><strong>{{ $errors->first('transaction_id') }}</strong></span>
                                 @endif
