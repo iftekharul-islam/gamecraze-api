@@ -23,7 +23,6 @@ return [
         'digital_copy' => 0,
         'physical_copy' => 1,
     ],
-    'mail_to' => 'contact@augnitive.com',
     'rent_limit' => 1, // user rent limit set on user create
     'pagination' => 20,
     'referred_amount' => 50,

@@ -54,7 +54,6 @@ class CouponController extends Controller
 
         if ($coupon->user_type != null && $coupon->user_type != $user_type) {
             logger('coupon in user type');
-            $amount = $this->amountCalculatuon($coupon, $request);
             return $this->response->array([
                 'coupon_id' => $coupon->id,
                 'amount' => 0,
@@ -69,18 +68,6 @@ class CouponController extends Controller
             'amount' => $amount,
             'error' => false
         ]);
-
-
-//        if ($request->promo == config('gamehub.promo_code')) {
-//            return $this->response->array([
-//                'amount' => config('gamehub.promo_amount'),
-//                'error' => false
-//            ]);
-//        }
-//        return $this->response->array([
-//            'amount' => 0,
-//            'error' => true
-//        ]);
     }
 
     /**

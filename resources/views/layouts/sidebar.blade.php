@@ -140,6 +140,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('extend.request') }}" class="nav-link {{ (request()->routeIs('extend.request', 'extend.request.approve', 'extend.request.reject')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Extend Requests
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('rentPost.all') }}" class="nav-link {{ (request()->routeIs('rentPost.all')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>

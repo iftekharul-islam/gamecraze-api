@@ -67,7 +67,7 @@ class CartItemController extends BaseController
                     $totalDiscountPrice += $price['discount_price'];
                     $totalDiscountCommission += $price['discount_commission'];
 
-                    if ($item->rent->disk_type == 1) {
+                    if ($item->rent->disk_type === 1) {
                         $deliveryCharge = config('gamehub.delivery_charge');
                     }
                 }

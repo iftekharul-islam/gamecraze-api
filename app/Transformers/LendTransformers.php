@@ -29,6 +29,8 @@ class LendTransformers extends TransformerAbstract
             'payment_method' =>  $lender->payment_method,
             'status' =>  $lender->status,
             'game_order_id' =>  $lender->game_order_id,
+            'created_at' => $lender->created_at,
+            'updated_at' => $lender->updated_at
         ];
     }
 

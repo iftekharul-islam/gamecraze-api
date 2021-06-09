@@ -2,7 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendContactMail;
+use App\Mail\SendExtendLendConfirmMail;
+use App\Mail\SendExtendLendRequestMail;
+use App\Models\Lender;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -10,19 +12,18 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendContactEmailToAdmin implements ShouldQueue
+class SentExtendEmailToAdmin implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    public $data;
+    public $lend;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct(Lender $lend)
     {
-        $this->data = $data;
+        $this->lend = $lend;
     }
 
     /**
@@ -34,8 +35,7 @@ class SendContactEmailToAdmin implements ShouldQueue
     {
         $admins = config('admin_mail.mail_to');
         foreach ($admins as $admin) {
-            Mail::to($admin)
-                ->send(new SendContactMail($this->data));
+            Mail::to($admin)->queue(new SendExtendLendRequestMail($this->lend));
         }
     }
 }

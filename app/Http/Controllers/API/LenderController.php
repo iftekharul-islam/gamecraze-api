@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lender;
+use App\Transformers\LendTransformers;
 use Illuminate\Http\Request;
 use App\Repositories\LenderRepository;
 

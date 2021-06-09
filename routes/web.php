@@ -115,6 +115,14 @@ Route::prefix('admin')->group(function () {
 //        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
 //        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
 
+        //Extend
+        Route::get('extend-requests','\App\Http\Controllers\ExtendLendController@index')->name('extend.request');
+        Route::get('approve-request/{id}','\App\Http\Controllers\ExtendLendController@approve')->name('extend.request.approve');
+        Route::get('reject-requests/{id}','\App\Http\Controllers\ExtendLendController@reject')->name('extend.request.reject');
+//        Route::get('discount/edit/{id}','\App\Http\Controllers\DiscountController@edit')->name('discount.edit');
+//        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
+//        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
+
         // Coupon CRUD
         Route::get('coupon','\App\Http\Controllers\CouponController@index')->name('coupon');
         Route::get('create/discount','\App\Http\Controllers\CouponController@create')->name('coupon.create');
