@@ -183,7 +183,7 @@
                                                                         }
                                                                     }
                                                                 @endphp
-                                                                <td>{{ isset($lend->end_date) ? date('d M, Y', strtotime($lend->end_date)) : date('d M, Y', strtotime($end_date)) }}</td>
+                                                                <td>{{ isset($lend->end_date) ? date('d M, Y', strtotime($lend->end_date)) : '-' }}</td>
                                                                 <!-- <td>{{ ucfirst(getDiskDeliveryStatus($lend->status)) }}</td> -->
                                                                 <td>
                                                                     @php $formId = 'game'.$lend->id @endphp
