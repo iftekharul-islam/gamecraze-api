@@ -50,16 +50,14 @@ class ExtendLendController extends Controller
             'rent_id' => $lend_data->rent_id,
             'lend_week' => $data->week,
             'checkpoint_id' => $lend_data->checkpoint_id,
-            'lend_cost' => config('gamehub.discount_on_commission') == true ? $price['discount_price'] : $price['regular_price'],
-            'commission' => config('gamehub.discount_on_commission') == true ? $price['discount_commission'] : $price['regular_commission'],
+            'lend_cost' => $price['regular_price'],
+            'commission' => $price['regular_commission'],
             'original_commission' => $price['regular_commission'],
             'renter_id' => $lend_data->renter_id,
             'lend_date' => Carbon::now(),
             'payment_method' => $lend_data->payment_method,
             'status' => 0,
             'game_order_id' => $lend_data->game_order_id,
-            'discount_amount' => config('gamehub.discount_on_commission') == true ? ($price['regular_price'] + $price['regular_commission']) - ($price['discount_price'] + $price['discount_commission']) : 0,
-            'reference' => config('gamehub.discount_on_commission') == true ? config('gamehub.offer_reference') : '',
         ]);
 
         $order_data = GameOrder::findOrFail($lend_data->game_order_id);
