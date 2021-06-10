@@ -211,6 +211,19 @@
                             Meta
                         </p>
                     </a>
+                </li>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block">Game Bazar</a>
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a href="{{ route('category') }}" class="nav-link {{ Request()->routeIs('category') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Category
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">

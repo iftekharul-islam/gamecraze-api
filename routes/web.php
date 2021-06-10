@@ -224,6 +224,14 @@ Route::prefix('admin')->group(function () {
         Route::post('meta/update/{id}','\App\Http\Controllers\MetaController@update')->name('meta.update');
         Route::delete('meta/delete/{id}','\App\Http\Controllers\MetaController@destroy')->name('meta.delete');
 
+        //Category
+        Route::get('category','\App\Http\Controllers\CategoryController@index')->name('category');
+        Route::get('category/create','\App\Http\Controllers\CategoryController@create')->name('category.create');
+        Route::post('category/store','\App\Http\Controllers\CategoryController@store')->name('category.store');
+        Route::get('category/edit/{id}','\App\Http\Controllers\CategoryController@edit')->name('category.edit');
+        Route::post('category/update/{id}','\App\Http\Controllers\CategoryController@update')->name('category.update');
+        Route::delete('category/delete/{id}','\App\Http\Controllers\CategoryController@destroy')->name('category.destroy');
+
         //bkash
 //        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
         Route::post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash')->name('travel-initiate-bkash');
