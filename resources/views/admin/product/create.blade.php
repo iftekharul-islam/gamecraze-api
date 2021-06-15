@@ -1,0 +1,155 @@
+@extends('layouts.app')
+
+@section('content')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Add product</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                            <li class="breadcrumb-item active">Product</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add product</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data" class="w-75 mx-auto">
+                        @csrf
+                        <div class="card-body">
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" required>
+                                @if ($errors->has('description'))
+                                    <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                                <label for="price">Price</label>
+                                <input type="number" class="form-control" id="price" name="price" placeholder="Enter price" required>
+                                @if ($errors->has('price'))
+                                    <span class="text-danger"><strong>{{ $errors->first('price') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
+                                <label for="product_type">Product type</label><br>
+                                <input type="radio" name="product_type" value="1" id="typeRadios1" checked/>
+                                <label class="form-check-label" for="typeRadios1">
+                                    New
+                                </label>
+                                <input type="radio" name="product_type" id="typeRadios2" value="2"/>
+                                <label class="form-check-label" for="typeRadios2">
+                                    Used
+                                </label>
+                                @if ($errors->has('product_type'))
+                                    <span
+                                        class="text-danger"><strong>{{ $errors->first('product_type') }}</strong></span>
+                                @endif
+                            </div>
+                            <div
+                                class="false-padding-bottom-form form-group{{ $errors->has('is_negotiable') ? ' has-error' : '' }}">
+                                <input type="checkbox" name="is_negotiable" id="is_negotiable" value="1"/>
+                                <label for="is_negotiable">Is Negotiable</label><br>
+                                @if ($errors->has('is_negotiable'))
+                                    <span
+                                        class="text-danger"><strong>{{ $errors->first('is_negotiable') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Sub Category</label>
+                                <select name="sub_category_id" class="form-control selectpicker" required>
+                                        <option value="">Select a category</option>
+                                    @foreach($subcategory as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Product for Customer</label>
+                                <select name="user_id" class="form-control selectpicker" data-live-search="true" required>
+                                    <option value="">Select a customer</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <table class="table table-bordered mt-2" id="dynamicProductImage">
+                                <tr>
+                                    <th>Add Product Image</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="product_image[]" id="productImage">
+                                            <label class="custom-file-label" for="productImage">Choose file</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" name="add" id="addProductImage" class="btn btn-success">Add More</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+@endsection
+
+@section('js')
+    <script>
+        $(document).on("change", ".custom-file-input", function() {
+            console.log('hello');
+            var fileName = $(this).val().split("\\").pop();
+            console.log(fileName);
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+        var i = 0;
+        $(document).on('click', "#addProductImage", function(){
+            ++i;
+            $("#dynamicProductImage").append('<tr><td><div class="custom-file"><input type="file" class="custom-file-input" id="productImage-'+i+'" name="product_image[]"><label class="custom-file-label" for="productImage-'+i+'">Choose file</label></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+        });
+        $(document).on('click', '.remove-tr', function(){
+            $(this).parents('tr').remove();
+        });
+    </script>
+@endsection

@@ -224,6 +224,22 @@
                             Category
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('subcategory') }}" class="nav-link {{ Request()->routeIs('subcategory') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                           Sub Category
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('product') }}" class="nav-link {{ Request()->routeIs('product') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Product
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">

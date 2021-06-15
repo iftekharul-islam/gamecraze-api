@@ -1,0 +1,121 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use App\Models\SubCategory;
+use App\Repositories\ProductRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ProductController extends Controller
+{
+    private $repository;
+
+    public function __construct(ProductRepository $repository){
+        $this->repository = $repository;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data = $this->repository->index();
+
+        return view('admin.product.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $users = $this->repository->allCustomer();
+        $subcategory = $this->repository->create();
+
+        return view('admin.product.create', compact('subcategory', 'users'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        $user_id = $request->user_id;
+        $data = $this->repository->store($request, $user_id);
+
+        return redirect()->route('product')->with("status", 'Product successfully created!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = $this->repository->show($id);
+        $images = $data->getMedia('product-image');
+
+
+        return view('admin.product.show', compact('data', 'images'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = $this->repository->show($id);
+        $subcategory = $this->repository->create();
+
+        return view('admin.product.edit', compact('data', 'subcategory'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+
+        $data = $this->repository->update($request, $id);
+
+        if (!$data){
+            return redirect()->route('product')->with("error", 'product cannot Update!');
+        }
+        
+        return redirect()->route('product')->with("status", 'product successfully Updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $data = $this->repository->delete($id);
+
+//        return $data;
+
+        if (!$data){
+            return redirect()->route('product')->with("error", 'product cannot delete!');
+        }
+
+        return redirect()->route('product')->with("status", 'product deleted successfully!');
+    }
+}
