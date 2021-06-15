@@ -34,8 +34,8 @@ class ProductRepository
         $product['user_id'] = $user_id;
 
         $data = Product::create($product);
-        $images = $request->file('product_image');
 
+        $images = $request->file('product_image');
         if (isset($images)) {
             foreach ($images as $image) {
                 $data->addMedia($image)->toMediaCollection('product-image');
