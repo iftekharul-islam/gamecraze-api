@@ -100,7 +100,7 @@
                                     @foreach($data as $key=>$item)
                                         <tr>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->subcategory->name }}</td>
+                                            <td>{{ $item->subcategory->name ?? 'N/A' }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>
                                                 @if ($item->product_type == 1)
