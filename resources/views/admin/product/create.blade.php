@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label for="status">Sub Category</label>
                                 <select name="sub_category_id" class="form-control selectpicker" required>
-                                        <option value="">Select a category</option>
+                                        <option value="">Select a sub category</option>
                                     @foreach($subcategory as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
