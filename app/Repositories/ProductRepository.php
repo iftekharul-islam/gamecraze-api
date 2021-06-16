@@ -16,9 +16,20 @@ class ProductRepository
             $query->where('name', '!=', 'admin');
         })->orderBy('created_at', 'DESC')->get();
     }
-    public function index()
+    public function index($request)
     {
-        return Product::with('subcategory')->get();
+        $product = Product::query();
+
+        if ($request->status){
+            $product->where('status', $request->status);
+        }
+        if ($request->product_type){
+            $product->where('product_type', $request->product_type);
+        }
+        if ($request->is_sold){
+            $product->where('is_sold', $request->is_sold);
+        }
+        return $product->with('subcategory')->get();
     }
 
     public function create()
@@ -28,9 +39,10 @@ class ProductRepository
 
     public function store($request, $user_id)
     {
-        $product = $request->only(['sub_category_id', 'name', 'description', 'price',
+        $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
             'is_negotiable', 'product_type',
             'user_id', 'status']);
+        $product['is_sold'] = 1;
         $product['user_id'] = $user_id;
 
         $data = Product::create($product);

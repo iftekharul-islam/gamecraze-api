@@ -60,6 +60,17 @@
                                 </label>
                             </div>
                             <div class="form-group">
+                                <label for="product_type">Product Status</label><br>
+                                <input type="radio" name="is_sold" value="1" id="typeSold1" {{ $data->is_sold == 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="typeSold1">
+                                    Available
+                                </label>
+                                <input type="radio" name="is_sold" id="typeSold2" value="2" {{ $data->is_sold == 2 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="typeSold2">
+                                    Sold
+                                </label>
+                            </div>
+                            <div class="form-group">
                                 <input type="checkbox" name="is_negotiable" id="is_negotiable" value="1" {{ $data->is_negotiable == 1 ? 'checked' : '' }}/>
                                 <label for="is_negotiable">Is Negotiable</label><br>
                             </div>

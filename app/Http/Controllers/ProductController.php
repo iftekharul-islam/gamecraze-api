@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\SubCategory;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -20,9 +18,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->repository->index();
+        $data = $this->repository->index($request);
 
         return view('admin.product.index', compact('data'));
     }
@@ -110,12 +108,28 @@ class ProductController extends Controller
     {
         $data = $this->repository->delete($id);
 
-//        return $data;
-
         if (!$data){
             return redirect()->route('product')->with("error", 'product cannot delete!');
         }
 
         return redirect()->route('product')->with("status", 'product deleted successfully!');
+    }
+
+    public function approve($id)
+    {
+        $data = Product::findOrFail($id);
+
+        $data->status = 1;
+        $data->save();
+        return back()->with('status', 'Product Request Approved !!');
+    }
+
+    public function reject($id)
+    {
+        $data = Product::findOrFail($id);
+
+        $data->status = 2;
+        $data->save();
+        return back()->with('status', 'Product Request Rejected !!');
     }
 }

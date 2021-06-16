@@ -249,6 +249,8 @@ Route::prefix('admin')->group(function () {
         Route::get('product/edit/{id}','\App\Http\Controllers\ProductController@edit')->name('product.edit');
         Route::post('product/update/{id}','\App\Http\Controllers\ProductController@update')->name('product.update');
         Route::delete('product/delete/{id}','\App\Http\Controllers\ProductController@destroy')->name('product.destroy');
+        Route::get('product/approve/{id}','\App\Http\Controllers\ProductController@approve')->name('product.approve');
+        Route::get('product/reject/{id}','\App\Http\Controllers\ProductController@reject')->name('product.reject');
 
         //bkash
 //        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
