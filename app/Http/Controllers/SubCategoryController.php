@@ -15,7 +15,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $data = SubCategory::with('category')->get();
+        $data = SubCategory::with('category')->orderBy('created_at', 'DESC')->get();
 
         return view('admin.sub_category.index', compact('data'));
     }

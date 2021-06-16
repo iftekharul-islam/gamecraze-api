@@ -71,7 +71,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="is_negotiable" id="is_negotiable" value="1" {{ $data->is_negotiable == 1 ? 'checked' : '' }}/>
+                                <input type="checkbox" name="is_negotiable" id="is_negotiable" value=""  {{ $data->is_negotiable == 1 ? 'checked' : '' }}/>
                                 <label for="is_negotiable">Is Negotiable</label><br>
                             </div>
                             <table class="table table-bordered mt-2" id="dynamicProductImage">

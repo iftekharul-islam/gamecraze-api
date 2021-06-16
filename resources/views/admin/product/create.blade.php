@@ -70,7 +70,7 @@
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('is_negotiable') ? ' has-error' : '' }}">
-                                <input type="checkbox" name="is_negotiable" id="is_negotiable" value="1"/>
+                                <input type="checkbox" name="is_negotiable" id="is_negotiable" value=""/>
                                 <label for="is_negotiable">Is Negotiable</label><br>
                                 @if ($errors->has('is_negotiable'))
                                     <span

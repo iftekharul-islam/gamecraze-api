@@ -29,7 +29,7 @@ class ProductRepository
         if ($request->is_sold){
             $product->where('is_sold', $request->is_sold);
         }
-        return $product->with('subcategory')->get();
+        return $product->with('subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
     public function create()
@@ -42,6 +42,15 @@ class ProductRepository
         $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
             'is_negotiable', 'product_type',
             'user_id', 'status']);
+
+        $isChecked = $request->has('is_negotiable');
+
+        if ($isChecked) {
+            $product['is_negotiable'] = 1;
+        } else {
+            $product['is_negotiable'] = null;
+        }
+
         $product['is_sold'] = 1;
         $product['user_id'] = $user_id;
 
@@ -95,8 +104,12 @@ class ProductRepository
             $product->category_id = $data['category_id'];
         }
 
-        if (isset($data['is_negotiable'])){
-            $product->is_negotiable = $data['is_negotiable'];
+        $isChecked = $request->has('is_negotiable');
+
+        if ($isChecked) {
+            $product->is_negotiable = 1;
+        } else {
+            $product->is_negotiable = null;
         }
 
         if (isset($data['product_type'])){
