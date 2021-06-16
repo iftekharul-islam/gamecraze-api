@@ -125,7 +125,7 @@
                                             </td>
                                             </td>
                                             <td>
-                                                @if ($item->status === 0)
+                                                @if ($item->status == 2)
                                                     <button class="btn btn-success btn-sm" type="button"
                                                             onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
                                                     <form id="approve-form-{{ $item->id }}"
@@ -133,7 +133,7 @@
                                                           method="get" class="d-none">
                                                         @csrf
                                                     </form>
-                                                @else
+                                                @elseif ($item->status == 1)
                                                     <button class="btn btn-danger btn-sm" type="button"
                                                             onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                     <form id="reject-form-{{ $item->id }}"

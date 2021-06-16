@@ -82,9 +82,9 @@
                                         <tr>
                                             <td>Is sold:</td>
                                             <td>@if($data->is_sold == 1)
-                                                    Yes
+                                                    Available
                                                 @else
-                                                    No
+                                                    Sold
                                                 @endif
                                             </td>
                                         </tr>
