@@ -103,7 +103,7 @@
                                 <tr>
                                     <td>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="product_image[]" id="productImage" required>
+                                            <input type="file" class="custom-file-input" accept=".gif,.jpg,.jpeg,.png" name="product_image[]" id="productImage" required>
                                             <label class="custom-file-label" for="productImage">Choose file</label>
                                             <label for="productImage" class="limit-alert text-danger d-none">Image length for more than 2 mb</label>
                                         </div>
@@ -157,7 +157,7 @@
         var i = 0;
         $(document).on('click', "#addProductImage", function(){
             ++i;
-            $("#dynamicProductImage").append('<tr><td><div class="custom-file"><input type="file" class="custom-file-input" id="productImage-'+i+'" name="product_image[]" required><label class="custom-file-label" for="productImage-'+i+'">Choose file</label><label for="productImage'+i+'" class="limit-alert text-danger d-none">Image length for more than 2 mb</label></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+            $("#dynamicProductImage").append('<tr><td><div class="custom-file"><input type="file" class="custom-file-input" accept=".gif,.jpg,.jpeg,.png" id="productImage-'+i+'" name="product_image[]" required><label class="custom-file-label" for="productImage-'+i+'">Choose file</label><label for="productImage'+i+'" class="limit-alert text-danger d-none">Image length for more than 2 mb</label></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
         });
         $(document).on('click', '.remove-tr', function(){
             $(this).parents('tr').remove();

@@ -59,7 +59,7 @@
                                 <label>Image</label>
                                 <small>(Width: 1920px and Height: 600px)</small>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="image_url" id="coverFile" required>
+                                    <input type="file" class="custom-file-input" accept=".gif,.jpg,.jpeg,.png" name="image_url" id="coverFile" required>
                                     <label class="custom-file-label" for="coverFile">Choose file</label>
                                     <label for="productImage" class="limit-alert text-danger d-none">Image length for more than 2 mb</label>
                                     @if ($errors->has('image_url'))

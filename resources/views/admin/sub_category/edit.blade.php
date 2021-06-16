@@ -47,8 +47,9 @@
                             <div class="form-group">
                                 <label>Image</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="image_url" id="coverFile">
+                                    <input type="file" class="custom-file-input" accept=".gif,.jpg,.jpeg,.png" name="image_url" id="coverFile">
                                     <label class="custom-file-label" for="coverFile">Choose file</label>
+                                    <label for="productImage" class="limit-alert text-danger d-none">Image length for more than 2 mb</label>
                                     @if ($errors->has('image_url'))
                                         <span class="text-danger"><strong>{{ $errors->first('image_url') }}</strong></span>
                                     @endif
@@ -79,8 +80,16 @@
         $(document).on("change", ".custom-file-input", function() {
             console.log('hello');
             var fileName = $(this).val().split("\\").pop();
-            console.log(fileName);
+            var fileSize = Math.ceil($(this)[0].files[0].size / 1024);
+            if (fileSize > 2048) { //2mb
+                $(this).val('');
+                $(this).siblings(".limit-alert").removeClass("d-none");
+                $(this).siblings(".custom-file-label").addClass("selected").html('Choose file');
+                return;
+            }
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            $(this).siblings(".limit-alert").addClass("d-none");
+
         });
     </script>
 @endsection
