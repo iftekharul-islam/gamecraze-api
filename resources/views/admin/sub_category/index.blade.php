@@ -70,7 +70,7 @@
                                             </td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary mr-3"
+                                                <a class="btn btn-sm btn-primary"
                                                    href="{{ route('subcategory.edit', $item->id) }}"><i
                                                         class="far fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="button"

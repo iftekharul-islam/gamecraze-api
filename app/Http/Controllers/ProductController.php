@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SellPostApproved;
+use App\Jobs\SellPostRejected;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -118,18 +120,22 @@ class ProductController extends Controller
     public function approve($id)
     {
         $data = Product::findOrFail($id);
-
         $data->status = 1;
         $data->save();
+
+        SellPostApproved::dispatch($data);
+
         return back()->with('status', 'Product Request Approved !!');
     }
 
     public function reject($id)
     {
         $data = Product::findOrFail($id);
-
-        $data->status = 2;
+        $data->status = 3;
         $data->save();
+
+        SellPostRejected::dispatch($data);
+
         return back()->with('status', 'Product Request Rejected !!');
     }
 }

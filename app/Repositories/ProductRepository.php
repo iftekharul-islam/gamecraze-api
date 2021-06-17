@@ -4,9 +4,12 @@
 namespace App\Repositories;
 
 
+use App\Jobs\SentSellPostNotificationToAdmin;
+use App\Models\GameOrder;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProductRepository
 {
@@ -29,7 +32,12 @@ class ProductRepository
         if ($request->is_sold){
             $product->where('is_sold', $request->is_sold);
         }
-        return $product->with('subcategory')->orderBy('created_at', 'DESC')->get();
+        return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
+    }
+
+    public function apiIndex()
+    {
+        return Product::where('user_id', Auth::user()->id)->get();
     }
 
     public function create()
@@ -53,6 +61,7 @@ class ProductRepository
 
         $product['is_sold'] = 1;
         $product['user_id'] = $user_id;
+        $product['product_no'] = $this->generateProductNo();
 
         $data = Product::create($product);
 
@@ -62,7 +71,38 @@ class ProductRepository
                 $data->addMedia($image)->toMediaCollection('product-image');
             }
         }
+        $admins = config('admin_mail.mail_to');
+        foreach ($admins as $admin){
+            SentSellPostNotificationToAdmin::dispatch($data, $admin);
+        }
+        return $data;
 
+    }
+
+    public function apiStore($request, $user_id)
+    {
+        $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
+            'is_negotiable', 'product_type', 'product_no',
+            'user_id', 'status']);
+
+        $product['is_sold'] = 1;
+        $product['is_negotiable'] = $product['is_negotiable'] == false ? null : $product['is_negotiable'];
+        $product['status'] = 2;
+        $product['user_id'] = $user_id;
+        $product['product_no'] = $this->generateProductNo();
+
+        $data = Product::create($product);
+
+        $images = $request->file('product_image');
+        if (isset($images)) {
+            foreach ($images as $image) {
+                $data->addMedia($image)->toMediaCollection('product-image');
+            }
+        }
+        $admins = config('admin_mail.mail_to');
+        foreach ($admins as $admin){
+            SentSellPostNotificationToAdmin::dispatch($data, $admin);
+        }
         return $data;
 
     }
@@ -158,6 +198,23 @@ class ProductRepository
 
         return true;
 
+    }
+
+    public function generateProductNo()
+    {
+        $latestProduct = Product::orderBy('id', 'desc')->first();
+        if ($latestProduct) {
+            $lastNumber = explode('-', $latestProduct->order_no);
+            $lastNumber = preg_replace("/[^0-9]/", "", end($lastNumber));
+            $orderNo = 'GH-POST-' . str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
+            if (GameOrder::where('order_no', $orderNo)->count() > 0) {
+                $this->generateOrderNo();
+            }
+
+            return $orderNo;
+        }
+
+        return 'GH-POST-' . date('Y') . date('m') . '-001';
     }
 
 }

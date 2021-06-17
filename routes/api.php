@@ -113,6 +113,9 @@
         // games exists in rent table
         $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
+        //subcategory list
+        $api->get('sub-categories', 'App\Http\Controllers\API\ProductController@subCategoryList');
+
         //bkash
 //        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
         $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
@@ -177,6 +180,9 @@
             $api->get('available-rent/{slug}', 'App\Http\Controllers\API\RentController@availableRent');
             //lend extend request
             $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
+            //sell post
+            $api->get('sell-posts', 'App\Http\Controllers\API\ProductController@index');
+            $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games

@@ -142,7 +142,7 @@ class RentController extends BaseController
 
     /**
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      */
     public function destroy($id)
     {

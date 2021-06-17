@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubCategory;
+use App\Repositories\ProductRepository;
+use App\Transformers\ProductTransformer;
+use App\Transformers\SubCategoryTransformer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    private $repository;
+
+    public function __construct(ProductRepository $repository){
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,51 +24,29 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data = $this->repository->apiIndex();
+
+        return $this->response->collection($data, new ProductTransformer());
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        logger($request->all());
+        $user_id = Auth::user()->id;
+        $data = $this->repository->apiStore($request, $user_id);
+
+        return $this->response->item($data, new ProductTransformer());
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function subCategoryList()
     {
-        //
-    }
+       $data = SubCategory::where('status', true)->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+       return $this->response->collection($data, new SubCategoryTransformer());
     }
 }

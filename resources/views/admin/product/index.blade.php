@@ -84,10 +84,11 @@
                                 </div>
                             <div class="card-body">
                                 @if (count($data) > 0)
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-responsive table-hover">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>User Name</th>
                                         <th>Sub Category</th>
                                         <th>Amount</th>
                                         <th>Product type</th>
@@ -100,6 +101,7 @@
                                     @foreach($data as $key=>$item)
                                         <tr>
                                             <td>{{ $item->name }}</td>
+                                            <td><a href="{{ route('user.show', $item->user->id) }}">{{ $item->user->name }} {{ $item->user->last_name }}</a></td>
                                             <td>{{ $item->subcategory->name ?? 'N/A' }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>
@@ -119,44 +121,48 @@
                                             <td>
                                                 @if ($item->status == 1)
                                                     <a class="badge-success badge text-white" >Approved</a>
-                                                @else
+                                                @elseif ($item->status == 2)
                                                     <a class="badge-danger badge text-white" >Pending</a>
+                                                @elseif ($item->status == 3)
+                                                    <a class="badge-danger badge text-white" >Rejected</a>
                                                 @endif
                                             </td>
                                             </td>
                                             <td>
-                                                @if ($item->status == 2)
-                                                    <button class="btn btn-success btn-sm" type="button"
-                                                            onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <form id="approve-form-{{ $item->id }}"
-                                                          action="{{ route('product.approve', $item->id) }}"
-                                                          method="get" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                                @elseif ($item->status == 1)
+                                                <div class="d-flex">
+                                                    @if ($item->status == 2)
+                                                        <button class="btn btn-success btn-sm" type="button"
+                                                                onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                        <form id="approve-form-{{ $item->id }}"
+                                                              action="{{ route('product.approve', $item->id) }}"
+                                                              method="get" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    @elseif ($item->status == 1)
+                                                        <button class="btn btn-danger btn-sm" type="button"
+                                                                onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
+                                                        <form id="reject-form-{{ $item->id }}"
+                                                              action="{{ route('product.reject', $item->id) }}"
+                                                              method="get" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    @endif
+                                                    <a class="btn btn-sm btn-primary"
+                                                       href="{{ route('product.edit', $item->id) }}"><i
+                                                            class="far fa-edit"></i></a>
                                                     <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
-                                                    <form id="reject-form-{{ $item->id }}"
-                                                          action="{{ route('product.reject', $item->id) }}"
-                                                          method="get" class="d-none">
+                                                            onclick="deleteCategory({{ $item->id }})">
+                                                        <i class="far fa-trash-alt"></i></button>
+                                                    <form id="delete-form-{{ $item->id }}"
+                                                          action="{{ route('product.destroy', $item->id) }}"
+                                                          method="post" class="d-none">
                                                         @csrf
+                                                        @method('DELETE')
                                                     </form>
-                                                @endif
-                                                <a class="btn btn-sm btn-primary"
-                                                   href="{{ route('product.edit', $item->id) }}"><i
-                                                        class="far fa-edit"></i></a>
-                                                <button class="btn btn-danger btn-sm" type="button"
-                                                        onclick="deleteCategory({{ $item->id }})">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                                <form id="delete-form-{{ $item->id }}"
-                                                      action="{{ route('product.destroy', $item->id) }}"
-                                                      method="post" class="d-none">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                                <a class="btn btn-sm btn-primary mr-3" href="{{ route('product.show', $item->id) }}">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
+                                                    <a class="btn btn-sm btn-primary mr-3" href="{{ route('product.show', $item->id) }}">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

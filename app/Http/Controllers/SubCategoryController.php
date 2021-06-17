@@ -44,7 +44,7 @@ class SubCategoryController extends Controller
 
         if ($request->hasFile('image_url')) {
             $image = $request->file('image_url');
-            $image_url = $subCategory['image_url'] . '-subcategory-' . auth()->user()->id . '-' . time() . $image->getClientOriginalExtension();
+            $image_url = 'subcategory-' . auth()->user()->id . '-' . time() . $image->getClientOriginalExtension();
             $path = "subcategory-image/" . $image_url;
             $image->storeAs('subcategory-image', $image_url);
             $subCategory['image_url'] = 'storage/' . $path;
