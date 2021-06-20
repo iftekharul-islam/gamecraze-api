@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Edit Category</h1>
+                        <h1>Edit Product</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Category</li>
+                            <li class="breadcrumb-item active">Edit Product</li>
                         </ol>
                     </div>
                 </div>
@@ -41,10 +41,10 @@
                                 <input type="text" class="form-control" id="price" name="price" value="{{ $data->price }}">
                             </div>
                             <div class="form-group">
-                                <label for="category">Category</label>
-                                <select type="text" class="form-control" id="category" name="category_id">
+                                <label for="category">Sub Category</label>
+                                <select type="text" class="form-control" id="category" name="sub_category_id">
                                     @foreach($subcategory as $item)
-                                        <option value="{{ $item->id }}" {{ $item->id == $data->category_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == $data->sub_category_id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
