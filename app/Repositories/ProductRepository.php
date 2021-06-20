@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductRepository
 {
@@ -92,11 +93,15 @@ class ProductRepository
         $product['product_no'] = $this->generateProductNo();
 
         $data = Product::create($product);
-
-        $images = $request->file('product_image');
-        if (isset($images)) {
+        logger($request->images);
+        $images = $request->images;
+        if (count($images) > 0) {
             foreach ($images as $image) {
-                $data->addMedia($image)->toMediaCollection('product-image');
+                $imageName = 'image-product.jpeg';
+
+                $data->addMediaFromBase64($image)
+                    ->usingFileName($imageName)
+                    ->toMediaCollection('product-image');
             }
         }
         $admins = config('admin_mail.mail_to');
@@ -204,14 +209,13 @@ class ProductRepository
     {
         $latestProduct = Product::orderBy('id', 'desc')->first();
         if ($latestProduct) {
-            $lastNumber = explode('-', $latestProduct->order_no);
+            $lastNumber = explode('-', $latestProduct->product_no);
             $lastNumber = preg_replace("/[^0-9]/", "", end($lastNumber));
-            $orderNo = 'GH-POST-' . str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
-            if (GameOrder::where('order_no', $orderNo)->count() > 0) {
+            $productNo = 'GH-POST-' . str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
+            if (Product::where('product_no', $productNo)->count() > 0) {
                 $this->generateOrderNo();
             }
-
-            return $orderNo;
+            return $productNo;
         }
 
         return 'GH-POST-' . date('Y') . date('m') . '-001';
