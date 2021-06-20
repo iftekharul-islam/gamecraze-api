@@ -59,7 +59,7 @@
                                         </tr>
                                         <tr>
                                             <td>Sub category:</td>
-                                            <td>{{ $item->subcategory->name ?? 'N/A' }}</td>
+                                            <td>{{ $data->subcategory->name ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <td>Product Type:</td>
