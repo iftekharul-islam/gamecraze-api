@@ -33,6 +33,7 @@ class ProductTransformer extends TransformerAbstract
             'status' =>  $product->status,
             'user_id' => $product->user_id,
             'created_at' => $product->created_at,
+            'images' => $this->productImages($product)
         ];
     }
 
@@ -46,5 +47,17 @@ class ProductTransformer extends TransformerAbstract
         if (isset($product->user)) {
             return $this->item($product->user, new UserTransformer());
         }
+    }
+
+    public function productImages($product)
+    {
+        $collection = $product->getMedia('product-image');
+        $images = [];
+        if (count($collection) > 0){
+            foreach ($collection as $item) {
+                $images[] = asset('storage/' . $item->id . '/' . $item->file_name);
+            }
+        }
+        return $images;
     }
 }

@@ -113,14 +113,21 @@
         // games exists in rent table
         $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
+        //Category list
+        $api->get('categories', 'App\Http\Controllers\API\ProductController@categoryList');
         //subcategory list
         $api->get('sub-categories', 'App\Http\Controllers\API\ProductController@subCategoryList');
+        //all active sell post
+        $api->get('sell-posts', 'App\Http\Controllers\API\ProductController@index');
+        //all active sell post by id
+        $api->get('sell-posts/{id}', 'App\Http\Controllers\API\ProductController@postsById');
 
         //bkash
 //        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
         $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
         $api->post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
         $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
@@ -181,7 +188,7 @@
             //lend extend request
             $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
             //sell post
-            $api->get('sell-posts', 'App\Http\Controllers\API\ProductController@index');
+            $api->get('my-sell-posts', 'App\Http\Controllers\API\ProductController@mySellPosts');
             $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {

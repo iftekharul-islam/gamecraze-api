@@ -38,6 +38,16 @@ class ProductRepository
 
     public function apiIndex()
     {
+        return Product::where('status', 1)->get();
+    }
+
+    public function postsById($id)
+    {
+        return Product::where('status', 1)->where('sub_category_id', $id)->get();
+    }
+
+    public function myPosts()
+    {
         return Product::where('user_id', Auth::user()->id)->get();
     }
 

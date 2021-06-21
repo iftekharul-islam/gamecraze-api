@@ -29,7 +29,7 @@ class CategoryTransformer extends TransformerAbstract
 
     public function includeSubcategory(Category $category) {
         if (isset($category->subcategory)) {
-            return $this->item($category->subcategory, new SubCategoryTransformer());
+            return $this->collection($category->subcategory, new SubCategoryTransformer());
         }
     }
 }

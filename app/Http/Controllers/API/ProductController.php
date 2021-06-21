@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategory;
 use App\Repositories\ProductRepository;
+use App\Transformers\CategoryTransformer;
 use App\Transformers\ProductTransformer;
 use App\Transformers\SubCategoryTransformer;
 use Illuminate\Http\Request;
@@ -29,18 +31,38 @@ class ProductController extends Controller
         return $this->response->collection($data, new ProductTransformer());
     }
 
+    public function postsById($id)
+    {
+        $data = $this->repository->postsById($id);
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
+
+    public function mySellPosts()
+    {
+        $data = $this->repository->myPosts();
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
+
     /**
      * @param Request $request
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
-        logger($request->all());
         $user_id = Auth::user()->id;
         $data = $this->repository->apiStore($request, $user_id);
 
         return $this->response->item($data, new ProductTransformer());
 
+    }
+
+    public function categoryList()
+    {
+        $data = Category::where('status', 1)->get();
+
+        return $this->response->collection($data, new CategoryTransformer());
     }
 
     public function subCategoryList()
