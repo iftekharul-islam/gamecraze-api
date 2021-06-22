@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         $data = $this->repository->postById($id);
 
-        return $this->response->collection($data, new ProductTransformer());
+        return $this->response->item($data, new ProductTransformer());
     }
 
     public function mySellPosts()
