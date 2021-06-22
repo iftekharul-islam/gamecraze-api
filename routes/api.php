@@ -121,6 +121,8 @@
         $api->get('sell-posts', 'App\Http\Controllers\API\ProductController@index');
         //all active sell post by id
         $api->get('sell-posts/{id}', 'App\Http\Controllers\API\ProductController@postsById');
+        //active sell post by id
+        $api->get('sell-post/{id}', 'App\Http\Controllers\API\ProductController@postById');
 
         //bkash
 //        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');

@@ -46,6 +46,11 @@ class ProductRepository
         return Product::where('status', 1)->where('sub_category_id', $id)->get();
     }
 
+    public function postById($id)
+    {
+        return Product::where('status', 1)->where('id', $id)->first();
+    }
+
     public function myPosts()
     {
         return Product::where('user_id', Auth::user()->id)->get();

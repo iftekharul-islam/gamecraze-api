@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Category</li>
+                            <li class="breadcrumb-item active">Sub Category</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
+                        <h3 class="card-title">Add Sub Category</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -41,7 +41,7 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" required>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" maxlength="100" required>
                                 @if ($errors->has('description'))
                                     <span class="text-danger"><strong>{{ $errors->first('description') }}</strong></span>
                                 @endif

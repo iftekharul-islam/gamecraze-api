@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div class="false-padding-bottom-form form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Disk Condition Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Disk Condition Name" maxlength="50">
                                 @if ($errors->has('name'))
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif

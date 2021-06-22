@@ -38,6 +38,13 @@ class ProductController extends Controller
         return $this->response->collection($data, new ProductTransformer());
     }
 
+    public function postById($id)
+    {
+        $data = $this->repository->postById($id);
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
+
     public function mySellPosts()
     {
         $data = $this->repository->myPosts();
