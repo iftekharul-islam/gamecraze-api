@@ -73,7 +73,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
-                                <p> <b>Seller amount :</b> {{ $seller_amount - $gamehub_amount }}</p>
+                                <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
 {{--                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>--}}
 
@@ -102,12 +102,15 @@
                                         </thead>
                                         <tbody>
                                         @foreach($data as $key=>$item)
+                                            @php
+                                                $seller_amount = $item['seller_amount'] + $item['discount_amount'] + $item['commission'];
+                                            @endphp
                                             <tr>
                                                 <td><a href="{{ route('user.show', $item['id']) }}">{{ $item['name'] }} {{ $item['last_name'] }}</a></td>
-                                                <td>{{ $item['total_amount']}}</td>
-                                                <td>{{ $item['seller_amount'] - $item['original_commission'] }}</td>
+                                                <td>{{ $seller_amount }}</td>
+                                                <td>{{ $seller_amount - $item['original_commission'] }}</td>
                                                 <td>{{ $item['original_commission'] }}</td>
-                                                <td>{{ $item['seller_amount'] - $item['due'] - $item['original_commission']  }}</td>
+                                                <td>{{ $seller_amount - $item['original_commission'] - $item['due'] }}</td>
                                                 <td>{{ $item['due']}}</td>
                                                 <td>
                                                     <a href="{{ route('pay.amount', $item['renter_id']) }}" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></a>
