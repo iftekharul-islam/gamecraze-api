@@ -58,7 +58,7 @@ class TransactionHistoryController extends Controller
 
         $data = $value->map(function ($row) use ($paid_amount) {
             $paid = $paid_amount->where('id', $row->id)->pluck('paid_amount')->first();
-            return collect($row)->put('due', $row->seller_amount - $paid );
+            return collect($row)->put('due', $row->seller_amount + $row->discount_amount + $row->commission - $row->original_commission  - $paid );
         });
 
         $total_amount= 0;
