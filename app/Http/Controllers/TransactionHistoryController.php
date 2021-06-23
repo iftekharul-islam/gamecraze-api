@@ -54,8 +54,6 @@ class TransactionHistoryController extends Controller
                 ->get();
         }
 
-//         return $value;
-
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id as id')->groupBy('user_id')->get();
 
         $data = $value->map(function ($row) use ($paid_amount) {
