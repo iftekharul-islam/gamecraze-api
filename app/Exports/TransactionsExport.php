@@ -26,28 +26,24 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
         foreach ($sellers as $seller) {
             $sellerCollection->push((object)[
                 'name' => $seller['name'] . ' ' . $seller['last_name'],
-                'Total Amount' => $seller['total_amount'],
-                'Seller Amount' => $seller['seller_amount'],
-                'Commission' => $seller['commission'],
-                'Paid' => $seller['seller_amount'] - $seller['due'],
+                'Original Amount' => $seller['seller_amount'] + $seller['discount_amount'] + $seller['commission'],
+                'Seller Amount' => $seller['seller_amount'] + $seller['discount_amount'] + $seller['commission'] - $seller['original_commission'],
+                'Discount Amount' => $seller['discount_amount'],
+                'Original Commission' => $seller['original_commission'],
+                'Paid' => $seller['seller_amount'] + $seller['discount_amount'] + $seller['commission'] - $seller['original_commission'] - $seller['due'],
                 'Due' => $seller['due']
             ]);
         }
-//        logger($sellerCollection);
-//        die();
         return $sellerCollection;
     }
 
     public function dataQuery($data)
     {
         $value = $data->join('lenders', 'users.id', '=', 'lenders.renter_id')
-            ->selectRaw('SUM(lend_cost) as amount, 
-                            SUM(discount_amount) as discount_amount, 
-                            SUM(commission) as commission, 
-                            SUM(original_commission) as original_commission, 
-                            SUM(lend_cost+commission+discount_amount) as total_amount,
-                            SUM(lend_cost+commission+discount_amount-original_commission) as seller_amount, 
-                            SUM(original_commission) as gamehub_amount, 
+            ->selectRaw('SUM(discount_amount) as discount_amount, 
+                            SUM(commission) as commission,
+                            SUM(original_commission) as original_commission,
+                            SUM(lend_cost) as seller_amount,
                             renter_id, users.name, users.last_name, users.id')
             ->groupBy('lenders.renter_id')
             ->where('lenders.status', 1)
@@ -56,9 +52,9 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
 
         $paid_amount = TransactionHistory::selectRaw('SUM(amount) as paid_amount, user_id as id')->groupBy('user_id')->get();
 
-        $data = $value->map(function($row) use ($paid_amount){
+        $data = $value->map(function ($row) use ($paid_amount) {
             $paid = $paid_amount->where('id', $row->id)->pluck('paid_amount')->first();
-            return collect($row)->put('due', $row->seller_amount - $paid);
+            return collect($row)->put('due', $row->seller_amount + $row->discount_amount + $row->commission - $row->original_commission  - $paid );
         });
 
         return $data;
@@ -70,9 +66,10 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
     {
         return [
             'Name',
-            'Total Amount',
+            'Original Amount',
             'Seller Amount',
-            'Commission',
+            'Discount Amount',
+            'Original Commission',
             'Paid',
             'Due'
         ];
@@ -87,8 +84,10 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
             'A' => 20,
             'B' => 15,
             'C' => 15,
-            'D' => 10,
-            'E' => 10,
+            'D' => 15,
+            'E' => 17,
+            'F' => 8,
+            'G' => 8,
         ];
     }
 }

@@ -93,7 +93,7 @@
                                         <thead>
                                         <tr>
                                             <th>Customer Name</th>
-                                            <th>Total Amount</th>
+                                            <th>Original Amount</th>
                                             <th>Seller Amount</th>
                                             <th>Discount Amount</th>
                                             <th>commission</th>
