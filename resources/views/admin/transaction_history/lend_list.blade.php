@@ -48,10 +48,12 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
+                                        <th>Order no</th>
                                         <th>Game</th>
                                         <th>Customer Name</th>
                                         <th>Total Amount</th>
                                         <th>Seller Amount</th>
+                                        <th>Discount Amount</th>
                                         <th>commission</th>
                                         <th>Week for</th>
                                         <th>Lend date</th>
@@ -63,10 +65,12 @@
                                             $total_amount = $item->lend_cost + $item->discount_amount + $item->commission;
                                         @endphp
                                         <tr>
+                                            <td><a href="{{ route('orders.show', $item->order->id) }}">{{ $item->order->order_no ?? 'N/A'}}</a></td>
                                             <td><a href="{{ route('game.show', $item->rent->game->id) }}">{{ $item->rent->game->name }}</a></td>
                                             <td><a href="{{ route('user.show', $item->lender->id) }}">{{ $item->lender->name }}</a></td>
                                             <td>{{ $total_amount }}</td>
                                             <td>{{ $total_amount - $item->original_commission}}</td>
+                                            <td>{{ $item->discount_amount ?? 0}}</td>
                                             <td>{{ $item->original_commission }}</td>
                                             <td>{{ $item->lend_week }}</td>
                                             <td>{{ $item->created_at->format('j M Y') }}</td>

@@ -64,13 +64,15 @@ class TransactionHistoryController extends Controller
         $total_amount= 0;
         $seller_amount= 0;
         $gamehub_amount= 0;
+        $discount_amount = 0;
         foreach ($data as $item) {
             $total_amount += $item['seller_amount'] + $item['discount_amount'] + $item['commission'];
             $seller_amount += $item['seller_amount'] + $item['discount_amount'] + $item['commission'] - $item['original_commission'];
+            $discount_amount += $item['discount_amount'];
             $gamehub_amount += $item['original_commission'];
         }
 
-        return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'seller_amount', 'gamehub_amount'));
+        return view('admin.transaction_history.index', compact('data', 'paid_amount', 'total_amount', 'seller_amount', 'discount_amount', 'gamehub_amount'));
     }
 
     public function payAmount($id)
@@ -84,7 +86,7 @@ class TransactionHistoryController extends Controller
 
     public function myLendPost($id)
     {
-        $data = Lender::with('lender', 'rent.game')->where('renter_id', $id)->where('status', 1)->get();
+        $data = Lender::with('lender', 'rent.game', 'order')->where('renter_id', $id)->where('status', 1)->get();
 
         return view('admin.transaction_history.lend_list', compact('data'));
     }

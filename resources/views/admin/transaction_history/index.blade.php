@@ -74,6 +74,7 @@
                             <div class="card-body">
                                 <p> <b>Total amount :</b> {{ $total_amount }} </p>
                                 <p> <b>Seller amount :</b> {{ $seller_amount }}</p>
+                                <p> <b>Discount amount :</b> {{ $discount_amount }}</p>
                                 <p> <b>GameHub amount :</b> {{ $gamehub_amount }}</p>
 {{--                                <button id="bKash_button" class="btn btn-secondary">Pay with bKash</button>--}}
 
@@ -94,6 +95,7 @@
                                             <th>Customer Name</th>
                                             <th>Total Amount</th>
                                             <th>Seller Amount</th>
+                                            <th>Discount Amount</th>
                                             <th>commission</th>
                                             <th>Paid</th>
                                             <th>Due</th>
@@ -109,6 +111,7 @@
                                                 <td><a href="{{ route('user.show', $item['id']) }}">{{ $item['name'] }} {{ $item['last_name'] }}</a></td>
                                                 <td>{{ $seller_amount }}</td>
                                                 <td>{{ $seller_amount - $item['original_commission'] }}</td>
+                                                <td>{{ $item['discount_amount'] }}</td>
                                                 <td>{{ $item['original_commission'] }}</td>
                                                 <td>{{ $seller_amount - $item['original_commission'] - $item['due'] }}</td>
                                                 <td>{{ $item['due']}}</td>
