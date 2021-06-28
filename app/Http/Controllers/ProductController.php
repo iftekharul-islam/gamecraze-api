@@ -90,7 +90,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $data = $this->repository->update($request, $id);
 
         if (!$data){

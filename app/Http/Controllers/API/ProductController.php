@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Rent;
 use App\Models\SubCategory;
 use App\Repositories\ProductRepository;
 use App\Transformers\CategoryTransformer;
@@ -77,5 +78,21 @@ class ProductController extends Controller
        $data = SubCategory::where('status', true)->get();
 
        return $this->response->collection($data, new SubCategoryTransformer());
+    }
+
+    public function soldStatusUpdate(Request $request)
+    {
+        $product = $this->repository->soldStatus($request);
+        if ($product) {
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Rent post status updated'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Rent post status cannot update'
+        ]);
     }
 }

@@ -48,7 +48,7 @@ class ProductRepository
 
     public function postById($id)
     {
-        return Product::where('status', 1)->where('id', $id)->first();
+        return Product::where('id', $id)->first();
     }
 
     public function myPosts()
@@ -64,7 +64,7 @@ class ProductRepository
     public function store($request, $user_id)
     {
         $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
-            'is_negotiable', 'product_type',
+            'is_negotiable', 'product_type', 'condition_summary', 'phone_no', 'address',
             'user_id', 'status']);
 
         $isChecked = $request->has('is_negotiable');
@@ -98,7 +98,7 @@ class ProductRepository
     public function apiStore($request, $user_id)
     {
         $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
-            'is_negotiable', 'product_type', 'product_no',
+            'is_negotiable', 'product_type', 'product_no', 'condition_summary', 'phone_no', 'address',
             'user_id', 'status']);
 
         $product['is_sold'] = 1;
@@ -106,15 +106,17 @@ class ProductRepository
         $product['status'] = 2;
         $product['user_id'] = $user_id;
         $product['product_no'] = $this->generateProductNo();
-
+        if ($product['product_type'] === 1) {
+            $product['condition_summary'] = null;
+        }
         $data = Product::create($product);
         logger($request->images);
         $images = $request->images;
         if (count($images) > 0) {
             foreach ($images as $image) {
-                $imageName = 'image-product.jpeg';
+                $imageName = $image['name'];
 
-                $data->addMediaFromBase64($image)
+                $data->addMediaFromBase64($image['file'])
                     ->usingFileName($imageName)
                     ->toMediaCollection('product-image');
             }
@@ -141,7 +143,7 @@ class ProductRepository
         }
 
         $data = $request->only(['sub_category_id', 'name', 'description', 'price',
-            'is_negotiable', 'product_type', 'is_sold',
+            'is_negotiable', 'product_type', 'is_sold', 'condition_summary', 'phone_no', 'address',
             'user_id', 'status']);
 
         if (isset($data['sub_category_id'])){
@@ -174,6 +176,18 @@ class ProductRepository
 
         if (isset($data['product_type'])){
             $product->product_type = $data['product_type'];
+        }
+
+        if (isset($data['condition_summary'])){
+            $product->condition_summary = $data['condition_summary'];
+        }
+
+        if (isset($data['phone_no'])){
+            $product->phone_no = $data['phone_no'];
+        }
+
+        if (isset($data['address'])){
+            $product->address = $data['address'];
         }
 
         if (isset($data['is_sold'])){
@@ -234,6 +248,19 @@ class ProductRepository
         }
 
         return 'GH-POST-' . date('Y') . date('m') . '-001';
+    }
+
+    public function soldStatus($request)
+    {
+        $product = Product::where('id', $request->id)->where('user_id', Auth::user()->id)->first();
+        if ($product) {
+            $product->is_sold = $request->status == false ? 2 : 1;
+            $product->save();
+
+            return true;
+        }
+
+        return false;
     }
 
 }

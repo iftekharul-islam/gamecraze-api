@@ -50,14 +50,25 @@
                             </div>
                             <div class="form-group">
                                 <label for="product_type">Product type</label><br>
-                                <input type="radio" name="product_type" value="1" id="typeRadios1" {{ $data->product_type == 1 ? 'checked' : '' }}/>
+                                <input type="radio" name="product_type" onclick="setSummary(this)" value="1" id="typeRadios1" {{ $data->product_type == 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="typeRadios1">
                                     New
                                 </label>
-                                <input type="radio" name="product_type" id="typeRadios2" value="2" {{ $data->product_type == 2 ? 'checked' : '' }}/>
+                                <input type="radio" name="product_type" onclick="setSummary(this)" id="typeRadios2" value="2" {{ $data->product_type == 2 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="typeRadios2">
                                     Used
                                 </label>
+                            </div>
+                            <div class="summary d-none form-group">
+                                <label for="summary">Condition summary</label>
+
+                                <input type="text" class="form-control product-condition"
+                                       id="summary"
+                                       name="condition_summary"
+                                       maxlength="300"
+                                       value="{{ $data->condition_summary }}"
+                                       placeholder="Enter product condition, purchase date or warranty details">
+
                             </div>
                             <div class="form-group">
                                 <label for="product_type">Product Status</label><br>
@@ -73,6 +84,14 @@
                             <div class="form-group">
                                 <input type="checkbox" name="is_negotiable" id="is_negotiable" value=""  {{ $data->is_negotiable == 1 ? 'checked' : '' }}/>
                                 <label for="is_negotiable">Is Negotiable</label><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone no</label>
+                                <input type="number" class="form-control" id="phone" name="phone_no" value="{{ $data->phone_no }}" placeholder="Enter phone no">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ $data->address }}" placeholder="Enter address" maxlength="300">
                             </div>
                             <table class="table table-bordered mt-2" id="dynamicProductImage">
                                 <tr>
@@ -115,6 +134,21 @@
 
 @section('js')
     <script>
+        (function () {
+            console.log('hello');
+            setSummary();
+        })()
+        function setSummary(){
+            var type = $('input[name="product_type"]:checked').val();
+            $('.summary').addClass('d-none');
+            $('#summary').prop('required', false);
+            if (type == 2){
+                $('.summary').removeClass('d-none');
+                $('#summary').prop('required', true);
+            } else {
+                $('#summary').val('');
+            }
+        }
         $(document).on("change", ".custom-file-input", function() {
             let allowedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
             var fileType = $(this)[0].files[0].type;

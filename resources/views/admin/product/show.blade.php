@@ -70,6 +70,22 @@
                                                 @endif
                                             </td>
                                         </tr>
+                                        @if($data->product_type == 2)
+                                            <tr>
+                                                <td>Condition summary:</td>
+                                                <td>
+                                                    {{ $data->condition_summary }}
+                                                </td>
+                                            </tr>
+                                        @endif
+                                        <tr>
+                                            <td>Phone no:</td>
+                                            <td>{{ $data->phone_no ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address:</td>
+                                            <td>{{ $data->address ?? 'N/A' }}</td>
+                                        </tr>
                                         <tr>
                                             <td>Is Negotiable:</td>
                                             <td>@if($data->is_negotiable == 1)

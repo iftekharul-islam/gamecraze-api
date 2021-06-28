@@ -56,17 +56,30 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('is_trending') ? ' has-error' : '' }}">
                                 <label for="product_type">Product type</label><br>
-                                <input type="radio" name="product_type" value="1" id="typeRadios1" checked/>
+                                <input type="radio" name="product_type" onclick="setSummary(this)" value="1" id="typeRadios1" checked/>
                                 <label class="form-check-label" for="typeRadios1">
                                     New
                                 </label>
-                                <input type="radio" name="product_type" id="typeRadios2" value="2"/>
+                                <input type="radio" name="product_type" onclick="setSummary(this)" id="typeRadios2" value="2"/>
                                 <label class="form-check-label" for="typeRadios2">
                                     Used
                                 </label>
                                 @if ($errors->has('product_type'))
                                     <span
                                         class="text-danger"><strong>{{ $errors->first('product_type') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="summary d-none false-padding-bottom-form form-group{{ $errors->has('condition_summary') ? ' has-error' : '' }}">
+                                <label for="summary">Condition summary</label>
+
+                                <input type="text" class="form-control product-condition"
+                                       id="summary"
+                                       name="condition_summary"
+                                       maxlength="300"
+                                       placeholder="Enter product condition, purchase date or warranty details">
+
+                                @if ($errors->has('condition_summary'))
+                                    <span class="text-danger"><strong>{{ $errors->first('condition_summary') }}</strong></span>
                                 @endif
                             </div>
                             <div
@@ -76,6 +89,20 @@
                                 @if ($errors->has('is_negotiable'))
                                     <span
                                         class="text-danger"><strong>{{ $errors->first('is_negotiable') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('phone_no') ? ' has-error' : '' }}">
+                                <label for="phone">Phone no</label>
+                                <input type="number" class="form-control" id="phone" name="phone_no" placeholder="Enter phone no" required>
+                                @if ($errors->has('phone_no'))
+                                    <span class="text-danger"><strong>{{ $errors->first('phone_no') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" maxlength="300" required>
+                                @if ($errors->has('address'))
+                                    <span class="text-danger"><strong>{{ $errors->first('address') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -140,6 +167,17 @@
 
 @section('js')
     <script>
+        function setSummary(){
+            var type = $('input[name="product_type"]:checked').val();
+            $('.summary').addClass('d-none');
+            $('#summary').prop('required', false);
+            if (type == 2){
+                $('.summary').removeClass('d-none');
+                $('#summary').prop('required', true);
+            } else {
+                $('#summary').val('');
+            }
+        }
         $(document).on("change", ".custom-file-input", function() {
             let allowedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
             var fileType = $(this)[0].files[0].type;

@@ -16,7 +16,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'sub_category_id', 'name', 'description', 'price',
         'is_negotiable', 'product_type', 'is_sold', 'product_no',
-        'user_id', 'status', 'author_id'
+        'user_id', 'status', 'author_id', 'phone_no', 'address', 'condition_summary'
     ];
 
     protected static function boot()
