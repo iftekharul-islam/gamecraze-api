@@ -116,8 +116,8 @@
                                 <label for="name">Status</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>Approved</option>
-                                    <option value="2" {{ $data->status == 0 ? 'selected' : '' }}>Pending</option>
-                                    <option value="3" {{ $data->status == 0 ? 'selected' : '' }}>Reject</option>
+                                    <option value="2" {{ $data->status == 2 ? 'selected' : '' }}>Pending</option>
+                                    <option value="3" {{ $data->status == 3 ? 'selected' : '' }}>Reject</option>
                                 </select>
                             </div>
                         </div>
