@@ -36,9 +36,15 @@ class ProductRepository
         return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex()
+    public function apiIndex($subcategory)
     {
-        return Product::where('status', 1)->get();
+        $product = Product::query();
+
+        if (count($subcategory) > 0){
+            $product->whereIn('sub_category_id', $subcategory);
+        }
+
+        return $product->where('status', 1)->get();
     }
 
     public function postsById($id)

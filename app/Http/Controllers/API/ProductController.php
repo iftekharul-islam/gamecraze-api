@@ -20,14 +20,22 @@ class ProductController extends Controller
     public function __construct(ProductRepository $repository){
         $this->repository = $repository;
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->repository->apiIndex();
+        logger($request->all());
+        $subcategories = [];
+
+        if ($request->input('subcategory')) {
+            $items = explode(',', $request->input('subcategory'));
+            $subcategories = SubCategory::whereIn('name', $items)->select('id')->get();
+        }
+
+        $data = $this->repository->apiIndex($subcategories);
 
         return $this->response->collection($data, new ProductTransformer());
     }
