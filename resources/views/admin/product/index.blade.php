@@ -125,6 +125,8 @@
                                                     <a class="badge-danger badge text-white" >Pending</a>
                                                 @elseif ($item->status == 3)
                                                     <a class="badge-danger badge text-white" >Rejected</a>
+                                                @else
+                                                    <a class="badge-danger badge text-white" >Inactive</a>
                                                 @endif
                                             </td>
                                             </td>
