@@ -192,6 +192,7 @@
             $api->get('my-sell-posts', 'App\Http\Controllers\API\ProductController@mySellPosts');
             $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
             $api->post('sold-status-update', 'App\Http\Controllers\API\ProductController@soldStatusUpdate');
+            $api->post('sell-post-update', 'App\Http\Controllers\API\ProductController@update');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games

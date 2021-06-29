@@ -33,7 +33,9 @@ class ProductTransformer extends TransformerAbstract
             'status' =>  $product->status,
             'user_id' => $product->user_id,
             'created_at' => $product->created_at,
-            'images' => $this->productImages($product)
+            'images' => $this->productImages($product),
+            'phone_no' => $product->phone_no,
+            'address' => $product->address,
         ];
     }
 

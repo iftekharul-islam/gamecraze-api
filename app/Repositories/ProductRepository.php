@@ -129,6 +129,52 @@ class ProductRepository
 
     }
 
+    public function apiUpdate($request)
+    {
+        logger($request);
+        $product = Product::find($request->id);
+
+        if (!$product) {
+            return false;
+        }
+
+        $data = $request->only(['sub_category_id', 'name', 'description', 'price',
+            'is_negotiable', 'phone_no', 'address']);
+
+        if (isset($data['name'])){
+            $product->name = $data['name'];
+        }
+
+        if (isset($data['description'])){
+            $product->description = $data['description'];
+        }
+
+        if (isset($data['price'])){
+            $product->price = $data['price'];
+        }
+
+        if (isset($data['is_negotiable'])){
+            $product->is_negotiable = $data['is_negotiable'];
+        }
+
+        if (isset($data['sub_category_id'])){
+            $product->sub_category_id = $data['sub_category_id'];
+        }
+
+        if (isset($data['phone_no'])){
+            $product->phone_no = $data['phone_no'];
+        }
+
+        if (isset($data['address'])){
+            $product->address = $data['address'];
+        }
+
+        $product->save();
+
+        return $data;
+
+    }
+
     public function show($id)
     {
         return Product::with('subcategory')->findOrFail($id);
@@ -160,10 +206,6 @@ class ProductRepository
 
         if (isset($data['price'])){
             $product->price = $data['price'];
-        }
-
-        if (isset($data['category_id'])){
-            $product->category_id = $data['category_id'];
         }
 
         $isChecked = $request->has('is_negotiable');

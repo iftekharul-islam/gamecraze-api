@@ -66,6 +66,24 @@ class ProductController extends Controller
 
     }
 
+    public function update(Request $request)
+    {
+        $data = $this->repository->apiUpdate($request);
+
+        if ($data) {
+            return $this->response->array([
+                'error' => false,
+                'message' => 'Sell post updated'
+            ]);
+        }
+
+        return $this->response->array([
+            'error' => true,
+            'message' => 'Sell post cannot update'
+        ]);
+
+    }
+
     public function categoryList()
     {
         $data = Category::where('status', 1)->get();
