@@ -44,7 +44,7 @@ class ProductRepository
             $product->whereIn('sub_category_id', $subcategory);
         }
 
-        return $product->where('status', 1)->get();
+        return $product->where('status', 1)->paginate(6);
     }
 
     public function postsById($id)

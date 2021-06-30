@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         $data = $this->repository->apiIndex($subcategories);
 
-        return $this->response->collection($data, new ProductTransformer());
+        return $this->response->paginator($data, new ProductTransformer());
     }
 
     public function postsById($id)
