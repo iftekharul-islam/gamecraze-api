@@ -36,12 +36,21 @@ class ProductRepository
         return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex($subcategory, $sortPrice, $sortType)
+    public function apiIndex($subcategory, $date, $ascPrice, $descPrice, $sortType, $priceRange)
     {
         $product = Product::query();
 
-        if ($sortPrice == 1){
+        if (count($priceRange) > 0){
+            $product->whereBetween('price', $priceRange);
+        }
+        if ($ascPrice == 1){
             $product->orderBy('price', 'ASC');
+        }
+        if ($descPrice == 1){
+            $product->orderBy('price', 'DESC');
+        }
+        if ($date == 1){
+            $product->orderBy('created_at', 'DESC');
         }
         if (count($sortType) > 0){
             $product->whereIn('product_type', $sortType);
@@ -50,7 +59,7 @@ class ProductRepository
             $product->whereIn('sub_category_id', $subcategory);
         }
 
-        return $product->where('status', 1)->orderBy('created_at', 'DESC')->paginate(6);
+        return $product->where('status', 1)->paginate(6);
     }
 
     public function postsById($id)
