@@ -36,15 +36,21 @@ class ProductRepository
         return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex($subcategory)
+    public function apiIndex($subcategory, $sortPrice, $sortType)
     {
         $product = Product::query();
 
+        if ($sortPrice == 1){
+            $product->orderBy('price', 'ASC');
+        }
+        if (count($sortType) > 0){
+            $product->whereIn('product_type', $sortType);
+        }
         if (count($subcategory) > 0){
             $product->whereIn('sub_category_id', $subcategory);
         }
 
-        return $product->where('status', 1)->paginate(6);
+        return $product->where('status', 1)->orderBy('created_at', 'DESC')->paginate(6);
     }
 
     public function postsById($id)

@@ -29,13 +29,16 @@ class ProductController extends Controller
     {
         logger($request->all());
         $subcategories = [];
+        $sortType = [];
+        $sortPrice = $request->input('sortPrice') == 1 ? 1 : null;
+        $sortNew = $request->input('sortNew') == 1 ? $sortType[] = 1 : null;
+        $sortUsed = $request->input('sortUsed') == 1 ? $sortType[] = 2 : null;
 
         if ($request->input('subcategory')) {
             $items = explode(',', $request->input('subcategory'));
             $subcategories = SubCategory::whereIn('name', $items)->select('id')->get();
         }
-
-        $data = $this->repository->apiIndex($subcategories);
+        $data = $this->repository->apiIndex($subcategories, $sortPrice, $sortType);
 
         return $this->response->paginator($data, new ProductTransformer());
     }

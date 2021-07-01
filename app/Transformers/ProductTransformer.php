@@ -26,7 +26,7 @@ class ProductTransformer extends TransformerAbstract
             'product_no' => $product->product_no,
             'sub_category_id' =>  $product->category_id,
             'description' =>  $product->description,
-            'price' => $product->price,
+            'price' => ceil($product->price),
             'is_sold' => $product->is_sold,
             'is_negotiable' => $product->is_negotiable,
             'product_type' => $product->product_type,
