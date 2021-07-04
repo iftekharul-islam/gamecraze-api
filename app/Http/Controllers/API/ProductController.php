@@ -35,7 +35,8 @@ class ProductController extends Controller
         $descPrice = $request->input('descPrice') == 1 ? 1 : null;
         $sortNew = $request->input('sortNew') == 1 ? $sortType[] = 1 : null;
         $sortUsed = $request->input('sortUsed') == 1 ? $sortType[] = 2 : null;
-        $priceRange = explode(',', $request->input('priceRange'));
+        $priceRange []= $request->input('minPrice');
+        $priceRange []= $request->input('maxPrice');
         logger($priceRange);
 
         if ($request->input('subcategory')) {
