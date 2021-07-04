@@ -23,6 +23,7 @@ class ProductTransformer extends TransformerAbstract
         return [
             'id' => $product->id,
             'name' => $product->name,
+            'url_name' => urlencode(strtolower($product->name)),
             'product_no' => $product->product_no,
             'sub_category_id' =>  $product->sub_category_id,
             'description' =>  $product->description,
