@@ -34,6 +34,7 @@ class ProductTransformer extends TransformerAbstract
             'status' =>  $product->status,
             'user_id' => $product->user_id,
             'created_at' => $product->created_at,
+            'cover' => $this->coverImage($product),
             'images' => $this->productImages($product),
             'phone_no' => $product->phone_no,
             'address' => $product->address,
@@ -52,6 +53,18 @@ class ProductTransformer extends TransformerAbstract
         }
     }
 
+    public function coverImage($product)
+    {
+        $collection = $product->getMedia('cover-image');
+        $image = [];
+        if (count($collection) > 0){
+            foreach ($collection as $item) {
+                $image[] = asset('storage/' . $item->id . '/' . $item->file_name);
+            }
+        }
+
+        return $image;
+    }
     public function productImages($product)
     {
         $collection = $product->getMedia('product-image');

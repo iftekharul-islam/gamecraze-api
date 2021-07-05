@@ -132,6 +132,11 @@ class ProductRepository
         }
         $data = Product::create($product);
         logger($request->images);
+        $cover = $request->cover_image;
+        if (isset($cover)){
+            $data->addMediaFromBase64($cover)
+                ->toMediaCollection('cover-image');
+        }
         $images = $request->images;
         if (count($images) > 0) {
             foreach ($images as $image) {
