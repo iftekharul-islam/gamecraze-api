@@ -52,7 +52,7 @@
                 @yield('content')
                 <tr>
                     <td style="padding-left: 80px; ">
-                        <a href="https://www.gamehub.com.bd/games" style="display: block; margin-top: 40px; margin-bottom: 60px;"><img src="{{ asset('email_image/sell.png') }}" alt="rent"></a>
+                        <a href="https://www.gamehub.com.bd/sell-posts" style="display: block; margin-top: 40px; margin-bottom: 60px;"><img src="{{ asset('email_image/sell.png') }}" alt="rent"></a>
                     </td>
                 </tr>
                 <tr>
