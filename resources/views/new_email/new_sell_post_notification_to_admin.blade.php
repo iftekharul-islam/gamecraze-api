@@ -1,4 +1,4 @@
-@extends('new_email.layout')
+@extends('new_email.sell.layout')
 @section('content')
 <tr>
     <td style="padding-left: 80px;">Dear Admin,</td>

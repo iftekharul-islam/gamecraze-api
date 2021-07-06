@@ -59,7 +59,10 @@ class ProductTransformer extends TransformerAbstract
         $image = [];
         if (count($collection) > 0){
             foreach ($collection as $item) {
-                $image[] = asset('storage/' . $item->id . '/' . $item->file_name);
+                $image[] = [
+                    'id' => $item->id,
+                    'url' =>asset('storage/' . $item->id . '/' . $item->file_name)
+                ];
             }
         }
 
@@ -71,7 +74,10 @@ class ProductTransformer extends TransformerAbstract
         $images = [];
         if (count($collection) > 0){
             foreach ($collection as $item) {
-                $images[] = asset('storage/' . $item->id . '/' . $item->file_name);
+                $images[] = [
+                    'id' => $item->id,
+                    'url' => asset('storage/' . $item->id . '/' . $item->file_name)
+                ];
             }
         }
         return $images;
