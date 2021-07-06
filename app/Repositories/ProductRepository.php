@@ -197,6 +197,22 @@ class ProductRepository
 
         $product->save();
 
+        $cover = $request->cover_image;
+        if (isset($cover)){
+            $product->addMediaFromBase64($cover)
+                ->toMediaCollection('cover-image');
+        }
+        $images = $request->images;
+        if (count($images) > 0) {
+            foreach ($images as $image) {
+                $imageName = $image['name'];
+
+                $product->addMediaFromBase64($image['file'])
+                    ->usingFileName($imageName)
+                    ->toMediaCollection('product-image');
+            }
+        }
+
         return $data;
 
     }
