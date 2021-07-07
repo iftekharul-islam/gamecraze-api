@@ -24,7 +24,7 @@ class GameOrderRepository
 
     public function getById($id)
     {
-        return GameOrder::where('id', $id)->first();
+        return GameOrder::where('id', $id)->where('user_id', Auth::user()->id)->first();
     }
     /**
      * @param $request
