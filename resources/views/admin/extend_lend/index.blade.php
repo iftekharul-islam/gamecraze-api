@@ -55,6 +55,7 @@
                                                 <th>Week</th>
                                                 <th>Amount</th>
                                                 <th>Commission</th>
+                                                <th>Grand total</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -68,6 +69,7 @@
                                                 <td>{{ $item->week }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->commission }}</td>
+                                                <td>{{ $item->amount + $item->commission }}</td>
                                                 <td>
                                                     @if ($item->status === 1)
                                                         <a class="badge-success badge text-white" >Approved</a>
