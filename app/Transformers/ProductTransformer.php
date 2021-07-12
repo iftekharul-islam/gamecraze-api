@@ -3,14 +3,9 @@
 namespace App\Transformers;
 
 // We need to reference the Items Model
-use App\Models\Game;
 use App\Models\Product;
-use App\Models\Rent;
 
 // Dingo includes Fractal to help with transformations
-use App\Models\SubCategory;
-use App\Repositories\Admin\RentRepository;
-use App\Repositories\Admin\BasePriceRepository;
 use League\Fractal\TransformerAbstract;
 
 class ProductTransformer extends TransformerAbstract
@@ -57,15 +52,12 @@ class ProductTransformer extends TransformerAbstract
     {
         $collection = $product->getMedia('cover-image');
         $image = [];
-        if (count($collection) > 0){
-            foreach ($collection as $item) {
-                $image[] = [
-                    'id' => $item->id,
-                    'url' =>asset('storage/' . $item->id . '/' . $item->file_name)
-                ];
-            }
+        if (count($collection) > 0) {
+            $image = [
+                'id' => $collection[0]->id,
+                'url' => asset('storage/' . $collection[0]->id . '/' . $collection[0]->file_name)
+            ];
         }
-
         return $image;
     }
     public function productImages($product)

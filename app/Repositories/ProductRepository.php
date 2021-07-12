@@ -157,7 +157,6 @@ class ProductRepository
 
     public function apiUpdate($request)
     {
-        logger($request);
         $product = Product::find($request->id);
 
         if (!$product) {
@@ -194,11 +193,25 @@ class ProductRepository
         if (isset($data['address'])){
             $product->address = $data['address'];
         }
-
         $product->save();
 
+        $removeCover = $request->removeCover;
+        if ($removeCover != null){
+            logger('in the remove cover remove ');
+            $product->deleteMedia($removeCover);
+        }
+
+        $removeScreenshots = $request->removeScreenshots;
+        if ($removeScreenshots != null){
+            logger('in the remove screen shot remove ');
+            foreach ($removeScreenshots as $item) {
+                $product->deleteMedia($item);
+            }
+        }
+
         $cover = $request->cover_image;
-        if (isset($cover)){
+        if ($cover != null){
+            $product->clearMediaCollection('cover-image');
             $product->addMediaFromBase64($cover)
                 ->toMediaCollection('cover-image');
         }
