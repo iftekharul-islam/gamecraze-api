@@ -69,6 +69,13 @@ class ProductController extends Controller
         return $this->response->collection($data, new ProductTransformer());
     }
 
+    public function lastedSellPosts()
+    {
+        $data = $this->repository->latestPosts();
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
+
     /**
      * @param Request $request
      * @return \Dingo\Api\Http\Response

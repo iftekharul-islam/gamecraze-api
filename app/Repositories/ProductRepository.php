@@ -77,6 +77,11 @@ class ProductRepository
         return Product::where('user_id', Auth::user()->id)->get();
     }
 
+    public function latestPosts()
+    {
+        return Product::where('status', 1)->orderBy('created_at', 'DESC')->take(5)->get();
+    }
+
     public function create()
     {
         return SubCategory::where('status', true)->get();
