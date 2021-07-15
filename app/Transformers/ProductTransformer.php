@@ -26,6 +26,7 @@ class ProductTransformer extends TransformerAbstract
             'is_sold' => $product->is_sold,
             'is_negotiable' => $product->is_negotiable,
             'product_type' => $product->product_type,
+            'condition' => $product->condition_summary,
             'status' =>  $product->status,
             'user_id' => $product->user_id,
             'created_at' => $product->created_at,
@@ -33,6 +34,7 @@ class ProductTransformer extends TransformerAbstract
             'images' => $this->productImages($product),
             'phone_no' => $product->phone_no,
             'address' => $product->address,
+            'slider' => $this->sliderImages($product),
         ];
     }
 
@@ -69,6 +71,22 @@ class ProductTransformer extends TransformerAbstract
                 $images[] = [
                     'id' => $item->id,
                     'url' => asset('storage/' . $item->id . '/' . $item->file_name)
+                ];
+            }
+        }
+        return $images;
+    }
+
+    public function sliderImages($product)
+    {
+        $collection = $product->getMedia('product-image');
+        $images = [];
+        if (count($collection) > 0){
+            foreach ($collection as $item) {
+                $images[] = [
+                    'id' => $item->id,
+                    'src' => asset('storage/' . $item->id . '/' . $item->file_name),
+                    'thumbnail' => asset('storage/' . $item->id . '/' . $item->file_name)
                 ];
             }
         }

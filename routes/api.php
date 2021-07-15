@@ -127,6 +127,8 @@
         $api->post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
         $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
 
+        $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
@@ -188,7 +190,6 @@
             $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
             //sell post
             $api->get('my-sell-posts', 'App\Http\Controllers\API\ProductController@mySellPosts');
-            $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
             $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
             $api->post('sold-status-update', 'App\Http\Controllers\API\ProductController@soldStatusUpdate');
             $api->post('sell-post-update', 'App\Http\Controllers\API\ProductController@update');
