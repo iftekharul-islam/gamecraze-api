@@ -76,6 +76,13 @@ class ProductController extends Controller
         return $this->response->collection($data, new ProductTransformer());
     }
 
+    public function relatedSellPosts($id, $cat_id)
+    {
+        $data = $this->repository->relatedPosts($id, $cat_id);
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
+
     /**
      * @param Request $request
      * @return \Dingo\Api\Http\Response

@@ -128,6 +128,7 @@
         $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
 
         $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
+        $api->get('related-sell-posts/{id}/{cat_id}', 'App\Http\Controllers\API\ProductController@relatedSellPosts');
 
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
