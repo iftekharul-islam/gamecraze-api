@@ -4,6 +4,7 @@
 namespace App\Repositories\Admin;
 
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -94,6 +95,29 @@ class UserRepository
             return true;
         }
 
+        return false;
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        if ($user){
+            $user->delete();
+            return true;
+        }
+        $products = Product::where('user_id', $id)->get();
+        if (count($products) > 0) {
+            foreach ($products as $product) {
+                $images = $product->getMedia('product-image');
+                if (count($images) > 0) {
+                    foreach ($images as $item) {
+                        $item->delete();
+                    }
+                }
+                $product->delete();
+            }
+        }
         return false;
     }
 

@@ -129,7 +129,8 @@
 
         $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
         $api->get('related-sell-posts/{id}/{cat_id}', 'App\Http\Controllers\API\ProductController@relatedSellPosts');
-
+        //user details
+        $api->get('user/details/{id}', 'App\Http\Controllers\API\UserController@show');
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');
@@ -137,7 +138,6 @@
             $api->post('locale-update', 'App\Http\Controllers\API\AuthController@updateLocale');
             $api->post('update-user-profile-image', 'App\Http\Controllers\API\AuthController@updateProfileImage');
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
-            $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             $api->post('user-phone-email-validation', 'App\Http\Controllers\API\AuthController@validatePhoneEmail');

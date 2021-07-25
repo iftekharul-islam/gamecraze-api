@@ -66,10 +66,8 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
@@ -79,10 +77,8 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -92,11 +88,8 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UserUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserUpdateRequest $request)
     {
@@ -217,5 +210,20 @@ class UserController extends Controller
             ->paginate(config('gamehub.pagination'));
 
         return view('admin.wallet_spend_history.show', compact('data'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destory($id)
+    {
+        $user = $this->userRepository->delete($id);
+
+        if ($user == true){
+            return redirect()->back()->with('status', 'User deleted successfully');
+        }
+
+        return redirect()->back()->with('error', 'User cannot deleted');
     }
 }

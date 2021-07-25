@@ -39,9 +39,9 @@ class UserController extends BaseController
     /**
      * @return \Dingo\Api\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $user = $this->userRepository->findById();
+        $user = $this->userRepository->findById($id);
         return $this->response->item($user, new UserTransformer());
     }
 

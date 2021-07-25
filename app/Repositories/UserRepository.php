@@ -18,9 +18,9 @@ class UserRepository
         return User::all();
     }
 
-    public function findById()
+    public function findById($id)
     {
-        return User::findOrFail(auth()->user()->id);
+        return User::where('id', $id)->first();
     }
 
     public function create(Request $request)
@@ -87,7 +87,7 @@ class UserRepository
             'city' => null,
             'post_code' => null
         ]);
-        
+
         $user->address_id = $address->id;
         $user->save();
 

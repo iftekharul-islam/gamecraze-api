@@ -26,7 +26,7 @@ class UserTransformer extends TransformerAbstract
             'rent_limit' => $user->rent_limit,
             'is_phone_verified' => $user->is_phone_verified,
             'image' => $user->image ? asset($user->image) : '',
-            'cover' => $user->cover ? $user->cover : '',
+            'cover' => $user->cover ?? '',
             'identification_number' => $user->identification_number,
             'identification_image' => $user->identification_image ? asset($user->identification_image) : '',
             'is_verified' => $user->is_verified,
@@ -37,6 +37,7 @@ class UserTransformer extends TransformerAbstract
             'referral_url' => env('GAMEHUB_FRONT').'/login?referred_code='.$user->referral_code,
             'achieve_discount' => $user->achieve_discount,
             'wallet' => ceil($user->wallet),
+            'status' => $user->status,
             'locale' => $user->locale
         ];
     }

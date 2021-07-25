@@ -333,8 +333,6 @@ class ProductRepository
                 $item->delete();
             }
         }
-
-
         $product->delete();
 
         return true;

@@ -90,6 +90,7 @@ Route::prefix('admin')->group(function () {
         Route::post('store/user','\App\Http\Controllers\UserController@store')->name('user.store');
         Route::get('user/edit/{id}','\App\Http\Controllers\UserController@edit')->name('user.edit');
         Route::post('user/update/{id}','\App\Http\Controllers\UserController@update')->name('user.update');
+        Route::delete('user/delete/{id}','\App\Http\Controllers\UserController@destory')->name('user.delete');
         Route::post('user/verification/{id}','\App\Http\Controllers\UserController@UserIdVerification')->name('user.verification');
         //user export
         Route::get('customer/export/', '\App\Http\Controllers\UserController@export')->name('customer.export');
