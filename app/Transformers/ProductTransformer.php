@@ -53,7 +53,7 @@ class ProductTransformer extends TransformerAbstract
     public function coverImage($product)
     {
         $collection = $product->getMedia('cover-image');
-        $image = [];
+        $image = null;
         if (count($collection) > 0) {
             $image = [
                 'id' => $collection[0]->id,
