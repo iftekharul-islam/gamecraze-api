@@ -70,6 +70,10 @@ class User extends Authenticatable
             foreach ($users->transactionHistory()->get() as $transaction) {
                 $transaction->delete();
             }
+
+            foreach ($users->orders()->get() as $order) {
+                $order->delete();
+            }
         });
     }
     public function exchanges() {
@@ -110,5 +114,10 @@ class User extends Authenticatable
     public function RenterRating()
     {
         return $this->hasMany(Rating::class, 'renter_id', 'id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(GameOrder::class, 'user_id', 'id');
     }
 }

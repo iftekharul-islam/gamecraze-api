@@ -104,19 +104,19 @@ class UserRepository
 
         if ($user){
             $user->delete();
-            return true;
-        }
-        $products = Product::where('user_id', $id)->get();
-        if (count($products) > 0) {
-            foreach ($products as $product) {
-                $images = $product->getMedia('product-image');
-                if (count($images) > 0) {
-                    foreach ($images as $item) {
-                        $item->delete();
+            $products = Product::where('user_id', $id)->get();
+            if (count($products) > 0) {
+                foreach ($products as $product) {
+                    $images = $product->getMedia('product-image');
+                    if (count($images) > 0) {
+                        foreach ($images as $item) {
+                            $item->delete();
+                        }
                     }
+                    $product->delete();
                 }
-                $product->delete();
             }
+            return true;
         }
         return false;
     }
