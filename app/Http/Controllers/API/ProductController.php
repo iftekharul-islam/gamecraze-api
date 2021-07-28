@@ -27,23 +27,22 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        logger($request->all());
         $subcategories = [];
         $sortType = [];
-        $date = $request->input('sortDate') == 1 ? 1 : null;
         $ascPrice = $request->input('ascPrice') == 1 ? 1 : null;
         $descPrice = $request->input('descPrice') == 1 ? 1 : null;
+        $ascDate = $request->input('ascDate') == 1 ? 1 : null;
+        $descDate = $request->input('descDate') == 1 ? 1 : null;
         $sortNew = $request->input('sortNew') == 1 ? $sortType[] = 1 : null;
         $sortUsed = $request->input('sortUsed') == 1 ? $sortType[] = 2 : null;
         $priceRange []= $request->input('minPrice');
         $priceRange []= $request->input('maxPrice');
-        logger($priceRange);
 
         if ($request->input('subcategory')) {
             $items = explode(',', $request->input('subcategory'));
             $subcategories = SubCategory::whereIn('name', $items)->select('id')->get();
         }
-        $data = $this->repository->apiIndex($subcategories, $date, $ascPrice, $descPrice, $sortType, $priceRange);
+        $data = $this->repository->apiIndex($subcategories, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange);
 
         return $this->response->paginator($data, new ProductTransformer());
     }

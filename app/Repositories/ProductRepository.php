@@ -36,7 +36,7 @@ class ProductRepository
         return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex($subcategory, $date, $ascPrice, $descPrice, $sortType, $priceRange)
+    public function apiIndex($subcategory, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange)
     {
         $product = Product::query();
 
@@ -49,7 +49,10 @@ class ProductRepository
         if ($descPrice == 1){
             $product->orderBy('price', 'DESC');
         }
-        if ($date == 1){
+        if ($ascDate == 1){
+            $product->orderBy('created_at', 'ASC');
+        }
+        if ($descDate == 1){
             $product->orderBy('created_at', 'DESC');
         }
         if (count($sortType) > 0){
