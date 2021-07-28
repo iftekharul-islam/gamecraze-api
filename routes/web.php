@@ -124,6 +124,10 @@ Route::prefix('admin')->group(function () {
 //        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
 //        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
 
+        //withdraw request
+        Route::get('withdraw-requests','\App\Http\Controllers\WithdrawRequestController@index')->name('withdraw.request');
+        Route::get('withdraw-approve/{id}','\App\Http\Controllers\WithdrawRequestController@approve')->name('withdraw.request.approve');
+        Route::get('withdraw-reject/{id}','\App\Http\Controllers\WithdrawRequestController@reject')->name('withdraw.request.reject');
         // Coupon CRUD
         Route::get('coupon','\App\Http\Controllers\CouponController@index')->name('coupon');
         Route::get('create/discount','\App\Http\Controllers\CouponController@create')->name('coupon.create');

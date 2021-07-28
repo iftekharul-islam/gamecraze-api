@@ -148,6 +148,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('withdraw.request') }}" class="nav-link {{ (request()->routeIs('withdraw.request')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Withdraw Requests
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('rentPost.all') }}" class="nav-link {{ (request()->routeIs('rentPost.all')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -155,7 +163,7 @@
                         </p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>

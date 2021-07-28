@@ -189,6 +189,8 @@
             $api->get('available-rent/{slug}', 'App\Http\Controllers\API\RentController@availableRent');
             //lend extend request
             $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
+            //Withdraw request
+            $api->post('withdraw-request', 'App\Http\Controllers\WithdrawRequestController@store');
             //sell post
             $api->get('my-sell-posts', 'App\Http\Controllers\API\ProductController@mySellPosts');
             $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
