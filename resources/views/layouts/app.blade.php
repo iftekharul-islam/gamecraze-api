@@ -100,7 +100,7 @@
     <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
     <!-- CK Editor -->
-    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
 {{--    <script>--}}
 {{--        var path = "{{ route('autocomplete') }}";--}}
 {{--        $('input.typeahead').typeahead({--}}
