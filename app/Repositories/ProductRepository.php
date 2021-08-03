@@ -132,9 +132,10 @@ class ProductRepository
     public function apiStore($request, $user_id)
     {
         $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
-            'is_negotiable', 'product_type', 'product_no', 'condition_summary', 'phone_no', 'address',
+            'is_negotiable', 'product_type', 'used_year', 'used_month', 'used_day', 'warranty_availability',
+            'warranty_year', 'warranty_month', 'warranty_day', 'email',
+            'product_no', 'condition_summary', 'phone_no', 'address',
             'user_id', 'status']);
-
         $product['is_sold'] = 1;
         $product['is_negotiable'] = $product['is_negotiable'] == false ? null : $product['is_negotiable'];
         $product['status'] = 2;
