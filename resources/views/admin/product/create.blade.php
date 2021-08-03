@@ -69,18 +69,112 @@
                                         class="text-danger"><strong>{{ $errors->first('product_type') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="summary d-none false-padding-bottom-form form-group{{ $errors->has('condition_summary') ? ' has-error' : '' }}">
-                                <label for="summary">Condition summary</label>
+                            <div class="summary d-none row">
+                                <div class="col-md-12 false-padding-bottom-form form-group{{ $errors->has('condition_summary') ? ' has-error' : '' }}">
+                                    <label for="summary">Condition summary</label>
 
-                                <input type="text" class="form-control product-condition"
-                                       id="summary"
-                                       name="condition_summary"
-                                       maxlength="300"
-                                       placeholder="Enter product condition, purchase date or warranty details">
+                                    <input type="text" class="form-control product-condition"
+                                           id="summary"
+                                           name="condition_summary"
+                                           maxlength="300"
+                                           placeholder="Enter product condition, purchase date or warranty details">
 
-                                @if ($errors->has('condition_summary'))
-                                    <span class="text-danger"><strong>{{ $errors->first('condition_summary') }}</strong></span>
+                                    @if ($errors->has('condition_summary'))
+                                        <span class="text-danger"><strong>{{ $errors->first('condition_summary') }}</strong></span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_year') ? ' has-error' : '' }}">
+                                    <label>Used year</label>
+
+                                    <select name="used_year" class="form-control">
+                                        @for ($i = 1; $i <= 12; $i++)
+                                            <option value="{{ $i }}">{{ $i }} year</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('used_year'))
+                                        <span class="text-danger"><strong>{{ $errors->first('used_year') }}</strong></span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_month') ? ' has-error' : '' }}">
+                                    <label>Used month</label>
+                                    <select name="used_month" class="form-control">
+                                        @for ($i = 1; $i <= 12; $i++)
+                                            <option value="{{ $i }}">{{ $i }} month</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('used_month'))
+                                        <span class="text-danger"><strong>{{ $errors->first('used_month') }}</strong></span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_day') ? ' has-error' : '' }}">
+                                    <label>Used day</label>
+                                    <select name="used_day" class="form-control">
+                                        @for ($i = 1; $i <= 30; $i++)
+                                            <option value="{{ $i }}">{{ $i }} day</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('used_day'))
+                                        <span class="text-danger"><strong>{{ $errors->first('used_day') }}</strong></span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('warranty_availability') ? ' has-error' : '' }}">
+                                <label>Product Warranty available ?</label><br>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty(1)" value="1" id="warrantyRadios1" checked/>
+                                <label class="form-check-label" for="warrantyRadios1">
+                                    No
+                                </label>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty(2)" value="2" id="warrantyRadios2"/>
+                                <label class="form-check-label" for="warrantyRadios2">
+                                    Yes
+                                </label>
+                                @if ($errors->has('warranty_availability'))
+                                    <span class="text-danger"><strong>{{ $errors->first('warranty_availability') }}</strong></span>
                                 @endif
+                            </div>
+                            <div class="warranty d-none row">
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('warranty_year') ? ' has-error' : '' }}">
+                                    <label>Year</label>
+
+                                    <select name="warranty_year" class="form-control">
+                                        @for ($i = 1; $i <= 12; $i++)
+                                            <option value="{{ $i }}">{{ $i }} year</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('warranty_year'))
+                                        <span class="text-danger"><strong>{{ $errors->first('warranty_year') }}</strong></span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('warranty_month') ? ' has-error' : '' }}">
+                                    <label>Month</label>
+                                    <select name="warranty_month" class="form-control">
+                                        <option value="">Select a monthy</option>
+                                        @for ($i = 1; $i <= 12; $i++)
+                                            <option value="{{ $i }}">{{ $i }} month</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('warranty_month'))
+                                        <span class="text-danger"><strong>{{ $errors->first('warranty_month') }}</strong></span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('warranty_day') ? ' has-error' : '' }}">
+                                    <label>Day</label>
+                                    <select name="warranty_day" class="form-control">
+                                        <option value="">Select a day</option>
+                                        @for ($i = 1; $i <= 30; $i++)
+                                            <option value="{{ $i }}">{{ $i }} day</option>
+                                        @endfor
+                                    </select>
+
+                                    @if ($errors->has('warranty_day'))
+                                        <span class="text-danger"><strong>{{ $errors->first('warranty_day') }}</strong></span>
+                                    @endif
+                                </div>
                             </div>
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('is_negotiable') ? ' has-error' : '' }}">
@@ -98,6 +192,13 @@
                                     <span class="text-danger"><strong>{{ $errors->first('phone_no') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" maxlength="300" required>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label for="address">Address</label>
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" maxlength="300" required>
@@ -108,7 +209,7 @@
                             <div class="form-group">
                                 <label for="status">Sub Category</label>
                                 <select name="sub_category_id" class="form-control selectpicker" required>
-                                        <option value="">Select a sub category</option>
+                                        <option >Select a sub category</option>
                                     @foreach($subcategory as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -123,6 +224,19 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <table class="table table-bordered mt-2">
+                                <tr>
+                                    <th>Cover Image (363 x 270)</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" accept=".gif,.jpg,.jpeg,.png" name="cover_image" id="coverImage" required>
+                                            <label class="custom-file-label" for="coverImage">Choose file</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                             <table class="table table-bordered mt-2" id="dynamicProductImage">
                                 <tr>
                                     <th>Add Product Image</th>
@@ -176,6 +290,14 @@
                 $('#summary').prop('required', true);
             } else {
                 $('#summary').val('');
+            }
+        }
+        function setWarranty(value){
+            var type = value;
+            console.log(type)
+            $('.warranty').addClass('d-none');
+            if (type == 2){
+                $('.warranty').removeClass('d-none');
             }
         }
         $(document).on("change", ".custom-file-input", function() {

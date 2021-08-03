@@ -53,18 +53,17 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
         $data = $this->repository->show($id);
         $images = $data->getMedia('product-image');
+        $coverImages = $data->getMedia('cover-image');
 
 
-        return view('admin.product.show', compact('data', 'images'));
+        return view('admin.product.show', compact('data', 'coverImages', 'images'));
     }
 
     /**
@@ -76,6 +75,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data = $this->repository->show($id);
+//        return $data;
         $subcategory = $this->repository->create();
 
         return view('admin.product.edit', compact('data', 'subcategory'));
@@ -95,7 +95,7 @@ class ProductController extends Controller
         if (!$data){
             return redirect()->route('product')->with("error", 'product cannot Update!');
         }
-        
+
         return redirect()->route('product')->with("status", 'product successfully Updated!');
     }
 

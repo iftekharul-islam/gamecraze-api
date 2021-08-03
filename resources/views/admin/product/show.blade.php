@@ -109,6 +109,18 @@
                                             <td>{{ date('d F, Y', strtotime($data->created_at)) }}</td>
                                         </tr>
                                         <tr>
+                                            <td>Cover image:</td>
+                                            <td>
+                                                @foreach( $coverImages as $cover)
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <img src="{{ asset('storage/' . $cover->id . '/' . $cover->file_name) }}" id="disk-preview" class="img-thumbnail">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Image:</td>
                                             <td>
                                                 @foreach( $images as $image)

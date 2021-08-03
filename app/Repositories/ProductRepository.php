@@ -99,6 +99,8 @@ class ProductRepository
     {
         $product = $request->only(['sub_category_id', 'name', 'description', 'price', 'is_sold',
             'is_negotiable', 'product_type', 'condition_summary', 'phone_no', 'address',
+            'used_year', 'used_month', 'used_day', 'warranty_availability',
+            'warranty_year', 'warranty_month', 'warranty_day', 'email',
             'user_id', 'status']);
 
         $isChecked = $request->has('is_negotiable');
@@ -114,6 +116,11 @@ class ProductRepository
         $product['product_no'] = $this->generateProductNo();
 
         $data = Product::create($product);
+
+        $coverImage = $request->file('cover_image');
+        if (isset($coverImage)) {
+            $data->addMedia($coverImage)->toMediaCollection('cover-image');
+        }
 
         $images = $request->file('product_image');
         if (isset($images)) {
@@ -259,6 +266,8 @@ class ProductRepository
 
         $data = $request->only(['sub_category_id', 'name', 'description', 'price',
             'is_negotiable', 'product_type', 'is_sold', 'condition_summary', 'phone_no', 'address',
+            'used_year', 'used_month', 'used_day', 'warranty_availability',
+            'warranty_year', 'warranty_month', 'warranty_day', 'email',
             'user_id', 'status']);
 
         if (isset($data['sub_category_id'])){
@@ -287,6 +296,38 @@ class ProductRepository
 
         if (isset($data['product_type'])){
             $product->product_type = $data['product_type'];
+        }
+
+        if (isset($data['used_year'])){
+            $product->used_year = $data['used_year'];
+        }
+
+        if (isset($data['used_month'])){
+            $product->used_month = $data['used_month'];
+        }
+
+        if (isset($data['used_day'])){
+            $product->used_day = $data['used_day'];
+        }
+
+        if (isset($data['warranty_availability'])){
+            $product->warranty_availability = $data['warranty_availability'];
+        }
+
+        if (isset($data['warranty_year'])){
+            $product->warranty_year = $data['warranty_year'];
+        }
+
+        if (isset($data['warranty_month'])){
+            $product->warranty_month = $data['warranty_month'];
+        }
+
+        if (isset($data['warranty_day'])){
+            $product->warranty_day = $data['warranty_day'];
+        }
+
+        if (isset($data['email'])){
+            $product->email = $data['email'];
         }
 
         if (isset($data['condition_summary'])){
