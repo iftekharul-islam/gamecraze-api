@@ -42,6 +42,7 @@ class ProductTransformer extends TransformerAbstract
             'phone_no' => $product->phone_no,
             'address' => $product->address,
             'slider' => $this->sliderImages($product),
+            'email' => $product->email,
         ];
     }
 
