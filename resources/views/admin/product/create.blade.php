@@ -87,6 +87,7 @@
                                     <label>Used year</label>
 
                                     <select name="used_year" class="form-control">
+                                        <option value="">Select a year</option>
                                         @for ($i = 1; $i <= 12; $i++)
                                             <option value="{{ $i }}">{{ $i }} year</option>
                                         @endfor
@@ -99,6 +100,7 @@
                                 <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_month') ? ' has-error' : '' }}">
                                     <label>Used month</label>
                                     <select name="used_month" class="form-control">
+                                        <option value="">Select a monthy</option>
                                         @for ($i = 1; $i <= 12; $i++)
                                             <option value="{{ $i }}">{{ $i }} month</option>
                                         @endfor
@@ -111,6 +113,7 @@
                                 <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_day') ? ' has-error' : '' }}">
                                     <label>Used day</label>
                                     <select name="used_day" class="form-control">
+                                        <option value="">Select a day</option>
                                         @for ($i = 1; $i <= 30; $i++)
                                             <option value="{{ $i }}">{{ $i }} day</option>
                                         @endfor
@@ -140,6 +143,7 @@
                                     <label>Year</label>
 
                                     <select name="warranty_year" class="form-control">
+                                        <option value="">Select a year</option>
                                         @for ($i = 1; $i <= 12; $i++)
                                             <option value="{{ $i }}">{{ $i }} year</option>
                                         @endfor
