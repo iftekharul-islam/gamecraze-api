@@ -318,8 +318,6 @@
             $(this).siblings(".type-alert-cover").addClass("d-none");
             var fileName = $(this).val().split("\\").pop();
             var fileSize = Math.ceil($(this)[0].files[0].size / 1024);
-            console.log('fileSize');
-            console.log(fileSize);
             if (fileSize > 2048) { //2mb
                 $(this).val('');
                 $(this).siblings(".limit-alert-cover").removeClass("d-none");
@@ -331,7 +329,6 @@
 
         });
         $(document).on("change", ".screenshot-input", function() {
-            console.log('i m also here')
             let allowedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
             var fileType = $(this)[0].files[0].type;
             if (allowedTypes.indexOf(fileType) == -1) {
