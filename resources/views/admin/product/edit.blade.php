@@ -61,17 +61,17 @@
                                 </label>
                             </div>
                             <div class="summary d-none row">
-                                <div class="col-md-12 form-group">
-                                    <label for="summary">Condition summary</label>
+{{--                                <div class="col-md-12 form-group">--}}
+{{--                                    <label for="summary">Condition summary</label>--}}
 
-                                    <input type="text" class="form-control product-condition"
-                                           id="summary"
-                                           name="condition_summary"
-                                           maxlength="300"
-                                           value="{{ $data->condition_summary }}"
-                                           placeholder="Enter product condition, purchase date or warranty details">
+{{--                                    <input type="text" class="form-control product-condition"--}}
+{{--                                           id="summary"--}}
+{{--                                           name="condition_summary"--}}
+{{--                                           maxlength="300"--}}
+{{--                                           value="{{ $data->condition_summary }}"--}}
+{{--                                           placeholder="Enter product condition, purchase date or warranty details">--}}
 
-                                </div>
+{{--                                </div>--}}
                                 <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_year') ? ' has-error' : '' }}">
                                     <label>Used year</label>
 
@@ -111,17 +111,14 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('warranty_availability') ? ' has-error' : '' }}">
                                 <label>Product Warranty available ?</label><br>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="1" id="warrantyRadios1" {{ $data->warranty_availability == 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="warrantyRadios1">
-                                    No
-                                </label>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="2" id="warrantyRadios2" {{ $data->warranty_availability == 2 ? 'checked' : '' }}/>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="2" id="warrantyRadios2" {{ $data->warranty_availability == 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="warrantyRadios2">
                                     Yes
                                 </label>
-                                @if ($errors->has('warranty_availability'))
-                                    <span class="text-danger"><strong>{{ $errors->first('warranty_availability') }}</strong></span>
-                                @endif
+                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="1" id="warrantyRadios1" {{ $data->warranty_availability == 2 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="warrantyRadios1">
+                                    No
+                                </label>
                             </div>
                             <div class="warranty d-none row">
                                 <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('warranty_year') ? ' has-error' : '' }}">
@@ -241,10 +238,10 @@
         function setSummary(){
             var type = $('input[name="product_type"]:checked').val();
             $('.summary').addClass('d-none');
-            $('#summary').prop('required', false);
+            // $('#summary').prop('required', false);
             if (type == 2){
                 $('.summary').removeClass('d-none');
-                $('#summary').prop('required', true);
+                // $('#summary').prop('required', true);
             } else {
                 $('#summary').val('');
             }
