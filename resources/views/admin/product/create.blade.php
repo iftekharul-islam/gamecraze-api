@@ -70,19 +70,19 @@
                                 @endif
                             </div>
                             <div class="summary d-none row">
-                                <div class="col-md-12 false-padding-bottom-form form-group{{ $errors->has('condition_summary') ? ' has-error' : '' }}">
-                                    <label for="summary">Condition summary</label>
+{{--                                <div class="col-md-12 false-padding-bottom-form form-group{{ $errors->has('condition_summary') ? ' has-error' : '' }}">--}}
+{{--                                    <label for="summary">Condition summary</label>--}}
 
-                                    <input type="text" class="form-control product-condition"
-                                           id="summary"
-                                           name="condition_summary"
-                                           maxlength="300"
-                                           placeholder="Enter product condition, purchase date or warranty details">
+{{--                                    <input type="text" class="form-control product-condition"--}}
+{{--                                           id="summary"--}}
+{{--                                           name="condition_summary"--}}
+{{--                                           maxlength="300"--}}
+{{--                                           placeholder="Enter product condition, purchase date or warranty details">--}}
 
-                                    @if ($errors->has('condition_summary'))
-                                        <span class="text-danger"><strong>{{ $errors->first('condition_summary') }}</strong></span>
-                                    @endif
-                                </div>
+{{--                                    @if ($errors->has('condition_summary'))--}}
+{{--                                        <span class="text-danger"><strong>{{ $errors->first('condition_summary') }}</strong></span>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
                                 <div class="col-md-4 false-padding-bottom-form form-group{{ $errors->has('used_year') ? ' has-error' : '' }}">
                                     <label>Used year</label>
 
@@ -213,7 +213,7 @@
                             <div class="form-group">
                                 <label for="status">Sub Category</label>
                                 <select name="sub_category_id" class="form-control selectpicker" required>
-                                        <option >Select a sub category</option>
+                                        <option value="">Select a sub category</option>
                                     @foreach($subcategory as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -290,10 +290,10 @@
         function setSummary(){
             var type = $('input[name="product_type"]:checked').val();
             $('.summary').addClass('d-none');
-            $('#summary').prop('required', false);
+            // $('#summary').prop('required', false);
             if (type == 2){
                 $('.summary').removeClass('d-none');
-                $('#summary').prop('required', true);
+                // $('#summary').prop('required', true);
             } else {
                 $('#summary').val('');
             }
