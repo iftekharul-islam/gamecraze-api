@@ -14,7 +14,7 @@ use League\Fractal\TransformerAbstract;
 
 class SubCategoryTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['category'];
+    protected $availableIncludes = ['category', 'products'];
 
     public function transform(SubCategory $subCategory)
     {
@@ -31,6 +31,12 @@ class SubCategoryTransformer extends TransformerAbstract
     public function includeCategory(SubCategory $subCategory) {
         if (isset($subCategory->category)) {
             return $this->item($subCategory->category, new CategoryTransformer());
+        }
+    }
+
+    public function includeProducts(SubCategory $subCategory) {
+        if (isset($subCategory->products)) {
+            return $this->collection($subCategory->products, new ProductTransformer());
         }
     }
 

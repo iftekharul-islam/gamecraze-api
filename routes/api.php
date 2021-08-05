@@ -111,8 +111,10 @@
         // games exists in rent table
         $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
-        //Category list
+        // Category list
         $api->get('categories', 'App\Http\Controllers\API\ProductController@categoryList');
+        // 4 category list
+        $api->get('category-list', 'App\Http\Controllers\API\ProductController@subCategoryfixedList');
         //subcategory list
         $api->get('sub-categories', 'App\Http\Controllers\API\ProductController@subCategoryList');
         //all active sell post

@@ -185,7 +185,7 @@ class ProductRepository
         }
 
         $data = $request->only(['sub_category_id', 'name', 'description', 'price',
-            'is_negotiable', 'phone_no', 'address']);
+            'is_negotiable', 'phone_no', 'email', 'address']);
 
         if (isset($data['name'])){
             $product->name = $data['name'];
@@ -209,6 +209,10 @@ class ProductRepository
 
         if (isset($data['phone_no'])){
             $product->phone_no = $data['phone_no'];
+        }
+
+        if (isset($data['email'])){
+            $product->email = $data['email'];
         }
 
         if (isset($data['address'])){
