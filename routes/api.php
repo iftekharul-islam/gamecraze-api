@@ -133,6 +133,10 @@
         $api->get('related-sell-posts/{id}/{cat_id}', 'App\Http\Controllers\API\ProductController@relatedSellPosts');
         //user details
         $api->get('user/details/{id}', 'App\Http\Controllers\API\UserController@show');
+
+        //all sell post
+        $api->get('all-sell-post', 'App\Http\Controllers\API\ProductController@allSellPost');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');

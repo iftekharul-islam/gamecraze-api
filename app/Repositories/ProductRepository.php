@@ -75,6 +75,11 @@ class ProductRepository
         return Product::where('id', $id)->first();
     }
 
+    public function allPost()
+    {
+        return Product::where('status', 1)->orderBy('created_at', 'DESC')->get();
+    }
+
     public function myPosts()
     {
         return Product::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
@@ -222,13 +227,11 @@ class ProductRepository
 
         $removeCover = $request->removeCover;
         if ($removeCover != null){
-            logger('in the remove cover remove ');
             $product->deleteMedia($removeCover);
         }
 
         $removeScreenshots = $request->removeScreenshots;
         if ($removeScreenshots != null){
-            logger('in the remove screen shot remove ');
             foreach ($removeScreenshots as $item) {
                 $product->deleteMedia($item);
             }
@@ -354,6 +357,15 @@ class ProductRepository
             $product->status = $data['status'];
         }
 
+        $product->save();
+
+        if ($request->has('cover_image')) {
+            $product->clearMediaCollection('cover-image');
+            $coverImage = $request->file('cover_image');
+
+            $product->addMedia($coverImage)->toMediaCollection('cover-image');
+        }
+
         if ($request->has('product_image')){
             $images = $request->file('product_image');
 
@@ -363,8 +375,6 @@ class ProductRepository
                 }
             }
         }
-
-        $product->save();
 
         return true;
     }

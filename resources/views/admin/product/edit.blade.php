@@ -111,11 +111,11 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('warranty_availability') ? ' has-error' : '' }}">
                                 <label>Product Warranty available ?</label><br>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="2" id="warrantyRadios2" {{ $data->warranty_availability == 1 ? 'checked' : '' }}/>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="1" id="warrantyRadios2" {{ $data->warranty_availability == 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="warrantyRadios2">
                                     Yes
                                 </label>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="1" id="warrantyRadios1" {{ $data->warranty_availability == 2 ? 'checked' : '' }}/>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty()" value="2" id="warrantyRadios1" {{ $data->warranty_availability == 2 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="warrantyRadios1">
                                     No
                                 </label>
@@ -189,6 +189,25 @@
                                 <label for="address">Address</label>
                                 <input type="text" class="form-control" id="address" name="address" value="{{ $data->address }}" placeholder="Enter address" maxlength="300">
                             </div>
+                            <div class="form-group">
+                                <label for="address">Previuos Cover</label>
+                                @foreach( $coverImages as $cover)
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <img src="{{ asset('storage/' . $cover->id . '/' . $cover->file_name) }}" id="disk-preview" class="img-thumbnail">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <label>Upload Cover</label>
+                            <small>(Width: 1920px and Height: 600px)</small>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="cover_image" id="coverFile">
+                                <label class="custom-file-label" for="coverFile">Choose file</label>
+                                @if ($errors->has('cover_image'))
+                                    <span class="text-danger"><strong>{{ $errors->first('cover_image') }}</strong></span>
+                                @endif
+                            </div>
                             <table class="table table-bordered mt-2" id="dynamicProductImage">
                                 <tr>
                                     <th>Add Product Image</th>
@@ -250,7 +269,7 @@
             var type = $('input[name="warranty_availability"]:checked').val();
             console.log(type)
             $('.warranty').addClass('d-none');
-            if (type == 2){
+            if (type == 1){
                 $('.warranty').removeClass('d-none');
             }
         }
