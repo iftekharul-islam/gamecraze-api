@@ -290,10 +290,8 @@
         function setSummary(){
             var type = $('input[name="product_type"]:checked').val();
             $('.summary').addClass('d-none');
-            // $('#summary').prop('required', false);
             if (type == 2){
                 $('.summary').removeClass('d-none');
-                // $('#summary').prop('required', true);
             } else {
                 $('#summary').val('');
             }
@@ -302,7 +300,7 @@
             var type = value;
             console.log(type)
             $('.warranty').addClass('d-none');
-            if (type == 2){
+            if (type == 1){
                 $('.warranty').removeClass('d-none');
             }
         }
