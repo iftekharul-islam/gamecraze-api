@@ -60,6 +60,12 @@ class ProductController extends Controller
 
         return $this->response->item($data, new ProductTransformer());
     }
+    public function allSellPost()
+    {
+        $data = $this->repository->allPost();
+
+        return $this->response->collection($data, new ProductTransformer());
+    }
 
     public function mySellPosts()
     {

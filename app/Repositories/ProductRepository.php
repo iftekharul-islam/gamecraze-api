@@ -75,6 +75,11 @@ class ProductRepository
         return Product::where('id', $id)->first();
     }
 
+    public function allPost()
+    {
+        return Product::where('status', 1)->orderBy('created_at', 'DESC')->get();
+    }
+
     public function myPosts()
     {
         return Product::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
