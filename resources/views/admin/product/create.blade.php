@@ -126,11 +126,11 @@
                             </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('warranty_availability') ? ' has-error' : '' }}">
                                 <label>Product Warranty available ?</label><br>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty(2)" value="1" id="warrantyRadios1" checked/>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty(2)" value="2" id="warrantyRadios1" checked/>
                                 <label class="form-check-label" for="warrantyRadios1">
                                     No
                                 </label>
-                                <input type="radio" name="warranty_availability" onclick="setWarranty(1)" value="2" id="warrantyRadios2"/>
+                                <input type="radio" name="warranty_availability" onclick="setWarranty(1)" value="1" id="warrantyRadios2"/>
                                 <label class="form-check-label" for="warrantyRadios2">
                                     Yes
                                 </label>
