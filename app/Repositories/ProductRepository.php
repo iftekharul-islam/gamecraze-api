@@ -36,7 +36,7 @@ class ProductRepository
         return $product->with('user', 'subcategory')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex($subcategory, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange)
+    public function apiIndex($search, $subcategory, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange)
     {
         $product = Product::query();
 
@@ -60,6 +60,10 @@ class ProductRepository
         }
         if (count($subcategory) > 0){
             $product->whereIn('sub_category_id', $subcategory);
+        }
+
+        if ($search != ''){
+            $product->where('name', 'like', '%' . $search . '%');
         }
 
         return $product->where('status', 1)->paginate(12);

@@ -42,7 +42,14 @@ class ProductController extends Controller
             $items = explode(',', $request->input('subcategory'));
             $subcategories = SubCategory::whereIn('name', $items)->select('id')->get();
         }
-        $data = $this->repository->apiIndex($subcategories, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange);
+
+        if ($request->input('search')) {
+            $search = $request->input('search');
+        }
+        else {
+            $search = "";
+        }
+        $data = $this->repository->apiIndex($search, $subcategories, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange);
 
         return $this->response->paginator($data, new ProductTransformer());
     }
