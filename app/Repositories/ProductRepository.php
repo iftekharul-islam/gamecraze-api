@@ -91,7 +91,7 @@ class ProductRepository
 
     public function latestPosts()
     {
-        return Product::where('status', 1)->orderBy('created_at', 'DESC')->take(5)->get();
+        return Product::where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
     }
 
     public function relatedPosts($id, $cat_id)
