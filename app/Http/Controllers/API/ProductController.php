@@ -29,15 +29,18 @@ class ProductController extends Controller
     {
         $subcategories = [];
         $sortType = [];
+        $priceRange = [];
         $ascPrice = $request->input('ascPrice') == 1 ? 1 : null;
         $descPrice = $request->input('descPrice') == 1 ? 1 : null;
         $ascDate = $request->input('ascDate') == 1 ? 1 : null;
         $descDate = $request->input('descDate') == 1 ? 1 : null;
         $sortNew = $request->input('sortNew') == 1 ? $sortType[] = 1 : null;
         $sortUsed = $request->input('sortUsed') == 1 ? $sortType[] = 2 : null;
-        $priceRange []= $request->input('minPrice');
-        $priceRange []= $request->input('maxPrice');
 
+        if ($request->input('priceRange')){
+            $priceRange = explode(',', $request->input('priceRange'));
+            logger($priceRange);
+        }
         if ($request->input('subcategory')) {
             $items = explode(',', $request->input('subcategory'));
             $subcategories = SubCategory::whereIn('name', $items)->select('id')->get();
