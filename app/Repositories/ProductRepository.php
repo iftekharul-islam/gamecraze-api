@@ -96,7 +96,7 @@ class ProductRepository
 
     public function relatedPosts($id, $cat_id)
     {
-        return Product::where('id', '!=', $id)->where('sub_category_id', $cat_id)->where('status', 1)->orderBy('created_at', 'DESC')->get();
+        return Product::where('id', '!=', $id)->where('sub_category_id', $cat_id)->where('status', 1)->orderBy('created_at', 'DESC')->take(10)->get();
     }
 
     public function create()
