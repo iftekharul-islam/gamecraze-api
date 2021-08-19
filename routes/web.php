@@ -120,10 +120,11 @@ Route::prefix('admin')->group(function () {
         Route::get('extend-requests','\App\Http\Controllers\ExtendLendController@index')->name('extend.request');
         Route::get('approve-request/{id}','\App\Http\Controllers\ExtendLendController@approve')->name('extend.request.approve');
         Route::get('reject-requests/{id}','\App\Http\Controllers\ExtendLendController@reject')->name('extend.request.reject');
-//        Route::get('discount/edit/{id}','\App\Http\Controllers\DiscountController@edit')->name('discount.edit');
-//        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
-//        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
-
+        //Post Report
+        Route::get('post-report','\App\Http\Controllers\PostReportController@index')->name('post.report');
+        Route::get('post-report/show/{id}','\App\Http\Controllers\PostReportController@show')->name('post.report.show');
+        Route::get('approve-request/{id}','\App\Http\Controllers\PostReportController@approve')->name('post.report.approve');
+        Route::get('reject-requests/{id}','\App\Http\Controllers\PostReportController@reject')->name('post.report.reject');
         //withdraw request
         Route::get('withdraw-requests','\App\Http\Controllers\WithdrawRequestController@index')->name('withdraw.request');
         Route::get('withdraw-approve/{id}','\App\Http\Controllers\WithdrawRequestController@approve')->name('withdraw.request.approve');

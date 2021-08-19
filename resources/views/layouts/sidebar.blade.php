@@ -248,6 +248,14 @@
                             Product
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('post.report') }}" class="nav-link {{ (request()->routeIs('post.report', 'post.report.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Reports
+                        </p>
+                    </a>
                     <hr>
                 </li>
                 <li class="nav-item">
