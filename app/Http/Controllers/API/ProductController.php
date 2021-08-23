@@ -107,7 +107,7 @@ class ProductController extends Controller
     {
         $user_id = Auth::user()->id;
         $data = $this->repository->apiStore($request, $user_id);
-        Cache::forget('subCategories');
+
         return $this->response->item($data, new ProductTransformer());
 
     }
@@ -117,7 +117,6 @@ class ProductController extends Controller
         $data = $this->repository->apiUpdate($request);
 
         if ($data) {
-            Cache::forget('subCategories');
             return $this->response->array([
                 'error' => false,
                 'message' => 'Sell post updated'
