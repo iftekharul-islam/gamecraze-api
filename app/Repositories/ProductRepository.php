@@ -66,7 +66,9 @@ class ProductRepository
             $product->where('name', 'like', '%' . $search . '%');
         }
 
-        return $product->where('status', 1)->paginate(12);
+        return $product->whereHas('subcategory', function ($query) {
+            $query->where('status', 1);
+        })->where('status', 1)->paginate(12);
     }
 
     public function postsById($id)
@@ -86,12 +88,17 @@ class ProductRepository
 
     public function myPosts()
     {
-        return Product::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        return Product::whereHas('subcategory', function ($query) {
+                $query->where('status', 1);
+            })->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
     }
 
     public function latestPosts()
     {
-        return Product::where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
+        return Product::whereHas('subcategory', function ($query) {
+                $query->where('status', 1);
+             })
+            ->where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
     }
 
     public function relatedPosts($id, $cat_id)
