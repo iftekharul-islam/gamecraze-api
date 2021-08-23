@@ -9,13 +9,11 @@ use Illuminate\Http\Request;
 class SubCategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $data = SubCategory::with('category')->orderBy('created_at', 'DESC')->get();
+        $data = SubCategory::with('category')->whereHas('category')->orderBy('created_at', 'DESC')->get();
 
         return view('admin.sub_category.index', compact('data'));
     }
