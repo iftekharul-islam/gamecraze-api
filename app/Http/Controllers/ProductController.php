@@ -7,6 +7,7 @@ use App\Jobs\SellPostRejected;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -48,7 +49,7 @@ class ProductController extends Controller
     {
         $user_id = $request->user_id;
         $data = $this->repository->store($request, $user_id);
-
+        Cache::forget('subCategories');
         return redirect()->route('product')->with("status", 'Product successfully created!');
     }
 
@@ -91,7 +92,7 @@ class ProductController extends Controller
         if (!$data){
             return redirect()->route('product')->with("error", 'product cannot Update!');
         }
-
+        Cache::forget('subCategories');
         return redirect()->route('product')->with("status", 'product successfully Updated!');
     }
 
@@ -108,7 +109,7 @@ class ProductController extends Controller
         if (!$data){
             return redirect()->route('product')->with("error", 'product cannot delete!');
         }
-
+        Cache::forget('subCategories');
         return redirect()->route('product')->with("status", 'product deleted successfully!');
     }
 
@@ -119,7 +120,7 @@ class ProductController extends Controller
         $data->save();
 
         SellPostApproved::dispatch($data);
-
+        Cache::forget('subCategories');
         return back()->with('status', 'Product Request Approved !!');
     }
 

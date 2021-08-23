@@ -12,6 +12,7 @@ use App\Transformers\ProductTransformer;
 use App\Transformers\SubCategoryTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -106,7 +107,7 @@ class ProductController extends Controller
     {
         $user_id = Auth::user()->id;
         $data = $this->repository->apiStore($request, $user_id);
-
+        Cache::forget('subCategories');
         return $this->response->item($data, new ProductTransformer());
 
     }
@@ -116,6 +117,7 @@ class ProductController extends Controller
         $data = $this->repository->apiUpdate($request);
 
         if ($data) {
+            Cache::forget('subCategories');
             return $this->response->array([
                 'error' => false,
                 'message' => 'Sell post updated'
@@ -137,7 +139,10 @@ class ProductController extends Controller
 
     public function subCategoryfixedList()
     {
-        $data = SubCategory::where('status', 1)->whereHas('category')->withCount('products')->orderBy('products_count', 'desc')->take(3)->get();
+        $minutes = 1440; # 1 day
+        $data = Cache::remember('subCategories', $minutes, function () {
+            return SubCategory::where('status', 1)->whereHas('category')->withCount('products')->orderBy('products_count', 'desc')->take(3)->get();
+        });
         return $this->response->collection($data, new SubCategoryTransformer());
     }
 
