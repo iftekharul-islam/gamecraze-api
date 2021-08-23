@@ -137,13 +137,13 @@ class ProductController extends Controller
 
     public function subCategoryfixedList()
     {
-        $data = SubCategory::where('status', 1)->whereHas('category', 'products')->withCount('products')->orderBy('products_count', 'desc')->take(3)->get();
+        $data = SubCategory::where('status', 1)->whereHas('category')->withCount('products')->orderBy('products_count', 'desc')->take(3)->get();
         return $this->response->collection($data, new SubCategoryTransformer());
     }
 
     public function subCategoryList()
     {
-       $data = SubCategory::where('status', true)->get();
+       $data = SubCategory::whereHas('category')->where('status', true)->get();
 
        return $this->response->collection($data, new SubCategoryTransformer());
     }
