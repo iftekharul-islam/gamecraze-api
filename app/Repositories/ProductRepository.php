@@ -10,7 +10,6 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProductRepository
 {
@@ -66,7 +65,9 @@ class ProductRepository
             $product->where('name', 'like', '%' . $search . '%');
         }
 
-        return $product->whereHas('subcategory.category')->where('status', 1)->paginate(12);
+        return $product->whereHas('subcategory', function ($query) {
+            $query->where('status', 1)->whereHas('category');
+        })->where('status', 1)->paginate(12);
     }
 
     public function postsById($id)
@@ -91,7 +92,9 @@ class ProductRepository
 
     public function latestPosts()
     {
-        return Product::whereHas('subcategory.category')->where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
+        return Product::whereHas('subcategory', function ($query) {
+                $query->where('status', 1)->whereHas('category');
+            })->where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
     }
 
     public function relatedPosts($id, $cat_id)
@@ -283,6 +286,10 @@ class ProductRepository
 
         if (isset($data['sub_category_id'])){
             $product->sub_category_id = $data['sub_category_id'];
+        }
+
+        if (isset($data['user_id'])){
+            $product->user_id = $data['user_id'];
         }
 
         if (isset($data['name'])){

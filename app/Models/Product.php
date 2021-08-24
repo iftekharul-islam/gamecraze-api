@@ -39,6 +39,6 @@ class Product extends Model implements HasMedia
     }
 
     public function subcategory() {
-        return $this->hasOne(SubCategory::class, 'id', 'sub_category_id')->where('status', 1);
+        return $this->hasOne(SubCategory::class, 'id', 'sub_category_id');
     }
 }

@@ -76,8 +76,9 @@ class ProductController extends Controller
         $data = $this->repository->show($id);
         $coverImages = $data->getMedia('cover-image');
         $subcategory = $this->repository->create();
+        $users = $this->repository->allCustomer();
 
-        return view('admin.product.edit', compact('data', 'subcategory', 'coverImages'));
+        return view('admin.product.edit', compact('data', 'subcategory', 'users', 'coverImages'));
     }
 
     /**
