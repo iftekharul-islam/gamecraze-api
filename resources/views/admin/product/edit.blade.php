@@ -50,6 +50,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="status">Product for Customer</label>
+                                <select name="user_id" class="form-control selectpicker" data-live-search="true" required>
+                                    <option value="">Select a customer</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" {{ $user->id == $data->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="product_type">Product type</label><br>
                                 <input type="radio" name="product_type" onclick="setSummary(this)" value="1" id="typeRadios1" {{ $data->product_type == 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="typeRadios1">
