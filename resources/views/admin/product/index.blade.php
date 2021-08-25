@@ -132,23 +132,21 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex">
-                                                    @if ($item->status == 2)
-                                                        <button class="btn btn-success btn-sm" type="button"
-                                                                onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                        <form id="approve-form-{{ $item->id }}"
-                                                              action="{{ route('product.approve', $item->id) }}"
-                                                              method="get" class="d-none">
-                                                            @csrf
-                                                        </form>
-                                                    @elseif ($item->status == 1)
-                                                        <button class="btn btn-danger btn-sm" type="button"
-                                                                onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
-                                                        <form id="reject-form-{{ $item->id }}"
-                                                              action="{{ route('product.reject', $item->id) }}"
-                                                              method="get" class="d-none">
-                                                            @csrf
-                                                        </form>
-                                                    @endif
+                                                    <button class="btn btn-success btn-sm" type="button"
+                                                            onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                    <form id="approve-form-{{ $item->id }}"
+                                                          action="{{ route('product.approve', $item->id) }}"
+                                                          method="get" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                    <button class="btn btn-danger btn-sm" type="button"
+                                                            onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
+                                                    <form id="reject-form-{{ $item->id }}"
+                                                          action="{{ route('product.reject', $item->id) }}"
+                                                          method="post" class="d-none">
+                                                        @csrf
+                                                        <input type="text" class="d-none" id="reason" name="reason" value="">
+                                                    </form>
                                                     <a class="btn btn-sm btn-primary"
                                                        href="{{ route('product.edit', $item->id) }}"><i
                                                             class="far fa-edit"></i></a>
@@ -272,22 +270,24 @@
         function makeReject (id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
-                    confirmButton: 'btn btn-success ml-2',
-                    cancelButton: 'btn btn-danger'
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger ml-2'
                 },
                 buttonsStyling: false
             });
-
             swalWithBootstrapButtons.fire ({
-                title: "Are you sure?",
-                text: "Want to reject this request",
-                icon: "warning",
+                title: 'Reject Reason',
+                input: 'text',
+                inputPlaceholder: 'Explain Reject reason..',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, Reject it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You need to write the reason!'
+                    }
+                },
             }).then ((result) => {
                 if (result.value) {
+                    $('#reason').val(result.value);
                     document.getElementById('reject-form-' + id).submit();
                     swalWithBootstrapButtons.fire({
                         title: 'Rejected!',
