@@ -108,6 +108,12 @@
                                             <td>Created at:</td>
                                             <td>{{ date('d F, Y', strtotime($data->created_at)) }}</td>
                                         </tr>
+                                        @if($data->reason != null)
+                                            <tr>
+                                                <td>Reject reason:</td>
+                                                <td>{{ $data->reason }}</td>
+                                            </tr>
+                                        @endif
                                         <tr>
                                             <td>Cover image:</td>
                                             <td>
