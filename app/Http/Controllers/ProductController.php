@@ -125,10 +125,11 @@ class ProductController extends Controller
         return back()->with('status', 'Product Request Approved !!');
     }
 
-    public function reject($id)
+    public function reject(Request $request, $id)
     {
         $data = Product::findOrFail($id);
         $data->status = 3;
+        $data->reason = $request->reason;
         $data->save();
 
         SellPostRejected::dispatch($data);

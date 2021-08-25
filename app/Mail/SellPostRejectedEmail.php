@@ -35,7 +35,7 @@ class SellPostRejectedEmail extends Mailable
             ->subject('Gamehub sell post rejected')
             ->with([
                 'user' => $this->user,
-                'product' =>  $this->product->product_no,
+                'product' =>  $this->product,
             ]);
     }
 }
