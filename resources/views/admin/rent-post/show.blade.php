@@ -132,7 +132,7 @@
                                             <strong>Delivery :</strong><span> {{ $rent->checkpoint ?  $rent->checkpoint->name : 'COD' }}</span><br>
                                             <strong>Developer :</strong><span> {{ $rent->game->developer }}</span><br>
                                             <strong>Rating :</strong><span> {{ $rent->game->rating }}</span><br>
-                                            @if($data->reason != null)
+                                            @if($rent->reason != null)
                                                 <strong>Reject reason :</strong><span> {{ $rent->reason }}</span>
                                             @endif
                                         </address>
