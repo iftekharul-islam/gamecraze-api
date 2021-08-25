@@ -28,7 +28,7 @@ class SubCategory extends Model
     }
 
     public function category() {
-        return $this->hasOne(Category::class, 'id', 'category_id')->where('status', 1);
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
     public function products() {
