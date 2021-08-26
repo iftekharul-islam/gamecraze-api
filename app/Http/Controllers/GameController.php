@@ -103,10 +103,8 @@ class GameController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -114,7 +112,7 @@ class GameController extends Controller
         if ($data === true){
             return back()->with('status', 'Game successfully deleted');
         }
-        return back()->with('error', 'Game delete not successful');
+        return back()->with('error', 'Game is associated with rent post, please remove first !!!');
     }
 
     public function videoDestroy($id)
