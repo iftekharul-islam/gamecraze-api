@@ -132,8 +132,8 @@
                 if (result.value) {
                     document.getElementById('delete-form-' + id).submit();
                     swalWithBootstrapButtons.fire({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
+                        title: 'Processing!',
+                        text: 'Your file delete is on processing...',
                         icon: 'success',
                         timer: 1500,
                     })
