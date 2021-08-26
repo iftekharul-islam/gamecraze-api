@@ -42,7 +42,6 @@ class DashboardController extends Controller
             return $query->where('name', '!=', 'admin');
         })->where('is_verified', 0)->count();
 
-//        return $delivered_rent;
         return view('admin.dashboard', compact('games', 'rents', 'approved_post', 'pending_post', 'reject_post', 'users', 'lends', 'pending_rent', 'delivered_rent', 'processing_rent', 'rejected_rent', 'completed_rent', 'elite', 'rookie'));
     }
 
