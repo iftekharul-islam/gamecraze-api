@@ -71,13 +71,43 @@
                                             </td>
                                         </tr>
                                         @if($data->product_type == 2)
+                                            @if($data->used_year != null)
                                             <tr>
-                                                <td>Condition summary:</td>
+                                                <td>Year:</td>
                                                 <td>
-                                                    {{ $data->condition_summary }}
+                                                    {{ $data->used_year }}
                                                 </td>
                                             </tr>
+                                            @endif
+                                            @if($data->used_month != null)
+                                            <tr>
+                                                <td>Month:</td>
+                                                <td>
+                                                    {{ $data->used_month }}
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @if($data->used_day != null)
+                                            <tr>
+                                                <td>Day:</td>
+                                                <td>
+                                                    {{ $data->used_day }}
+                                                </td>
+                                            </tr>
+                                            @endif
                                         @endif
+                                        <tr>
+                                            <td>Location:</td>
+                                            <td>{{ $data->thana->name }}, {{ $data->thana->district->name }},  {{ $data->thana->district->division->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Area:</td>
+                                            <td>{{ $data->area }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address:</td>
+                                            <td>{{ $data->address }}</td>
+                                        </tr>
                                         <tr>
                                             <td>Phone no:</td>
                                             <td>{{ $data->phone_no ?? 'N/A' }}</td>

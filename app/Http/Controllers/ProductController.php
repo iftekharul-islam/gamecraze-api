@@ -29,16 +29,16 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
         $users = $this->repository->allCustomer();
         $subcategory = $this->repository->create();
+        $districts = $this->repository->districts();
+        $thanas = $this->repository->thanas();
 
-        return view('admin.product.create', compact('subcategory', 'users'));
+        return view('admin.product.create', compact('subcategory', 'users', 'districts', 'thanas'));
     }
 
     /**
@@ -73,12 +73,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $districts = $this->repository->districts();
+        $thanas = $this->repository->thanas();
         $data = $this->repository->show($id);
         $coverImages = $data->getMedia('cover-image');
         $subcategory = $this->repository->create();
         $users = $this->repository->allCustomer();
 
-        return view('admin.product.edit', compact('data', 'subcategory', 'users', 'coverImages'));
+        return view('admin.product.edit', compact('data', 'subcategory', 'users', 'coverImages', 'districts', 'thanas'));
     }
 
     /**

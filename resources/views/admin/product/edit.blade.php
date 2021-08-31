@@ -195,11 +195,35 @@
                                 <input type="text" class="form-control" id="email" name="email" value="{{ $data->email }}" placeholder="Enter email" maxlength="300">
                             </div>
                             <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" value="{{ $data->address }}" placeholder="Enter address" maxlength="300">
+                                <label for="selectDistrict">District</label>
+                                <select id="selectDistrict" class="form-control selectpicker" data-live-search="true" onchange="getThanas(value)" required>
+                                    <option selected disabled>Select a district</option>
+                                    @foreach($districts as $district)
+                                        <option value="{{ $district->id }}" {{ $data->thana->district_id == $district->id ? 'selected' : null }}>{{ $district->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="address">Previuos Cover</label>
+                                <label for="selectThana">Thana</label>
+                                <select class="form-control" id="selectThana" name="thana_id" data-live-search="true" disabled="">
+                                </select>
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('area') ? ' has-error' : '' }}">
+                                <label for="area">Area</label>
+                                <input type="text" class="form-control" id="area" name="area" value="{{ $data->area }}" maxlength="300" disabled="">
+                                @if ($errors->has('area'))
+                                    <span class="text-danger"><strong>{{ $errors->first('area') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ $data->address }}" maxlength="300" disabled="" >
+                                @if ($errors->has('address'))
+                                    <span class="text-danger"><strong>{{ $errors->first('address') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Previous Cover</label>
                                 @foreach( $coverImages as $cover)
                                     <div class="row">
                                         <div class="col-md-12">
@@ -259,10 +283,39 @@
 
 @section('js')
     <script>
+        let thanas = {!! json_encode( $thanas ?? null ) !!};
+        let selectedThanaId = {!! json_encode( $data->thana_id ?? null ) !!};
+
         (function () {
             setSummary();
             setWarranty();
+            getThanas();
         })()
+        function getThanas() {
+            let districtId = $('#selectDistrict option:selected').val();
+            $('#selectThana').html('');
+            $('#selectThana').attr('disabled', true);
+            $('#area').attr('disabled', true);
+            $('#address').attr('disabled', true);
+            if(districtId != null){
+                let selectedThanas = thanas.filter(thana => thana.district_id == districtId);
+                $('#selectThana').append(`<option value="" selected disabled>Please Select a thana</option>`);
+                $('#selectThana').attr('disabled', false);
+                $('#area').attr('disabled', false);
+                $('#address').attr('disabled', false);
+
+                $.map(selectedThanas, function (value) {
+                    let selectedvalue = value.id == selectedThanaId ? true : false;
+                    $('#selectThana')
+                        .append($("<option></option>")
+                            .attr("value", value.id)
+                            .prop('selected', selectedvalue)
+                            .text(value.name));
+                });
+                $("#selectThana").selectpicker('refresh');
+            }
+
+        }
         function setSummary(){
             var type = $('input[name="product_type"]:checked').val();
             $('.summary').addClass('d-none');
@@ -276,7 +329,6 @@
         }
         function setWarranty(){
             var type = $('input[name="warranty_availability"]:checked').val();
-            console.log(type)
             $('.warranty').addClass('d-none');
             if (type == 1){
                 $('.warranty').removeClass('d-none');
