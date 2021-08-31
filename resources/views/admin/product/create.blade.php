@@ -203,9 +203,30 @@
                                     <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="selectDistrict">District</label>
+                                <select id="selectDistrict" class="form-control selectpicker" data-live-search="true" onchange="getThanas(value)" required>
+                                    <option selected disabled>Select a district</option>
+                                    @foreach($districts as $district)
+                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectThana">Thana</label>
+                                <select class="form-control" id="selectThana" name="thana_id" data-live-search="true" disabled="">
+                                </select>
+                            </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('area') ? ' has-error' : '' }}">
+                                <label for="area">Area</label>
+                                <input type="text" class="form-control" id="area" name="area" placeholder="Enter area" maxlength="300" disabled="" required>
+                                @if ($errors->has('area'))
+                                    <span class="text-danger"><strong>{{ $errors->first('area') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" maxlength="300" required>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" maxlength="300" disabled="" required>
                                 @if ($errors->has('address'))
                                     <span class="text-danger"><strong>{{ $errors->first('address') }}</strong></span>
                                 @endif
@@ -287,6 +308,33 @@
 
 @section('js')
     <script>
+        let thanas = {!! json_encode( $thanas ?? null ) !!};
+        let selectedThanaId = {!! json_encode( $data->thana_id ?? null ) !!};
+
+        function getThanas() {
+            let districtId = $('#selectDistrict option:selected').val();
+            $('#selectThana').html('');
+            $('#selectThana').attr('disabled', true);
+            $('#area').attr('disabled', true);
+            $('#address').attr('disabled', true);
+            if(districtId != null){
+                let selectedThanas = thanas.filter(thana => thana.district_id == districtId);
+                $('#selectThana').append(`<option value="" selected disabled>Please Select a thana</option>`);
+                $('#selectThana').attr('disabled', false);
+                $('#area').attr('disabled', false);
+                $('#address').attr('disabled', false);
+
+                $.map(selectedThanas, function (value) {
+                    $('#selectThana')
+                        .append($("<option></option>")
+                            .attr("value", value.id)
+                            .prop('selected', selectedThanaId)
+                            .text(value.name));
+                });
+                $("#selectThana").selectpicker('refresh');
+            }
+
+        }
         function setSummary(){
             var type = $('input[name="product_type"]:checked').val();
             $('.summary').addClass('d-none');

@@ -5,9 +5,11 @@ namespace App\Repositories;
 
 
 use App\Jobs\SentSellPostNotificationToAdmin;
+use App\Models\District;
 use App\Models\GameOrder;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\Thana;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,6 +104,16 @@ class ProductRepository
         return Product::where('id', '!=', $id)->where('sub_category_id', $cat_id)->where('status', 1)->orderBy('created_at', 'DESC')->take(10)->get();
     }
 
+    public function districts()
+    {
+        return District::all();
+    }
+
+    public function thanas()
+    {
+        return Thana::all();
+    }
+
     public function create()
     {
         return SubCategory::where('status', true)->get();
@@ -113,7 +125,7 @@ class ProductRepository
             'is_negotiable', 'product_type', 'condition_summary', 'phone_no', 'address',
             'used_year', 'used_month', 'used_day', 'warranty_availability',
             'warranty_year', 'warranty_month', 'warranty_day', 'email',
-            'user_id', 'status']);
+            'user_id', 'status', 'thana_id', 'area']);
 
         $isChecked = $request->has('is_negotiable');
 
@@ -154,7 +166,7 @@ class ProductRepository
             'is_negotiable', 'product_type', 'used_year', 'used_month', 'used_day', 'warranty_availability',
             'warranty_year', 'warranty_month', 'warranty_day', 'email',
             'product_no', 'condition_summary', 'phone_no', 'address',
-            'user_id', 'status']);
+            'user_id', 'status', 'thana_id', 'area']);
         $product['is_sold'] = 1;
         $product['is_negotiable'] = $product['is_negotiable'] == false ? null : $product['is_negotiable'];
         $product['status'] = 2;
@@ -197,7 +209,7 @@ class ProductRepository
         }
 
         $data = $request->only(['sub_category_id', 'name', 'description', 'price',
-            'is_negotiable', 'phone_no', 'email', 'address']);
+            'is_negotiable', 'phone_no', 'email', 'address', 'thana_id', 'area']);
 
         if (isset($data['name'])){
             $product->name = $data['name'];
@@ -225,6 +237,14 @@ class ProductRepository
 
         if (isset($data['email'])){
             $product->email = $data['email'];
+        }
+
+        if (isset($data['thana_id'])){
+            $product->thana_id = $data['thana_id'];
+        }
+
+        if (isset($data['area'])){
+            $product->area = $data['area'];
         }
 
         if (isset($data['address'])){
@@ -267,7 +287,7 @@ class ProductRepository
 
     public function show($id)
     {
-        return Product::with('subcategory')->findOrFail($id);
+        return Product::with('subcategory', 'thana.district.division')->findOrFail($id);
     }
 
     public function update($request, $id)
@@ -282,7 +302,7 @@ class ProductRepository
             'is_negotiable', 'product_type', 'is_sold', 'condition_summary', 'phone_no', 'address',
             'used_year', 'used_month', 'used_day', 'warranty_availability',
             'warranty_year', 'warranty_month', 'warranty_day', 'email',
-            'user_id', 'status']);
+            'user_id', 'status', 'thana_id', 'area']);
 
         if (isset($data['sub_category_id'])){
             $product->sub_category_id = $data['sub_category_id'];
@@ -354,6 +374,14 @@ class ProductRepository
 
         if (isset($data['phone_no'])){
             $product->phone_no = $data['phone_no'];
+        }
+
+        if (isset($data['thana_id'])){
+            $product->thana_id = $data['thana_id'];
+        }
+
+        if (isset($data['area'])){
+            $product->area = $data['area'];
         }
 
         if (isset($data['address'])){

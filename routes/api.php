@@ -137,6 +137,11 @@
         $api->get('all-sell-post', 'App\Http\Controllers\API\ProductController@allSellPost');
         //post report
         $api->post('post-report', 'App\Http\Controllers\API\PostReportController@store');
+        //location
+        $api->get('thana-list', 'App\Http\Controllers\API\LocationController@thanas');
+        $api->get('district-list', 'App\Http\Controllers\API\LocationController@districts');
+        $api->get('division-list', 'App\Http\Controllers\API\LocationController@divisions');
+
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');

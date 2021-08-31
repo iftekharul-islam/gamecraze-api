@@ -10,7 +10,7 @@ use League\Fractal\TransformerAbstract;
 
 class ProductTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'subcategory'];
+    protected $availableIncludes = ['user', 'subcategory', 'thana'];
 
     public function transform(Product $product)
     {
@@ -43,6 +43,8 @@ class ProductTransformer extends TransformerAbstract
             'address' => $product->address,
             'slider' => $this->sliderImages($product),
             'email' => $product->email,
+            'area' => $product->area,
+            'thana_id' => $product->thana_id
         ];
     }
 
@@ -55,6 +57,12 @@ class ProductTransformer extends TransformerAbstract
     public function includeUser(Product $product) {
         if (isset($product->user)) {
             return $this->item($product->user, new UserTransformer());
+        }
+    }
+
+    public function includeThana(Product $product) {
+        if (isset($product->thana)) {
+            return $this->item($product->thana, new ThanaTransformer());
         }
     }
 

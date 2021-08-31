@@ -22,7 +22,7 @@ class ThanaRepository
      * @return mixed
      */
     public function store($request) {
-        $thana = $request->only(['name', 'district_id', 'status']);
+        $thana = $request->only(['name', 'district_id', 'status', 'bn_name']);
         $thana['author_id'] = auth()->user()->id;
         $thana['slug'] = Str::slug($thana['name']);
         return Thana::create($thana);
@@ -49,7 +49,7 @@ class ThanaRepository
      */
     public function update($request) {
         $thana = Thana::findOrFail($request->id);
-        $data = $request->only(['name', 'district_id', 'status']);
+        $data = $request->only(['name', 'district_id', 'status', 'bn_name']);
 
         if (isset($data['name'])) {
             $thana->name = $data['name'];

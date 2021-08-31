@@ -38,6 +38,13 @@
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('bn_name') ? ' has-error' : '' }}">
+                                <label for="name">Bangla Name</label>
+                                <input type="text" class="form-control" name="bn_name" placeholder="Enter Bangla Division Name" required>
+                                @if ($errors->has('bn_name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('bn_name') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control" required>

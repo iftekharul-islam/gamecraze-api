@@ -22,7 +22,7 @@ class AreaRepository
      * @return mixed
      */
     public function store($request) {
-        $area = $request->only(['name', 'thana_id', 'status']);
+        $area = $request->only(['name', 'thana_id', 'status', 'bn_name']);
         $area['author_id'] = auth()->user()->id;
         $area['slug'] = Str::slug($area['name']);
         return Area::create($area);
@@ -49,7 +49,7 @@ class AreaRepository
      */
     public function update($request) {
             $area = Area::findOrFail($request->id);
-            $data = $request->only(['name', 'thana_id', 'status']);
+            $data = $request->only(['name', 'thana_id', 'status', 'bn_name']);
 
             if (isset($data['name'])) {
                 $area->name = $data['name'];

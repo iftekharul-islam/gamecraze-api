@@ -25,7 +25,7 @@ class DistrictRepository
      * @return mixed
      */
     public function store($request) {
-        $district = $request->only(['name', 'division_id', 'status']);
+        $district = $request->only(['name', 'division_id', 'status', 'bn_name']);
         $district['author_id'] = auth()->user()->id;
         $district['slug'] = Str::slug($district['name']);
         return District::create($district);
@@ -45,7 +45,7 @@ class DistrictRepository
      */
     public function update($request) {
         $district = District::findOrFail($request->id);
-        $data = $request->only(['name', 'status', 'division_id']);
+        $data = $request->only(['name', 'status', 'division_id', 'bn_name']);
 
         if (isset($data['name'])) {
             $district->name = $data['name'];

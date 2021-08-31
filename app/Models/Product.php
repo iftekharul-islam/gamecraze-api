@@ -14,11 +14,31 @@ class Product extends Model implements HasMedia
     use SoftDeletes;
 
     protected $fillable = [
-        'sub_category_id', 'name', 'description', 'price',
-        'is_negotiable', 'product_type', 'is_sold', 'product_no',
-        'used_year', 'used_month', 'used_day', 'warranty_availability',
-        'warranty_year', 'warranty_month', 'warranty_day', 'email',
-        'user_id', 'status', 'author_id', 'phone_no', 'address', 'condition_summary', 'reason'
+        'sub_category_id',
+        'name',
+        'description',
+        'price',
+        'is_negotiable',
+        'product_type',
+        'is_sold',
+        'product_no',
+        'used_year',
+        'used_month',
+        'used_day',
+        'warranty_availability',
+        'warranty_year',
+        'warranty_month',
+        'warranty_day',
+        'email',
+        'user_id',
+        'status',
+        'author_id',
+        'phone_no',
+        'address',
+        'condition_summary',
+        'reason',
+        'area',
+        'thana_id'
     ];
 
     protected static function boot()
@@ -40,5 +60,9 @@ class Product extends Model implements HasMedia
 
     public function subcategory() {
         return $this->hasOne(SubCategory::class, 'id', 'sub_category_id');
+    }
+
+    public function thana() {
+        return $this->hasOne(Thana::class, 'id', 'thana_id');
     }
 }

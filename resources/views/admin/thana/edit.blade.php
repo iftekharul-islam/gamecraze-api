@@ -33,6 +33,10 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $thana->name }}">
                             </div>
                             <div class="form-group">
+                                <label for="bn_name">Bangla Name</label>
+                                <input type="text" class="form-control" name="bn_name" value="{{ $division->bn_name }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="division_id">District</label>
                                 <select name="division_id" class="form-control selectpicker" data-live-search="true">
                                     @foreach($districts as $district)
