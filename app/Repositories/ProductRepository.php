@@ -69,7 +69,7 @@ class ProductRepository
 
         return $product->whereHas('subcategory', function ($query) {
             $query->where('status', 1)->whereHas('category');
-        })->where('status', 1)->paginate(12);
+        })->where('status', 1)->where('is_sold', 1)->paginate(12);
     }
 
     public function postsById($id)
@@ -96,12 +96,22 @@ class ProductRepository
     {
         return Product::whereHas('subcategory', function ($query) {
                 $query->where('status', 1)->whereHas('category');
-            })->where('status', 1)->orderBy('updated_at', 'DESC')->take(10)->get();
+            })->where('status', 1)
+            ->where('is_sold', 1)
+            ->orderBy('updated_at', 'DESC')
+            ->take(10)
+            ->get();
     }
 
     public function relatedPosts($id, $cat_id)
     {
-        return Product::where('id', '!=', $id)->where('sub_category_id', $cat_id)->where('status', 1)->orderBy('created_at', 'DESC')->take(10)->get();
+        return Product::where('id', '!=', $id)
+            ->where('sub_category_id', $cat_id)
+            ->where('status', 1)
+            ->where('is_sold', 1)
+            ->orderBy('created_at', 'DESC')
+            ->take(10)
+            ->get();
     }
 
     public function districts()

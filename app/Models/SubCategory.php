@@ -34,6 +34,7 @@ class SubCategory extends Model
     public function products() {
         return $this->hasMany(Product::class, 'sub_category_id', 'id')
             ->where('status', 1)
+            ->where('is_sold', 1)
             ->orderBy('updated_at', 'DESC');
     }
 }
