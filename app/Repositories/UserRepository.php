@@ -148,12 +148,13 @@ class UserRepository
                 \Image::make($image)->save(storage_path('app/public/identification/') . $userImage);
                 $user->identification_image = 'storage/identification/' . $userImage;
             }
-            if (isset($userData['address']) || isset($userData['city']) || isset($userData['postCode'])) {
-                $address = Address::find($user->address_id);
-                $address->address = $userData['address'] ?? '';
-                $address->city = $userData['city'];
-                $address->post_code = $userData['postCode'];
-                $address->save();
+            if (isset($userData['address'])) {
+                $address = Address::updateOrCreate([
+                    'id'   => $user->address_id
+                ],[
+                    'address' => $userData['address']
+                ]);
+                $user->address_id = $address->id;
             }
             if (isset($userData['password'])) {
                 $user->password = bcrypt($userData['password']);
