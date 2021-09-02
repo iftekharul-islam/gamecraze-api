@@ -5,11 +5,8 @@ namespace App\Repositories;
 
 
 use App\Jobs\SentSellPostNotificationToAdmin;
-use App\Models\District;
-use App\Models\GameOrder;
 use App\Models\Product;
 use App\Models\SubCategory;
-use App\Models\Thana;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,10 +34,23 @@ class ProductRepository
         return $product->with('user', 'subcategory')->whereHas('subcategory.category')->orderBy('created_at', 'DESC')->get();
     }
 
-    public function apiIndex($search, $subcategory, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange)
+    public function apiIndex($search, $subcategory, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange, $division_id, $district_id, $thana_id)
     {
         $product = Product::query();
 
+        if ($thana_id != ''){
+            $product->where('thana_id', $thana_id);
+        }
+        if ($district_id != '' && $thana_id == ''){
+            $product->whereHas('thana', function ($query) use ($district_id) {
+                $query->where('district_id', $district_id);
+            });
+        }
+        if ($division_id != '' && $district_id == '' && $thana_id == ''){
+            $product->whereHas('thana.district', function ($query) use ($division_id) {
+                $query->where('division_id', $division_id);
+            });
+        }
         if (count($priceRange) > 0){
             $product->whereBetween('price', $priceRange);
         }
@@ -62,7 +72,6 @@ class ProductRepository
         if (count($subcategory) > 0){
             $product->whereIn('sub_category_id', $subcategory);
         }
-
         if ($search != ''){
             $product->where('name', 'like', '%' . $search . '%');
         }

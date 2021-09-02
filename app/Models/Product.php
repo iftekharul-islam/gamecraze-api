@@ -63,6 +63,6 @@ class Product extends Model implements HasMedia
     }
 
     public function thana() {
-        return $this->hasOne(Thana::class, 'id', 'thana_id');
+        return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
 }

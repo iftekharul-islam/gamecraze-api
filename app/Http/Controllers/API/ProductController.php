@@ -35,12 +35,14 @@ class ProductController extends Controller
         $descPrice = $request->input('descPrice') == 1 ? 1 : null;
         $ascDate = $request->input('ascDate') == 1 ? 1 : null;
         $descDate = $request->input('descDate') == 1 ? 1 : null;
+        $division_id = $request->input('division_id') == 'null' ? '' : $request->input('division_id');
+        $district_id = $request->input('district_id') == 'null' ? '' : $request->input('district_id');
+        $thana_id = $request->input('thana_id') == 'null' ? '' : $request->input('thana_id');
         $sortNew = $request->input('sortNew') == 1 ? $sortType[] = 1 : null;
         $sortUsed = $request->input('sortUsed') == 1 ? $sortType[] = 2 : null;
 
         if ($request->input('priceRange')){
             $priceRange = explode(',', $request->input('priceRange'));
-            logger($priceRange);
         }
         if ($request->input('subcategory')) {
             $items = explode(',', $request->input('subcategory'));
@@ -53,7 +55,7 @@ class ProductController extends Controller
         else {
             $search = "";
         }
-        $data = $this->repository->apiIndex($search, $subcategories, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange);
+        $data = $this->repository->apiIndex($search, $subcategories, $ascDate, $descDate, $ascPrice, $descPrice, $sortType, $priceRange, $division_id, $district_id, $thana_id);
 
         return $this->response->paginator($data, new ProductTransformer());
     }

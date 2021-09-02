@@ -24,6 +24,10 @@ class District extends Model
     }
 
     public function division() {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(Division::class, 'division_id', 'id');
+    }
+
+    public function thanas() {
+        return $this->hasMany(Thana::class, 'district_id', 'id');
     }
 }
