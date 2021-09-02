@@ -5,8 +5,10 @@ namespace App\Repositories;
 
 
 use App\Jobs\SentSellPostNotificationToAdmin;
+use App\Models\District;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\Thana;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
