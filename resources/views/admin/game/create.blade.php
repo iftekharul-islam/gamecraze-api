@@ -277,7 +277,6 @@
             $('.ckeditor').ckeditor();
         });
         $(document).on("change", ".custom-file-input", function() {
-            console.log('hello');
             var fileName = $(this).val().split("\\").pop();
             console.log(fileName);
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);

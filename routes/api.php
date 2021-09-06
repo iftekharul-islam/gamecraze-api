@@ -123,12 +123,6 @@
         $api->get('sell-posts/{id}', 'App\Http\Controllers\API\ProductController@postsById');
         //active sell post by id
         $api->get('sell-post/{id}', 'App\Http\Controllers\API\ProductController@postById');
-        //bkash
-//        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
-        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
-        $api->post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
-        $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
-
         $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
         $api->get('related-sell-posts/{id}/{cat_id}', 'App\Http\Controllers\API\ProductController@relatedSellPosts');
         //user details
@@ -141,7 +135,11 @@
         $api->get('thana-list', 'App\Http\Controllers\API\LocationController@thanas');
         $api->get('district-list', 'App\Http\Controllers\API\LocationController@districts');
         $api->get('division-list', 'App\Http\Controllers\API\LocationController@divisions');
-
+        //bkash
+//        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
+        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
+        $api->post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
+        $api->post('/confirm-bkash', '\App\Http\Controllers\TransactionHistoryController@executeBkashPayment');
         $api->group(['middleware' => 'auth:api'], function($api) {
             // Users
             $api->put('users', 'App\Http\Controllers\API\AuthController@update');

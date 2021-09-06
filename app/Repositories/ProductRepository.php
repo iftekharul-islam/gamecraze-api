@@ -103,14 +103,14 @@ class ProductRepository
         return Product::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
     }
 
-    public function latestPosts()
+    public function latestPosts($number = 10)
     {
         return Product::whereHas('subcategory', function ($query) {
                 $query->where('status', 1)->whereHas('category');
             })->where('status', 1)
             ->where('is_sold', 1)
             ->orderBy('updated_at', 'DESC')
-            ->take(10)
+            ->take($number)
             ->get();
     }
 
