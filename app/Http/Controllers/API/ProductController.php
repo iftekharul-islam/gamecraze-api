@@ -87,9 +87,10 @@ class ProductController extends Controller
         return $this->response->collection($data, new ProductTransformer());
     }
 
-    public function lastedSellPosts()
+    public function lastedSellPosts(Request $request)
     {
-        $data = $this->repository->latestPosts();
+        $number = $request->number;
+        $data = $this->repository->latestPosts($number);
 
         return $this->response->collection($data, new ProductTransformer());
     }
