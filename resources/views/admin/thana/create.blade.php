@@ -50,8 +50,8 @@
                                 <label for="district_id">District</label>
                                 @if (count($districts) > 0)
                                     <select name="district_id" id="district_id" class="form-control selectpicker" data-live-search="true" required>
+                                        <option>Select a district</option>
                                         @foreach($districts as $district)
-                                            <option>Select a district</option>
                                             <option value="{{$district->id}}">{{$district->name}}</option>
                                         @endforeach
                                     </select>
