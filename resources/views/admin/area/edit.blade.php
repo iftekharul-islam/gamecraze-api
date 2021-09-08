@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bn_name">Bangla Name</label>
-                                <input type="text" class="form-control" name="bn_name" value="{{ $division->bn_name }}">
+                                <input type="text" class="form-control" name="bn_name" value="{{ $area->bn_name }}">
                             </div>
                             <div class="form-group">
                                 <label for="division_id">District</label>
