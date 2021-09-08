@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bn_name">Bangla Name</label>
-                                <input type="text" class="form-control" name="bn_name" value="{{ $division->bn_name }}">
+                                <input type="text" class="form-control" name="bn_name" value="{{ $thana->bn_name }}">
                             </div>
                             <div class="form-group">
                                 <label for="division_id">District</label>
@@ -42,7 +42,6 @@
                                     @foreach($districts as $district)
                                         @if($thana->district_id == $district->id)
                                             <option value="{{ $district->id }}" selected>{{ $district->name }}</option>
-                                            <?php continue 1; ?>
                                         @endif
                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                                     @endforeach
