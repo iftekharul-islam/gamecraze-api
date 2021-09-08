@@ -68,6 +68,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('disk-condition/destroy/{id}','\App\Http\Controllers\DiskConditionController@destroy')->name('diskCondition.destroy');
         // Rent Post Crud
         Route::get('rent-posts','\App\Http\Controllers\RentController@index')->name('rentPost.all');
+        Route::get('rent-export','\App\Http\Controllers\RentController@export')->name('rent.export');
         Route::get('rent-post/{id}','\App\Http\Controllers\RentController@show')->name('rentPost.show');
         Route::post('rent-post/approve/{id}','\App\Http\Controllers\RentController@approve')->name('rentPost.approve');
         Route::post('rent-post/reject/{id}','\App\Http\Controllers\RentController@reject')->name('rentPost.reject');
