@@ -23,7 +23,6 @@ class ThanaRepository
      */
     public function store($request) {
         $thana = $request->only(['name', 'district_id', 'status', 'bn_name']);
-        $thana['author_id'] = auth()->user()->id;
         $thana['slug'] = Str::slug($thana['name']);
         return Thana::create($thana);
     }

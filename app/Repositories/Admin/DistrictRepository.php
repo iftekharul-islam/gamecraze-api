@@ -26,7 +26,6 @@ class DistrictRepository
      */
     public function store($request) {
         $district = $request->only(['name', 'division_id', 'status', 'bn_name']);
-        $district['author_id'] = auth()->user()->id;
         $district['slug'] = Str::slug($district['name']);
         return District::create($district);
     }

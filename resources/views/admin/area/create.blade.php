@@ -50,8 +50,8 @@
                                 <label for="thana_id">Thana</label>
                                 @if (count($thanas) > 0)
                                     <select name="thana_id" id="thana_id" class="form-control selectpicker" data-live-search="true" required>
+                                        <option>Select a thana</option>
                                         @foreach($thanas as $thana)
-                                            <option>Select a thana</option>
                                             <option value="{{$thana->id}}">{{$thana->name}}</option>
                                         @endforeach
                                     </select>
