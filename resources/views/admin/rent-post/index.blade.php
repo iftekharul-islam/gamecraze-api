@@ -73,7 +73,9 @@
                     </div>
                     <div class="col-12">
                         <div class="card">
-                            <!-- /.card-header -->
+                            <div class="card-header">
+                                <a href="{{ route('rent.export', ['type_id' => $disk_type, 'status' => $status] ) }}" class="btn btn-primary">Export Lend Posts</a>
+                            </div>
                             <div class="card-body">
                                 @if (count($rents) > 0)
                                 <table id="example2" class="table table-bordered table-hover">
