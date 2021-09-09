@@ -44,7 +44,8 @@ class ProductTransformer extends TransformerAbstract
             'slider' => $this->sliderImages($product),
             'email' => $product->email,
             'area' => $product->area,
-            'thana_id' => $product->thana_id
+            'thana_id' => $product->thana_id,
+            'reason' => $product->reason
         ];
     }
 
