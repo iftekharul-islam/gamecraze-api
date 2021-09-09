@@ -16,10 +16,10 @@ class ProductController extends Controller
     public function __construct(ProductRepository $repository){
         $this->repository = $repository;
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
