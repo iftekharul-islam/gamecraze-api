@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BasePrice;
+use App\Exports\RentExport;
 use App\Models\Platform;
 use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\RentRepository;
 
@@ -29,37 +30,17 @@ class RentController extends Controller
      */
     public function index(Request $request)
     {
+        $disk_type = $request->disk_type ?? '';
+        $status = $request->status ?? '';
         $rents = $this->rentRepository->all($request);
 
-        return view('admin.rent-post.index', compact('rents'));
+        return view('admin.rent-post.index', compact('rents', 'disk_type', 'status'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Request $request, $id)
     {
@@ -89,11 +70,10 @@ class RentController extends Controller
         $this->rentRepository->reject($request, $id);
         return back()->with('status', 'Rent post Rejected!!');
     }
+
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -103,11 +83,9 @@ class RentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -137,15 +115,27 @@ class RentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
         $this->rentRepository->delete($id);
         return back()->with('status', 'Disk Condition deleted successfully');
 
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function export(Request $request)
+    {
+        $type_id = $request->type_id;
+        $status = $request->status;
+        $date = Carbon::now()->format('d-m-Y');
+        ob_end_clean();
+        ob_start();
+        return (new RentExport($type_id, $status))->download('rent-export-'.  time() . '-' . $date  . '.xls');
     }
 }
