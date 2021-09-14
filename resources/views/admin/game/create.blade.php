@@ -137,7 +137,7 @@
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description">Description</label><label for="description" class="text-danger">*</label>
-                                <textarea class="form-control" id="description" name="description"
+                                <textarea class="form-control ckeditor" id="description" name="description"
                                           placeholder="Enter Description" required></textarea>
                                 @if ($errors->has('description'))
                                     <span
@@ -277,7 +277,6 @@
             $('.ckeditor').ckeditor();
         });
         $(document).on("change", ".custom-file-input", function() {
-            console.log('hello');
             var fileName = $(this).val().split("\\").pop();
             console.log(fileName);
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);

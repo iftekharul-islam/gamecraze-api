@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -10,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, HasRoles;
+    use HasApiTokens, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +41,41 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * Override parent boot and Call deleting event
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::deleting(function($users) {
+            foreach ($users->rents()->get() as $rent) {
+                $rent->delete();
+            }
+
+            foreach ($users->lends()->get() as $lend) {
+                $lend->delete();
+            }
+
+            foreach ($users->lenderRating()->get() as $rating) {
+                $rating->delete();
+            }
+
+            foreach ($users->RenterRating()->get() as $rating) {
+                $rating->delete();
+            }
+
+            foreach ($users->transactionHistory()->get() as $transaction) {
+                $transaction->delete();
+            }
+
+            foreach ($users->orders()->get() as $order) {
+                $order->delete();
+            }
+        });
+    }
     public function exchanges() {
         return $this->hasMany(Exchange::class);
     }
@@ -79,5 +114,10 @@ class User extends Authenticatable
     public function RenterRating()
     {
         return $this->hasMany(Rating::class, 'renter_id', 'id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(GameOrder::class, 'user_id', 'id');
     }
 }

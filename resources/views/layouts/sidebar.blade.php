@@ -148,6 +148,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('withdraw.request') }}" class="nav-link {{ (request()->routeIs('withdraw.request')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Withdraw Requests
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('rentPost.all') }}" class="nav-link {{ (request()->routeIs('rentPost.all')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -155,7 +163,7 @@
                         </p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-history"></i>
@@ -209,6 +217,43 @@
                         <i class="nav-icon fa fa-history"></i>
                         <p>
                             Meta
+                        </p>
+                    </a>
+                </li>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block">Game Bazar</a>
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a href="{{ route('category') }}" class="nav-link {{ Request()->routeIs('category') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Category
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('subcategory') }}" class="nav-link {{ Request()->routeIs('subcategory') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                           Sub Category
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('product') }}" class="nav-link {{ Request()->routeIs('product') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-history"></i>
+                        <p>
+                            Product
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('post.report') }}" class="nav-link {{ (request()->routeIs('post.report', 'post.report.show')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Reports
                         </p>
                     </a>
                     <hr>

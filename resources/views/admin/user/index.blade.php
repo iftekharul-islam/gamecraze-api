@@ -127,21 +127,24 @@
                                                 @endif
                                             </td>
                                             <td>
-{{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
-{{--                                                   href="{{ route('user.edit', $user->id) }}">--}}
-{{--                                                    <i class="fas fa-wallet"></i></a>--}}
-                                                <a class="btn btn-sm btn-primary mr-3"
-                                                   href="{{ route('user.edit', $user->id) }}"><i
-                                                        class="far fa-edit"></i></a>
-{{--                                                <button class="btn btn-danger btn-sm" type="button"--}}
-{{--                                                        onclick="deleteGame({{ $game->id }})">--}}
-{{--                                                    <i class="far fa-trash-alt"></i></button>--}}
-{{--                                                <form id="delete-form-{{ $game->id }}"--}}
-{{--                                                      action="{{ route('game.destroy', $game->id) }}"--}}
-{{--                                                      method="post" style="display: none;">--}}
-{{--                                                    @csrf--}}
-{{--                                                    @method('DELETE')--}}
-                                                </form>
+                                                <div class="d-flex">
+
+                                                    {{--                                                <a class="btn btn-sm btn-primary mr-3"--}}
+                                                    {{--                                                   href="{{ route('user.edit', $user->id) }}">--}}
+                                                    {{--                                                    <i class="fas fa-wallet"></i></a>--}}
+                                                    <a class="btn btn-sm btn-primary mr-3"
+                                                       href="{{ route('user.edit', $user->id) }}"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <button class="btn btn-danger btn-sm" type="button"
+                                                            onclick="deleteUser({{ $user->id }})">
+                                                        <i class="far fa-trash-alt"></i></button>
+                                                    <form id="delete-form-{{ $user->id }}"
+                                                          action="{{ route('user.delete', $user->id) }}"
+                                                          method="post" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -168,7 +171,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        function deleteGame(id) {
+        function deleteUser(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success ml-2',

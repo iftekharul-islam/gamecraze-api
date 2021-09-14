@@ -39,10 +39,18 @@
                                     <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="false-padding-bottom-form form-group{{ $errors->has('bn_name') ? ' has-error' : '' }}">
+                                <label for="name">Bangla Name</label>
+                                <input type="text" class="form-control" name="bn_name" placeholder="Enter Bangla Thana Name" required>
+                                @if ($errors->has('bn_name'))
+                                    <span class="text-danger"><strong>{{ $errors->first('bn_name') }}</strong></span>
+                                @endif
+                            </div>
                             <div class="false-padding-bottom-form form-group{{ $errors->has('district_id') ? ' has-error' : '' }}">
                                 <label for="district_id">District</label>
                                 @if (count($districts) > 0)
                                     <select name="district_id" id="district_id" class="form-control selectpicker" data-live-search="true" required>
+                                        <option>Select a district</option>
                                         @foreach($districts as $district)
                                             <option value="{{$district->id}}">{{$district->name}}</option>
                                         @endforeach

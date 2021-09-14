@@ -91,6 +91,7 @@ Route::prefix('admin')->group(function () {
         Route::post('store/user','\App\Http\Controllers\UserController@store')->name('user.store');
         Route::get('user/edit/{id}','\App\Http\Controllers\UserController@edit')->name('user.edit');
         Route::post('user/update/{id}','\App\Http\Controllers\UserController@update')->name('user.update');
+        Route::delete('user/delete/{id}','\App\Http\Controllers\UserController@destory')->name('user.delete');
         Route::post('user/verification/{id}','\App\Http\Controllers\UserController@UserIdVerification')->name('user.verification');
         //user export
         Route::get('customer/export/', '\App\Http\Controllers\UserController@export')->name('customer.export');
@@ -120,10 +121,15 @@ Route::prefix('admin')->group(function () {
         Route::get('extend-requests','\App\Http\Controllers\ExtendLendController@index')->name('extend.request');
         Route::get('approve-request/{id}','\App\Http\Controllers\ExtendLendController@approve')->name('extend.request.approve');
         Route::get('reject-requests/{id}','\App\Http\Controllers\ExtendLendController@reject')->name('extend.request.reject');
-//        Route::get('discount/edit/{id}','\App\Http\Controllers\DiscountController@edit')->name('discount.edit');
-//        Route::post('discount/update/{id}','\App\Http\Controllers\DiscountController@update')->name('discount.update');
-//        Route::delete('discount/destroy/{id}','\App\Http\Controllers\DiscountController@destroy')->name('discount.destroy');
-
+        //Post Report
+        Route::get('post-report','\App\Http\Controllers\PostReportController@index')->name('post.report');
+        Route::get('post-report/show/{id}','\App\Http\Controllers\PostReportController@show')->name('post.report.show');
+        Route::get('approve-request/{id}','\App\Http\Controllers\PostReportController@approve')->name('post.report.approve');
+        Route::get('reject-requests/{id}','\App\Http\Controllers\PostReportController@reject')->name('post.report.reject');
+        //withdraw request
+        Route::get('withdraw-requests','\App\Http\Controllers\WithdrawRequestController@index')->name('withdraw.request');
+        Route::get('withdraw-approve/{id}','\App\Http\Controllers\WithdrawRequestController@approve')->name('withdraw.request.approve');
+        Route::get('withdraw-reject/{id}','\App\Http\Controllers\WithdrawRequestController@reject')->name('withdraw.request.reject');
         // Coupon CRUD
         Route::get('coupon','\App\Http\Controllers\CouponController@index')->name('coupon');
         Route::get('create/discount','\App\Http\Controllers\CouponController@create')->name('coupon.create');
@@ -224,6 +230,34 @@ Route::prefix('admin')->group(function () {
         Route::get('meta/edit/{id}','\App\Http\Controllers\MetaController@edit')->name('meta.edit');
         Route::post('meta/update/{id}','\App\Http\Controllers\MetaController@update')->name('meta.update');
         Route::delete('meta/delete/{id}','\App\Http\Controllers\MetaController@destroy')->name('meta.delete');
+
+        //Category
+        Route::get('category','\App\Http\Controllers\CategoryController@index')->name('category');
+        Route::get('category/create','\App\Http\Controllers\CategoryController@create')->name('category.create');
+        Route::post('category/store','\App\Http\Controllers\CategoryController@store')->name('category.store');
+        Route::get('category/edit/{id}','\App\Http\Controllers\CategoryController@edit')->name('category.edit');
+        Route::post('category/update/{id}','\App\Http\Controllers\CategoryController@update')->name('category.update');
+        Route::delete('category/delete/{id}','\App\Http\Controllers\CategoryController@destroy')->name('category.destroy');
+
+        //Sub Category
+        Route::get('sub-category','\App\Http\Controllers\SubCategoryController@index')->name('subcategory');
+        Route::get('sub-category/create','\App\Http\Controllers\SubCategoryController@create')->name('subcategory.create');
+        Route::post('sub-category/store','\App\Http\Controllers\SubCategoryController@store')->name('subcategory.store');
+        Route::get('sub-category/{id}','\App\Http\Controllers\SubCategoryController@show')->name('subcategory.show');
+        Route::get('sub-category/edit/{id}','\App\Http\Controllers\SubCategoryController@edit')->name('subcategory.edit');
+        Route::post('sub-category/update/{id}','\App\Http\Controllers\SubCategoryController@update')->name('subcategory.update');
+        Route::delete('sub-category/delete/{id}','\App\Http\Controllers\SubCategoryController@destroy')->name('subcategory.destroy');
+
+        //Product
+        Route::get('product','\App\Http\Controllers\ProductController@index')->name('product');
+        Route::get('product/create','\App\Http\Controllers\ProductController@create')->name('product.create');
+        Route::post('product/store','\App\Http\Controllers\ProductController@store')->name('product.store');
+        Route::get('product/{id}','\App\Http\Controllers\ProductController@show')->name('product.show');
+        Route::get('product/edit/{id}','\App\Http\Controllers\ProductController@edit')->name('product.edit');
+        Route::post('product/update/{id}','\App\Http\Controllers\ProductController@update')->name('product.update');
+        Route::delete('product/delete/{id}','\App\Http\Controllers\ProductController@destroy')->name('product.destroy');
+        Route::get('product/approve/{id}','\App\Http\Controllers\ProductController@approve')->name('product.approve');
+        Route::post('product/reject/{id}','\App\Http\Controllers\ProductController@reject')->name('product.reject');
 
         //bkash
 //        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');

@@ -12,10 +12,10 @@ class LendPostMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $post;
+
     /**
-     * Create a new message instance.
-     *
-     * @return void
+     * LendPostMail constructor.
+     * @param $post
      */
     public function __construct($post)
     {

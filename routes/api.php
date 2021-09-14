@@ -1,8 +1,6 @@
     <?php
 
-    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\HomeController;
 
     /*
     |--------------------------------------------------------------------------
@@ -113,6 +111,30 @@
         // games exists in rent table
         $api->get('game-exist-in-rent/{slug}', 'App\Http\Controllers\API\RentController@gameExistInRent');
 
+        // Category list
+        $api->get('categories', 'App\Http\Controllers\API\ProductController@categoryList');
+        // 4 category list
+        $api->get('category-list', 'App\Http\Controllers\API\ProductController@subCategoryfixedList');
+        //subcategory list
+        $api->get('sub-categories', 'App\Http\Controllers\API\ProductController@subCategoryList');
+        //all active sell post
+        $api->get('sell-posts', 'App\Http\Controllers\API\ProductController@index');
+        //all active sell post by id
+        $api->get('sell-posts/{id}', 'App\Http\Controllers\API\ProductController@postsById');
+        //active sell post by id
+        $api->get('sell-post/{id}', 'App\Http\Controllers\API\ProductController@postById');
+        $api->get('latest-sell-posts', 'App\Http\Controllers\API\ProductController@lastedSellPosts');
+        $api->get('related-sell-posts/{id}/{cat_id}', 'App\Http\Controllers\API\ProductController@relatedSellPosts');
+        //user details
+        $api->get('user/details/{id}', 'App\Http\Controllers\API\UserController@show');
+        //all sell post
+        $api->get('all-sell-post', 'App\Http\Controllers\API\ProductController@allSellPost');
+        //post report
+        $api->post('post-report', 'App\Http\Controllers\API\PostReportController@store');
+        //location
+        $api->get('thana-list', 'App\Http\Controllers\API\LocationController@thanas');
+        $api->get('district-list', 'App\Http\Controllers\API\LocationController@districts');
+        $api->get('division-list', 'App\Http\Controllers\API\LocationController@divisions');
         //bkash
 //        $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@getToken');
         $api->post('/checkout/token/grant', '\App\Http\Controllers\TransactionHistoryController@createPayment');
@@ -125,7 +147,6 @@
             $api->post('locale-update', 'App\Http\Controllers\API\AuthController@updateLocale');
             $api->post('update-user-profile-image', 'App\Http\Controllers\API\AuthController@updateProfileImage');
             $api->get('users', 'App\Http\Controllers\API\UserController@index');
-            $api->get('user/details', 'App\Http\Controllers\API\UserController@show');
             $api->delete('user/destroy/{id}', 'App\Http\Controllers\API\AuthController@destroy');
             $api->post('logout', 'App\Http\Controllers\API\AuthController@logout');
             $api->post('user-phone-email-validation', 'App\Http\Controllers\API\AuthController@validatePhoneEmail');
@@ -177,6 +198,13 @@
             $api->get('available-rent/{slug}', 'App\Http\Controllers\API\RentController@availableRent');
             //lend extend request
             $api->post('extend-lend', 'App\Http\Controllers\API\ExtendLendController@store');
+            //Withdraw request
+            $api->post('withdraw-request', 'App\Http\Controllers\WithdrawRequestController@store');
+            //sell post
+            $api->get('my-sell-posts', 'App\Http\Controllers\API\ProductController@mySellPosts');
+            $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
+            $api->post('sold-status-update', 'App\Http\Controllers\API\ProductController@soldStatusUpdate');
+            $api->post('sell-post-update', 'App\Http\Controllers\API\ProductController@update');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games

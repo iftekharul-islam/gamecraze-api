@@ -15,6 +15,7 @@ class DivisionTransformer extends TransformerAbstract
         return [
             'id' => $division->id,
             'name' => $division->name,
+            'bn_name' => $division->bn_name,
             'status' => $division->status,
         ];
     }

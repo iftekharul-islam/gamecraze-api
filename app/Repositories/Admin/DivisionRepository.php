@@ -21,8 +21,7 @@ class DivisionRepository
      * @return mixed
      */
     public function store($request) {
-        $division = $request->only(['name', 'status']);
-        $division['author_id'] = auth()->user()->id;
+        $division = $request->only(['name', 'status', 'bn_name']);
         $division['slug'] = Str::slug($division['name']);
         return Division::create($division);
     }

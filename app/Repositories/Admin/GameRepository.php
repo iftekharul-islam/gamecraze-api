@@ -9,6 +9,7 @@ use App\Models\BasePrice;
 use App\Models\Game;
 use App\Models\Genre;
 use App\Models\Platform;
+use App\Models\Rent;
 use App\Models\Screenshots;
 use App\Models\Video;
 use App\Models\VideoUrl;
@@ -269,6 +270,10 @@ class GameRepository
     {
         $game = Game::findOrFail($id);
         if ($game) {
+            $existOnPost = Rent::where('game_id', $game->id)->count();
+            if($existOnPost > 0){
+                return false;
+            }
             $game->delete();
             return true;
         }

@@ -18,6 +18,7 @@ class ThanaTransformer extends TransformerAbstract
         return [
             'id' => $thana->id,
             'name' => $thana->name,
+            'bn_name' => $thana->bn_name,
             'district_id' => $thana->district_id,
             'status' => $thana->status,
         ];
