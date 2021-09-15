@@ -115,8 +115,6 @@ class OtpRepository
 
         $address = Address::create([
             'address' => null,
-            'city' => null,
-            'post_code' => null
         ]);
         $user->address_id = $address->id;
         $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;

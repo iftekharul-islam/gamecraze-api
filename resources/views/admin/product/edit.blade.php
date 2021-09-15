@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea class="form-control ckeditor" id="description" name="description"
+                                <textarea class="form-control" id="description" name="description"
                                           placeholder="Enter Description">{{ $data->description }}</textarea>
                             </div>
                             <div class="form-group">
