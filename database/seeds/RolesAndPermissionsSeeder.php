@@ -19,15 +19,13 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $user = new User();
-        $user->name = 'tushar';
-        $user->email = 'tushar@gmail.com';
+        $user->name = 'iftekhar';
+        $user->email = 'iftekhar@gmail.com';
         $user->password = bcrypt('password');
-        $user->phone_number = '01770353601';
+        $user->phone_number = '01521466101';
 
         $address = Address::create([
-            'address' => null,
-            'city' => null,
-            'post_code' => null
+            'address' => '11/18 pallabi, mirpur 12',
         ]);
         $user->address_id = $address->id;
 

@@ -19,10 +19,12 @@ class AddReferralCodeColumnToUsersTable extends Migration
         });
 
         $users = \App\Models\User::all();
-        foreach ($users as $user){
-            if ($user->slug == null){
-                $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;
-                $user->save();
+        if(count($users) > 0){
+            foreach ($users as $user){
+                if ($user->slug == null){
+                    $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;
+                    $user->save();
+                }
             }
         }
     }
