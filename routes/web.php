@@ -119,8 +119,8 @@ Route::prefix('admin')->group(function () {
 
         //Extend
         Route::get('extend-requests','\App\Http\Controllers\ExtendLendController@index')->name('extend.request');
-        Route::get('approve-request/{id}','\App\Http\Controllers\ExtendLendController@approve')->name('extend.request.approve');
-        Route::get('reject-requests/{id}','\App\Http\Controllers\ExtendLendController@reject')->name('extend.request.reject');
+        Route::get('lend-approve-request/{id}','\App\Http\Controllers\ExtendLendController@approve')->name('extend.approve');
+        Route::get('lend-reject-requests/{id}','\App\Http\Controllers\ExtendLendController@reject')->name('extend.reject');
         //Post Report
         Route::get('post-report','\App\Http\Controllers\PostReportController@index')->name('post.report');
         Route::get('post-report/show/{id}','\App\Http\Controllers\PostReportController@show')->name('post.report.show');

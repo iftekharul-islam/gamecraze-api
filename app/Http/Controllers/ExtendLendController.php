@@ -26,6 +26,7 @@ class ExtendLendController extends Controller
     public function index()
     {
         $data = ExtendLend::with('user', 'lend')->get();
+//        return $data;
 
         return view('admin.extend_lend.index', compact('data'));
     }
