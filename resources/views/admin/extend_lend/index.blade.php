@@ -43,6 +43,12 @@
                 @endif
                 <div class="row">
                     <div class="col-12">
+                        <div class="callout callout-info">
+                            <h5><i class="fas fa-info"></i> Note:</h5>
+                            Please don't accept any extended request whereof  has to completed two days or more days due . Only accept whereof due one day only.
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 @if (count($data) > 0)
