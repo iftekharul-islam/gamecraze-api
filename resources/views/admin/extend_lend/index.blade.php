@@ -91,7 +91,7 @@
                                                         <button class="btn btn-danger btn-sm" type="button"
                                                                 onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                         <form id="reject-form-{{ $item->id }}"
-                                                              action="{{ route('extend.approve', $item->id) }}"
+                                                              action="{{ route('extend.reject', $item->id) }}"
                                                               method="get" class="d-none">
                                                         </form>
                                                     @else
