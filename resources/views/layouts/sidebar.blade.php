@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('all-game') }}" class="nav-link {{ (request()->routeIs('all-game', 'game.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-gamepad"></i>
                         <p>
                             Games
                         </p>
@@ -65,7 +65,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('all-article') }}" class="nav-link {{ (request()->routeIs('all-article')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             News and articles
                         </p>
@@ -73,7 +73,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('all-platform') }}" class="nav-link {{ (request()->routeIs('all-platform', 'platform.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-flag-usa"></i>
                         <p>
                             Platform
                         </p>
@@ -106,7 +106,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('coupon') }}" class="nav-link {{ (request()->routeIs('coupon', 'coupon.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cash-register"></i>
+                        <i class="nav-icon fas fa-scroll"></i>
                         <p>
                             Coupon
                         </p>
@@ -133,7 +133,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('cover.all') }}" class="nav-link {{ (request()->routeIs('cover.all', 'cover.create')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-film"></i>
+                        <i class="nav-icon fas fa-images"></i>
                         <p>
                             Cover Images
                         </p>
@@ -141,7 +141,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('extend.request') }}" class="nav-link {{ (request()->routeIs('extend.request', 'extend.request.approve', 'extend.request.reject')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-plus-square"></i>
                         <p>
                             Extend Requests
                         </p>
@@ -149,7 +149,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('withdraw.request') }}" class="nav-link {{ (request()->routeIs('withdraw.request')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-money-bill-wave"></i>
                         <p>
                             Withdraw Requests
                         </p>
@@ -166,7 +166,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('lend.all') }}" class="nav-link {{ Request()->routeIs('lend.all') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-history"></i>
+                        <i class="nav-icon fas fa-book-medical"></i>
                         <p>
                             Rent History
                         </p>
@@ -174,7 +174,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('orders.all') }}" class="nav-link {{ Request()->routeIs('orders.all') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-history"></i>
+                        <i class="nav-icon fas fa-book-reader"></i>
                         <p>
                             Orders
                         </p>
@@ -182,7 +182,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('transaction.history') }}" class="nav-link {{ Request()->routeIs('transaction.history') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-history"></i>
+                        <i class="nav-icon fas fa-wallet"></i>
                         <p>
                             Transaction history
                         </p>
@@ -190,7 +190,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('referral.history') }}" class="nav-link {{ Request()->routeIs('referral.history') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-history"></i>
+                        <i class="nav-iconfas fa-atlas"></i>
                         <p>
                             Referral history
                         </p>
@@ -206,7 +206,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('notice') }}" class="nav-link {{ Request()->routeIs('notice') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-history"></i>
+                        <i class="nav-icon fas fa-copy"></i>
                         <p>
                            Notice board
                         </p>
