@@ -13,14 +13,11 @@ class CouponController extends Controller
 {
     public function applyCode(Request $request)
     {
-        logger($request->promo);
         $today = Carbon::today();
         $coupon = Coupon::where('code', $request->promo)->where('status', true)
                 ->where('start_date', '<=', $today)->where('end_date', '>=', $today)
                 ->first();
-        logger($coupon);
         if (!$coupon){
-            logger('coupon not found');
             return $this->response->array([
                 'coupon_id' => null,
                 'amount' => 0,
@@ -28,7 +25,6 @@ class CouponController extends Controller
             ]);
         }
         if ($coupon->limit != null) {
-            logger('coupon in limit');
             $userUsed = CouponUser::where('coupon_id', $coupon->id)->where('user_id', Auth::user()->id)->count();
 
             if ($userUsed >= $coupon->limit){
@@ -40,7 +36,6 @@ class CouponController extends Controller
             }
         }
         if ($coupon->set_user_id != null && $coupon->set_user_id != Auth::user()->id) {
-            logger('coupon in set user id');
             return $this->response->array([
                 'coupon_id' => $coupon->id,
                 'amount' => 0,
@@ -48,9 +43,7 @@ class CouponController extends Controller
             ]);
         }
 
-        $user_type = Auth::user()->id_verified == 1 ? config('gamehub.user_type.elite') : config('gamehub.user_type.rookie');
-        logger("user type");
-        logger($user_type);
+        $user_type = Auth::user()->is_verified == 1 ? config('gamehub.user_type.elite') : config('gamehub.user_type.rookie');
 
         if ($coupon->user_type != null && $coupon->user_type != $user_type) {
             logger('coupon in user type');
@@ -60,9 +53,7 @@ class CouponController extends Controller
                 'error' => true
             ]);
         }
-
-        logger('coupon in general');
-        $amount = $this->amountCalculatuon($coupon, $request);
+        $amount = $this->amountCalculation($coupon, $request);
         return $this->response->array([
             'coupon_id' => $coupon->id,
             'amount' => $amount,
@@ -75,7 +66,7 @@ class CouponController extends Controller
      * @param $request
      * @return float|int
      */
-    public function amountCalculatuon($coupon, $request)
+    public function amountCalculation($coupon, $request)
     {
         $amount = 0;
         if ($coupon->amount_type == config('gamehub.amount_type.flat')) {
