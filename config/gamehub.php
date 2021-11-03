@@ -28,8 +28,8 @@ return [
     'referred_amount' => 50,
 
     'delivery_charge' => 60,
-    'commission' => 0.15,
-    'commission_amount' => 15, // calculate in percentage
+    'commission' => 0.20,
+    'commission_amount' => 20, // calculate in percentage
 
     'discount_on_commission' => true,
     'digital_game_discount' => 20,
