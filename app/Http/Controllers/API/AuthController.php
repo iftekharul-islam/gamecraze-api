@@ -83,12 +83,15 @@ class AuthController extends BaseController
 
     /**
      * @param UserLoginRequest $request
-     * @return int
+     * @return \Dingo\Api\Http\Response
      */
     public function login(UserLoginRequest $request)
     {
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS, post, get');
+        header("Access-Control-Max-Age", "3600");
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+        header("Access-Control-Allow-Credentials", "true");
         $token = $this->loginService->login($request);
-        logger($token);
         if ($token == false) {
             return $this->response->array([
                 'error' => true,
