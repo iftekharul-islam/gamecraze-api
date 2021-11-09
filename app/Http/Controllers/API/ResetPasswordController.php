@@ -78,30 +78,17 @@ class ResetPasswordController extends BaseController
             ]);
         }
 
-//        if (User::where('phone_number', $request->phone_number)->where('id', '!=', $token->user_id)->count() > 0) {
-//            return $this->response->array([
-//                'error' => true,
-//                'message' => 'numberExists'
-//            ]);
-//        }
-
-
-        if (User::query()->where('id', '!=', $token->user_id)->count() > 0) {
+        if (User::query()->where('id', $token->user_id)->count() == 0) {
             return $this->response->array([
                 'error' => true,
-                'message' => 'numberExists'
+                'message' => 'accountNotExists'
             ]);
         }
 
         $user = User::findOrFail($token->user_id);
         if ($user) {
-//            $user->name = $request->name;
-//            $user->last_name = $request->lastName;
-//            $user->phone_number = $request->phone_number;
             $user->password = Hash::make($request->password);
             $user->save();
-            // $token->expires_at =  Carbon::now()->subDays(5);
-            // $token->save();
             $token->delete();
 
             $accessToken = $user->createToken($user->email.'-'.now());
