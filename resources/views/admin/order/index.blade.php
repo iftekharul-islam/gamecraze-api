@@ -60,7 +60,7 @@
                                         <div class="col-8 form-group">
                                             <label>Order Search :</label>
                                             <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
-                                                   placeholder="Search Here...">
+                                                   placeholder="Search by order no here...">
                                         </div>
                                         <div class="col-6-xxxl col-lg-6 col-6 form-group">
                                             <label>Start date</label>
