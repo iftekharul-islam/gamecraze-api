@@ -129,40 +129,38 @@
                                                     <a class="badge-danger badge text-white" >Inactive</a>
                                                 @endif
                                             </td>
-                                            </td>
                                             <td>
-                                                <div class="d-flex">
-                                                    <button class="btn btn-success btn-sm" type="button"
-                                                            onclick="makeApprove({{ $item->id }})"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        @if ($item->status == 0 || $item->status === 2)
+                                                            <a class="dropdown-item" href="#" onclick="makeApprove({{ $item->id }})">Approve</a>
+                                                        @endif
+                                                        @if ($item->status == 1 || $item->status === 0)
+                                                            <a class="dropdown-item" href="#" onclick="makeReject({{ $item->id }})">Reject</a>
+                                                        @endif
+                                                        <a class="dropdown-item" href="{{ route('product.show', $item->id) }}">Show</a>
+                                                        <a class="dropdown-item" href="{{ route('product.edit', $item->id) }}">Edit</a>
+                                                        <a class="dropdown-item" href="#" onclick="deleteCategory({{ $item->id }})">Delete</a>
+                                                    </div>
                                                     <form id="approve-form-{{ $item->id }}"
                                                           action="{{ route('product.approve', $item->id) }}"
                                                           method="get" class="d-none">
                                                         @csrf
                                                     </form>
-                                                    <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="makeReject({{ $item->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                     <form id="reject-form-{{ $item->id }}"
                                                           action="{{ route('product.reject', $item->id) }}"
                                                           method="post" class="d-none">
                                                         @csrf
                                                         <input type="text" class="d-none" id="reason" name="reason" value="">
                                                     </form>
-                                                    <a class="btn btn-sm btn-primary"
-                                                       href="{{ route('product.edit', $item->id) }}"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="deleteCategory({{ $item->id }})">
-                                                        <i class="far fa-trash-alt"></i></button>
                                                     <form id="delete-form-{{ $item->id }}"
                                                           action="{{ route('product.destroy', $item->id) }}"
                                                           method="post" class="d-none">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
-                                                    <a class="btn btn-sm btn-primary mr-3" href="{{ route('product.show', $item->id) }}">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -126,40 +126,32 @@
                                                 @endif
 
                                             </td>
-                                            <td width="180px">
-                                                @if ($rent->status == 0 || $rent->status === 2)
-                                                    <button class="btn btn-success btn-sm" type="button"
-                                                            onclick="makeApprove({{ $rent->id }})"> <i class="fa fa-check" aria-hidden="true"></i></button>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        @if ($rent->status == 0 || $rent->status === 2)
+                                                            <a class="dropdown-item" href="#" onclick="makeApprove({{ $rent->id }})">Approve</a>
+                                                        @endif
+                                                        @if ($rent->status == 1 || $rent->status === 0)
+                                                            <a class="dropdown-item" href="#" onclick="makeReject({{ $rent->id }})">Reject</a>
+                                                        @endif
+                                                        <a class="dropdown-item" href="{{ route('rentPost.show', $rent->id) }}">Show</a>
+                                                        <a class="dropdown-item" href="{{ route('rentPost.edit', $rent->id) }}">Edit</a>
+                                                    </div>
                                                     <form id="approve-form-{{ $rent->id }}"
                                                           action="{{ route('rentPost.approve', $rent->id) }}"
-                                                          method="post" class="d-none">
+                                                          method="get" class="d-none">
                                                         @csrf
                                                     </form>
-                                                @endif
-                                                @if ($rent->status == 1 || $rent->status === 0)
-                                                    <button class="btn btn-danger btn-sm" type="button"
-                                                            onclick="makeReject({{ $rent->id }})"><i class="fa fa-times mr-1" aria-hidden="true"></i></button>
                                                     <form id="reject-form-{{ $rent->id }}"
                                                           action="{{ route('rentPost.reject', $rent->id) }}"
                                                           method="post" class="d-none">
-                                                        <input type="text" class="d-none" id="reason" name="reason" value="">
                                                         @csrf
+                                                        <input type="text" class="d-none" id="reason" name="reason" value="">
                                                     </form>
-                                                @endif
-                                                <a class="btn btn-sm btn-primary"
-                                                   href="{{ route('rentPost.edit', $rent->id) }}"><i
-                                                        class="far fa-edit"></i></a>
-                                                <a href="{{ route('rentPost.show', $rent->id) }}" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i></a>
-{{--                                                <button class="btn btn-danger btn-sm" type="button"--}}
-{{--                                                        onclick="deletePost({{ $rent->id }})">--}}
-{{--                                                    <i class="far fa-trash-alt"></i></button>--}}
-{{--                                                <form id="delete-form-{{ $rent->id }}"--}}
-{{--                                                      action="{{ route('rentPost.destroy', $rent->id) }}"--}}
-{{--                                                      method="post" class="d-none">--}}
-{{--                                                    @csrf--}}
-{{--                                                    @method('DELETE')--}}
-{{--                                                </form>--}}
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
