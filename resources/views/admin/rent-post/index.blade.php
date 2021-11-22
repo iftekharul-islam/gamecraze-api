@@ -142,7 +142,7 @@
                                                     </div>
                                                     <form id="approve-form-{{ $rent->id }}"
                                                           action="{{ route('rentPost.approve', $rent->id) }}"
-                                                          method="get" class="d-none">
+                                                          method="post" class="d-none">
                                                         @csrf
                                                     </form>
                                                     <form id="reject-form-{{ $rent->id }}"
