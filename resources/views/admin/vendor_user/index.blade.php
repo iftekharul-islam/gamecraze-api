@@ -75,7 +75,8 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone number</th>
-                                        <th>Vendor - Role</th>
+                                        <th>Vendor</th>
+                                        <th>Role</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -88,11 +89,10 @@
                                             <td>{{ $user->email ?? ''}}</td>
                                             <td>{{ $user->phone_number ?? ''}}</td>
                                             <td>
-                                                @foreach($user->vendors as $shop)
-                                                    <div class="d-flex">
-                                                        <span class="badge-primary badge text-white">{{ $shop->vendor->shop_name }}</span> - <span class="badge-primary badge text-white">{{ $shop->role->name }}</span>
-                                                    </div>
-                                                @endforeach
+                                                <span class="badge-primary badge text-white">{{ $user->vendor->vendor->shop_name }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge-primary badge text-white">{{ $user->vendor->role->name }}</span>
                                             </td>
                                             <td>
                                                 @if ($user->status === 0)

@@ -72,7 +72,7 @@
                                         <div class="col-12 form-group">
                                             <label for="role">User role:</label>
                                             <select name="role_id" id="role" class="form-control selectpicker"
-                                                    data-live-search="true" required>
+                                                    required>
                                                 <option value="" disabled selected>Select User Role</option>
                                                 @foreach($roles as $role)
                                                     <option value="{{$role->id}}">{{ ucwords(str_replace("_", " ", $role->name)) }}</option>

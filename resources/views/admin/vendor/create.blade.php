@@ -47,7 +47,7 @@
                             <div
                                 class="false-padding-bottom-form form-group{{ $errors->has('trade_license') ? ' has-error' : '' }}">
                                 <label for="released">Trade license</label><label for="released" class="text-danger">*</label>
-                                <input type="text" class="form-control" id="released" name="trade_license"
+                                <input type="text" class="form-control" maxlength="6" id="released"  name="trade_license"
                                        placeholder="Enter Game released date" required>
                                 @if ($errors->has('trade_license'))
                                     <span class="text-danger"><strong>{{ $errors->first('trade_license') }}</strong></span>
@@ -63,7 +63,7 @@
                                 @endif
                             </div>
                             <label>Profile image</label>
-                            <small>(Width: 1920px and Height: 600px)</small>
+                            <small>(Width: 200px and Height: 200px)</small>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="profile_photo" id="coverFile" required>
                                 <label class="custom-file-label" for="coverFile">Choose file</label>
@@ -72,7 +72,7 @@
                                 @endif
                             </div>
                             <label>Cover Image</label>
-                            <small>(Width: 238px and Height: 437px)</small>
+                            <small>(Width: 2:1)</small>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="cover_photo" id="trendingFile" required>
                                 <label class="custom-file-label" for="customFile">Choose file</label>

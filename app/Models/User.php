@@ -121,8 +121,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(GameOrder::class, 'user_id', 'id');
     }
-    public function vendors()
+    public function vendor()
     {
-        return $this->hasMany(UserVendor::class, 'user_id', 'id');
+        return $this->hasOne(UserVendor::class, 'user_id', 'id');
     }
 }

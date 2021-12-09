@@ -198,22 +198,27 @@ class VendorController extends Controller
         if ($request->search) {
             $users = User::where('phone_number', 'LIKE', "%{$request->search}%")
                 ->orWhere('email', 'LIKE', "%{$request->search}%")
-                ->with('vendors.vendor', 'vendors.role')
-                    ->has('vendors')
+                ->with('vendor.vendor', 'vendor.role')
+                    ->has('vendor')
                     ->paginate(15);
         } else {
-            $users = User::with('vendors.vendor', 'vendors.role')
-                ->has('vendors')
+            $users = User::with('vendor.vendor', 'vendor.role')
+                ->has('vendor')
                 ->paginate(15);
         }
+
+//        return $users;
         return view('admin.vendor_user.index', compact('users'));
     }
 
     public function assignVendorUser()
     {
-        $users = User::all();
+        $users = User::where('is_verified', 1)
+            ->has('vendor', '<', 1)
+            ->where('name', '!=', null)->get();
         $otherRoles = ['admin', 'customer'];
-        $roles = Role::whereNotIn('name', $otherRoles)->get();
+        $roles = Role::whereNotIn('name', $otherRoles)
+            ->get();
         $vendors = Vendor::where('status', 1)->get();
 
         return view('admin.vendor_user.show', compact('users', 'roles', 'vendors'));

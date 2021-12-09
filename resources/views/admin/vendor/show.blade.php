@@ -66,7 +66,8 @@
                                             <td>Phone numbers:</td>
                                             <td>
                                             @foreach($vendor->phoneNumbers as $number)
-                                                <span class="badge-success badge">{{ $number->number }}</span>
+                                                <strong>{{ $number->number }}</strong>
+                                                <hr>
                                             @endforeach
                                             </td>
                                         </tr>
@@ -74,7 +75,12 @@
                                             <td>Addresses:</td>
                                             <td>
                                                 @foreach($vendor->addresses as $address)
-                                                    <span class="badge-success badge">{{ $address->address }}</span>
+                                                    Address Type: <strong>{{ $address->title }}</strong><br>
+                                                    Street :<strong>{{ $address->address }}</strong><br>
+                                                    State: <strong>{{ $address->state }}</strong><br>
+                                                    City : <strong>{{ $address->city }}</strong><br>
+                                                    Zip :<strong>{{ $address->zip_code }}</strong>
+                                                    <hr>
                                                 @endforeach
                                             </td>
                                         </tr>
@@ -83,9 +89,9 @@
                             </div><!-- /.card-body -->
                         </div>
                         <div class="col-md-4 mt-4">
-                            <label for="">Profile photo</label>
+                            <label class="d-block">Profile photo</label>
                             <img src="{{ asset($vendor->profile_photo) }}" id="disk-preview" class="img-thumbnail">
-                            <label for="">Cover photo</label>
+                            <label class="d-block">Cover photo</label>
                             <img src="{{ asset($vendor->cover_photo) }}" id="disk-preview" class="img-thumbnail">
                         </div>
                     </div>
