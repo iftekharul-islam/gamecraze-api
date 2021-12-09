@@ -112,7 +112,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter address type" name="titles[]" id="videoFile">
+                                            <input type="text" class="form-control" placeholder="Enter address type (Shop/ Warehouse/Service center)" name="titles[]" id="videoFile">
                                             <input type="text" class="form-control" placeholder="Enter address" name="addresses[]" id="videoFile">
                                             <input type="text" class="form-control" placeholder="Ente your state" name="states[]" id="videoFile">
                                             <input type="text" class="form-control" placeholder="Ente your city" name="cities[]" id="videoFile">
@@ -155,11 +155,11 @@
         var j = 0
         $(document).on('click', "#addScreenshot", function(){
             ++i;
-            $("#dynamicScreenshot").append('<tr><td><div class="custom-file"><input type="number" class="form-control" id="screenshotFile-'+i+'" name="phone_number[]"></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+            $("#dynamicScreenshot").append('<tr><td><div class="custom-file"><input type="number" max="11" class="form-control" id="screenshotFile-'+i+'" name="phone_number[]"></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
         });
         $(document).on('click', "#addVideo", function(){
             ++j;
-            $("#dynamicVideos").append('<tr><td><div class="form-group"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Enter address type" name="titles[]"><input type="text" class="form-control" id="videoFile-'+j+'"  placeholder="Enter address" name="addresses[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your state" name="states[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your city" name="cities[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your zip code" name="zips[]"></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+            $("#dynamicVideos").append('<tr><td><div class="form-group"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Enter address type (Shop/ Warehouse/Service center)" name="titles[]"><input type="text" class="form-control" id="videoFile-'+j+'"  placeholder="Enter address" name="addresses[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your state" name="states[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your city" name="cities[]"><input type="text" class="form-control" id="videoFile-'+j+'" placeholder="Ente your zip code" name="zips[]"></div></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
         });
         $(document).on('click', '.remove-tr', function(){
             $(this).parents('tr').remove();

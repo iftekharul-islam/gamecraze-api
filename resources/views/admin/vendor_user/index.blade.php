@@ -51,7 +51,7 @@
                                         <div class="col-9 form-group">
                                             <label>User Search :</label>
                                             <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
-                                                   placeholder="Search Here by phone/email...">
+                                                   placeholder="Search Here by name/phone/email...">
                                         </div>
                                         <div class="col-12 form-group float-right">
                                             <button type="submit" class="btn btn-primary float-right">Search</button>

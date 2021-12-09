@@ -18,10 +18,16 @@ class VendorController extends Controller
      * |\Illuminate\Contracts\View\Factory
      * |\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vendors = Vendor::orderBy('created_at', 'DESC')->paginate(config('gamehub.pagination'));
-
+        if ($request->search) {
+            $vendors = Vendor::where('shop_name', 'LIKE', "%{$request->search}%")
+                ->orWhere('trade_license', 'LIKE', "%{$request->search}%")
+                ->orderBy('created_at', 'DESC')
+                ->paginate(config('gamehub.pagination'));
+        } else {
+            $vendors = Vendor::orderBy('created_at', 'DESC')->paginate(config('gamehub.pagination'));
+        }
         return view('admin.vendor.index', compact('vendors'));
     }
 
@@ -41,8 +47,6 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-//        return $request->all();
-
         $data = $request->only(['shop_name', 'trade_license', 'shop_description', 'is_verified', 'status', 'cover_photo', 'profile_photo']);
         $data['is_verified'] = true;
         if ($request->hasFile('cover_photo')) {
@@ -198,6 +202,7 @@ class VendorController extends Controller
         if ($request->search) {
             $users = User::where('phone_number', 'LIKE', "%{$request->search}%")
                 ->orWhere('email', 'LIKE', "%{$request->search}%")
+                ->orWhere('name', 'LIKE', "%{$request->search}%")
                 ->with('vendor.vendor', 'vendor.role')
                     ->has('vendor')
                     ->paginate(15);

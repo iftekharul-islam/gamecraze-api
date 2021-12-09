@@ -42,6 +42,24 @@
                     </div>
                 @endif
                 <div class="row">
+                    <div class="col-8">
+                        <form action="{{ route('vendor') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9 form-group">
+                                            <label>Vendor Search :</label>
+                                            <input type="search" class="form-control" name="search" value="{{ Request::get('search') }}"
+                                                   placeholder="Search Here by name/trade license no...">
+                                        </div>
+                                        <div class="col-12 form-group float-right">
+                                            <button type="submit" class="btn btn-primary float-right">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
