@@ -259,6 +259,23 @@ Route::prefix('admin')->group(function () {
         Route::get('product/approve/{id}','\App\Http\Controllers\ProductController@approve')->name('product.approve');
         Route::post('product/reject/{id}','\App\Http\Controllers\ProductController@reject')->name('product.reject');
 
+        //Vendor
+        Route::get('vendor','\App\Http\Controllers\VendorController@index')->name('vendor');
+        Route::get('vendor/create','\App\Http\Controllers\VendorController@create')->name('vendor.create');
+        Route::post('vendor/store','\App\Http\Controllers\VendorController@store')->name('vendor.store');
+        Route::get('vendor/{id}','\App\Http\Controllers\VendorController@show')->name('vendor.show');
+        Route::get('vendor/edit/{id}','\App\Http\Controllers\VendorController@edit')->name('vendor.edit');
+        Route::post('product/update/{id}','\App\Http\Controllers\VendorController@update')->name('vendor.update');
+        Route::delete('product/delete/{id}','\App\Http\Controllers\ProductController@destroy')->name('product.destroy');
+        Route::get('product/approve/{id}','\App\Http\Controllers\ProductController@approve')->name('product.approve');
+        Route::post('product/reject/{id}','\App\Http\Controllers\ProductController@reject')->name('product.reject');
+
+        //vendor list with user
+        Route::get('vendor-owners','\App\Http\Controllers\VendorController@vendorOwner')->name('vendor.owner');
+        Route::get('vendor-requests','\App\Http\Controllers\VendorController@vendorRequest')->name('vendor.request');
+        Route::get('assign-vendor-user','\App\Http\Controllers\VendorController@assignVendorUser')->name('assign.vendor.user');
+        Route::post('assign-vendor-user','\App\Http\Controllers\VendorController@storeVendorUser')->name('assign.user');
+
         //bkash
 //        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
         Route::post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash')->name('travel-initiate-bkash');

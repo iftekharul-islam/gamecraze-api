@@ -222,6 +222,35 @@
                 </li>
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
+                        <a href="#" class="d-block">Vendor section</a>
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a href="{{ route('vendor') }}" class="nav-link {{ Request()->routeIs('vendor') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Vendors
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('vendor.owner') }}" class="nav-link {{ Request()->routeIs('vendor.owner') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Vendors Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('vendor.request') }}" class="nav-link {{ Request()->routeIs('vendor.request') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Vendor Requests
+                        </p>
+                    </a>
+                </li>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
                         <a href="#" class="d-block">Game Bazar</a>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\UserVendor;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -119,5 +120,9 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(GameOrder::class, 'user_id', 'id');
+    }
+    public function vendors()
+    {
+        return $this->hasMany(UserVendor::class, 'user_id', 'id');
     }
 }
