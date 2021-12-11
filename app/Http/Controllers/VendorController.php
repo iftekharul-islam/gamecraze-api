@@ -212,7 +212,6 @@ class VendorController extends Controller
                 ->paginate(15);
         }
 
-//        return $users;
         return view('admin.vendor_user.index', compact('users'));
     }
 
@@ -220,10 +219,13 @@ class VendorController extends Controller
     {
         $users = User::where('is_verified', 1)
             ->has('vendor', '<', 1)
-            ->where('name', '!=', null)->get();
+            ->where('name', '!=', null)
+            ->get();
+
         $otherRoles = ['admin', 'customer'];
         $roles = Role::whereNotIn('name', $otherRoles)
             ->get();
+
         $vendors = Vendor::where('status', 1)->get();
 
         return view('admin.vendor_user.show', compact('users', 'roles', 'vendors'));

@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\Address;
 use App\Models\User;
+use App\Models\Vendor;
+use App\UserVendor;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
@@ -93,6 +95,28 @@ class UserRepository
 
         $user->referral_code = 'GH-'.rand(1000, 9999).'-'.$user->id;
         $user->save();
+
+        if(isset($userData['shopName']) && isset($userData['tradeLicense'])){
+            $vendor = Vendor::create([
+                'shop_name' =>  $userData['shopName'],
+                'trade_license' =>  $userData['tradeLicense'],
+                'is_verified' => false,
+                'status' => true
+            ]);
+            logger('$vendor');
+            logger($vendor);
+
+            $role = Role::where('name', 'vendor_admin')->first();
+
+            $user->assignRole($role);
+
+            UserVendor::create([
+                'user_id' =>  $user->id,
+                'vendor_id' =>  $vendor->id,
+                'role_id' =>  $role->id,
+            ]);
+        }
+
         return [
             'error' => false,
             'user' => $user,
@@ -102,7 +126,7 @@ class UserRepository
     public function update(Request $request)
     {
         $userData = $request->all();
-
+        logger($userData);
         $user = auth()->user();
         if (!$user) {
             $user = User::when($userData['phone_number'], function($query) use($userData) {
@@ -171,6 +195,27 @@ class UserRepository
             }
 
             $user->save();
+
+            if(isset($userData['shopName']) && isset($userData['tradeLicense'])){
+                $vendor = Vendor::create([
+                    'shop_name' =>  $userData['shopName'],
+                    'trade_license' =>  $userData['tradeLicense'],
+                    'is_verified' => false,
+                    'status' => true
+                ]);
+                logger('$vendor');
+                logger($vendor);
+
+                $role = Role::where('name', 'vendor_admin')->first();
+
+                $user->assignRole($role);
+
+                UserVendor::create([
+                    'user_id' =>  $user->id,
+                    'vendor_id' =>  $vendor->id,
+                    'role_id' =>  $role->id,
+                ]);
+            }
 
             $user['address'] = $user->address;
             $user['referral_url'] = env('GAMEHUB_FRONT').'/login?referred_code='.$user->referral_code;
