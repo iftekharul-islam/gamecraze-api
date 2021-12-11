@@ -18,8 +18,8 @@ class CreateVendorsTable extends Migration
             $table->string('shop_name');
             $table->string('trade_license')->nullable();
             $table->string('shop_description')->nullable();
-            $table->string('cover_photo');
-            $table->string('profile_photo');
+            $table->string('cover_photo')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->boolean('is_verified');
             $table->boolean('status');
             $table->softDeletes();

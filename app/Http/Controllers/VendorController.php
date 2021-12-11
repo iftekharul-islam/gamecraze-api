@@ -110,14 +110,14 @@ class VendorController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vendor  $vendor
-     * @return \Illuminate\Http\Response
+     * @param Vendor $vendor
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application
+     * |\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Vendor $vendor, $id)
     {
-        $vendor = Vendor::findOrFail($id);
+        $vendor = Vendor::with('addresses', 'phoneNumbers')->findOrFail($id);
 
         return view('admin.vendor.edit',compact('vendor'));
     }
@@ -261,5 +261,43 @@ class VendorController extends Controller
     public function destroy(Vendor $vendor)
     {
         //
+    }
+
+    public function phoneNumberUpdate(Request $request, $id)
+    {
+        $number = PhoneNumber::findOrFail($id);
+        if(isset($request->number)){
+            $number->number = $request->number;
+            $number->save();
+            return redirect()->route('vendor')->with('status', 'Phone number updated successfully');
+        }
+
+    }
+
+    public function addressUpdate(Request $request, $id)
+    {
+        $address = Address::findOrFail($id);
+        if(isset($request->title)){
+            $address->title = $request->title;
+        }
+
+        if(isset($request->address)){
+            $address->address = $request->address;
+        }
+
+        if(isset($request->state)){
+            $address->state = $request->state;
+        }
+
+        if(isset($request->city)){
+            $address->city = $request->city;
+        }
+
+        if(isset($request->zip_code)){
+            $address->zip_code = $request->zip_code;
+        }
+
+        $address->save();
+        return redirect()->route('vendor')->with('status', 'Address updated successfully');
     }
 }

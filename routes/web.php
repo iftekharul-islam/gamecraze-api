@@ -276,6 +276,10 @@ Route::prefix('admin')->group(function () {
         Route::get('assign-vendor-user','\App\Http\Controllers\VendorController@assignVendorUser')->name('assign.vendor.user');
         Route::post('assign-vendor-user','\App\Http\Controllers\VendorController@storeVendorUser')->name('assign.user');
 
+        //phone numbers update
+        Route::post('number/update/{id}','\App\Http\Controllers\VendorController@phoneNumberUpdate')->name('number.update');
+        Route::post('address/update/{id}','\App\Http\Controllers\VendorController@addressUpdate')->name('address.update');
+
         //bkash
 //        Route::get('/travel-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash');
         Route::post('/initiate-bkash', '\App\Http\Controllers\TransactionHistoryController@payBkash')->name('travel-initiate-bkash');
