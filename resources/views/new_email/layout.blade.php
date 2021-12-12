@@ -35,7 +35,7 @@
             <table style="border-collapse: collapse; border-spacing: 0;">
                 <tr>
                     <td style="padding: 0;">
-                        <a href="https://www.gamehub.com.bd"><img src="{{ asset('email_image/header.webp') }}" alt="bg" style="width: 100%;"></a>
+                        <a href="https://www.gamehub.com.bd"><img src="{{ asset('email_image/header.webp') }}" style="width: 100%;"></a>
                     </td>
                 </tr>
 
