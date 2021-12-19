@@ -216,7 +216,7 @@ class VendorController extends Controller
 
     public function assignVendorUser()
     {
-        $users = User::where('is_verified', 1)
+        $users = User::where('id_verified', 1)
             ->has('vendor', '<', 1)
             ->where('name', '!=', null)
             ->get();
