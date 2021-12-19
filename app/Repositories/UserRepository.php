@@ -2,16 +2,15 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\UserCreateRequest;
 use App\Models\Address;
 use App\Models\User;
+use App\Models\UserVendor;
 use App\Models\Vendor;
-use App\UserVendor;
 use Dingo\Api\Exception\UpdateResourceFailedException;
+use File;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use File;
 
 class UserRepository
 {

@@ -6,11 +6,13 @@ namespace App\Transformers;
 use App\Models\User;
 
 // Dingo includes Fractal to help with transformations
+use App\Models\UserVendor;
 use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {
-//    protected $defaultIncludes = ['roles'];
+    protected $availableIncludes = ['vendor'];
+
     public function transform(User $user)
     {
         // specify what elements are going to be visible to the API
@@ -40,6 +42,12 @@ class UserTransformer extends TransformerAbstract
             'status' => $user->status,
             'locale' => $user->locale
         ];
+    }
+
+    public function includeVendor(User $user) {
+        if (isset($user->vendor)) {
+            return $this->item($user->vendor, new UserVendorTransformer());
+        }
     }
 
 }

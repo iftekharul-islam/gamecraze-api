@@ -107,7 +107,7 @@
                                         <tr>
                                             <td>
                                                 <div class="custom-file">
-                                                    <input type="number" class="form-control" name="phone_number[]" id="screenshotFile">
+                                                    <input type="number" class="form-control" name="phone_number[]" value="" id="screenshotFile">
                                                 </div>
                                             </td>
                                             <td>
@@ -145,53 +145,55 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-primary">
-                            <table class="table table-borderless">
-                                <tbody>
+                    @if(count($vendor->phoneNumbers) > 0 || count($vendor->addresses) > 0)
+                        <div class="col-md-4">
+                            <div class="card card-primary">
+                                <table class="table table-borderless">
+                                    <tbody>
 
-                                <tr>
-                                    <td><strong>Phone numbers:</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        @foreach($vendor->phoneNumbers as $number)
-                                        <form action="{{ route('number.update', $number->id) }}" method="post">
-                                            @csrf
-                                            <div class="row">
-                                                <input type="number" class="form-control col-8 ml-2 mr-2" value="{{ $number->number }}" name="number">
-                                                <button type="submit" class="btn btn-primary col-2"><i class="nav-icon fa fa-history"></i></button>
-                                            </div>
-                                        </form>
-                                        <hr>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Addresses:</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        @foreach($vendor->addresses as $address)
-                                            <form action="{{ route('address.update', $address->id) }}" method="post">
-                                                @csrf
-                                                <div class="row">
-                                                    <input type="text" class="form-control col-8 mx-auto" value="{{ $address->title }}" name="title">
-                                                    <input type="text" class="form-control col-8 mx-auto" value="{{ $address->address }}" name="address">
-                                                    <input type="text" class="form-control col-8 mx-auto" value="{{ $address->state }}" name="state">
-                                                    <input type="text" class="form-control col-8 mx-auto" value="{{ $address->city }}" name="city">
-                                                    <input type="text" class="form-control col-8 mx-auto" value="{{ $address->zip_code }}" name="zip_code">
-                                                    <button type="submit" class="btn btn-primary col-6 mx-auto mt-2">Update</button>
-                                                </div>
-                                            </form>
-                                            <hr>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                    <tr>
+                                        <td><strong>Phone numbers:</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @foreach($vendor->phoneNumbers as $number)
+                                                <form action="{{ route('number.update', $number->id) }}" method="post">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <input type="number" class="form-control col-8 ml-2 mr-2" value="{{ $number->number }}" name="number">
+                                                        <button type="submit" class="btn btn-primary col-2"><i class="nav-icon fa fa-history"></i></button>
+                                                    </div>
+                                                </form>
+                                                <hr>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Addresses:</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @foreach($vendor->addresses as $address)
+                                                <form action="{{ route('address.update', $address->id) }}" method="post">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <input type="text" class="form-control col-8 mx-auto" value="{{ $address->title }}" name="title">
+                                                        <input type="text" class="form-control col-8 mx-auto" value="{{ $address->address }}" name="address">
+                                                        <input type="text" class="form-control col-8 mx-auto" value="{{ $address->state }}" name="state">
+                                                        <input type="text" class="form-control col-8 mx-auto" value="{{ $address->city }}" name="city">
+                                                        <input type="text" class="form-control col-8 mx-auto" value="{{ $address->zip_code }}" name="zip_code">
+                                                        <button type="submit" class="btn btn-primary col-6 mx-auto mt-2">Update</button>
+                                                    </div>
+                                                </form>
+                                                <hr>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <!-- /.card -->
             </div><!-- /.container-fluid -->

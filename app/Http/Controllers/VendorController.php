@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\PhoneNumber;
 use App\Models\User;
+use App\Models\UserVendor;
 use App\Models\Vendor;
-use App\PhoneNumber;
-use App\UserVendor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -51,7 +51,7 @@ class VendorController extends Controller
         $data['is_verified'] = true;
         if ($request->hasFile('cover_photo')) {
             $trending = $request->file('cover_photo');
-            $trending_name = $data['shop_name'] . '-trending-' . auth()->user()->id . '-' . time() . '.' . $trending->getClientOriginalExtension();
+            $trending_name = $data['shop_name'] . '-cover-' . auth()->user()->id . '-' . time() . '.' . $trending->getClientOriginalExtension();
             $path = "vendor-image/" . $trending_name;
             $trending->storeAs('vendor-image', $trending_name);
             $data['cover_photo'] = 'storage/' . $path;
@@ -59,7 +59,7 @@ class VendorController extends Controller
 
         if ($request->hasFile('profile_photo')) {
             $cover = $request->file('profile_photo');
-            $cover_name = $data['shop_name'] . '-cover-' . auth()->user()->id . '-' . time() . '.' . $cover->getClientOriginalExtension();
+            $cover_name = $data['shop_name'] . '-profile-' . auth()->user()->id . '-' . time() . '.' . $cover->getClientOriginalExtension();
             $path = "vendor-image/" . $cover_name;
             $cover->storeAs('vendor-image', $cover_name);
             $data['profile_photo'] = 'storage/' . $path;
@@ -131,7 +131,6 @@ class VendorController extends Controller
      */
     public function update(Request $request, Vendor $vendor, $id)
     {
-//        return $request->all();
         $vendor = $vendor->findOrFail($id);
         $data = $request->only(['shop_name', 'trade_license', 'shop_description', 'status', 'cover_photo', 'profile_photo']);
         if(isset($data['shop_name'])){
@@ -152,23 +151,23 @@ class VendorController extends Controller
 
         if ($request->hasFile('cover_photo')) {
             $trending = $request->file('cover_photo');
-            $trending_name = $data['shop_name'] . '-trending-' . auth()->user()->id . '-' . time() . '.' . $trending->getClientOriginalExtension();
+            $trending_name = $vendor['shop_name'] . '-cover-' . auth()->user()->id . '-' . time() . '.' . $trending->getClientOriginalExtension();
             $path = "vendor-image/" . $trending_name;
             $trending->storeAs('vendor-image', $trending_name);
-            $data['cover_photo'] = 'storage/' . $path;
+            $vendor['cover_photo'] = 'storage/' . $path;
         }
 
         if ($request->hasFile('profile_photo')) {
             $cover = $request->file('profile_photo');
-            $cover_name = $data['shop_name'] . '-cover-' . auth()->user()->id . '-' . time() . '.' . $cover->getClientOriginalExtension();
+            $cover_name = $vendor['shop_name'] . '-profile-' . auth()->user()->id . '-' . time() . '.' . $cover->getClientOriginalExtension();
             $path = "vendor-image/" . $cover_name;
             $cover->storeAs('vendor-image', $cover_name);
-            $data['profile_photo'] = 'storage/' . $path;
+            $vendor['profile_photo'] = 'storage/' . $path;
         }
 
         $vendor->save();
 
-        if(isset($request->phone_number)){
+        if(isset($request->phone_number) && !in_array('', $request->phone_number)){
             foreach($request->phone_number as $number){
                 PhoneNumber::create([
                     'user_id' =>  $vendor->id,
@@ -177,7 +176,7 @@ class VendorController extends Controller
             }
         }
 
-        if(isset($request->addresses)){
+        if(isset($request->addresses) && !in_array('', $request->addresses) ){
             foreach($request->addresses as $key=>$address){
                 $addressData []= [
                     'user_id' =>  $vendor->id,

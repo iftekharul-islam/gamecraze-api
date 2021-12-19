@@ -159,39 +159,50 @@
             $api->delete('rents/{id}', 'App\Http\Controllers\API\RentController@destroy');
             $api->post('rent-image-update', 'App\Http\Controllers\API\RentController@imageUpdate');
             $api->put('rents/{id}', 'App\Http\Controllers\API\RentController@update');
+
             //role crud
             $api->post('user/role/create','App\Http\Controllers\API\UserController@createRole');
             $api->get('user/role/show','App\Http\Controllers\API\UserController@showRole');
             $api->post('user/permission/create','App\Http\Controllers\API\UserController@createPermission');
             $api->get('user/permission/show','App\Http\Controllers\API\UserController@showPermission');
+
             //permission crud
             $api->post('role-permission/{role_id}/{per_id}','App\Http\Controllers\API\UserController@rolehasPermission');
             $api->post('user-role/{user_id}/{role_id}','App\Http\Controllers\API\UserController@userhasRole');
             $api->post('user-permission/{user_id}/{per_id}','App\Http\Controllers\API\UserController@userhasPermission');
+
             //User Profile
             $api->get('profile', 'App\Http\Controllers\API\UserController@profile');
+
             //orders
             $api->get('orders', 'App\Http\Controllers\API\OrderController@index');
             $api->get('order/{id}', 'App\Http\Controllers\API\OrderController@showById');
+
             //Lend Game
             $api->post('lend-game', 'App\Http\Controllers\API\LenderController@store');
             $api->get('lends', 'App\Http\Controllers\API\LenderController@index');
             $api->get('my-lends', 'App\Http\Controllers\API\LenderController@myLends');
+
             //Payment
             $api->get('success-payment', 'App\Http\Controllers\API\PaymentController@success');
             $api->get('fail-payment', 'App\Http\Controllers\API\PaymentController@success');
+
             //game reminder
             $api->post('set-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@store');
             $api->post('remove-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@destroy');
             $api->get('check-reminder/{game_id}', 'App\Http\Controllers\API\GameReminderController@checkReminder');
+
             //cart item
             $api->get('cart-items', 'App\Http\Controllers\API\CartItemController@index');
             $api->post('cart-item/create', 'App\Http\Controllers\API\CartItemController@store');
             $api->post('cart-item/destroy', 'App\Http\Controllers\API\CartItemController@destroy');
+
             //update renter game credential
             $api->post('game-credential-update', 'App\Http\Controllers\API\RentController@updateCredential');
+
             //update user cover image
             $api->post('user-cover-update', 'App\Http\Controllers\API\UserController@updateCoverImage');
+
             //Rent post status update
             $api->post('post-status-update', 'App\Http\Controllers\API\RentController@postStatusUpdate');
             //available rent check
@@ -205,6 +216,10 @@
             $api->post('sell-post', 'App\Http\Controllers\API\ProductController@store');
             $api->post('sold-status-update', 'App\Http\Controllers\API\ProductController@soldStatusUpdate');
             $api->post('sell-post-update', 'App\Http\Controllers\API\ProductController@update');
+
+            //vendor
+            $api->get('my-vendor', 'App\Http\Controllers\API\VendorController@index');
+            $api->post('vendor-update', 'App\Http\Controllers\API\VendorController@update');
             // Admin
             $api->group(['middleware' => 'role:admin'], function ($api) {
                 // Games
