@@ -45,6 +45,7 @@ class GameController extends BaseController
     public function index()
     {
         $games = $this->gameRepository->all();
+
         return $this->response->collection($games, new GameTransformer());
     }
 

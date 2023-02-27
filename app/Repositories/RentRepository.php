@@ -56,7 +56,7 @@ class RentRepository {
             $image = $request->disk_image;
             $disk_image = 'disk_' . time() . '_' .$rent['game_id'] . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             \Image::make($image)->save(storage_path('app/public/rent-image/').$disk_image);
-            $rent['disk_image'] =   $disk_image ;
+            $rent['disk_image'] =   ORDER ;
         }
         $rent['user_id'] = auth()->user()->id;
         $post = Rent::create($rent);

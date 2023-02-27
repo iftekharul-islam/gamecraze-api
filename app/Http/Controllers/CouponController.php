@@ -121,6 +121,7 @@ class CouponController extends Controller
         $coupon->author_id = auth()->user()->id;
 
         $coupon->save();
+
         return redirect()->route('coupon')->with('status', 'Coupon successfully updated');
     }
 
