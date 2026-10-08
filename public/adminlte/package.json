@@ -26,7 +26,7 @@
     "css-minify:pages": "npm run css-minify-bash -- dist/css/alt/adminlte.pages.min.css dist/css/alt/adminlte.pages.css",
     "css-minify:plugins": "npm run css-minify-bash -- dist/css/alt/adminlte.plugins.min.css dist/css/alt/adminlte.plugins.css",
     "compile": "npm-run-all --parallel js css-all",
-    "dev": "npm-run-all --parallel watch sync",
+    "dev": "node init && npm-run-all --parallel watch sync",
     "docs": "npm-run-all --sequential docs-clean docs-prepare docs-compile",
     "docs-clean": "cd docs/ && bundle exec jekyll clean -d ../docs_html",
     "docs-compile": "cd docs/ && bundle exec jekyll build -d ../docs_html",
